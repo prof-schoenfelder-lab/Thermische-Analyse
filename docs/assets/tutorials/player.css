@@ -1,0 +1,433 @@
+/* Minimalist modern player styles (instance-friendly for inline embed) */
+/* Map the local player tokens to Material theme variables so the embed follows the site's palette */
+:root {
+    --tp-accent: var(--md-color-primary, #5e4bff);
+    --tp-accent-contrast: var(--md-color-on-primary, #fff);
+    --tp-min-height: 360px;
+    --tp-fixed-height: 480px
+}
+
+/* The player will use a fixed height so it doesn't stretch with a very tall viewport.
+	Override by setting --tp-fixed-height on a parent/container (e.g. --tp-fixed-height:420px). */
+.player {
+    width: 100%;
+    height: var(--tp-fixed-height);
+    max-height: var(--tp-fixed-height);
+    box-sizing: border-box;
+    padding: 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+    display: flex;
+    flex-direction: column;
+    min-height: var(--tp-min-height);
+    overflow: hidden
+}
+
+/* Defensive: ensure the embed container shows the canvas background even if parent has white bg */
+.player {
+    background: transparent !important;
+    color: inherit
+}
+
+.player__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--md-default-bg-color, var(--md-surface, #fff));
+    color: var(--tp-accent);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border: 1px solid var(--md-color-fg-muted, rgba(0, 0, 0, 0.06));
+    border-bottom: 0
+}
+
+.player__title h1 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blue, var(--md-color-primary, var(--tp-accent)));
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 8px
+}
+
+/* Match steps badge behavior: on dark/slate themes use the theme default-bg color for high contrast text */
+@media (prefers-color-scheme: dark) {
+    .player__title h1 {
+        color: var(--md-default-bg-color, #041028);
+        background: var(--blue, var(--md-typeset-a-color, #6ea3ff));
+        box-shadow: 0 0 0 var(--halo, 6px) var(--halo-color, #1F2128)
+    }
+}
+
+.md-scheme-slate .player__title h1,
+.md-theme-slate .player__title h1,
+[data-md-color-scheme="slate"] .player__title h1 {
+    color: var(--md-default-bg-color, #041028);
+    background: var(--blue, var(--md-typeset-a-color, #6ea3ff));
+    box-shadow: 0 0 0 var(--halo, 6px) var(--halo-color, #1F2128);
+}
+
+.player__meta {
+    font-size: 0.9rem;
+    color: var(--md-color-fg-muted, #666)
+}
+
+.player__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.player__controls .ctrl {
+    background: var(--md-surface, #fff);
+    border: 1px solid var(--md-color-fg-muted, #e6e6e6);
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem
+}
+
+.player__controls .ctrl:hover {
+    background: var(--md-surface-variant, #f5f7ff);
+    border-color: color-mix(in srgb, var(--tp-accent) 20%, transparent)
+}
+
+.player__stage {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+    flex: 1 1 auto;
+    min-height: 0
+}
+
+.player__aside {
+    border-radius: 12px;
+    padding: 12px;
+    flex: 0 0 20%;
+    overflow: auto;
+    background: linear-gradient(180deg, var(--md-surface, #ffffff), var(--md-surface-variant, #fbfbff));
+    box-shadow: 0 2px 8px rgba(20, 20, 50, 0.04)
+}
+
+.label {
+    font-weight: 700;
+    margin-bottom: 8px
+}
+
+.text {
+    color: var(--md-typeset-color, #111);
+    line-height: 1.5;
+    overflow: auto
+}
+
+#canvasRoot {
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.player__canvas {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--md-surface, #0b0b0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-height: 0
+}
+
+/* Stronger fallback in case other CSS overrides the canvas background */
+.player__canvas {
+    background: var(--md-surface, #0b0b0b) !important
+}
+
+.canvas-frame {
+    position: relative;
+    touch-action: none;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0
+}
+
+/* Controls area should stay visible at the bottom and not be pushed out by the canvas */
+.player__controls-bottom {
+    flex: 0 0 auto
+}
+
+#stepImage {
+    display: block;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    user-select: none;
+    pointer-events: none
+}
+
+.layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none
+}
+
+.highlight {
+    position: absolute;
+    border: 2px solid rgba(255, 200, 0, 0.9);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    border-radius: 6px
+}
+
+.click-capture {
+    position: absolute;
+    inset: 0;
+    cursor: pointer
+}
+
+/* Zoom floating buttons inside the canvas (right-bottom) */
+.zoom-floating {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 40
+}
+
+.zoom-floating button {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--md-color-fg-muted, rgba(0, 0, 0, 0.06));
+    background: var(--md-surface, #fff);
+    color: var(--tp-accent);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.zoom-floating button:hover {
+    transform: translateY(-2px);
+    background: var(--md-surface, #fff);
+    color: var(--tp-accent);
+}
+
+#progress {
+    height: 6px;
+    background: var(--md-surface-variant, #f0f0f3);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 8px
+}
+
+#progressBar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--tp-accent) 70%, white 10%), color-mix(in srgb, var(--tp-accent) 40%, #8ef0d4 10%))
+}
+
+/* hide default scrollbars on macOS where possible */
+.player__aside::-webkit-scrollbar {
+    width: 0;
+    height: 0
+}
+
+.player__aside {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+/* Responsive tweaks */
+@media (max-width:900px) {
+    .player__stage {
+        grid-template-columns: 1fr;
+    }
+
+    .player__aside {
+        order: 2
+    }
+
+    .player__canvas {
+        order: 1
+    }
+}
+
+/* screenshot style from example */
+.step-pill {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    /* align with zoom buttons */
+    right: 72px;
+    /* leave room for the zoom controls on the right */
+    transform: none;
+    background: var(--blue, var(--tp-accent));
+    padding: 10px 14px;
+    /* slightly less vertical padding so text fits nicely */
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    color: #fff;
+    max-width: none;
+    max-height: 36%;
+    /* Keep a stable height so the UI doesn't jump when switching between short and long labels.
+              Default is single-line height (including an action-pill). Override with --tp-pill-min-height. */
+    min-height: var(--tp-pill-min-height, 48px);
+    overflow: auto;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.25;
+    display: flex;
+    /* reserve vertical space for an action-pill */
+    flex-wrap: wrap;
+    /* allow content to wrap to second line */
+    align-items: center;
+    /* center single-line content vertically so height doesn't jump */
+    gap: 10px;
+}
+
+@media (max-width:900px) {
+    .step-pill {
+        right: 12px;
+        left: 12px;
+        min-height: var(--tp-pill-min-height-mobile, 44px);
+    }
+}
+
+/* Action highlights inside the pill (e.g. Klick, Rechtsklick, auswählen) */
+.action-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: var(--md-surface, #fff);
+    color: var(--md-color-negative, #c00);
+    font-weight: 800;
+    margin: 0 6px;
+    font-size: 0.95em;
+    white-space: nowrap
+}
+
+.action-pill::before {
+    display: inline-block;
+    font-size: 0.9em;
+    width: 18px;
+    text-align: center
+}
+
+.action-pill::before {
+    display: inline-block;
+    font-size: 0.85em;
+    width: 18px;
+    text-align: center
+}
+
+.action-left::before {
+    content: '⬅';
+    color: var(--tp-accent)
+}
+
+.action-right::before {
+    content: '➡';
+    color: #c00
+}
+
+.action-select::before {
+    content: '✔';
+    color: var(--tp-accent)
+}
+
+/* zoom control UI removed (buttons are no longer shown) */
+.progress-segments {
+    display: none;
+    /* hidden: individual progress tiles removed; only bottom bar kept */
+}
+
+.progress-segments .seg {
+    flex: 0 0 auto;
+    height: 8px;
+    border-radius: 6px;
+    background: var(--md-surface-variant, #e6e6e6);
+    width: 80px
+}
+
+.progress-segments .seg.active {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--tp-accent) 70%, white 10%), color-mix(in srgb, var(--tp-accent) 40%, #8ef0d4 10%))
+}
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px
+}
+
+.progress {
+    flex: 1
+}
+
+.step-counter {
+    min-width: 140px;
+    text-align: left;
+    color: var(--md-typeset-color, #111);
+    font-weight: 600
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    margin-right: 8px
+}
+
+.nav-buttons .nav-prev,
+.nav-buttons .nav-next {
+    background: var(--blue, var(--md-color-primary, var(--tp-accent)));
+    color: var(--tp-accent-contrast);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--blue, var(--tp-accent)) 18%, transparent);
+    font-weight: 700
+}
+
+/* Make sure progress bar and counter are visible on dark canvas */
+.progress-row,
+.progress,
+.step-counter {
+    color: var(--tp-accent-contrast)
+}
+
+.progress {
+    background: transparent
+}
+
+.step-counter {
+    color: var(--tp-accent);
+    font-weight: 700
+}
+
+/* ensure canvas root fills available area */
+#canvasRoot {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}

@@ -1,0 +1,329 @@
+/* ===============================
+   Steps – kompakte Timeline
+   Markup:
+   <div class="steps">
+     <div class="step">
+       <p class="step-title">Titel</p>
+       <figure>…</figure>
+       <p>…</p>
+     </div>
+   </div>
+   =============================== */
+
+/* Stellschrauben */
+:root {
+  --gutter: 5px;
+  /* Abstand des gesamten Blocks zur linken Seite (kleiner = weiter links) */
+  --line-x: 20px;
+  /* X-Position der Mittellinie im .steps-Container */
+  --line-w: 3px;
+  /* Linienbreite */
+  --badge: 30px;
+  /* Durchmesser des Zahlenkreises */
+  --halo: 6px;
+  /* weißer Halo um den Kreis (muss zum box-shadow passen) */
+  --halo-color: #ffffff;
+  /* default halo color for light theme */
+  --gap: 6px;
+  /* zusätzlicher Abstand zwischen Kreis und Text */
+  --blue: #2f6af6;
+  /* Kreis- & Titel-Farbe */
+  --line: rgba(47, 106, 246, .20);
+  /* Linienfarbe */
+}
+
+/* Zähler nur im Wrapper */
+.steps {
+  position: relative;
+  margin-left: var(--gutter);
+  counter-reset: steps;
+}
+
+/* durchgehende vertikale Linie */
+.steps::before {
+  content: "";
+  position: absolute;
+  left: var(--line-x);
+  top: 0;
+  bottom: 0;
+  width: var(--line-w);
+  background: var(--line);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* einzelner Step */
+.step {
+  position: relative;
+  margin: 32px 0;
+  /* Start des Inhalts NACH dem Kreis inkl. Halo + kleinem Gap → kein Überlappen */
+  padding-left: calc(var(--line-x) + (var(--badge) / 2) + var(--halo) + var(--gap));
+  counter-increment: steps;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  z-index: 1;
+}
+
+/* Nummern-Badge */
+.step::before {
+  content: counter(steps);
+  position: absolute;
+  top: 0;
+  left: var(--line-x);
+  transform: translate(-50%, 0);
+  width: var(--badge);
+  height: var(--badge);
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 var(--halo) var(--halo-color), 0 1px 0 rgba(0, 0, 0, .05);
+  z-index: 2;
+}
+
+/* Fallback: kurzer Segment, falls .step ohne Wrapper genutzt würde */
+.step::after {
+  content: "";
+  position: absolute;
+  left: var(--line-x);
+  top: .5rem;
+  bottom: .5rem;
+  width: var(--line-w);
+  background: var(--line);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.steps .step::after {
+  display: none;
+}
+
+/* Titel ohne h2/h3: klein, fett, Versalien, in Kreisfarbe, vertikal zentriert */
+.step .step-title {
+  display: flex;
+  align-items: center;
+  /* vertikal auf Kreismitte */
+  min-height: var(--badge);
+  /* gleiche Höhe wie der Kreis */
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  /* fett */
+  font-size: 0.8rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--blue);
+}
+
+/* Inhalte */
+.step figure {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.step img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.step p {
+  margin: 0 0 12px 0;
+  color: #222;
+  line-height: 1.55;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  :root {
+    --gutter: 40px;
+    /* noch etwas weiter links auf kleineren Screens */
+    --line-x: 18px;
+    --badge: 28px;
+    --gap: 6px;
+  }
+
+  .step {
+    margin: 26px 0;
+  }
+
+  .step .step-title {
+    margin-bottom: 6px;
+  }
+}
+
+/* zentrierte Medien in <figure> innerhalb eines .step */
+:root {
+  /* optional: maximale Darstellungsbreite eines Bildes begrenzen */
+  --figure-max: none;
+  /* z.B. 640px oder 560px; 'none' = keine Begrenzung */
+}
+
+.step figure {
+  width: 100%;
+  margin: 12px 0;
+  display: flex;
+  /* zentrieren */
+  justify-content: center;
+  /* horizontal mittig */
+  align-items: center;
+  /* vertikal (falls z.B. SVG kleiner ist) */
+  text-align: center;
+  /* für figcaption */
+}
+
+.step figure>img,
+.step figure>picture,
+.step figure>picture>img,
+.step figure>video,
+.step figure>canvas,
+.step figure>svg {
+  display: block;
+  /* vermeidet Extra-Abstand unter Bildern */
+  max-width: min(100%, var(--figure-max));
+  height: auto;
+}
+
+/* optional: Beschriftung mittig, dezenter */
+.step figure>figcaption {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+/* Inline-Code aus `...` innerhalb der Steps hervorheben */
+:root {
+  --code-bg: rgba(47, 106, 246, .10);
+  /* zarter Blau-Ton */
+  --code-border: rgba(47, 106, 246, .22);
+  --code-color: #1a3ba8;
+  /* gut lesbares Blau */
+  --code-radius: 6px;
+  --code-pad-y: .12em;
+  --code-pad-x: .40em;
+}
+
+/* Nur inline, nicht in <pre> */
+.step :not(pre)>code {
+  background: var(--code-bg);
+  color: var(--code-color);
+  padding: var(--code-pad-y) var(--code-pad-x);
+  border: 1px solid var(--code-border);
+  border-radius: var(--code-radius);
+  font: 0.95em/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: normal;
+  /* darf umbrechen */
+  word-break: break-word;
+  /* lange Tokens trennen */
+}
+
+/* Code-Blöcke (``` … ```), falls du sie nutzt */
+.step pre {
+  margin: 10px 0 12px;
+  background: rgba(47, 106, 246, .06);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow: auto;
+  /* horizontales Scrollen bei Bedarf */
+}
+
+.step pre>code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #222;
+  white-space: pre;
+  /* keine Zeilenumbrüche erzwingen */
+}
+
+/* Optional: Inline-Code auch in Titeln konsistent darstellen */
+.step .step-title code {
+  background: rgba(47, 106, 246, .14);
+  border-color: rgba(47, 106, 246, .28);
+  color: #0f2f8a;
+}
+
+/* ——— Dark theme overrides ———
+   Make the step timeline and inline code visible on dark (slate) theme.
+   We support both user-preferred color-scheme and the Material 'slate' palette toggle.
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* slightly lighter, desaturated blue for badges on dark backgrounds */
+    /* Prefer Material theme variables where available, fall back to our sensible defaults */
+    --blue: var(--md-typeset-a-color, #6ea3ff);
+    --line: var(--md-typeset-table-color--light, rgba(110, 163, 255, .12));
+    --code-bg: var(--md-code-bg-color, rgba(47, 106, 246, .14));
+    --code-border: var(--md-code-hl-color--light, rgba(126, 168, 255, .20));
+    --code-color: var(--md-code-fg-color, #e7f3ff);
+    /* halo color follows default background if variable exists */
+    --halo-color: var(--md-default-bg-color, #1F2128);
+    --step-text: var(--md-typeset-color, #e6eef8);
+  }
+
+  .steps::before {
+    background: var(--line);
+  }
+
+  /* Badge: use the same badge color but pick a readable label color and a dark halo */
+  .step::before {
+    background: var(--blue);
+    /* label color: use theme fg or high-contrast fallback */
+    color: var(--md-color-on-primary, #ffffff);
+    box-shadow: 0 0 0 var(--halo) var(--halo-color), 0 1px 0 rgba(255, 255, 255, .03);
+  }
+
+  /* Body text inside steps — add high-specificity selectors to avoid overrides */
+  .md-typeset .step p,
+  .md-content .step p,
+  .step p {
+    color: var(--step-text);
+  }
+
+  .md-typeset .step figure>figcaption,
+  .md-content .step figure>figcaption,
+  .step figure>figcaption {
+    color: var(--md-typeset-color, #cfd9ea);
+  }
+
+  /* inline code inside steps: lighter text on subtle blue background */
+  .step :not(pre)>code {
+    background: var(--code-bg);
+    color: var(--code-color);
+    border-color: var(--code-border);
+  }
+
+  /* code blocks get a darker panel */
+  .step pre {
+    background: rgba(8, 12, 20, .55);
+    border-color: rgba(255, 255, 255, .04);
+  }
+}
+
+/* Support the material palette toggle which sometimes adds a scheme class */
+/* If the Material theme adds a slate-specific class, set the halo and step text variables */
+.md-scheme-slate,
+.md-theme-slate,
+[data-md-color-scheme="slate"] {
+  /* halo behind the badge should match the dark page background used by slate */
+  --halo-color: #1F2128;
+  --step-text: #e6eef8;
+}
+
+/* Extra: ensure badge number color is high-contrast on dark backgrounds */
+[data-md-color-scheme="slate"] .step::before,
+.md-scheme-slate .step::before,
+.md-theme-slate .step::before {
+  /* If theme provides a variable for default background use it for the label color; otherwise use a near-black for contrast against the light badge */
+  color: var(--md-color-on-primary, #ffffff);
+  box-shadow: 0 0 0 var(--halo) var(--halo-color), 0 1px 0 rgba(255, 255, 255, .03);
+}

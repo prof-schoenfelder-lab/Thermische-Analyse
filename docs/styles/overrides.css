@@ -1,0 +1,219 @@
+/* Global overrides for tutorial player defaults */
+:root {
+  --tp-fixed-height: 700px;
+  /* default player height (can be overridden per-embed) */
+  --tp-pill-min-height: 48px;
+  /* baseline pill height */
+}
+
+/* Example helper: smaller global player if you want site-wide compact players */
+.site-wide-compact {
+  --tp-fixed-height: 900px
+}
+
+/* Make embeds centered by default. Control width with --tp-max-width or inline width. */
+.tutorial-embed {
+  display: block;
+  width: 100%;
+  max-width: var(--tp-max-width, 900px);
+  margin: 0 auto 18px auto;
+  /* centered with a little bottom gap */
+}
+
+/* Example: per-embed override
+<div class="tutorial-embed" data-tutorial="/assets/tutorials/vendor_demo" style="--tp-max-width:800px; --tp-fixed-height:420px"></div>
+*/
+
+/* Deaktiviert die Einklappbarkeit der Navigation */
+.md-nav__item--nested>input {
+  display: none;
+}
+
+/* Stellt sicher, dass alle Navigationselemente sichtbar sind */
+.md-nav__item--nested>.md-nav__list {
+  display: block;
+}
+
+/* Global inline-code style: match the visual appearance used inside .step (pill-like) */
+:root {
+  /* Derive inline-code pill colors from the steps --blue token so they match visually */
+  --inline-code-accent: var(--blue, var(--md-color-primary, #2f6af6));
+  /* Use the accent as the pill background and the theme-on-primary (white) as text */
+  --inline-code-bg: var(--inline-code-accent);
+  --inline-code-border: color-mix(in srgb, var(--inline-code-accent) 22%, var(--md-default-bg-color, #ffffff) 78%);
+  --inline-code-color: var(--tp-accent-contrast, #ffffff);
+  --inline-code-radius: 6px;
+  --inline-code-pad-y: .12em;
+  --inline-code-pad-x: .40em;
+}
+
+/* dark-mode / slate theme overrides
+   We support both prefers-color-scheme: dark and Material's palette toggles:
+   - class-based: .md-scheme-slate / .md-theme-slate
+   - attribute-based: [data-md-color-scheme="slate"]; this ensures the
+     rules apply regardless of how the theme is injected. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Prefer Material variables if present */
+    --inline-code-bg: var(--md-code-bg-color, rgba(47, 106, 246, .14));
+    --inline-code-border: var(--md-code-hl-color--light, rgba(126, 168, 255, .20));
+    --inline-code-color: var(--md-code-fg-color, #e7f3ff);
+  }
+}
+
+/* Also support Material palette toggle classes/attributes (slate) so variables update
+   whether the dark mode is via prefers-color-scheme or Material's palette toggle */
+.md-scheme-slate,
+.md-theme-slate,
+[data-md-color-scheme="slate"] {
+  --inline-code-bg: var(--md-code-bg-color, rgba(47, 106, 246, .14));
+  --inline-code-border: var(--md-code-hl-color--light, rgba(126, 168, 255, .20));
+  --inline-code-color: var(--md-code-fg-color, #e7f3ff);
+}
+
+/* Material theme palette toggles (class and attribute variants) */
+.md-scheme-slate :not(pre)>code,
+.md-theme-slate :not(pre)>code,
+[data-md-color-scheme="slate"] :not(pre)>code {
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
+  border-color: var(--inline-code-border);
+}
+
+/* Ensure the inline code styles also update when the page root carries the slate scheme */
+[data-md-color-scheme="slate"] .md-typeset :not(pre)>code,
+[data-md-color-scheme="slate"] .md-content :not(pre)>code {
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
+  border-color: var(--inline-code-border);
+}
+
+/* Apply to inline <code> inside the rendered Markdown content (but not code blocks in <pre>) */
+.md-typeset :not(pre)>code,
+.md-content :not(pre)>code {
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
+  padding: var(--inline-code-pad-y) var(--inline-code-pad-x);
+  border: 1px solid var(--inline-code-border);
+  border-radius: var(--inline-code-radius);
+  font: 0.95em/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: normal;
+  /* allow wrapping */
+  word-break: break-word;
+}
+
+/* Keep code blocks unaffected */
+.md-typeset pre>code,
+.md-content pre>code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  white-space: pre;
+}
+
+/* Match admonition text size to surrounding content */
+.md-typeset .admonition,
+.md-typeset .admonition p,
+.md-typeset .admonition ul,
+.md-typeset .admonition ol,
+.md-typeset .admonition li {
+  font-size: inherit;
+}
+
+/* High-specificity override for .step text color in dark/slate palettes
+   We add selectors that target both prefers-color-scheme and Material's
+   palette toggles. This block intentionally mirrors the token used by the
+   typeset so it should maintain correct contrast without using !important. */
+@media (prefers-color-scheme: dark) {
+
+  html[data-md-color-scheme="slate"] .md-typeset .step p,
+  html[data-md-color-scheme="slate"] .md-content .step p,
+  .md-scheme-slate .md-typeset .step p,
+  .md-scheme-slate .md-content .step p,
+  html[data-md-color-scheme="slate"] .md-typeset .step figure>figcaption,
+  html[data-md-color-scheme="slate"] .md-content .step figure>figcaption,
+  .md-scheme-slate .md-typeset .step figure>figcaption,
+  .md-scheme-slate .md-content .step figure>figcaption {
+    color: var(--md-typeset-color, var(--md-default-fg-color, #e6eefc));
+  }
+}
+
+/* Also apply when Material theme toggles are used (class/attribute variants) */
+[data-md-color-scheme="slate"] .md-typeset .step p,
+[data-md-color-scheme="slate"] .md-content .step p,
+.md-theme-slate .md-typeset .step p,
+.md-theme-slate .md-content .step p,
+[data-md-color-scheme="slate"] .md-typeset .step figure>figcaption,
+[data-md-color-scheme="slate"] .md-content .step figure>figcaption,
+.md-theme-slate .md-typeset .step figure>figcaption,
+.md-theme-slate .md-content .step figure>figcaption {
+  color: var(--md-typeset-color, var(--md-default-fg-color, #e6eefc));
+}
+/* ---------- Kurs-Statistik unter Übungsfragen ---------- */
+.course-stat {
+  margin-top: .5rem;
+  font-size: .68rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ---------- "Mein Fortschritt"-Hub ---------- */
+.ph-summary { font-size: .9rem; margin: 1rem 0 1.2rem; }
+.ph-sync { color: #2e7d32; }
+.ph-sync-off { color: var(--md-default-fg-color--light); }
+.ph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1rem;
+}
+.ph-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  padding: 1.1rem .8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  color: var(--md-default-fg-color) !important;
+  transition: box-shadow .2s, transform .2s;
+}
+.ph-card:hover { box-shadow: var(--md-shadow-z2); transform: translateY(-2px); }
+.ph-ring { width: 7rem; height: 7rem; }
+.ph-ring-bg { fill: none; stroke: var(--md-default-fg-color--lightest); stroke-width: 9; }
+.ph-ring-fg {
+  fill: none; stroke: var(--md-primary-fg-color); stroke-width: 9;
+  stroke-linecap: round; transition: stroke-dashoffset .8s ease;
+}
+.ph-done .ph-ring-fg { stroke: #2e7d32; }
+.ph-ring-num { text-anchor: middle; font-size: 20px; font-weight: 700; fill: var(--md-default-fg-color); }
+.ph-ring-sub { text-anchor: middle; font-size: 11px; fill: var(--md-default-fg-color--light); }
+.ph-name { font-size: .75rem; font-weight: 600; text-align: center; }
+.ph-badge { font-size: .65rem; color: #2e7d32; font-weight: 600; }
+.progress-hub-loading { color: var(--md-default-fg-color--light); }
+
+/* Abzeichen auf der Fortschritt-Seite */
+.ph-level { margin: -0.4rem 0 1rem; font-size: .85rem; color: var(--md-default-fg-color--light); }
+.ph-level strong { color: var(--md-primary-fg-color); }
+[data-md-color-scheme="slate"] .ph-level strong { color: var(--md-primary-bg-color); }
+.ph-medals {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: .8rem;
+  margin-top: .5rem;
+}
+.ph-medal {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "icon name" "icon desc";
+  column-gap: .6rem;
+  align-items: center;
+  padding: .7rem .8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  opacity: .45;
+  filter: grayscale(1);
+}
+.ph-medal.ph-earned { opacity: 1; filter: none; border-color: #2e7d3255; background: #2e7d3211; }
+.ph-medal-icon { grid-area: icon; font-size: 1.6rem; }
+.ph-medal-name { grid-area: name; font-size: .78rem; font-weight: 700; }
+.ph-medal-desc { grid-area: desc; font-size: .68rem; color: var(--md-default-fg-color--light); }

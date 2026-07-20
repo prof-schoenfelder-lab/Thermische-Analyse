@@ -1,0 +1,70 @@
+# Python and virtual environment
+__pycache__/
+*.py[cod]
+*.so
+.python-version
+venv/
+env/
+.venv/
+.venv*
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# MkDocs/site output
+/site/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+.ropeproject/
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*
+
+# mkdocs logs
+mkdocs-serve.log
+mkdocs-serve.pid
+
+# ANSYS files
+ANSYS-PROJEKTE/*
+
+# Misc
+*.swp
+*~
+docs/.DS_Store
+docs/assets/.DS_Store
+docs/assets/tutorials/.DS_Store
+
+# Backend (lokal)
+backend/.venv/
+backend/results.db
+backend/*.log
+backend/lti_private.pem
+backend/__pycache__/
+answers.json
+site/
+notion-export/

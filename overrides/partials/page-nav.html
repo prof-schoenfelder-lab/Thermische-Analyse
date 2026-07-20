@@ -1,0 +1,21 @@
+{% if page.previous or page.next %}
+<div class="page-nav-wrapper" role="navigation" aria-label="Seiten-Navigation">
+  {% if page.previous %}
+  <a class="page-nav page-nav--prev" href="{{ page.previous.url }}">
+    <div class="label">Vorherige</div>
+    <div class="title">{{ page.previous.title }}</div>
+  </a>
+  {% else %}
+  <div class="page-nav page-nav--prev" aria-hidden="true"></div>
+  {% endif %}
+
+  {% if page.next %}
+  <a class="page-nav page-nav--next" href="{{ page.next.url }}">
+    <div class="label">Nächste</div>
+    <div class="title">{{ page.next.title }}</div>
+  </a>
+  {% else %}
+  <div class="page-nav page-nav--next" aria-hidden="true"></div>
+  {% endif %}
+</div>
+{% endif %}

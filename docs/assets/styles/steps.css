@@ -1,0 +1,145 @@
+/* ——— Basis: Zähler zurücksetzen ——— */
+body {
+  counter-reset: step-counter;
+}
+
+/* ——— Variablen für Maße/Farben ——— */
+:root {
+  --steps-gutter: 120px;
+  /* linker Rand bis Content */
+  --steps-line-x: 34px;
+  /* x-Position der Mittellinie */
+  --steps-line-w: 3px;
+  /* Breite der Linie */
+  --steps-badge: 44px;
+  /* Durchmesser der Zahl */
+  --steps-blue: #2f6af6;
+  /* Badge-Farbe (Material-ähnlich) */
+  --steps-line: rgba(47, 106, 246, .20);
+  /* helle Linienfarbe */
+}
+
+/* ——— Wrapper: durchgehende vertikale Linie ——— */
+.steps {
+  position: relative;
+  margin-left: var(--steps-gutter);
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--steps-line-x) - var(--steps-line-w) / 2);
+  top: 0;
+  bottom: 0;
+  width: var(--steps-line-w);
+  background: var(--steps-line);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* ——— Einzelner Step: nur Einrückung/Abstand, keine Karte ——— */
+.step {
+  position: relative;
+  margin: 56px 0;
+  padding: 0 0 0 calc(var(--steps-line-x) + 28px);
+  /* Platz links für Badge */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  z-index: 1;
+}
+
+/* ——— Nummern-Badge ——— */
+.step::before {
+  counter-increment: step-counter;
+  content: counter(step-counter);
+  position: absolute;
+  top: 0;
+  /* steht auf Höhe der Überschrift */
+  left: calc(var(--steps-line-x) - var(--steps-badge) / 2);
+  width: var(--steps-badge);
+  height: var(--steps-badge);
+  border-radius: 50%;
+  background: var(--steps-blue);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* weißer „Halo“, der die Linie unter dem Kreis maskiert */
+  box-shadow: 0 0 0 6px #fff, 0 2px 0 rgba(0, 0, 0, .05);
+  z-index: 2;
+}
+
+/* ——— Fallback: kurzer Linien-Segment bei einzelnen .step ohne .steps ——— */
+.step::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--steps-line-x) - var(--steps-line-w) / 2);
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: var(--steps-line-w);
+  background: var(--steps-line);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.steps .step::after {
+  display: none;
+}
+
+/* ——— Typografie wie im Screenshot ——— */
+.step h3 {
+  margin: 0 0 12px 0;
+  /* Use the theme's typeset color so headings remain readable in both light and dark modes */
+  color: var(--md-typeset-color, var(--md-default-fg-color, #111));
+  font-weight: 800;
+  font-size: clamp(1.9rem, 1.5rem + 1.2vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.step p {
+  margin: 0 0 12px 0;
+  /* Use the theme's default text color for body text to ensure contrast in dark themes */
+  color: var(--md-typeset-color, var(--md-default-fg-color, #222));
+  line-height: 1.6;
+  font-size: 1.06rem;
+}
+
+.step figure {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.step img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ——— Responsive Anpassungen ——— */
+@media (max-width: 900px) {
+  :root {
+    --steps-gutter: 84px;
+    --steps-line-x: 28px;
+    --steps-badge: 38px;
+  }
+
+  .step {
+    margin: 40px 0;
+  }
+}
+
+/* Ensure high-specificity selectors so theme styles (main stylesheet) don't override step text color */
+.md-typeset .step p,
+.md-content .step p,
+.step p {
+  color: var(--md-typeset-color, var(--md-default-fg-color, #222));
+}
+
+.md-typeset .step figure>figcaption,
+.md-content .step figure>figcaption,
+.step figure>figcaption {
+  color: var(--md-typeset-color, #555);
+}

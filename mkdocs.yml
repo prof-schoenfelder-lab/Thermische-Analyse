@@ -1,0 +1,132 @@
+site_name: Angewandte FEM in der Thermodynamik
+site_url: https://prof-schoenfelder-lab.github.io/Thermische-Analyse
+copyright: Copyright &copy; 2025 Felix Kaule & Stephan Schönfelder
+repo_name: prof-schoenfelder-lab/Thermische-Analyse
+repo_url: https://github.com/prof-schoenfelder-lab/Thermische-Analyse
+edit_uri: edit/main/docs/
+theme:
+      logo: assets/images/HTWK_white_text.png
+      icon:
+            repo: fontawesome/brands/git-alt
+            edit: material/pencil
+            view: material/eye
+      palette:
+            # Palette toggle for light mode
+            - scheme: default
+              toggle:
+                    icon: material/brightness-7
+                    name: Switch to dark mode
+
+            # Palette toggle for dark mode
+            - scheme: slate
+              toggle:
+                    icon: material/brightness-4
+                    name: Switch to light mode
+      name: material
+      custom_dir: overrides
+      language: de
+      features:
+            - toc.follow
+            - navigation.tracking
+            - navigation.tabs
+            - navigation.sections
+            - navigation.path
+            - navigation.indexes
+            - navigation.top
+            - navigation.footer
+            - content.code.copy
+            - search.suggest
+            - search.highlight
+            - content.footer
+            - content.action.edit
+
+hooks:
+      - scripts/answers_hook.py
+
+plugins:
+      - macros
+      - glightbox
+      - search
+      - git-revision-date-localized:
+              type: timeago
+              locale: de
+              fallback_to_build_date: true
+
+markdown_extensions:
+      - toc:
+              permalink: True
+      - pymdownx.tasklist:
+              clickable_checkbox: true
+      - pymdownx.arithmatex:
+              generic: true
+      - pymdownx.highlight:
+              anchor_linenums: true
+              line_spans: __span
+              pygments_lang_class: true
+      - pymdownx.emoji:
+              emoji_index: !!python/name:material.extensions.emoji.twemoji
+              emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      - pymdownx.inlinehilite
+      - pymdownx.snippets:
+              base_path:
+                    - docs
+              check_paths: true
+      - pymdownx.pathconverter:
+              base_path: . # use current docs dir (avoid prefixing with '/docs')
+              relative_path: . # relativ zur aktuellen Seite umschreiben
+              absolute: false # avoid converting to leading-absolute paths like '/docs/...'
+      - pymdownx.superfences
+      - md_in_html
+      - attr_list
+      - admonition
+      - pymdownx.details
+
+extra_javascript:
+      - javascripts/mathjax.js
+      - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+      - "assets/tutorials/player.js"
+      - "assets/tutorials/player-bootstrap.js"
+      - "assets/js/answer-checker.js"
+      - "assets/js/backend-config.js"
+      - "assets/js/backend-sync.js"
+      - "assets/vendor/three-0.147.0.min.js"
+      - "assets/js/course-stats.js"
+      - "assets/js/progress-hub.js"
+      - "assets/js/home-scroll.js"
+
+extra_css:
+      - "assets/tutorials/player.css"
+      - "styles/overrides.css"
+      - "styles/steps.css"
+      - "styles/home.css"
+      - "styles/grid.css"
+      - "assets/styles/answer-checker.css"
+nav:
+      - Home: index.md
+      - EINFÜHRUNG:
+              - P1_Einfuehrung/index.md
+      - MODELLIERUNG & VERNETZUNG:
+              - P2_Modellierung_Vernetzung/index.md
+              - ABSTRAKTIONEN:
+                      - Grundlagen: P2_Modellierung_Vernetzung/Abstraktionen.md
+                      - "Vorzeigeaufgabe: Rohr": P2_Modellierung_Vernetzung/Vorzeigeaufgabe-Rohr.md
+              - VERNETZUNG:
+                      - Grundlagen: P2_Modellierung_Vernetzung/Vernetzung.md
+      - RANDBEDINGUNGEN & POSTPROCESSING:
+              - P3_Randbedingungen_Postprocessing/index.md
+              - Übersicht Randbedingungen: P3_Randbedingungen_Postprocessing/Randbedingungen.md
+              - "Beispielaufgabe: Heat Transfer in Fins": P3_Randbedingungen_Postprocessing/Beispiel-Fins.md
+              - Postprocessing: P3_Randbedingungen_Postprocessing/Postprocessing.md
+      - TRANSIENTE BERECHNUNG:
+              - P4_Transient/index.md
+              - Einleitung: P4_Transient/Einleitung.md
+              - "Beispielaufgabe: Ebene Wand": P4_Transient/Beispiel-Ebene-Wand.md
+              - "Zusatzaufgabe: Abkühlung Teewasser": P4_Transient/Zusatz-Teewasser.md
+      - STRAHLUNG:
+              - P5_Strahlung/index.md
+              - "Beispiel: Cerankochfeld": P5_Strahlung/Cerankochfeld.md
+      - MEIN FORTSCHRITT: Fortschritt.md
+      - FAQ:
+              - 00_FAQ/index.md
+              - 00_FAQ/ANSYS_Install.md
+              - 00_FAQ/Fenster_weg.md
