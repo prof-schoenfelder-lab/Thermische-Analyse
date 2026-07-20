@@ -451,3 +451,80 @@ nav.md-path { overflow-x: auto; }
 
 /* Kurzanleitungs-Details: Chevron dezenter */
 .md-typeset details > summary::after { color: var(--md-default-fg-color--light); }
+
+/* ===========================================================================
+   V4 — rahmenlos: eine Geometrie für alle Boxen, Ton statt Rahmen
+   =========================================================================== */
+.md-typeset .admonition, .md-typeset details, .md-typeset .task-banner {
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--md-default-fg-color) 4.5%, var(--kurs-card));
+}
+/* dezente Ton-Unterscheidung nur wo sie didaktisch trägt */
+.md-typeset .admonition.question, .md-typeset details.question {
+  background: color-mix(in srgb, var(--kurs-primary) 6%, var(--kurs-card));
+}
+.md-typeset .admonition.check, .md-typeset details.check,
+.md-typeset .admonition.success, .md-typeset details.success {
+  background: color-mix(in srgb, #2e7d32 7%, var(--kurs-card));
+}
+.md-typeset .admonition.warning, .md-typeset details.warning {
+  background: color-mix(in srgb, #e65100 8%, var(--kurs-card));
+}
+.md-typeset .task-banner {
+  background: color-mix(in srgb, var(--kurs-accent) 9%, var(--kurs-card));
+}
+/* Verschachtelte Boxen (z.B. Hinweis in einer Anleitung): gleiche Optik,
+   auf der Tonfläche leicht abgesetzt über die Kartenfarbe */
+.md-typeset details .admonition, .md-typeset .admonition .admonition {
+  background: var(--kurs-card);
+}
+
+/* Schritte in Kurzanleitungen: Nummern-Kreise im Stepper-Stil */
+.md-typeset details > ol { margin-left: 0; counter-reset: anl; }
+.md-typeset details > ol > li {
+  list-style: none;
+  counter-increment: anl;
+  position: relative;
+  padding-left: 2.15rem;
+  margin: 0 0 .9rem 0;
+}
+.md-typeset details > ol > li::before {
+  content: counter(anl);
+  position: absolute; left: 0; top: -.05rem;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));
+  color: var(--kurs-accent);
+  font-weight: 700; font-size: .68rem;
+}
+/* Gleiche Nummern-Kreise im Mitmach-Overlay gibt es über die Kopfzeile —
+   dort zeigt "Schritt x/y" die Position, Bilder sind identisch gerahmt */
+
+/* V4-Ton im Dark Mode kräftiger, sonst verschwinden die Flächen */
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details {
+  background: color-mix(in srgb, #ffffff 6%, var(--kurs-card));
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.question,
+[data-md-color-scheme="slate"] .md-typeset details.question {
+  background: color-mix(in srgb, #6ea8e8 13%, var(--kurs-card));
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.check,
+[data-md-color-scheme="slate"] .md-typeset details.check,
+[data-md-color-scheme="slate"] .md-typeset .admonition.success,
+[data-md-color-scheme="slate"] .md-typeset details.success {
+  background: color-mix(in srgb, #66bb6a 13%, var(--kurs-card));
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.warning,
+[data-md-color-scheme="slate"] .md-typeset details.warning {
+  background: color-mix(in srgb, #ffa726 14%, var(--kurs-card));
+}
+[data-md-color-scheme="slate"] .md-typeset .task-banner {
+  background: color-mix(in srgb, var(--kurs-accent) 18%, var(--kurs-card));
+}
+[data-md-color-scheme="slate"] .md-typeset details .admonition,
+[data-md-color-scheme="slate"] .md-typeset .admonition .admonition {
+  background: var(--kurs-card);
+}
