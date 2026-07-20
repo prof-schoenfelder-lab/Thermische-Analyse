@@ -4,6 +4,8 @@ title: "Vorzeigeaufgabe: Rohr"
 
 # Vorzeigeaufgabe: Rohr mit stationärer Wärmeleitung
 
+<div class="task-tabs-src" data-tabs="Aufgabe=./|a) Vollmodell=01-material/|b) Viertelmodell=b-viertelmodell/|c) Rotationssym.=c-rotationssymmetrie/|Vergleich=vergleich/" hidden></div>
+
 !!! question "Die Aufgabe"
     Für ein Rohr mit heißer Innen- und kalter Außenfläche den
     **Temperaturverlauf** und die **Wärmestromdichte von innen nach außen**

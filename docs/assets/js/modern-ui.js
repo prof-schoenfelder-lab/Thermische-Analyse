@@ -204,7 +204,10 @@
   // Aufgaben mit mehreren Lösungswegen (a/b/c …) deklarieren die Tabs am
   // task-banner: data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|…"
   function taskTabs() {
-    var banner = document.querySelector('.task-banner[data-tabs]');
+    // data-tabs am task-banner ODER als unsichtbare Konfiguration
+    // (<div class="task-tabs-src" data-tabs="…" hidden>) z.B. auf der
+    // Aufgabenstellungs-Seite selbst
+    var banner = document.querySelector('.task-banner[data-tabs], .task-tabs-src[data-tabs]');
     if (!banner) return;
     var h1 = document.querySelector('.md-content article h1, .md-content__inner h1');
     if (!h1) return;
