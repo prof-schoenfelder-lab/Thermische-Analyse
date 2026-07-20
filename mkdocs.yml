@@ -89,6 +89,7 @@ extra_javascript:
       - "assets/js/answer-checker.js"
       - "assets/js/backend-config.js"
       - "assets/js/backend-sync.js"
+      - "assets/js/help-button.js"
       - "assets/vendor/three-0.147.0.min.js"
       - "assets/js/course-stats.js"
       - "assets/js/progress-hub.js"

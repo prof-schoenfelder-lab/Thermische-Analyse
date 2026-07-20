@@ -108,6 +108,13 @@ def init_db():
             updated_at REAL,
             PRIMARY KEY (pseudonym, qid)
         );
+        CREATE TABLE IF NOT EXISTS help_requests (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            who TEXT NOT NULL,
+            page TEXT,
+            created_at REAL,
+            done_at REAL
+        );
         """
     )
     db.commit()
@@ -687,6 +694,74 @@ def stats():
     return jsonify([dict(r) for r in rows])
 
 
+# --- Hilfe-Warteschlange (Mini-Ticketsystem fürs Praktikum) ------------------
+# Studierende melden per Button Hilfebedarf an; das Dashboard zeigt die
+# Warteschlange in Meldereihenfolge. Identität: Login-Pseudonym, sonst die
+# Client-IP (im Pool = Sitzplatz). Tickets verfallen automatisch.
+
+HELP_OPEN_MAX_AGE = 3 * 3600      # offene Tickets nach 3 h automatisch schließen
+HELP_DONE_KEEP = 24 * 3600        # erledigte nach einem Tag löschen
+
+
+def _help_cleanup(db):
+    now = time.time()
+    db.execute("UPDATE help_requests SET done_at=? WHERE done_at IS NULL AND created_at < ?",
+               (now, now - HELP_OPEN_MAX_AGE))
+    db.execute("DELETE FROM help_requests WHERE done_at IS NOT NULL AND done_at < ?",
+               (now - HELP_DONE_KEEP,))
+    db.commit()
+
+
+def _help_identity():
+    pseu = current_pseudonym()
+    if pseu:
+        return pseu
+    ip = client_ip()
+    return ("ip:" + ip) if ip else None
+
+
+@app.get("/api/help")
+def help_status():
+    who = _help_identity()
+    db = get_db()
+    _help_cleanup(db)
+    open_rows = db.execute(
+        "SELECT who FROM help_requests WHERE done_at IS NULL ORDER BY created_at").fetchall()
+    pos = next((i + 1 for i, r in enumerate(open_rows) if r["who"] == who), None)
+    return jsonify({"open": pos is not None, "position": pos, "queue": len(open_rows)})
+
+
+@app.post("/api/help")
+def help_request():
+    payload = request.get_json(silent=True) or {}
+    who = _help_identity()
+    if not who:
+        return jsonify({"error": "keine Identität"}), 400
+    db = get_db()
+    _help_cleanup(db)
+    if payload.get("cancel"):
+        db.execute("UPDATE help_requests SET done_at=? WHERE who=? AND done_at IS NULL",
+                   (time.time(), who))
+        db.commit()
+    elif not db.execute("SELECT id FROM help_requests WHERE who=? AND done_at IS NULL",
+                        (who,)).fetchone():
+        db.execute("INSERT INTO help_requests (who, page, created_at) VALUES (?, ?, ?)",
+                   (who, str(payload.get("page") or "")[:200], time.time()))
+        db.commit()
+    return help_status()
+
+
+@app.get("/dashboard-help-done")
+def help_done():
+    if not DASHBOARD_TOKEN or request.args.get("key") != DASHBOARD_TOKEN:
+        return "Zugriff nur mit gültigem key-Parameter.", 403
+    db = get_db()
+    db.execute("UPDATE help_requests SET done_at=? WHERE id=? AND done_at IS NULL",
+               (time.time(), request.args.get("id")))
+    db.commit()
+    return redirect("dashboard?key=" + DASHBOARD_TOKEN)
+
+
 @app.get("/dashboard")
 def dashboard():
     """Lehrenden-Übersicht: wie viele sind wie weit (aggregiert, pseudonym).
@@ -781,6 +856,34 @@ def dashboard():
                                                  len(need_help)), "Hilfe empfohlen"))
     kpi_html = '<div class="kpis">%s</div>' % "".join(
         '<div class="kpi"><b>%s</b><span>%s</span></div>' % (v, l) for v, l in kpis)
+
+    # Hilfe-Warteschlange (aktiv gemeldete) — in Meldereihenfolge
+    _help_cleanup(db)
+    queue_rows = db.execute(
+        "SELECT id, who, page, created_at FROM help_requests WHERE done_at IS NULL "
+        "ORDER BY created_at").fetchall()
+    queue_html = ""
+    if queue_rows:
+        items = ""
+        for i, qr in enumerate(queue_rows, start=1):
+            if qr["who"].startswith("ip:"):
+                label = host_label(qr["who"][3:]) or qr["who"][3:]
+                who_name = ""
+            else:
+                seen = LAST_SEEN.get(qr["who"]) or {}
+                label = host_label(seen.get("ip", "")) or ("…" + qr["who"][:6])
+                who_name = names.get(qr["who"], "")
+            wait_min = max(0, round((now_ts - qr["created_at"]) / 60))
+            page = (qr["page"] or "").replace("/Thermische-Analyse/", "").strip("/")
+            items += ("<tr><td><b>%d.</b></td><td>%s</td><td>%s</td><td>%s</td>"
+                      "<td>wartet %d min</td>"
+                      "<td><a class=\"donebtn\" href=\"dashboard-help-done?key=%s&amp;id=%d\">✓ erledigt</a></td></tr>"
+                      % (i, label, who_name or "—", page or "—", wait_min,
+                         DASHBOARD_TOKEN, qr["id"]))
+        queue_html = ('<div class="queue"><h2>🙋 Hilfe-Warteschlange (%d)</h2>'
+                      '<div class="tablewrap"><table><tr><th></th><th>PC</th><th>Name</th>'
+                      '<th>Seite</th><th></th><th></th></tr>%s</table></div></div>'
+                      % (len(queue_rows), items))
 
     # Direkt handlungsleitend: wo hingehen?
     help_html = ""
@@ -886,7 +989,8 @@ def dashboard():
            max(0, round(e["idle"] / 60)), e["status"])
         for e in entries[:60])
     live_html = (
-        "<h2>Praktikums-Ansicht — wer ist heute wie weit?</h2>"
+        queue_html
+        + "<h2>Praktikums-Ansicht — wer ist heute wie weit?</h2>"
         + kpi_html
         + help_html
         + multi_html
@@ -959,6 +1063,11 @@ b{font-weight:600}
 .kpi .alarmnum{color:#c62828} .kpi .oknum{color:#2e7d32}
 p.helpline{background:#fff3f3;border:1px solid #ffcdd2;border-radius:.5rem;padding:.5rem .7rem;font-size:.9rem}
 p.spans{font-size:.85rem;color:#444}
+.queue{background:#fffde7;border:1px solid #ffe082;border-radius:.6rem;padding:.2rem .8rem .6rem;margin:1rem 0}
+.queue h2{margin-top:.6rem}
+.queue table{min-width:24rem}
+a.donebtn{display:inline-block;background:#2e7d32;color:#fff;border-radius:.4rem;
+  padding:.2rem .6rem;text-decoration:none;font-size:.8rem}
 .roommap{display:grid;grid-template-columns:repeat(2,5.6rem) 1.4rem repeat(2,5.6rem);gap:.3rem;margin:.4rem 0}
 .seat{border:1px solid #ccc;border-radius:.3rem;padding:.2rem .3rem;font-size:.72rem;
   min-height:2.1rem;background:#fafafa;color:#999}
