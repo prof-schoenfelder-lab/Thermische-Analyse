@@ -78,9 +78,9 @@ $$
 **3. Materialzuweisung (Mechanical)**
 
 - Ins **Workbench-Projektmenü** zurückgehen
-- (**Workbench**) **Rechtsklick Model → Update** (Geometrie wird ins
+- (**Workbench**) `Rechtsklick Model → Update` (Geometrie wird ins
   Mechanical geladen)
-- (**Workbench**) **Rechtsklick Model → Edit** (Mechanical wird geöffnet)
+- (**Workbench**) `Rechtsklick Model → Edit` (Mechanical wird geöffnet)
 - (**Mechanical**) Zur Materialzuweisung ist keine Aktion erforderlich, da
   das Standardmaterial (Structural Steel) verwendet wird.
 
@@ -88,10 +88,11 @@ $$
 
 - keine Aktionen erforderlich
 
-So sollte das Standardnetz aussehen (durch die Teilung in 4 Teile wurde die
-Geometrie bereits optimal vernetzt und mit einer Standardnetzgröße versehen):
+!!! check "Checkpoint: So sollte das Standardnetz aussehen"
+    Durch die Teilung in 4 Teile wurde die Geometrie bereits optimal
+    vernetzt und mit einer Standardnetzgröße versehen:
 
-![Standardnetz](images/rohr_Untitled.png)
+    ![Standardnetz](images/rohr_Untitled.png)
 
 **5. Randbedingungen (Mechanical)**
 
@@ -109,23 +110,21 @@ Geometrie bereits optimal vernetzt und mit einer Standardnetzgröße versehen):
         - Verschieben der Ansicht: **mittlere Maustaste + STRG gedrückt
           halten + Mausbewegung**
     2. **Steady-State Thermal** im **Strukturbaum** auswählen
-    3. Reiter **Environment** → **Temperature** anklicken
+    3. `Reiter Environment → Temperature` anklicken
         ![Environment → Temperature](images/rohr_Untitled_2.png)
     4. Im Detailfenster den Temperaturwert eintragen
         - Unter Geometry sollte die Anzahl der ausgewählten Flächen stehen
         - Magnitude: Wert der Temperatur eingeben
         ![Detailfenster](images/rohr_Untitled_3.png)
     5. Randbedingung sinnvoll umbenennen, z.B. Innenseite (100 °C) /
-       Außenseite (20 °C)
-        - Rechtsklick auf die Randbedingung im Strukturbaum → Rename
-          (oder Anklicken und F2)
+       Außenseite (20 °C) — `Rechtsklick auf Randbedingung → Rename` (oder F2)
 
 [KLICK-TUTORIAL mit Randbedingungen (auch Temperatur) aus dem ersten Praktikum](http://ior.ad/6XAi){target=_blank}
 
-So sollten die **Randbedingungen** aussehen (Klick auf Steady-State Thermal
-im Strukturbaum):
+!!! check "Checkpoint: So sollten die Randbedingungen aussehen"
+    Klick auf Steady-State Thermal im Strukturbaum:
 
-![Randbedingungen](images/rohr_Untitled_4.png)
+    ![Randbedingungen](images/rohr_Untitled_4.png)
 
 **6. Lösungseinstellungen (Mechanical)**
 
@@ -166,15 +165,14 @@ im Strukturbaum):
 
 [KLICK-TUTORIAL mit Lösungsdarstellung aus dem ersten Praktikum](http://ior.ad/6XCx){target=_blank}
 
-So sollte die **Lösung** aussehen:
+!!! check "Checkpoint: So sollte die Lösung aussehen"
+    **Verlauf der Temperatur** von der Außenwand zur Innenwand:
 
-- **Verlauf der Temperatur** von der Außenwand zur Innenwand
+    ![Temperaturverlauf a](images/rohr_Untitled_11.png)
 
-![Temperaturverlauf a](images/rohr_Untitled_11.png)
+    **Verlauf der Wärmestromdichte** von der Außenwand zur Innenwand:
 
-- **Verlauf der Wärmestromdichte** von der Außenwand zur Innenwand
-
-![Wärmestromdichte a](images/rohr_Untitled_12.png)
+    ![Wärmestromdichte a](images/rohr_Untitled_12.png)
 
 ## Aufgabe b) mit Abstraktion: Viertelmodell (3D)
 

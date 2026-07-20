@@ -1,0 +1,184 @@
+// Moderne Lehr-UI, rein progressiv über dem bestehenden Markdown:
+// 1) Menüpfad-Chips:  `Environment → Temperature` (Inline-Code mit Pfeilen)
+//    wird zu klickpfad-artigen Chips.
+// 2) Workflow-Stepper: Absätze wie **4. Vernetzung (Mechanical)** werden zum
+//    7-Schritte-Stepper (der rote Faden jeder FEM-Simulation).
+// 3) Mitmach-Modus: Kurzanleitungen (Details-Blöcke mit nummerierten
+//    Schritten) bekommen einen "Schritt für Schritt"-Modus im Overlay —
+//    ein Schritt pro Ansicht, Pfeiltasten, Fortschrittsbalken.
+(function () {
+  'use strict';
+
+  var WF_STEPS = [
+    ['materialdefinition', 'Material'],
+    ['geometrieerstellung', 'Geometrie'],
+    ['materialzuweisung', 'Zuweisung'],
+    ['vernetzung', 'Netz'],
+    ['randbedingungen', 'Randbed.'],
+    ['lösungseinstellungen', 'Lösen'],
+    ['lösungsdarstellung', 'Auswertung']
+  ];
+
+  // --- 1) Menüpfad-Chips ----------------------------------------------------
+  function menuPathChips(root) {
+    var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
+    for (var i = 0; i < codes.length; i++) {
+      var c = codes[i];
+      var t = c.textContent;
+      if (t.indexOf('→') === -1 || c.closest('pre')) continue;
+      var parts = t.split('→');
+      if (parts.length < 2) continue;
+      var span = document.createElement('span');
+      span.className = 'menu-path';
+      for (var p = 0; p < parts.length; p++) {
+        if (p > 0) {
+          var ar = document.createElement('span');
+          ar.className = 'mp-arrow';
+          ar.textContent = '→';
+          span.appendChild(ar);
+        }
+        var seg = document.createElement('span');
+        seg.className = 'mp-seg';
+        seg.textContent = parts[p].trim();
+        span.appendChild(seg);
+      }
+      c.parentNode.replaceChild(span, c);
+    }
+  }
+
+  // --- 2) Workflow-Stepper --------------------------------------------------
+  function stepIndexFor(title) {
+    var t = title.toLowerCase();
+    for (var i = 0; i < WF_STEPS.length; i++) {
+      if (t.indexOf(WF_STEPS[i][0]) !== -1) return i;
+    }
+    return -1;
+  }
+
+  function workflowStepper(root) {
+    var strongs = root.querySelectorAll('p > strong');
+    for (var i = 0; i < strongs.length; i++) {
+      var st = strongs[i];
+      var p = st.parentNode;
+      if (p.textContent.trim() !== st.textContent.trim()) continue;
+      // "4. Vernetzung (Mechanical)" — auch Varianten wie 4'. / 6''. / 5*.
+      var m = st.textContent.trim().match(/^(\d)[.'*′]*\.?\s+(.+?)(?:\s*\(([^)]+)\))?$/);
+      if (!m) continue;
+      var idx = stepIndexFor(m[2]);
+      if (idx === -1) continue;
+
+      var head = document.createElement('div');
+      head.className = 'wf-head';
+      var track = '<div class="wf-track">';
+      for (var d = 0; d < WF_STEPS.length; d++) {
+        track += '<span class="wf-dot' + (d < idx ? ' done' : d === idx ? ' active' : '') +
+          '" title="' + (d + 1) + ' · ' + WF_STEPS[d][1] + '"></span>';
+      }
+      track += '</div>';
+      head.innerHTML = track +
+        '<div class="wf-title"><span class="wf-num">' + (idx + 1) + '</span>' +
+        '<span>' + st.textContent.trim().replace(/^\d[.'*′]*\.?\s+/, '') + '</span>' +
+        '</div>' +
+        '<div class="wf-label">Schritt ' + (idx + 1) + ' von 7 im Simulations-Workflow</div>';
+      p.parentNode.replaceChild(head, p);
+    }
+  }
+
+  // --- 3) Mitmach-Modus -----------------------------------------------------
+  var faState = { steps: [], i: 0, title: '' };
+  var overlay = null;
+
+  function faRender() {
+    var body = document.getElementById('fa-body');
+    var count = document.getElementById('fa-count');
+    var bar = document.getElementById('fa-progress').firstChild;
+    var prev = document.getElementById('fa-prev');
+    var next = document.getElementById('fa-next');
+    body.innerHTML = faState.steps[faState.i];
+    body.scrollTop = 0;
+    count.textContent = 'Schritt ' + (faState.i + 1) + ' / ' + faState.steps.length;
+    bar.style.width = (100 * (faState.i + 1) / faState.steps.length) + '%';
+    prev.disabled = faState.i === 0;
+    next.textContent = faState.i === faState.steps.length - 1 ? '✓ Fertig' : 'Weiter →';
+  }
+
+  function faClose() {
+    if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    overlay = null;
+    document.removeEventListener('keydown', faKeys);
+  }
+
+  function faKeys(ev) {
+    if (ev.key === 'Escape') { faClose(); }
+    else if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); faNext(); }
+    else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); faPrev(); }
+  }
+
+  function faNext() {
+    if (faState.i < faState.steps.length - 1) { faState.i++; faRender(); }
+    else faClose();
+  }
+  function faPrev() { if (faState.i > 0) { faState.i--; faRender(); } }
+
+  function faOpen(title, steps) {
+    faState = { steps: steps, i: 0, title: title };
+    overlay = document.createElement('div');
+    overlay.id = 'fa-overlay';
+    overlay.innerHTML =
+      '<div id="fa-card">' +
+      '<div id="fa-top"><h4></h4><span id="fa-count"></span>' +
+      '<button id="fa-close" title="Schließen (Esc)">✕</button></div>' +
+      '<div id="fa-progress"><span></span></div>' +
+      '<div id="fa-body"></div>' +
+      '<div id="fa-nav">' +
+      '<span class="fa-hint">Pfeiltasten ← → blättern · Esc schließt</span>' +
+      '<button id="fa-prev" class="fa-nav-btn prev">← Zurück</button>' +
+      '<button id="fa-next" class="fa-nav-btn next">Weiter →</button>' +
+      '</div></div>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('h4').textContent = title;
+    overlay.addEventListener('click', function (ev) { if (ev.target === overlay) faClose(); });
+    document.getElementById('fa-close').addEventListener('click', faClose);
+    document.getElementById('fa-prev').addEventListener('click', faPrev);
+    document.getElementById('fa-next').addEventListener('click', faNext);
+    document.addEventListener('keydown', faKeys);
+    faRender();
+  }
+
+  function followAlong(root) {
+    var blocks = root.querySelectorAll('details');
+    for (var i = 0; i < blocks.length; i++) {
+      (function (det) {
+        var summary = det.querySelector('summary');
+        var ol = det.querySelector('ol');
+        if (!summary || !ol) return;
+        var label = summary.textContent || '';
+        if (!/kurzanleitung|schritt für schritt|klick für klick/i.test(label)) return;
+        var lis = ol.children;
+        if (lis.length < 2) return;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fa-btn';
+        btn.innerHTML = '▶ Schritt für Schritt';
+        btn.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          var steps = [];
+          for (var s = 0; s < lis.length; s++) steps.push(lis[s].innerHTML);
+          faOpen(label.replace(/^\s*[▶▼]?\s*/, '').trim(), steps);
+        });
+        det.insertBefore(btn, summary.nextSibling);
+        det.addEventListener('toggle', function () { });
+      })(blocks[i]);
+    }
+  }
+
+  function init() {
+    var root = document.querySelector('.md-content');
+    if (!root) return;
+    try { menuPathChips(root); } catch (e) { }
+    try { workflowStepper(root); } catch (e) { }
+    try { followAlong(root); } catch (e) { }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();

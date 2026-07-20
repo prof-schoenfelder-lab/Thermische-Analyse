@@ -90,6 +90,7 @@ extra_javascript:
       - "assets/js/backend-config.js"
       - "assets/js/backend-sync.js"
       - "assets/js/help-button.js"
+      - "assets/js/modern-ui.js"
       - "assets/vendor/three-0.147.0.min.js"
       - "assets/js/course-stats.js"
       - "assets/js/progress-hub.js"
@@ -102,6 +103,7 @@ extra_css:
       - "styles/home.css"
       - "styles/grid.css"
       - "assets/styles/answer-checker.css"
+      - "styles/modern.css"
 nav:
       - Home: index.md
       - EINFÜHRUNG:
