@@ -1,0 +1,8 @@
+Flask==3.1.3
+oauthlib==3.3.1
+itsdangerous==2.2.0
+PyJWT==2.13.0
+cryptography==49.0.0
+requests==2.34.2
+# nur für test_launch.py:
+requests-oauthlib==2.0.0

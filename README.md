@@ -16,10 +16,10 @@ Analysen und Wärmestrahlung.
   3D-Startseite) analog zum Schwester-Repo
   [Strukturmechanik](https://github.com/prof-schoenfelder-lab/Strukturmechanik) —
   dort liegt auch die ausführliche `ANLEITUNG.md` zum Betrieb
-- Punkteprüfung läuft aktuell **rein lokal im Browser** (`AC_BACKEND_URL`
-  in `docs/assets/js/backend-config.js` ist leer). Für OPAL-Login +
-  serverseitige Punktespeicherung ein eigenes Backend analog Strukturmechanik
-  deployen und die URL dort eintragen.
+- Punkteprüfung läuft **serverseitig** über das Backend auf
+  `fing-spool.htwk-leipzig.de/thermo/` (nur HTWK-Netz/VPN; eigene Instanz,
+  Code in `backend/`). Nach Inhalts-Updates mit neuen Fragen `answers.json`
+  aufs Backend kopieren (`backend/deploy.sh`).
 
 ## Lokal bauen
 
@@ -48,5 +48,7 @@ Original-Export der alten Notion-Unterlagen als Referenz.
 - **Praktikum 3 / Strahlung**: neues Beispiel Cerankochfeld (Surface-to-
   Surface-Strahlung, anisotrope Wärmeleitung) ausarbeiten
 - **Übungen**: aus den bisherigen ONYX-Tests in die Kursseiten migrieren
-- **OPAL/Backend**: eigener LTI-Baustein + Backend-Instanz, dann
-  `backend-config.js` befüllen
+- **OPAL**: LTI-Baustein im neuen Kurs anlegen (Login/Launch-URLs unter
+  `/thermo/lti/...`, ClientID `thermische-analyse-fem`, PEM von
+  `/thermo/lti/pubkey`) und danach `AC_OPAL_URL` in `backend-config.js`
+  eintragen
