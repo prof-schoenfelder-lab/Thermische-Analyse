@@ -390,3 +390,24 @@ nav.md-path { overflow-x: auto; }
   font: inherit; line-height: 1.4;
 }
 .md-path__item--dots button:hover { background: color-mix(in srgb, var(--md-default-fg-color) 14%, transparent); }
+
+/* Varianten-Tabs (Aufgabe · a · b · c · Vergleich) über dem Stepper */
+.task-tabs {
+  display: inline-flex; flex-wrap: wrap; gap: .15rem;
+  background: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
+  border-radius: .65rem; padding: .18rem;
+  margin: .7rem 0 .2rem;
+}
+.task-tab {
+  font-size: .66rem; font-weight: 600;
+  padding: .28rem .7rem; border-radius: .5rem;
+  color: var(--md-default-fg-color--light) !important;
+  text-decoration: none; white-space: nowrap;
+}
+.task-tab:hover { color: var(--md-default-fg-color) !important; }
+.task-tab.active {
+  background: var(--kurs-card);
+  color: var(--kurs-accent) !important;
+  box-shadow: 0 1px 4px rgba(15, 30, 60, .18);
+}
+.task-tabs + .wf-pagenav { margin-top: .5rem; }

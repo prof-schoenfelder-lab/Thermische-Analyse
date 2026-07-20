@@ -4,8 +4,8 @@ title: 2 · Geometrie
 
 # 2 · Geometrieerstellung <small>(SpaceClaim)</small>
 
-<div class="task-banner" markdown>
-🎯 **Aufgabe:** Temperaturverlauf & Wärmestromdichte von innen nach außen — **Fall a) Vollmodell (3D)** · [Aufgabenstellung](index.md)
+<div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
+🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
 </div>
 
 Die Rohr-Geometrie in SpaceClaim erstellen (Länge 20 mm, Ø 10/30 mm):

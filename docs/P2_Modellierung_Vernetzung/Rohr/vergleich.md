@@ -4,8 +4,8 @@ title: Vergleich
 
 # Vergleich der Abstraktionen
 
-<div class="task-banner" markdown>
-🎯 **Aufgabe:** Was bringen die Abstraktionen? · [Aufgabenstellung](index.md)
+<div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
+🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
 </div>
 
 Im **Ergebnis** zeigt sich zwischen den drei Modellen kein Unterschied:

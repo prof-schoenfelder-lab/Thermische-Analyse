@@ -4,8 +4,8 @@ title: c) Rotationssymmetrie (2D)
 
 # c) Rotationssymmetrie (2D)
 
-<div class="task-banner" markdown>
-🎯 **Aufgabe:** gleiche Auswertung wie in a) — als **2D-Schnitt mit Rotationssymmetrie** · [Aufgabenstellung](index.md)
+<div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
+🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
 </div>
 
 Neue Steady-State-Thermal-Analyse anlegen („c) Rotationssymmetrie (2D)").

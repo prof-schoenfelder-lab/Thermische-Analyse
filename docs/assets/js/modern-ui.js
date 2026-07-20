@@ -200,6 +200,34 @@
     h1.parentNode.insertBefore(nav, h1.nextSibling);
   }
 
+  // --- 4b) Varianten-Tabs über dem Stepper ---------------------------------
+  // Aufgaben mit mehreren Lösungswegen (a/b/c …) deklarieren die Tabs am
+  // task-banner: data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|…"
+  function taskTabs() {
+    var banner = document.querySelector('.task-banner[data-tabs]');
+    if (!banner) return;
+    var h1 = document.querySelector('.md-content article h1, .md-content__inner h1');
+    if (!h1) return;
+    var cur = window.location.pathname.replace(/\/+$/, '');
+    var curSlug = cur.split('/').pop();
+    var wrap = document.createElement('div');
+    wrap.className = 'task-tabs';
+    banner.getAttribute('data-tabs').split('|').forEach(function (part) {
+      var i = part.indexOf('=');
+      if (i === -1) return;
+      var a = document.createElement('a');
+      a.className = 'task-tab';
+      a.href = part.slice(i + 1);
+      a.textContent = part.slice(0, i);
+      var target = new URL(a.href, window.location.href).pathname.replace(/\/+$/, '');
+      var active = target === cur ||
+        (WF_SLUGS.indexOf(curSlug) !== -1 && WF_SLUGS.indexOf(target.split('/').pop()) !== -1);
+      if (active) a.classList.add('active');
+      wrap.appendChild(a);
+    });
+    h1.parentNode.insertBefore(wrap, h1.nextSibling);
+  }
+
   // --- 5) Breadcrumbs eindampfen -------------------------------------------
   // Lange Pfade scrollen sonst horizontal. Wir zeigen Home · … · die letzten
   // beiden Stationen; Klick auf „…" klappt den vollen Pfad aus.
@@ -230,6 +258,7 @@
     try { menuPathChips(root); } catch (e) { }
     try { workflowStepper(root); } catch (e) { }
     try { wfPageNav(root); } catch (e) { }
+    try { taskTabs(); } catch (e) { }
     try { followAlong(root); } catch (e) { }
     try { collapseBreadcrumbs(); } catch (e) { }
   }
