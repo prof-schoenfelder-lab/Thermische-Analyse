@@ -55,4 +55,4 @@ wie es die Randbedingung der oberen Temperatur fordert.
 
 Im Folgenden wird ein Beispiel mit einem Vollmodell (3D) und Abstraktionen
 durchgerechnet und die Ergebnisse verglichen:
-[Vorzeigeaufgabe: Rohr mit stationärer Wärmeleitung](Vorzeigeaufgabe-Rohr.md)
+[Vorzeigeaufgabe: Rohr mit stationärer Wärmeleitung](Rohr/index.md)

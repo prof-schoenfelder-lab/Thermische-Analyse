@@ -164,7 +164,7 @@ transient)*
 
 !!! tip
     Die Einstellungen für die 2D-Abstraktion beachten — siehe
-    [Vorzeigeaufgabe Rohr, Aufgabe c](../P2_Modellierung_Vernetzung/Vorzeigeaufgabe-Rohr.md#aufgabe-c-mit-abstraktion-rotationssymmetrie-2d)
+    [Vorzeigeaufgabe Rohr, Aufgabe c](../P2_Modellierung_Vernetzung/Rohr/c-rotationssymmetrie.md)
     bzw. [KLICK-TUTORIAL: 2D-Einstellungen](http://ior.ad/6Z4P){target=_blank}
 
 ??? success "So sollte das Modell aussehen"

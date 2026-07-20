@@ -172,11 +172,40 @@
     }
   }
 
+  // --- 4) Klickbarer Workflow-Stepper auf geteilten Schritt-Seiten ---------
+  // Aufgaben, die pro Workflow-Schritt eine eigene Seite haben (01-material/
+  // … 07-auswertung/), bekommen unter der Überschrift eine Stepper-Navigation
+  // zum Springen zwischen den Schritten.
+  var WF_SLUGS = ['01-material', '02-geometrie', '03-zuweisung', '04-netz',
+                  '05-randbedingungen', '06-loesen', '07-auswertung'];
+
+  function wfPageNav(root) {
+    var path = window.location.pathname.replace(/\/+$/, '');
+    var seg = path.split('/').pop();
+    var idx = WF_SLUGS.indexOf(seg);
+    if (idx === -1) return;
+    var h1 = root.querySelector('article h1, .md-content__inner h1');
+    if (!h1) return;
+    var nav = document.createElement('nav');
+    nav.className = 'wf-pagenav';
+    var html = '';
+    for (var i = 0; i < WF_SLUGS.length; i++) {
+      var cls = i < idx ? 'done' : i === idx ? 'active' : '';
+      html += '<a class="wf-pstep ' + cls + '" href="../' + WF_SLUGS[i] + '/">' +
+        '<span class="wf-pnum">' + (i < idx ? '✓' : (i + 1)) + '</span>' +
+        '<span class="wf-plabel">' + WF_STEPS[i][1] + '</span></a>';
+      if (i < WF_SLUGS.length - 1) html += '<span class="wf-pline' + (i < idx ? ' done' : '') + '"></span>';
+    }
+    nav.innerHTML = html;
+    h1.parentNode.insertBefore(nav, h1.nextSibling);
+  }
+
   function init() {
     var root = document.querySelector('.md-content');
     if (!root) return;
     try { menuPathChips(root); } catch (e) { }
     try { workflowStepper(root); } catch (e) { }
+    try { wfPageNav(root); } catch (e) { }
     try { followAlong(root); } catch (e) { }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

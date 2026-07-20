@@ -17,7 +17,7 @@ icon: material/video-2d
 Die Inhalte werden zunächst am Beispiel eines **Rohres** erklärt:
 
 - [Abstraktionen: Grundlagen](Abstraktionen.md)
-- [Vorzeigeaufgabe: Rohr mit stationärer Wärmeleitung](Vorzeigeaufgabe-Rohr.md)
+- [Vorzeigeaufgabe: Rohr mit stationärer Wärmeleitung](Rohr/index.md)
 - [Vernetzung: Grundlagen](Vernetzung.md)
 
 ![Rohr mit stationärer Wärmeleitung](images/p2_01_Rohr.png)

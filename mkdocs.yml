@@ -112,7 +112,19 @@ nav:
               - P2_Modellierung_Vernetzung/index.md
               - ABSTRAKTIONEN:
                       - Grundlagen: P2_Modellierung_Vernetzung/Abstraktionen.md
-                      - "Vorzeigeaufgabe: Rohr": P2_Modellierung_Vernetzung/Vorzeigeaufgabe-Rohr.md
+                      - "Vorzeigeaufgabe: Rohr":
+                              - Aufgabenstellung: P2_Modellierung_Vernetzung/Rohr/index.md
+                              - "a) Vollmodell 3D":
+                                      - 1 · Material: P2_Modellierung_Vernetzung/Rohr/01-material.md
+                                      - 2 · Geometrie: P2_Modellierung_Vernetzung/Rohr/02-geometrie.md
+                                      - 3 · Zuweisung: P2_Modellierung_Vernetzung/Rohr/03-zuweisung.md
+                                      - 4 · Netz: P2_Modellierung_Vernetzung/Rohr/04-netz.md
+                                      - 5 · Randbedingungen: P2_Modellierung_Vernetzung/Rohr/05-randbedingungen.md
+                                      - 6 · Lösen: P2_Modellierung_Vernetzung/Rohr/06-loesen.md
+                                      - 7 · Auswertung: P2_Modellierung_Vernetzung/Rohr/07-auswertung.md
+                              - "b) Viertelmodell 3D": P2_Modellierung_Vernetzung/Rohr/b-viertelmodell.md
+                              - "c) Rotationssymmetrie 2D": P2_Modellierung_Vernetzung/Rohr/c-rotationssymmetrie.md
+                              - Vergleich: P2_Modellierung_Vernetzung/Rohr/vergleich.md
               - VERNETZUNG:
                       - Grundlagen: P2_Modellierung_Vernetzung/Vernetzung.md
       - RANDBEDINGUNGEN & POSTPROCESSING:
