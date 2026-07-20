@@ -200,6 +200,30 @@
     h1.parentNode.insertBefore(nav, h1.nextSibling);
   }
 
+  // --- 5) Breadcrumbs eindampfen -------------------------------------------
+  // Lange Pfade scrollen sonst horizontal. Wir zeigen Home · … · die letzten
+  // beiden Stationen; Klick auf „…" klappt den vollen Pfad aus.
+  function collapseBreadcrumbs() {
+    var list = document.querySelector('.md-path__list');
+    if (!list) return;
+    var items = Array.prototype.slice.call(list.children);
+    if (items.length <= 4) return;
+    var hidden = items.slice(1, items.length - 2);
+    hidden.forEach(function (li) { li.classList.add('md-path__item--collapsed'); });
+    var dots = document.createElement('li');
+    dots.className = 'md-path__item md-path__item--dots';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = '…';
+    btn.title = 'Ganzen Pfad anzeigen';
+    btn.addEventListener('click', function () {
+      hidden.forEach(function (li) { li.classList.remove('md-path__item--collapsed'); });
+      dots.parentNode.removeChild(dots);
+    });
+    dots.appendChild(btn);
+    list.insertBefore(dots, items[1]);
+  }
+
   function init() {
     var root = document.querySelector('.md-content');
     if (!root) return;
@@ -207,6 +231,7 @@
     try { workflowStepper(root); } catch (e) { }
     try { wfPageNav(root); } catch (e) { }
     try { followAlong(root); } catch (e) { }
+    try { collapseBreadcrumbs(); } catch (e) { }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

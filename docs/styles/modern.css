@@ -377,3 +377,16 @@ body, .md-container, .md-main { background: var(--kurs-canvas); }
 .md-path { scrollbar-width: none; }
 .md-path::-webkit-scrollbar { display: none; }
 nav.md-path { overflow-x: auto; }
+
+/* Breadcrumbs: eingedampft statt scrollend (Rest via modern-ui.js) */
+.md-path { overflow: visible; }
+.md-path__list { flex-wrap: wrap; }
+.md-path__list .md-path__item--collapsed { display: none !important; }
+.md-path__item--dots button {
+  border: 0; cursor: pointer;
+  background: color-mix(in srgb, var(--md-default-fg-color) 8%, transparent);
+  color: var(--md-default-fg-color--light);
+  border-radius: .4rem; padding: 0 .45rem;
+  font: inherit; line-height: 1.4;
+}
+.md-path__item--dots button:hover { background: color-mix(in srgb, var(--md-default-fg-color) 14%, transparent); }
