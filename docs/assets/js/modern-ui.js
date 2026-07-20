@@ -240,7 +240,23 @@
     }
     var list = document.querySelector('.md-path__list');
     if (!list) return;
+    // Nur der Pfad INNERHALB des Praktikums interessiert: Home und die
+    // Praktikums-Station selbst fliegen raus (stehen eh in Tabs/Sidebar).
     var items = Array.prototype.slice.call(list.children);
+    var cut = 0; // Home (erste Station) immer weg
+    items.forEach(function (li, i) {
+      var a = li.querySelector('a');
+      if (a && /\/P\d+_[^\/]+\/?$/.test(new URL(a.href, window.location.href).pathname)) {
+        cut = Math.max(cut, i);
+      }
+    });
+    items.slice(0, cut + 1).forEach(function (li) { li.parentNode.removeChild(li); });
+    items = Array.prototype.slice.call(list.children);
+    if (items.length < 2) {
+      var nav = list.closest('.md-path');
+      if (nav && nav.parentNode) nav.parentNode.removeChild(nav);
+      return;
+    }
     if (items.length <= 4) return;
     var hidden = items.slice(1, items.length - 2);
     hidden.forEach(function (li) { li.classList.add('md-path__item--collapsed'); });

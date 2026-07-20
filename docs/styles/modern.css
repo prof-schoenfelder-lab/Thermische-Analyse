@@ -414,3 +414,40 @@ nav.md-path { overflow-x: auto; }
 
 /* Breadcrumbs schweben über der Karte auf dem Canvas */
 .md-content > .md-path { margin: 0 0 .65rem .35rem; font-size: .68rem; }
+
+/* ===========================================================================
+   V3 — flache Boxen: Hairline statt Farbfläche, Farbe nur am Icon
+   =========================================================================== */
+.md-typeset .admonition, .md-typeset details {
+  background: var(--kurs-card);
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 11%, transparent);
+  border-left-width: 1px;
+  border-radius: .75rem;
+  box-shadow: none;
+}
+.md-typeset .admonition-title, .md-typeset summary {
+  background: transparent !important;
+  color: var(--md-default-fg-color) !important;
+  font-weight: 650;
+  padding-top: .7rem;
+  border-radius: .75rem .75rem 0 0;
+}
+/* Icon behält die Typ-Farbe (Material setzt ::before per Typ) — nur etwas
+   größer und mit rundem Chip-Hintergrund */
+.md-typeset .admonition-title::before, .md-typeset summary::before {
+  top: .68rem;
+}
+/* Typ-Akzent dezent als 3px-Strich links neben dem Titel statt Vollrahmen */
+.md-typeset .admonition, .md-typeset details { border-left: 1px solid color-mix(in srgb, var(--md-default-fg-color) 11%, transparent); }
+
+/* Aufgaben-Banner im gleichen flachen Stil */
+.md-typeset .task-banner {
+  background: var(--kurs-card);
+  border: 1px solid color-mix(in srgb, var(--kurs-accent) 35%, transparent);
+  border-left: 3px solid var(--kurs-accent);
+  border-radius: .75rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .task-banner { background: var(--kurs-card); }
+
+/* Kurzanleitungs-Details: Chevron dezenter */
+.md-typeset details > summary::after { color: var(--md-default-fg-color--light); }
