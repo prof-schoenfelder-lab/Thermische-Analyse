@@ -5,7 +5,7 @@ title: b) Viertelmodell (3D)
 # b) Viertelmodell (3D)
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
-🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
+🎯 **Jetzt:** Analyse aus a) **kopieren** und aufs **Viertelmodell** umstellen
 </div>
 
 Die Analyse aus a) kann weiterverwendet und nur leicht geändert werden —

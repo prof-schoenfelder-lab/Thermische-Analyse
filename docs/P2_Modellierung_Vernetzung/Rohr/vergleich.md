@@ -5,7 +5,7 @@ title: Vergleich
 # Vergleich der Abstraktionen
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
-🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
+🎯 **Jetzt:** Ergebnis-Check: Was haben die Abstraktionen gebracht?
 </div>
 
 Im **Ergebnis** zeigt sich zwischen den drei Modellen kein Unterschied:

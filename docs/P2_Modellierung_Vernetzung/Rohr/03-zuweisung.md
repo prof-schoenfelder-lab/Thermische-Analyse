@@ -5,7 +5,7 @@ title: 3 · Zuweisung
 # 3 · Materialzuweisung <small>(Mechanical)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
-🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
+🎯 **Jetzt:** Geometrie ins Mechanical laden — Material wird automatisch zugewiesen
 </div>
 
 - Ins **Workbench-Projektmenü** zurückgehen

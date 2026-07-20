@@ -5,11 +5,8 @@ title: 5 · Randbedingungen
 # 5 · Randbedingungen <small>(Mechanical)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
-🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
+🎯 **Jetzt:** Temperaturen anbringen — **innen 100 °C, außen 20 °C**
 </div>
-
-- **Temperatur 100 °C** auf der **Innenfläche** anbringen
-- **Temperatur 20 °C** auf der **Außenfläche** anbringen
 
 ??? tip "Kurzanleitung: Temperatur auf Fläche(n) anbringen"
     1. Mit dem **Flächenauswahltool** die **Fläche(n) auswählen**

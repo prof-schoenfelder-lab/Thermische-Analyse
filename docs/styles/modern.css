@@ -411,3 +411,6 @@ nav.md-path { overflow-x: auto; }
   box-shadow: 0 1px 4px rgba(15, 30, 60, .18);
 }
 .task-tabs + .wf-pagenav { margin-top: .5rem; }
+
+/* Breadcrumbs schweben über der Karte auf dem Canvas */
+.md-content > .md-path { margin: 0 0 .65rem .35rem; font-size: .68rem; }

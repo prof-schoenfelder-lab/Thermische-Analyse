@@ -232,6 +232,12 @@
   // Lange Pfade scrollen sonst horizontal. Wir zeigen Home · … · die letzten
   // beiden Stationen; Klick auf „…" klappt den vollen Pfad aus.
   function collapseBreadcrumbs() {
+    // Breadcrumbs raus aus der weißen Karte, auf den Canvas darüber
+    var path = document.querySelector('.md-content__inner > .md-path');
+    if (path) {
+      var inner = path.parentNode;
+      inner.parentNode.insertBefore(path, inner);
+    }
     var list = document.querySelector('.md-path__list');
     if (!list) return;
     var items = Array.prototype.slice.call(list.children);

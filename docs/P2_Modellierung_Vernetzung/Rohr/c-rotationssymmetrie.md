@@ -5,7 +5,7 @@ title: c) Rotationssymmetrie (2D)
 # c) Rotationssymmetrie (2D)
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
-🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
+🎯 **Jetzt:** Das Rohr als **2D-Rotationsmodell** neu aufbauen
 </div>
 
 Neue Steady-State-Thermal-Analyse anlegen („c) Rotationssymmetrie (2D)").

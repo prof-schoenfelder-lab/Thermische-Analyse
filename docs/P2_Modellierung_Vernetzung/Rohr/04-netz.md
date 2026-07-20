@@ -5,7 +5,7 @@ title: 4 · Netz
 # 4 · Vernetzung <small>(Mechanical)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Vollmodell=../01-material/|b) Viertelmodell=../b-viertelmodell/|c) Rotationssym.=../c-rotationssymmetrie/|Vergleich=../vergleich/" markdown>
-🎯 **Aufgabe:** Temperaturverlauf und Wärmestromdichte von der Innen- zur Außenfläche bestimmen
+🎯 **Jetzt:** Netz nur **prüfen** — einstellen musst du hier nichts
 </div>
 
 Für dieses Modell ist **keine Aktion nötig** — durch die Teilung in 4 Teile
