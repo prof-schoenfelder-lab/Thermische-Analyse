@@ -292,8 +292,7 @@
     ['/P1_Einfuehrung/', 'Einführungs-Profi', '📥', 'Praktikum 1 komplett gelöst'],
     ['/P2_Modellierung_Vernetzung/', 'Netz-Meister', '🕸️', 'Praktikum 2 komplett gelöst'],
     ['/P3_Randbedingungen_Postprocessing/', 'Randbedingungs-Profi', '🌡️', 'Praktikum 3 komplett gelöst'],
-    ['/P4_Transient/', 'Zeitschritt-Taktgeber', '⏱️', 'Praktikum 4 komplett gelöst'],
-    ['/P5_Strahlung/', 'Strahlungs-Experte', '☀️', 'Praktikum 5 komplett gelöst']
+    ['/P4_Transient/', 'Zeitschritt-Taktgeber', '⏱️', 'Praktikum 4 komplett gelöst']
   ];
   function evaluateBadges(celebrate, catOverride) {
     var cat = catOverride || cachedCatalog();

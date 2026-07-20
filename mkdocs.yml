@@ -116,15 +116,13 @@ nav:
               - P3_Randbedingungen_Postprocessing/index.md
               - Übersicht Randbedingungen: P3_Randbedingungen_Postprocessing/Randbedingungen.md
               - "Beispielaufgabe: Heat Transfer in Fins": P3_Randbedingungen_Postprocessing/Beispiel-Fins.md
+              - "Strahlung: Cerankochfeld": P3_Randbedingungen_Postprocessing/Beispiel-Cerankochfeld.md
               - Postprocessing: P3_Randbedingungen_Postprocessing/Postprocessing.md
       - TRANSIENTE BERECHNUNG:
               - P4_Transient/index.md
               - Einleitung: P4_Transient/Einleitung.md
               - "Beispielaufgabe: Ebene Wand": P4_Transient/Beispiel-Ebene-Wand.md
               - "Zusatzaufgabe: Abkühlung Teewasser": P4_Transient/Zusatz-Teewasser.md
-      - STRAHLUNG:
-              - P5_Strahlung/index.md
-              - "Beispiel: Cerankochfeld": P5_Strahlung/Cerankochfeld.md
       - MEIN FORTSCHRITT: Fortschritt.md
       - FAQ:
               - 00_FAQ/index.md

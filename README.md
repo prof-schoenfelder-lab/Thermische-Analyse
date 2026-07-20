@@ -45,8 +45,8 @@ Original-Export der alten Notion-Unterlagen als Referenz.
 - **Praktikum 1**: Inhalte fehlen im Notion-Export (nur als Links
   referenziert) — nachexportieren oder neu schreiben
 - **Praktikum 2 / Vernetzung**: neuer Abschnitt (Netz-Vertiefung) ausarbeiten
-- **Praktikum 5 / Strahlung**: neues Praktikum (Cerankochfeld, anisotrope
-  Wärmeleitung) ausarbeiten
+- **Praktikum 3 / Strahlung**: neues Beispiel Cerankochfeld (Surface-to-
+  Surface-Strahlung, anisotrope Wärmeleitung) ausarbeiten
 - **Übungen**: aus den bisherigen ONYX-Tests in die Kursseiten migrieren
 - **OPAL/Backend**: eigener LTI-Baustein + Backend-Instanz, dann
   `backend-config.js` befüllen

@@ -235,8 +235,8 @@ $$
        Correlation=To Ambient) / Function (time)
 
 !!! info "Mehr zur Strahlung"
-    Die Strahlung von **Körper zu Körper** (Surface to Surface) wird in
-    [Praktikum 5](../P5_Strahlung/index.md) ausführlich behandelt.
+    Die Strahlung von **Körper zu Körper** (Surface to Surface) wird im
+    [Beispiel Cerankochfeld](Beispiel-Cerankochfeld.md) vertieft.
 
 ### Wärmestrom (Heat Flow + Perfectly Insulated)
 

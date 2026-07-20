@@ -1,11 +1,14 @@
 ---
-title: "Beispiel: Cerankochfeld"
+title: "Strahlung: Cerankochfeld"
 ---
 
-# Beispiel: Cerankochfeld
+# Strahlung: Cerankochfeld
 
-Ein Cerankochfeld ist ein ideales Beispiel, um zwei Effekte zu kombinieren,
-die bisher im Kurs nicht behandelt wurden:
+Aufbauend auf der Randbedingung
+[Wärmestrahlung aus der Übersicht](Randbedingungen.md#warmestrahlung-radiation)
+wird hier die **Strahlung von Körper zu Körper** (Surface to Surface)
+vertieft. Ein Cerankochfeld ist dafür ein ideales Beispiel, weil es zwei
+Effekte kombiniert, die bisher im Kurs nicht behandelt wurden:
 
 1. **Strahlung von Körper zu Körper** (Surface to Surface): Das
    Heizelement überträgt seine Wärme zum großen Teil durch **Strahlung**
@@ -14,6 +17,13 @@ die bisher im Kurs nicht behandelt wurden:
    Platte (zum Topf hin) anders als in der Plattenebene — genau das ist der
    Trick, damit die Kochzone heiß wird, die Fläche daneben aber
    berührbar bleibt.
+
+!!! abstract "Lernziele"
+    - Unterschied **Strahlung zur Umgebung** (To Ambient) und **Strahlung
+      von Körper zu Körper** (Surface to Surface, Enclosure)
+    - Emissionsgrad, Stefan-Boltzmann-Gesetz, Nichtlinearität
+    - **Anisotrope Wärmeleitung** (richtungsabhängige Wärmeleitfähigkeit,
+      *Orthotropic Thermal Conductivity*)
 
 <!-- TODO(NEU): Ausarbeiten —
      - Geometrie: Heizwendel/Strahlungsheizkörper unter Glaskeramikplatte

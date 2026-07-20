@@ -46,5 +46,5 @@ stationären Berechnung:
 
 ## Ausblick
 
-Im folgenden Praktikum geht es um **Wärmestrahlung** — auch von
-**Körper zu Körper**.
+Damit sind alle Inhalte der Praktika vermittelt. In den verbleibenden
+Terminen stehen **Beispielaufgaben** im Mittelpunkt.

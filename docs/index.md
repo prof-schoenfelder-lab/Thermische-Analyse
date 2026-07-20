@@ -44,7 +44,7 @@ Schritt für Schritt in ANSYS Workbench.
     </a>
 
 -   <a class="card-link" href="P3_Randbedingungen_Postprocessing/">
-        __Praktikum 3<br>:material-thermometer: Randbedingungen & Postprocessing__{ .xxxl .middle .center }
+        __Praktikum 3<br>:material-thermometer: Randbedingungen, Strahlung & Postprocessing__{ .xxxl .middle .center }
         <figure style="text-align:center;">
           <img src="assets/images/card_p3.png" alt="Randbedingungen" width="400" class="no-lightbox">
         </figure>
@@ -55,12 +55,6 @@ Schritt für Schritt in ANSYS Workbench.
         <figure style="text-align:center;">
           <img src="assets/images/card_p4.png" alt="Transiente Berechnung" width="400" class="no-lightbox">
         </figure>
-    </a>
-
--   <a class="card-link" href="P5_Strahlung/">
-    __Praktikum 5<br>:material-white-balance-sunny: Strahlung__{ .xxxl .middle .center }
-    <br><br>Wärmestrahlung von Körper zu Körper — mit dem Beispiel Cerankochfeld
-    und anisotroper Wärmeleitung.
     </a>
 
 -   <a class="card-link" href="00_FAQ/">
