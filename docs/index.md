@@ -20,6 +20,11 @@ Schritt für Schritt in ANSYS Workbench.
 
 </div>
 
+<a class="fem-scroll-hint" id="fem-scroll-hint" href="#fem-scrolly">
+  <span>So läuft eine FEM-Simulation ab — einfach weiterscrollen</span>
+  <span class="fem-scroll-chevron" aria-hidden="true"></span>
+</a>
+
 <section class="fem-scrolly" id="fem-scrolly" data-phase="0" markdown>
   <div class="fem-sticky">
     <svg id="fem-svg" role="img" aria-label="Animation: Ein Stab wird vernetzt, thermisch belastet und das Temperaturfeld berechnet"></svg>

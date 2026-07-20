@@ -58,7 +58,9 @@
   function phaseTimes(t) {
     var solveT = Math.max(0, Math.min(1, (t - 0.52) / 0.22));
     return {
-      geom: Math.min(1, t / 0.12),
+      // Geometrie von Anfang an sichtbar — so ist die Animation schon beim
+      // Laden präsent, die "Action" beginnt mit der Vernetzung
+      geom: 1,
       mesh: Math.max(0, Math.min(1, (t - 0.15) / 0.22)),
       bc: Math.max(0, Math.min(1, (t - 0.40) / 0.10)),
       ease: solveT * solveT * (3 - 2 * solveT)
@@ -437,6 +439,22 @@
   }
 
   // ===========================================================================
+  var SEEN_KEY = 'fem_scrolly_seen';
+
+  // Wer die Animation schon einmal komplett gesehen hat, bekommt sie beim
+  // nächsten Besuch hinter der Praktika-Übersicht einsortiert — so steht die
+  // Übersicht sofort oben, die Animation bleibt aber erreichbar.
+  function moveAfterOverview(scrolly) {
+    try {
+      if (!localStorage.getItem(SEEN_KEY)) return;
+      var grid = document.querySelector('.md-content .grid.cards');
+      if (!grid || !grid.parentNode) return;
+      grid.parentNode.insertBefore(scrolly, grid.nextSibling);
+      var hint = document.getElementById('fem-scroll-hint');
+      if (hint && hint.parentNode) hint.parentNode.removeChild(hint);
+    } catch (e) { }
+  }
+
   function init() {
     var scrolly = document.getElementById('fem-scrolly');
     if (!scrolly) return;
@@ -444,13 +462,22 @@
     var svg = document.getElementById('fem-svg');
     var captionEl = document.getElementById('fem-caption');
     if (!sticky || !svg || !captionEl) return;
+    moveAfterOverview(scrolly);
 
     var impl = initThree(scrolly, sticky, captionEl);
     if (impl) { svg.style.display = 'none'; }
     else { impl = initSVG(scrolly, svg); }
 
     var updateCaption = makeCaptionUpdater(scrolly, captionEl);
-    function render(t) { updateCaption(t); impl.render(t); }
+    var seenSaved = false;
+    function render(t) {
+      updateCaption(t);
+      impl.render(t);
+      if (!seenSaved && t >= 0.95) {
+        seenSaved = true;
+        try { localStorage.setItem(SEEN_KEY, '1'); } catch (e) { }
+      }
+    }
     window.__femRender = render; // für Tests/Debugging von außen aufrufbar
 
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
