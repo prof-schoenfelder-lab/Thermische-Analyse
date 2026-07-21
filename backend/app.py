@@ -703,6 +703,12 @@ HELP_OPEN_MAX_AGE = 3 * 3600      # offene Tickets nach 3 h automatisch schließ
 HELP_DONE_KEEP = 24 * 3600        # erledigte nach einem Tag löschen
 
 
+def help_enabled(db):
+    """Hilfe-Button nur während der Lehrveranstaltung — Schalter im Dashboard."""
+    row = db.execute("SELECT value FROM meta WHERE key='help_enabled'").fetchone()
+    return bool(row and row["value"] == "1")
+
+
 def _help_cleanup(db):
     now = time.time()
     db.execute("UPDATE help_requests SET done_at=? WHERE done_at IS NULL AND created_at < ?",
@@ -724,11 +730,14 @@ def _help_identity():
 def help_status():
     who = _help_identity()
     db = get_db()
+    if not help_enabled(db):
+        return jsonify({"enabled": False, "open": False, "position": None, "queue": 0})
     _help_cleanup(db)
     open_rows = db.execute(
         "SELECT who FROM help_requests WHERE done_at IS NULL ORDER BY created_at").fetchall()
     pos = next((i + 1 for i, r in enumerate(open_rows) if r["who"] == who), None)
-    return jsonify({"open": pos is not None, "position": pos, "queue": len(open_rows)})
+    return jsonify({"enabled": True, "open": pos is not None, "position": pos,
+                    "queue": len(open_rows)})
 
 
 @app.post("/api/help")
@@ -738,6 +747,8 @@ def help_request():
     if not who:
         return jsonify({"error": "keine Identität"}), 400
     db = get_db()
+    if not help_enabled(db):
+        return jsonify({"enabled": False, "open": False, "position": None, "queue": 0})
     _help_cleanup(db)
     if payload.get("cancel"):
         db.execute("UPDATE help_requests SET done_at=? WHERE who=? AND done_at IS NULL",
@@ -749,6 +760,20 @@ def help_request():
                    (who, str(payload.get("page") or "")[:200], time.time()))
         db.commit()
     return help_status()
+
+
+@app.get("/dashboard-help-toggle")
+def help_toggle():
+    if not DASHBOARD_TOKEN or request.args.get("key") != DASHBOARD_TOKEN:
+        return "Zugriff nur mit gültigem key-Parameter.", 403
+    db = get_db()
+    new = "0" if help_enabled(db) else "1"
+    db.execute("INSERT OR REPLACE INTO meta (key, value) VALUES ('help_enabled', ?)", (new,))
+    if new == "0":
+        # beim Ausschalten offene Meldungen mit schließen
+        db.execute("UPDATE help_requests SET done_at=? WHERE done_at IS NULL", (time.time(),))
+    db.commit()
+    return redirect("dashboard?key=" + DASHBOARD_TOKEN)
 
 
 @app.get("/dashboard-help-done")
@@ -859,10 +884,16 @@ def dashboard():
 
     # Hilfe-Warteschlange (aktiv gemeldete) — in Meldereihenfolge
     _help_cleanup(db)
+    h_on = help_enabled(db)
+    toggle_html = (
+        '<p class="helptoggle">🙋 Hilfe-Button auf der Kursseite: '
+        '<strong>%s</strong> · <a class="donebtn%s" href="dashboard-help-toggle?key=%s">%s</a></p>'
+        % ("AN" if h_on else "AUS", "" if h_on else " onbtn", DASHBOARD_TOKEN,
+           "ausschalten" if h_on else "für die Lehrveranstaltung einschalten"))
     queue_rows = db.execute(
         "SELECT id, who, page, created_at FROM help_requests WHERE done_at IS NULL "
         "ORDER BY created_at").fetchall()
-    queue_html = ""
+    queue_html = toggle_html
     if queue_rows:
         items = ""
         for i, qr in enumerate(queue_rows, start=1):
@@ -882,8 +913,8 @@ def dashboard():
                          DASHBOARD_TOKEN, qr["id"]))
         queue_html = ('<div class="queue"><h2>🙋 Hilfe-Warteschlange (%d)</h2>'
                       '<div class="tablewrap"><table><tr><th></th><th>PC</th><th>Name</th>'
-                      '<th>Seite</th><th></th><th></th></tr>%s</table></div></div>'
-                      % (len(queue_rows), items))
+                      '<th>Seite</th><th></th><th></th></tr>%s</table></div>%s</div>'
+                      % (len(queue_rows), items, toggle_html))
 
     # Direkt handlungsleitend: wo hingehen?
     help_html = ""
@@ -1068,6 +1099,8 @@ p.spans{font-size:.85rem;color:#444}
 .queue table{min-width:24rem}
 a.donebtn{display:inline-block;background:#2e7d32;color:#fff;border-radius:.4rem;
   padding:.2rem .6rem;text-decoration:none;font-size:.8rem}
+a.donebtn.onbtn{background:#e65100}
+p.helptoggle{font-size:.85rem}
 .roommap{display:grid;grid-template-columns:repeat(2,5.6rem) 1.4rem repeat(2,5.6rem);gap:.3rem;margin:.4rem 0}
 .seat{border:1px solid #ccc;border-radius:.3rem;padding:.2rem .3rem;font-size:.72rem;
   min-height:2.1rem;background:#fafafa;color:#999}

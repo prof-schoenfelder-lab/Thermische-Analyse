@@ -36,7 +36,8 @@
     setTimeout(function () { toastEl.classList.remove('show'); }, 5000);
   }
 
-  var state = { open: false, position: null };
+  var state = { open: false, position: null, enabled: false };
+  btn.style.display = 'none'; // erscheint erst, wenn die Lehrveranstaltung ihn freischaltet
 
   function headers() {
     var h = { 'Content-Type': 'application/json' };
@@ -62,7 +63,11 @@
     var wasOpen = state.open;
     state.open = !!st.open;
     state.position = st.position;
-    if (fromPoll && wasOpen && !state.open) {
+    // Der Button existiert nur während der Lehrveranstaltung
+    // (Schalter im Dashboard; ältere Backends ohne Feld gelten als "an")
+    state.enabled = st.enabled !== false;
+    btn.style.display = state.enabled ? '' : 'none';
+    if (fromPoll && wasOpen && !state.open && state.enabled) {
       toast('Als erledigt markiert — Hilfe ist da oder unterwegs!');
     }
     render();
