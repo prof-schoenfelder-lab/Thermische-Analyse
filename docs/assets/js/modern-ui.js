@@ -256,9 +256,10 @@
     }
     nav.innerHTML = html;
     h1.parentNode.insertBefore(nav, h1.nextSibling);
-    // Schmales Fenster (neben ANSYS): aktiven Schritt in die Mitte rücken
+    // Schmales Fenster (neben ANSYS): aktiven Schritt in die Mitte rücken —
+    // aber nur bei deutlichem Überlauf, sonst schneidet es links an
     var act = nav.querySelector('.wf-pstep.active');
-    if (act && nav.scrollWidth > nav.clientWidth) {
+    if (act && nav.scrollWidth > nav.clientWidth + 40) {
       nav.scrollLeft = act.offsetLeft - nav.clientWidth / 2 + act.clientWidth / 2;
     }
   }

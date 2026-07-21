@@ -836,6 +836,61 @@ nav.md-path { overflow-x: auto; }
 /* Details-Chevron erbt die Labelfarbe */
 .md-typeset details > summary::after { background-color: currentColor !important; }
 
+/* ===========================================================================
+   V7.1 — Aufgaben-Navigation in derselben typografischen Logik
+   =========================================================================== */
+
+/* Schritt-Stepper: nummerierte Textzeile statt Kreis-Kette.
+   erledigt = normal, aktiv = Akzent, offen = ausgegraut */
+.wf-pagenav {
+  align-items: baseline;
+  gap: .78rem;
+  margin: .3rem 0 2rem;
+}
+.wf-pstep {
+  flex-direction: row;
+  align-items: baseline;
+  gap: .28rem;
+  min-width: 0;
+}
+.wf-pnum {
+  display: inline;
+  width: auto; height: auto;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--md-default-fg-color--lighter);
+  font-size: .58rem;
+  font-weight: 650;
+  transition: none;
+}
+.wf-pstep:hover .wf-pnum { transform: none; }
+.wf-plabel { font-size: .66rem; color: var(--md-default-fg-color--lighter); }
+.wf-pstep.done .wf-pnum, .wf-pstep.done .wf-plabel { color: var(--md-default-fg-color--light); }
+.wf-pstep:hover .wf-plabel, .wf-pstep:hover .wf-pnum { color: var(--md-default-fg-color); }
+.wf-pstep.active .wf-pnum,
+.wf-pstep.active .wf-plabel { color: var(--kurs-accent); font-weight: 650; }
+.wf-pline { display: none; }
+
+/* Schritt-Kopf in Anleitungen (Fortschrittsbalken + Nummer + Titel):
+   Serifen-Titel, Akzent-Nummer ohne Kreis, Balken als 2px-Linie */
+.wf-track { gap: .3rem; margin-bottom: .65rem; }
+.wf-dot { height: 2px; border-radius: 1px; }
+.wf-num {
+  width: auto; height: auto;
+  background: transparent;
+  color: var(--kurs-accent);
+  font-family: var(--kurs-serif);
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+.wf-title {
+  font-family: var(--kurs-serif);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.wf-tool { font-family: var(--md-text-font); }
+
 /* Varianten-Tabs: Text mit Akzent-Unterstrich statt grauem Pill-Container */
 .task-tabs {
   background: transparent;
@@ -858,4 +913,27 @@ nav.md-path { overflow-x: auto; }
   box-shadow: none;
   border-bottom-color: var(--kurs-accent);
 }
+
+/* ===========================================================================
+   V7.2 — Sidebar: reine Textnavigation
+   Grundzustand leise, Hover dunkel, aktiv Akzent — keine Kästen, Chevrons klein
+   =========================================================================== */
+.md-sidebar--primary .md-nav__link {
+  color: var(--md-default-fg-color--light);
+}
+.md-sidebar--primary .md-nav__link:hover {
+  color: var(--md-default-fg-color);
+  background: transparent;
+}
+.md-sidebar--primary .md-nav__item .md-nav__link--active,
+.md-sidebar--primary .md-nav__item .md-nav__link--active:hover {
+  color: var(--kurs-accent);
+}
+.md-sidebar--primary .md-nav__icon { opacity: .4; }
+.md-sidebar--primary .md-nav__link:hover .md-nav__icon { opacity: .8; }
+.md-sidebar--primary .md-nav__item { line-height: 1.45; }
+/* TOC rechts gleich behandeln */
+.md-sidebar--secondary .md-nav__link { color: var(--md-default-fg-color--light); }
+.md-sidebar--secondary .md-nav__link:hover { color: var(--md-default-fg-color); background: transparent; }
+.md-sidebar--secondary .md-nav__link--active { color: var(--kurs-accent); }
 
