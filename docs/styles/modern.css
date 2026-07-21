@@ -1122,3 +1122,53 @@ nav.md-path { overflow-x: auto; }
 }
 .md-typeset a.doz-item:hover .doz-name { color: var(--kurs-accent); }
 
+/* ===========================================================================
+   V9 — Schritt-für-Schritt-Anleitungen: klar erkennbar aufklappbar,
+   Schritte als Timeline (Nummern-Kreise bleiben), Bilder sauber gesetzt
+   =========================================================================== */
+
+/* Aufklapp-Signal: Akzent-Chevron direkt hinter dem Label (dreht beim
+   Öffnen), Hover hebt die Zeile leicht an — statt des unsichtbaren Pfeils
+   irgendwo rechts */
+.md-typeset details > summary {
+  padding-right: 0 !important;
+}
+.md-typeset details > summary::after {
+  position: static !important;
+  display: inline-block;
+  width: .9rem; height: .9rem;
+  margin-left: .25rem;
+  vertical-align: -.22rem;
+  background-color: var(--kurs-accent) !important;
+  transform: rotate(0deg);
+  transition: transform .2s;
+}
+.md-typeset details[open] > summary::after { transform: rotate(90deg); }
+.md-typeset details > summary:hover {
+  background: color-mix(in srgb, var(--md-default-fg-color) 4%, transparent) !important;
+  border-radius: .3rem;
+}
+
+/* Timeline: feine Linie verbindet die Nummern-Kreise der Schritte */
+.md-typeset details > ol > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: .72rem;
+  top: 1.65rem;
+  bottom: -1rem;
+  width: 1px;
+  background: color-mix(in srgb, var(--kurs-accent) 28%, transparent);
+}
+
+/* Bilder in Schritten: eigene Zeile, bündig zum Text, begrenzt hoch */
+.md-typeset details > ol > li img {
+  display: block;
+  margin: .55rem 0 .3rem;
+  max-width: 100%;
+  max-height: 22rem;
+  width: auto;
+  border-radius: .5rem;
+}
+/* Text in Schritten nicht stapeln */
+.md-typeset details > ol > li > p { margin-block: .35em; }
+

@@ -354,7 +354,9 @@
     try { workflowStepper(root); } catch (e) { }
     try { wfPageNav(root); } catch (e) { }
     try { taskTabs(); } catch (e) { }
-    try { followAlong(root); } catch (e) { }
+    // Mitmach-Overlay abgeschaltet: die Anleitungen bleiben als scrollbare
+    // Ausklapp-Blöcke auf der Seite (Entscheidung 07/2026).
+    // try { followAlong(root); } catch (e) { }
     try { collapseBreadcrumbs(); } catch (e) { }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
