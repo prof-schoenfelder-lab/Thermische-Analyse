@@ -844,8 +844,12 @@ nav.md-path { overflow-x: auto; }
    erledigt = normal, aktiv = Akzent, offen = ausgegraut */
 .wf-pagenav {
   align-items: baseline;
-  gap: .78rem;
-  margin: .3rem 0 2rem;
+  gap: .7rem;
+  margin: .55rem 0 2rem;
+  /* Ebene 2: Schritte sind Kinder der aktiven Variante darüber —
+     gleicher Einzug an Regel-Linie wie bei den Boxen */
+  padding-left: 1rem;
+  border-left: 2px solid var(--md-default-fg-color--lightest);
 }
 .wf-pstep {
   flex-direction: row;
@@ -864,7 +868,7 @@ nav.md-path { overflow-x: auto; }
   transition: none;
 }
 .wf-pstep:hover .wf-pnum { transform: none; }
-.wf-plabel { font-size: .66rem; color: var(--md-default-fg-color--lighter); }
+.wf-plabel { font-size: .63rem; color: var(--md-default-fg-color--lighter); }
 .wf-pstep.done .wf-pnum, .wf-pstep.done .wf-plabel { color: var(--md-default-fg-color--light); }
 .wf-pstep:hover .wf-plabel, .wf-pstep:hover .wf-pnum { color: var(--md-default-fg-color); }
 .wf-pstep.active .wf-pnum,
@@ -904,7 +908,7 @@ nav.md-path { overflow-x: auto; }
 .task-tab {
   padding: .3rem 0 .45rem;
   border-radius: 0;
-  font-size: .68rem;
+  font-size: .7rem;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
 }
@@ -936,4 +940,40 @@ nav.md-path { overflow-x: auto; }
 .md-sidebar--secondary .md-nav__link { color: var(--md-default-fg-color--light); }
 .md-sidebar--secondary .md-nav__link:hover { color: var(--md-default-fg-color); background: transparent; }
 .md-sidebar--secondary .md-nav__link--active { color: var(--kurs-accent); }
+
+/* ===========================================================================
+   V7.3 — Weiter-Buttons leiser: Akzent-Tonfläche statt Vollorange
+   =========================================================================== */
+.md-typeset .md-button--primary {
+  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+  box-shadow: none;
+}
+.md-typeset .md-button--primary:hover {
+  background: color-mix(in srgb, var(--kurs-accent) 19%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+  filter: none;
+}
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
+  color: #ffb27d;
+}
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover {
+  background: color-mix(in srgb, var(--kurs-accent) 30%, var(--kurs-card));
+  color: #ffc79e;
+}
+/* Mitmach-Knopf in derselben leisen Tonlage */
+.fa-btn {
+  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+  box-shadow: none;
+}
+.fa-btn:hover {
+  filter: none;
+  background: color-mix(in srgb, var(--kurs-accent) 19%, var(--kurs-card));
+}
+[data-md-color-scheme="slate"] .fa-btn {
+  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
+  color: #ffb27d;
+}
 
