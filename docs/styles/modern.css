@@ -977,3 +977,12 @@ nav.md-path { overflow-x: auto; }
   color: #ffb27d;
 }
 
+/* ===========================================================================
+   V7.4 — Inhaltsverzeichnis rechts global aus (Seiten sind kurz),
+   der Inhalt bekommt die freie Breite
+   =========================================================================== */
+.md-sidebar--secondary { display: none !important; }
+@media (min-width: 76.25em) {
+  .md-content { max-width: 52rem; margin-left: auto; margin-right: auto; }
+}
+
