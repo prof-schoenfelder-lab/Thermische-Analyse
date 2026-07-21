@@ -20,14 +20,37 @@
   ];
 
   // --- 1) Menüpfad-Chips ----------------------------------------------------
+  // Wiederkehrende ANSYS-Orte bekommen ein Erkennungs-Icon im Chip:
+  // Reiter, Strukturbaum, Detailfenster, Rechtsklick, Grafikfenster.
+  var MP_ICONS = {
+    reiter: '<svg viewBox="0 0 24 24"><path d="M3 7h6l2-2.5h10V19H3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+    baum: '<svg viewBox="0 0 24 24"><path d="M6 4v13a2 2 0 0 0 2 2h4M6 9h6M10 14h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="4" r="2" fill="currentColor"/></svg>',
+    detail: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 4v16" stroke="currentColor" stroke-width="2"/><path d="M12 9h6M12 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    maus: '<svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v6" stroke="currentColor" stroke-width="2"/><path d="M12 3h5a5 5 0 0 1 0 6h-5z" fill="currentColor"/></svg>',
+    grafik: '<svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 14l4-4 3 3 4-5 3 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+  };
+
+  function mpKind(text) {
+    var t = text.toLowerCase();
+    if (t.indexOf('rechtsklick') === 0) return 'maus';
+    if (t.indexOf('reiter') === 0 || t.indexOf('tab ') === 0) return 'reiter';
+    if (t.indexOf('strukturbaum') !== -1) return 'baum';
+    if (t.indexOf('detailfenster') !== -1) return 'detail';
+    if (t.indexOf('grafikfenster') !== -1) return 'grafik';
+    return null;
+  }
+
+  // Einzelbegriffe ohne Pfeil, die trotzdem als Ort-Chip erscheinen sollen
+  var MP_SOLO = /^(Reiter |Rechtsklick |Strukturbaum|Detailfenster|Grafikfenster)/;
+
   function menuPathChips(root) {
     var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
     for (var i = 0; i < codes.length; i++) {
       var c = codes[i];
       var t = c.textContent;
-      if (t.indexOf('→') === -1 || c.closest('pre')) continue;
+      if (c.closest('pre')) continue;
+      if (t.indexOf('→') === -1 && !MP_SOLO.test(t)) continue;
       var parts = t.split('→');
-      if (parts.length < 2) continue;
       var span = document.createElement('span');
       span.className = 'menu-path';
       for (var p = 0; p < parts.length; p++) {
@@ -39,7 +62,15 @@
         }
         var seg = document.createElement('span');
         seg.className = 'mp-seg';
-        seg.textContent = parts[p].trim();
+        var label = parts[p].trim();
+        var kind = mpKind(label);
+        if (kind) {
+          seg.classList.add('mp-' + kind);
+          seg.innerHTML = '<i class="mp-ic">' + MP_ICONS[kind] + '</i>';
+          seg.appendChild(document.createTextNode(label));
+        } else {
+          seg.textContent = label;
+        }
         span.appendChild(seg);
       }
       c.parentNode.replaceChild(span, c);
@@ -131,7 +162,7 @@
       '<div id="fa-progress"><span></span></div>' +
       '<div id="fa-body"></div>' +
       '<div id="fa-nav">' +
-      '<span class="fa-hint">Pfeiltasten ← → blättern · Esc schließt</span>' +
+      '<span class="fa-hint">Klick aufs Bild oder → = weiter · linker Rand oder ← = zurück · Esc schließt</span>' +
       '<button id="fa-prev" class="fa-nav-btn prev">← Zurück</button>' +
       '<button id="fa-next" class="fa-nav-btn next">Weiter →</button>' +
       '</div></div>';
@@ -141,6 +172,16 @@
     document.getElementById('fa-close').addEventListener('click', faClose);
     document.getElementById('fa-prev').addEventListener('click', faPrev);
     document.getElementById('fa-next').addEventListener('click', faNext);
+    // Neben ANSYS zählt jeder Klick: Schrittfläche klicken blättert weiter
+    // (linkes Randviertel zurück) — der Klick holt zugleich den Fokus in den
+    // Browser, danach funktionieren auch die Pfeiltasten sofort.
+    var body = document.getElementById('fa-body');
+    body.addEventListener('click', function (ev) {
+      if (ev.target.closest('a')) return;
+      var r = body.getBoundingClientRect();
+      if (ev.clientX - r.left < r.width * 0.22) faPrev();
+      else faNext();
+    });
     document.addEventListener('keydown', faKeys);
     faRender();
   }

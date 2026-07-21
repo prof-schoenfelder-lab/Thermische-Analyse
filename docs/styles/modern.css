@@ -594,3 +594,15 @@ nav.md-path { overflow-x: auto; }
 
 /* Fußzeile (Weiter-Button) vom Inhalt absetzen */
 .md-typeset .md-button--primary:last-child { margin-top: 1.2rem; }
+
+/* Orts-Icons in Menüpfad-Chips (Reiter/Strukturbaum/Detailfenster/…) */
+.menu-path .mp-ic {
+  display: inline-block; width: .82rem; height: .82rem;
+  vertical-align: -.13rem; margin-right: .28rem;
+  color: var(--kurs-accent);
+}
+.menu-path .mp-ic svg { display: block; width: 100%; height: 100%; }
+
+/* Mitmach-Modus: Schrittfläche ist Klickziel zum Blättern */
+#fa-body { cursor: e-resize; }
+#fa-body a { cursor: pointer; }
