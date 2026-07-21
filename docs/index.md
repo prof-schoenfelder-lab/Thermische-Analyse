@@ -32,55 +32,68 @@ Schritt für Schritt in ANSYS Workbench.
   </div>
 </section>
 
-<div class="grid cards" markdown>
+## Die Praktika
 
--   <a class="card-link" href="P1_Einfuehrung/">
-        __Praktikum 1<br>:material-rocket-launch: Einführung in ANSYS Workbench__{ .xxxl .middle .center }
-        <figure style="text-align:center;">
-          <img src="assets/images/card_p1.png" alt="Einführung" width="400" class="no-lightbox">
-        </figure>
-    </a>
-
--   <a class="card-link" href="P2_Modellierung_Vernetzung/">
-        __Praktikum 2<br>:material-video-2d: Modellierung & Vernetzung__{ .xxxl .middle .center }
-        <figure style="text-align:center;">
-          <img src="assets/images/card_p2.png" alt="Rohr mit stationärer Wärmeleitung" width="400" class="no-lightbox">
-        </figure>
-    </a>
-
--   <a class="card-link" href="P3_Randbedingungen_Postprocessing/">
-        __Praktikum 3<br>:material-thermometer: Randbedingungen, Strahlung & Postprocessing__{ .xxxl .middle .center }
-        <figure style="text-align:center;">
-          <img src="assets/images/card_p3.png" alt="Randbedingungen" width="400" class="no-lightbox">
-        </figure>
-    </a>
-
--   <a class="card-link" href="P4_Transient/">
-        __Praktikum 4<br>:material-clock-fast: Transiente Temperaturfeldberechnung__{ .xxxl .middle .center }
-        <figure style="text-align:center;">
-          <img src="assets/images/card_p4.png" alt="Transiente Berechnung" width="400" class="no-lightbox">
-        </figure>
-    </a>
-
--   <a class="card-link" href="00_FAQ/">
-    __:material-frequently-asked-questions: FAQ__
-    <br><br>Antworten auf häufig gestellte Fragen
-    </a>
+<div class="prakt-list">
+  <a class="prakt-row" href="P1_Einfuehrung/">
+    <span class="prakt-num">1</span>
+    <span class="prakt-body">
+      <span class="prakt-label">Praktikum 1</span>
+      <span class="prakt-title">Einführung in ANSYS Workbench</span>
+      <span class="prakt-desc">Oberfläche, Projektaufbau und die erste eigene Simulation.</span>
+    </span>
+    <img class="prakt-thumb no-lightbox" src="assets/images/card_p1.png" alt="">
+    <span class="prakt-arrow">→</span>
+  </a>
+  <a class="prakt-row" href="P2_Modellierung_Vernetzung/">
+    <span class="prakt-num">2</span>
+    <span class="prakt-body">
+      <span class="prakt-label">Praktikum 2</span>
+      <span class="prakt-title">Modellierung &amp; Vernetzung</span>
+      <span class="prakt-desc">Abstraktionen — Vollmodell, Symmetrie, 2D — und saubere Netze.</span>
+    </span>
+    <img class="prakt-thumb no-lightbox" src="assets/images/card_p2.png" alt="">
+    <span class="prakt-arrow">→</span>
+  </a>
+  <a class="prakt-row" href="P3_Randbedingungen_Postprocessing/">
+    <span class="prakt-num">3</span>
+    <span class="prakt-body">
+      <span class="prakt-label">Praktikum 3</span>
+      <span class="prakt-title">Randbedingungen, Strahlung &amp; Postprocessing</span>
+      <span class="prakt-desc">Konvektion, Strahlung &amp; Co. richtig anbringen — und Ergebnissen trauen lernen.</span>
+    </span>
+    <img class="prakt-thumb no-lightbox" src="assets/images/card_p3.png" alt="">
+    <span class="prakt-arrow">→</span>
+  </a>
+  <a class="prakt-row" href="P4_Transient/">
+    <span class="prakt-num">4</span>
+    <span class="prakt-body">
+      <span class="prakt-label">Praktikum 4</span>
+      <span class="prakt-title">Transiente Temperaturfeldberechnung</span>
+      <span class="prakt-desc">Zeitabhängige Temperaturfelder berechnen und auswerten.</span>
+    </span>
+    <img class="prakt-thumb no-lightbox" src="assets/images/card_p4.png" alt="">
+    <span class="prakt-arrow">→</span>
+  </a>
 </div>
+
+<a class="home-faq" href="00_FAQ/">Fragen? Antworten auf die häufigsten gibt es im <strong>FAQ</strong> →</a>
 
 ## Dozenten
 
-<div class="grid cards" markdown>
-
--  <a class="card-link" href="mailto:felix.kaule@htwk-leipzig.de">
- <img src="assets/people/Felix_Kaule.jpg" alt="Felix Kaule" class="no-lightbox" />
-  **M.Eng. Felix Kaule**  
-  Felix(dot)Kaule(at)htwk-leipzig.de
+<div class="doz-list">
+  <a class="doz-item" href="mailto:felix.kaule@htwk-leipzig.de">
+    <img src="assets/people/Felix_Kaule.jpg" alt="Felix Kaule" class="no-lightbox">
+    <span class="doz-body">
+      <span class="doz-name">M.Eng. Felix Kaule</span>
+      <span class="doz-mail">Felix(dot)Kaule(at)htwk-leipzig.de</span>
+    </span>
   </a>
-
-- <a class="card-link" href="mailto:stephan.schoenfelder@htwk-leipzig.de">
-<img src="assets/people/Stephan_Schoenfelder.png" alt="Prof. Dr.-Ing. Stephan Schönfelder" class="no-lightbox" />
-  **Prof. Dr.-Ing. Stephan Schönfelder**  
-  Stephan(dot)Schoenfelder(at)htwk-leipzig.de
+  <a class="doz-item" href="mailto:stephan.schoenfelder@htwk-leipzig.de">
+    <img src="assets/people/Stephan_Schoenfelder.png" alt="Prof. Dr.-Ing. Stephan Schönfelder" class="no-lightbox">
+    <span class="doz-body">
+      <span class="doz-name">Prof. Dr.-Ing. Stephan Schönfelder</span>
+      <span class="doz-mail">Stephan(dot)Schoenfelder(at)htwk-leipzig.de</span>
+    </span>
   </a>
 </div>
