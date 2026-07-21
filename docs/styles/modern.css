@@ -606,3 +606,12 @@ nav.md-path { overflow-x: auto; }
 /* Mitmach-Modus: Schrittfläche ist Klickziel zum Blättern */
 #fa-body { cursor: e-resize; }
 #fa-body a { cursor: pointer; }
+
+/* Aktions-Chip (Rechtsklick/Doppelklick): abgesetzt vom Ziel-Chip */
+.menu-path .mp-seg.mp-action {
+  background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));
+  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
+  color: color-mix(in srgb, var(--kurs-accent) 75%, var(--md-default-fg-color));
+  font-weight: 650;
+  margin-right: .1rem;
+}

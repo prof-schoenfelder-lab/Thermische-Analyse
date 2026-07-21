@@ -41,7 +41,7 @@
   }
 
   // Einzelbegriffe ohne Pfeil, die trotzdem als Ort-Chip erscheinen sollen
-  var MP_SOLO = /^(Reiter |Rechtsklick |Strukturbaum|Detailfenster|Grafikfenster)/;
+  var MP_SOLO = /^(Reiter |Rechtsklick|Doppelklick|Strukturbaum|Detailfenster|Grafikfenster)/;
 
   function menuPathChips(root) {
     var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
@@ -60,9 +60,20 @@
           ar.textContent = '→';
           span.appendChild(ar);
         }
+        var label = parts[p].trim();
+        // "Rechtsklick X": Aktion und Ziel als getrennte Chips —
+        // [🖱 Rechtsklick] [X]
+        var m = label.match(/^(Rechtsklick|Doppelklick)\s+(.+)$/);
+        if (m) {
+          var act = document.createElement('span');
+          act.className = 'mp-seg mp-action';
+          act.innerHTML = '<i class="mp-ic">' + MP_ICONS.maus + '</i>';
+          act.appendChild(document.createTextNode(m[1]));
+          span.appendChild(act);
+          label = m[2];
+        }
         var seg = document.createElement('span');
         seg.className = 'mp-seg';
-        var label = parts[p].trim();
         var kind = mpKind(label);
         if (kind) {
           seg.classList.add('mp-' + kind);
