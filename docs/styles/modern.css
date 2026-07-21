@@ -545,3 +545,52 @@ nav.md-path { overflow-x: auto; }
   #fa-card { width: 100vw; max-height: 96vh; border-radius: .7rem; }
   #fa-body { padding: .8rem .9rem; }
 }
+
+/* ===========================================================================
+   V5 — vertikaler Rhythmus: eine Abstands-Skala für alle Blöcke
+   =========================================================================== */
+:root { --space-block: 1.5rem; }
+
+/* Blöcke atmen: Boxen, Bilder, Tabellen, Buttons auf einer Skala */
+.md-typeset .admonition, .md-typeset details, .md-typeset .task-banner {
+  margin-top: var(--space-block);
+  margin-bottom: var(--space-block);
+}
+.md-typeset .md-content__inner > p > img,
+.md-typeset .md-content__inner p > img:only-child {
+  margin: .4rem 0;
+}
+.md-typeset p { margin-block: .9em; }
+.md-typeset table:not([class]) { margin-block: var(--space-block); }
+.md-typeset .md-button { margin: .35rem .35rem 1rem 0; }
+
+/* Listen: Punkte nicht stapeln */
+.md-typeset ul > li, .md-typeset ol > li { margin-bottom: .45em; }
+.md-typeset li > p { margin-block: .4em; }
+
+/* Überschriften: klare Absätze zwischen Sektionen */
+.md-typeset h2 { margin-top: 2.8em; margin-bottom: .7em; }
+.md-typeset h3 { margin-top: 2.1em; margin-bottom: .55em; }
+.md-typeset h1 { margin-bottom: .5em; }
+
+/* Aufgaben-Kopfzeile: Tabs / Stepper / Banner mit Luft dazwischen */
+.task-tabs { margin: 1rem 0 .6rem; }
+.wf-pagenav { margin: 1.1rem 0 1.7rem; }
+.md-typeset .task-banner { margin-top: 0; margin-bottom: 1.7rem; padding: .6rem .95rem; }
+.wf-head { margin: 2.6rem 0 1.1rem; }
+
+/* Innenleben der Boxen: Titel und Inhalt nicht quetschen */
+.md-typeset .admonition-title, .md-typeset summary { margin-bottom: .35rem; }
+.md-typeset .admonition > :last-child, .md-typeset details > :last-child { margin-bottom: .9rem; }
+.md-typeset details > ol { margin-top: .6rem; }
+.md-typeset details > ol > li { margin-bottom: 1.1rem; }
+.fa-btn { margin: .5rem 0 .6rem; }
+
+/* Karte: etwas großzügigeres Innenpolster */
+.md-content__inner { padding: 1.7rem 2.4rem 2.6rem; }
+@media (max-width: 48em) {
+  .md-content__inner { padding: 1.1rem 1.1rem 1.8rem; }
+}
+
+/* Fußzeile (Weiter-Button) vom Inhalt absetzen */
+.md-typeset .md-button--primary:last-child { margin-top: 1.2rem; }
