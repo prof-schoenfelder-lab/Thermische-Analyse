@@ -65,17 +65,23 @@
           span.appendChild(ar);
         }
         var label = parts[p].trim();
-        // "Rechtsklick X": Aktion und Ziel als getrennte Chips —
-        // [🖱 Rechtsklick] [X]; eigenes Icon je Klick-Art
+        // "Rechtsklick X": Aktion und Ziel werden zu EINER zusammengesetzten
+        // Pille verbunden — [🖱 Rechtsklick | X] — damit sichtbar ist, worauf
+        // sich der Klick bezieht. Eigenes Maus-Icon je Klick-Art.
+        var target = span;
         var m = label.match(/^(Rechtsklick|Doppelklick|Linksklick)\s+(.+)$/);
         if (m) {
           var actIcon = m[1] === 'Rechtsklick' ? 'maus' :
                         m[1] === 'Doppelklick' ? 'mausD' : 'mausL';
+          var group = document.createElement('span');
+          group.className = 'mp-click';
           var act = document.createElement('span');
           act.className = 'mp-seg mp-action';
           act.innerHTML = '<i class="mp-ic">' + MP_ICONS[actIcon] + '</i>';
           act.appendChild(document.createTextNode(m[1]));
-          span.appendChild(act);
+          group.appendChild(act);
+          span.appendChild(group);
+          target = group;
           label = m[2];
         }
         var seg = document.createElement('span');
@@ -88,7 +94,7 @@
         } else {
           seg.textContent = label;
         }
-        span.appendChild(seg);
+        target.appendChild(seg);
       }
       c.parentNode.replaceChild(span, c);
     }

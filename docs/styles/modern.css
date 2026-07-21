@@ -986,3 +986,33 @@ nav.md-path { overflow-x: auto; }
   .md-content { max-width: 52rem; margin-left: auto; margin-right: auto; }
 }
 
+/* ===========================================================================
+   V7.5 — Klick-Aktion + Ziel als eine zusammengesetzte Pille
+   [🖱 Rechtsklick | Geometry] — der Klick "umschließt" sein Ziel, statt nur
+   davor zu stehen. Zwei Kammern in einem gemeinsamen Akzent-Rahmen.
+   =========================================================================== */
+.menu-path .mp-click {
+  display: inline-flex;
+  align-items: stretch;
+  vertical-align: baseline;
+}
+/* Aktions-Kammer: links, angeschlossen (rechts eckig), rechte Kante = Naht */
+.menu-path .mp-click .mp-action {
+  margin-right: 0;
+  border-radius: .4rem 0 0 .4rem;
+  border-right: 1px solid color-mix(in srgb, var(--kurs-accent) 45%, transparent);
+}
+/* Ziel-Kammer: rechts, angeschlossen (links eckig, keine Doppelkante),
+   Rahmen in Akzentfarbe, damit die ganze Pille als Einheit wirkt */
+.menu-path .mp-click .mp-seg:last-child {
+  border-radius: 0 .4rem .4rem 0;
+  border-left: 0;
+  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
+}
+[data-md-color-scheme="slate"] .menu-path .mp-click .mp-action {
+  border-right-color: rgba(255, 138, 61, .5);
+}
+[data-md-color-scheme="slate"] .menu-path .mp-click .mp-seg:last-child {
+  border-color: rgba(255, 138, 61, .5);
+}
+
