@@ -20,6 +20,13 @@ $$
 Q_{Mantelfläche}={\widehat{\dot q}}_{Mittel,Mantelfläche}\cdot A_{Mantelfläche}=10282\,\mathrm{\frac{W}{m^2}}\cdot8{,}47\cdot10^{-5}\,\mathrm{m^2}=0{,}87\,\mathrm{W}
 $$
 
+<!-- TODO(NEU): Abschnitt "Reaktionen an Randbedingungen" ergänzen —
+     Reaction Probe an der RB auswerten (z.B. Reaktions-Wärmestrom an der
+     Temperatur-RB im Fins-Beispiel), mit der Wärmestrom-Auswertung
+     (q·A ≈ 0,87 W) vergleichen und diskutieren, warum Abweichungen
+     auftreten (Reaktionen = konsistente Knotengrößen, Heat Flux =
+     extrapoliertes Elementfeld → netzabhängig). -->
+
 ## Auswertungsarten
 
 Generell können in der ANSYS-Steady-State-Analyse folgende Werte ausgegeben
