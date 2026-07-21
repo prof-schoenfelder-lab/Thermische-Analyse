@@ -528,3 +528,20 @@ nav.md-path { overflow-x: auto; }
 [data-md-color-scheme="slate"] .md-typeset .admonition .admonition {
   background: var(--kurs-card);
 }
+
+/* ---- Schmal-Modus (Fenster neben ANSYS) ---------------------------------- */
+/* Stepper: scrollbar ohne sichtbare Schiene, aktiver Schritt wird per JS
+   in die Mitte gerückt */
+.wf-pagenav { scrollbar-width: none; }
+.wf-pagenav::-webkit-scrollbar { display: none; }
+.task-tabs { max-width: 100%; }
+/* Reset-Knopf im Header braucht auf schmalen Fenstern zu viel Platz */
+@media (max-width: 44em) {
+  .md-header .answer-reset-page { display: none !important; }
+}
+/* Overlay-Fußzeile: Tastatur-Hinweis weglassen, wenn es eng wird */
+@media (max-width: 40em) {
+  #fa-nav .fa-hint { display: none; }
+  #fa-card { width: 100vw; max-height: 96vh; border-radius: .7rem; }
+  #fa-body { padding: .8rem .9rem; }
+}

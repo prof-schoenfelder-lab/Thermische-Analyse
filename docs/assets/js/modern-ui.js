@@ -198,6 +198,11 @@
     }
     nav.innerHTML = html;
     h1.parentNode.insertBefore(nav, h1.nextSibling);
+    // Schmales Fenster (neben ANSYS): aktiven Schritt in die Mitte rücken
+    var act = nav.querySelector('.wf-pstep.active');
+    if (act && nav.scrollWidth > nav.clientWidth) {
+      nav.scrollLeft = act.offsetLeft - nav.clientWidth / 2 + act.clientWidth / 2;
+    }
   }
 
   // --- 4b) Varianten-Tabs über dem Stepper ---------------------------------
