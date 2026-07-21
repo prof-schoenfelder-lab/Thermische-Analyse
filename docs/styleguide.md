@@ -9,6 +9,20 @@ hide:
 Interne Beispielseite: alle Gestaltungs-Bausteine auf einen Blick
 (nicht in der Navigation verlinkt).
 
+## Typografie
+
+Überschriften stehen in **Source Serif 4** (Serifen-Display), der
+Lauftext in **Inter**. Die erste Zeile nach der H1 wird automatisch
+zum Lead-Absatz. *Kursives* und **fettes** Inter für Betonungen im Text.
+
+### Eine H3 sieht so aus
+
+Normaler Absatz zur Kontrolle des Zeilenabstands: Die Wärmestromdichte
+wird aus dem Temperaturgradienten berechnet und über die Fläche
+integriert — so ergibt sich der gesamte Wärmestrom durch die Wand.
+
+---
+
 ## Menüpfad-Chips
 
 Rechtsklick mit Ziel dahinter (Aktion und Ziel getrennt):
@@ -17,9 +31,12 @@ Rechtsklick mit Ziel dahinter (Aktion und Ziel getrennt):
 
 `Rechtsklick Solution → Insert → Thermal → Temperature`
 
-Doppelklick funktioniert genauso:
+Doppelklick und Linksklick funktionieren genauso — jede Klick-Art hat
+ihr eigenes Maus-Icon (rechte Taste, Doppelklick-Wellen, linke Taste):
 
 `Doppelklick Engineering Data`
+
+`Linksklick Fläche → Reiter Environment → Temperature`
 
 Orte mit Erkennungs-Icon:
 

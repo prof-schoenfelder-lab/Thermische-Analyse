@@ -27,12 +27,16 @@
     baum: '<svg viewBox="0 0 24 24"><path d="M6 4v13a2 2 0 0 0 2 2h4M6 9h6M10 14h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="4" r="2" fill="currentColor"/></svg>',
     detail: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 4v16" stroke="currentColor" stroke-width="2"/><path d="M12 9h6M12 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
     maus: '<svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v6" stroke="currentColor" stroke-width="2"/><path d="M12 3h5a5 5 0 0 1 0 6h-5z" fill="currentColor"/></svg>',
+    mausL: '<svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v6" stroke="currentColor" stroke-width="2"/><path d="M12 3H7a5 5 0 0 0 0 6h5z" fill="currentColor"/></svg>',
+    mausD: '<svg viewBox="0 0 24 24"><rect x="8" y="4" width="10" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 4v6" stroke="currentColor" stroke-width="2"/><path d="M13 4H8a5 5 0 0 0 0 6h5z" fill="currentColor"/><path d="M5.2 5.8A5.5 5.5 0 0 1 6.9 2.9M2.5 4.6A8.6 8.6 0 0 1 5 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
     grafik: '<svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 14l4-4 3 3 4-5 3 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>'
   };
 
   function mpKind(text) {
     var t = text.toLowerCase();
     if (t.indexOf('rechtsklick') === 0) return 'maus';
+    if (t.indexOf('doppelklick') === 0) return 'mausD';
+    if (t.indexOf('linksklick') === 0) return 'mausL';
     if (t.indexOf('reiter') === 0 || t.indexOf('tab ') === 0) return 'reiter';
     if (t.indexOf('strukturbaum') !== -1) return 'baum';
     if (t.indexOf('detailfenster') !== -1) return 'detail';
@@ -41,7 +45,7 @@
   }
 
   // Einzelbegriffe ohne Pfeil, die trotzdem als Ort-Chip erscheinen sollen
-  var MP_SOLO = /^(Reiter |Rechtsklick|Doppelklick|Strukturbaum|Detailfenster|Grafikfenster)/;
+  var MP_SOLO = /^(Reiter |Rechtsklick|Doppelklick|Linksklick|Strukturbaum|Detailfenster|Grafikfenster)/;
 
   function menuPathChips(root) {
     var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
@@ -62,12 +66,14 @@
         }
         var label = parts[p].trim();
         // "Rechtsklick X": Aktion und Ziel als getrennte Chips —
-        // [🖱 Rechtsklick] [X]
-        var m = label.match(/^(Rechtsklick|Doppelklick)\s+(.+)$/);
+        // [🖱 Rechtsklick] [X]; eigenes Icon je Klick-Art
+        var m = label.match(/^(Rechtsklick|Doppelklick|Linksklick)\s+(.+)$/);
         if (m) {
+          var actIcon = m[1] === 'Rechtsklick' ? 'maus' :
+                        m[1] === 'Doppelklick' ? 'mausD' : 'mausL';
           var act = document.createElement('span');
           act.className = 'mp-seg mp-action';
-          act.innerHTML = '<i class="mp-ic">' + MP_ICONS.maus + '</i>';
+          act.innerHTML = '<i class="mp-ic">' + MP_ICONS[actIcon] + '</i>';
           act.appendChild(document.createTextNode(m[1]));
           span.appendChild(act);
           label = m[2];
