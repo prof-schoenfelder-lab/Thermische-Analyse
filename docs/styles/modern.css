@@ -615,3 +615,75 @@ nav.md-path { overflow-x: auto; }
   font-weight: 650;
   margin-right: .1rem;
 }
+
+/* ===========================================================================
+   V6 — Editorial: Serifen-Display für Überschriften, warme Textfarbe,
+   ruhigerer vertikaler Rhythmus.
+   Vorbild: lorenabarba.com (Merriweather-Überschriften 40/28/22 px auf
+   ~736 px Spalte, warmes Fast-Schwarz #181712, Sans nur für UI).
+   Hier: Source Serif 4 (variabel, lokal gevendort) für H1–H3,
+   Inter bleibt Lese- und UI-Schrift.
+   =========================================================================== */
+@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/source-serif-4-var.woff2") format("woff2"); }
+@font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/source-serif-4-italic-var.woff2") format("woff2"); }
+
+:root { --kurs-serif: "Source Serif 4", Georgia, "Times New Roman", serif; }
+
+/* Warmes Fast-Schwarz statt neutralem Grau — wirkt gedruckter, weicher */
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: rgba(29, 27, 22, .92);
+  --md-default-fg-color--light: rgba(29, 27, 22, .58);
+  --md-default-fg-color--lighter: rgba(29, 27, 22, .36);
+  --md-default-fg-color--lightest: rgba(29, 27, 22, .09);
+}
+
+/* Überschriften: Serifen-Display mit klarer Größentreppe */
+.md-typeset h1, .md-typeset h2, .md-typeset h3 {
+  font-family: var(--kurs-serif);
+  letter-spacing: 0;
+  color: var(--md-default-fg-color);
+}
+.md-typeset h1 {
+  font-size: 2.5em; font-weight: 640; line-height: 1.16;
+  margin: .35em 0 .5em;
+}
+.md-typeset h2 {
+  font-size: 1.6em; font-weight: 620; line-height: 1.25;
+  margin-top: 3em; margin-bottom: .6em;
+}
+.md-typeset h3 {
+  font-size: 1.18em; font-weight: 650; line-height: 1.35;
+  margin-top: 2.3em; margin-bottom: .55em;
+}
+.md-typeset h1 small { font-family: var(--md-text-font); font-size: .42em; }
+
+/* Lauftext: einen Hauch mehr Zeilenluft — liest sich ruhiger */
+.md-typeset { line-height: 1.7; }
+
+/* Lead-Absatz: der erste Absatz direkt nach der H1 als Einleitung */
+.md-typeset h1 + p {
+  font-size: .88rem; line-height: 1.65;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 1.6em;
+}
+
+/* Karte: großzügigeres Polster, Inhalt bekommt Rand zum Atmen */
+.md-content__inner { padding: 2.1rem 2.8rem 3rem; }
+@media (max-width: 48em) {
+  .md-content__inner { padding: 1.2rem 1.15rem 2rem; }
+  .md-typeset h1 { font-size: 2em; }
+}
+
+/* Trennlinien: Hairline mit viel Abstand (bewusste Pause) */
+.md-typeset hr {
+  border: 0; border-top: 1px solid var(--md-default-fg-color--lightest);
+  margin: 2.6rem 0;
+}
+
+/* Blockskala minimal weiter aufziehen */
+:root { --space-block: 1.6rem; }
+
