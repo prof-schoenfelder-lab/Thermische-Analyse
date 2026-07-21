@@ -25,6 +25,10 @@ Effekte kombiniert, die bisher im Kurs nicht behandelt wurden:
     - **Anisotrope Wärmeleitung** (richtungsabhängige Wärmeleitfähigkeit,
       *Orthotropic Thermal Conductivity*)
 
+<!-- WICHTIG bei der Ausarbeitung: Die "Ambient Temperature" der
+     Radiation-RB ist NICHT die Umgebungs-/Lufttemperatur (bisheriger
+     Lehrfehler in den alten Unterlagen) — sondern die Temperatur der
+     strahlenden Umgebung. Im Beispiel sauber abgrenzen! -->
 <!-- TODO(NEU): Ausarbeiten —
      - Geometrie: Heizwendel/Strahlungsheizkörper unter Glaskeramikplatte
        (ggf. 2D-rotationssymmetrisch), Luftspalt dazwischen

@@ -197,9 +197,16 @@ $$
   (maximal gleich 1).
 - Das Stefan-Boltzmann-Gesetz ergibt eine nichtlineare Abhängigkeit der
   Strahlung von der Temperatur
-- Angabe der **Umgebungstemperatur** (Ambient Temperature)
+- Angabe der **Strahlungstemperatur** (Ambient Temperature)
 - Definiert über **Strahlung zur Umgebung** (To Ambient) oder von
   **Körper zu Körper** (Surface to Surface)
+
+!!! warning "Achtung: Strahlungstemperatur ≠ Lufttemperatur"
+    Die „Ambient Temperature" der Strahlung ist **nicht** die
+    Umgebungs-/Lufttemperatur aus der Konvektion, sondern die Temperatur
+    der **strahlenden Umgebung** (Strahlungssenke bzw. -quelle, z.B.
+    umgebende Wände oder der Himmel) — sie kann deutlich von der
+    Lufttemperatur abweichen.
 
 ![Strahlung Beispiel](images/p3_Untitled_2.png)
 
@@ -231,8 +238,9 @@ $$
     **Parameter:**
 
     1. **Emissivity** (Emissionsgrad): konstant
-    2. **Ambient Temperature**: konstant / Tabular (zeitabhängig, nur für
-       Correlation=To Ambient) / Function (time)
+    2. **Ambient Temperature** (Temperatur der strahlenden Umgebung —
+       nicht die Lufttemperatur!): konstant / Tabular (zeitabhängig, nur
+       für Correlation=To Ambient) / Function (time)
 
 !!! info "Mehr zur Strahlung"
     Die Strahlung von **Körper zu Körper** (Surface to Surface) wird im
