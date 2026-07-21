@@ -687,3 +687,175 @@ nav.md-path { overflow-x: auto; }
 /* Blockskala minimal weiter aufziehen */
 :root { --space-block: 1.6rem; }
 
+/* ===========================================================================
+   V7 — typografische Boxen & ruhige Navigation.
+   Statt gefüllter Karten: markantes Kapitälchen-Label + eingerückter Text
+   an einer feinen Regel-Linie. Weniger konkurrierende Element-Optiken,
+   der Inhalt fließt wieder. Sidebar ohne Icons, ohne Pill-Hintergründe.
+   =========================================================================== */
+
+/* -- Boxen: Label + Einzug statt Tonfläche -------------------------------- */
+.md-typeset .admonition, .md-typeset details {
+  background: transparent !important;
+  border-radius: 0;
+  border-left: 2px solid var(--md-default-fg-color--lightest) !important;
+  padding: .1rem 0 .1rem 1.1rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details,
+[data-md-color-scheme="slate"] .md-typeset .admonition.question,
+[data-md-color-scheme="slate"] .md-typeset details.question,
+[data-md-color-scheme="slate"] .md-typeset .admonition.check,
+[data-md-color-scheme="slate"] .md-typeset details.check,
+[data-md-color-scheme="slate"] .md-typeset .admonition.success,
+[data-md-color-scheme="slate"] .md-typeset details.success,
+[data-md-color-scheme="slate"] .md-typeset .admonition.warning,
+[data-md-color-scheme="slate"] .md-typeset details.warning,
+[data-md-color-scheme="slate"] .md-typeset details .admonition,
+[data-md-color-scheme="slate"] .md-typeset .admonition .admonition {
+  background: transparent !important;
+}
+
+/* Titel wird zum Kapitälchen-Label — Icon fällt weg */
+.md-typeset .admonition-title, .md-typeset summary {
+  margin: 0 0 .5rem 0;
+  padding: 0 1.6rem 0 0 !important;
+  background: transparent !important;
+  font-family: var(--md-text-font);
+  font-size: .6rem;
+  font-weight: 750;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light) !important;
+  position: relative;
+}
+.md-typeset .admonition-title::before, .md-typeset summary::before {
+  display: none;
+}
+.md-typeset details > summary::after { top: -.1rem; right: 0; }
+
+/* Didaktische Farbe nur noch in Label + Regel-Linie */
+.md-typeset .admonition.question, .md-typeset details.question {
+  border-left-color: color-mix(in srgb, var(--kurs-primary) 40%, transparent) !important;
+}
+.md-typeset .question > .admonition-title, .md-typeset .question > summary {
+  color: var(--kurs-primary) !important;
+}
+.md-typeset .admonition.check, .md-typeset details.check,
+.md-typeset .admonition.success, .md-typeset details.success {
+  border-left-color: rgba(46, 125, 50, .45) !important;
+}
+.md-typeset :is(.check, .success) > .admonition-title,
+.md-typeset :is(.check, .success) > summary {
+  color: #2e7d32 !important;
+}
+.md-typeset .admonition.warning, .md-typeset details.warning {
+  border-left-color: rgba(230, 81, 0, .5) !important;
+}
+.md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
+  color: #b45309 !important;
+}
+[data-md-color-scheme="slate"] .md-typeset .question > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .question > summary { color: #8ab4e8 !important; }
+[data-md-color-scheme="slate"] .md-typeset :is(.check, .success) > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset :is(.check, .success) > summary { color: #81c784 !important; }
+[data-md-color-scheme="slate"] .md-typeset .warning > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .warning > summary { color: #ffb74d !important; }
+
+/* Innenraum: normale Absatzruhe statt Karten-Polster */
+.md-typeset .admonition > :last-child, .md-typeset details > :last-child {
+  margin-bottom: .3rem;
+}
+.md-typeset details > ol { margin-top: .4rem; }
+
+/* Aufgaben-Banner folgt derselben Sprache: orange Regel, kein Ton */
+.md-typeset .task-banner {
+  background: transparent !important;
+  border-left: 2px solid var(--kurs-accent) !important;
+  border-radius: 0;
+  padding: .15rem 0 .15rem 1.1rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .task-banner { background: transparent !important; }
+
+/* Tabellen: offene Hairline-Tabelle statt Kasten */
+.md-typeset table:not([class]) {
+  box-shadow: none;
+  border-radius: 0;
+  border-top: 1.5px solid color-mix(in srgb, var(--md-default-fg-color) 35%, transparent);
+  border-bottom: 1.5px solid color-mix(in srgb, var(--md-default-fg-color) 35%, transparent);
+}
+.md-typeset table:not([class]) th {
+  background: transparent;
+  font-size: .62rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Sekundär-Buttons als Ghost — nur der primäre Weiter-Button bleibt gefüllt */
+.md-typeset .md-button:not(.md-button--primary) {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--md-default-fg-color) 22%, transparent);
+}
+.md-typeset .md-button:not(.md-button--primary):hover {
+  background: color-mix(in srgb, var(--md-default-fg-color) 5%, transparent);
+  transform: none;
+}
+
+/* -- Sidebar: Icons raus, Pills raus, Typo-Ordnung rein -------------------- */
+.md-sidebar--primary .md-nav__link > svg { display: none; }
+.md-nav__link--active {
+  background: transparent;
+  font-weight: 650;
+  color: var(--kurs-accent);
+}
+.md-sidebar--primary { font-size: .68rem; }
+.md-sidebar--primary .md-nav__link { padding: .16rem .35rem; }
+/* Kontext-Kopf der Sektion (lifted): gleiches Kapitälchen-Label wie Rest */
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  font-size: .6rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  font-weight: 750;
+  color: var(--md-default-fg-color--light);
+}
+.md-sidebar--primary .md-nav__item--section { margin-top: .9rem; }
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link--active code {
+  color: var(--kurs-accent);
+}
+/* Sektions-Labels (ABSTRAKTIONEN, VERNETZUNG, …) gleich leise wie der Kopf */
+.md-sidebar--primary .md-nav__item--section > .md-nav__link {
+  font-size: .6rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  font-weight: 750;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Details-Chevron erbt die Labelfarbe */
+.md-typeset details > summary::after { background-color: currentColor !important; }
+
+/* Varianten-Tabs: Text mit Akzent-Unterstrich statt grauem Pill-Container */
+.task-tabs {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  gap: 1.1rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  display: flex;
+  margin: 1.2rem 0 .8rem;
+}
+.task-tab {
+  padding: .3rem 0 .45rem;
+  border-radius: 0;
+  font-size: .68rem;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+}
+.task-tab.active {
+  background: transparent;
+  box-shadow: none;
+  border-bottom-color: var(--kurs-accent);
+}
+

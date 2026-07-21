@@ -56,8 +56,11 @@ Einzelbegriffe als Chip: `Reiter Home` · `Detailfenster` · `Strukturbaum`
 
 ## Boxen
 
+Boxen sind typografisch: Kapitälchen-Label in der didaktischen Farbe,
+feine Regel-Linie links, eingerückter Text — keine Farbflächen.
+
 !!! question "Die Aufgabe"
-    So sieht die Aufgabenstellung aus — blauer Ton, Fragezeichen-Icon.
+    So sieht die Aufgabenstellung aus — blaues Label an blauer Regel-Linie.
 
 !!! check "Checkpoint: So sollte es aussehen"
     Kontrollpunkt in grün — hier vergleichen Studierende ihren Stand.
