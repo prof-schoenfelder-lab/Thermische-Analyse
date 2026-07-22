@@ -820,6 +820,12 @@ nav.md-path { overflow-x: auto; }
   color: var(--md-default-fg-color--light);
 }
 .md-sidebar--primary .md-nav__item--section { margin-top: .9rem; }
+/* Der Sektions-Kopf ist bei Material sticky — er braucht deckenden Grund,
+   sonst schieben sich die Einträge beim Scrollen sichtbar darunter durch */
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  background: var(--kurs-canvas) !important;
+  z-index: 2;
+}
 .md-nav__item .md-nav__link--active,
 .md-nav__item .md-nav__link--active code {
   color: var(--kurs-accent);
