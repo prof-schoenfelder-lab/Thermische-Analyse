@@ -538,6 +538,16 @@
     // try { followAlong(root); } catch (e) { }
     try { collapseBreadcrumbs(); } catch (e) { }
   }
+  // Öffentliche Mini-API: dynamisch eingefügte Inhalte (z.B. Tutorial-Embeds)
+  // nachträglich mit Menüpfad-Chips und Tastenkappen veredeln.
+  window.KursUI = {
+    enhance: function (root) {
+      if (!root) return;
+      try { menuPathChips(root); } catch (e) { }
+      try { keyCaps(root); } catch (e) { }
+    }
+  };
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();

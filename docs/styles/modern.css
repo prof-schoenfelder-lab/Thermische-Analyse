@@ -1297,3 +1297,133 @@ nav.md-path { overflow-x: auto; }
 /* Text in Schritten nicht stapeln */
 .md-typeset details > ol > li > p { margin-block: .35em; }
 
+
+/* ===========================================================================
+   V10 — Tutorial-Datenbank: Übersichtsseite + eingebettete Anleitungen
+   =========================================================================== */
+
+/* -- Übersicht: Suchleiste + Kategorie-Chips -- */
+.tut-bar { margin: 1.2rem 0 1.4rem; }
+.md-typeset .tut-search {
+  width: 100%;
+  font: inherit; font-size: .82rem;
+  padding: .55rem .8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  background: var(--kurs-card); color: var(--md-default-fg-color);
+}
+.md-typeset .tut-search:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--kurs-accent) 55%, transparent);
+}
+.tut-cats { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+.md-typeset .tut-chip {
+  border: 0; cursor: pointer;
+  font: inherit; font-size: .66rem; font-weight: 650;
+  letter-spacing: .04em; text-transform: uppercase;
+  padding: .28rem .7rem; border-radius: 2rem;
+  background: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .tut-chip:hover { color: var(--md-default-fg-color); }
+.md-typeset .tut-chip.active {
+  background: color-mix(in srgb, var(--kurs-accent) 15%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+}
+
+/* hidden muss display:grid/flex überstimmen */
+#tut-overview [hidden] { display: none !important; }
+
+/* -- Übersicht: Karten-Raster -- */
+.tut-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 1rem;
+}
+.md-typeset a.tut-card {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .7rem; overflow: hidden;
+  text-decoration: none; color: var(--md-default-fg-color);
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.md-typeset a.tut-card:hover {
+  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 30, 60, .1);
+}
+.md-typeset a.tut-card img.tut-thumb {
+  width: 100%; height: 8rem; object-fit: contain;
+  background: color-mix(in srgb, var(--md-default-fg-color) 3%, var(--kurs-card));
+  border: 0; border-radius: 0; box-shadow: none; margin: 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.tut-card-body { display: block; padding: .65rem .8rem .75rem; }
+.tut-card-title {
+  display: block; font-family: var(--kurs-serif);
+  font-weight: 650; font-size: .82rem; line-height: 1.3;
+  transition: color .15s;
+}
+.md-typeset a.tut-card:hover .tut-card-title { color: var(--kurs-accent); }
+.tut-card-meta { display: flex; gap: .5rem; align-items: center; margin-top: .35rem; }
+
+/* Kategorie-/Meta-Marker */
+.tut-cat, .tut-soft, .tut-count {
+  font-size: .58rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--md-default-fg-color--light);
+}
+.tut-cat {
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+}
+.tut-empty { color: var(--md-default-fg-color--light); font-size: .8rem; }
+
+/* -- Detailansicht (Übersicht → eine Anleitung) -- */
+.md-typeset .tut-back {
+  border: 0; cursor: pointer; background: none;
+  font: inherit; font-size: .72rem; font-weight: 600;
+  color: var(--md-default-fg-color--light);
+  padding: .2rem 0; margin-bottom: .4rem;
+}
+.md-typeset .tut-back:hover { color: var(--kurs-accent); }
+.md-typeset .tut-detail-title { margin: .2rem 0 .4rem; }
+.tut-meta { display: flex; gap: .8rem; align-items: center; margin: .2rem 0 1rem; }
+
+/* -- Schritte (Übersicht-Detail und Embed teilen sich diese Optik) -- */
+.tut-steps { margin-left: 0 !important; counter-reset: tut; list-style: none; padding: 0; }
+.tut-steps > li {
+  counter-increment: tut; position: relative;
+  padding-left: 2.15rem; margin: 0 0 1.4rem 0;
+}
+.tut-steps > li::before {
+  content: counter(tut);
+  position: absolute; left: 0; top: -.05rem;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));
+  color: var(--kurs-accent); font-weight: 700; font-size: .68rem;
+}
+.tut-steps > li:not(:last-child)::after {
+  content: ""; position: absolute; left: .72rem; top: 1.65rem; bottom: -1.1rem;
+  width: 1px; background: color-mix(in srgb, var(--kurs-accent) 28%, transparent);
+}
+.tut-cap { font-size: .8rem; line-height: 1.5; }
+.tut-note {
+  font-size: .72rem; line-height: 1.5;
+  color: var(--md-default-fg-color--light); margin-top: .25rem;
+}
+.md-typeset img.tut-img {
+  display: block; margin: .55rem 0 .2rem;
+  max-width: 100%; max-height: 22rem; width: auto; border-radius: .5rem;
+}
+
+/* -- Embed in Inhaltsseiten: aufklappbar, wie die Kurzanleitungen -- */
+.md-typeset details.tut-embed { margin: var(--space-block) 0; }
+.md-typeset details.tut-embed > summary { display: block; }
+.tut-kicker {
+  font-size: .58rem; font-weight: 750; letter-spacing: .1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+  margin-right: .4rem;
+}
+.tut-title-txt { font-weight: 650; }
+.md-typeset details.tut-embed .tut-meta { margin: .5rem 0 .8rem; }
