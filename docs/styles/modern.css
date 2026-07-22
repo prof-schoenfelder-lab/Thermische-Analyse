@@ -1123,6 +1123,73 @@ nav.md-path { overflow-x: auto; }
   .prakt-num { width: 1.6rem; font-size: 1.5rem; }
 }
 
+/* ---------------------------------------------------------------------------
+   Praktikums-Übersichten: Karten-Raster mit großen Vorschaubildern
+   (die Diagramme/Screenshots sind hier Inhalt, nicht nur Deko).
+   Abschnittsüberschriften (## …) trennen die Gruppen.
+   --------------------------------------------------------------------------- */
+.md-typeset .prakt-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2.4rem;
+}
+.md-typeset a.prakt-card {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .7rem; overflow: hidden;
+  text-decoration: none; color: var(--md-default-fg-color);
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.md-typeset a.prakt-card:hover {
+  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 30, 60, .1);
+}
+[data-md-color-scheme="slate"] .md-typeset a.prakt-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
+}
+.md-typeset a.prakt-card img.prakt-cimg {
+  width: 100%; height: 9rem;
+  object-fit: contain;
+  background: color-mix(in srgb, var(--md-default-fg-color) 3%, var(--kurs-card));
+  border: 0; border-radius: 0; box-shadow: none;
+  margin: 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.prakt-cbody { display: block; padding: .7rem .85rem .8rem; }
+.prakt-ctitle {
+  display: block;
+  font-family: var(--kurs-serif);
+  font-weight: 650; font-size: .84rem; line-height: 1.3;
+  transition: color .15s;
+}
+.md-typeset a.prakt-card:hover .prakt-ctitle { color: var(--kurs-accent); }
+.prakt-cdesc {
+  display: block;
+  font-size: .66rem; line-height: 1.45;
+  color: var(--md-default-fg-color--light);
+  margin-top: .25rem;
+}
+/* Karten ohne Vorschaubild: Titel mittig, gleiche Höhenanmutung */
+.md-typeset a.prakt-card:not(:has(.prakt-cimg)) {
+  justify-content: center;
+  min-height: 6.5rem;
+  background: color-mix(in srgb, var(--md-default-fg-color) 2.5%, var(--kurs-card));
+}
+.md-typeset a.prakt-card:not(:has(.prakt-cimg)) .prakt-cbody {
+  padding: 1.1rem .95rem;
+}
+
+/* Abschnittsüberschrift der Übersichten klar als Gliederung markieren:
+   Serifen-Titel mit kurzer Akzent-Regel darüber */
+.md-typeset .prakt-cards + h2,
+.md-typeset h2:has(+ .prakt-cards) {
+  border-top: 2px solid color-mix(in srgb, var(--kurs-accent) 55%, transparent);
+  padding-top: .7rem;
+  margin-top: 2.4rem;
+}
+
 /* FAQ: leise Textzeile statt Karte */
 .md-typeset a.home-faq {
   display: block;
