@@ -107,6 +107,7 @@ extra_css:
       - "styles/modern.css"
 nav:
       - Home: index.md
+      # >>> AUTO-NAV — Praktika werden vom Kurs-Studio erzeugt, nicht von Hand ändern
       - EINFÜHRUNG:
               - P1_Einfuehrung/index.md
       - MODELLIERUNG & VERNETZUNG:
@@ -139,6 +140,7 @@ nav:
               - Einleitung: P4_Transient/Einleitung.md
               - "Beispielaufgabe: Ebene Wand": P4_Transient/Beispiel-Ebene-Wand.md
               - "Zusatzaufgabe: Abkühlung Teewasser": P4_Transient/Zusatz-Teewasser.md
+      # <<< AUTO-NAV
       - MEIN FORTSCHRITT: Fortschritt.md
       - FAQ:
               - 00_FAQ/index.md

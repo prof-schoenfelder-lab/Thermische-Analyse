@@ -365,27 +365,10 @@
   // unter der Überschrift eine Stepper-Navigation zum Springen zwischen den
   // Schritten. Jede Schritt-Gruppe beschreibt ihre Slugs (Geschwister-Seiten
   // im selben Ordner), Kurz-Labels und optional eine Tabs-Zeile darüber.
-  var WF_SLUGS = ['01-material', '02-geometrie', '03-zuweisung', '04-netz',
-                  '05-randbedingungen', '06-loesen', '07-auswertung'];
-  var WF_GROUPS = [
-    { // Konvention nummerierter Schritt-Slugs (wie Thermo-Kurs, Rohr-Muster)
-      slugs: WF_SLUGS,
-      labels: ['Material', 'Geometrie', 'Zuweisung', 'Netz', 'Randbed.', 'Lösen', 'Auswertung'],
-      base: null,
-      tabs: null
-    },
-    { // P1 Vorzeigebeispiel: zweiseitig gelagerter Balken (Lösung mit ANSYS)
-      // '' = die Übersichtsseite (README, Workbench öffnen) als Schritt 1
-      slugs: ['', 'material', 'geometrie', 'materialzuordnung', 'vernetzung',
-              'navigation', 'lagerung', 'belastung', 'gleichungssystem-losen',
-              'gesuchte-werte-bestimmen'],
-      labels: ['Start', 'Material', 'Geometrie', 'Zuweisung', 'Netz', 'Navigation',
-               'Lagerung', 'Belastung', 'Lösen', 'Auswertung'],
-      base: 'losung-mit-ansys',
-      tabs: 'Aufgabe=../../Aufgabenstellung/|Lösung mit ANSYS=../|Analytische Lösung=../../analytische-loesung/',
-      tabsIndex: 'Aufgabe=../Aufgabenstellung/|Lösung mit ANSYS=./|Analytische Lösung=../analytische-loesung/'
-    }
-  ];
+  // Schritt-Gruppen werden aus assets/wf-groups.json geladen (vom Kurs-Studio
+  // gepflegt). Bis der Fetch da ist, bleibt die Liste leer → kein Stepper,
+  // aber auch kein Fehler. Fallback deckt den Fall ab, dass die Datei fehlt.
+  var WF_GROUPS = [];
 
   // Liefert {grp, idx, isIndex} wenn der Pfad eine Schrittseite einer Gruppe
   // ist. isIndex: die Seite ist die Basis-Übersicht (Slug '') selbst.
@@ -525,14 +508,36 @@
     list.insertBefore(dots, items[1]);
   }
 
+  // Basis-URL der Site aus dem eigenen <script src> ableiten (funktioniert in
+  // beiden Kursen, egal ob /Strukturmechanik/ oder /Thermische-Analyse/).
+  function baseURL() {
+    var s = document.currentScript ||
+      document.querySelector('script[src*="modern-ui.js"]');
+    var src = s ? s.getAttribute('src') : '';
+    var abs = new URL(src || '.', document.baseURI).href;
+    return abs.replace(/assets\/js\/modern-ui\.js.*$/, '');
+  }
+
+  // Schritt-Gruppen laden, dann die davon abhängige Navigation aufbauen.
+  function loadWfGroupsThen(root) {
+    fetch(baseURL() + 'assets/wf-groups.json')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) { if (data && data.groups) WF_GROUPS = data.groups; })
+      .catch(function () { })
+      .then(function () {
+        try { wfPageNav(root); } catch (e) { }
+        try { taskTabs(); } catch (e) { }
+      });
+  }
+
   function init() {
     var root = document.querySelector('.md-content');
     if (!root) return;
     try { menuPathChips(root); } catch (e) { }
     try { keyCaps(root); } catch (e) { }
     try { workflowStepper(root); } catch (e) { }
-    try { wfPageNav(root); } catch (e) { }
-    try { taskTabs(); } catch (e) { }
+    // wfPageNav + taskTabs laufen erst, wenn wf-groups.json geladen ist
+    loadWfGroupsThen(root);
     // Mitmach-Overlay abgeschaltet: die Anleitungen bleiben als scrollbare
     // Ausklapp-Blöcke auf der Seite (Entscheidung 07/2026).
     // try { followAlong(root); } catch (e) { }

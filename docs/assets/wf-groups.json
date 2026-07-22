@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "slugs": ["01-material", "02-geometrie", "03-zuweisung", "04-netz", "05-randbedingungen", "06-loesen", "07-auswertung"],
+      "labels": ["Material", "Geometrie", "Zuweisung", "Netz", "Randbed.", "Lösen", "Auswertung"],
+      "base": null,
+      "tabs": null
+    },
+    {
+      "slugs": ["", "material", "geometrie", "materialzuordnung", "vernetzung", "navigation", "lagerung", "belastung", "gleichungssystem-losen", "gesuchte-werte-bestimmen"],
+      "labels": ["Start", "Material", "Geometrie", "Zuweisung", "Netz", "Navigation", "Lagerung", "Belastung", "Lösen", "Auswertung"],
+      "base": "losung-mit-ansys",
+      "tabs": "Aufgabe=../../Aufgabenstellung/|Lösung mit ANSYS=../|Analytische Lösung=../../analytische-loesung/",
+      "tabsIndex": "Aufgabe=../Aufgabenstellung/|Lösung mit ANSYS=./|Analytische Lösung=../analytische-loesung/"
+    }
+  ]
+}
