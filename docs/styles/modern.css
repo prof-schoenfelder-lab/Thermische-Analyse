@@ -607,6 +607,27 @@ nav.md-path { overflow-x: auto; }
 #fa-body { cursor: e-resize; }
 #fa-body a { cursor: pointer; }
 
+/* Tastenkappen (`Enter`, `Esc`, `F2`, `Strg + F` …) — physischer Key-Look */
+.keys { display: inline-flex; align-items: center; gap: .28rem; vertical-align: baseline; }
+.keys .keys-plus { color: var(--md-default-fg-color--light); font-weight: 650; font-size: .68rem; }
+.md-typeset kbd.kc {
+  display: inline-block;
+  font-family: var(--md-text-font);
+  font-size: .64rem; font-weight: 650; line-height: 1.35;
+  color: var(--md-default-fg-color);
+  background: linear-gradient(var(--kurs-card), color-mix(in srgb, var(--md-default-fg-color) 7%, var(--kurs-card)));
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 24%, transparent);
+  border-bottom-width: 2px;
+  border-radius: .34rem;
+  padding: .04rem .42rem;
+  min-width: .95rem; text-align: center;
+  box-shadow: none;
+}
+[data-md-color-scheme="slate"] .md-typeset kbd.kc {
+  border-color: rgba(255, 255, 255, .28);
+  background: linear-gradient(var(--kurs-card), rgba(255, 255, 255, .05));
+}
+
 /* Aktions-Chip (Rechtsklick/Doppelklick): abgesetzt vom Ziel-Chip */
 .menu-path .mp-seg.mp-action {
   background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));

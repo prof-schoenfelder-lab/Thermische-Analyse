@@ -54,6 +54,10 @@ Kette aus Aktion, Ort und Ziel:
 
 `Doppelklick Strukturbaum Geometry`
 
+Tastenkappen (einzeln und als Kombi):
+
+`Enter` · `Esc` · `F2` · `Leertaste` · `Entf` · `Strg + F` · `Strg + Shift + A`
+
 ## Aufgaben-Kopfzeile
 
 <div class="task-banner" markdown>

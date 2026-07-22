@@ -167,6 +167,63 @@
     }
   }
 
+  // --- 1b) Tastenkappen -----------------------------------------------------
+  // Inline-Code, das eine Taste (oder Kombi wie `Strg + F`) ist, wird als
+  // Keycap gerendert. Strenge Whitelist, damit normale Code-Begriffe (Werte,
+  // Menüpunkte) unberührt bleiben.
+  var KEY_LABELS = {
+    'enter': '⏎ Enter', 'return': '⏎ Enter', 'esc': 'Esc', 'escape': 'Esc',
+    'tab': '↹ Tab', 'strg': 'Strg', 'ctrl': 'Strg', 'control': 'Strg',
+    'shift': '⇧ Shift', 'umschalt': '⇧ Umschalt', 'alt': 'Alt',
+    'entf': 'Entf', 'del': 'Entf', 'delete': 'Entf',
+    'backspace': '⌫', 'rücktaste': '⌫ Rücktaste',
+    'leertaste': 'Leertaste', 'space': 'Leertaste'
+  };
+  function keyLabel(tok) {
+    var t = tok.toLowerCase();
+    if (KEY_LABELS.hasOwnProperty(t)) return KEY_LABELS[t];
+    if (/^f([1-9]|1[0-2])$/.test(t)) return tok.toUpperCase();   // F1–F12
+    return null;
+  }
+  function isKeyToken(tok) {
+    return keyLabel(tok) !== null || /^[A-Za-z0-9]$/.test(tok);  // Taste oder Einzelzeichen (nur in Kombi)
+  }
+  function keyCaps(root) {
+    var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
+    for (var i = 0; i < codes.length; i++) {
+      var c = codes[i];
+      if (c.closest('pre')) continue;
+      var txt = c.textContent.trim();
+      var toks = txt.split('+');
+      for (var j = 0; j < toks.length; j++) toks[j] = toks[j].trim();
+      toks = toks.filter(function (s) { return s.length; });
+      if (!toks.length) continue;
+      var hasReal = false, allOk = true;
+      for (var k = 0; k < toks.length; k++) {
+        if (keyLabel(toks[k])) hasReal = true;
+        if (!isKeyToken(toks[k])) allOk = false;
+      }
+      // Einzelzeichen ohne echte Taste (z.B. `x`) ist keine Tastenkappe
+      if (!hasReal || !allOk) continue;
+      if (toks.length === 1 && !keyLabel(toks[0])) continue;
+      var span = document.createElement('span');
+      span.className = 'keys';
+      for (var m = 0; m < toks.length; m++) {
+        if (m > 0) {
+          var plus = document.createElement('span');
+          plus.className = 'keys-plus';
+          plus.textContent = '+';
+          span.appendChild(plus);
+        }
+        var kbd = document.createElement('kbd');
+        kbd.className = 'kc';
+        kbd.textContent = keyLabel(toks[m]) || toks[m].toUpperCase();
+        span.appendChild(kbd);
+      }
+      c.parentNode.replaceChild(span, c);
+    }
+  }
+
   // --- 2) Workflow-Stepper --------------------------------------------------
   function stepIndexFor(title) {
     var t = title.toLowerCase();
@@ -472,6 +529,7 @@
     var root = document.querySelector('.md-content');
     if (!root) return;
     try { menuPathChips(root); } catch (e) { }
+    try { keyCaps(root); } catch (e) { }
     try { workflowStepper(root); } catch (e) { }
     try { wfPageNav(root); } catch (e) { }
     try { taskTabs(); } catch (e) { }
