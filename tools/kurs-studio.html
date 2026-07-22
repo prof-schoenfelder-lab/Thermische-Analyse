@@ -154,7 +154,7 @@ function toast(m,err){var t=$("toast");t.textContent=m;t.className="toast show"+
 function markDirty(slug){state.dirty=true;if(slug)state.dirtyPraktika[slug]=true;$("btnSave").disabled=false;}
 
 $("fsBanner").innerHTML = hasFS
-  ? "Speichern schreibt <b>content/</b> und den AUTO-NAV-Block in <b>mkdocs.yml</b> direkt ins Repo. Danach committen/pushen (Git-Veröffentlichung folgt in Phase 1b)."
+  ? "Speichern schreibt <b>content/</b>, generierte Seiten nach <b>docs/</b> und den AUTO-NAV-Block in <b>mkdocs.yml</b> direkt ins Repo. Danach committen/pushen (terminalfreie Veröffentlichung folgt in Phase 1c)."
   : "Dieser Browser unterstützt keinen direkten Ordnerzugriff — bitte <b>Chrome</b> oder <b>Edge</b> verwenden.";
 
 // ---- Repo laden ----------------------------------------------------------
