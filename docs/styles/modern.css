@@ -1427,3 +1427,14 @@ nav.md-path { overflow-x: auto; }
 }
 .tut-title-txt { font-weight: 650; }
 .md-typeset details.tut-embed .tut-meta { margin: .5rem 0 .8rem; }
+
+/* ===========================================================================
+   V11 — größere Grundschrift (Wunsch: fühlt sich an wie ~150% Zoom).
+   Alles skaliert mit (rem-basiert): Text, Navigation, Chips, Karten.
+   =========================================================================== */
+html { font-size: 150%; }
+
+/* Obere Tab-Leiste kompakter, damit sie bei großer Grundschrift nicht
+   überläuft (Inhalt/Sidebar bleiben voll groß) */
+.md-tabs__link { font-size: .6rem; }
+.md-tabs__item { padding: 0 .5rem; }
