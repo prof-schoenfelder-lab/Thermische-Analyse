@@ -1026,35 +1026,32 @@ nav.md-path { overflow-x: auto; }
 }
 
 /* ===========================================================================
-   V7.5 — Klick-Aktion + Ziel als eine zusammengesetzte Pille
-   [🖱 Rechtsklick | Geometry] — der Klick "umschließt" sein Ziel, statt nur
-   davor zu stehen. Zwei Kammern in einem gemeinsamen Akzent-Rahmen.
+   V7.5 — Vorsatz + Ziel als eine zusammengesetzte Pille (1..n Kammern)
+   [🖱 Rechtsklick | Geometry] · [🌳 Strukturbaum | Mesh] ·
+   [🖱 Rechtsklick | 🌳 Strukturbaum | Mesh] — Kammern in einem gemeinsamen
+   Rahmen (Klick=orange, Ort=blau); nur die erste Kammer trägt die Tonfläche.
    =========================================================================== */
 .menu-path .mp-click {
   display: inline-flex;
   align-items: stretch;
   vertical-align: baseline;
 }
-/* Vorsatz-Kammer: links, angeschlossen (rechts eckig), rechte Kante = Naht */
-.menu-path .mp-click .mp-action,
-.menu-path .mp-click .mp-loc {
-  margin-right: 0;
-  border-radius: .4rem 0 0 .4rem;
-}
-.menu-path .mp-click .mp-action { border-right: 1px solid color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
-.menu-path .mp-click .mp-loc { border-right: 1px solid color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
-/* Ziel-Kammer: rechts, angeschlossen (links eckig, keine Doppelkante),
-   Rahmen in der Pillenfarbe, damit die ganze Pille als Einheit wirkt */
-.menu-path .mp-click .mp-seg:last-child {
-  border-radius: 0 .4rem .4rem 0;
-  border-left: 0;
-}
-.menu-path .mp-click--act .mp-seg:last-child { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
-.menu-path .mp-click--loc .mp-seg:last-child { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-action { border-right-color: rgba(255, 138, 61, .5); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-seg:last-child { border-color: rgba(255, 138, 61, .5); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-loc { border-right-color: rgba(110, 168, 232, .45); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-seg:last-child { border-color: rgba(110, 168, 232, .45); }
+/* Positionsbasierte Rundung: außen rund, innen eckig, geteilte Nähte */
+.menu-path .mp-click .mp-seg { border-radius: 0; margin-right: 0; }
+.menu-path .mp-click .mp-seg:first-child { border-radius: .4rem 0 0 .4rem; }
+.menu-path .mp-click .mp-seg:last-child { border-radius: 0 .4rem .4rem 0; }
+.menu-path .mp-click .mp-seg:not(:first-child) { border-left: 0; }
+/* Rahmen der ganzen Pille einheitlich in der Typfarbe der ersten Kammer */
+.menu-path .mp-click--act .mp-seg { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
+.menu-path .mp-click--loc .mp-seg { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
+/* Mittel-/Folgekammern: ruhig (keine Tonfläche), nur das Icon trägt die Farbe */
+.menu-path .mp-seg.mp-mid { background: var(--kurs-card); color: var(--md-default-fg-color); font-weight: 600; }
+.menu-path .mp-seg.mp-mid--loc .mp-ic { color: color-mix(in srgb, var(--kurs-primary) 78%, var(--md-default-fg-color)); }
+.menu-path .mp-seg.mp-mid--act .mp-ic { color: color-mix(in srgb, var(--kurs-accent) 78%, var(--md-default-fg-color)); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-seg { border-color: rgba(255, 138, 61, .5); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-seg { border-color: rgba(110, 168, 232, .45); }
+[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-mid { background: var(--kurs-card); }
+[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-mid--loc .mp-ic { color: #a9cbf0; }
 
 /* ===========================================================================
    V8 — Startseite: Praktika als editoriale Zeilen-Liste

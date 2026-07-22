@@ -91,6 +91,41 @@
     return seg;
   }
 
+  // Label in führende Vorsatz-Kammern + Rest-Ziel zerlegen. Ketten wie
+  // "Rechtsklick Strukturbaum Mesh" → Kammern [Rechtsklick][Strukturbaum],
+  // Ziel "Mesh". So verbinden sich Aktion + Ort + Ziel zu einer Pille.
+  function splitPrefixes(label) {
+    var comps = [];
+    while (true) {
+      var pf = prefixFor(label);
+      if (!pf) break;
+      comps.push({ kw: pf.def.kw, icon: pf.def.icon, cls: pf.def.cls });
+      label = pf.rest;
+      if (!label) break;
+    }
+    return { comps: comps, tail: label };
+  }
+
+  // Zusammengesetzte Pille aus 1..n Vorsatz-Kammern + optionalem Ziel bauen.
+  // Rahmenfarbe richtet sich nach der ersten Kammer (Klick=orange, Ort=blau).
+  function buildPill(comps, tail) {
+    var group = document.createElement('span');
+    group.className = 'mp-click mp-click--' + comps[0].cls;
+    for (var i = 0; i < comps.length; i++) {
+      var seg = document.createElement('span');
+      // nur die erste Kammer trägt die volle Tonfläche; folgende Orts-Kammern
+      // bleiben ruhig (nur Icon farbig), damit die Pille nicht bunt wird
+      seg.className = 'mp-seg ' + (i === 0
+        ? 'mp-' + (comps[i].cls === 'act' ? 'action' : 'loc')
+        : 'mp-mid mp-mid--' + comps[i].cls);
+      seg.innerHTML = '<i class="mp-ic">' + MP_ICONS[comps[i].icon] + '</i>';
+      seg.appendChild(document.createTextNode(comps[i].kw));
+      group.appendChild(seg);
+    }
+    if (tail) group.appendChild(renderPlain(tail));
+    return group;
+  }
+
   function menuPathChips(root) {
     var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
     for (var i = 0; i < codes.length; i++) {
@@ -104,31 +139,20 @@
       var first = true;
       for (var p = 0; p < parts.length; p++) {
         var label = parts[p].trim();
-        var pf = prefixFor(label);
+        // alleinstehender Ort vor einem Pfeil zieht das nächste Segment heran
+        var pf0 = prefixFor(label);
+        if (pf0 && !pf0.rest && pf0.def.merge && p + 1 < parts.length) {
+          label = label + ' ' + parts[p + 1].trim();
+          p++;
+        }
+        var sp = splitPrefixes(label);
         var node;
-        if (pf) {
-          var rest = pf.rest;
-          // alleinstehender Ort (Pfeil-Form): nächstes Segment als Ziel ziehen
-          if (!rest && pf.def.merge && p + 1 < parts.length) {
-            rest = parts[p + 1].trim();
-            p++;
-          }
-          if (rest) {
-            // zusammengesetzte Pille: [Icon Wort | Ziel]
-            node = document.createElement('span');
-            node.className = 'mp-click mp-click--' + pf.def.cls;
-            var pre = document.createElement('span');
-            pre.className = 'mp-seg mp-' + (pf.def.cls === 'act' ? 'action' : 'loc');
-            pre.innerHTML = '<i class="mp-ic">' + MP_ICONS[pf.def.icon] + '</i>';
-            pre.appendChild(document.createTextNode(pf.def.kw));
-            node.appendChild(pre);
-            node.appendChild(renderPlain(rest));
-          } else {
-            // nur das Wort (z.B. `Detailfenster` allein) → Ort-Chip mit Icon
-            node = renderPlain(pf.def.kw);
-          }
+        if (sp.comps.length === 0) {
+          node = renderPlain(sp.tail);
+        } else if (sp.comps.length === 1 && !sp.tail) {
+          node = renderPlain(sp.comps[0].kw);   // nur das Wort → Icon-Chip
         } else {
-          node = renderPlain(label);
+          node = buildPill(sp.comps, sp.tail);
         }
         if (!first) {
           var ar = document.createElement('span');
