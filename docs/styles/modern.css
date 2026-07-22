@@ -1062,17 +1062,16 @@ nav.md-path { overflow-x: auto; }
 .menu-path .mp-click .mp-seg:first-child { border-radius: .4rem 0 0 .4rem; }
 .menu-path .mp-click .mp-seg:last-child { border-radius: 0 .4rem .4rem 0; }
 .menu-path .mp-click .mp-seg:not(:first-child) { border-left: 0; }
-/* Rahmen der ganzen Pille einheitlich in der Typfarbe der ersten Kammer */
+/* Ziel-Kammer (ohne Typ): Rahmen in der Farbe der ersten Kammer, neutrale Fläche */
 .menu-path .mp-click--act .mp-seg { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
 .menu-path .mp-click--loc .mp-seg { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
-/* Mittel-/Folgekammern: ruhig (keine Tonfläche), nur das Icon trägt die Farbe */
-.menu-path .mp-seg.mp-mid { background: var(--kurs-card); color: var(--md-default-fg-color); font-weight: 600; }
-.menu-path .mp-seg.mp-mid--loc .mp-ic { color: color-mix(in srgb, var(--kurs-primary) 78%, var(--md-default-fg-color)); }
-.menu-path .mp-seg.mp-mid--act .mp-ic { color: color-mix(in srgb, var(--kurs-accent) 78%, var(--md-default-fg-color)); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-seg { border-color: rgba(255, 138, 61, .5); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-seg { border-color: rgba(110, 168, 232, .45); }
-[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-mid { background: var(--kurs-card); }
-[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-mid--loc .mp-ic { color: #a9cbf0; }
+/* Jede Vorsatz-Kammer behält ihre eigene Typ-Rahmenfarbe (gewinnt über oben) */
+.menu-path .mp-click .mp-seg.mp-action { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
+.menu-path .mp-click .mp-seg.mp-loc { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-seg,
+[data-md-color-scheme="slate"] .menu-path .mp-click .mp-seg.mp-action { border-color: rgba(255, 138, 61, .5); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-seg,
+[data-md-color-scheme="slate"] .menu-path .mp-click .mp-seg.mp-loc { border-color: rgba(110, 168, 232, .45); }
 
 /* ===========================================================================
    V8 — Startseite: Praktika als editoriale Zeilen-Liste

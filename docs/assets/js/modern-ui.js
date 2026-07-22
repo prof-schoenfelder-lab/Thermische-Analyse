@@ -111,13 +111,12 @@
   function buildPill(comps, tail) {
     var group = document.createElement('span');
     group.className = 'mp-click mp-click--' + comps[0].cls;
+    // Jede Vorsatz-Kammer trägt ihre Typfarbe (Klick=orange, Ort=blau) — egal
+    // an welcher Position, damit z.B. bei "Strukturbaum Rechtsklick Mesh" auch
+    // der Rechtsklick hervorgehoben ist. Nur das Ziel bleibt neutral.
     for (var i = 0; i < comps.length; i++) {
       var seg = document.createElement('span');
-      // nur die erste Kammer trägt die volle Tonfläche; folgende Orts-Kammern
-      // bleiben ruhig (nur Icon farbig), damit die Pille nicht bunt wird
-      seg.className = 'mp-seg ' + (i === 0
-        ? 'mp-' + (comps[i].cls === 'act' ? 'action' : 'loc')
-        : 'mp-mid mp-mid--' + comps[i].cls);
+      seg.className = 'mp-seg mp-' + (comps[i].cls === 'act' ? 'action' : 'loc');
       seg.innerHTML = '<i class="mp-ic">' + MP_ICONS[comps[i].icon] + '</i>';
       seg.appendChild(document.createTextNode(comps[i].kw));
       group.appendChild(seg);
@@ -132,8 +131,9 @@
       var c = codes[i];
       var t = c.textContent;
       if (c.closest('pre')) continue;
-      if (t.indexOf('→') === -1 && !MP_SOLO.test(t)) continue;
-      var parts = t.split('→');
+      // Trenner: → oder das schneller tippbare > (auch ->)
+      if (t.indexOf('→') === -1 && t.indexOf('>') === -1 && !MP_SOLO.test(t)) continue;
+      var parts = t.split(/\s*(?:→|->|>)\s*/).filter(function (s) { return s.trim() !== ''; });
       var span = document.createElement('span');
       span.className = 'menu-path';
       var first = true;
