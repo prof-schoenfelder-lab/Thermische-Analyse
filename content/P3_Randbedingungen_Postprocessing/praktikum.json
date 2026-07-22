@@ -1,0 +1,25 @@
+{
+  "slug": "P3_Randbedingungen_Postprocessing",
+  "nav": "RANDBEDINGUNGEN & POSTPROCESSING",
+  "kinder": [
+    {
+      "extern": "P3_Randbedingungen_Postprocessing/index.md"
+    },
+    {
+      "titel": "Übersicht Randbedingungen",
+      "extern": "P3_Randbedingungen_Postprocessing/Randbedingungen.md"
+    },
+    {
+      "titel": "Beispielaufgabe: Heat Transfer in Fins",
+      "extern": "P3_Randbedingungen_Postprocessing/Beispiel-Fins.md"
+    },
+    {
+      "titel": "Strahlung: Cerankochfeld",
+      "extern": "P3_Randbedingungen_Postprocessing/Beispiel-Cerankochfeld.md"
+    },
+    {
+      "titel": "Postprocessing",
+      "extern": "P3_Randbedingungen_Postprocessing/Postprocessing.md"
+    }
+  ]
+}

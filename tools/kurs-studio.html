@@ -163,8 +163,12 @@ async function readText(dir, name){ var fh=await dir.getFileHandle(name); return
 
 async function openRepo(){
   var root = await window.showDirectoryPicker({ id:"kurs-repo", mode:"readwrite" });
-  var content = await root.getDirectoryHandle("content");
-  var course = await readJSON(content, "course.json");
+  var content;
+  try { content = await root.getDirectoryHandle("content"); }
+  catch(e){ throw new Error("Kein content/-Ordner im gewählten Ordner. Bitte den Repo-Hauptordner wählen (mit content/, docs/, mkdocs.yml)."); }
+  var course;
+  try { course = await readJSON(content, "course.json"); }
+  catch(e){ throw new Error("content/course.json fehlt — Repo noch nicht initialisiert. Einmal 'node tools/studio/bootstrap.js' im Repo-Ordner ausführen."); }
   var praktika = {};
   for (var i=0;i<course.praktika.length;i++){
     var slug = course.praktika[i];

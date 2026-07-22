@@ -1,0 +1,81 @@
+{
+  "slug": "P2_Modellierung_Vernetzung",
+  "nav": "MODELLIERUNG & VERNETZUNG",
+  "kinder": [
+    {
+      "extern": "P2_Modellierung_Vernetzung/index.md"
+    },
+    {
+      "gruppe": "ABSTRAKTIONEN",
+      "kinder": [
+        {
+          "titel": "Grundlagen",
+          "extern": "P2_Modellierung_Vernetzung/Abstraktionen.md"
+        },
+        {
+          "gruppe": "Vorzeigeaufgabe: Rohr",
+          "kinder": [
+            {
+              "titel": "Aufgabenstellung",
+              "extern": "P2_Modellierung_Vernetzung/Rohr/index.md"
+            },
+            {
+              "gruppe": "a) Vollmodell 3D",
+              "kinder": [
+                {
+                  "titel": "1 · Material",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/01-material.md"
+                },
+                {
+                  "titel": "2 · Geometrie",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/02-geometrie.md"
+                },
+                {
+                  "titel": "3 · Zuweisung",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/03-zuweisung.md"
+                },
+                {
+                  "titel": "4 · Netz",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/04-netz.md"
+                },
+                {
+                  "titel": "5 · Randbedingungen",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/05-randbedingungen.md"
+                },
+                {
+                  "titel": "6 · Lösen",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/06-loesen.md"
+                },
+                {
+                  "titel": "7 · Auswertung",
+                  "extern": "P2_Modellierung_Vernetzung/Rohr/07-auswertung.md"
+                }
+              ]
+            },
+            {
+              "titel": "b) Viertelmodell 3D",
+              "extern": "P2_Modellierung_Vernetzung/Rohr/b-viertelmodell.md"
+            },
+            {
+              "titel": "c) Rotationssymmetrie 2D",
+              "extern": "P2_Modellierung_Vernetzung/Rohr/c-rotationssymmetrie.md"
+            },
+            {
+              "titel": "Vergleich",
+              "extern": "P2_Modellierung_Vernetzung/Rohr/vergleich.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gruppe": "VERNETZUNG",
+      "kinder": [
+        {
+          "titel": "Grundlagen",
+          "extern": "P2_Modellierung_Vernetzung/Vernetzung.md"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "P1_Einfuehrung",
+  "nav": "EINFÜHRUNG",
+  "kinder": [
+    {
+      "extern": "P1_Einfuehrung/index.md"
+    }
+  ]
+}

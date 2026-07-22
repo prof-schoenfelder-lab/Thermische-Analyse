@@ -1,0 +1,21 @@
+{
+  "slug": "P4_Transient",
+  "nav": "TRANSIENTE BERECHNUNG",
+  "kinder": [
+    {
+      "extern": "P4_Transient/index.md"
+    },
+    {
+      "titel": "Einleitung",
+      "extern": "P4_Transient/Einleitung.md"
+    },
+    {
+      "titel": "Beispielaufgabe: Ebene Wand",
+      "extern": "P4_Transient/Beispiel-Ebene-Wand.md"
+    },
+    {
+      "titel": "Zusatzaufgabe: Abkühlung Teewasser",
+      "extern": "P4_Transient/Zusatz-Teewasser.md"
+    }
+  ]
+}
