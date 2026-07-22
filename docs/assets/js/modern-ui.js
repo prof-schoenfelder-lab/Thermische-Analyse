@@ -26,9 +26,12 @@
     reiter: '<svg viewBox="0 0 24 24"><path d="M3 7h6l2-2.5h10V19H3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
     baum: '<svg viewBox="0 0 24 24"><path d="M6 4v13a2 2 0 0 0 2 2h4M6 9h6M10 14h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="4" r="2" fill="currentColor"/></svg>',
     detail: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 4v16" stroke="currentColor" stroke-width="2"/><path d="M12 9h6M12 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
-    maus: '<svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v6" stroke="currentColor" stroke-width="2"/><path d="M12 3h5a5 5 0 0 1 0 6h-5z" fill="currentColor"/></svg>',
-    mausL: '<svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v6" stroke="currentColor" stroke-width="2"/><path d="M12 3H7a5 5 0 0 0 0 6h5z" fill="currentColor"/></svg>',
-    mausD: '<svg viewBox="0 0 24 24"><rect x="8" y="4" width="10" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 4v6" stroke="currentColor" stroke-width="2"/><path d="M13 4H8a5 5 0 0 0 0 6h5z" fill="currentColor"/><path d="M5.2 5.8A5.5 5.5 0 0 1 6.9 2.9M2.5 4.6A8.6 8.6 0 0 1 5 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    // Rechtsklick: Maus mit voll gefüllter rechter Taste
+    maus: '<svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 3v6.3" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4h4.1a4.7 4.7 0 0 1 1.4 5.9H12z" fill="currentColor"/></svg>',
+    // Linksklick: Maus mit voll gefüllter linker Taste
+    mausL: '<svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 3v6.3" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4H7.9a4.7 4.7 0 0 0-1.4 5.9H12z" fill="currentColor"/></svg>',
+    // Doppelklick: linke Taste gefüllt + „2"-Badge — unmissverständlich
+    mausD: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="10" height="16.5" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 5.5v5.6" stroke="currentColor" stroke-width="1.4"/><path d="M8 5.9H4.6a4.3 4.3 0 0 0-1.3 5.2H8z" fill="currentColor"/><circle cx="18" cy="6" r="5.4" fill="currentColor"/><text x="18" y="9.15" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8.4" font-weight="700" fill="var(--kurs-card)">2</text></svg>',
     grafik: '<svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 14l4-4 3 3 4-5 3 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>'
   };
 
@@ -44,8 +47,49 @@
     return null;
   }
 
+  // Vorsatz-Wörter, die sich mit dem folgenden Ziel zu EINER Pille verbinden:
+  // Klick-Aktionen (orange) und Orte (blau). cls='act'|'loc' steuert die Optik,
+  // merge=true zieht bei alleinstehendem Ort das nächste Pfad-Segment als Ziel
+  // heran (z.B. `Strukturbaum → Mesh` → [Strukturbaum | Mesh]).
+  var MP_PREFIX = [
+    { kw: 'Rechtsklick',  icon: 'maus',   cls: 'act', merge: false },
+    { kw: 'Doppelklick',  icon: 'mausD',  cls: 'act', merge: false },
+    { kw: 'Linksklick',   icon: 'mausL',  cls: 'act', merge: false },
+    { kw: 'Reiter',       icon: 'reiter', cls: 'loc', merge: true },
+    { kw: 'Strukturbaum', icon: 'baum',   cls: 'loc', merge: true },
+    { kw: 'Detailfenster',icon: 'detail', cls: 'loc', merge: true },
+    { kw: 'Grafikfenster',icon: 'grafik', cls: 'loc', merge: true }
+  ];
+
+  // Liefert {def, rest} wenn label mit einem Vorsatz-Wort beginnt; rest ist das
+  // Ziel im selben Segment (Leerzeichen-Form) bzw. '' wenn nur das Wort dasteht.
+  function prefixFor(label) {
+    for (var k = 0; k < MP_PREFIX.length; k++) {
+      var kw = MP_PREFIX[k].kw;
+      if (label === kw) return { def: MP_PREFIX[k], rest: '' };
+      if (label.indexOf(kw + ' ') === 0)
+        return { def: MP_PREFIX[k], rest: label.slice(kw.length + 1).trim() };
+    }
+    return null;
+  }
+
   // Einzelbegriffe ohne Pfeil, die trotzdem als Ort-Chip erscheinen sollen
   var MP_SOLO = /^(Reiter |Rechtsklick|Doppelklick|Linksklick|Strukturbaum|Detailfenster|Grafikfenster)/;
+
+  // Ein einfaches Ziel-Chip rendern (mit Ort-Icon, falls es selbst ein Ort ist)
+  function renderPlain(label) {
+    var seg = document.createElement('span');
+    seg.className = 'mp-seg';
+    var kind = mpKind(label);
+    if (kind) {
+      seg.classList.add('mp-' + kind);
+      seg.innerHTML = '<i class="mp-ic">' + MP_ICONS[kind] + '</i>';
+      seg.appendChild(document.createTextNode(label));
+    } else {
+      seg.textContent = label;
+    }
+    return seg;
+  }
 
   function menuPathChips(root) {
     var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
@@ -57,44 +101,43 @@
       var parts = t.split('→');
       var span = document.createElement('span');
       span.className = 'menu-path';
+      var first = true;
       for (var p = 0; p < parts.length; p++) {
-        if (p > 0) {
+        var label = parts[p].trim();
+        var pf = prefixFor(label);
+        var node;
+        if (pf) {
+          var rest = pf.rest;
+          // alleinstehender Ort (Pfeil-Form): nächstes Segment als Ziel ziehen
+          if (!rest && pf.def.merge && p + 1 < parts.length) {
+            rest = parts[p + 1].trim();
+            p++;
+          }
+          if (rest) {
+            // zusammengesetzte Pille: [Icon Wort | Ziel]
+            node = document.createElement('span');
+            node.className = 'mp-click mp-click--' + pf.def.cls;
+            var pre = document.createElement('span');
+            pre.className = 'mp-seg mp-' + (pf.def.cls === 'act' ? 'action' : 'loc');
+            pre.innerHTML = '<i class="mp-ic">' + MP_ICONS[pf.def.icon] + '</i>';
+            pre.appendChild(document.createTextNode(pf.def.kw));
+            node.appendChild(pre);
+            node.appendChild(renderPlain(rest));
+          } else {
+            // nur das Wort (z.B. `Detailfenster` allein) → Ort-Chip mit Icon
+            node = renderPlain(pf.def.kw);
+          }
+        } else {
+          node = renderPlain(label);
+        }
+        if (!first) {
           var ar = document.createElement('span');
           ar.className = 'mp-arrow';
           ar.textContent = '→';
           span.appendChild(ar);
         }
-        var label = parts[p].trim();
-        // "Rechtsklick X": Aktion und Ziel werden zu EINER zusammengesetzten
-        // Pille verbunden — [🖱 Rechtsklick | X] — damit sichtbar ist, worauf
-        // sich der Klick bezieht. Eigenes Maus-Icon je Klick-Art.
-        var target = span;
-        var m = label.match(/^(Rechtsklick|Doppelklick|Linksklick)\s+(.+)$/);
-        if (m) {
-          var actIcon = m[1] === 'Rechtsklick' ? 'maus' :
-                        m[1] === 'Doppelklick' ? 'mausD' : 'mausL';
-          var group = document.createElement('span');
-          group.className = 'mp-click';
-          var act = document.createElement('span');
-          act.className = 'mp-seg mp-action';
-          act.innerHTML = '<i class="mp-ic">' + MP_ICONS[actIcon] + '</i>';
-          act.appendChild(document.createTextNode(m[1]));
-          group.appendChild(act);
-          span.appendChild(group);
-          target = group;
-          label = m[2];
-        }
-        var seg = document.createElement('span');
-        seg.className = 'mp-seg';
-        var kind = mpKind(label);
-        if (kind) {
-          seg.classList.add('mp-' + kind);
-          seg.innerHTML = '<i class="mp-ic">' + MP_ICONS[kind] + '</i>';
-          seg.appendChild(document.createTextNode(label));
-        } else {
-          seg.textContent = label;
-        }
-        target.appendChild(seg);
+        first = false;
+        span.appendChild(node);
       }
       c.parentNode.replaceChild(span, c);
     }
@@ -237,28 +280,73 @@
   }
 
   // --- 4) Klickbarer Workflow-Stepper auf geteilten Schritt-Seiten ---------
-  // Aufgaben, die pro Workflow-Schritt eine eigene Seite haben (01-material/
-  // … 07-auswertung/), bekommen unter der Überschrift eine Stepper-Navigation
-  // zum Springen zwischen den Schritten.
+  // Aufgaben, die pro Workflow-Schritt eine eigene Seite haben, bekommen
+  // unter der Überschrift eine Stepper-Navigation zum Springen zwischen den
+  // Schritten. Jede Schritt-Gruppe beschreibt ihre Slugs (Geschwister-Seiten
+  // im selben Ordner), Kurz-Labels und optional eine Tabs-Zeile darüber.
   var WF_SLUGS = ['01-material', '02-geometrie', '03-zuweisung', '04-netz',
                   '05-randbedingungen', '06-loesen', '07-auswertung'];
+  var WF_GROUPS = [
+    { // Konvention nummerierter Schritt-Slugs (wie Thermo-Kurs, Rohr-Muster)
+      slugs: WF_SLUGS,
+      labels: ['Material', 'Geometrie', 'Zuweisung', 'Netz', 'Randbed.', 'Lösen', 'Auswertung'],
+      base: null,
+      tabs: null
+    },
+    { // P1 Vorzeigebeispiel: zweiseitig gelagerter Balken (Lösung mit ANSYS)
+      // '' = die Übersichtsseite (README, Workbench öffnen) als Schritt 1
+      slugs: ['', 'material', 'geometrie', 'materialzuordnung', 'vernetzung',
+              'navigation', 'lagerung', 'belastung', 'gleichungssystem-losen',
+              'gesuchte-werte-bestimmen'],
+      labels: ['Start', 'Material', 'Geometrie', 'Zuweisung', 'Netz', 'Navigation',
+               'Lagerung', 'Belastung', 'Lösen', 'Auswertung'],
+      base: 'losung-mit-ansys',
+      tabs: 'Aufgabe=../../Aufgabenstellung/|Lösung mit ANSYS=../|Analytische Lösung=../../analytische-loesung/',
+      tabsIndex: 'Aufgabe=../Aufgabenstellung/|Lösung mit ANSYS=./|Analytische Lösung=../analytische-loesung/'
+    }
+  ];
+
+  // Liefert {grp, idx, isIndex} wenn der Pfad eine Schrittseite einer Gruppe
+  // ist. isIndex: die Seite ist die Basis-Übersicht (Slug '') selbst.
+  function wfGroupFor(path) {
+    var parts = path.split('/');
+    var seg = parts.pop();
+    var parent = parts[parts.length - 1];
+    for (var g = 0; g < WF_GROUPS.length; g++) {
+      var grp = WF_GROUPS[g];
+      var idx = grp.slugs.indexOf(seg);
+      if (idx !== -1 && seg !== '' && (!grp.base || parent === grp.base)) {
+        return { grp: grp, idx: idx, isIndex: false };
+      }
+      // Basis-Übersicht als eigener Schritt (Slug '')
+      if (grp.base && seg === grp.base && grp.slugs[0] === '') {
+        return { grp: grp, idx: 0, isIndex: true };
+      }
+    }
+    return null;
+  }
 
   function wfPageNav(root) {
     var path = window.location.pathname.replace(/\/+$/, '');
-    var seg = path.split('/').pop();
-    var idx = WF_SLUGS.indexOf(seg);
-    if (idx === -1) return;
+    var hit = wfGroupFor(path);
+    if (!hit) return;
+    var grp = hit.grp, idx = hit.idx;
     var h1 = root.querySelector('article h1, .md-content__inner h1');
     if (!h1) return;
     var nav = document.createElement('nav');
     nav.className = 'wf-pagenav';
     var html = '';
-    for (var i = 0; i < WF_SLUGS.length; i++) {
+    // Links relativ zur Basis: von der Übersicht aus 'slug/', von einer
+    // Schrittseite aus '../slug/'; die Übersicht selbst ist './' bzw. '../'
+    var up = hit.isIndex ? '' : '../';
+    for (var i = 0; i < grp.slugs.length; i++) {
       var cls = i < idx ? 'done' : i === idx ? 'active' : '';
-      html += '<a class="wf-pstep ' + cls + '" href="../' + WF_SLUGS[i] + '/">' +
+      var href = grp.slugs[i] === '' ? (hit.isIndex ? './' : '../')
+                                     : up + grp.slugs[i] + '/';
+      html += '<a class="wf-pstep ' + cls + '" href="' + href + '">' +
         '<span class="wf-pnum">' + (i < idx ? '✓' : (i + 1)) + '</span>' +
-        '<span class="wf-plabel">' + WF_STEPS[i][1] + '</span></a>';
-      if (i < WF_SLUGS.length - 1) html += '<span class="wf-pline' + (i < idx ? ' done' : '') + '"></span>';
+        '<span class="wf-plabel">' + grp.labels[i] + '</span></a>';
+      if (i < grp.slugs.length - 1) html += '<span class="wf-pline' + (i < idx ? ' done' : '') + '"></span>';
     }
     nav.innerHTML = html;
     h1.parentNode.insertBefore(nav, h1.nextSibling);
@@ -276,16 +364,20 @@
   function taskTabs() {
     // data-tabs am task-banner ODER als unsichtbare Konfiguration
     // (<div class="task-tabs-src" data-tabs="…" hidden>) z.B. auf der
-    // Aufgabenstellungs-Seite selbst
+    // Aufgabenstellungs-Seite selbst — ODER automatisch aus der
+    // Schritt-Gruppe (WF_GROUPS mit tabs-Eintrag)
+    var cur = window.location.pathname.replace(/\/+$/, '');
+    var hit = wfGroupFor(cur);
     var banner = document.querySelector('.task-banner[data-tabs], .task-tabs-src[data-tabs]');
-    if (!banner) return;
+    var tabsStr = banner ? banner.getAttribute('data-tabs')
+                         : (hit ? (hit.isIndex ? hit.grp.tabsIndex : hit.grp.tabs) : null);
+    if (!tabsStr) return;
     var h1 = document.querySelector('.md-content article h1, .md-content__inner h1');
     if (!h1) return;
-    var cur = window.location.pathname.replace(/\/+$/, '');
-    var curSlug = cur.split('/').pop();
+    var parentDir = cur.slice(0, cur.lastIndexOf('/'));
     var wrap = document.createElement('div');
     wrap.className = 'task-tabs';
-    banner.getAttribute('data-tabs').split('|').forEach(function (part) {
+    tabsStr.split('|').forEach(function (part) {
       var i = part.indexOf('=');
       if (i === -1) return;
       var a = document.createElement('a');
@@ -293,8 +385,13 @@
       a.href = part.slice(i + 1);
       a.textContent = part.slice(0, i);
       var target = new URL(a.href, window.location.href).pathname.replace(/\/+$/, '');
+      // aktiv: Ziel = aktuelle Seite, Ziel = Schritt-Ordner der aktuellen
+      // Schrittseite, oder (alte Konvention) beide sind Schritt-Slugs
+      // derselben Gruppe
+      var tHit = wfGroupFor(target);
       var active = target === cur ||
-        (WF_SLUGS.indexOf(curSlug) !== -1 && WF_SLUGS.indexOf(target.split('/').pop()) !== -1);
+        (hit && target === parentDir) ||
+        (hit && tHit && tHit.grp === hit.grp);
       if (active) a.classList.add('active');
       wrap.appendChild(a);
     });

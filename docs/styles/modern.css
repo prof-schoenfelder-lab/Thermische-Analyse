@@ -615,6 +615,26 @@ nav.md-path { overflow-x: auto; }
   font-weight: 650;
   margin-right: .1rem;
 }
+/* Orts-Kammer (Reiter/Strukturbaum/…): dieselbe Idee in Primärfarbe (blau),
+   damit „Ort" von „Klick-Aktion" unterscheidbar bleibt */
+.menu-path .mp-seg.mp-loc {
+  background: color-mix(in srgb, var(--kurs-primary) 11%, var(--kurs-card));
+  border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent);
+  color: color-mix(in srgb, var(--kurs-primary) 72%, var(--md-default-fg-color));
+  font-weight: 650;
+  margin-right: .1rem;
+}
+.menu-path .mp-seg.mp-loc .mp-ic { color: color-mix(in srgb, var(--kurs-primary) 78%, var(--md-default-fg-color)); }
+[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-loc {
+  background: rgba(110, 168, 232, .16);
+  border-color: rgba(110, 168, 232, .45);
+  color: #a9cbf0;
+}
+[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-loc .mp-ic { color: #a9cbf0; }
+/* Maus-/Orts-Icons in den Vorsatz-Kammern etwas größer für Lesbarkeit */
+.menu-path .mp-action .mp-ic, .menu-path .mp-loc .mp-ic {
+  width: .98rem; height: .98rem; margin-right: .3rem;
+}
 
 /* ===========================================================================
    V6 — Editorial: Serifen-Display für Überschriften, warme Textfarbe,
@@ -968,6 +988,19 @@ nav.md-path { overflow-x: auto; }
   background: color-mix(in srgb, var(--kurs-accent) 30%, var(--kurs-card));
   color: #ffc79e;
 }
+/* Tutorial-Player: Titel-Pille in derselben leisen Tonlage statt Vollfläche */
+.player__title h1 {
+  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+  font-family: var(--md-text-font);
+  font-size: 1rem;
+  font-weight: 650;
+}
+[data-md-color-scheme="slate"] .player__title h1 {
+  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
+  color: #ffb27d;
+}
+
 /* Mitmach-Knopf in derselben leisen Tonlage */
 .fa-btn {
   background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
@@ -1002,25 +1035,26 @@ nav.md-path { overflow-x: auto; }
   align-items: stretch;
   vertical-align: baseline;
 }
-/* Aktions-Kammer: links, angeschlossen (rechts eckig), rechte Kante = Naht */
-.menu-path .mp-click .mp-action {
+/* Vorsatz-Kammer: links, angeschlossen (rechts eckig), rechte Kante = Naht */
+.menu-path .mp-click .mp-action,
+.menu-path .mp-click .mp-loc {
   margin-right: 0;
   border-radius: .4rem 0 0 .4rem;
-  border-right: 1px solid color-mix(in srgb, var(--kurs-accent) 45%, transparent);
 }
+.menu-path .mp-click .mp-action { border-right: 1px solid color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
+.menu-path .mp-click .mp-loc { border-right: 1px solid color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
 /* Ziel-Kammer: rechts, angeschlossen (links eckig, keine Doppelkante),
-   Rahmen in Akzentfarbe, damit die ganze Pille als Einheit wirkt */
+   Rahmen in der Pillenfarbe, damit die ganze Pille als Einheit wirkt */
 .menu-path .mp-click .mp-seg:last-child {
   border-radius: 0 .4rem .4rem 0;
   border-left: 0;
-  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
 }
-[data-md-color-scheme="slate"] .menu-path .mp-click .mp-action {
-  border-right-color: rgba(255, 138, 61, .5);
-}
-[data-md-color-scheme="slate"] .menu-path .mp-click .mp-seg:last-child {
-  border-color: rgba(255, 138, 61, .5);
-}
+.menu-path .mp-click--act .mp-seg:last-child { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
+.menu-path .mp-click--loc .mp-seg:last-child { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-action { border-right-color: rgba(255, 138, 61, .5); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-seg:last-child { border-color: rgba(255, 138, 61, .5); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-loc { border-right-color: rgba(110, 168, 232, .45); }
+[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-seg:last-child { border-color: rgba(110, 168, 232, .45); }
 
 /* ===========================================================================
    V8 — Startseite: Praktika als editoriale Zeilen-Liste
