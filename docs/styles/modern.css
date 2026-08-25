@@ -902,7 +902,11 @@ nav.md-path { overflow-x: auto; }
   flex-direction: row;
   align-items: baseline;
   gap: .28rem;
+  /* nicht schrumpfen/umbrechen — bei Platzmangel scrollt die Zeile
+     (overflow-x auto + Zentrier-JS), statt "10" zu zerreißen */
+  flex: none;
   min-width: 0;
+  white-space: nowrap;
 }
 .wf-pnum {
   display: inline;
@@ -1431,9 +1435,40 @@ nav.md-path { overflow-x: auto; }
    V11 — größere Grundschrift (Wunsch: fühlt sich an wie ~150% Zoom).
    Alles skaliert mit (rem-basiert): Text, Navigation, Chips, Karten.
    =========================================================================== */
-html { font-size: 150%; }
+html { font-size: 135%; }
 
 /* Obere Tab-Leiste kompakter, damit sie bei großer Grundschrift nicht
    überläuft (Inhalt/Sidebar bleiben voll groß) */
 .md-tabs__link { font-size: .6rem; }
 .md-tabs__item { padding: 0 .5rem; }
+
+/* ===========================================================================
+   V12 — schwebender Weiter-Button auf Schrittseiten
+   Der nächste Schritt ist immer sichtbar (unten rechts), ohne ans Seitenende
+   zu scrollen; blendet aus, sobald das Seitenende erreicht ist. Weicht dem
+   Hilfe-Button aus, wenn dieser aktiv ist.
+   =========================================================================== */
+a.wf-next-float {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 55;
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+  font-family: var(--md-text-font); font-size: .7rem; font-weight: 650;
+  padding: .5rem 1rem; border-radius: 2rem;
+  text-decoration: none;
+  box-shadow: 0 3px 14px rgba(15, 30, 60, .18);
+  border: 1px solid color-mix(in srgb, var(--kurs-accent) 30%, transparent);
+  transition: opacity .2s, transform .2s, background .12s;
+}
+a.wf-next-float:hover {
+  background: color-mix(in srgb, var(--kurs-accent) 19%, var(--kurs-card));
+  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
+}
+a.wf-next-float.hidden { opacity: 0; transform: translateY(6px); pointer-events: none; }
+[data-md-color-scheme="slate"] a.wf-next-float {
+  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
+  color: #ffb27d;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, .45);
+}
+/* Hilfe-Button aktiv → Weiter-Button rückt darüber */
+body:has(#help-fab:not([style*="none"])) a.wf-next-float { bottom: 4.6rem; }

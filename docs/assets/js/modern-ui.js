@@ -420,6 +420,31 @@
     if (act && nav.scrollWidth > nav.clientWidth + 40) {
       nav.scrollLeft = act.offsetLeft - nav.clientWidth / 2 + act.clientWidth / 2;
     }
+    // Schwebender Weiter-Button: der nächste Schritt ist immer sichtbar,
+    // ohne ans Seitenende zu scrollen. Blendet aus, sobald das Seitenende
+    // im Blick ist (dort steht ggf. der ausgeschriebene Weiter-Button).
+    if (idx < grp.slugs.length - 1) {
+      var nHref = grp.slugs[idx + 1] === '' ? (hit.isIndex ? './' : '../')
+                                            : up + grp.slugs[idx + 1] + '/';
+      var fl = document.createElement('a');
+      fl.className = 'wf-next-float';
+      fl.href = nHref;
+      fl.innerHTML = 'Weiter: ' + grp.labels[idx + 1] + ' <span aria-hidden="true">→</span>';
+      document.body.appendChild(fl);
+      var inner = document.querySelector('.md-content__inner');
+      if (inner) {
+        var sent = document.createElement('div');
+        sent.style.cssText = 'height:1px';
+        inner.appendChild(sent);
+        var check = function () {
+          fl.classList.toggle('hidden',
+            sent.getBoundingClientRect().top < window.innerHeight + 8);
+        };
+        window.addEventListener('scroll', check, { passive: true });
+        window.addEventListener('resize', check);
+        check();
+      }
+    }
   }
 
   // --- 4b) Varianten-Tabs über dem Stepper ---------------------------------
