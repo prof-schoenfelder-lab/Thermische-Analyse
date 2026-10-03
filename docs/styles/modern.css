@@ -607,7 +607,7 @@ html:root .ph-medal { border-color: var(--kurs-line); border-radius: var(--kurs-
 /* ---- Startseite: Kopfbereich, Praktika, Dozenten --------------------------------------------------- */
 html:root .md-typeset .kurs-hero h1 { margin: 0; }
 html:root .md-typeset .kurs-hero p { margin: 0; }
-html:root .kurs-hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+html:root .kurs-hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
 html:root .md-typeset a.kurs-btn {
   display: inline-flex; align-items: center; gap: .4rem; text-decoration: none;
   font: 700 .74rem/1 var(--kurs-sans); padding: .72rem 1.15rem;
@@ -618,6 +618,34 @@ html:root .md-typeset a.kurs-btn {
 html:root .md-typeset a.kurs-btn:hover { text-decoration: none; background: var(--kurs-panel); }
 html:root .md-typeset a.kurs-btn--primary { background: var(--kurs-btn-bg); border-color: var(--kurs-btn-bg); color: var(--kurs-btn-fg); }
 html:root .md-typeset a.kurs-btn--primary:hover { background: var(--kurs-btn-bg); color: var(--kurs-btn-fg); filter: brightness(1.07); }
+
+/* OPAL-Login im Kopfbereich der Startseite: zwei Zustände (abgemeldet / angemeldet) */
+html:root .kurs-opal { margin-top: 1.5rem; max-width: 31rem; }
+html:root .kurs-opal-out, html:root .kurs-opal-in {
+  display: flex; gap: .8rem; align-items: flex-start;
+  padding: .85rem 1rem .95rem; background: var(--kurs-surface);
+  border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
+}
+html:root .kurs-opal-in, html:root .kurs-opal.is-in .kurs-opal-out { display: none; }
+html:root .kurs-opal.is-in .kurs-opal-in { display: flex; }
+html:root .kurs-opal-icon {
+  flex: none; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--kurs-accent-soft); color: var(--kurs-accent-ink);
+}
+html:root .kurs-opal-icon svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+html:root .kurs-opal-icon--ok { background: color-mix(in srgb, var(--kurs-c-ok) 14%, var(--kurs-surface)); color: var(--kurs-c-ok); }
+html:root .md-typeset .kurs-opal p { margin: 0; font-size: .7rem; line-height: 1.5; color: var(--kurs-text-2); }
+html:root .md-typeset .kurs-opal p.kurs-opal-title { margin-bottom: .2rem; font-size: .78rem; font-weight: 700; color: var(--kurs-head); }
+html:root .md-typeset .kurs-opal p.kurs-opal-game {
+  display: flex; gap: .5rem; align-items: flex-start;
+  margin: .6rem 0 0; padding: .5rem .65rem;
+  border-radius: var(--kurs-radius); background: var(--kurs-accent-soft); color: var(--kurs-text);
+}
+html:root .kurs-opal-game svg { flex: none; width: 1.05rem; height: 1.05rem; margin-top: .08rem; fill: var(--kurs-accent-ink); }
+html:root .kurs-opal-game b { color: var(--kurs-head); }
+html:root .md-typeset .kurs-opal p.kurs-opal-note { margin-top: .5rem; font-size: .64rem; color: var(--kurs-text-3); }
+html:root .md-typeset a.kurs-opal-link { display: inline-block; margin-top: .45rem; font-size: .72rem; font-weight: 700; color: var(--kurs-accent-ink); text-decoration: none; }
+html:root .md-typeset a.kurs-opal-link:hover { text-decoration: underline; }
 
 /* Praktika-Liste der Startseite: Grundgerüst */
 html:root .md-typeset .prakt-list { margin: 1rem 0 2rem; }
@@ -645,6 +673,9 @@ html:root .md-typeset a.doz-item:hover .doz-name { color: var(--kurs-accent-ink)
 html:root .md-footer { background: var(--kurs-footer-bg); color: var(--kurs-footer-fg); }
 html:root .md-footer-meta { background: var(--kurs-footer-bg); }
 html:root .md-copyright { color: color-mix(in srgb, var(--kurs-footer-fg) 55%, transparent); font-size: .58rem; }
+
+/* OPAL-Plakette in der Kopfzeile (backend-sync.js färbt sie per Inline-Stil für dunkle Kopfzeilen) */
+html:root #ac-sync-badge { background: var(--kurs-accent-soft) !important; color: var(--kurs-accent-ink) !important; font-weight: 600; }
 
 /* Fortschrittsring (answer-checker.js) nach rechts, leise */
 html:root .md-header .player-badge {
