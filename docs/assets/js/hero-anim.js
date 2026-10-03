@@ -112,7 +112,7 @@
       new THREE.MeshStandardMaterial({ color: 0xa3b1bc, metalness: 0.55, roughness: 0.26 })
     );
     scene.add(sphere);
-    var SPH0 = new THREE.Vector3(-3.4, 3.4, 1.4);
+    var SPH0 = new THREE.Vector3(-3.4, 2.9, 1.4);
     var SPH1 = new THREE.Vector3(0, (RI + RA) / 2, 0); // Ziel: Mitte der Rohrwand oben
 
     // 2 Geometrie: Kreisring-Profil (Skizze) und Endkreise der Extrusion
@@ -412,8 +412,8 @@
       // schmale Bühne (Handy): weiter weg, damit das ganze Rohr ins Bild passt,
       // und zur Auswertung tiefer, damit die Legende frei bleibt
       var narrow = Math.max(1, 1.62 / camera.aspect);
-      var rad = (17.5 - 0.8 * res) * narrow;
-      var ty = 0.3 + 0.9 * res * narrow * narrow;
+      var rad = 17.5 * narrow;
+      var ty = 0.35 * res * narrow * narrow;
       camera.position.set(rad * Math.sin(az) * Math.cos(elv), ty + rad * Math.sin(elv), rad * Math.cos(az) * Math.cos(elv));
       camera.lookAt(0, ty, 0);
       camera.updateMatrixWorld();
