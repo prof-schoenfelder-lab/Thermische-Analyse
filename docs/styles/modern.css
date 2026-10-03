@@ -636,14 +636,15 @@ html:root .kurs-opal-icon svg { width: 1.05rem; height: 1.05rem; fill: currentCo
 html:root .kurs-opal-icon--ok { background: color-mix(in srgb, var(--kurs-c-ok) 14%, var(--kurs-surface)); color: var(--kurs-c-ok); }
 html:root .md-typeset .kurs-opal p { margin: 0; font-size: .7rem; line-height: 1.5; color: var(--kurs-text-2); }
 html:root .md-typeset .kurs-opal p.kurs-opal-title { margin-bottom: .2rem; font-size: .78rem; font-weight: 700; color: var(--kurs-head); }
-html:root .md-typeset .kurs-opal p.kurs-opal-game {
+html:root .md-typeset .kurs-opal p.kurs-opal-perk {
   display: flex; gap: .5rem; align-items: flex-start;
-  margin: .6rem 0 0; padding: .5rem .65rem;
+  margin: .5rem 0 0; padding: .5rem .65rem;
   border-radius: var(--kurs-radius); background: var(--kurs-accent-soft); color: var(--kurs-text);
 }
-html:root .kurs-opal-game svg { flex: none; width: 1.05rem; height: 1.05rem; margin-top: .08rem; fill: var(--kurs-accent-ink); }
-html:root .kurs-opal-game b { color: var(--kurs-head); }
+html:root .kurs-opal-perk svg { flex: none; width: 1.05rem; height: 1.05rem; margin-top: .08rem; fill: var(--kurs-accent-ink); }
+html:root .kurs-opal-perk b { color: var(--kurs-head); }
 html:root .md-typeset .kurs-opal p.kurs-opal-note { margin-top: .5rem; font-size: .64rem; color: var(--kurs-text-3); }
+html:root .md-typeset .kurs-opal p.kurs-opal-note a { color: var(--kurs-accent-ink); font-weight: 600; }
 html:root .md-typeset a.kurs-opal-link { display: inline-block; margin-top: .45rem; font-size: .72rem; font-weight: 700; color: var(--kurs-accent-ink); text-decoration: none; }
 html:root .md-typeset a.kurs-opal-link:hover { text-decoration: underline; }
 
