@@ -1,6 +1,6 @@
 site_name: Angewandte FEM in der Thermodynamik
 site_url: https://prof-schoenfelder-lab.github.io/Thermische-Analyse
-copyright: Copyright &copy; 2025 Felix Kaule & Stephan Schönfelder
+copyright: Copyright &copy; 2026 Felix Kaule & Stephan Schönfelder<br>Diese Webseite wurde mit Unterstützung von KI erstellt.
 repo_name: prof-schoenfelder-lab/Thermische-Analyse
 repo_url: https://github.com/prof-schoenfelder-lab/Thermische-Analyse
 edit_uri: edit/main/docs/
@@ -25,6 +25,7 @@ theme:
       name: material
       custom_dir: overrides
       language: de
+      font: false # Source Sans Pro liegt lokal (styles/modern.css), kein Google Fonts
       features:
             - toc.follow
             - navigation.tracking
@@ -33,7 +34,6 @@ theme:
             - navigation.path
             - navigation.indexes
             - navigation.top
-            - navigation.footer
             - content.code.copy
             - search.suggest
             - search.highlight
@@ -95,16 +95,40 @@ extra_javascript:
       - "assets/vendor/three-0.147.0.min.js"
       - "assets/js/course-stats.js"
       - "assets/js/progress-hub.js"
-      - "assets/js/home-scroll.js"
+      - "assets/js/hero-anim.js"
 
 extra_css:
       - "assets/tutorials/player.css"
       - "styles/overrides.css"
       - "styles/steps.css"
-      - "styles/home.css"
       - "styles/grid.css"
       - "assets/styles/answer-checker.css"
       - "styles/modern.css"
+
+# Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums
+extra:
+      praktika:
+            - nr: 1
+              titel: Einführung in ANSYS Workbench
+              text: Oberfläche, Projektaufbau und die erste eigene Simulation.
+              bild: assets/images/card_p1.png
+              link: P1_Einfuehrung/
+            - nr: 2
+              titel: "Modellierung & Vernetzung"
+              text: "Abstraktionen (Vollmodell, Symmetrie, 2D) und saubere Netze."
+              bild: assets/images/card_p2.png
+              link: P2_Modellierung_Vernetzung/
+            - nr: 3
+              titel: "Randbedingungen, Strahlung & Postprocessing"
+              text: "Konvektion, Strahlung & Co. richtig anbringen und Ergebnissen trauen lernen."
+              bild: assets/images/card_p3.png
+              link: P3_Randbedingungen_Postprocessing/
+            - nr: 4
+              titel: Transiente Temperaturfeldberechnung
+              text: Zeitabhängige Temperaturfelder berechnen und auswerten.
+              bild: assets/images/card_p4.png
+              link: P4_Transient/
+
 nav:
       - Home: index.md
       # >>> AUTO-NAV — Praktika werden vom Kurs-Studio erzeugt, nicht von Hand ändern

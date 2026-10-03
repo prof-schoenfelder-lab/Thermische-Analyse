@@ -11,9 +11,9 @@ Interne Beispielseite: alle Gestaltungs-Bausteine auf einen Blick
 
 ## Typografie
 
-Überschriften stehen in **Source Serif 4** (Serifen-Display), der
-Lauftext in **Inter**. Die erste Zeile nach der H1 wird automatisch
-zum Lead-Absatz. *Kursives* und **fettes** Inter für Betonungen im Text.
+Überschriften und Lauftext stehen in **Source Sans Pro**, der Hausschrift
+der HTWK. Die erste Zeile nach der H1 wird automatisch zum Lead-Absatz.
+*Kursives* und **fettes** Source Sans Pro für Betonungen im Text.
 
 ### Eine H3 sieht so aus
 
@@ -66,17 +66,17 @@ Tastenkappen (einzeln und als Kombi):
 
 ## Boxen
 
-Boxen sind typografisch: Kapitälchen-Label in der didaktischen Farbe,
-feine Regel-Linie links, eingerückter Text — keine Farbflächen.
+Boxen sind getönte Flächen mit farbigem Strich links und Icon in der
+didaktischen Farbe.
 
 !!! question "Die Aufgabe"
-    So sieht die Aufgabenstellung aus — blaues Label an blauer Regel-Linie.
+    So sieht die Aufgabenstellung aus: blaue Tönung mit blauem Strich.
 
 !!! check "Checkpoint: So sollte es aussehen"
     Kontrollpunkt in grün — hier vergleichen Studierende ihren Stand.
 
 !!! warning "Wichtige Änderung für 2D"
-    Warnungen in amber: `Rechtsklick Geometry → Properties → Analysis Type → 2D`
+    Warnungen in Rot: `Rechtsklick Geometry → Properties → Analysis Type → 2D`
 
 !!! info
     Neutrale Zusatzinfo ohne didaktische Farbe.

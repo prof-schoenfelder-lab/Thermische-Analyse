@@ -1,21 +1,57 @@
-{% if page.previous or page.next %}
-<div class="page-nav-wrapper" role="navigation" aria-label="Seiten-Navigation">
-  {% if page.previous %}
-  <a class="page-nav page-nav--prev" href="{{ page.previous.url }}">
-    <div class="label">Vorherige</div>
-    <div class="title">{{ page.previous.title }}</div>
-  </a>
-  {% else %}
-  <div class="page-nav page-nav--prev" aria-hidden="true"></div>
-  {% endif %}
-
-  {% if page.next %}
-  <a class="page-nav page-nav--next" href="{{ page.next.url }}">
-    <div class="label">Nächste</div>
-    <div class="title">{{ page.next.title }}</div>
-  </a>
-  {% else %}
-  <div class="page-nav page-nav--next" aria-hidden="true"></div>
-  {% endif %}
-</div>
-{% endif %}
+{#-
+  Zurück/Weiter am Ende des Inhalts (ersetzt die Links in der blauen Fußzeile).
+  Auf der letzten Seite eines Praktikums (die nächste Seite gehört zu einem
+  anderen Praktikum) steht stattdessen eine Abschluss-Karte mit dem nächsten
+  Praktikum aus extra.praktika in mkdocs.yml. Die Startseite bekommt nichts.
+-#}
+{%- set prev = page.previous_page -%}
+{%- set next = page.next_page -%}
+{%- if not page.is_homepage and (prev or next) -%}
+  {%- set cur_p = page.url[1:2] if page.url[:1] == "P" and page.url[2:3] == "_" else "" -%}
+  {%- set next_p = next.url[1:2] if next and next.url[:1] == "P" and next.url[2:3] == "_" else "" -%}
+  {#- Abschluss-Karte nur auf Inhaltsseiten, nicht auf der Startseite eines Praktikums -#}
+  {%- if cur_p and next_p != cur_p and page.url.count('/') > 1 -%}
+    {%- set praktika = config.extra.praktika -%}
+    {%- set np = (praktika | selectattr("nr", "equalto", next_p | int) | first) if next_p else none -%}
+    <section class="kurs-finish" aria-label="Praktikum {{ cur_p }} abgeschlossen">
+      <div class="kurs-finish-main">
+        <div class="kurs-finish-kicker">
+          <span class="kurs-finish-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span>
+          Praktikum {{ cur_p }} abgeschlossen
+        </div>
+        <div class="kurs-finish-steps">
+          {%- for p in praktika %}<i{% if p.nr <= cur_p | int %} class="on"{% endif %}></i>{% endfor -%}
+          <span>{{ cur_p }} von {{ praktika | length }} Praktika</span>
+        </div>
+        {%- if np %}
+        <div class="kurs-finish-title">Weiter mit Praktikum {{ np.nr }}</div>
+        <p class="kurs-finish-name">{{ np.titel }}</p>
+        <p class="kurs-finish-desc">{{ np.text }}</p>
+        <div class="kurs-finish-actions">
+          <a class="kurs-finish-btn" href="{{ np.link | url }}">Praktikum {{ np.nr }} starten →</a>
+        {%- else %}
+        <div class="kurs-finish-title">Alle Praktika geschafft</div>
+        <p class="kurs-finish-desc">Ihren Stand und Ihre Abzeichen sehen Sie unter Mein Fortschritt.</p>
+        <div class="kurs-finish-actions">
+          <a class="kurs-finish-btn" href="{{ 'Fortschritt/' | url }}">Mein Fortschritt →</a>
+        {%- endif %}
+          {%- if prev %}
+          <a class="kurs-finish-back" href="{{ prev.url | url }}">← Zurück: {{ prev.title }}</a>
+          {%- endif %}
+        </div>
+      </div>
+      {%- if np %}
+      <a class="kurs-finish-media" href="{{ np.link | url }}" tabindex="-1" aria-hidden="true"><img class="no-lightbox" src="{{ np.bild | url }}" alt=""></a>
+      {%- endif %}
+    </section>
+  {%- else -%}
+    <nav class="kurs-pagenav" aria-label="Seiten-Navigation">
+      {%- if prev %}
+      <a class="kurs-pn kurs-pn--prev" href="{{ prev.url | url }}"><span class="kurs-pn-dir">← Zurück</span><span class="kurs-pn-title">{{ prev.title }}</span></a>
+      {%- endif %}
+      {%- if next %}
+      <a class="kurs-pn kurs-pn--next" href="{{ next.url | url }}" rel="next"><span class="kurs-pn-dir">Weiter →</span><span class="kurs-pn-title">{{ next.title }}</span></a>
+      {%- endif %}
+    </nav>
+  {%- endif -%}
+{%- endif -%}

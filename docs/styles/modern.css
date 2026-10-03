@@ -1,1474 +1,929 @@
 /* ===========================================================================
-   Modernes Kurs-Design ("Lehre zuerst"):
-   - Inter als Schrift, ruhige Farbwelt (tiefes Blau + Wärme-Orange als Akzent)
-   - Admonitions als weiche Karten mit klarer didaktischer Farbsprache
-   - Screenshots gerahmt (wichtig im Dark Mode), Menüpfad-Chips,
-     Workflow-Stepper und Mitmach-Modus (Styles; Logik in modern-ui.js)
+   Kursdesign „Campus“ (10/2026): HTWK-Erscheinungsbild, hell und ruhig.
+   Source Sans Pro, Cyan als einziger Akzent, Dunkelblau für Überschriften,
+   Boxen als getönte Flächen. Ersetzt die früheren Schichten V1 bis V12.
+
+   Aufbau: 1. Schrift  2. Farben und Formen (Tokens, hell und dunkel)
+           3. Bausteine  4. Feinheiten Campus
+   „html:root“ vor den Selektoren hebt nur die Spezifität an, damit diese
+   Datei die älteren Stylesheets (overrides.css, steps.css, answer-checker.css,
+   player.css) sicher überstimmt.
    =========================================================================== */
 
-/* ---- Schrift (lokal gevendort, kein CDN) -------------------------------- */
-@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; font-display: swap;
-  src: url("../assets/fonts/inter-400.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-weight: 500; font-style: normal; font-display: swap;
-  src: url("../assets/fonts/inter-500.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-weight: 600; font-style: normal; font-display: swap;
-  src: url("../assets/fonts/inter-600.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-weight: 700; font-style: normal; font-display: swap;
-  src: url("../assets/fonts/inter-700.woff2") format("woff2"); }
+/* ---- Hausschrift Source Sans Pro (lokal, Latin-Teilmenge, OFL) ------------- */
+@font-face { font-family: "Source Sans Pro"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/source-sans-pro-400.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans Pro"; font-weight: 400; font-style: italic; font-display: swap;
+  src: url("../assets/fonts/source-sans-pro-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans Pro"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/source-sans-pro-600.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans Pro"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("../assets/fonts/source-sans-pro-700.woff2") format("woff2"); }
 
-:root {
-  --md-text-font: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
-  /* Kursfarben */
-  --kurs-primary: #17345e;        /* tiefes Blau */
-  --kurs-primary-dark: #102544;
-  --kurs-accent: #f2620f;         /* Wärme-Orange */
-  --kurs-accent-soft: #fff1e7;
+/* ---- Farben und Formen (Tokens) ------------------------------------------ */
+html:root body {
+  --kurs-radius: .38rem; --kurs-radius-md: .6rem; --kurs-radius-lg: .85rem; --kurs-btn-radius: .5rem;
+  --kurs-measure: 50rem; --kurs-fs: .82rem; --kurs-lh: 1.68;
+}
+html:root body[data-md-color-scheme="default"] {
+  --kurs-bg: #ffffff; --kurs-surface: #ffffff; --kurs-panel: #f2f6f9;
+  --kurs-text: #2e3639; --kurs-text-2: #566166; --kurs-text-3: #87939a;
+  --kurs-head: #022541;
+  --kurs-line: #e2e8ec; --kurs-line-2: #cdd6dc;
+  --kurs-accent: #009ee3; --kurs-accent-ink: #0070a6; --kurs-accent-soft: #e3f4fc;
+  --kurs-brand: #022541;
+  --kurs-header-bg: #ffffff; --kurs-header-fg: #022541; --kurs-header-fg-2: #6b777d;
+  --kurs-header-line: #e2e8ec; --kurs-search-bg: #f1f4f6; --kurs-logo-filter: brightness(0);
+  --kurs-tabs-bg: #ffffff; --kurs-tabs-fg: #5b676d; --kurs-tabs-active: #022541; --kurs-tabs-line: #e2e8ec; --kurs-tabs-mark: #009ee3;
+  --kurs-footer-bg: #022541; --kurs-footer-fg: #ffffff;
+  --kurs-btn-bg: #009ee3; --kurs-btn-fg: #ffffff;
+  --kurs-c-task: #004699; --kurs-c-ok: #00964e; --kurs-c-warn: #e53009; --kurs-c-danger: #c42a0a;
+  --kurs-c-tip: #009ee3; --kurs-c-info: #5b676d; --kurs-c-abstract: #022541; --kurs-c-example: #e5007d;
+  --kurs-chip-bg: #f4f7f9; --kurs-chip-fg: #2e3639; --kurs-chip-border: #d6dee3;
+  --kurs-chip-act-bg: #e3f4fc; --kurs-chip-act-fg: #00689a; --kurs-chip-act-border: #9cd6f2;
+  --kurs-chip-loc-bg: #e9eff7; --kurs-chip-loc-fg: #004699; --kurs-chip-loc-border: #b3c6e0;
+  --kurs-shadow: 0 1px 2px rgba(2, 37, 65, .06), 0 8px 24px rgba(2, 37, 65, .08);
+}
+html:root body[data-md-color-scheme="slate"] {
+  --kurs-bg: #0a1621; --kurs-surface: #0a1621; --kurs-panel: #102231;
+  --kurs-text: #d5dee4; --kurs-text-2: #a3b1ba; --kurs-text-3: #74848f;
+  --kurs-head: #ffffff;
+  --kurs-line: #1c3142; --kurs-line-2: #2a465c;
+  --kurs-accent: #18aeef; --kurs-accent-ink: #62c9f5; --kurs-accent-soft: rgba(0, 158, 227, .15);
+  --kurs-brand: #009ee3;
+  --kurs-header-bg: #0a1621; --kurs-header-fg: #ffffff; --kurs-header-fg-2: #a3b1ba;
+  --kurs-header-line: #1c3142; --kurs-search-bg: #13283a; --kurs-logo-filter: none;
+  --kurs-tabs-bg: #0a1621; --kurs-tabs-fg: #a3b1ba; --kurs-tabs-active: #ffffff; --kurs-tabs-line: #1c3142; --kurs-tabs-mark: #18aeef;
+  --kurs-footer-bg: #06101a; --kurs-footer-fg: #dbe4ea;
+  --kurs-btn-bg: #18aeef; --kurs-btn-fg: #022541;
+  --kurs-c-task: #6ea6ff; --kurs-c-ok: #3cc583; --kurs-c-warn: #ff6a45; --kurs-c-danger: #ff5a3c;
+  --kurs-c-tip: #18aeef; --kurs-c-info: #a3b1ba; --kurs-c-abstract: #cfe3f2; --kurs-c-example: #ff4fa8;
+  --kurs-chip-bg: #12273a; --kurs-chip-fg: #d5dee4; --kurs-chip-border: #26425a;
+  --kurs-chip-act-bg: rgba(0, 158, 227, .16); --kurs-chip-act-fg: #7fd3f7; --kurs-chip-act-border: rgba(0, 158, 227, .45);
+  --kurs-chip-loc-bg: rgba(90, 140, 220, .15); --kurs-chip-loc-fg: #a9c4f0; --kurs-chip-loc-border: rgba(120, 160, 230, .4);
+  --kurs-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
 }
 
-/* ---- Header & Navigation ------------------------------------------------- */
-[data-md-color-scheme="default"] {
-  --md-primary-fg-color: var(--kurs-primary);
-  --md-primary-fg-color--dark: var(--kurs-primary-dark);
-  --md-accent-fg-color: var(--kurs-accent);
-  --md-typeset-a-color: #1d5db1;
+/* ---- Grundlage ------------------------------------------------------------ */
+html:root {
+  font-size: 135%;
+  --md-text-font: "Source Sans Pro";
+  --md-code-font: ui-monospace;
+  --kurs-sans: "Source Sans Pro", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --kurs-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color: var(--kurs-primary-dark);
-  --md-accent-fg-color: #ff8a3d;
-  --md-typeset-a-color: #6ea8e8;
+html:root body {
+  /* Material-Variablen aus den Design-Tokens */
+  --md-default-bg-color: var(--kurs-surface);
+  --md-default-bg-color--light: color-mix(in srgb, var(--kurs-surface) 70%, transparent);
+  --md-default-bg-color--lighter: color-mix(in srgb, var(--kurs-surface) 30%, transparent);
+  --md-default-bg-color--lightest: color-mix(in srgb, var(--kurs-surface) 12%, transparent);
+  --md-default-fg-color: var(--kurs-text);
+  --md-default-fg-color--light: var(--kurs-text-2);
+  --md-default-fg-color--lighter: var(--kurs-text-3);
+  --md-default-fg-color--lightest: var(--kurs-line);
+  --md-primary-fg-color: var(--kurs-brand);
+  --md-primary-fg-color--light: var(--kurs-brand);
+  --md-primary-fg-color--dark: var(--kurs-brand);
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, .7);
+  --md-accent-fg-color: var(--kurs-accent-ink);
+  --md-accent-fg-color--transparent: var(--kurs-accent-soft);
+  --md-accent-bg-color: #fff;
+  --md-typeset-color: var(--kurs-text);
+  --md-typeset-a-color: var(--kurs-accent-ink);
+  --md-typeset-mark-color: var(--kurs-accent-soft);
+  --md-typeset-table-color: var(--kurs-line);
+  --md-code-bg-color: var(--kurs-panel);
+  --md-code-fg-color: var(--kurs-text);
+  --md-admonition-fg-color: var(--kurs-text);
+  --md-admonition-bg-color: transparent;
+  --md-footer-bg-color: var(--kurs-footer-bg);
+  --md-footer-bg-color--dark: var(--kurs-footer-bg);
+  --md-footer-fg-color: var(--kurs-footer-fg);
+  --md-footer-fg-color--light: color-mix(in srgb, var(--kurs-footer-fg) 72%, transparent);
+  --md-footer-fg-color--lighter: color-mix(in srgb, var(--kurs-footer-fg) 48%, transparent);
+  --kurs-card: var(--kurs-surface); /* modern-ui.js: Ziffer im Doppelklick-Symbol */
+  /* steps.css */
+  --blue: var(--kurs-accent);
+  --line: var(--kurs-line-2);
+  --halo-color: var(--kurs-surface);
+  /* Vorgaben für die Bausteine */
+  --kurs-head-font: var(--kurs-sans);
+  --kurs-chip-font: var(--kurs-sans);
+  --kurs-num-bg: var(--kurs-accent-soft);
+  --kurs-num-fg: var(--kurs-accent-ink);
+  --kurs-num-border: 0;
+  --kurs-num-radius: 50%;
+  --kurs-num-font: var(--kurs-sans);
+  --kurs-num-line: color-mix(in srgb, var(--kurs-accent) 30%, transparent);
+  --kurs-img-radius: var(--kurs-radius-md);
+  --kurs-img-border: 1px solid var(--kurs-line);
+  --kurs-img-shadow: none;
+  background: var(--kurs-bg);
+  color: var(--kurs-text);
 }
-.md-header, .md-tabs {
-  background: linear-gradient(90deg, var(--kurs-primary-dark) 0%, var(--kurs-primary) 70%, #1d4477 100%);
-}
-.md-header { box-shadow: 0 1px 8px rgba(9, 20, 38, .25); }
-.md-tabs__link--active, .md-tabs__link:hover { color: #ffd9bd; }
+html:root .md-main { background: transparent; }
 
-/* Aktiver Navigationspunkt als Pill */
-.md-nav__link--active {
-  background: color-mix(in srgb, var(--kurs-accent) 12%, transparent);
-  border-radius: .45rem;
-  padding-left: .35rem !important;
-  font-weight: 600;
+/* ---- Kopfzeile ------------------------------------------------------------ */
+html:root .md-header {
+  background: var(--kurs-header-bg);
+  color: var(--kurs-header-fg);
+  box-shadow: none;
+  border-bottom: 1px solid var(--kurs-header-line);
+}
+html:root .md-header__button.md-logo img,
+html:root .md-header__button.md-logo svg { height: 1.1rem; filter: var(--kurs-logo-filter, none); }
+html:root .md-header__title { font-size: .8rem; font-weight: 600; }
+html:root .md-header__topic:first-child { font-weight: 700; }
+/* Suchfeld: Material legt den Hintergrund aufs Formular (26 % Schwarz, fast eckig);
+   daher das Formular einfärben und das Eingabefeld durchsichtig lassen */
+html:root .md-header .md-search__form { background: var(--kurs-search-bg); border-radius: var(--kurs-radius); }
+html:root .md-header .md-search__form:hover { background: color-mix(in srgb, var(--kurs-search-bg) 88%, var(--kurs-header-fg)); }
+html:root .md-header .md-search__input { background: transparent; color: var(--kurs-header-fg); }
+html:root .md-header .md-search__input::placeholder { color: var(--kurs-header-fg-2); }
+html:root .md-header .md-search__input ~ .md-search__icon,
+html:root .md-header .md-search__icon { color: var(--kurs-header-fg-2); }
+html:root .md-header .md-source { color: var(--kurs-header-fg-2); }
+html:root .md-header .answer-reset-page {
+  background: transparent; color: var(--kurs-header-fg-2);
+  border: 1px solid var(--kurs-header-line); border-radius: var(--kurs-radius);
+  font: 600 .56rem/1.2 var(--kurs-sans); padding: .3rem .55rem;
+}
+html:root .md-header .answer-reset-page:hover { color: var(--kurs-header-fg); box-shadow: none; }
+@media (max-width: 44em) { html:root .md-header .answer-reset-page { display: none !important; } }
+
+/* ---- Reiter (obere Navigation) ------------------------------------------- */
+html:root .md-tabs {
+  background: var(--kurs-tabs-bg);
+  color: var(--kurs-tabs-fg);
+  border-bottom: 1px solid var(--kurs-tabs-line);
+}
+html:root .md-tabs__item { height: auto; padding: 0 .55rem; }
+html:root .md-tabs__link {
+  margin-top: 0; padding: .62rem 0 .55rem;
+  font-size: .58rem; font-weight: 600; letter-spacing: .05em;
+  opacity: 1; color: var(--kurs-tabs-fg);
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s, background .15s;
+}
+html:root .md-tabs__link:hover { color: var(--kurs-tabs-active); }
+html:root .md-tabs__item--active .md-tabs__link {
+  color: var(--kurs-tabs-active);
+  border-bottom-color: var(--kurs-tabs-mark, transparent);
+}
+html:root .md-tabs__link svg, html:root .md-tabs__link .twemoji { display: none; }
+
+/* ---- Seitenleiste ---------------------------------------------------------- */
+html:root .md-nav { font-size: .68rem; }
+html:root .md-sidebar--primary .md-nav__link { color: var(--kurs-text-2); margin-top: .32em; transition: color .12s; }
+html:root .md-sidebar--primary .md-nav__link:hover { color: var(--kurs-text); }
+html:root .md-sidebar--primary .md-nav__link--active,
+html:root .md-sidebar--primary .md-nav__item .md-nav__link--active { color: var(--kurs-accent-ink); font-weight: 600; }
+html:root .md-sidebar--primary .md-nav__item--section > .md-nav__link {
+  font-size: .56rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--kurs-text-3); margin-top: 1.15em;
+}
+html:root .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  background: var(--kurs-bg); box-shadow: 0 0 .4rem .4rem var(--kurs-bg);
+  font-size: .58rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--kurs-text);
+}
+html:root .md-sidebar--primary .md-nav__link > svg,
+html:root .md-sidebar--primary .md-nav__link > .twemoji { display: none; }
+html:root .md-sidebar--primary .md-nav__icon { opacity: .4; }
+html:root .md-sidebar__scrollwrap { scrollbar-width: thin; }
+html:root .md-nav__title { background: transparent; box-shadow: none; color: var(--kurs-text-3); }
+
+/* ---- Inhaltsfläche ----------------------------------------------------------- */
+html:root .md-sidebar--secondary { display: none !important; }
+@media screen and (min-width: 76.25em) {
+  html:root .md-content { max-width: var(--kurs-measure, 50rem); margin-inline: auto; }
+}
+html:root .md-content__inner {
+  background: var(--kurs-card-bg, transparent);
+  border: var(--kurs-card-border, 0);
+  border-radius: var(--kurs-card-radius, 0);
+  box-shadow: var(--kurs-card-shadow, none);
+  padding: var(--kurs-card-pad, .4rem 0 2.4rem);
+}
+html:root .md-content__inner::before { display: none; }
+html:root .md-content__button { color: var(--kurs-text-3); }
+html:root .md-source-file { color: var(--kurs-text-3); font-size: .58rem; }
+
+/* Brotkrümel: aus der Karte herausgezogen (modern-ui.js), eingedampft */
+html:root .md-content > .md-path {
+  margin: 0 .8rem .35rem; padding-top: 1rem;
+  font-size: .58rem; overflow: visible;
+}
+@media screen and (min-width: 76.25em) { html:root .md-content > .md-path { margin-inline: 1.2rem; } }
+html:root .md-path__list { flex-wrap: wrap; }
+html:root .md-path__list .md-path__item--collapsed { display: none !important; }
+html:root .md-path__link { color: var(--kurs-text-3); }
+html:root .md-path__link:hover { color: var(--kurs-accent-ink); }
+html:root .md-path__item--dots button {
+  border: 0; cursor: pointer; font: inherit; line-height: 1.4;
+  background: var(--kurs-panel); color: var(--kurs-text-3);
+  border-radius: var(--kurs-radius); padding: 0 .45rem;
 }
 
-/* ---- Typografie ---------------------------------------------------------- */
-.md-typeset { font-size: .78rem; line-height: 1.65; }
-.md-typeset h1 { font-weight: 700; letter-spacing: -.015em; color: var(--md-default-fg-color); }
-.md-typeset h2 { font-weight: 700; letter-spacing: -.01em; margin-top: 2.2em; }
-.md-typeset h3 { font-weight: 600; }
+/* ---- Typografie --------------------------------------------------------------- */
+html:root .md-typeset { font-size: var(--kurs-fs, .82rem); line-height: var(--kurs-lh, 1.65); color: var(--kurs-text); }
+html:root .md-typeset :is(h1, h2, h3, h4) { font-family: var(--kurs-head-font); color: var(--kurs-head); }
+html:root .md-typeset h1 { font-size: 2.05em; font-weight: 700; line-height: 1.15; letter-spacing: -.012em; margin: .25em 0 .6em; }
+html:root .md-typeset h2 { font-size: 1.42em; font-weight: 700; line-height: 1.25; letter-spacing: -.006em; margin: 2.2em 0 .6em; }
+html:root .md-typeset h3 { font-size: 1.14em; font-weight: 700; line-height: 1.35; margin: 1.8em 0 .5em; }
+html:root .md-typeset h4 { font-size: 1em; font-weight: 700; margin: 1.5em 0 .4em; }
+html:root .md-typeset h1 + p { font-size: 1.08em; color: var(--kurs-text-2); }
+html:root .md-typeset a { color: var(--kurs-accent-ink); }
+html:root .md-typeset a:hover { color: var(--kurs-accent-ink); text-decoration: underline; text-underline-offset: .18em; }
+html:root .md-typeset hr { border-bottom: 1px solid var(--kurs-line); margin: 2.4em 0; }
+html:root .md-typeset p { margin-block: .85em; }
+html:root .md-typeset :is(ul, ol) li { margin-bottom: .4em; }
+html:root .md-typeset .headerlink { color: var(--kurs-text-3); }
+html:root .md-typeset strong { font-weight: 700; }
 
-/* ---- Screenshots: gerahmt, gerundet, klick-zoom bleibt (glightbox) ------- */
-.md-typeset .md-content__inner img:not(.no-lightbox):not(.twemoji) {
-  border-radius: .55rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  box-shadow: 0 2px 10px rgba(15, 30, 60, .08);
+/* Inline-Code ruhig; in Überschriften ohne Kasten in Akzentfarbe */
+html:root .md-typeset :not(pre) > code {
+  background: var(--kurs-code-bg, var(--kurs-panel));
+  color: var(--kurs-code-fg, var(--kurs-text));
+  border: 1px solid var(--kurs-code-border, var(--kurs-line));
+  border-radius: var(--kurs-radius);
+  padding: .04em .36em;
+  font: 500 .84em/1.35 var(--kurs-mono);
+  white-space: normal; word-break: break-word; box-shadow: none;
+}
+html:root .md-typeset :is(h1, h2, h3, h4) code {
+  font: inherit; background: none; border: 0; padding: 0;
+  color: var(--kurs-accent-ink);
+}
+html:root .md-typeset pre > code { font-family: var(--kurs-mono); }
+
+/* ---- Menüpfad-Chips (modern-ui.js) ------------------------------------------- */
+html:root .menu-path { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .2rem; vertical-align: baseline; }
+html:root .menu-path .mp-seg {
+  display: inline-flex; align-items: center;
+  background: var(--kurs-chip-bg); color: var(--kurs-chip-fg);
+  border: 1px solid var(--kurs-chip-border);
+  border-radius: var(--kurs-radius);
+  padding: .02rem .45rem;
+  font: 600 .68rem/1.5 var(--kurs-chip-font);
+  white-space: nowrap;
+}
+html:root .menu-path .mp-arrow { color: var(--kurs-accent); font-weight: 700; font-size: .7rem; padding: 0 .04rem; }
+html:root .menu-path .mp-ic { display: inline-block; width: .9rem; height: .9rem; margin-right: .28rem; color: currentColor; }
+html:root .menu-path .mp-ic svg { display: block; width: 100%; height: 100%; }
+html:root .menu-path .mp-seg.mp-action { background: var(--kurs-chip-act-bg); border-color: var(--kurs-chip-act-border); color: var(--kurs-chip-act-fg); }
+html:root .menu-path .mp-seg.mp-loc { background: var(--kurs-chip-loc-bg); border-color: var(--kurs-chip-loc-border); color: var(--kurs-chip-loc-fg); }
+html:root .menu-path .mp-click { display: inline-flex; align-items: stretch; }
+html:root .menu-path .mp-click .mp-seg { border-radius: 0; margin: 0; }
+html:root .menu-path .mp-click .mp-seg:first-child { border-radius: var(--kurs-radius) 0 0 var(--kurs-radius); }
+html:root .menu-path .mp-click .mp-seg:last-child { border-radius: 0 var(--kurs-radius) var(--kurs-radius) 0; }
+html:root .menu-path .mp-click .mp-seg:only-child { border-radius: var(--kurs-radius); }
+html:root .menu-path .mp-click .mp-seg:not(:first-child) { border-left: 0; }
+html:root .menu-path .mp-click--act .mp-seg { border-color: var(--kurs-chip-act-border); }
+html:root .menu-path .mp-click--loc .mp-seg { border-color: var(--kurs-chip-loc-border); }
+html:root .menu-path .mp-click .mp-seg.mp-action { border-color: var(--kurs-chip-act-border); }
+html:root .menu-path .mp-click .mp-seg.mp-loc { border-color: var(--kurs-chip-loc-border); }
+
+/* Tastenkappen */
+html:root .keys { display: inline-flex; align-items: center; gap: .25rem; vertical-align: baseline; }
+html:root .keys .keys-plus { color: var(--kurs-text-3); font-weight: 600; font-size: .66rem; }
+html:root .md-typeset kbd.kc {
+  display: inline-block; min-width: .95rem; text-align: center;
+  font: 600 .64rem/1.4 var(--kurs-chip-font);
+  color: var(--kurs-text);
+  background: var(--kurs-kbd-bg, var(--kurs-surface));
+  border: 1px solid var(--kurs-line-2); border-bottom-width: 2px;
+  border-radius: var(--kurs-radius);
+  padding: .02rem .42rem; box-shadow: none; vertical-align: baseline;
+}
+
+/* ---- Boxen (Admonitions, aufklappbare Details) -------------------------------- */
+html:root .md-typeset :is(.admonition, details) {
+  --kurs-type: var(--kurs-c-info);
+  margin: 1.5em 0; padding: 0 1rem; font-size: inherit;
+  background: transparent; border: 0; border-radius: 0; box-shadow: none;
+  color: var(--kurs-text);
+}
+html:root .md-typeset :is(.admonition, details):is(.question, .help, .faq) { --kurs-type: var(--kurs-c-task); }
+html:root .md-typeset :is(.admonition, details):is(.success, .check, .done) { --kurs-type: var(--kurs-c-ok); }
+html:root .md-typeset :is(.admonition, details):is(.warning, .caution, .attention) { --kurs-type: var(--kurs-c-warn); }
+html:root .md-typeset :is(.admonition, details):is(.danger, .error, .failure, .fail, .missing, .bug) { --kurs-type: var(--kurs-c-danger); }
+html:root .md-typeset :is(.admonition, details):is(.tip, .hint, .important) { --kurs-type: var(--kurs-c-tip); }
+html:root .md-typeset :is(.admonition, details):is(.abstract, .summary, .tldr) { --kurs-type: var(--kurs-c-abstract); }
+html:root .md-typeset :is(.admonition, details):is(.example) { --kurs-type: var(--kurs-c-example); }
+html:root .md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
+  margin: 0 -1rem; padding: .7rem 1rem .3rem 2.55rem;
+  background: transparent; border: 0; border-radius: 0;
+  font-weight: 700; color: var(--kurs-head);
+}
+html:root .md-typeset :is(.admonition, details) > :is(.admonition-title, summary)::before {
+  background-color: var(--kurs-type);
+  left: 1rem; top: .74rem; width: 1.02rem; height: 1.02rem;
+}
+html:root .md-typeset details > summary { cursor: pointer; }
+html:root .md-typeset details > summary::after { color: var(--kurs-text-3); background-color: currentColor; top: .74rem; }
+html:root .md-typeset :is(.admonition, details) > :last-child { margin-bottom: .9rem; }
+html:root .md-typeset :is(.admonition, details) :is(p, li, ul, ol) { font-size: inherit; }
+
+/* Kurzanleitung: nummerierte Schritte als Zeitleiste */
+html:root .md-typeset details > ol { margin: .6rem 0 0; padding: 0; counter-reset: anl; }
+html:root .md-typeset details > ol > li {
+  list-style: none; counter-increment: anl; position: relative;
+  margin: 0 0 1.1rem; padding-left: 2.2rem;
+}
+html:root .md-typeset details > ol > li::before {
+  content: counter(anl);
+  position: absolute; left: 0; top: -.04rem;
+  width: 1.5rem; height: 1.5rem; display: grid; place-items: center;
+  border-radius: var(--kurs-num-radius); border: var(--kurs-num-border);
+  background: var(--kurs-num-bg); color: var(--kurs-num-fg);
+  font: 700 .66rem/1 var(--kurs-num-font);
+  box-sizing: border-box;
+}
+html:root .md-typeset details > ol > li:not(:last-child)::after {
+  content: ""; position: absolute; left: .74rem; top: 1.62rem; bottom: -.95rem;
+  width: 1px; background: var(--kurs-num-line);
+}
+html:root .md-typeset details > ol > li img { display: block; margin: .55rem 0 .3rem; max-width: 100%; max-height: 22rem; width: auto; }
+html:root .md-typeset details > ol > li > p { margin-block: .35em; }
+
+/* Schritte-Zeitleiste (steps.css) in Designfarben */
+html:root .step .step-title {
+  color: var(--kurs-head); text-transform: none; letter-spacing: 0;
+  font-size: .86rem; font-weight: 700;
+}
+html:root .step::before {
+  background: var(--kurs-num-bg); color: var(--kurs-num-fg);
+  border: var(--kurs-num-border); border-radius: var(--kurs-num-radius);
+  font-family: var(--kurs-num-font); font-size: .7rem; font-weight: 700;
+  box-shadow: 0 0 0 6px var(--kurs-surface);
+  box-sizing: border-box;
+}
+html:root .steps::before { background: var(--kurs-num-line); width: 2px; }
+
+/* ---- Aufgaben-Kopf: Varianten-Reiter, Schritt-Navigation, Banner --------------- */
+html:root .task-tabs { display: flex; flex-wrap: wrap; gap: .2rem; margin: 1rem 0 .6rem; max-width: 100%; }
+html:root .md-typeset a.task-tab {
+  font-size: .7rem; font-weight: 600; white-space: nowrap; text-decoration: none;
+  padding: .3rem .75rem; color: var(--kurs-text-2);
+}
+html:root .md-typeset a.task-tab:hover { color: var(--kurs-text); text-decoration: none; }
+html:root .md-typeset a.task-tab.active { color: var(--kurs-head); }
+
+html:root .wf-pagenav {
+  display: flex; align-items: center; gap: .35rem;
+  margin: .5rem 0 1.8rem; padding: .15rem .1rem .3rem;
+  overflow-x: auto; scrollbar-width: none;
+}
+html:root .wf-pagenav::-webkit-scrollbar { display: none; }
+html:root .md-typeset a.wf-pstep, html:root a.wf-pstep {
+  display: inline-flex; align-items: center; gap: .3rem;
+  flex: none; white-space: nowrap; text-decoration: none; color: var(--kurs-text-3);
+}
+html:root .wf-pnum { display: inline-grid; place-items: center; font-size: .6rem; font-weight: 700; flex: none; }
+html:root .wf-plabel { font-size: .66rem; }
+html:root .wf-pline { flex: 0 0 .7rem; height: 1px; background: var(--kurs-line-2); }
+
+html:root .wf-head { margin: 2.4rem 0 1rem; }
+html:root .wf-track { display: flex; gap: .25rem; margin-bottom: .55rem; }
+html:root .wf-dot { flex: 1 1 0; height: 3px; border-radius: 2px; background: var(--kurs-line); }
+html:root .wf-dot.done { background: color-mix(in srgb, var(--kurs-accent) 40%, var(--kurs-line)); }
+html:root .wf-dot.active { background: var(--kurs-accent); }
+html:root .wf-title { display: flex; align-items: baseline; gap: .55rem; font: 700 1.05rem/1.3 var(--kurs-head-font); color: var(--kurs-head); }
+html:root .wf-num { color: var(--kurs-accent-ink); font-weight: 700; }
+html:root .wf-tool { color: var(--kurs-text-2); font-weight: 500; font-size: .74rem; font-family: var(--kurs-sans); }
+html:root .wf-label { color: var(--kurs-text-3); font-size: .62rem; margin-top: .15rem; }
+
+html:root .md-typeset .task-banner { padding: .6rem .95rem; margin: 0 0 1.7rem; font-size: .76rem; }
+html:root .md-typeset .task-banner p { margin: 0; }
+
+/* ---- Buttons --------------------------------------------------------------------- */
+html:root .md-typeset .md-button {
+  font-weight: 700; font-size: .74rem;
+  padding: .55em 1.2em; margin: .3rem .4rem .9rem 0;
+  border-radius: var(--kurs-btn-radius);
+  background: transparent; color: var(--kurs-head);
+  border: 1px solid var(--kurs-line-2);
+  transition: background .15s, color .15s, border-color .15s, transform .15s, box-shadow .15s;
+}
+html:root .md-typeset .md-button:hover { background: var(--kurs-panel); color: var(--kurs-head); border-color: var(--kurs-line-2); text-decoration: none; }
+html:root .md-typeset .md-button--primary,
+html:root .md-typeset .md-button--primary:hover {
+  background: var(--kurs-btn-bg); color: var(--kurs-btn-fg); border-color: var(--kurs-btn-bg);
+}
+html:root .md-typeset .md-button--primary:hover { filter: brightness(1.06); }
+
+/* Schwebender Weiter-Button (modern-ui.js) */
+html:root a.wf-next-float {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 55;
+  display: inline-flex; align-items: center; gap: .4rem;
+  font: 700 .7rem/1 var(--kurs-sans);
+  padding: .62rem 1.05rem; text-decoration: none;
+  background: var(--kurs-btn-bg); color: var(--kurs-btn-fg);
+  border-radius: var(--kurs-btn-radius);
+  box-shadow: 0 4px 18px rgba(2, 37, 65, .22);
+  transition: opacity .2s, transform .2s, filter .15s;
+}
+html:root a.wf-next-float:hover { filter: brightness(1.07); color: var(--kurs-btn-fg); }
+html:root a.wf-next-float.hidden { opacity: 0; transform: translateY(6px); pointer-events: none; }
+html:root body:has(#help-fab:not([style*="none"])) a.wf-next-float { bottom: 4.6rem; }
+
+/* Hilfe-Knopf (help-button.js) */
+html:root #help-fab {
+  font-family: var(--kurs-sans); font-weight: 700; font-size: .72rem;
+  background: var(--kurs-brand); color: #fff;
+  border-radius: var(--kurs-btn-radius);
+}
+html:root #help-fab.active { background: var(--kurs-c-warn); }
+
+/* Mitmach-Modus (Schritt für Schritt) */
+html:root .fa-btn {
+  display: inline-flex; align-items: center; gap: .35rem; cursor: pointer;
+  margin: .5rem 0 .6rem; padding: .36rem .85rem; border: 0;
+  font: 700 .68rem/1.2 var(--kurs-sans);
+  background: var(--kurs-accent-soft); color: var(--kurs-accent-ink);
+  border-radius: var(--kurs-btn-radius);
+}
+html:root .fa-btn:hover { filter: brightness(.97); }
+html:root #fa-overlay {
+  position: fixed; inset: 0; z-index: 200; padding: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(2, 18, 32, .55); backdrop-filter: blur(3px);
+}
+html:root #fa-card {
+  width: min(60rem, 96vw); max-height: 92vh; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--kurs-surface); color: var(--kurs-text);
+  border-radius: var(--kurs-radius-lg); box-shadow: 0 16px 60px rgba(0, 0, 0, .45);
+}
+html:root #fa-top { display: flex; align-items: center; gap: .8rem; padding: .7rem 1rem .55rem; }
+html:root #fa-top h4 { margin: 0; flex: 1; font-size: .8rem; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--kurs-head); }
+html:root #fa-count { font-size: .7rem; color: var(--kurs-text-2); white-space: nowrap; }
+html:root #fa-close { border: 0; background: none; cursor: pointer; font-size: 1.05rem; color: var(--kurs-text-2); padding: .2rem .4rem; }
+html:root #fa-progress { height: .2rem; background: var(--kurs-line); }
+html:root #fa-progress span { display: block; height: 100%; background: var(--kurs-accent); transition: width .25s; }
+html:root #fa-body { padding: 1rem 1.3rem; overflow: auto; flex: 1; font-size: .8rem; line-height: 1.6; cursor: e-resize; }
+html:root #fa-body a { cursor: pointer; }
+html:root #fa-body img { max-width: 100%; max-height: 58vh; display: block; margin: .6rem auto; border-radius: var(--kurs-img-radius); border: var(--kurs-img-border); }
+html:root #fa-nav { display: flex; gap: .6rem; padding: .7rem 1rem; border-top: 1px solid var(--kurs-line); align-items: center; }
+html:root #fa-nav .fa-hint { flex: 1; font-size: .64rem; color: var(--kurs-text-3); }
+html:root .fa-nav-btn { border: 0; cursor: pointer; border-radius: var(--kurs-btn-radius); padding: .45rem 1rem; font: 700 .72rem/1.2 var(--kurs-sans); }
+html:root .fa-nav-btn.prev { background: var(--kurs-panel); color: var(--kurs-text); }
+html:root .fa-nav-btn.next { background: var(--kurs-btn-bg); color: var(--kurs-btn-fg); }
+html:root .fa-nav-btn:disabled { opacity: .4; cursor: default; }
+@media (max-width: 40em) {
+  html:root #fa-nav .fa-hint { display: none; }
+  html:root #fa-card { width: 100vw; max-height: 96vh; }
+}
+
+/* ---- Tabellen und Bilder ---------------------------------------------------------- */
+html:root .md-typeset table:not([class]) {
+  border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
+  box-shadow: none; font-size: .74rem; margin-block: 1.5em;
+}
+html:root .md-typeset table:not([class]) th {
+  background: var(--kurs-panel); color: var(--kurs-head); font-weight: 700; border: 0;
+}
+html:root .md-typeset table:not([class]) td { border-top: 1px solid var(--kurs-line); }
+
+html:root .md-content__inner img:not(.no-lightbox):not(.twemoji):not(.emojione) {
+  border-radius: var(--kurs-img-radius);
+  border: var(--kurs-img-border);
+  box-shadow: var(--kurs-img-shadow);
   background: #fff;
 }
-[data-md-color-scheme="slate"] .md-typeset .md-content__inner img:not(.no-lightbox):not(.twemoji) {
-  border-color: rgba(255, 255, 255, .18);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, .5);
+
+/* ---- Karten: Praktikums-Übersichten und Anleitungen ------------------------------- */
+html:root .md-typeset .prakt-cards,
+html:root .tut-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1rem; margin: 1rem 0 2.2rem;
+}
+html:root .md-typeset a.prakt-card,
+html:root .md-typeset a.tut-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  text-decoration: none; color: var(--kurs-text);
+  background: var(--kurs-surface);
+  border: 1px solid var(--kurs-line);
+  border-radius: var(--kurs-radius-lg);
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+html:root .md-typeset a.prakt-card:hover,
+html:root .md-typeset a.tut-card:hover {
+  border-color: var(--kurs-accent); transform: translateY(-2px);
+  box-shadow: var(--kurs-shadow); text-decoration: none;
+}
+html:root .md-typeset a.prakt-card img.prakt-cimg,
+html:root .md-typeset a.tut-card img.tut-thumb {
+  width: 100%; height: 9rem; object-fit: contain; padding: .4rem;
+  background: #fff; margin: 0;
+  border: 0; border-bottom: 1px solid var(--kurs-line); border-radius: 0; box-shadow: none;
+}
+html:root .prakt-cbody, html:root .tut-card-body { display: block; padding: .7rem .85rem .85rem; }
+html:root .prakt-ctitle, html:root .tut-card-title {
+  display: block; font: 700 .84rem/1.3 var(--kurs-head-font); color: var(--kurs-head);
+}
+html:root .prakt-cdesc { display: block; font-size: .68rem; line-height: 1.45; color: var(--kurs-text-2); margin-top: .25rem; }
+html:root .md-typeset a.prakt-card:not(:has(.prakt-cimg)) { justify-content: center; min-height: 6.5rem; background: var(--kurs-panel); }
+html:root .md-typeset .prakt-cards + h2,
+html:root .md-typeset h2:has(+ .prakt-cards) { border-top: 0; padding-top: 0; margin-top: 2.2rem; }
+
+/* Anleitungen: Suche, Kategorien, Detail */
+html:root .tut-bar { margin: 1.2rem 0 1.4rem; }
+html:root .md-typeset .tut-search {
+  width: 100%; font: inherit; font-size: .82rem; padding: .55rem .8rem;
+  border: 1px solid var(--kurs-line-2); border-radius: var(--kurs-radius-md);
+  background: var(--kurs-surface); color: var(--kurs-text);
+}
+html:root .md-typeset .tut-search:focus { outline: none; border-color: var(--kurs-accent); box-shadow: 0 0 0 3px var(--kurs-accent-soft); }
+html:root .tut-cats { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+html:root .md-typeset .tut-chip {
+  border: 1px solid var(--kurs-line); cursor: pointer;
+  font: 600 .64rem/1.2 var(--kurs-sans); letter-spacing: .04em; text-transform: uppercase;
+  padding: .32rem .7rem; border-radius: var(--kurs-btn-radius);
+  background: var(--kurs-surface); color: var(--kurs-text-2);
+}
+html:root .md-typeset .tut-chip:hover { color: var(--kurs-text); }
+html:root .md-typeset .tut-chip.active { background: var(--kurs-accent-soft); border-color: transparent; color: var(--kurs-accent-ink); }
+html:root #tut-overview [hidden] { display: none !important; }
+html:root .tut-card-meta { display: flex; gap: .5rem; align-items: center; margin-top: .35rem; }
+html:root :is(.tut-cat, .tut-soft, .tut-count) { font-size: .56rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--kurs-text-3); }
+html:root .tut-cat { color: var(--kurs-accent-ink); }
+html:root .tut-empty { color: var(--kurs-text-2); font-size: .8rem; }
+html:root .md-typeset .tut-back { border: 0; cursor: pointer; background: none; font: 600 .72rem/1.2 var(--kurs-sans); color: var(--kurs-text-2); padding: .2rem 0; margin-bottom: .4rem; }
+html:root .md-typeset .tut-back:hover { color: var(--kurs-accent-ink); }
+html:root .md-typeset .tut-detail-title { margin: .2rem 0 .4rem; }
+html:root .tut-meta { display: flex; gap: .8rem; align-items: center; margin: .2rem 0 1rem; }
+html:root .tut-steps { margin-left: 0 !important; padding: 0; counter-reset: tut; list-style: none; }
+html:root .tut-steps > li { counter-increment: tut; position: relative; padding-left: 2.2rem; margin: 0 0 1.4rem; list-style: none; }
+html:root .tut-steps > li::before {
+  content: counter(tut); position: absolute; left: 0; top: -.04rem;
+  width: 1.5rem; height: 1.5rem; display: grid; place-items: center; box-sizing: border-box;
+  border-radius: var(--kurs-num-radius); border: var(--kurs-num-border);
+  background: var(--kurs-num-bg); color: var(--kurs-num-fg); font: 700 .66rem/1 var(--kurs-num-font);
+}
+html:root .tut-steps > li:not(:last-child)::after {
+  content: ""; position: absolute; left: .74rem; top: 1.62rem; bottom: -1.15rem; width: 1px; background: var(--kurs-num-line);
+}
+html:root .tut-cap { font-size: .8rem; line-height: 1.5; }
+html:root .tut-note { font-size: .72rem; line-height: 1.5; color: var(--kurs-text-2); margin-top: .25rem; }
+html:root .md-typeset img.tut-img { display: block; margin: .55rem 0 .2rem; max-width: 100%; max-height: 22rem; width: auto; border-radius: var(--kurs-img-radius); border: var(--kurs-img-border); }
+html:root .md-typeset details.tut-embed > summary { display: block; }
+html:root .tut-kicker { font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kurs-accent-ink); margin-right: .4rem; }
+html:root .tut-title-txt { font-weight: 700; }
+
+/* ---- Übungen: Antwortprüfung ------------------------------------------------------ */
+html:root :is(.numeric-question, .multiple-choice-question) {
+  background: var(--kurs-q-bg, var(--kurs-surface));
+  border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
+  padding: .9rem 1rem; margin: 1rem 0 1.4rem; color: var(--kurs-text); box-shadow: none;
+}
+html:root .numeric-answer-input {
+  font: 500 .8rem/1.3 var(--kurs-sans); width: 9rem;
+  border: 1px solid var(--kurs-line-2); border-radius: var(--kurs-radius);
+  background: var(--kurs-surface); color: var(--kurs-text); padding: .45rem .65rem;
+}
+html:root .numeric-answer-input:focus { outline: none; border-color: var(--kurs-accent); box-shadow: 0 0 0 3px var(--kurs-accent-soft); }
+html:root :is(.numeric-answer-submit, .mc-submit) {
+  background: var(--kurs-btn-bg); color: var(--kurs-btn-fg); border: 0;
+  border-radius: var(--kurs-btn-radius); font: 700 .7rem/1 var(--kurs-sans);
+  padding: .62rem 1rem; cursor: pointer; box-shadow: none;
+}
+html:root :is(.numeric-answer-submit, .mc-submit):hover { filter: brightness(1.06); background: var(--kurs-btn-bg); }
+html:root .numeric-answer-score, html:root .mc-score { color: var(--kurs-text-3); font-size: .64rem; font-weight: 600; }
+html:root .mc-option { border-radius: var(--kurs-radius); border-color: var(--kurs-line); background: var(--kurs-surface); }
+html:root .mc-option:hover { background: var(--kurs-panel); }
+html:root .course-stat { color: var(--kurs-text-3); }
+
+/* Fortschritt-Seite */
+html:root .ph-card { border-color: var(--kurs-line); border-radius: var(--kurs-radius-lg); background: var(--kurs-surface); }
+html:root .ph-ring-fg { stroke: var(--kurs-accent); }
+html:root .ph-done .ph-ring-fg { stroke: var(--kurs-c-ok); }
+html:root .ph-level strong, html:root body[data-md-color-scheme="slate"] .ph-level strong { color: var(--kurs-accent-ink); }
+html:root .ph-medal { border-color: var(--kurs-line); border-radius: var(--kurs-radius-md); }
+
+/* ---- Startseite: Kopfbereich, Praktika, Dozenten --------------------------------------------------- */
+html:root .md-typeset .kurs-hero h1 { margin: 0; }
+html:root .md-typeset .kurs-hero p { margin: 0; }
+html:root .kurs-hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+html:root .md-typeset a.kurs-btn {
+  display: inline-flex; align-items: center; gap: .4rem; text-decoration: none;
+  font: 700 .74rem/1 var(--kurs-sans); padding: .72rem 1.15rem;
+  border-radius: var(--kurs-btn-radius); border: 1px solid var(--kurs-line-2);
+  color: var(--kurs-head); background: var(--kurs-surface);
+  transition: filter .15s, transform .15s, background .15s;
+}
+html:root .md-typeset a.kurs-btn:hover { text-decoration: none; background: var(--kurs-panel); }
+html:root .md-typeset a.kurs-btn--primary { background: var(--kurs-btn-bg); border-color: var(--kurs-btn-bg); color: var(--kurs-btn-fg); }
+html:root .md-typeset a.kurs-btn--primary:hover { background: var(--kurs-btn-bg); color: var(--kurs-btn-fg); filter: brightness(1.07); }
+
+/* Praktika-Liste der Startseite: Grundgerüst */
+html:root .md-typeset .prakt-list { margin: 1rem 0 2rem; }
+html:root .md-typeset a.prakt-row { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--kurs-text); }
+html:root .md-typeset a.prakt-row:hover { text-decoration: none; }
+html:root .prakt-body { flex: 1; min-width: 0; display: block; }
+html:root .prakt-label { display: block; font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kurs-text-3); }
+html:root .prakt-title { display: block; font: 700 .95rem/1.3 var(--kurs-head-font); color: var(--kurs-head); }
+html:root .prakt-desc { display: block; font-size: .7rem; line-height: 1.5; color: var(--kurs-text-2); margin-top: .2rem; }
+html:root .md-typeset img.prakt-thumb { flex: none; width: 5.6rem; height: 3.7rem; object-fit: cover; margin: 0; border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius); box-shadow: none; background: #fff; }
+
+html:root .md-typeset a.home-faq { display: block; margin: 0 0 1.6rem; padding: .55rem 0; font-size: .74rem; color: var(--kurs-text-2); text-decoration: none; }
+html:root .md-typeset a.home-faq:hover { color: var(--kurs-accent-ink); }
+html:root .md-typeset a.home-faq strong { color: var(--kurs-head); }
+
+html:root .md-typeset .doz-list { display: flex; flex-wrap: wrap; gap: .9rem 2.4rem; margin: 1rem 0 1.4rem; }
+html:root .md-typeset a.doz-item { display: flex; align-items: center; gap: .75rem; color: var(--kurs-text); text-decoration: none; }
+html:root .md-typeset a.doz-item img { width: 3.6rem; height: 3.6rem; object-fit: cover; object-position: center top; border-radius: 50%; margin: 0; border: 1px solid var(--kurs-line); box-shadow: none; }
+html:root .doz-body { display: block; }
+html:root .doz-name { display: block; font-size: .74rem; font-weight: 700; color: var(--kurs-head); }
+html:root .doz-mail { display: block; font-size: .62rem; color: var(--kurs-text-3); margin-top: .1rem; }
+html:root .md-typeset a.doz-item:hover .doz-name { color: var(--kurs-accent-ink); }
+
+/* ---- Fußzeile ------------------------------------------------------------------------ */
+html:root .md-footer { background: var(--kurs-footer-bg); color: var(--kurs-footer-fg); }
+html:root .md-footer-meta { background: var(--kurs-footer-bg); }
+html:root .md-copyright { color: color-mix(in srgb, var(--kurs-footer-fg) 55%, transparent); font-size: .58rem; }
+
+/* Fortschrittsring (answer-checker.js) nach rechts, leise */
+html:root .md-header .player-badge {
+  order: 2; margin: 0 .2rem 0 .35rem; padding: .25rem;
+  color: var(--kurs-header-fg-2); background: transparent; border: 0; box-shadow: none;
+}
+html:root .md-header .player-badge:hover { color: var(--kurs-header-fg); }
+
+/* ---- Startseiten-Animation im Kopfbereich (hero-anim.js) ---------------------------- */
+html:root .kurs-anim { position: relative; }
+html:root .kurs-anim-stage { position: relative; width: 100%; }
+html:root .kurs-anim-canvas { display: block; max-width: 100%; }
+html:root .kurs-anim-ov { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; white-space: nowrap; }
+html:root .kurs-ov-in { transform: translate(-50%, -50%); }
+html:root .kurs-anim-tag .kurs-ov-in {
+  transform: translate(-50%, -100%);
+  background: var(--kurs-surface); border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
+  box-shadow: var(--kurs-shadow); padding: .3rem .55rem .32rem;
+  font-size: .62rem; line-height: 1.35; color: var(--kurs-text-2);
+}
+html:root .kurs-anim-tag b { display: block; font-size: .74rem; color: var(--kurs-head); }
+html:root .kurs-anim-dimlabel .kurs-ov-in {
+  font: 700 .68rem/1 var(--kurs-sans); color: var(--kurs-accent-ink);
+  background: var(--kurs-anim-bg, var(--kurs-panel)); padding: .14rem .38rem; border-radius: .25rem;
+}
+html:root .kurs-anim-loadlabel .kurs-ov-in { transform: translate(-50%, -100%); font: 700 .72rem/1 var(--kurs-sans); color: #e53009; }
+html:root .kurs-anim-suplabel .kurs-ov-in {
+  transform: translate(-50%, 0); margin-top: .3rem;
+  font: 700 .64rem/1 var(--kurs-sans); color: var(--kurs-head);
+  background: color-mix(in srgb, var(--kurs-surface) 88%, transparent); border: 1px solid var(--kurs-line); border-radius: 999px; padding: .2rem .5rem;
+}
+html:root .kurs-anim-bclabel .kurs-ov-in {
+  font: 700 .66rem/1 var(--kurs-sans); color: #fff;
+  padding: .26rem .6rem; border-radius: 999px; box-shadow: var(--kurs-shadow);
+}
+html:root .kurs-anim-bclabel--hot .kurs-ov-in { background: #e53009; }
+html:root .kurs-anim-bclabel--cold .kurs-ov-in { background: #009ee3; transform: translate(-50%, -100%); }
+html:root .kurs-anim-flag .kurs-ov-in { transform: none; position: relative; }
+html:root .kurs-anim-flag i {
+  position: absolute; left: 0; top: 0; width: .42rem; height: .42rem; border-radius: 50%;
+  background: #e53009; box-shadow: 0 0 0 3px rgba(229, 48, 9, .22); transform: translate(-50%, -50%);
+}
+html:root .kurs-anim-flag span {
+  display: block; margin: .55rem 0 0 .45rem;
+  background: var(--kurs-surface); border: 1px solid var(--kurs-line-2); border-left: 3px solid #e53009;
+  border-radius: .3rem; padding: .2rem .5rem; box-shadow: var(--kurs-shadow);
+  font: 600 .7rem/1.2 var(--kurs-sans); color: var(--kurs-head);
+}
+html:root .kurs-anim-flag b { color: #e53009; margin-right: .2rem; }
+html:root .kurs-anim-flag--min i { background: #004699; box-shadow: 0 0 0 3px rgba(0, 70, 153, .22); }
+html:root .kurs-anim-flag--min span { border-left-color: #004699; }
+html:root .kurs-anim-flag--min b { color: #004699; }
+html:root body[data-md-color-scheme="slate"] .kurs-anim-flag--min b { color: #6ea6ff; }
+html:root body[data-md-color-scheme="slate"] .kurs-anim-flag--min span { border-left-color: #6ea6ff; }
+html:root .kurs-anim-legend { left: .1rem; top: 0; font: 500 .58rem/1.25 var(--kurs-sans); color: var(--kurs-text-2); }
+html:root .kurs-anim-legend .kurs-ov-in { transform: none; }
+html:root .kurs-anim-legend b { display: block; font-size: .66rem; font-weight: 700; color: var(--kurs-head); }
+html:root .kurs-anim-legend em { display: block; font-style: normal; margin-bottom: .3rem; color: var(--kurs-text-3); }
+html:root .kurs-leg { display: flex; gap: .3rem; }
+html:root .kurs-leg-bar { display: flex; flex-direction: column; width: .5rem; }
+html:root .kurs-leg-bar i { display: block; height: 12px; }
+html:root .kurs-leg-lab { display: flex; flex-direction: column; justify-content: space-between; height: 120px; margin-top: -6px; }
+html:root .kurs-leg-lab span { font-size: 11.5px; line-height: 12px; }
+
+@media (max-width: 40em) {
+  html:root .kurs-leg-bar i { height: 10px; }
+  html:root .kurs-leg-lab { height: 100px; margin-top: -5px; }
+  html:root .kurs-leg-lab span { font-size: 10px; line-height: 10px; }
 }
 
-/* ---- Admonitions: weiche Karten mit didaktischer Farbsprache -------------
-   abstract = Lernziele · question = Aufgabe · tip = Kurzanleitung
-   success  = Lösung/Merke · warning = Achtung · check = Checkpoint          */
-.md-typeset .admonition, .md-typeset details {
-  border: 0;
-  border-left: .22rem solid var(--md-default-fg-color--lighter);
-  border-radius: .6rem;
-  box-shadow: 0 1px 6px rgba(15, 30, 60, .07);
-  font-size: .74rem;
+html:root .kurs-anim-track { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .3rem; margin-top: .2rem; }
+html:root .kurs-anim-track button { all: unset; cursor: pointer; display: flex; flex-direction: column; gap: .32rem; min-width: 0; }
+html:root .kurs-anim-track i { display: block; height: 3px; border-radius: 3px; background: var(--kurs-line-2); position: relative; overflow: hidden; }
+html:root .kurs-anim-track i::after {
+  content: ""; position: absolute; inset: 0; background: var(--kurs-accent);
+  transform-origin: left center; transform: scaleX(var(--p, 0));
 }
-.md-typeset .admonition-title, .md-typeset summary {
-  border-radius: .45rem .45rem 0 0;
-  font-weight: 600;
+html:root .kurs-anim-track span {
+  font: 600 .6rem/1.25 var(--kurs-sans); letter-spacing: .01em; color: var(--kurs-text-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .2s;
 }
-.md-typeset details summary { cursor: pointer; }
+html:root .kurs-anim-track .done span { color: var(--kurs-text-2); }
+html:root .kurs-anim-track .on span { color: var(--kurs-head); }
+html:root .kurs-anim-track button:hover span { color: var(--kurs-accent-ink); }
+html:root .kurs-anim-cap { margin-top: .55rem; min-height: 2.8em; font-size: .76rem; line-height: 1.4; color: var(--kurs-text-2); }
+html:root .kurs-anim-cap b { color: var(--kurs-head); margin-right: .45rem; }
+/* Startseite: Bearbeiten-Stift weg, er schiebt sonst den Kopfbereich zur Seite */
+html:root .md-content:has(.page--home) .md-content__button { display: none; }
 
-/* Checkpoint: "So sollte es aussehen" — eigener Typ */
-.md-typeset .admonition.check, .md-typeset details.check {
-  border-left-color: #2e7d32;
-}
-.md-typeset .check > .admonition-title, .md-typeset .check > summary {
-  background-color: rgba(46, 125, 50, .08);
-}
-.md-typeset .check > .admonition-title::before,
-.md-typeset .check > summary::before {
-  background-color: #2e7d32;
-  -webkit-mask-image: var(--md-admonition-icon--success);
-          mask-image: var(--md-admonition-icon--success);
+/* Tutorial-Player (player.css): Akzent aus dem Design statt Lila, Titel als leise Pille */
+html:root body { --tp-accent: var(--kurs-accent); --tp-accent-contrast: #fff; }
+html:root .md-typeset .player__title h1,
+html:root body[data-md-color-scheme="slate"] .md-typeset .player__title h1 {
+  font: 700 .8rem/1.3 var(--kurs-sans); letter-spacing: 0; margin: 0;
+  background: var(--kurs-accent-soft); color: var(--kurs-accent-ink); box-shadow: none;
+  padding: .28rem .65rem; border-radius: var(--kurs-radius);
 }
 
-/* ---- Menüpfad-Chips (aus `Code → mit → Pfeilen`, siehe modern-ui.js) ----- */
-.menu-path {
-  display: inline-flex; flex-wrap: wrap; align-items: center; gap: .18rem;
-  vertical-align: baseline;
-}
-.menu-path .mp-seg {
-  background: color-mix(in srgb, var(--kurs-primary) 8%, var(--md-default-bg-color));
-  border: 1px solid color-mix(in srgb, var(--kurs-primary) 22%, transparent);
-  color: var(--md-default-fg-color);
-  border-radius: .4rem;
-  padding: .05rem .42rem;
-  font-size: .68rem;
-  font-family: var(--md-text-font);
-  font-weight: 550;
-  white-space: nowrap;
-}
-.menu-path .mp-arrow { color: var(--kurs-accent); font-weight: 700; font-size: .7rem; }
-[data-md-color-scheme="slate"] .menu-path .mp-seg {
-  background: rgba(110, 168, 232, .12);
-  border-color: rgba(110, 168, 232, .35);
-}
+/* Klick-Tutorials: volle Inhaltsbreite statt fester 800 px */
+html:root .tutorial-embed { width: 100% !important; max-width: none !important; margin: 1.2rem 0 1.6rem; }
+html:root .player { font-family: var(--kurs-sans); }
 
-/* ---- Workflow-Stepper (7 Schritte, aus **N. Titel** generiert) ----------- */
-.wf-head { margin: 2.2rem 0 .9rem; }
-.wf-track { display: flex; gap: .25rem; margin-bottom: .5rem; }
-.wf-dot {
-  flex: 1 1 0; height: .3rem; border-radius: .2rem;
-  background: var(--md-default-fg-color--lightest);
-  position: relative;
+/* Zurück/Weiter am Ende des Textbereichs; in der blauen Fußzeile bleibt nur das Copyright */
+html:root .kurs-pagenav {
+  /* Weiter ist der Normalfall: doppelt so breit wie Zurück */
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: .8rem;
+  margin: 2.8rem 0 .8rem; padding-top: 1.4rem; border-top: 1px solid var(--kurs-line);
 }
-.wf-dot.done { background: color-mix(in srgb, var(--kurs-accent) 45%, var(--md-default-fg-color--lightest)); }
-.wf-dot.active { background: var(--kurs-accent); }
-.wf-title {
-  display: flex; align-items: baseline; gap: .55rem;
-  font-weight: 700; font-size: .92rem; letter-spacing: -.01em;
+html:root .md-typeset a.kurs-pn {
+  display: flex; flex-direction: column; gap: .22rem; min-width: 0;
+  padding: .8rem 1.05rem .9rem; text-decoration: none;
+  border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
+  transition: border-color .15s, background .15s;
 }
-.wf-num {
-  flex: none; display: inline-grid; place-items: center;
-  width: 1.55rem; height: 1.55rem; border-radius: 50%;
-  background: var(--kurs-accent); color: #fff;
-  font-size: .78rem; font-weight: 700;
-  align-self: center;
-}
-.wf-tool { color: var(--md-default-fg-color--light); font-weight: 500; font-size: .74rem; }
-.wf-label { color: var(--md-default-fg-color--light); font-size: .62rem; margin-top: .15rem; }
-
-/* ---- Mitmach-Modus ------------------------------------------------------- */
-.fa-btn {
-  display: inline-flex; align-items: center; gap: .35rem;
-  margin: .35rem 0 .1rem;
-  border: 0; cursor: pointer;
-  background: var(--kurs-accent); color: #fff;
-  border-radius: 2rem; padding: .34rem .85rem;
-  font-family: var(--md-text-font); font-size: .7rem; font-weight: 600;
-  box-shadow: 0 2px 8px rgba(220, 90, 20, .35);
-}
-.fa-btn:hover { filter: brightness(1.08); }
-#fa-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(10, 18, 32, .55);
-  backdrop-filter: blur(3px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 1rem;
-}
-#fa-card {
-  background: var(--md-default-bg-color);
-  color: var(--md-default-fg-color);
-  width: min(60rem, 96vw); max-height: 92vh;
-  border-radius: .9rem; box-shadow: 0 12px 50px rgba(0, 0, 0, .45);
-  display: flex; flex-direction: column;
-  overflow: hidden;
-}
-#fa-top {
-  display: flex; align-items: center; gap: .8rem;
-  padding: .7rem 1rem .55rem;
-}
-#fa-top h4 { margin: 0; font-size: .8rem; font-weight: 700; flex: 1;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-#fa-count { font-size: .72rem; color: var(--md-default-fg-color--light); white-space: nowrap; }
-#fa-close { border: 0; background: none; cursor: pointer; font-size: 1.05rem;
-  color: var(--md-default-fg-color--light); padding: .2rem .4rem; }
-#fa-progress { height: .22rem; background: var(--md-default-fg-color--lightest); }
-#fa-progress span { display: block; height: 100%; background: var(--kurs-accent);
-  transition: width .25s; }
-#fa-body {
-  padding: 1rem 1.3rem; overflow: auto; flex: 1;
-  font-size: .8rem; line-height: 1.6;
-}
-#fa-body img { max-width: 100%; max-height: 58vh; display: block; margin: .6rem auto;
-  border-radius: .55rem; border: 1px solid var(--md-default-fg-color--lightest);
-  box-shadow: 0 2px 10px rgba(15, 30, 60, .1); }
-#fa-nav {
-  display: flex; gap: .6rem; padding: .7rem 1rem;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
-  align-items: center;
-}
-#fa-nav .fa-hint { flex: 1; font-size: .66rem; color: var(--md-default-fg-color--light); }
-.fa-nav-btn {
-  border: 0; cursor: pointer; border-radius: .5rem;
-  padding: .45rem 1rem; font-family: var(--md-text-font);
-  font-size: .74rem; font-weight: 600;
-}
-.fa-nav-btn.prev { background: var(--md-default-fg-color--lightest); color: var(--md-default-fg-color); }
-.fa-nav-btn.next { background: var(--kurs-accent); color: #fff; }
-.fa-nav-btn:disabled { opacity: .4; cursor: default; }
-
-/* ---- Karten-Grid (Startseite) etwas mehr Leben --------------------------- */
-.md-typeset .grid.cards > ul > li, .md-typeset .grid.cards > :is(a, div) {
-  border-radius: .8rem;
-  transition: transform .15s, box-shadow .15s;
-}
-.md-typeset .grid.cards > ul > li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(15, 30, 60, .13);
-  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
-}
-
-/* ---- Schmale Fenster (Split-Screen neben ANSYS) -------------------------- */
-@media (max-width: 76.24em) {
-  .md-typeset { font-size: .76rem; }
-}
-
-/* ---- Aufgaben-Banner: das Ziel bleibt auf jeder Schritt-Seite sichtbar --- */
-.md-typeset .task-banner {
+html:root .md-typeset a.kurs-pn:hover { border-color: var(--kurs-accent); background: var(--kurs-accent-soft); text-decoration: none; }
+html:root .md-typeset a.kurs-pn--next {
+  grid-column: 2; align-items: flex-end; text-align: right;
   background: var(--kurs-accent-soft);
-  border-left: .22rem solid var(--kurs-accent);
-  border-radius: .55rem;
-  padding: .5rem .8rem;
-  margin: .8rem 0 1.1rem;
-  font-size: .72rem;
+  border-color: color-mix(in srgb, var(--kurs-accent) 45%, var(--kurs-line));
 }
-.md-typeset .task-banner p { margin: 0; }
-[data-md-color-scheme="slate"] .md-typeset .task-banner {
-  background: rgba(242, 98, 15, .12);
+html:root .md-typeset a.kurs-pn--next:hover { border-color: var(--kurs-accent); background: color-mix(in srgb, var(--kurs-accent) 18%, var(--kurs-surface)); }
+html:root .kurs-pn--next .kurs-pn-title { font-size: .96rem; }
+html:root .kurs-pn-dir { font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kurs-text-3); }
+html:root .kurs-pn--next .kurs-pn-dir { color: var(--kurs-accent-ink); }
+html:root .kurs-pn-title {
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: .88rem; font-weight: 700; color: var(--kurs-head);
 }
-
-/* ---- Klickbare Stepper-Navigation auf Schritt-Seiten --------------------- */
-.wf-pagenav {
-  display: flex; align-items: flex-start;
-  margin: 1rem 0 1.4rem;
-  overflow-x: auto; padding-bottom: .3rem;
-}
-.wf-pstep {
-  display: flex; flex-direction: column; align-items: center; gap: .22rem;
-  min-width: 3.2rem; text-decoration: none;
-}
-.wf-pnum {
-  display: grid; place-items: center;
-  width: 1.7rem; height: 1.7rem; border-radius: 50%;
-  background: var(--md-default-fg-color--lightest);
-  color: var(--md-default-fg-color--light);
-  font-size: .74rem; font-weight: 700;
-  transition: transform .12s;
-}
-.wf-pstep:hover .wf-pnum { transform: scale(1.12); }
-.wf-pstep.done .wf-pnum { background: #d7ecd9; color: #2e7d32; }
-.wf-pstep.active .wf-pnum {
-  background: var(--kurs-accent); color: #fff;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--kurs-accent) 22%, transparent);
-}
-.wf-plabel { font-size: .58rem; color: var(--md-default-fg-color--light); white-space: nowrap; }
-.wf-pstep.active .wf-plabel { color: var(--kurs-accent); font-weight: 700; }
-.wf-pline {
-  flex: 1 1 1.2rem; height: 2px; margin-top: .85rem; min-width: .5rem;
-  background: var(--md-default-fg-color--lightest);
-}
-.wf-pline.done { background: #a5d6a7; }
-
-/* ---- Titel-Feinschliff --------------------------------------------------- */
-.md-typeset h1 small { font-size: .55em; font-weight: 500; color: var(--md-default-fg-color--light); }
-.md-typeset .md-button { border-radius: .55rem; }
-
-/* ===========================================================================
-   V2 — cleaner: App-Canvas, flache Karten, ruhigere Chrome
-   =========================================================================== */
-
-/* Seiten-Canvas: Inhalt liegt als Karte auf leicht grauem Grund */
-[data-md-color-scheme="default"] {
-  --kurs-canvas: #f2f4f7;
-  --kurs-card: #ffffff;
-}
-[data-md-color-scheme="slate"] {
-  --kurs-canvas: #10151d;
-  --kurs-card: #1a2029;
-}
-body, .md-container, .md-main { background: var(--kurs-canvas); }
-.md-content { background: transparent; }
-.md-content__inner {
-  background: var(--kurs-card);
-  border-radius: 1rem;
-  padding: 1.4rem 2.2rem 2.2rem;
-  box-shadow: 0 1px 3px rgba(15, 30, 60, .06), 0 8px 30px rgba(15, 30, 60, .05);
-  margin-bottom: 1.2rem;
-}
-.md-content__inner::before { display: none; }
-[data-md-color-scheme="slate"] .md-content__inner {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 30px rgba(0, 0, 0, .3);
-}
-@media (max-width: 48em) {
-  .md-content__inner { padding: 1rem 1rem 1.6rem; border-radius: .7rem; }
-}
-/* Admonition-Karten liegen auf der Karte: Schatten zurücknehmen */
-.md-typeset .admonition, .md-typeset details {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--md-default-fg-color) 7%, transparent);
+html:root .md-typeset a.kurs-pn:hover .kurs-pn-title { color: var(--kurs-accent-ink); }
+@media (max-width: 30em) {
+  html:root .kurs-pagenav { grid-template-columns: 1fr; }
+  html:root .md-typeset a.kurs-pn--next { grid-column: auto; order: -1; }
 }
 
-/* Sidebar & TOC: leiser */
-.md-sidebar .md-nav__title { font-size: .62rem; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--md-default-fg-color--light); background: transparent; box-shadow: none; }
-.md-nav__item .md-nav__link { border-radius: .45rem; padding: .1rem .35rem; margin: 0 -.35rem; }
-.md-nav__link:hover { background: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent); }
-.md-sidebar__scrollwrap { scrollbar-width: thin; }
-
-/* Buttons: gefüllt, rund, ruhig */
-.md-typeset .md-button {
-  border: 0;
-  background: color-mix(in srgb, var(--kurs-primary) 9%, var(--kurs-card));
-  color: var(--md-default-fg-color);
-  font-weight: 600;
-  border-radius: .6rem;
-  padding: .5em 1.1em;
-  transition: transform .12s, box-shadow .12s, background .12s;
+/* Ende eines Praktikums: Abschluss-Karte statt normalem Weiter (dunkel, mit Vorschau) */
+html:root .kurs-finish {
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 1.8rem; align-items: center;
+  margin: 2.8rem 0 1rem; padding: 1.9rem 2.1rem;
+  border-radius: var(--kurs-radius-lg); color: #dbe7f0;
+  background: radial-gradient(110% 140% at 100% 0%, rgba(0, 158, 227, .38) 0%, transparent 55%), #022541;
 }
-.md-typeset .md-button:hover {
-  transform: translateY(-1px);
-  background: color-mix(in srgb, var(--kurs-primary) 15%, var(--kurs-card));
-  color: var(--md-default-fg-color);
-  border: 0;
+html:root body[data-md-color-scheme="slate"] .kurs-finish {
+  background: radial-gradient(110% 140% at 100% 0%, rgba(0, 158, 227, .3) 0%, transparent 55%), #0f2a44;
+  border: 1px solid #1f3d5a;
 }
-.md-typeset .md-button--primary {
-  background: var(--kurs-accent); color: #fff;
-  box-shadow: 0 2px 10px rgba(220, 90, 20, .3);
+html:root .kurs-finish-kicker {
+  display: flex; align-items: center; gap: .55rem;
+  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #7fd3f7;
 }
-.md-typeset .md-button--primary:hover { background: var(--kurs-accent); color: #fff; filter: brightness(1.07); }
-
-/* Tabellen: rahmenlos mit Zeilentrennern */
-.md-typeset table:not([class]) {
-  border: 0; border-radius: .6rem;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--md-default-fg-color) 9%, transparent);
-  font-size: .72rem;
+html:root .kurs-finish-check { flex: none; width: 1.35rem; height: 1.35rem; border-radius: 50%; background: #009ee3; display: grid; place-items: center; }
+html:root .kurs-finish-check svg { width: .85rem; height: .85rem; fill: #fff; }
+html:root .kurs-finish-steps { display: flex; align-items: center; gap: .3rem; margin: .85rem 0 .95rem; }
+html:root .kurs-finish-steps i { width: 1.7rem; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, .2); }
+html:root .kurs-finish-steps i.on { background: #009ee3; }
+html:root .kurs-finish-steps span { margin-left: .45rem; font-size: .62rem; color: rgba(255, 255, 255, .62); }
+html:root .kurs-finish-title { font-size: 1.55rem; font-weight: 700; line-height: 1.15; letter-spacing: -.01em; color: #fff; }
+html:root .md-typeset .kurs-finish-name { margin: .35rem 0 0; font-size: .96rem; font-weight: 600; color: #fff; }
+html:root .md-typeset .kurs-finish-desc { margin: .25rem 0 1.25rem; font-size: .76rem; line-height: 1.5; color: rgba(255, 255, 255, .72); }
+html:root .kurs-finish-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.3rem; }
+html:root .md-typeset a.kurs-finish-btn {
+  display: inline-flex; align-items: center; gap: .45rem; text-decoration: none;
+  padding: .78rem 1.25rem; border-radius: var(--kurs-btn-radius);
+  background: #009ee3; color: #fff; font-size: .8rem; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 158, 227, .35); transition: filter .15s, transform .15s;
 }
-.md-typeset table:not([class]) th {
-  background: color-mix(in srgb, var(--md-default-fg-color) 4%, transparent);
-  border: 0; font-weight: 650;
+html:root .md-typeset a.kurs-finish-btn:hover { color: #fff; text-decoration: none; filter: brightness(1.08); transform: translateY(-1px); }
+html:root .md-typeset a.kurs-finish-back { color: rgba(255, 255, 255, .62); font-size: .7rem; text-decoration: none; }
+html:root .md-typeset a.kurs-finish-back:hover { color: #fff; }
+html:root .md-typeset a.kurs-finish-media {
+  display: block; padding: .6rem; border-radius: var(--kurs-radius-md); background: #fff;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .3); transform: rotate(1.5deg); transition: transform .2s;
 }
-.md-typeset table:not([class]) td {
-  border-top: 1px solid color-mix(in srgb, var(--md-default-fg-color) 8%, transparent);
-}
-
-/* Fußnavigation (Zurück/Weiter) als Karten */
-.md-footer__link {
-  background: rgba(255, 255, 255, .06);
-  border-radius: .7rem;
-  margin: .6rem 0;
-}
-
-/* Überschrift: etwas größer, klare Hierarchie */
-.md-typeset h1 { font-size: 1.85em; margin-bottom: .8em; }
-.md-typeset h1 + .wf-pagenav { margin-top: .2rem; }
-
-/* Inline-Code ruhiger */
-.md-typeset code {
-  border-radius: .35rem;
-  background: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
-  padding: .1em .4em;
-}
-
-/* Sidebar-Titel ohne weißen Kasten (liegt jetzt auf dem Canvas) */
-.md-sidebar .md-nav__title,
-.md-nav--primary .md-nav__title,
-.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-/* Breadcrumb-Zeile: Scrollbar ausblenden */
-.md-path { scrollbar-width: none; }
-.md-path::-webkit-scrollbar { display: none; }
-nav.md-path { overflow-x: auto; }
-
-/* Breadcrumbs: eingedampft statt scrollend (Rest via modern-ui.js) */
-.md-path { overflow: visible; }
-.md-path__list { flex-wrap: wrap; }
-.md-path__list .md-path__item--collapsed { display: none !important; }
-.md-path__item--dots button {
-  border: 0; cursor: pointer;
-  background: color-mix(in srgb, var(--md-default-fg-color) 8%, transparent);
-  color: var(--md-default-fg-color--light);
-  border-radius: .4rem; padding: 0 .45rem;
-  font: inherit; line-height: 1.4;
-}
-.md-path__item--dots button:hover { background: color-mix(in srgb, var(--md-default-fg-color) 14%, transparent); }
-
-/* Varianten-Tabs (Aufgabe · a · b · c · Vergleich) über dem Stepper */
-.task-tabs {
-  display: inline-flex; flex-wrap: wrap; gap: .15rem;
-  background: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
-  border-radius: .65rem; padding: .18rem;
-  margin: .7rem 0 .2rem;
-}
-.task-tab {
-  font-size: .66rem; font-weight: 600;
-  padding: .28rem .7rem; border-radius: .5rem;
-  color: var(--md-default-fg-color--light) !important;
-  text-decoration: none; white-space: nowrap;
-}
-.task-tab:hover { color: var(--md-default-fg-color) !important; }
-.task-tab.active {
-  background: var(--kurs-card);
-  color: var(--kurs-accent) !important;
-  box-shadow: 0 1px 4px rgba(15, 30, 60, .18);
-}
-.task-tabs + .wf-pagenav { margin-top: .5rem; }
-
-/* Breadcrumbs schweben über der Karte auf dem Canvas */
-.md-content > .md-path { margin: 0 0 .65rem .35rem; font-size: .68rem; }
-
-/* ===========================================================================
-   V3 — flache Boxen: Hairline statt Farbfläche, Farbe nur am Icon
-   =========================================================================== */
-.md-typeset .admonition, .md-typeset details {
-  background: var(--kurs-card);
-  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 11%, transparent);
-  border-left-width: 1px;
-  border-radius: .75rem;
-  box-shadow: none;
-}
-.md-typeset .admonition-title, .md-typeset summary {
-  background: transparent !important;
-  color: var(--md-default-fg-color) !important;
-  font-weight: 650;
-  padding-top: .7rem;
-  border-radius: .75rem .75rem 0 0;
-}
-/* Icon behält die Typ-Farbe (Material setzt ::before per Typ) — nur etwas
-   größer und mit rundem Chip-Hintergrund */
-.md-typeset .admonition-title::before, .md-typeset summary::before {
-  top: .68rem;
-}
-/* Typ-Akzent dezent als 3px-Strich links neben dem Titel statt Vollrahmen */
-.md-typeset .admonition, .md-typeset details { border-left: 1px solid color-mix(in srgb, var(--md-default-fg-color) 11%, transparent); }
-
-/* Aufgaben-Banner im gleichen flachen Stil */
-.md-typeset .task-banner {
-  background: var(--kurs-card);
-  border: 1px solid color-mix(in srgb, var(--kurs-accent) 35%, transparent);
-  border-left: 3px solid var(--kurs-accent);
-  border-radius: .75rem;
-}
-[data-md-color-scheme="slate"] .md-typeset .task-banner { background: var(--kurs-card); }
-
-/* Kurzanleitungs-Details: Chevron dezenter */
-.md-typeset details > summary::after { color: var(--md-default-fg-color--light); }
-
-/* ===========================================================================
-   V4 — rahmenlos: eine Geometrie für alle Boxen, Ton statt Rahmen
-   =========================================================================== */
-.md-typeset .admonition, .md-typeset details, .md-typeset .task-banner {
-  border: 0 !important;
-  box-shadow: none !important;
-  border-radius: .75rem;
-  background: color-mix(in srgb, var(--md-default-fg-color) 4.5%, var(--kurs-card));
-}
-/* dezente Ton-Unterscheidung nur wo sie didaktisch trägt */
-.md-typeset .admonition.question, .md-typeset details.question {
-  background: color-mix(in srgb, var(--kurs-primary) 6%, var(--kurs-card));
-}
-.md-typeset .admonition.check, .md-typeset details.check,
-.md-typeset .admonition.success, .md-typeset details.success {
-  background: color-mix(in srgb, #2e7d32 7%, var(--kurs-card));
-}
-.md-typeset .admonition.warning, .md-typeset details.warning {
-  background: color-mix(in srgb, #e65100 8%, var(--kurs-card));
-}
-.md-typeset .task-banner {
-  background: color-mix(in srgb, var(--kurs-accent) 9%, var(--kurs-card));
-}
-/* Verschachtelte Boxen (z.B. Hinweis in einer Anleitung): gleiche Optik,
-   auf der Tonfläche leicht abgesetzt über die Kartenfarbe */
-.md-typeset details .admonition, .md-typeset .admonition .admonition {
-  background: var(--kurs-card);
-}
-
-/* Schritte in Kurzanleitungen: Nummern-Kreise im Stepper-Stil */
-.md-typeset details > ol { margin-left: 0; counter-reset: anl; }
-.md-typeset details > ol > li {
-  list-style: none;
-  counter-increment: anl;
-  position: relative;
-  padding-left: 2.15rem;
-  margin: 0 0 .9rem 0;
-}
-.md-typeset details > ol > li::before {
-  content: counter(anl);
-  position: absolute; left: 0; top: -.05rem;
-  width: 1.5rem; height: 1.5rem; border-radius: 50%;
-  display: grid; place-items: center;
-  background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));
-  color: var(--kurs-accent);
-  font-weight: 700; font-size: .68rem;
-}
-/* Gleiche Nummern-Kreise im Mitmach-Overlay gibt es über die Kopfzeile —
-   dort zeigt "Schritt x/y" die Position, Bilder sind identisch gerahmt */
-
-/* V4-Ton im Dark Mode kräftiger, sonst verschwinden die Flächen */
-[data-md-color-scheme="slate"] .md-typeset .admonition,
-[data-md-color-scheme="slate"] .md-typeset details {
-  background: color-mix(in srgb, #ffffff 6%, var(--kurs-card));
-}
-[data-md-color-scheme="slate"] .md-typeset .admonition.question,
-[data-md-color-scheme="slate"] .md-typeset details.question {
-  background: color-mix(in srgb, #6ea8e8 13%, var(--kurs-card));
-}
-[data-md-color-scheme="slate"] .md-typeset .admonition.check,
-[data-md-color-scheme="slate"] .md-typeset details.check,
-[data-md-color-scheme="slate"] .md-typeset .admonition.success,
-[data-md-color-scheme="slate"] .md-typeset details.success {
-  background: color-mix(in srgb, #66bb6a 13%, var(--kurs-card));
-}
-[data-md-color-scheme="slate"] .md-typeset .admonition.warning,
-[data-md-color-scheme="slate"] .md-typeset details.warning {
-  background: color-mix(in srgb, #ffa726 14%, var(--kurs-card));
-}
-[data-md-color-scheme="slate"] .md-typeset .task-banner {
-  background: color-mix(in srgb, var(--kurs-accent) 18%, var(--kurs-card));
-}
-[data-md-color-scheme="slate"] .md-typeset details .admonition,
-[data-md-color-scheme="slate"] .md-typeset .admonition .admonition {
-  background: var(--kurs-card);
-}
-
-/* ---- Schmal-Modus (Fenster neben ANSYS) ---------------------------------- */
-/* Stepper: scrollbar ohne sichtbare Schiene, aktiver Schritt wird per JS
-   in die Mitte gerückt */
-.wf-pagenav { scrollbar-width: none; }
-.wf-pagenav::-webkit-scrollbar { display: none; }
-.task-tabs { max-width: 100%; }
-/* Reset-Knopf im Header braucht auf schmalen Fenstern zu viel Platz */
-@media (max-width: 44em) {
-  .md-header .answer-reset-page { display: none !important; }
-}
-/* Overlay-Fußzeile: Tastatur-Hinweis weglassen, wenn es eng wird */
-@media (max-width: 40em) {
-  #fa-nav .fa-hint { display: none; }
-  #fa-card { width: 100vw; max-height: 96vh; border-radius: .7rem; }
-  #fa-body { padding: .8rem .9rem; }
+html:root .md-typeset a.kurs-finish-media:hover { transform: rotate(0deg) scale(1.02); }
+html:root .kurs-finish-media img { display: block; width: 100%; height: 9.5rem; object-fit: contain; margin: 0; }
+@media (max-width: 45em) {
+  html:root .kurs-finish { grid-template-columns: 1fr; padding: 1.4rem 1.25rem; }
+  html:root .md-typeset a.kurs-finish-media { display: none; }
 }
 
 /* ===========================================================================
-   V5 — vertikaler Rhythmus: eine Abstands-Skala für alle Blöcke
+   Feinheiten Campus
    =========================================================================== */
-:root { --space-block: 1.5rem; }
+/* Kopfzeile: Titel in Dunkelblau, ruhig */
+html:root .md-header__title { font-size: .78rem; }
 
-/* Blöcke atmen: Boxen, Bilder, Tabellen, Buttons auf einer Skala */
-.md-typeset .admonition, .md-typeset details, .md-typeset .task-banner {
-  margin-top: var(--space-block);
-  margin-bottom: var(--space-block);
-}
-.md-typeset .md-content__inner > p > img,
-.md-typeset .md-content__inner p > img:only-child {
-  margin: .4rem 0;
-}
-.md-typeset p { margin-block: .9em; }
-.md-typeset table:not([class]) { margin-block: var(--space-block); }
-.md-typeset .md-button { margin: .35rem .35rem 1rem 0; }
-
-/* Listen: Punkte nicht stapeln */
-.md-typeset ul > li, .md-typeset ol > li { margin-bottom: .45em; }
-.md-typeset li > p { margin-block: .4em; }
-
-/* Überschriften: klare Absätze zwischen Sektionen */
-.md-typeset h2 { margin-top: 2.8em; margin-bottom: .7em; }
-.md-typeset h3 { margin-top: 2.1em; margin-bottom: .55em; }
-.md-typeset h1 { margin-bottom: .5em; }
-
-/* Aufgaben-Kopfzeile: Tabs / Stepper / Banner mit Luft dazwischen */
-.task-tabs { margin: 1rem 0 .6rem; }
-.wf-pagenav { margin: 1.1rem 0 1.7rem; }
-.md-typeset .task-banner { margin-top: 0; margin-bottom: 1.7rem; padding: .6rem .95rem; }
-.wf-head { margin: 2.6rem 0 1.1rem; }
-
-/* Innenleben der Boxen: Titel und Inhalt nicht quetschen */
-.md-typeset .admonition-title, .md-typeset summary { margin-bottom: .35rem; }
-.md-typeset .admonition > :last-child, .md-typeset details > :last-child { margin-bottom: .9rem; }
-.md-typeset details > ol { margin-top: .6rem; }
-.md-typeset details > ol > li { margin-bottom: 1.1rem; }
-.fa-btn { margin: .5rem 0 .6rem; }
-
-/* Karte: etwas großzügigeres Innenpolster */
-.md-content__inner { padding: 1.7rem 2.4rem 2.6rem; }
-@media (max-width: 48em) {
-  .md-content__inner { padding: 1.1rem 1.1rem 1.8rem; }
+/* Seitenleiste: aktiver Eintrag mit Cyan-Strich */
+html:root .md-sidebar--primary .md-nav__item .md-nav__link--active { position: relative; }
+html:root .md-sidebar--primary .md-nav__item .md-nav__link--active::before {
+  content: ""; position: absolute; left: -.6rem; top: .12em; bottom: .12em;
+  width: 2px; border-radius: 2px; background: var(--kurs-accent);
 }
 
-/* Fußzeile (Weiter-Button) vom Inhalt absetzen */
-.md-typeset .md-button--primary:last-child { margin-top: 1.2rem; }
-
-/* Orts-Icons in Menüpfad-Chips (Reiter/Strukturbaum/Detailfenster/…) */
-.menu-path .mp-ic {
-  display: inline-block; width: .82rem; height: .82rem;
-  vertical-align: -.13rem; margin-right: .28rem;
-  color: var(--kurs-accent);
+/* Boxen: getönte Fläche, farbiger Strich links, Icon in Typfarbe */
+html:root .md-typeset :is(.admonition, details) {
+  background: color-mix(in srgb, var(--kurs-type) 6%, var(--kurs-surface));
+  border-left: 3px solid var(--kurs-type);
+  border-radius: 0 var(--kurs-radius-md) var(--kurs-radius-md) 0;
 }
-.menu-path .mp-ic svg { display: block; width: 100%; height: 100%; }
-
-/* Mitmach-Modus: Schrittfläche ist Klickziel zum Blättern */
-#fa-body { cursor: e-resize; }
-#fa-body a { cursor: pointer; }
-
-/* Tastenkappen (`Enter`, `Esc`, `F2`, `Strg + F` …) — physischer Key-Look */
-.keys { display: inline-flex; align-items: center; gap: .28rem; vertical-align: baseline; }
-.keys .keys-plus { color: var(--md-default-fg-color--light); font-weight: 650; font-size: .68rem; }
-.md-typeset kbd.kc {
-  display: inline-block;
-  font-family: var(--md-text-font);
-  font-size: .64rem; font-weight: 650; line-height: 1.35;
-  color: var(--md-default-fg-color);
-  background: linear-gradient(var(--kurs-card), color-mix(in srgb, var(--md-default-fg-color) 7%, var(--kurs-card)));
-  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 24%, transparent);
-  border-bottom-width: 2px;
-  border-radius: .34rem;
-  padding: .04rem .42rem;
-  min-width: .95rem; text-align: center;
-  box-shadow: none;
-}
-[data-md-color-scheme="slate"] .md-typeset kbd.kc {
-  border-color: rgba(255, 255, 255, .28);
-  background: linear-gradient(var(--kurs-card), rgba(255, 255, 255, .05));
+html:root .md-typeset :is(.admonition, details) :is(.admonition, details) {
+  background: var(--kurs-surface);
 }
 
-/* Aktions-Chip (Rechtsklick/Doppelklick): abgesetzt vom Ziel-Chip */
-.menu-path .mp-seg.mp-action {
-  background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));
-  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
-  color: color-mix(in srgb, var(--kurs-accent) 75%, var(--md-default-fg-color));
-  font-weight: 650;
-  margin-right: .1rem;
+/* Schritt-Navigation: gleich breite Spalten mit Fortschrittsbalken, ohne
+   Nummern; passt immer in die Breite (kein Scrollen), auf dem Handy zwei Reihen */
+html:root .wf-pagenav {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+  gap: .4rem; overflow: visible; padding: .15rem 0 0; margin: .7rem 0 2rem;
 }
-/* Orts-Kammer (Reiter/Strukturbaum/…): dieselbe Idee in Primärfarbe (blau),
-   damit „Ort" von „Klick-Aktion" unterscheidbar bleibt */
-.menu-path .mp-seg.mp-loc {
-  background: color-mix(in srgb, var(--kurs-primary) 11%, var(--kurs-card));
-  border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent);
-  color: color-mix(in srgb, var(--kurs-primary) 72%, var(--md-default-fg-color));
-  font-weight: 650;
-  margin-right: .1rem;
+html:root .wf-pnum, html:root .wf-pline { display: none; }
+html:root .md-typeset a.wf-pstep {
+  display: flex; flex-direction: column; align-items: stretch; gap: .42rem;
+  min-width: 0; padding: 0; color: var(--kurs-text-3); transition: color .15s;
 }
-.menu-path .mp-seg.mp-loc .mp-ic { color: color-mix(in srgb, var(--kurs-primary) 78%, var(--md-default-fg-color)); }
-[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-loc {
-  background: rgba(110, 168, 232, .16);
-  border-color: rgba(110, 168, 232, .45);
-  color: #a9cbf0;
+html:root .md-typeset a.wf-pstep::before {
+  content: ""; display: block; height: 4px; border-radius: 4px;
+  background: var(--kurs-line); transition: background .15s;
 }
-[data-md-color-scheme="slate"] .menu-path .mp-seg.mp-loc .mp-ic { color: #a9cbf0; }
-/* Maus-/Orts-Icons in den Vorsatz-Kammern etwas größer für Lesbarkeit */
-.menu-path .mp-action .mp-ic, .menu-path .mp-loc .mp-ic {
-  width: .98rem; height: .98rem; margin-right: .3rem;
+html:root .md-typeset a.wf-pstep.done { color: var(--kurs-text-2); }
+html:root .md-typeset a.wf-pstep.done::before { background: color-mix(in srgb, var(--kurs-accent) 45%, var(--kurs-line)); }
+html:root .md-typeset a.wf-pstep.active { color: var(--kurs-head); }
+html:root .md-typeset a.wf-pstep.active::before { background: var(--kurs-accent); }
+html:root .md-typeset a.wf-pstep:hover { color: var(--kurs-accent-ink); text-decoration: none; }
+html:root .md-typeset a.wf-pstep:hover::before { background: color-mix(in srgb, var(--kurs-accent) 75%, var(--kurs-line)); }
+html:root .wf-plabel {
+  font-size: .66rem; font-weight: 600; line-height: 1.25;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-
-/* ===========================================================================
-   V6 — Editorial: Serifen-Display für Überschriften, warme Textfarbe,
-   ruhigerer vertikaler Rhythmus.
-   Vorbild: lorenabarba.com (Merriweather-Überschriften 40/28/22 px auf
-   ~736 px Spalte, warmes Fast-Schwarz #181712, Sans nur für UI).
-   Hier: Source Serif 4 (variabel, lokal gevendort) für H1–H3,
-   Inter bleibt Lese- und UI-Schrift.
-   =========================================================================== */
-@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 400 700;
-  font-display: swap;
-  src: url("../assets/fonts/source-serif-4-var.woff2") format("woff2"); }
-@font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 400 700;
-  font-display: swap;
-  src: url("../assets/fonts/source-serif-4-italic-var.woff2") format("woff2"); }
-
-:root { --kurs-serif: "Source Serif 4", Georgia, "Times New Roman", serif; }
-
-/* Warmes Fast-Schwarz statt neutralem Grau — wirkt gedruckter, weicher */
-[data-md-color-scheme="default"] {
-  --md-default-fg-color: rgba(29, 27, 22, .92);
-  --md-default-fg-color--light: rgba(29, 27, 22, .58);
-  --md-default-fg-color--lighter: rgba(29, 27, 22, .36);
-  --md-default-fg-color--lightest: rgba(29, 27, 22, .09);
+html:root a.wf-pstep.active .wf-plabel { font-weight: 700; }
+@media (max-width: 45em) {
+  html:root .wf-pagenav { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem .3rem; }
+  html:root .wf-plabel { font-size: .55rem; }
+  html:root .task-tabs { gap: .8rem; }
+  html:root .md-typeset a.task-tab { font-size: .66rem; }
 }
 
-/* Überschriften: Serifen-Display mit klarer Größentreppe */
-.md-typeset h1, .md-typeset h2, .md-typeset h3 {
-  font-family: var(--kurs-serif);
-  letter-spacing: 0;
-  color: var(--md-default-fg-color);
-}
-.md-typeset h1 {
-  font-size: 2.5em; font-weight: 640; line-height: 1.16;
-  margin: .35em 0 .5em;
-}
-.md-typeset h2 {
-  font-size: 1.6em; font-weight: 620; line-height: 1.25;
-  margin-top: 3em; margin-bottom: .6em;
-}
-.md-typeset h3 {
-  font-size: 1.18em; font-weight: 650; line-height: 1.35;
-  margin-top: 2.3em; margin-bottom: .55em;
-}
-.md-typeset h1 small { font-family: var(--md-text-font); font-size: .42em; }
+/* Varianten-Reiter: Text mit Cyan-Unterstrich */
+html:root .task-tabs { gap: 1.3rem; border-bottom: 1px solid var(--kurs-line); }
+html:root .md-typeset a.task-tab { padding: .35rem 0 .5rem; margin-bottom: -1px; border-bottom: 2px solid transparent; }
+html:root .md-typeset a.task-tab.active { border-bottom-color: var(--kurs-accent); }
 
-/* Lauftext: einen Hauch mehr Zeilenluft — liest sich ruhiger */
-.md-typeset { line-height: 1.7; }
-
-/* Lead-Absatz: der erste Absatz direkt nach der H1 als Einleitung */
-.md-typeset h1 + p {
-  font-size: .88rem; line-height: 1.65;
-  color: var(--md-default-fg-color--light);
-  margin-bottom: 1.6em;
+html:root .md-typeset .task-banner {
+  background: var(--kurs-accent-soft); border-left: 3px solid var(--kurs-accent);
+  border-radius: 0 var(--kurs-radius-md) var(--kurs-radius-md) 0;
 }
 
-/* Karte: großzügigeres Polster, Inhalt bekommt Rand zum Atmen */
-.md-content__inner { padding: 2.1rem 2.8rem 3rem; }
-@media (max-width: 48em) {
-  .md-content__inner { padding: 1.2rem 1.15rem 2rem; }
-  .md-typeset h1 { font-size: 2em; }
-}
+/* Fragen: leicht getönt */
+html:root :is(.numeric-question, .multiple-choice-question) { --kurs-q-bg: var(--kurs-panel); border-color: transparent; }
 
-/* Trennlinien: Hairline mit viel Abstand (bewusste Pause) */
-.md-typeset hr {
-  border: 0; border-top: 1px solid var(--md-default-fg-color--lightest);
-  margin: 2.6rem 0;
+/* ---- Startseite ------------------------------------------------------------ */
+@media screen and (min-width: 76.25em) {
+  html:root .md-content:has(.page--home) { max-width: 62rem; }
 }
+html:root .kurs-hero {
+  display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.15fr); gap: 1.8rem; align-items: center;
+  margin: .8rem 0 2.6rem; padding: 2.4rem 2.4rem 2.2rem;
+  border-radius: var(--kurs-radius-lg);
+  background:
+    radial-gradient(90% 120% at 100% 0%, var(--kurs-accent-soft) 0%, transparent 60%),
+    var(--kurs-panel);
+}
+html:root .md-typeset .kurs-kicker { font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kurs-accent-ink); margin-bottom: .8rem; }
+html:root .md-typeset .kurs-hero-title { font-size: clamp(1.55rem, 2.6vw, 2.35rem); line-height: 1.08; font-weight: 700; letter-spacing: -.02em; color: var(--kurs-head); overflow-wrap: normal; word-break: normal; hyphens: manual; }
+html:root .kurs-hero-title span { color: var(--kurs-accent); }
+html:root .md-typeset .kurs-hero-lead { font-size: .9rem; line-height: 1.55; color: var(--kurs-text-2); margin: 1rem 0 1.5rem; max-width: 30rem; }
+@media (max-width: 60em) { html:root .kurs-hero { grid-template-columns: 1fr; padding: 1.6rem 1.3rem; } }
 
-/* Blockskala minimal weiter aufziehen */
-:root { --space-block: 1.6rem; }
-
-/* ===========================================================================
-   V7 — typografische Boxen & ruhige Navigation.
-   Statt gefüllter Karten: markantes Kapitälchen-Label + eingerückter Text
-   an einer feinen Regel-Linie. Weniger konkurrierende Element-Optiken,
-   der Inhalt fließt wieder. Sidebar ohne Icons, ohne Pill-Hintergründe.
-   =========================================================================== */
-
-/* -- Boxen: Label + Einzug statt Tonfläche -------------------------------- */
-.md-typeset .admonition, .md-typeset details {
-  background: transparent !important;
-  border-radius: 0;
-  border-left: 2px solid var(--md-default-fg-color--lightest) !important;
-  padding: .1rem 0 .1rem 1.1rem;
-}
-[data-md-color-scheme="slate"] .md-typeset .admonition,
-[data-md-color-scheme="slate"] .md-typeset details,
-[data-md-color-scheme="slate"] .md-typeset .admonition.question,
-[data-md-color-scheme="slate"] .md-typeset details.question,
-[data-md-color-scheme="slate"] .md-typeset .admonition.check,
-[data-md-color-scheme="slate"] .md-typeset details.check,
-[data-md-color-scheme="slate"] .md-typeset .admonition.success,
-[data-md-color-scheme="slate"] .md-typeset details.success,
-[data-md-color-scheme="slate"] .md-typeset .admonition.warning,
-[data-md-color-scheme="slate"] .md-typeset details.warning,
-[data-md-color-scheme="slate"] .md-typeset details .admonition,
-[data-md-color-scheme="slate"] .md-typeset .admonition .admonition {
-  background: transparent !important;
-}
-
-/* Titel wird zum Kapitälchen-Label — Icon fällt weg */
-.md-typeset .admonition-title, .md-typeset summary {
-  margin: 0 0 .5rem 0;
-  padding: 0 1.6rem 0 0 !important;
-  background: transparent !important;
-  font-family: var(--md-text-font);
-  font-size: .6rem;
-  font-weight: 750;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--md-default-fg-color--light) !important;
-  position: relative;
-}
-.md-typeset .admonition-title::before, .md-typeset summary::before {
-  display: none;
-}
-.md-typeset details > summary::after { top: -.1rem; right: 0; }
-
-/* Didaktische Farbe nur noch in Label + Regel-Linie */
-.md-typeset .admonition.question, .md-typeset details.question {
-  border-left-color: color-mix(in srgb, var(--kurs-primary) 40%, transparent) !important;
-}
-.md-typeset .question > .admonition-title, .md-typeset .question > summary {
-  color: var(--kurs-primary) !important;
-}
-.md-typeset .admonition.check, .md-typeset details.check,
-.md-typeset .admonition.success, .md-typeset details.success {
-  border-left-color: rgba(46, 125, 50, .45) !important;
-}
-.md-typeset :is(.check, .success) > .admonition-title,
-.md-typeset :is(.check, .success) > summary {
-  color: #2e7d32 !important;
-}
-.md-typeset .admonition.warning, .md-typeset details.warning {
-  border-left-color: rgba(230, 81, 0, .5) !important;
-}
-.md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
-  color: #b45309 !important;
-}
-[data-md-color-scheme="slate"] .md-typeset .question > .admonition-title,
-[data-md-color-scheme="slate"] .md-typeset .question > summary { color: #8ab4e8 !important; }
-[data-md-color-scheme="slate"] .md-typeset :is(.check, .success) > .admonition-title,
-[data-md-color-scheme="slate"] .md-typeset :is(.check, .success) > summary { color: #81c784 !important; }
-[data-md-color-scheme="slate"] .md-typeset .warning > .admonition-title,
-[data-md-color-scheme="slate"] .md-typeset .warning > summary { color: #ffb74d !important; }
-
-/* Innenraum: normale Absatzruhe statt Karten-Polster */
-.md-typeset .admonition > :last-child, .md-typeset details > :last-child {
-  margin-bottom: .3rem;
-}
-.md-typeset details > ol { margin-top: .4rem; }
-
-/* Aufgaben-Banner folgt derselben Sprache: orange Regel, kein Ton */
-.md-typeset .task-banner {
-  background: transparent !important;
-  border-left: 2px solid var(--kurs-accent) !important;
-  border-radius: 0;
-  padding: .15rem 0 .15rem 1.1rem;
-}
-[data-md-color-scheme="slate"] .md-typeset .task-banner { background: transparent !important; }
-
-/* Tabellen: offene Hairline-Tabelle statt Kasten */
-.md-typeset table:not([class]) {
-  box-shadow: none;
-  border-radius: 0;
-  border-top: 1.5px solid color-mix(in srgb, var(--md-default-fg-color) 35%, transparent);
-  border-bottom: 1.5px solid color-mix(in srgb, var(--md-default-fg-color) 35%, transparent);
-}
-.md-typeset table:not([class]) th {
-  background: transparent;
-  font-size: .62rem;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  color: var(--md-default-fg-color--light);
-}
-
-/* Sekundär-Buttons als Ghost — nur der primäre Weiter-Button bleibt gefüllt */
-.md-typeset .md-button:not(.md-button--primary) {
-  background: transparent;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--md-default-fg-color) 22%, transparent);
-}
-.md-typeset .md-button:not(.md-button--primary):hover {
-  background: color-mix(in srgb, var(--md-default-fg-color) 5%, transparent);
-  transform: none;
-}
-
-/* -- Sidebar: Icons raus, Pills raus, Typo-Ordnung rein -------------------- */
-.md-sidebar--primary .md-nav__link > svg { display: none; }
-.md-nav__link--active {
-  background: transparent;
-  font-weight: 650;
-  color: var(--kurs-accent);
-}
-.md-sidebar--primary { font-size: .68rem; }
-.md-sidebar--primary .md-nav__link { padding: .16rem .35rem; }
-/* Kontext-Kopf der Sektion (lifted): gleiches Kapitälchen-Label wie Rest */
-.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
-  font-size: .6rem;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  font-weight: 750;
-  color: var(--md-default-fg-color--light);
-}
-.md-sidebar--primary .md-nav__item--section { margin-top: .9rem; }
-/* Der Sektions-Kopf ist bei Material sticky — er braucht deckenden Grund,
-   sonst schieben sich die Einträge beim Scrollen sichtbar darunter durch */
-.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
-  background: var(--kurs-canvas) !important;
-  z-index: 2;
-}
-.md-nav__item .md-nav__link--active,
-.md-nav__item .md-nav__link--active code {
-  color: var(--kurs-accent);
-}
-/* Sektions-Labels (ABSTRAKTIONEN, VERNETZUNG, …) gleich leise wie der Kopf */
-.md-sidebar--primary .md-nav__item--section > .md-nav__link {
-  font-size: .6rem;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  font-weight: 750;
-  color: var(--md-default-fg-color--light);
-}
-
-/* Details-Chevron erbt die Labelfarbe */
-.md-typeset details > summary::after { background-color: currentColor !important; }
-
-/* ===========================================================================
-   V7.1 — Aufgaben-Navigation in derselben typografischen Logik
-   =========================================================================== */
-
-/* Schritt-Stepper: nummerierte Textzeile statt Kreis-Kette.
-   erledigt = normal, aktiv = Akzent, offen = ausgegraut */
-.wf-pagenav {
-  align-items: baseline;
-  gap: .7rem;
-  margin: .55rem 0 2rem;
-  /* Ebene 2: Schritte sind Kinder der aktiven Variante darüber —
-     gleicher Einzug an Regel-Linie wie bei den Boxen */
-  padding-left: 1rem;
-  border-left: 2px solid var(--md-default-fg-color--lightest);
-}
-.wf-pstep {
-  flex-direction: row;
-  align-items: baseline;
-  gap: .28rem;
-  /* nicht schrumpfen/umbrechen — bei Platzmangel scrollt die Zeile
-     (overflow-x auto + Zentrier-JS), statt "10" zu zerreißen */
-  flex: none;
-  min-width: 0;
-  white-space: nowrap;
-}
-.wf-pnum {
-  display: inline;
-  width: auto; height: auto;
-  background: transparent !important;
-  box-shadow: none !important;
-  color: var(--md-default-fg-color--lighter);
-  font-size: .58rem;
-  font-weight: 650;
-  transition: none;
-}
-.wf-pstep:hover .wf-pnum { transform: none; }
-.wf-plabel { font-size: .63rem; color: var(--md-default-fg-color--lighter); }
-.wf-pstep.done .wf-pnum, .wf-pstep.done .wf-plabel { color: var(--md-default-fg-color--light); }
-.wf-pstep:hover .wf-plabel, .wf-pstep:hover .wf-pnum { color: var(--md-default-fg-color); }
-.wf-pstep.active .wf-pnum,
-.wf-pstep.active .wf-plabel { color: var(--kurs-accent); font-weight: 650; }
-.wf-pline { display: none; }
-
-/* Schritt-Kopf in Anleitungen (Fortschrittsbalken + Nummer + Titel):
-   Serifen-Titel, Akzent-Nummer ohne Kreis, Balken als 2px-Linie */
-.wf-track { gap: .3rem; margin-bottom: .65rem; }
-.wf-dot { height: 2px; border-radius: 1px; }
-.wf-num {
-  width: auto; height: auto;
-  background: transparent;
-  color: var(--kurs-accent);
-  font-family: var(--kurs-serif);
-  font-size: 1.05rem;
-  font-weight: 650;
-}
-.wf-title {
-  font-family: var(--kurs-serif);
-  font-size: 1.05rem;
-  font-weight: 650;
-  letter-spacing: 0;
-}
-.wf-tool { font-family: var(--md-text-font); }
-
-/* Varianten-Tabs: Text mit Akzent-Unterstrich statt grauem Pill-Container */
-.task-tabs {
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  gap: 1.1rem;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  display: flex;
-  margin: 1.2rem 0 .8rem;
-}
-.task-tab {
-  padding: .3rem 0 .45rem;
-  border-radius: 0;
-  font-size: .7rem;
-  margin-bottom: -1px;
-  border-bottom: 2px solid transparent;
-}
-.task-tab.active {
-  background: transparent;
-  box-shadow: none;
-  border-bottom-color: var(--kurs-accent);
-}
-
-/* ===========================================================================
-   V7.2 — Sidebar: reine Textnavigation
-   Grundzustand leise, Hover dunkel, aktiv Akzent — keine Kästen, Chevrons klein
-   =========================================================================== */
-.md-sidebar--primary .md-nav__link {
-  color: var(--md-default-fg-color--light);
-}
-.md-sidebar--primary .md-nav__link:hover {
-  color: var(--md-default-fg-color);
-  background: transparent;
-}
-.md-sidebar--primary .md-nav__item .md-nav__link--active,
-.md-sidebar--primary .md-nav__item .md-nav__link--active:hover {
-  color: var(--kurs-accent);
-}
-.md-sidebar--primary .md-nav__icon { opacity: .4; }
-.md-sidebar--primary .md-nav__link:hover .md-nav__icon { opacity: .8; }
-.md-sidebar--primary .md-nav__item { line-height: 1.45; }
-/* TOC rechts gleich behandeln */
-.md-sidebar--secondary .md-nav__link { color: var(--md-default-fg-color--light); }
-.md-sidebar--secondary .md-nav__link:hover { color: var(--md-default-fg-color); background: transparent; }
-.md-sidebar--secondary .md-nav__link--active { color: var(--kurs-accent); }
-
-/* ===========================================================================
-   V7.3 — Weiter-Buttons leiser: Akzent-Tonfläche statt Vollorange
-   =========================================================================== */
-.md-typeset .md-button--primary {
-  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-  box-shadow: none;
-}
-.md-typeset .md-button--primary:hover {
-  background: color-mix(in srgb, var(--kurs-accent) 19%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-  filter: none;
-}
-[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
-  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
-  color: #ffb27d;
-}
-[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover {
-  background: color-mix(in srgb, var(--kurs-accent) 30%, var(--kurs-card));
-  color: #ffc79e;
-}
-/* Tutorial-Player: Titel-Pille in derselben leisen Tonlage statt Vollfläche */
-.player__title h1 {
-  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-  font-family: var(--md-text-font);
-  font-size: 1rem;
-  font-weight: 650;
-}
-[data-md-color-scheme="slate"] .player__title h1 {
-  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
-  color: #ffb27d;
-}
-
-/* Mitmach-Knopf in derselben leisen Tonlage */
-.fa-btn {
-  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-  box-shadow: none;
-}
-.fa-btn:hover {
-  filter: none;
-  background: color-mix(in srgb, var(--kurs-accent) 19%, var(--kurs-card));
-}
-[data-md-color-scheme="slate"] .fa-btn {
-  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
-  color: #ffb27d;
-}
-
-/* ===========================================================================
-   V7.4 — Inhaltsverzeichnis rechts global aus (Seiten sind kurz),
-   der Inhalt bekommt die freie Breite
-   =========================================================================== */
-.md-sidebar--secondary { display: none !important; }
-@media (min-width: 76.25em) {
-  .md-content { max-width: 52rem; margin-left: auto; margin-right: auto; }
-}
-
-/* ===========================================================================
-   V7.5 — Vorsatz + Ziel als eine zusammengesetzte Pille (1..n Kammern)
-   [🖱 Rechtsklick | Geometry] · [🌳 Strukturbaum | Mesh] ·
-   [🖱 Rechtsklick | 🌳 Strukturbaum | Mesh] — Kammern in einem gemeinsamen
-   Rahmen (Klick=orange, Ort=blau); nur die erste Kammer trägt die Tonfläche.
-   =========================================================================== */
-.menu-path .mp-click {
-  display: inline-flex;
-  align-items: stretch;
-  vertical-align: baseline;
-}
-/* Positionsbasierte Rundung: außen rund, innen eckig, geteilte Nähte */
-.menu-path .mp-click .mp-seg { border-radius: 0; margin-right: 0; }
-.menu-path .mp-click .mp-seg:first-child { border-radius: .4rem 0 0 .4rem; }
-.menu-path .mp-click .mp-seg:last-child { border-radius: 0 .4rem .4rem 0; }
-.menu-path .mp-click .mp-seg:not(:first-child) { border-left: 0; }
-/* Ziel-Kammer (ohne Typ): Rahmen in der Farbe der ersten Kammer, neutrale Fläche */
-.menu-path .mp-click--act .mp-seg { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
-.menu-path .mp-click--loc .mp-seg { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
-/* Jede Vorsatz-Kammer behält ihre eigene Typ-Rahmenfarbe (gewinnt über oben) */
-.menu-path .mp-click .mp-seg.mp-action { border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent); }
-.menu-path .mp-click .mp-seg.mp-loc { border-color: color-mix(in srgb, var(--kurs-primary) 42%, transparent); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--act .mp-seg,
-[data-md-color-scheme="slate"] .menu-path .mp-click .mp-seg.mp-action { border-color: rgba(255, 138, 61, .5); }
-[data-md-color-scheme="slate"] .menu-path .mp-click--loc .mp-seg,
-[data-md-color-scheme="slate"] .menu-path .mp-click .mp-seg.mp-loc { border-color: rgba(110, 168, 232, .45); }
-
-/* ===========================================================================
-   V8 — Startseite: Praktika als editoriale Zeilen-Liste
-   Serifen-Nummer · Kapitälchen-Label · Serifen-Titel · Kurzbeschreibung ·
-   Mini-Vorschau — getrennt durch Hairlines, Hover in Akzentfarbe
-   =========================================================================== */
-.md-typeset .prakt-list { margin: .8rem 0 2rem; }
-.md-typeset a.prakt-row {
-  display: flex; align-items: center; gap: 1.15rem;
-  padding: 1rem .25rem;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
-  color: var(--md-default-fg-color);
-  text-decoration: none;
-}
-.md-typeset .prakt-list a.prakt-row:last-of-type {
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-}
-.prakt-num {
-  flex: none; width: 2.3rem; text-align: center;
-  font-family: var(--kurs-serif);
-  font-size: 1.9rem; font-weight: 620; line-height: 1;
-  color: var(--md-default-fg-color--lighter);
-  transition: color .15s;
-}
-.prakt-body { flex: 1; min-width: 0; display: block; }
-.prakt-label {
-  display: block;
-  font-size: .58rem; font-weight: 750;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--md-default-fg-color--light);
-  margin-bottom: .12rem;
-}
-.prakt-title {
-  display: block;
-  font-family: var(--kurs-serif);
-  font-size: 1.05rem; font-weight: 650; line-height: 1.3;
-  transition: color .15s;
-}
-.prakt-desc {
-  display: block;
-  font-size: .68rem; line-height: 1.5;
-  color: var(--md-default-fg-color--light);
-  margin-top: .18rem;
-}
-.md-typeset img.prakt-thumb {
-  flex: none; width: 5.6rem; height: 3.7rem;
-  object-fit: cover; object-position: center;
-  border-radius: .45rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  margin: 0;
-}
-.prakt-arrow {
-  flex: none;
-  color: var(--md-default-fg-color--lighter);
-  font-weight: 700;
-  transition: color .15s, transform .15s;
-}
-.md-typeset a.prakt-row:hover .prakt-title,
-.md-typeset a.prakt-row:hover .prakt-num { color: var(--kurs-accent); }
-.md-typeset a.prakt-row:hover .prakt-arrow {
-  color: var(--kurs-accent);
-  transform: translateX(4px);
-}
-@media (max-width: 40em) {
-  .md-typeset img.prakt-thumb { display: none; }
-  .prakt-num { width: 1.6rem; font-size: 1.5rem; }
-}
-
-/* ---------------------------------------------------------------------------
-   Praktikums-Übersichten: Karten-Raster mit großen Vorschaubildern
-   (die Diagramme/Screenshots sind hier Inhalt, nicht nur Deko).
-   Abschnittsüberschriften (## …) trennen die Gruppen.
-   --------------------------------------------------------------------------- */
-.md-typeset .prakt-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
-  gap: 1rem;
-  margin: 1rem 0 2.4rem;
-}
-.md-typeset a.prakt-card {
-  display: flex; flex-direction: column;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: .7rem; overflow: hidden;
-  text-decoration: none; color: var(--md-default-fg-color);
+html:root .md-typeset .prakt-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 70em) { html:root .md-typeset .prakt-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 36em) { html:root .md-typeset .prakt-list { grid-template-columns: 1fr; } }
+html:root .md-typeset a.prakt-row {
+  flex-direction: column; align-items: stretch; gap: 0; overflow: hidden;
+  background: var(--kurs-surface); border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-lg);
   transition: border-color .15s, transform .15s, box-shadow .15s;
 }
-.md-typeset a.prakt-card:hover {
-  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(15, 30, 60, .1);
+html:root .md-typeset a.prakt-row:hover { border-color: var(--kurs-accent); transform: translateY(-2px); box-shadow: var(--kurs-shadow); }
+html:root .md-typeset img.prakt-thumb {
+  order: -1; width: 100%; height: 7.4rem; object-fit: contain; padding: .5rem;
+  border: 0; border-bottom: 1px solid var(--kurs-line); border-radius: 0;
 }
-[data-md-color-scheme="slate"] .md-typeset a.prakt-card:hover {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
-}
-.md-typeset a.prakt-card img.prakt-cimg {
-  width: 100%; height: 9rem;
-  object-fit: contain;
-  background: color-mix(in srgb, var(--md-default-fg-color) 3%, var(--kurs-card));
-  border: 0; border-radius: 0; box-shadow: none;
-  margin: 0;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-}
-.prakt-cbody { display: block; padding: .7rem .85rem .8rem; }
-.prakt-ctitle {
-  display: block;
-  font-family: var(--kurs-serif);
-  font-weight: 650; font-size: .84rem; line-height: 1.3;
-  transition: color .15s;
-}
-.md-typeset a.prakt-card:hover .prakt-ctitle { color: var(--kurs-accent); }
-.prakt-cdesc {
-  display: block;
-  font-size: .66rem; line-height: 1.45;
-  color: var(--md-default-fg-color--light);
-  margin-top: .25rem;
-}
-/* Karten ohne Vorschaubild: Titel mittig, gleiche Höhenanmutung */
-.md-typeset a.prakt-card:not(:has(.prakt-cimg)) {
-  justify-content: center;
-  min-height: 6.5rem;
-  background: color-mix(in srgb, var(--md-default-fg-color) 2.5%, var(--kurs-card));
-}
-.md-typeset a.prakt-card:not(:has(.prakt-cimg)) .prakt-cbody {
-  padding: 1.1rem .95rem;
-}
-
-/* Abschnittsüberschrift der Übersichten klar als Gliederung markieren:
-   Serifen-Titel mit kurzer Akzent-Regel darüber */
-.md-typeset .prakt-cards + h2,
-.md-typeset h2:has(+ .prakt-cards) {
-  border-top: 2px solid color-mix(in srgb, var(--kurs-accent) 55%, transparent);
-  padding-top: .7rem;
-  margin-top: 2.4rem;
-}
-
-/* FAQ: leise Textzeile statt Karte */
-.md-typeset a.home-faq {
-  display: block;
-  margin: 0 0 1.6rem;
-  padding: .55rem .25rem;
-  font-size: .72rem;
-  color: var(--md-default-fg-color--light);
-  text-decoration: none;
-}
-.md-typeset a.home-faq:hover { color: var(--kurs-accent); }
-
-/* Dozenten: kompakte Porträt-Zeilen statt Karten */
-.md-typeset .doz-list {
-  display: flex; flex-wrap: wrap; gap: .8rem 2.6rem;
-  margin: 1rem 0 1.4rem;
-}
-.md-typeset a.doz-item {
-  display: flex; align-items: center; gap: .75rem;
-  color: var(--md-default-fg-color);
-  text-decoration: none;
-}
-.md-typeset a.doz-item img {
-  width: 4.2rem; height: 4.2rem;
-  object-fit: cover; object-position: center top;
-  border-radius: 50%;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  margin: 0;
-  box-shadow: none;
-}
-.doz-body { display: block; }
-.doz-name { display: block; font-size: .74rem; font-weight: 650; }
-.doz-mail {
-  display: block;
-  font-size: .64rem;
-  color: var(--md-default-fg-color--light);
-  margin-top: .1rem;
-}
-.md-typeset a.doz-item:hover .doz-name { color: var(--kurs-accent); }
-
-/* ===========================================================================
-   V9 — Schritt-für-Schritt-Anleitungen: klar erkennbar aufklappbar,
-   Schritte als Timeline (Nummern-Kreise bleiben), Bilder sauber gesetzt
-   =========================================================================== */
-
-/* Aufklapp-Signal: Akzent-Chevron direkt hinter dem Label (dreht beim
-   Öffnen), Hover hebt die Zeile leicht an — statt des unsichtbaren Pfeils
-   irgendwo rechts */
-.md-typeset details > summary {
-  padding-right: 0 !important;
-}
-.md-typeset details > summary::after {
-  position: static !important;
-  display: inline-block;
-  width: .9rem; height: .9rem;
-  margin-left: .25rem;
-  vertical-align: -.22rem;
-  background-color: var(--kurs-accent) !important;
-  transform: rotate(0deg);
-  transition: transform .2s;
-}
-.md-typeset details[open] > summary::after { transform: rotate(90deg); }
-.md-typeset details > summary:hover {
-  background: color-mix(in srgb, var(--md-default-fg-color) 4%, transparent) !important;
-  border-radius: .3rem;
-}
-
-/* Timeline: feine Linie verbindet die Nummern-Kreise der Schritte */
-.md-typeset details > ol > li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: .72rem;
-  top: 1.65rem;
-  bottom: -1rem;
-  width: 1px;
-  background: color-mix(in srgb, var(--kurs-accent) 28%, transparent);
-}
-
-/* Bilder in Schritten: eigene Zeile, bündig zum Text, begrenzt hoch */
-.md-typeset details > ol > li img {
-  display: block;
-  margin: .55rem 0 .3rem;
-  max-width: 100%;
-  max-height: 22rem;
-  width: auto;
-  border-radius: .5rem;
-}
-/* Text in Schritten nicht stapeln */
-.md-typeset details > ol > li > p { margin-block: .35em; }
-
-
-/* ===========================================================================
-   V10 — Tutorial-Datenbank: Übersichtsseite + eingebettete Anleitungen
-   =========================================================================== */
-
-/* -- Übersicht: Suchleiste + Kategorie-Chips -- */
-.tut-bar { margin: 1.2rem 0 1.4rem; }
-.md-typeset .tut-search {
-  width: 100%;
-  font: inherit; font-size: .82rem;
-  padding: .55rem .8rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: .6rem;
-  background: var(--kurs-card); color: var(--md-default-fg-color);
-}
-.md-typeset .tut-search:focus {
-  outline: none;
-  border-color: color-mix(in srgb, var(--kurs-accent) 55%, transparent);
-}
-.tut-cats { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
-.md-typeset .tut-chip {
-  border: 0; cursor: pointer;
-  font: inherit; font-size: .66rem; font-weight: 650;
-  letter-spacing: .04em; text-transform: uppercase;
-  padding: .28rem .7rem; border-radius: 2rem;
-  background: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
-  color: var(--md-default-fg-color--light);
-}
-.md-typeset .tut-chip:hover { color: var(--md-default-fg-color); }
-.md-typeset .tut-chip.active {
-  background: color-mix(in srgb, var(--kurs-accent) 15%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-}
-
-/* hidden muss display:grid/flex überstimmen */
-#tut-overview [hidden] { display: none !important; }
-
-/* -- Übersicht: Karten-Raster -- */
-.tut-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
-  gap: 1rem;
-}
-.md-typeset a.tut-card {
-  display: flex; flex-direction: column;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: .7rem; overflow: hidden;
-  text-decoration: none; color: var(--md-default-fg-color);
-  transition: border-color .15s, transform .15s, box-shadow .15s;
-}
-.md-typeset a.tut-card:hover {
-  border-color: color-mix(in srgb, var(--kurs-accent) 45%, transparent);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(15, 30, 60, .1);
-}
-.md-typeset a.tut-card img.tut-thumb {
-  width: 100%; height: 8rem; object-fit: contain;
-  background: color-mix(in srgb, var(--md-default-fg-color) 3%, var(--kurs-card));
-  border: 0; border-radius: 0; box-shadow: none; margin: 0;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-}
-.tut-card-body { display: block; padding: .65rem .8rem .75rem; }
-.tut-card-title {
-  display: block; font-family: var(--kurs-serif);
-  font-weight: 650; font-size: .82rem; line-height: 1.3;
-  transition: color .15s;
-}
-.md-typeset a.tut-card:hover .tut-card-title { color: var(--kurs-accent); }
-.tut-card-meta { display: flex; gap: .5rem; align-items: center; margin-top: .35rem; }
-
-/* Kategorie-/Meta-Marker */
-.tut-cat, .tut-soft, .tut-count {
-  font-size: .58rem; font-weight: 700; letter-spacing: .06em;
-  text-transform: uppercase; color: var(--md-default-fg-color--light);
-}
-.tut-cat {
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-}
-.tut-empty { color: var(--md-default-fg-color--light); font-size: .8rem; }
-
-/* -- Detailansicht (Übersicht → eine Anleitung) -- */
-.md-typeset .tut-back {
-  border: 0; cursor: pointer; background: none;
-  font: inherit; font-size: .72rem; font-weight: 600;
-  color: var(--md-default-fg-color--light);
-  padding: .2rem 0; margin-bottom: .4rem;
-}
-.md-typeset .tut-back:hover { color: var(--kurs-accent); }
-.md-typeset .tut-detail-title { margin: .2rem 0 .4rem; }
-.tut-meta { display: flex; gap: .8rem; align-items: center; margin: .2rem 0 1rem; }
-
-/* -- Schritte (Übersicht-Detail und Embed teilen sich diese Optik) -- */
-.tut-steps { margin-left: 0 !important; counter-reset: tut; list-style: none; padding: 0; }
-.tut-steps > li {
-  counter-increment: tut; position: relative;
-  padding-left: 2.15rem; margin: 0 0 1.4rem 0;
-}
-.tut-steps > li::before {
-  content: counter(tut);
-  position: absolute; left: 0; top: -.05rem;
-  width: 1.5rem; height: 1.5rem; border-radius: 50%;
-  display: grid; place-items: center;
-  background: color-mix(in srgb, var(--kurs-accent) 14%, var(--kurs-card));
-  color: var(--kurs-accent); font-weight: 700; font-size: .68rem;
-}
-.tut-steps > li:not(:last-child)::after {
-  content: ""; position: absolute; left: .72rem; top: 1.65rem; bottom: -1.1rem;
-  width: 1px; background: color-mix(in srgb, var(--kurs-accent) 28%, transparent);
-}
-.tut-cap { font-size: .8rem; line-height: 1.5; }
-.tut-note {
-  font-size: .72rem; line-height: 1.5;
-  color: var(--md-default-fg-color--light); margin-top: .25rem;
-}
-.md-typeset img.tut-img {
-  display: block; margin: .55rem 0 .2rem;
-  max-width: 100%; max-height: 22rem; width: auto; border-radius: .5rem;
-}
-
-/* -- Embed in Inhaltsseiten: aufklappbar, wie die Kurzanleitungen -- */
-.md-typeset details.tut-embed { margin: var(--space-block) 0; }
-.md-typeset details.tut-embed > summary { display: block; }
-.tut-kicker {
-  font-size: .58rem; font-weight: 750; letter-spacing: .1em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-  margin-right: .4rem;
-}
-.tut-title-txt { font-weight: 650; }
-.md-typeset details.tut-embed .tut-meta { margin: .5rem 0 .8rem; }
-
-/* ===========================================================================
-   V11 — größere Grundschrift (Wunsch: fühlt sich an wie ~150% Zoom).
-   Alles skaliert mit (rem-basiert): Text, Navigation, Chips, Karten.
-   =========================================================================== */
-html { font-size: 135%; }
-
-/* Obere Tab-Leiste kompakter, damit sie bei großer Grundschrift nicht
-   überläuft (Inhalt/Sidebar bleiben voll groß) */
-.md-tabs__link { font-size: .6rem; }
-.md-tabs__item { padding: 0 .5rem; }
-
-/* ===========================================================================
-   V12 — schwebender Weiter-Button auf Schrittseiten
-   Der nächste Schritt ist immer sichtbar (unten rechts), ohne ans Seitenende
-   zu scrollen; blendet aus, sobald das Seitenende erreicht ist. Weicht dem
-   Hilfe-Button aus, wenn dieser aktiv ist.
-   =========================================================================== */
-a.wf-next-float {
-  position: fixed; right: 1rem; bottom: 1rem; z-index: 55;
-  display: inline-flex; align-items: center; gap: .35rem;
-  background: color-mix(in srgb, var(--kurs-accent) 11%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-  font-family: var(--md-text-font); font-size: .7rem; font-weight: 650;
-  padding: .5rem 1rem; border-radius: 2rem;
-  text-decoration: none;
-  box-shadow: 0 3px 14px rgba(15, 30, 60, .18);
-  border: 1px solid color-mix(in srgb, var(--kurs-accent) 30%, transparent);
-  transition: opacity .2s, transform .2s, background .12s;
-}
-a.wf-next-float:hover {
-  background: color-mix(in srgb, var(--kurs-accent) 19%, var(--kurs-card));
-  color: color-mix(in srgb, var(--kurs-accent) 82%, var(--md-default-fg-color));
-}
-a.wf-next-float.hidden { opacity: 0; transform: translateY(6px); pointer-events: none; }
-[data-md-color-scheme="slate"] a.wf-next-float {
-  background: color-mix(in srgb, var(--kurs-accent) 22%, var(--kurs-card));
-  color: #ffb27d;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, .45);
-}
-/* Hilfe-Button aktiv → Weiter-Button rückt darüber */
-body:has(#help-fab:not([style*="none"])) a.wf-next-float { bottom: 4.6rem; }
+html:root .prakt-body { padding: .85rem .95rem 1.05rem; }
+html:root .prakt-label { color: var(--kurs-accent-ink); margin-bottom: .2rem; }
+html:root .prakt-title { font-size: .86rem; }

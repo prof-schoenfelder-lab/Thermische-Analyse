@@ -10,71 +10,33 @@ hide:
 
 <div class="page--home" hidden></div>
 
-<div class="hero hero--text" markdown>
-
-# Angewandte FEM in der Thermodynamik
-
-Temperaturfelder mit der Finite-Elemente-Methode berechnen — von der
-stationären Wärmeleitung bis zur transienten Analyse und Strahlung,
-Schritt für Schritt in ANSYS Workbench.
-
-</div>
-
-<a class="fem-scroll-hint" id="fem-scroll-hint" href="#fem-scrolly">
-  <span>So läuft eine FEM-Simulation ab — einfach weiterscrollen</span>
-  <span class="fem-scroll-chevron" aria-hidden="true"></span>
-</a>
-
-<section class="fem-scrolly" id="fem-scrolly" data-phase="0" markdown>
-  <div class="fem-sticky">
-    <svg id="fem-svg" role="img" aria-label="Animation: Ein Stab wird vernetzt, thermisch belastet und das Temperaturfeld berechnet"></svg>
-    <div class="fem-caption" id="fem-caption"><strong>1 · Geometrie</strong><span>Das Bauteil wird als CAD-Geometrie beschrieben.</span></div>
+<section class="kurs-hero">
+  <div class="kurs-hero-text">
+    <p class="kurs-kicker">HTWK Leipzig · Fakultät Ingenieurwissenschaften</p>
+    <h1 class="kurs-hero-title">Angewandte FEM in der <span>Thermodynamik</span></h1>
+    <p class="kurs-hero-lead">Temperaturfelder mit der Finite-Elemente-Methode berechnen: von der stationären Wärmeleitung bis zur transienten Analyse und Strahlung, Schritt für Schritt in ANSYS Workbench.</p>
+    <div class="kurs-hero-actions">
+      <a class="kurs-btn kurs-btn--primary" href="P1_Einfuehrung/">Mit Praktikum 1 starten <span aria-hidden="true">→</span></a>
+      <a class="kurs-btn" href="Fortschritt/">Mein Fortschritt</a>
+    </div>
   </div>
+  <div class="kurs-hero-media"><div class="kurs-anim" role="img" aria-label="Animation: die Vorzeigeaufgabe Rohr aus Praktikum 2 durch alle sieben Schritte des Simulations-Workflows"></div></div>
 </section>
 
 ## Die Praktika
 
+<!-- Daten der Praktika: extra.praktika in mkdocs.yml (auch für die Abschluss-Karte am Ende jedes Praktikums) -->
 <div class="prakt-list">
-  <a class="prakt-row" href="P1_Einfuehrung/">
-    <span class="prakt-num">1</span>
+{%- for p in praktika %}
+  <a class="prakt-row" href="{{ p.link }}">
     <span class="prakt-body">
-      <span class="prakt-label">Praktikum 1</span>
-      <span class="prakt-title">Einführung in ANSYS Workbench</span>
-      <span class="prakt-desc">Oberfläche, Projektaufbau und die erste eigene Simulation.</span>
+      <span class="prakt-label">Praktikum {{ p.nr }}</span>
+      <span class="prakt-title">{{ p.titel }}</span>
+      <span class="prakt-desc">{{ p.text }}</span>
     </span>
-    <img class="prakt-thumb no-lightbox" src="assets/images/card_p1.png" alt="">
-    <span class="prakt-arrow">→</span>
+    <img class="prakt-thumb no-lightbox" src="{{ p.bild }}" alt="">
   </a>
-  <a class="prakt-row" href="P2_Modellierung_Vernetzung/">
-    <span class="prakt-num">2</span>
-    <span class="prakt-body">
-      <span class="prakt-label">Praktikum 2</span>
-      <span class="prakt-title">Modellierung &amp; Vernetzung</span>
-      <span class="prakt-desc">Abstraktionen — Vollmodell, Symmetrie, 2D — und saubere Netze.</span>
-    </span>
-    <img class="prakt-thumb no-lightbox" src="assets/images/card_p2.png" alt="">
-    <span class="prakt-arrow">→</span>
-  </a>
-  <a class="prakt-row" href="P3_Randbedingungen_Postprocessing/">
-    <span class="prakt-num">3</span>
-    <span class="prakt-body">
-      <span class="prakt-label">Praktikum 3</span>
-      <span class="prakt-title">Randbedingungen, Strahlung &amp; Postprocessing</span>
-      <span class="prakt-desc">Konvektion, Strahlung &amp; Co. richtig anbringen — und Ergebnissen trauen lernen.</span>
-    </span>
-    <img class="prakt-thumb no-lightbox" src="assets/images/card_p3.png" alt="">
-    <span class="prakt-arrow">→</span>
-  </a>
-  <a class="prakt-row" href="P4_Transient/">
-    <span class="prakt-num">4</span>
-    <span class="prakt-body">
-      <span class="prakt-label">Praktikum 4</span>
-      <span class="prakt-title">Transiente Temperaturfeldberechnung</span>
-      <span class="prakt-desc">Zeitabhängige Temperaturfelder berechnen und auswerten.</span>
-    </span>
-    <img class="prakt-thumb no-lightbox" src="assets/images/card_p4.png" alt="">
-    <span class="prakt-arrow">→</span>
-  </a>
+{%- endfor %}
 </div>
 
 <a class="home-faq" href="00_FAQ/">Fragen? Antworten auf die häufigsten gibt es im <strong>FAQ</strong> →</a>
