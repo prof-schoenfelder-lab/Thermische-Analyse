@@ -15,13 +15,13 @@ title: 5 · Randbedingungen
 ## Umsetzung
 
 ??? tip "Kurzanleitung: Temperatur auf eine Fläche"
-    1. Mit dem **Flächenauswahltool** die Innenfläche des Kalksandsteins anklicken
+    1. Mit dem **Flächenauswahltool** die Innenfläche anklicken: die freie große Fläche des Kalksandsteins (nicht die Trennfuge)
         - Drehen: **mittlere Maustaste** · Verschieben: **mittlere Maustaste + Strg**
     2. `Strukturbaum Steady-State Thermal` anklicken
     3. `Reiter Environment → Temperature`
     4. Im `Detailfenster` bei **Magnitude** **20** °C eintragen
     5. `Rechtsklick Temperature → Rename` (oder `F2`): **Innenseite 20 °C**
-    6. Genauso die Außenfläche der Dämmung mit **−10 °C**, Name **Außenseite −10 °C**
+    6. Genauso die Außenfläche (freie große Fläche der Dämmung) mit **−10 °C**, Name **Außenseite −10 °C**
 
 <!-- TUTORIAL: p1-temperatur-anbringen (Aufnahme Kapitel 6) -->
 

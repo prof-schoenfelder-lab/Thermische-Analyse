@@ -27,13 +27,19 @@ Geometrie direkt an (Fläche ziehen, verschieben).
     1. `Rechtsklick Geometry → New SpaceClaim Geometry...`
     2. Skizze: Rechteck **1000 mm × 175 mm** zeichnen (Werte mit `Tab` wechseln, mit `Enter` bestätigen)
     3. `Pull` (Taste `P`): die Fläche **1000 mm** in die Tiefe ziehen, das ist der Kalksandstein
-    4. Die Außenfläche des Kalksandsteins anklicken und mit `Pull` **140 mm** nach außen ziehen. Dabei im Optionsfenster **Kein Zusammenführen** (*No merge*) wählen, damit ein **zweiter Körper** entsteht
+    4. Eine der beiden großen Flächen (1000 × 1000 mm) des Kalksandsteins anklicken und mit `Pull` **140 mm** nach außen ziehen. Dabei im Optionsfenster **Kein Zusammenführen** (*No merge*) wählen, damit ein **zweiter Körper** entsteht. Die angeklickte Fläche wird zur Trennfuge
     5. Körper im Strukturbaum sinnvoll benennen: **Kalksandstein**, **EPS**
     6. `Reiter Workbench → Share`: Die beiden Körper teilen sich jetzt die Fläche in der Trennfuge
     7. SpaceClaim schließen
 
 <!-- TUTORIAL: p1-geometrie-wand (Aufnahme Kapitel 3) -->
 <!-- TODO: Kurzanleitung beim Aufnehmen mit SpaceClaim 2025 R2 abgleichen (Optionsname No merge, Share) -->
+
+!!! info "Innen, außen, Trennfuge"
+    Die Wand hat zwei große Flächen mit Randbedingung: **innen** die freie Fläche
+    des Kalksandsteins (Raumseite), **außen** die freie Fläche der Dämmung
+    (Wetterseite). Dazwischen liegt die **Trennfuge**. Die vier schmalen
+    Seitenflächen bleiben ohne Randbedingung.
 
 !!! warning "Warum Share Topology?"
     Ohne *Share* sind es zwei getrennte Körper, und ANSYS verbindet sie über
