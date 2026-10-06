@@ -63,6 +63,12 @@
             {
               "titel": "Vergleich",
               "extern": "P2_Modellierung_Vernetzung/Rohr/vergleich.md"
+            },
+            {
+              "typ": "uebung",
+              "id": "test",
+              "titel": "Test",
+              "pfad": "P2_Modellierung_Vernetzung/test.md"
             }
           ]
         }

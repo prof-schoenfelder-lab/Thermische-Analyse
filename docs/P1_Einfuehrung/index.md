@@ -1,43 +1,62 @@
 ---
 title: "Praktikum 1: Einführung in ANSYS Workbench"
 icon: material/rocket-launch
+hide:
+  - toc
 ---
 
-# Praktikum 1: Einführung in ANSYS Workbench
-
-## Lernziele
+# Einführung in ANSYS Workbench
 
 !!! abstract "Lernziele"
-    - Kennenlernen des **Grundprinzips** der **Finite-Elemente-Methode**
-    - Kennenlernen der Abläufe in **ANSYS Workbench** zum Lösen einer
-      **stationären Wärmeleitung** (Steady-State Thermal)
+
+    - [ ] Grundprinzip der Finite-Elemente-Methode für die **Wärmeleitung** kennenlernen (`Grundlagen`)
+    - [ ] Die **7 Schritte** einer stationären thermischen Analyse in ANSYS Workbench durchlaufen (`Vorzeigebeispiel`)
+    - [ ] Ergebnisse mit einer **Handrechnung** auf Plausibilität prüfen (`Analytische Lösung`)
+    - [ ] Den Ablauf an weiteren Wandaufbauten **selbstständig** wiederholen (`Übung 1 bis 3`)
 
 ## Inhalte
 
-Der typische Ablauf einer FEM-Simulation, der sich durch alle Praktika zieht:
-
-1. **Materialdefinition** (Workbench)
-2. **Geometrieerstellung** (SpaceClaim)
-3. **Materialzuweisung** (Mechanical)
-4. **Vernetzung** (Mechanical)
-5. **Randbedingungen** (Mechanical)
-6. **Lösungseinstellungen** (Mechanical)
-7. **Lösungsdarstellung** (Mechanical)
-
-<!-- TODO(P1): Die P1-Inhalte (Grundlagen FEM-Wärmeleitung + Vorzeigebeispiel
-     "Stationäre Temperaturfeldverteilung mit 1D-Änderung") sind im
-     Notion-Export NICHT enthalten (nur als Notion-Links referenziert:
-     "Praktikum 1: Einführung ANSYS Workbench", Klick-Tutorials u.a.
-     http://ior.ad/6XAi, 6XCq, 6XCx, 6Xg7). Inhalte aus Notion nachexportieren
-     oder neu schreiben — Struktur analog Strukturmechanik-P1:
-     01_Grundlagen (Grundprinzipien FEM thermisch, Simulationssoftware),
-     02_Loesungsbeispiel (stationäre Wärmeleitung), 03_Selbsttests. -->
-
-!!! warning "Im Aufbau"
-    Die Inhalte dieses Praktikums werden gerade aus den bisherigen
-    Kursunterlagen übernommen und überarbeitet.
-
-## Ausblick
-
-Im folgenden Praktikum geht es um **Abstraktionen** (3D → 2D, Symmetrien)
-und die **Vernetzung**.
+<div class="prakt-cards">
+  <a class="prakt-card" href="01_Grundlagen/Grundprinzipien-FEM/">
+    <img class="prakt-cimg no-lightbox" src="images/p1_fem_1d.svg" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Grundprinzip der FEM</span>
+      <span class="prakt-cdesc">Knoten, Elemente, Temperatur als Unbekannte</span>
+    </span>
+  </a>
+  <a class="prakt-card" href="01_Grundlagen/Simulationssoftware/">
+    <img class="prakt-cimg no-lightbox" src="images/p1_aussenwand_a.svg" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Simulationssoftware</span>
+      <span class="prakt-cdesc">ANSYS Workbench, Steady-State Thermal</span>
+    </span>
+  </a>
+  <a class="prakt-card" href="02_Vorzeigebeispiel/Aussenwand/">
+    <img class="prakt-cimg no-lightbox" src="images/p1_aussenwand_b.svg" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Vorzeigebeispiel</span>
+      <span class="prakt-cdesc">Außenwand mit Wärmedämmung, U-Wert</span>
+    </span>
+  </a>
+  <a class="prakt-card" href="03_Selbsttests/Uebung-1/">
+    <img class="prakt-cimg no-lightbox" src="images/p1_uebung1.svg" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Übung 1</span>
+      <span class="prakt-cdesc">Mehr Dämmung</span>
+    </span>
+  </a>
+  <a class="prakt-card" href="03_Selbsttests/Uebung-2/">
+    <img class="prakt-cimg no-lightbox" src="images/p1_uebung2.svg" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Übung 2</span>
+      <span class="prakt-cdesc">Altbau ohne Dämmung</span>
+    </span>
+  </a>
+  <a class="prakt-card" href="03_Selbsttests/Uebung-3/">
+    <img class="prakt-cimg no-lightbox" src="images/p1_uebung3.svg" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Übung 3</span>
+      <span class="prakt-cdesc">Sanierung nach GEG</span>
+    </span>
+  </a>
+</div>

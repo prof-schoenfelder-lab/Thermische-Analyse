@@ -134,13 +134,36 @@ nav:
       # >>> AUTO-NAV — Praktika werden vom Kurs-Studio erzeugt, nicht von Hand ändern
       - EINFÜHRUNG:
               - P1_Einfuehrung/index.md
+              - GRUNDLAGEN:
+                      - Grundprinzip der FEM: P1_Einfuehrung/01_Grundlagen/Grundprinzipien-FEM.md
+                      - Simulationssoftware: P1_Einfuehrung/01_Grundlagen/Simulationssoftware.md
+              - "VORZEIGEBEISPIEL: AUSSENWAND":
+                      - Aufgabenstellung: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/index.md
+                      - a) Temperaturen:
+                              - 1 · Material: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/01-material.md
+                              - 2 · Geometrie: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/02-geometrie.md
+                              - 3 · Zuweisung: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/03-zuweisung.md
+                              - 4 · Netz: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/04-netz.md
+                              - 5 · Randbedingungen: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/05-randbedingungen.md
+                              - 6 · Lösen: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/06-loesen.md
+                              - 7 · Auswertung: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/07-auswertung.md
+                      - b) Konvektion: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/b-konvektion.md
+                      - Analytische Lösung: P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/analytische-loesung.md
+              - SELBSTTESTS:
+                      - Einleitung: P1_Einfuehrung/03_Selbsttests/Einleitung.md
+                      - Übung 1: P1_Einfuehrung/03_Selbsttests/Uebung-1.md
+                      - Übung 2: P1_Einfuehrung/03_Selbsttests/Uebung-2.md
+                      - Übung 3: P1_Einfuehrung/03_Selbsttests/Uebung-3.md
+              - ZUSAMMENFASSUNG:
+                      - Abspeichern: P1_Einfuehrung/abspeichern.md
+                      - Zusammenfassung: P1_Einfuehrung/Zusammenfassung.md
       - MODELLIERUNG & VERNETZUNG:
               - P2_Modellierung_Vernetzung/index.md
               - ABSTRAKTIONEN:
                       - Grundlagen: P2_Modellierung_Vernetzung/Abstraktionen.md
                       - "Vorzeigeaufgabe: Rohr":
                               - Aufgabenstellung: P2_Modellierung_Vernetzung/Rohr/index.md
-                              - "a) Vollmodell 3D":
+                              - a) Vollmodell 3D:
                                       - 1 · Material: P2_Modellierung_Vernetzung/Rohr/01-material.md
                                       - 2 · Geometrie: P2_Modellierung_Vernetzung/Rohr/02-geometrie.md
                                       - 3 · Zuweisung: P2_Modellierung_Vernetzung/Rohr/03-zuweisung.md
@@ -148,9 +171,10 @@ nav:
                                       - 5 · Randbedingungen: P2_Modellierung_Vernetzung/Rohr/05-randbedingungen.md
                                       - 6 · Lösen: P2_Modellierung_Vernetzung/Rohr/06-loesen.md
                                       - 7 · Auswertung: P2_Modellierung_Vernetzung/Rohr/07-auswertung.md
-                              - "b) Viertelmodell 3D": P2_Modellierung_Vernetzung/Rohr/b-viertelmodell.md
-                              - "c) Rotationssymmetrie 2D": P2_Modellierung_Vernetzung/Rohr/c-rotationssymmetrie.md
+                              - b) Viertelmodell 3D: P2_Modellierung_Vernetzung/Rohr/b-viertelmodell.md
+                              - c) Rotationssymmetrie 2D: P2_Modellierung_Vernetzung/Rohr/c-rotationssymmetrie.md
                               - Vergleich: P2_Modellierung_Vernetzung/Rohr/vergleich.md
+                              - Test: P2_Modellierung_Vernetzung/test.md
               - VERNETZUNG:
                       - Grundlagen: P2_Modellierung_Vernetzung/Vernetzung.md
       - RANDBEDINGUNGEN & POSTPROCESSING:

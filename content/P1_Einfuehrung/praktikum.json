@@ -4,6 +4,49 @@
   "kinder": [
     {
       "extern": "P1_Einfuehrung/index.md"
+    },
+    {
+      "gruppe": "GRUNDLAGEN",
+      "kinder": [
+        { "titel": "Grundprinzip der FEM", "extern": "P1_Einfuehrung/01_Grundlagen/Grundprinzipien-FEM.md" },
+        { "titel": "Simulationssoftware", "extern": "P1_Einfuehrung/01_Grundlagen/Simulationssoftware.md" }
+      ]
+    },
+    {
+      "gruppe": "VORZEIGEBEISPIEL: AUSSENWAND",
+      "kinder": [
+        { "titel": "Aufgabenstellung", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/index.md" },
+        {
+          "gruppe": "a) Temperaturen",
+          "kinder": [
+            { "titel": "1 · Material", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/01-material.md" },
+            { "titel": "2 · Geometrie", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/02-geometrie.md" },
+            { "titel": "3 · Zuweisung", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/03-zuweisung.md" },
+            { "titel": "4 · Netz", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/04-netz.md" },
+            { "titel": "5 · Randbedingungen", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/05-randbedingungen.md" },
+            { "titel": "6 · Lösen", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/06-loesen.md" },
+            { "titel": "7 · Auswertung", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/07-auswertung.md" }
+          ]
+        },
+        { "titel": "b) Konvektion", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/b-konvektion.md" },
+        { "titel": "Analytische Lösung", "extern": "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/analytische-loesung.md" }
+      ]
+    },
+    {
+      "gruppe": "SELBSTTESTS",
+      "kinder": [
+        { "titel": "Einleitung", "extern": "P1_Einfuehrung/03_Selbsttests/Einleitung.md" },
+        { "titel": "Übung 1", "extern": "P1_Einfuehrung/03_Selbsttests/Uebung-1.md" },
+        { "titel": "Übung 2", "extern": "P1_Einfuehrung/03_Selbsttests/Uebung-2.md" },
+        { "titel": "Übung 3", "extern": "P1_Einfuehrung/03_Selbsttests/Uebung-3.md" }
+      ]
+    },
+    {
+      "gruppe": "ZUSAMMENFASSUNG",
+      "kinder": [
+        { "titel": "Abspeichern", "extern": "P1_Einfuehrung/abspeichern.md" },
+        { "titel": "Zusammenfassung", "extern": "P1_Einfuehrung/Zusammenfassung.md" }
+      ]
     }
   ]
 }

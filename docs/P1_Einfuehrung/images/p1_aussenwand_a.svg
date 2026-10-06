@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" font-family="Source Sans Pro, Source Sans 3, Arial, sans-serif">
+<rect width="880" height="420" fill="white"/>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker><pattern id="eps" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="3" fill="none" stroke="#009EE3" stroke-width="1" opacity="0.5"/></pattern></defs>
+<rect x="282.5" y="70" width="175" height="260" fill="#d9dcde" stroke="#2E3639" stroke-width="1.5"/>
+<text x="370.0" y="190.0" text-anchor="middle" font-size="15" font-weight="600" fill="#022541">Kalksandstein</text>
+<text x="370.0" y="214.0" text-anchor="middle" font-size="14" fill="#2E3639">λ = 0,99</text>
+<text x="370.0" y="232.0" text-anchor="middle" font-size="14" fill="#2E3639">W/(m·K)</text>
+<line x1="282.5" y1="336" x2="282.5" y2="364" stroke="#2E3639"/>
+<line x1="457.5" y1="336" x2="457.5" y2="364" stroke="#2E3639"/>
+<line x1="285.5" y1="358" x2="454.5" y2="358" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="370.0" y="380" text-anchor="middle" font-size="14" fill="#2E3639">175 mm</text>
+<rect x="457.5" y="70" width="140" height="260" fill="#e6f5fc" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="457.5" y="70" width="140" height="260" fill="url(#eps)"/>
+<text x="527.5" y="190.0" text-anchor="middle" font-size="15" font-weight="600" fill="#022541">EPS-Dämmung</text>
+<text x="527.5" y="214.0" text-anchor="middle" font-size="14" fill="#2E3639">λ = 0,035</text>
+<text x="527.5" y="232.0" text-anchor="middle" font-size="14" fill="#2E3639">W/(m·K)</text>
+<line x1="457.5" y1="336" x2="457.5" y2="364" stroke="#2E3639"/>
+<line x1="597.5" y1="336" x2="597.5" y2="364" stroke="#2E3639"/>
+<line x1="460.5" y1="358" x2="594.5" y2="358" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="527.5" y="380" text-anchor="middle" font-size="14" fill="#2E3639">140 mm</text>
+<text x="162.5" y="40" text-anchor="middle" font-size="16" font-weight="700" fill="#022541">innen</text>
+<text x="717.5" y="40" text-anchor="middle" font-size="16" font-weight="700" fill="#022541">außen</text>
+<text x="270.5" y="100" text-anchor="end" font-size="15" fill="#E53009" font-weight="600">T = 20 °C</text>
+<text x="609.5" y="100" font-size="15" fill="#009EE3" font-weight="600">T = −10 °C</text>
+<line x1="278.5" y1="92" x2="278.5" y2="320" stroke="#E53009" stroke-width="4"/>
+<line x1="601.5" y1="92" x2="601.5" y2="320" stroke="#009EE3" stroke-width="4"/>
+<line x1="292.5" y1="275.0" x2="587.5" y2="275.0" stroke="#E53009" stroke-width="2.5" marker-end="url(#pf)"/>
+<text x="440.0" y="297.0" text-anchor="middle" font-size="15" font-style="italic" fill="#E53009">q̇</text>
+<text x="440.0" y="412" text-anchor="middle" font-size="13" fill="#2E3639">Wandausschnitt 1 m × 1 m (Schnitt)</text>
+</svg>

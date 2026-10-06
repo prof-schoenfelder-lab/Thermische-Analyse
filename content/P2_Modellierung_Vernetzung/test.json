@@ -1,0 +1,40 @@
+{
+  "typ": "uebung",
+  "titel": "Test",
+  "intro": [
+    {
+      "art": "text",
+      "md": "Das ist ein Test"
+    }
+  ],
+  "gegeben": [
+    {
+      "art": "text",
+      "md": "$a=4$"
+    }
+  ],
+  "gesucht": [
+    {
+      "art": "text",
+      "md": "$b$"
+    }
+  ],
+  "hinweise": [
+    {
+      "art": "tutorial",
+      "slug": ""
+    }
+  ],
+  "loesung": [],
+  "fragen": [
+    {
+      "typ": "numerisch",
+      "frage": "",
+      "antwort": 100,
+      "toleranz": 0.1,
+      "punkte": 5,
+      "versuche": 5,
+      "hinweise": ""
+    }
+  ]
+}
