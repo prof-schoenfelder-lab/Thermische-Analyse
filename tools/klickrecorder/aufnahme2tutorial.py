@@ -25,6 +25,8 @@ from PIL import Image, ImageDraw, ImageFont
 MENU = {"MenuItemControl"}
 KETTENSTART = {"TabItemControl", "MenuItemControl", "SplitButtonControl"}
 FELD = {"EditControl", "ComboBoxControl", "DataItemControl", "SpinnerControl"}
+ANSYS = ("Workbench", "SpaceClaim", "Mechanical")
+GRAFIK = ("WBGfxSplitWindow", "graphicsViewHost")  # Grafikfenster Mechanical, SpaceClaim
 ROT = (229, 48, 9)          # HTWK Rot
 PRUEFEN = " [PRÜFEN]"
 
@@ -39,7 +41,27 @@ def el(ev):
 
 
 def name(ev):
-    return el(ev).get("name", "").strip()
+    """Elementname; fällt beim Schließen eines Menüs manchmal leer aus, dann aus der Kette."""
+    kette = el(ev).get("kette") or [{}]
+    return (el(ev).get("name") or kette[0].get("name") or "").strip()
+
+
+def texte(ev):
+    e = el(ev)
+    return [e.get("fenster", "")] + [f"{k.get('name', '')} {k.get('klasse', '')}" for k in e.get("kette", [])]
+
+
+def in_ansys(ev):
+    """Klicks außerhalb von ANSYS (Explorer, Bildanzeige) gehören nicht in die Anleitung."""
+    return not el(ev) or any(a in t for t in texte(ev) for a in ANSYS)
+
+
+def im_grafikfenster(ev):
+    return any(g in t for t in texte(ev) for g in GRAFIK)
+
+
+def im_projektmenue(ev):
+    return not name(ev) and el(ev).get("fenster", "").endswith("- Workbench")
 
 
 def typ(ev):
@@ -66,6 +88,31 @@ def ohne_namen(ev):
     return not name(ev)
 
 
+def spalte(ev):
+    """Menüspalte eines Eintrags: gleiche linke und rechte Kante = gleiches (Unter-)Menü."""
+    r = el(ev).get("rechteck") or [0, 0, 0, 0]
+    return (r[0], r[2])
+
+
+def menuepfad(glieder):
+    """Nur den genommenen Weg behalten: rückwärts vom Klick, je Untermenü der Eintrag,
+    über dem die Maus stand, bevor das nächste Untermenü aufging."""
+    wurzel, rest = glieder[0], glieder[1:]
+    if not rest:
+        return [wurzel]
+    pfad = [rest[-1]]
+    erste = {}
+    for k, g in enumerate(rest):
+        erste.setdefault(spalte(g), k)
+    grenze = erste[spalte(rest[-1])]
+    for k in range(len(rest) - 2, -1, -1):
+        sp = spalte(rest[k])
+        if k < grenze and sp not in {spalte(p) for p in pfad}:
+            pfad.insert(0, rest[k])
+            grenze = erste[sp]
+    return [wurzel] + pfad
+
+
 # ---- Schritte bilden ------------------------------------------------------
 def schritte_bilden(evs):
     """Liste von Schritten: {caption, glieder (Ereignisse mit Marker), bild (Ereignis), info}."""
@@ -73,41 +120,47 @@ def schritte_bilden(evs):
     while i < n:
         ev = evs[i]
         art = ev["art"]
+        if art == "hover" or not in_ansys(ev):
+            i += 1
+            continue
 
         # Kette: Rechtsklick oder Reiter/Menü/Dropdown, gefolgt von Menüeinträgen
         if art == "rechtsklick" or (art == "klick" and typ(ev) in KETTENSTART):
             kette, j = [ev], i + 1
             while j < n and evs[j]["art"] in ("hover", "klick") and typ(evs[j]) in MENU:
-                if name(evs[j]) != name(kette[-1]):
-                    kette.append(evs[j])
-                elif evs[j]["art"] == "klick":
-                    kette[-1] = evs[j]  # erst überfahren, dann geklickt: Klick behalten
+                kette.append(evs[j])
                 j += 1
+            while len(kette) > 1 and kette[-1]["art"] == "hover":  # Maus ohne Klick weitergezogen
+                kette.pop()
+            kette = menuepfad(kette)
             if typ(ev) == "TabItemControl" and len(kette) == 1 and j < n and evs[j]["art"] == "klick":
                 kette.append(evs[j])  # Reiter -> Knopf im Menüband
                 j += 1
             if len(kette) > 1 or art == "rechtsklick":
                 aktion = "Rechtsklick " + ort(ev) if art == "rechtsklick" else ""
-                pfad = " → ".join([ziel(kette[0])] + [ziel(k) for k in kette[1:]])
-                cap = f"`{aktion}{pfad}`"
-                if any(ohne_namen(k) for k in kette):
+                teile = [ziel(k) for k in kette]
+                # Untermenü übersprungen (Maus nicht lange genug über z.B. Insert)?
+                if art == "rechtsklick" and len(kette) == 2 and abs(el(kette[1]).get("rechteck", [ev["x"]])[0] - ev["x"]) > 60:
+                    teile.insert(1, "?")
+                cap = f"`{aktion}{' → '.join(teile)}`"
+                if "?" in teile:
                     cap += PRUEFEN
                 bild = next((k for k in reversed(kette) if k.get("frame")), ev)
                 out.append({"caption": cap, "glieder": kette, "bild": bild})
                 i = j
                 continue
 
-        if art == "hover":
-            i += 1
-            continue
-
         if art in ("klick", "doppelklick", "mittelklick"):
-            if ohne_namen(ev):
+            if im_grafikfenster(ev):
                 cap = "Im Grafikfenster auswählen" + PRUEFEN
+            elif im_projektmenue(ev):
+                cap = "Im Projektmenü klicken" + PRUEFEN
             elif typ(ev) in FELD:  # Werte werden nicht aufgezeichnet, kommen aus der Aufgabe
-                cap = f"Bei **{name(ev)}** den Wert eingeben" + PRUEFEN
+                cap = (f"Bei **{name(ev)}** den Wert eingeben" if name(ev) else "Wert eingeben") + PRUEFEN
                 if ort(ev) == "Detailfenster ":
-                    cap = "Im `Detailfenster` b" + cap[1:]
+                    cap = "Im `Detailfenster` " + (cap[0].lower() + cap[1:] if cap.startswith("Bei") else cap)
+            elif ohne_namen(ev):
+                cap = "Klicken" + PRUEFEN
             elif art == "doppelklick":
                 cap = f"`Doppelklick {ort(ev)}{name(ev)}`"
             elif art == "mittelklick":
@@ -149,7 +202,9 @@ def bild_rendern(aufnahme, schritt, datei):
     mon = ev.get("monitor") or {"left": 0, "top": 0}
     ox, oy = mon["left"], mon["top"]
     W, H = img.size
-    r = max(14, round(W / 110))          # Markergröße mit der Auflösung skalieren
+    # Markergröße an der Zeilenhöhe der Oberfläche ausrichten (Menü, Baum), sonst 22 px
+    hoehen = [r[3] - r[1] for g in schritt["glieder"] if (r := el(g).get("rechteck")) and 0 < r[3] - r[1] < 60]
+    r = max(10, round(0.6 * (min(hoehen) if hoehen else 22)))
     d = ImageDraw.Draw(img)
     punkte = [marker_punkt(g, W, H, r) for g in schritt["glieder"]]
     punkte = [(x - ox, y - oy) for x, y in punkte]
@@ -169,10 +224,10 @@ def bild_rendern(aufnahme, schritt, datei):
         d.text((x, y), str(k), fill="white", font=f, anchor="mm")
     if box:  # Ausschnitt um alle Marker, mit Rand und Mindestgröße
         xs, ys = [p[0] for p in box], [p[1] for p in box]
-        pad = round(W * 0.08)
+        pad = round(W * 0.05)
         x0, x1 = min(xs) - pad, max(xs) + pad
         y0, y1 = min(ys) - pad, max(ys) + pad
-        mw, mh = round(W * 0.5), round(H * 0.5)
+        mw, mh = max(900, round(W * 0.3)), max(550, round(H * 0.3))
         if x1 - x0 < mw:
             c = (x0 + x1) / 2
             x0, x1 = c - mw / 2, c + mw / 2

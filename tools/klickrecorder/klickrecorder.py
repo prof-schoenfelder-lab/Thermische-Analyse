@@ -46,7 +46,7 @@ except ImportError:  # nur unter Windows vorhanden
 
 DOPPELKLICK_S = 0.5
 ZIEHEN_PX = 10
-VERWEILEN_S = 0.35
+VERWEILEN_S = 0.2
 TASTEN = {0x01: "left", 0x02: "right", 0x04: "middle"}  # virtuelle Codes der Maustasten
 HOTKEYS = {1: (0x46, "foto"), 2: (0x4B, "kapitel"), 3: (0x50, "pause"), 4: (0x53, "stopp")}  # F K P S
 KLICKART = {"left": "klick", "right": "rechtsklick", "middle": "mittelklick"}
@@ -206,7 +206,11 @@ class Recorder:
             while (item := self.uia_q.get()) is not None:
                 ev, x, y, art = item
                 try:
-                    info = element_info(auto.ControlFromPoint(x, y))
+                    try:
+                        info = element_info(auto.ControlFromPoint(x, y))
+                    except Exception:  # UIA meldet gelegentlich kurz einen Fehler: einmal nachfassen
+                        time.sleep(0.05)
+                        info = element_info(auto.ControlFromPoint(x, y))
                     if art == "hover":
                         if info["typ"] != "MenuItemControl":
                             continue
