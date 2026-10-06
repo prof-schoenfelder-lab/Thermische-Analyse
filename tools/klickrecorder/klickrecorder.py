@@ -113,7 +113,7 @@ def fenster_rechteck(x, y):
 
 def feldtext():
     """Text des Eingabefelds mit Fokus (Win32 WM_GETTEXT), z.B. Wert im Detailfenster von
-    Mechanical, das UI Automation nicht herausgibt. Im Moment von Enter, bevor das Feld zugeht."""
+    Mechanical, das UI Automation nicht herausgibt. None, wenn kein Eingabefeld den Fokus hat."""
     if sys.platform != "win32":
         return None
     info = GUITHREADINFO(cbSize=ctypes.sizeof(GUITHREADINFO))
@@ -172,6 +172,7 @@ class Recorder:
         self.stopp = threading.Event()
         self.unten = {}             # gedrückte Maustaste -> Ereignis
         self.mods = set()           # gerade gehaltene Strg/Shift/Alt
+        self.feld = (None, 0.0)     # letzter Text des fokussierten Eingabefelds, Zeitpunkt
         self.tasten = True          # Steuertasten mitschreiben (--ohne-tasten schaltet ab)
         self.letzter_klick = None
         self.maus = (0, 0, 0.0)
@@ -213,6 +214,7 @@ class Recorder:
                 and abs(x - vor["x"]) < 6 and abs(y - vor["y"]) < 6):
             vor["art"] = "doppelklick"
             return
+        self.feld = (None, 0.0)  # neuer Klick: alter Feldtext gilt nicht mehr
         ev = self.neu(KLICKART.get(taste, "klick"), x=x, y=y, fenster_rechteck=fenster_rechteck(x, y))
         if self.mods:
             ev["mods"] = sorted(self.mods)
@@ -238,9 +240,11 @@ class Recorder:
         if name in FOTO_BEI:
             self.foto_q.put((ev, "frame"))
         if name in WERT_BEI:
-            text = feldtext()  # sofort, noch in der Abfrageschleife
-            if text:
+            # Mechanical schließt das Feld sofort bei Enter: den zuletzt mitgelesenen Text nehmen
+            text, t = self.feld
+            if text and time.perf_counter() - t < 2.0:
                 ev["wert_direkt"] = text
+            self.feld = (None, 0.0)
             # danach per UI Automation das aktive Feld lesen, kurz später den übernommenen Wert
             self.uia_q.put((ev, x, y, "wert"))
             # zweites Foto, wenn das Detailfenster den übernommenen Wert zeigt (beim Enter baut es sich neu auf)
@@ -257,7 +261,13 @@ class Recorder:
         unten = lambda vk: bool(user32.GetAsyncKeyState(vk) & 0x8000)
         pt = wt.POINT()
         gedrueckt = {vk: False for vk in [*TASTEN, *STEUERTASTEN]}
+        runde = 0
         while not self.stopp.is_set():
+            runde += 1
+            if self.tasten and not self.pause and runde % 2 == 0:  # alle 20 ms: Eingabefeld mitlesen
+                text = feldtext()
+                if text is not None:
+                    self.feld = (text, time.perf_counter())
             user32.GetCursorPos(ctypes.byref(pt))
             self.on_move(pt.x, pt.y)
             self.mods = {name for vk, name in MODTASTEN.items() if unten(vk)}
