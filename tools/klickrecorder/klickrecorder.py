@@ -78,21 +78,27 @@ def element_info(c):
             "fenster": top.Name if top else "", "kette": kette}
 
 
+if sys.platform == "win32":
+    # eigene Instanzen: Typangaben an ctypes.windll.user32 würden uiautomation stören
+    _user32, _dwmapi = ctypes.WinDLL("user32"), ctypes.WinDLL("dwmapi")
+    _user32.WindowFromPoint.argtypes = [wt.POINT]
+    _user32.WindowFromPoint.restype = wt.HWND
+    _user32.GetAncestor.argtypes = [wt.HWND, wt.UINT]
+    _user32.GetAncestor.restype = wt.HWND
+    _user32.GetWindowRect.argtypes = [wt.HWND, ctypes.POINTER(wt.RECT)]
+    _dwmapi.DwmGetWindowAttribute.argtypes = [wt.HWND, wt.DWORD, ctypes.c_void_p, wt.DWORD]
+
+
 def fenster_rechteck(x, y):
     """Rechteck des Fensters unter dem Punkt (Programmfenster oder Menü-Popup), ohne Schatten."""
     if sys.platform != "win32":
         return None
-    user32 = ctypes.windll.user32
-    user32.WindowFromPoint.argtypes = [wt.POINT]
-    user32.WindowFromPoint.restype = wt.HWND
-    user32.GetAncestor.argtypes = [wt.HWND, wt.UINT]
-    user32.GetAncestor.restype = wt.HWND
-    hwnd = user32.GetAncestor(user32.WindowFromPoint(wt.POINT(x, y)), 2)  # GA_ROOT
+    hwnd = _user32.GetAncestor(_user32.WindowFromPoint(wt.POINT(x, y)), 2)  # GA_ROOT
     if not hwnd:
         return None
     r = wt.RECT()
-    if ctypes.windll.dwmapi.DwmGetWindowAttribute(hwnd, 9, ctypes.byref(r), ctypes.sizeof(r)):  # 9 = sichtbarer Rahmen
-        user32.GetWindowRect(hwnd, ctypes.byref(r))
+    if _dwmapi.DwmGetWindowAttribute(hwnd, 9, ctypes.byref(r), ctypes.sizeof(r)):  # 9 = sichtbarer Rahmen
+        _user32.GetWindowRect(hwnd, ctypes.byref(r))
     return [r.left, r.top, r.right, r.bottom]
 
 
@@ -327,6 +333,8 @@ class Recorder:
                 print(f"        Wert: {ev['wert']}")
             else:
                 c = auto.ControlFromPoint(x, y)
+                if c.ControlTypeName in ("PaneControl", "WindowControl"):
+                    return  # Grafikfenster o.ä.: dort steht kein Wert
                 ev["wert_angezeigt"] = (c.Name or lese_wert(c))[:200]
                 # Beschriftung links in derselben Zeile (Detailfenster: Name | Wert)
                 p = c.GetParentControl()

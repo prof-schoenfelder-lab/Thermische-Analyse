@@ -136,35 +136,45 @@ def mit_mods(ev, cap):
 
 
 def eingabe_danach(evs, j):
-    """Leertasten und abschließendes Enter/Tab einsammeln (Feld, F2, Pull mit Maßeingabe)."""
+    """Leertasten, Tab (Feldwechsel) und abschließendes Enter einsammeln (Feld, F2, Skizzenmaße, Pull)."""
     tasten = []
     while j < len(evs) and (evs[j]["art"] == "hover" or
                             (evs[j]["art"] == "taste" and evs[j]["taste"] in ("Leertaste", "Tab", "Enter"))):
         if evs[j]["art"] == "taste":
             tasten.append(evs[j])
-            if evs[j]["taste"] != "Leertaste":
+            if evs[j]["taste"] == "Enter":
                 return tasten, j + 1
         j += 1
     return tasten, j
 
 
-def wert_und_feld(ende, klick=None):
-    """Eingegebener Wert (mit Einheit, falls das Detailfenster sie anzeigt) und Feldname."""
-    if not ende:
-        return "", ""
-    wert = (ende.get("wert") or "").strip()
-    anzeige = (ende.get("wert_angezeigt") or "").strip()
-    if anzeige and (not wert or anzeige.startswith(wert)):
-        wert = anzeige
-    elif anzeige and not re.search(r"\d", anzeige):
-        ende.setdefault("beschriftung", anzeige)  # an der Klickstelle stand der Zeilenname
-    feld = (ende.get("beschriftung") or "").strip() or (name(klick) if klick else "")
-    return wert, ("" if feld == wert else feld)
+def wert_von(t):
+    """Eingegebener Wert; zeigt das Detailfenster ihn mit Einheit an, diese Form."""
+    wert = (t.get("wert") or "").strip()
+    anzeige = (t.get("wert_angezeigt") or "").strip()
+    return anzeige if anzeige and (not wert or anzeige.startswith(wert)) else wert
 
 
-def abschluss(tasten):
-    ende = next((t for t in tasten if t["taste"] != "Leertaste"), None)
-    return ende, (f" und `{ende['taste']}`" if ende else "")
+def eingaben(tasten, klick=None):
+    """Text der Eingabe(n), Feldname, alle Werte bekannt?, Taste mit dem letzten Foto."""
+    enden = [t for t in tasten if t["taste"] != "Leertaste"]
+    if not enden:
+        return "", "", False, None
+    werte = [wert_von(t) for t in enden]
+    if len(enden) == 1:
+        text = (f"`{werte[0]}` eingeben" if werte[0] else "den Wert eingeben") + f" und `{enden[0]['taste']}`"
+    else:  # z.B. Skizzenmaße in SpaceClaim: 20mm Tab 20mm Enter
+        text = "nacheinander " + " ".join(f"`{w or '?'}` `{t['taste']}`" for w, t in zip(werte, enden)) + " eingeben"
+    letzte = enden[-1]
+    anzeige = (letzte.get("wert_angezeigt") or "").strip()
+    feld = (letzte.get("beschriftung") or "").strip()
+    if not feld and anzeige and not re.search(r"\d", anzeige):
+        feld = anzeige  # an der Klickstelle stand der Zeilenname
+    if not feld and klick and typ(klick) in FELD:
+        feld = name(klick)
+    return text, ("" if feld in werte else feld), all(werte), letzte
+
+
 def schritte_bilden(evs):
     """Liste von Schritten: {caption, glieder (Ereignisse mit Marker), frame, monitor, ziehen}."""
     out, i, n = [], 0, len(evs)
@@ -210,16 +220,18 @@ def schritte_bilden(evs):
 
         if art in ("klick", "doppelklick", "mittelklick"):
             tasten, j = eingabe_danach(evs, i + 1)
-            ende, und = abschluss(tasten)
-            if typ(ev) in FELD or (ende and not im_grafikfenster(ev)):
-                # Klick ins Feld, Wert tippen (nicht aufgezeichnet), Enter: Foto bei Enter zeigt den Wert
-                wert, feld = wert_und_feld(ende, ev)
-                eingabe = f"`{wert}` eingeben" if wert else "den Wert eingeben"
-                cap = (f"Bei **{feld}** {eingabe}" if feld else eingabe[0].upper() + eingabe[1:]) + und
-                if not wert or not feld:
-                    cap += PRUEFEN
-                if ort(ev) == "Detailfenster ":
-                    cap = "Im `Detailfenster` " + (cap[0].lower() + cap[1:] if cap.startswith("Bei") else cap)
+            text, feld, komplett, ende = eingaben(tasten, ev)
+            if typ(ev) in FELD or ende:
+                # Klick ins Feld (oder Skizzenpunkt), Werte tippen, Enter: Werte per UI Automation gelesen
+                if im_grafikfenster(ev):
+                    cap = f"Im Grafikfenster klicken, dann {text or 'den Wert eingeben'}" + PRUEFEN
+                else:
+                    cap = f"Bei **{feld}** {text or 'den Wert eingeben'}" if feld else (text or "den Wert eingeben")
+                    cap = cap[0].upper() + cap[1:]
+                    if ort(ev) == "Detailfenster ":
+                        cap = "Im `Detailfenster` " + (cap[0].lower() + cap[1:] if cap.startswith("Bei") else cap)
+                    if not komplett or not feld:
+                        cap += PRUEFEN
                 out.append(schritt(cap, [ev], ende or ev, "frame"))
                 i = j
                 continue
@@ -238,7 +250,7 @@ def schritte_bilden(evs):
             out.append(schritt(mit_mods(ev, cap), [ev], ev))
         elif art == "ziehen":
             tasten, j = eingabe_danach(evs, i + 1)
-            ende, und = abschluss(tasten)
+            text, _, komplett, ende = eingaben(tasten)
             leer = any(t["taste"] == "Leertaste" for t in tasten)
             mods = set(ev.get("mods", []))
             if ev.get("taste") == "middle":
@@ -253,11 +265,10 @@ def schritte_bilden(evs):
                     cap = "Mit gedrückter Maustaste ziehen"
                 if leer:
                     cap += ", dabei `Leertaste` drücken"
-                wert, _ = wert_und_feld(ende)
-                if ende:
-                    cap += (f", `{wert}` eingeben" if wert else ", Wert eingeben") + und
+                if text:
+                    cap += ", " + text
                 cap = mit_mods(ev, cap)
-                if not (von and auf and auf != von) and not wert:
+                if not (von and auf and auf != von) and not (text and komplett):
                     cap += PRUEFEN
             # Foto: Enter (Wert sichtbar) vor Leertaste (Eingabefeld) vor Loslassen vor Beginn;
             # im GIF alle Zwischenstände der Reihe nach
@@ -276,8 +287,9 @@ def schritte_bilden(evs):
         elif art == "taste":
             if ev["taste"] == "F2":
                 tasten, j = eingabe_danach(evs, i + 1)
-                ende, und = abschluss(tasten)
-                wert, _ = wert_und_feld(ende)
+                _, _, _, ende = eingaben(tasten)
+                wert = wert_von(ende) if ende else ""
+                und = f" und `{ende['taste']}`" if ende else ""
                 cap = f"`F2` drücken, **{wert}** eingeben{und}" if wert else "`F2` drücken, Namen eingeben" + und + PRUEFEN
                 out.append(schritt(cap, [], ende, "frame"))
                 i = j
