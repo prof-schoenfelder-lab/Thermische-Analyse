@@ -87,6 +87,15 @@ if sys.platform == "win32":
     _user32.GetAncestor.restype = wt.HWND
     _user32.GetWindowRect.argtypes = [wt.HWND, ctypes.POINTER(wt.RECT)]
     _dwmapi.DwmGetWindowAttribute.argtypes = [wt.HWND, wt.DWORD, ctypes.c_void_p, wt.DWORD]
+    _user32.SendMessageTimeoutW.argtypes = [wt.HWND, wt.UINT, wt.WPARAM, wt.LPARAM, wt.UINT, wt.UINT,
+                                            ctypes.POINTER(ctypes.c_size_t)]
+    _user32.GetClassNameW.argtypes = [wt.HWND, wt.LPWSTR, ctypes.c_int]
+    _user32.GetWindowLongW.argtypes = [wt.HWND, ctypes.c_int]
+
+    class GUITHREADINFO(ctypes.Structure):
+        _fields_ = [("cbSize", wt.DWORD), ("flags", wt.DWORD), ("hwndActive", wt.HWND),
+                    ("hwndFocus", wt.HWND), ("hwndCapture", wt.HWND), ("hwndMenuOwner", wt.HWND),
+                    ("hwndMoveSize", wt.HWND), ("hwndCaret", wt.HWND), ("rcCaret", wt.RECT)]
 
 
 def fenster_rechteck(x, y):
@@ -100,6 +109,26 @@ def fenster_rechteck(x, y):
     if _dwmapi.DwmGetWindowAttribute(hwnd, 9, ctypes.byref(r), ctypes.sizeof(r)):  # 9 = sichtbarer Rahmen
         _user32.GetWindowRect(hwnd, ctypes.byref(r))
     return [r.left, r.top, r.right, r.bottom]
+
+
+def feldtext():
+    """Text des Eingabefelds mit Fokus (Win32 WM_GETTEXT), z.B. Wert im Detailfenster von
+    Mechanical, das UI Automation nicht herausgibt. Im Moment von Enter, bevor das Feld zugeht."""
+    if sys.platform != "win32":
+        return None
+    info = GUITHREADINFO(cbSize=ctypes.sizeof(GUITHREADINFO))
+    if not _user32.GetGUIThreadInfo(0, ctypes.byref(info)) or not info.hwndFocus:
+        return None
+    klasse = ctypes.create_unicode_buffer(128)
+    _user32.GetClassNameW(info.hwndFocus, klasse, 128)
+    if "edit" not in klasse.value.lower() or _user32.GetWindowLongW(info.hwndFocus, -16) & 0x20:  # ES_PASSWORD
+        return None
+    puffer = ctypes.create_unicode_buffer(256)
+    erg = ctypes.c_size_t()
+    if not _user32.SendMessageTimeoutW(info.hwndFocus, 0x000D, 256, ctypes.cast(puffer, ctypes.c_void_p).value,
+                                       0x0002, 100, ctypes.byref(erg)):  # WM_GETTEXT, SMTO_ABORTIFHUNG
+        return None
+    return puffer.value
 
 
 def lese_wert(c):
@@ -209,7 +238,10 @@ class Recorder:
         if name in FOTO_BEI:
             self.foto_q.put((ev, "frame"))
         if name in WERT_BEI:
-            # sofort das aktive Feld lesen, kurz danach den übernommenen Wert an der Klickstelle
+            text = feldtext()  # sofort, noch in der Abfrageschleife
+            if text:
+                ev["wert_direkt"] = text
+            # danach per UI Automation das aktive Feld lesen, kurz später den übernommenen Wert
             self.uia_q.put((ev, x, y, "wert"))
             # zweites Foto, wenn das Detailfenster den übernommenen Wert zeigt (beim Enter baut es sich neu auf)
             threading.Timer(NACHLESEN_S, self.foto_q.put, [(ev, "frame_danach")]).start()
@@ -366,7 +398,7 @@ class Recorder:
                 if p and p.ControlTypeName in ("ListControl", "TableControl", "DataGridControl", "TreeControl"):
                     ev["beschriftung"] = (auto.ControlFromPoint(p.BoundingRectangle.left + 12, y).Name or "")[:200]
             if art == "wert":
-                print(f"        Wert: {ev.get('wert', '')}  ({ev.get('beschriftung', '')})")
+                print(f"        Wert: {ev.get('wert_direkt') or ev.get('wert', '')}  ({ev.get('beschriftung', '')})")
         except Exception as e:
             ev["wert_fehler"] = str(e)
 

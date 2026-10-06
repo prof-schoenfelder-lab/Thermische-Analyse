@@ -150,7 +150,7 @@ def eingabe_danach(evs, j):
 
 def wert_von(t):
     """Eingegebener Wert; zeigt das Detailfenster ihn mit Einheit an, diese Form."""
-    wert = (t.get("wert") or "").strip()
+    wert = (t.get("wert_direkt") or t.get("wert") or "").strip()
     anzeige = (t.get("wert_angezeigt") or "").strip()
     return anzeige if anzeige and (not wert or anzeige.startswith(wert)) else wert
 
@@ -324,6 +324,8 @@ def marker_punkt(g, W, H, r):
     """Marker an den linken Rand kleiner Elemente (Menüeintrag, Baumeintrag), sonst an den Klickpunkt."""
     rect = el(g).get("rechteck")
     if not g.get("x2") and rect and rect[2] - rect[0] < W * 0.4 and rect[3] - rect[1] < H * 0.08:
+        if el(g).get("typ") in FELD:  # links neben das Feld, damit der Wert lesbar bleibt
+            return rect[0] - r - 2, (rect[1] + rect[3]) / 2
         return rect[0] + r, (rect[1] + rect[3]) / 2
     return g["x"], g["y"]
 
