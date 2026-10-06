@@ -303,6 +303,15 @@ def schritte_bilden(evs):
                 out.append(schritt(cap, [], ende, "frame"))
                 i = j
                 continue
+            if ev["taste"] in ("Enter", "Tab") and (ev.get("wert_direkt") or ev.get("beschriftung")):
+                # ohne Klick weitergetippt (Mechanical springt nach Enter in die nächste Zeile)
+                tasten, j = eingabe_danach(evs, i)
+                text, feld, komplett, ende = eingaben(tasten)
+                cap = f"bei **{feld}** {text}" if feld else text
+                cap = ("Im `Detailfenster` " + cap if ev.get("beschriftung") else cap[0].upper() + cap[1:])
+                out.append(schritt(cap + ("" if komplett and feld else PRUEFEN), [], ende, "frame_danach"))
+                i = j
+                continue
             if ev["taste"] != "Leertaste":  # einzelne Leertasten sind Tippen, nicht Bedienung
                 kombi = " + ".join(ev.get("mods", []) + [ev["taste"]])
                 out.append(schritt(f"`{kombi}` drücken", [], None))
