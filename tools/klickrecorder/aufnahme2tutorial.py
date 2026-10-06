@@ -170,6 +170,8 @@ def eingaben(tasten, klick=None):
     feld = (letzte.get("beschriftung") or "").strip()
     if not feld and anzeige and not re.search(r"\d", anzeige):
         feld = anzeige  # an der Klickstelle stand der Zeilenname
+    if not feld and (letzte.get("feld") or {}).get("typ") == "ListItemControl":
+        feld = letzte["feld"].get("name", "").strip()  # aktive Zeile im Detailfenster
     if not feld and klick and typ(klick) in FELD:
         feld = name(klick)
     return text, ("" if feld in werte else feld), all(werte), letzte
@@ -193,7 +195,8 @@ def schritte_bilden(evs):
                 continue
 
         # Kette: Rechtsklick oder Reiter/Menü/Dropdown, gefolgt von Menüeinträgen
-        if art == "rechtsklick" or (art == "klick" and typ(ev) in KETTENSTART):
+        oeffnet_menue = any(typ(e) in MENU for e in evs[i + 1:i + 3] if e["art"] in ("hover", "klick"))
+        if art == "rechtsklick" or (art == "klick" and (typ(ev) in KETTENSTART or oeffnet_menue)):
             kette, j = [ev], i + 1
             while j < n and evs[j]["art"] in ("hover", "klick") and typ(evs[j]) in MENU:
                 kette.append(evs[j])
@@ -207,6 +210,8 @@ def schritte_bilden(evs):
             if len(kette) > 1 or art == "rechtsklick":
                 aktion = "Rechtsklick " + ort(ev) if art == "rechtsklick" else ""
                 teile = [ziel(k) for k in kette]
+                if typ(ev) in ("MenuControl", "MenuItemControl") and art == "rechtsklick":
+                    teile[0] = "?"  # Menü lag beim Nachschlagen schon über dem Ziel
                 # Untermenü übersprungen (Maus nicht lange genug über z.B. Insert)?
                 if art == "rechtsklick" and len(kette) == 2 and abs(el(kette[1]).get("rechteck", [ev["x"]])[0] - ev["x"]) > 60:
                     teile.insert(1, "?")
@@ -229,10 +234,14 @@ def schritte_bilden(evs):
                     cap = f"Bei **{feld}** {text or 'den Wert eingeben'}" if feld else (text or "den Wert eingeben")
                     cap = cap[0].upper() + cap[1:]
                     if ort(ev) == "Detailfenster ":
-                        cap = "Im `Detailfenster` " + (cap[0].lower() + cap[1:] if cap.startswith("Bei") else cap)
+                        cap = "Im `Detailfenster` " + cap[0].lower() + cap[1:]
                     if not komplett or not feld:
                         cap += PRUEFEN
-                out.append(schritt(cap, [ev], ende or ev, "frame"))
+                if ort(ev) == "Detailfenster ":  # Foto kurz nach Enter zeigt den übernommenen Wert
+                    bild = ende if ende and ende.get("frame_danach") else ev
+                    out.append(schritt(cap, [ev], bild, "frame_danach"))
+                else:
+                    out.append(schritt(cap, [ev], ende or ev, "frame"))
                 i = j
                 continue
             if im_grafikfenster(ev):

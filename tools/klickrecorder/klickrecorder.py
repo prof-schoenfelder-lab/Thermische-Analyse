@@ -114,6 +114,22 @@ def lese_wert(c):
     return ""
 
 
+def zeile(c):
+    """Spaltentexte einer Listenzeile: Kinder-Elemente, sonst MSAA-Beschreibung."""
+    texte = []
+    try:
+        texte = [k.Name for k in c.GetChildren() if k.Name]
+    except Exception:
+        pass
+    try:
+        b = c.GetLegacyIAccessiblePattern().Description
+        if b:
+            texte.append(b)
+    except Exception:
+        pass
+    return texte[:8]
+
+
 class Recorder:
     def __init__(self, ordner):
         self.ordner = ordner
@@ -133,6 +149,7 @@ class Recorder:
         self.verweilt = True
         self.n_frames = 0
         self.foto_q, self.speicher_q, self.uia_q = queue.Queue(), queue.Queue(), queue.Queue()
+        self.klick_q = queue.Queue()  # eigene Warteschlange: Klicks nachschlagen, bevor sich ein Menü öffnet
 
     def zeit(self):
         return round(time.perf_counter() - self.t0, 3)
@@ -160,7 +177,7 @@ class Recorder:
                 if abs(x - ev["x"]) > ZIEHEN_PX or abs(y - ev["y"]) > ZIEHEN_PX:
                     ev.update(art="ziehen", taste=taste, x2=x, y2=y)
                     self.foto_q.put((ev, "frame_ende"))       # Ergebnis nach dem Ziehen
-                    self.uia_q.put((ev, x, y, "ziel"))        # worauf abgelegt wurde
+                    self.klick_q.put((ev, x, y, "ziel"))      # worauf abgelegt wurde
             return
         t, vor = self.zeit(), self.letzter_klick
         if (taste == "left" and vor and vor["art"] == "klick" and t - vor["t"] < DOPPELKLICK_S
@@ -172,7 +189,7 @@ class Recorder:
             ev["mods"] = sorted(self.mods)
         self.letzter_klick = self.unten[taste] = ev
         self.foto_q.put((ev, "frame"))
-        self.uia_q.put((ev, x, y, "element"))
+        self.klick_q.put((ev, x, y, "element"))
 
     def on_move(self, x, y):
         if (x, y) != self.maus[:2]:
@@ -194,6 +211,8 @@ class Recorder:
         if name in WERT_BEI:
             # sofort das aktive Feld lesen, kurz danach den übernommenen Wert an der Klickstelle
             self.uia_q.put((ev, x, y, "wert"))
+            # zweites Foto, wenn das Detailfenster den übernommenen Wert zeigt (beim Enter baut es sich neu auf)
+            threading.Timer(NACHLESEN_S, self.foto_q.put, [(ev, "frame_danach")]).start()
             k = self.letzter_klick
             if k and self.zeit() - k["t"] < 60:
                 threading.Timer(NACHLESEN_S, self.uia_q.put, [(ev, k["x"], k["y"], "nachlesen")]).start()
@@ -291,13 +310,13 @@ class Recorder:
             Image.frombytes("RGB", shot.size, shot.bgra, "raw", "BGRX").save(
                 self.ordner / datei, compress_level=6)
 
-    def uia(self):
+    def uia(self, q):
         if auto is None:  # ohne Windows: nur leeren
-            while self.uia_q.get() is not None:
+            while q.get() is not None:
                 pass
             return
         with auto.UIAutomationInitializerInThread():
-            while (item := self.uia_q.get()) is not None:
+            while (item := q.get()) is not None:
                 ev, x, y, art = item
                 if art in ("wert", "nachlesen"):
                     self.wert_lesen(ev, x, y, art)
@@ -324,13 +343,19 @@ class Recorder:
 
     def wert_lesen(self, ev, x, y, art):
         try:
-            if art == "wert":
-                c = auto.GetFocusedControl()
-                if c.Element.CurrentIsPassword:
-                    return
+            c = auto.GetFocusedControl()
+            if c.Element.CurrentIsPassword:
+                return
+            if c.ControlTypeName == "ListItemControl":
+                # Detailfenster: Feld schon zu, aktiv ist die Zeile (Name = Beschriftung, Wert in Spalte 2)
+                ev["beschriftung"] = c.Name or ""
+                ev["zeile"] = zeile(c)
+                wert = next((t for t in ev["zeile"] if t != c.Name), "")
+                ev["wert" if art == "wert" else "wert_angezeigt"] = wert
+            elif art == "wert":
                 ev["feld"] = element_info(c)
-                ev["wert"] = lese_wert(c)
-                print(f"        Wert: {ev['wert']}")
+                # Umbenennen (F2): nach Enter ist der Baumeintrag aktiv, sein Name ist der neue Name
+                ev["wert"] = lese_wert(c) or (c.Name if c.ControlTypeName == "TreeItemControl" else "")
             else:
                 c = auto.ControlFromPoint(x, y)
                 if c.ControlTypeName in ("PaneControl", "WindowControl"):
@@ -340,6 +365,8 @@ class Recorder:
                 p = c.GetParentControl()
                 if p and p.ControlTypeName in ("ListControl", "TableControl", "DataGridControl", "TreeControl"):
                     ev["beschriftung"] = (auto.ControlFromPoint(p.BoundingRectangle.left + 12, y).Name or "")[:200]
+            if art == "wert":
+                print(f"        Wert: {ev.get('wert', '')}  ({ev.get('beschriftung', '')})")
         except Exception as e:
             ev["wert_fehler"] = str(e)
 
@@ -362,8 +389,10 @@ def main():
     ordner = Path(__file__).resolve().parent / "aufnahmen" / f"{datetime.datetime.now():%Y-%m-%d_%H%M}_{name}"
     rec = Recorder(ordner)
     rec.tasten = "--ohne-tasten" not in sys.argv
-    threads = {f: threading.Thread(target=f, daemon=True)
-               for f in (rec.fotos, rec.speichern, rec.uia, rec.verweilen, rec.abfragen, rec.hotkeys)}
+    threads = {f.__name__: threading.Thread(target=f, daemon=True)
+               for f in (rec.fotos, rec.speichern, rec.verweilen, rec.abfragen, rec.hotkeys)}
+    threads["uia"] = threading.Thread(target=rec.uia, args=(rec.uia_q,), daemon=True)
+    threads["uia_klick"] = threading.Thread(target=rec.uia, args=(rec.klick_q,), daemon=True)
     for th in threads.values():
         th.start()
     if auto is None:
@@ -377,14 +406,16 @@ def main():
     except KeyboardInterrupt:
         rec.stopp.set()
     ctypes.windll.user32.PostThreadMessageW(rec.hotkey_thread, 0x0012, 0, 0)  # WM_QUIT
-    threads[rec.abfragen].join()
+    threads["abfragen"].join()
     rec.foto_q.put(None)
-    threads[rec.fotos].join()
+    threads["fotos"].join()
     rec.speicher_q.put(None)
     rec.uia_q.put(None)
+    rec.klick_q.put(None)
     print("Speichere Bilder ...")
-    threads[rec.speichern].join()
-    threads[rec.uia].join(timeout=5)
+    threads["speichern"].join()
+    threads["uia"].join(timeout=5)
+    threads["uia_klick"].join(timeout=5)
     rec.schreiben()
     print(f"\nFertig: {len(rec.events)} Ereignisse, {rec.n_frames} Bilder in\n  {ordner}")
     print("Weiter mit:  python aufnahme2tutorial.py <dieser Ordner>")
