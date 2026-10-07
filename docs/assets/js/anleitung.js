@@ -22,6 +22,7 @@
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
   function h(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  var ICON_WARUM = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 9.3a2.6 2.6 0 0 1 5 .9c0 1.7-2.5 2.2-2.5 3.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></svg>';
   var ICON_BILD = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M5 17l5-5 3 3 2-2 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
 
   function Anleitung(wurzel, slug) {
@@ -36,9 +37,9 @@
 
     function bildUrl(st) { return st.media && st.media.length ? BASE + 'tutorials/' + slug + '/' + st.media[0] : ''; }
     function veredeln(el) { if (window.KursUI) window.KursUI.enhance(el); }
-    // Anweisung und, falls vorhanden, die Erklärung (note) darunter
-    function textSetzen(el, st) {
-      el.innerHTML = md(st.caption) + (st.note ? '<div class="kb-note">' + md(st.note) + '</div>' : '');
+    // Anweisung und, falls vorhanden, die Erklärung (note) darunter; die Liste zeigt sie erst auf Tipp
+    function textSetzen(el, st, ohneNote) {
+      el.innerHTML = md(st.caption) + (st.note && !ohneNote ? '<div class="kb-note">' + md(st.note) + '</div>' : '');
       veredeln(el);
     }
     // Textfeld so hoch wie der längste Schritt dieser Anleitung: beim Blättern springt nichts
@@ -127,8 +128,25 @@
         nr.addEventListener('click', function () { setzePos(j); });
         li.appendChild(nr);
         var text = h('div', 'kb-ltext tut-cap');
-        textSetzen(text, st);
+        textSetzen(text, st, true);
         li.appendChild(text);
+        var knoepfe = h('div', 'kb-knoepfe');
+        if (st.note) {
+          var q = h('button', 'kb-bildknopf', ICON_WARUM);
+          q.type = 'button';
+          q.title = 'Warum?';
+          q.setAttribute('aria-label', 'Erklärung zu Schritt ' + (j + 1));
+          q.setAttribute('aria-expanded', 'false');
+          q.addEventListener('click', function () {
+            var n = text.querySelector('.kb-note');
+            if (n) { n.remove(); q.setAttribute('aria-expanded', 'false'); return; }
+            n = h('div', 'kb-note', md(st.note));
+            text.appendChild(n);
+            veredeln(n);
+            q.setAttribute('aria-expanded', 'true');
+          });
+          knoepfe.appendChild(q);
+        }
         var url = bildUrl(st);
         if (url) {
           var b = h('button', 'kb-bildknopf', ICON_BILD);
@@ -144,8 +162,9 @@
             li.appendChild(img);
             b.setAttribute('aria-expanded', 'true');
           });
-          li.appendChild(b);
+          knoepfe.appendChild(b);
         }
+        li.appendChild(knoepfe);
         ol.appendChild(li);
         lis.push(li);
       });

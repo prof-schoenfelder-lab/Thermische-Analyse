@@ -68,6 +68,7 @@
 }
 .md-typeset li.fertig .kb-nr { background: var(--kurs-c-ok, #00964e); border-color: var(--kurs-c-ok, #00964e); color: #fff; }
 .md-typeset li.jetzt .kb-nr { background: var(--kurs-btn-bg, #009ee3); border-color: var(--kurs-btn-bg, #009ee3); color: var(--kurs-btn-fg, #fff); }
+.md-typeset .kb-knoepfe { display: flex; gap: .1rem; }
 .md-typeset .kb-bildknopf {
   display: grid; place-items: center; width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: .4rem; cursor: pointer;
   background: transparent; color: var(--kurs-accent-ink, #0070a6);
