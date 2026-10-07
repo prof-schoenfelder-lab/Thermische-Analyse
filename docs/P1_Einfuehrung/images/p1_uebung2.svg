@@ -1,29 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
-<rect width="960" height="450" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 690" width="960" height="690" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="960" height="690" fill="white"/>
 <defs><marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker><marker id="plr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="plc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><pattern id="eps" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="3" fill="none" stroke="#009EE3" stroke-width="1" opacity="0.5"/></pattern></defs>
-<rect x="297.5" y="74" width="365" height="260" fill="#e8c9b8" stroke="#2E3639" stroke-width="1.5"/>
-<text x="480" y="178" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">Vollziegel</text>
-<text x="480" y="204" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">λ = 0,68</text>
-<text x="480" y="228" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">W/(m·K)</text>
-<line x1="297.5" y1="340" x2="297.5" y2="372" stroke="#2E3639"/>
-<line x1="662.5" y1="340" x2="662.5" y2="372" stroke="#2E3639"/>
-<line x1="300.5" y1="364" x2="659.5" y2="364" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
-<text x="480" y="390" text-anchor="middle" font-size="18" fill="#2E3639">365 mm</text>
-<text x="202" y="40" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">innen</text>
-<text x="758" y="40" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">außen</text>
-<line x1="294.5" y1="74" x2="294.5" y2="334" stroke="#E53009" stroke-width="3" stroke-dasharray="8 6"/>
-<path d="M279.5,334 C272.5,269 286.5,204 279.5,204.0 S286.5,139 279.5,78" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.7" marker-end="url(#plr)"/>
-<path d="M266.5,334 C259.5,269 273.5,204 266.5,204.0 S273.5,139 266.5,78" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.7" marker-end="url(#plr)"/>
-<path d="M253.5,334 C246.5,269 260.5,204 253.5,204.0 S260.5,139 253.5,78" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.7" marker-end="url(#plr)"/>
-<text x="228" y="198" text-anchor="end" font-size="18" fill="#E53009" font-weight="700">Luft 20 °C</text>
-<text x="228" y="222" text-anchor="end" font-size="18" fill="#E53009">h = 7,7 W/(m²·K)</text>
-<line x1="665.5" y1="74" x2="665.5" y2="334" stroke="#009EE3" stroke-width="3" stroke-dasharray="8 6"/>
-<path d="M680.5,334 C687.5,269 673.5,204 680.5,204.0 S673.5,139 680.5,78" fill="none" stroke="#009EE3" stroke-width="1.6" opacity="0.7" marker-end="url(#plc)"/>
-<path d="M693.5,334 C700.5,269 686.5,204 693.5,204.0 S686.5,139 693.5,78" fill="none" stroke="#009EE3" stroke-width="1.6" opacity="0.7" marker-end="url(#plc)"/>
-<path d="M706.5,334 C713.5,269 699.5,204 706.5,204.0 S699.5,139 706.5,78" fill="none" stroke="#009EE3" stroke-width="1.6" opacity="0.7" marker-end="url(#plc)"/>
-<text x="732" y="198" text-anchor="start" font-size="18" fill="#009EE3" font-weight="700">Luft −10 °C</text>
-<text x="732" y="222" text-anchor="start" font-size="18" fill="#009EE3">h = 25 W/(m²·K)</text>
-<line x1="309.5" y1="300" x2="650.5" y2="300" stroke="#E53009" stroke-width="2.5" marker-end="url(#pf)"/>
-<text x="324" y="290" text-anchor="start" font-size="18" fill="#E53009" font-style="italic">q̇</text>
-<text x="480" y="440" text-anchor="middle" font-size="18" fill="#2E3639">Wandausschnitt 100 mm × 100 mm (Schnitt)</text>
+<path d="M250,520 H670.0 V461.2 H308.8 V100.0 H250 Z" fill="#e6f5fc" stroke="#2E3639" stroke-width="1.5"/>
+<path d="M250,520 H670.0 V461.2 H308.8 V100.0 H250 Z" fill="url(#eps)"/>
+<path d="M308.8,461.2 H670.0 V387.70000000000005 H382.29999999999995 V100.0 H308.8 Z" fill="#d9dcde" stroke="#2E3639" stroke-width="1.5"/>
+<path d="M670.0,523 H247 V100.0" fill="none" stroke="#009EE3" stroke-width="3" stroke-dasharray="8 6"/>
+<path d="M670.0,384.70000000000005 H385.29999999999995 V100.0" fill="none" stroke="#E53009" stroke-width="3" stroke-dasharray="8 6"/>
+<line x1="670.0" y1="520" x2="670.0" y2="387.70000000000005" stroke="#2E3639" stroke-width="4"/>
+<line x1="250" y1="100.0" x2="382.29999999999995" y2="100.0" stroke="#2E3639" stroke-width="4"/>
+<text x="684" y="460" text-anchor="start" font-size="18" fill="#2E3639">adiabat</text>
+<text x="316" y="86" text-anchor="middle" font-size="18" fill="#2E3639">adiabat</text>
+<text x="520" y="562" text-anchor="middle" font-size="18" fill="#009EE3" font-weight="700">außen: Luft −5 °C, h = 25 W/(m²·K)</text>
+<text x="422" y="318" text-anchor="start" font-size="18" fill="#E53009" font-weight="700">innen (Raum): Luft 20 °C</text>
+<text x="422" y="342" text-anchor="start" font-size="18" fill="#E53009">h = 4 W/(m²·K) (Mindestwärmeschutz)</text>
+<circle cx="382.29999999999995" cy="387.70000000000005" r="7" fill="#E53009" stroke="white" stroke-width="2"/>
+<text x="396" y="378" text-anchor="start" font-size="18" fill="#022541" font-weight="700">θ<tspan baseline-shift="sub" font-size="13">si</tspan> in der Ecke?</text>
+<text x="510" y="497" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">EPS</text>
+<text x="510" y="430" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">Kalksandstein</text>
+<line x1="180" y1="520" x2="180" y2="461.2" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="172" y="491" text-anchor="end" font-size="18" fill="#2E3639">140</text>
+<line x1="180" y1="461.2" x2="180" y2="387.70000000000005" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="172" y="424" text-anchor="end" font-size="18" fill="#2E3639">175</text>
+<line x1="210" y1="520" x2="210" y2="100.0" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="202" y="220" text-anchor="end" font-size="18" fill="#2E3639">1000 mm</text>
+<line x1="250" y1="590" x2="670.0" y2="590" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="460" y="614" text-anchor="middle" font-size="18" fill="#2E3639">1000 mm</text>
+<text x="600" y="684" text-anchor="middle" font-size="18" fill="#2E3639">Draufsicht, Höhe des Ausschnitts 100 mm (Maße in mm)</text>
 </svg>

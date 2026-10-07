@@ -96,6 +96,7 @@ extra_javascript:
       - "assets/js/course-stats.js"
       - "assets/js/progress-hub.js"
       - "assets/js/hero-anim.js"
+      - "assets/js/wand-rechner.js"
 
 extra_css:
       - "assets/tutorials/player.css"
@@ -103,6 +104,7 @@ extra_css:
       - "styles/steps.css"
       - "styles/grid.css"
       - "assets/styles/answer-checker.css"
+      - "assets/styles/wand-rechner.css"
       - "styles/modern.css"
 
 # Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums

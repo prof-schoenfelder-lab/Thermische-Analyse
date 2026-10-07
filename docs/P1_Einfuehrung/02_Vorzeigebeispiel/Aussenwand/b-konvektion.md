@@ -16,6 +16,27 @@ gibt es einen **Wärmeübergang** (Konvektion), der selbst einen Widerstand dars
 
 --8<-- "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/index.md:Randbedingungen_b"
 
+## Was gibt man bei der Konvektion ein?
+
+Bei der Konvektion gibt man **keine Wandtemperatur** vor, sondern zwei andere
+Größen. So heißen sie in ANSYS:
+
+| Feld in ANSYS | Bedeutung | innen | außen |
+|---|---|---|---|
+| **Film Coefficient** | Wärmeübergangskoeffizient $h$: wie leicht Wärme zwischen Luft und Wand übergeht, in W/m²·°C (= W/(m²·K)) | 7,7 | 25 |
+| **Ambient Temperature** | Lufttemperatur in einigem Abstand von der Wand (nicht die Wandtemperatur) | 20 °C | −10 °C |
+
+Über die Fläche fließt dann so viel Wärme, wie der Temperaturunterschied
+zwischen Luft und Wand erlaubt:
+
+$$\dot q = h\,(T_{Luft} - T_{Wand})$$
+
+Die **Wandtemperatur ist jetzt Ergebnis**. Sie stellt sich so ein, dass der
+Wärmeübergang an der Oberfläche und die Wärmeleitung durch die Wand zueinander
+passen. Innen ist $h$ klein (ruhende Raumluft), außen groß (Wind). Die Werte
+entsprechen den Normwerten $R_{si} = 0{,}13$ und $R_{se} = 0{,}04\ \mathrm{m^2K/W}$
+nach DIN EN ISO 6946, in denen die Wärmestrahlung schon enthalten ist.
+
 ## Umsetzung
 
 Material, Geometrie und Netz bleiben gleich. Deshalb wird die Analyse aus
@@ -43,6 +64,15 @@ Fall a) **dupliziert** und nur die Randbedingungen werden getauscht.
     | Oberflächentemperatur innen | 20,00 °C (vorgegeben) | **19,10 °C** |
     | Temperatur Trennfuge | 18,73 °C | **17,88 °C** |
     | Oberflächentemperatur außen | −10,00 °C (vorgegeben) | **−9,72 °C** |
+
+## Ausprobieren: Wie hängt die Wandtemperatur von h ab?
+
+Die Grafik rechnet dieselbe Wand von Hand. Ziehen Sie $h$ innen oder außen
+sehr groß: Die Oberfläche nimmt dann die Lufttemperatur an, und es kommt genau
+**Fall a)** heraus. Bei kleinem $h$ fällt ein großer Teil der Temperatur schon
+vor der Wand in der Luftschicht ab.
+
+<div class="wand-rechner"></div>
 
 ## U-Wert
 

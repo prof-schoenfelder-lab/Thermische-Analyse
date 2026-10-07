@@ -12,7 +12,7 @@ hide:
     - [ ] Grundprinzip der Finite-Elemente-Methode für die **Wärmeleitung** kennenlernen (`Grundlagen`)
     - [ ] Die **7 Schritte** einer stationären thermischen Analyse in ANSYS Workbench durchlaufen (`Vorzeigebeispiel`)
     - [ ] Ergebnisse mit einer **Handrechnung** auf Plausibilität prüfen (`Analytische Lösung`)
-    - [ ] Den Ablauf an weiteren Wandaufbauten **selbstständig** wiederholen (`Übung 1 bis 3`)
+    - [ ] Den Ablauf **selbstständig** wiederholen (`Übung 1`) und Fälle rechnen, für die es keine Handrechnung gibt (`Übung 2 und 3`)
 
 ## Inhalte
 
@@ -42,21 +42,21 @@ hide:
     <img class="prakt-cimg no-lightbox" src="images/p1_uebung1.svg" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 1</span>
-      <span class="prakt-cdesc">Mehr Dämmung</span>
+      <span class="prakt-cdesc">Altbau sanieren nach GEG</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-2/">
     <img class="prakt-cimg no-lightbox" src="images/p1_uebung2.svg" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 2</span>
-      <span class="prakt-cdesc">Altbau ohne Dämmung</span>
+      <span class="prakt-cdesc">Außenecke als Wärmebrücke</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-3/">
     <img class="prakt-cimg no-lightbox" src="images/p1_uebung3.svg" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 3</span>
-      <span class="prakt-cdesc">Sanierung nach GEG</span>
+      <span class="prakt-cdesc">Fußbodenheizung</span>
     </span>
   </a>
 </div>

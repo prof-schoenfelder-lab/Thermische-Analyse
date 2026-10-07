@@ -1,0 +1,37 @@
+/* Wand-Rechner (b-konvektion): Farben aus den Kurs-Tokens, funktioniert hell und dunkel */
+.wand-rechner {
+  display: grid; gap: .8rem; margin: 1.2em 0 1.6em; padding: 1rem 1.1rem;
+  background: var(--kurs-panel, #f2f6f9); border: 1px solid var(--kurs-line, #e2e8ec);
+  border-radius: var(--kurs-radius-md, .6rem);
+}
+.wand-rechner .wr-ctrl { display: grid; gap: .45rem; }
+.wand-rechner .wr-row { display: grid; grid-template-columns: 8.5em minmax(0, 1fr) 9.5em; gap: .8em; align-items: center; }
+.wand-rechner label { font-weight: 600; color: var(--kurs-head, #022541); }
+.wand-rechner input[type="range"] { width: 100%; accent-color: var(--kurs-accent, #009ee3); }
+.wand-rechner output { font-variant-numeric: tabular-nums; text-align: right; color: var(--kurs-text, #2e3639); }
+.wand-rechner .wr-btns { display: flex; flex-wrap: wrap; gap: .5em; margin-top: .2em; }
+.wand-rechner button {
+  font: inherit; font-size: .9em; font-weight: 600; cursor: pointer; padding: .25em .8em;
+  color: var(--kurs-accent-ink, #0070a6); background: var(--kurs-surface, #fff);
+  border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: var(--kurs-btn-radius, .5rem);
+}
+.wand-rechner button:hover { border-color: var(--kurs-accent, #009ee3); }
+.wand-rechner button:focus-visible, .wand-rechner input:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 2px; }
+.wand-rechner .wr-svg { width: 100%; height: auto; display: block; background: var(--kurs-surface, #fff); border-radius: .4rem; }
+.wand-rechner .wr-luft { fill: var(--kurs-accent-soft, #e3f4fc); opacity: .45; }
+.wand-rechner .wr-ks { fill: var(--kurs-line, #e2e8ec); }
+.wand-rechner .wr-eps { fill: var(--kurs-accent-soft, #e3f4fc); }
+.wand-rechner .wr-grid { stroke: var(--kurs-line-2, #cdd6dc); stroke-width: 1; stroke-dasharray: 2 4; }
+.wand-rechner .wr-axis { fill: var(--kurs-text-2, #566166); font-size: 15px; }
+.wand-rechner .wr-label { fill: var(--kurs-head, #022541); font-size: 16px; font-weight: 700; }
+.wand-rechner .wr-linie { fill: none; stroke: var(--kurs-c-warn, #e53009); stroke-width: 3; stroke-linejoin: round; }
+.wand-rechner .wr-fall-a { fill: none; stroke: var(--kurs-text-3, #87939a); stroke-width: 2; stroke-dasharray: 6 5; }
+.wand-rechner .wr-punkt { fill: var(--kurs-c-warn, #e53009); stroke: var(--kurs-surface, #fff); stroke-width: 2; }
+.wand-rechner .wr-werte { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5em, 1fr)); gap: .5em; }
+.wand-rechner .wr-werte div { display: grid; gap: .1em; padding: .45em .7em; background: var(--kurs-surface, #fff); border-radius: .4rem; border: 1px solid var(--kurs-line, #e2e8ec); }
+.wand-rechner .wr-werte span { font-size: .85em; color: var(--kurs-text-2, #566166); }
+.wand-rechner .wr-werte b { font-variant-numeric: tabular-nums; color: var(--kurs-head, #022541); }
+@media (max-width: 40em) {
+  .wand-rechner .wr-row { grid-template-columns: 1fr auto; }
+  .wand-rechner .wr-row input { grid-column: 1 / -1; grid-row: 2; }
+}

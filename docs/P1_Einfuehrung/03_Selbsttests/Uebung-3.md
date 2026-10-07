@@ -1,47 +1,101 @@
 ---
-title: "Übung 3: Sanierung nach GEG"
+title: "Übung 3: Fußbodenheizung"
 ---
 
-# Übung 3: Sanierung nach GEG
+# Übung 3: Fußbodenheizung
 
-Der Altbau aus Übung 2 soll außen gedämmt werden. Nach dem Gebäudeenergiegesetz
-(GEG) darf die sanierte Außenwand höchstens $U = 0{,}24\ \mathrm{W/(m^2K)}$
-haben. Wie dick muss die Dämmung mindestens sein?
+Ein Heizrohr liegt im Estrich. Über dem Rohr wird der Boden wärmer als zwischen
+den Rohren. Wie groß ist dieser Unterschied, wie viel Wärme gibt der Boden ab,
+und bleibt die Oberfläche unter dem Grenzwert von **29 °C**, ab dem es an den
+Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung3.svg" alt="Vollziegelwand mit Dämmung der Dicke d" class="no-lightbox">
+  <img src="../../images/p1_uebung3.svg" alt="Schnitt durch die Fußbodenheizung" class="no-lightbox">
 </figure>
 
 ## Gegeben
 
-- Vollziegel 365 mm wie in Übung 2, außen **EPS** mit $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke $d$ gesucht
-- Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**
+- **Zementestrich**: $\lambda = 1{,}4\ \mathrm{W/(m\,K)}$, Dicke **65 mm**
+- **Heizrohr**: Ø **16 mm**, Mitte **20 mm** über der Dämmung, Rohrabstand **150 mm**
+- Ausschnitt: ein Rohrabstand breit (150 mm), **20 mm** tief
+- Netzgröße global **2 mm**
+- Randbedingungen:
+    - Rohroberfläche: Temperatur **35 °C** (Rohrwand vernachlässigt)
+    - Oberseite: Raum **20 °C**, $h = 10{,}8\ \mathrm{W/(m^2K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
+    - Unterseite (Dämmung) und Seitenflächen: adiabat
+
+!!! info "Warum sind die Seitenflächen adiabat?"
+    Links und rechts folgen weitere Rohre mit gleichem Abstand. Genau in der
+    Mitte zwischen zwei Rohren fließt deshalb keine Wärme zur Seite: Das ist eine
+    Symmetrieebene. Mehr dazu in Praktikum 3.
 
 ## Hinweise
 
-- Erst von Hand abschätzen: Welcher Gesamtwiderstand $R_T$ gehört zu $U = 0{,}24$? Wie viel davon fehlt noch?
-- Dann das Modell aufbauen (Dämmung wie im Vorzeigebeispiel als zweiter Körper, Share Topology) und prüfen, ob die FEM den Zielwert trifft
-- Wer möchte: Dicke in SpaceClaim ein paar Mal ändern und den U-Wert über der Dicke auftragen
+<div class="steps" markdown="1" data-anleitung="nein">
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Skizze mit Loch</p>
+    <p>Rechteck 150 × 65 mm, dazu mit <code>Circle</code> einen Kreis Ø 16 mm, Mittelpunkt 20 mm über der Mitte der Unterkante</p>
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Nur den Estrich ziehen</p>
+    <p>Mit <code>Pull</code> nur die Fläche <strong>um</strong> den Kreis 20 mm ziehen. Der Kreis bleibt frei: Es entsteht ein Körper mit Loch</p>
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Randbedingungen</p>
+    <p>Innenfläche des Lochs: <code>Temperature</code> 35 °C. Oberseite: <code>Convection</code>. Alle anderen Flächen bleiben frei</p>
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Auswerten</p>
+    <p>Temperatur auf der Oberseite (Maximum und Minimum). Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion auswählen, und durch die Fläche teilen</p>
+  </div>
+
+</div>
+
+<!-- TODO: Hinweise zu Circle und Reaction Probe mit ANSYS 2025 R2 prüfen; Datei P1_Fussbodenheizung.scdoc ablegen -->
 
 ## Gesucht
 
-### Mindestdicke der Dämmung in mm
+### Oberflächentemperatur über dem Rohr in °C
 
-<div class="numeric-question" data-answer="121.1" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="R_T = 1/U = 4,167 m²K/W. Davon Übergänge (0,130 + 0,040) und Vollziegel (0,537) abziehen, Rest mal λ der Dämmung.">
+<div class="numeric-question" data-answer="30.10" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Maximum der Temperatur auf der Oberseite. Rohr 35 °C als Temperature auf der Lochfläche, oben Convection 10,8 bei 20 °C?">
 </div>
 
-### Wärmestromdichte bei dieser Dicke in W/m²
+### Oberflächentemperatur zwischen den Rohren in °C
 
-<div class="numeric-question" data-answer="7.20" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Bei U = 0,24 W/(m²K) und 30 K Temperaturunterschied.">
+<div class="numeric-question" data-answer="28.97" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf der Oberseite, also an den Seitenkanten.">
+</div>
+
+### Wärmestromdichte nach oben in W/m²
+
+<div class="numeric-question" data-answer="102.5" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Reaction Probe der Konvektion liefert den Wärmestrom in W. Durch die Oberfläche 0,15 m × 0,02 m teilen.">
+</div>
+
+### Wird der Grenzwert von 29 °C an der Oberfläche eingehalten?
+
+<div class="multiple-choice-question" data-correct="B" data-points="5" data-attempts="2">
+  <div class="mc-options">
+    <div class="mc-option" data-value="A">
+      <input type="checkbox" id="u3a" name="u3">
+      <label for="u3a">Ja, überall</label>
+    </div>
+    <div class="mc-option" data-value="B">
+      <input type="checkbox" id="u3b" name="u3">
+      <label for="u3b">Nein, über dem Rohr liegt die Oberfläche darüber</label>
+    </div>
+  </div>
 </div>
 
 <div class="solution-images" markdown="1">
 
 ### Lösung
 
-- $R_T = 1/0{,}24 = 4{,}167\ \mathrm{m^2K/W}$
-- fehlender Widerstand: $4{,}167 - 0{,}130 - 0{,}537 - 0{,}040 = 3{,}460\ \mathrm{m^2K/W}$
-- $d = 3{,}460 \cdot 0{,}035 = 0{,}121\ \mathrm{m} = 121\ \mathrm{mm}$, in der Praxis also **12 cm** Dämmung oder mehr
-- $\dot q = 0{,}24 \cdot 30 = 7{,}20\ \mathrm{W/m^2}$, etwa ein **Sechstel** des Altbau-Werts
+- Oberfläche über dem Rohr **30,1 °C**, zwischen den Rohren **29,0 °C**: rund 1,1 K Unterschied
+- Wärmestromdichte nach oben rund **102 W/m²**, das ist eine typische Heizleistung für Fußbodenheizungen
+- Der Grenzwert von 29 °C wird über dem Rohr überschritten. Abhilfe: niedrigere Vorlauftemperatur oder ein Bodenbelag, der etwas dämmt
+- Mit dem Modell lässt sich das schnell ausprobieren: andere Rohrabstände, mehr Estrich darüber, niedrigere Rohrtemperatur
 
 </div>

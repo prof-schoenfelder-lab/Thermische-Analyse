@@ -1,62 +1,71 @@
 ---
-title: "Übung 1: Mehr Dämmung"
+title: "Übung 1: Altbau sanieren"
 ---
 
-# Übung 1: Mehr Dämmung
+# Übung 1: Altbau sanieren
 
-Die Wand aus dem Vorzeigebeispiel bekommt statt 14 cm nun **20 cm** Dämmung.
-Wie stark sinkt der Wärmeverlust?
+Ein Gründerzeithaus hat eine **36,5 cm** dicke Wand aus Vollziegel und keine
+Dämmung. Sie soll außen gedämmt werden. Nach dem Gebäudeenergiegesetz (GEG)
+darf die sanierte Außenwand höchstens $U = 0{,}24\ \mathrm{W/(m^2K)}$ haben.
+
+Diese Übung ist noch eindimensional: Der Ablauf aus dem Vorzeigebeispiel wird
+wiederholt, und jedes Ergebnis lässt sich von Hand prüfen.
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung1.svg" alt="Wand mit 20 cm Dämmung" class="no-lightbox">
+  <img src="../../images/p1_uebung1.svg" alt="Vollziegelwand mit Dämmung der Dicke d" class="no-lightbox">
 </figure>
 
 ## Gegeben
 
-- Material, Netz und Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**
-- Kalksandstein 175 mm, **EPS 200 mm**
+- **Vollziegel**: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$, Dicke **365 mm**
+- **EPS**: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke $d$ gesucht
+- Wandausschnitt 100 × 100 mm, Netzgröße global 10 mm
+- Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**
 
 ## Hinweise
 
 <div class="steps" markdown="1" data-anleitung="nein">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Analyse duplizieren</p>
-    <p>Im Projektmenü <code>Rechtsklick</code> auf den Kopf der Analyse <strong>b) Konvektion</strong> und <code>Duplicate</code>, Kopie in <strong>Übung 1</strong> umbenennen</p>
+    <p class="step-title" role="heading" aria-level="2">a) Erst ohne Dämmung</p>
+    <p>Material <strong>Vollziegel</strong> anlegen, eine Wand aus <strong>einem</strong> Körper (365 mm) aufbauen und den U-Wert bestimmen</p>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Dämmung dicker machen</p>
-    <p><code>Rechtsklick Geometry → Edit Geometry in SpaceClaim...</code>, die Außenfläche der Dämmung mit <code>Pull</code> um <strong>60 mm</strong> nach außen ziehen, SpaceClaim schließen</p>
+    <p class="step-title" role="heading" aria-level="2">b) Dämmdicke abschätzen</p>
+    <p>Welcher Gesamtwiderstand $R_T$ gehört zu $U = 0{,}24$? Wie viel davon fehlt noch? Daraus folgt $d$</p>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Aktualisieren und lösen</p>
-    <p>Im Projektmenü <code>Rechtsklick Model → Refresh</code>, dann Mechanical öffnen. Die Randbedingungen bleiben erhalten, nur noch lösen und auswerten.</p>
+    <p class="step-title" role="heading" aria-level="2">b) Mit FEM prüfen</p>
+    <p>Analyse duplizieren, in SpaceClaim die Dämmung mit <code>Pull</code> und <code>No merge</code> anfügen, <code>Share</code>, Material zuweisen, lösen. Trifft die FEM den Zielwert?</p>
   </div>
 
 </div>
 
 ## Gesucht
 
-### U-Wert der Wand in W/(m²·K)
+### a) U-Wert der ungedämmten Wand in W/(m²·K)
 
-<div class="numeric-question" data-answer="0.1650" data-tolerance="0.002" data-points="5" data-attempts="5" data-hints="U = Wärmestromdichte geteilt durch (20 °C − (−10 °C)) = 30 K. Einheitensystem Metric (m, ...)? Konvektion statt Temperatur auf beiden Seiten?">
+<div class="numeric-question" data-answer="1.415" data-tolerance="0.01" data-points="5" data-attempts="5" data-hints="Material Vollziegel zugewiesen? Dicke 365 mm? Konvektion innen und außen wie im Vorzeigebeispiel?">
 </div>
 
-### Oberflächentemperatur innen in °C
+### b) Mindestdicke der Dämmung in mm
 
-<div class="numeric-question" data-answer="19.36" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Temperatur-Ergebnis auf die Innenfläche begrenzen (Scope). Liegt die Konvektion innen bei 7,7 W/(m²·K) und 20 °C?">
+<div class="numeric-question" data-answer="121.1" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="R_T = 1/U = 4,167 m²K/W. Davon Übergänge (0,130 + 0,040) und Vollziegel (0,537) abziehen, Rest mal λ der Dämmung.">
+</div>
+
+### b) Wärmestromdichte der sanierten Wand in W/m²
+
+<div class="numeric-question" data-answer="7.20" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Bei U = 0,24 W/(m²K) und 30 K Temperaturunterschied. Einheitensystem Metric (m)?">
 </div>
 
 <div class="solution-images" markdown="1">
 
 ### Lösung
 
-- $R_T = 0{,}130 + 0{,}177 + 0{,}200/0{,}035 + 0{,}040 = 6{,}061\ \mathrm{m^2K/W}$
-- $U = 1/R_T = 0{,}165\ \mathrm{W/(m^2K)}$, $\dot q = 4{,}95\ \mathrm{W/m^2}$
-- $T_{si} = 20 - 4{,}95 \cdot 0{,}130 = 19{,}36\ \mathrm{°C}$
-
-6 cm mehr Dämmung senken den Wärmeverlust um etwa **28 %**.
+- a) $R_T = 0{,}130 + 0{,}365/0{,}68 + 0{,}040 = 0{,}707\ \mathrm{m^2K/W}$, also $U = 1{,}415\ \mathrm{W/(m^2K)}$ und $\dot q = 42{,}5\ \mathrm{W/m^2}$
+- b) fehlender Widerstand $1/0{,}24 - 0{,}707 = 3{,}460\ \mathrm{m^2K/W}$, also $d = 3{,}460 \cdot 0{,}035 = 0{,}121\ \mathrm{m}$, in der Praxis **12 cm** Dämmung oder mehr
+- $\dot q = 0{,}24 \cdot 30 = 7{,}20\ \mathrm{W/m^2}$, etwa ein **Sechstel** des Altbau-Werts
 
 </div>

@@ -25,6 +25,17 @@ title: 5 · Randbedingungen
 
 <!-- TUTORIAL: p1-temperatur-anbringen (Aufnahme Kapitel 6) -->
 
+!!! abstract "Was bedeutet die Randbedingung Temperatur?"
+    Gerechnet werden Temperaturen, und hier geben wir selbst eine Temperatur
+    vor. Auf der Fläche steht damit von vornherein fest, was herauskommt: genau
+    20 °C innen und −10 °C außen. ANSYS bestimmt nur noch die Temperaturen
+    **im Inneren** der Wand und den Wärmestrom, der dafür durch die Wand fließen
+    muss. Die Oberflächentemperatur ist hier also **Eingabe**, nicht Ergebnis.
+
+    In Wirklichkeit kennt man die Oberflächentemperatur meist nicht, sondern die
+    Temperatur der Luft davor. Dafür gibt es die Konvektion in
+    [Fall b)](b-konvektion.md).
+
 !!! info "Und die anderen vier Seitenflächen?"
     Flächen ohne Randbedingung sind in ANSYS **adiabat**: Über sie fließt keine
     Wärme. Das passt hier, denn wir schneiden ein Stück aus einer langen Wand
