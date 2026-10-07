@@ -19,13 +19,14 @@
       "media": [
         "step-1.png"
       ],
-      "note": "Ändert man später Geometrie oder Material, gilt das für beide Fälle. Getrennt sind nur Randbedingungen und Ergebnisse."
+      "note": "Die Linien in Workbench zeigen: B hängt an A. Engineering Data, Geometry und Model (samt Netz) gibt es nur einmal, beide Analysen nutzen sie gemeinsam. Verschieden sind nur die Randbedingungen und damit die Lösungen. Ändert man Geometrie, Material oder Netz, gilt das automatisch für beide Fälle."
     },
     {
       "caption": "`Rechtsklick Setup (B) → Edit...`: beide Analysen erscheinen in einem Mechanical",
       "media": [
         "step-2.png"
-      ]
+      ],
+      "note": "Im Strukturbaum hängen jetzt beide Analysen am selben Model: Geometry, Materials und Mesh oben gelten für beide. Darunter hat jede Analyse ihre eigenen Randbedingungen und ihre eigene Lösung: Steady-State Thermal (A5) mit den Temperaturen, Steady-State Thermal 2 (B5) gleich mit der Konvektion."
     }
   ]
 }
