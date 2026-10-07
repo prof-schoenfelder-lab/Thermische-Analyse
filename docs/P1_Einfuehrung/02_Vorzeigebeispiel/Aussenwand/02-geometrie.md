@@ -5,7 +5,7 @@ title: 2 · Geometrie
 # 2 · Geometrie <small>(SpaceClaim)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Temperaturen=../01-material/|b) Konvektion=../b-konvektion/|Analytische Lösung=../analytische-loesung/" markdown>
-🎯 **Jetzt:** Wand aus **zwei Körpern** erstellen, **175 mm + 140 mm** dick, **1000 × 1000 mm**
+🎯 **Jetzt:** Wand aus **zwei Körpern** erstellen, **175 mm + 140 mm** dick, **100 × 100 mm**
 </div>
 
 ## Aufgabenstellung
@@ -25,7 +25,7 @@ Geometrie direkt an (Fläche ziehen, verschieben).
 
 ??? tip "Kurzanleitung: Wand mit zwei Schichten"
     1. `Rechtsklick Geometry → New SpaceClaim Geometry...`
-    2. Skizze: Rechteck **1000 mm × 1000 mm** zeichnen, das ist die Innenfläche der Wand (Werte mit `Tab` wechseln, mit `Enter` bestätigen)
+    2. Skizze: Rechteck **100 mm × 100 mm** zeichnen, das ist die Innenfläche der Wand (Werte mit `Tab` wechseln, mit `Enter` bestätigen)
     3. `Pull` (Taste `P`): die Fläche um **175 mm** ziehen, das ist der Kalksandstein
     4. Die gegenüberliegende große Fläche anklicken und mit `Pull` um weitere **140 mm** ziehen. Dabei im Optionsfenster **Kein Zusammenführen** (*No merge*) wählen, damit ein **zweiter Körper** entsteht. Die angeklickte Fläche wird zur Trennfuge
     5. Körper im Strukturbaum sinnvoll benennen: **Kalksandstein**, **EPS**

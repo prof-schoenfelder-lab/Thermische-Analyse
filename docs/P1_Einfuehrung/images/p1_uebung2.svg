@@ -23,5 +23,5 @@
 <path d="M640.0,320 C646.0,280 634.0,240 640.0,200" fill="none" stroke="#009EE3" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
 <line x1="300.0" y1="275.0" x2="580.0" y2="275.0" stroke="#E53009" stroke-width="2.5" marker-end="url(#pf)"/>
 <text x="440.0" y="297.0" text-anchor="middle" font-size="15" font-style="italic" fill="#E53009">q̇</text>
-<text x="440.0" y="412" text-anchor="middle" font-size="13" fill="#2E3639">Wandausschnitt 1 m × 1 m (Schnitt)</text>
+<text x="440.0" y="412" text-anchor="middle" font-size="13" fill="#2E3639">Wandausschnitt 100 mm × 100 mm (Schnitt)</text>
 </svg>

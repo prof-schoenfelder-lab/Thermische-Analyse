@@ -50,7 +50,7 @@ Beide isotrop (*Isotropic Thermal Conductivity*).
 ### Geometrie
 
 <!-- --8<-- [start:Geometrie] -->
-Wandausschnitt **1000 mm × 1000 mm**, zwei Schichten:
+Wandausschnitt **100 mm × 100 mm**, zwei Schichten:
 
 - Kalksandstein $d_{KS} = 175\ \mathrm{mm}$
 - EPS-Dämmung $d_{EPS} = 140\ \mathrm{mm}$
@@ -61,7 +61,7 @@ Beide Körper teilen sich die Fläche in der Trennfuge (**Share Topology**).
 ### Vernetzung
 
 <!-- --8<-- [start:Vernetzung] -->
-- Netzgröße global: 50 mm
+- Netzgröße global: 10 mm
 <!-- --8<-- [end:Vernetzung] -->
 
 ### Randbedingungen

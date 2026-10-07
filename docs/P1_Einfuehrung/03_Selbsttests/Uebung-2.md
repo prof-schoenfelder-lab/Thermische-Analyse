@@ -14,7 +14,7 @@ Dämmung. Wie viel Wärme verliert diese Wand, und wie kalt wird sie innen?
 ## Gegeben
 
 - **Vollziegel**: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$, Dicke **365 mm**, nur **ein** Körper
-- Wandausschnitt 1000 × 1000 mm, Netzgröße global 50 mm
+- Wandausschnitt 100 × 100 mm, Netzgröße global 10 mm
 - Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**
 
 ## Hinweise
@@ -45,9 +45,9 @@ Dämmung. Wie viel Wärme verliert diese Wand, und wie kalt wird sie innen?
 <div class="numeric-question" data-answer="1.415" data-tolerance="0.01" data-points="5" data-attempts="5" data-hints="Material Vollziegel zugewiesen? Dicke 365 mm? Konvektion außen auf der neuen Außenfläche?">
 </div>
 
-### Wärmeverlust durch 1 m² Wand in W
+### Wärmestromdichte (Wärmeverlust je m² Wand) in W/m²
 
-<div class="numeric-question" data-answer="42.45" data-tolerance="0.3" data-points="5" data-attempts="5" data-hints="Bei 1 m² Wandfläche ist der Wärmestrom in W gleich der Wärmestromdichte in W/m².">
+<div class="numeric-question" data-answer="42.45" data-tolerance="0.3" data-points="5" data-attempts="5" data-hints="Total Heat Flux ablesen. Steht dort ein sehr kleiner Wert, ist noch mm statt m als Einheit eingestellt.">
 </div>
 
 ### Oberflächentemperatur innen in °C
