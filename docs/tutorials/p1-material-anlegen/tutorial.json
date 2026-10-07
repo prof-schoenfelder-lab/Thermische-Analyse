@@ -42,7 +42,8 @@
       "caption": "Unten bei **Isotropic Thermal Conductivity** `0,99` eintragen (Einheit W m⁻¹ C⁻¹ = W/(m·K)), `Enter`",
       "media": [
         "step-5.png"
-      ]
+      ],
+      "note": "Für eine stationäre Berechnung reicht die Wärmeleitfähigkeit. Dichte und Wärmekapazität braucht man erst, wenn sich die Temperaturen mit der Zeit ändern (instationär)."
     },
     {
       "caption": "In die nächste leere Zeile **EPS** eintippen, `Enter`",

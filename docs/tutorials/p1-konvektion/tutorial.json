@@ -24,7 +24,8 @@
       "caption": "Im `Detailfenster`: **Film Coefficient** `25` W/m²·°C, **Ambient Temperature** `−10` °C, jeweils `Enter`",
       "media": [
         "step-2.png"
-      ]
+      ],
+      "note": "25 W/(m²·K) ist der Normwert für den Wärmeübergang außen (DIN EN ISO 6946: R_se = 0,04 m²·K/W, 1/0,04 = 25). Ambient Temperature ist die Lufttemperatur weit weg von der Wand, nicht die Oberflächentemperatur."
     },
     {
       "caption": "Ansicht drehen und die **Innenfläche** (Kalksandstein) anklicken",
@@ -42,7 +43,8 @@
       "caption": "**Film Coefficient** `7,7` W/m²·°C, **Ambient Temperature** `20` °C, jeweils `Enter`",
       "media": [
         "step-5.png"
-      ]
+      ],
+      "note": "Innen ist die Luft ruhiger, der Wärmeübergang schlechter: R_si = 0,13 m²·K/W, also 1/0,13 ≈ 7,7 W/(m²·K)."
     },
     {
       "caption": "`Steady-State Thermal 2 (B5)` anklicken: Konvektion außen (A) und innen (B) prüfen",
@@ -54,7 +56,8 @@
       "caption": "Ergebnisse aus Fall a) übernehmen: unter **Solution (A6)** `Temperature` anklicken, mit `Shift` bis `Temperature 2` alle markieren",
       "media": [
         "step-7.png"
-      ]
+      ],
+      "note": "So übernimmt man die Ergebnisse samt Pfad-Einstellungen, statt sie neu anzulegen."
     },
     {
       "caption": "Die markierten Ergebnisse mit gedrückter Maustaste auf **Solution (B6)** ziehen",
@@ -72,13 +75,15 @@
       "caption": "**Temperature** in Solution (B6): innen 19,10 °C, außen −9,72 °C",
       "media": [
         "step-10.png"
-      ]
+      ],
+      "note": "Mit Konvektion hat die Oberfläche nicht mehr die Lufttemperatur: Ein Teil der Temperaturdifferenz fällt schon im Wärmeübergang ab."
     },
     {
       "caption": "**Total Heat Flux**: 6,90 W/m²",
       "media": [
         "step-11.png"
-      ]
+      ],
+      "note": "Die Übergangswiderstände innen und außen kommen zum Widerstand der Wand dazu. Der Gesamtwiderstand steigt, also sinkt der Wärmestrom gegenüber Fall a) (7,18 W/m²)."
     },
     {
       "caption": "**Temperature 2** (Pfad) für Fall b)",

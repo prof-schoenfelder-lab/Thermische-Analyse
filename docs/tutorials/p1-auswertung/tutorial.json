@@ -25,7 +25,8 @@
       "caption": "`Rechtsklick Solution (A6) → Evaluate All Results`",
       "media": [
         "step-2.png"
-      ]
+      ],
+      "note": "Eingefügte Ergebnisse sind zunächst leer. `Evaluate All Results` liest sie aus der vorhandenen Lösung, ohne neu zu rechnen."
     },
     {
       "caption": "**Temperature** anklicken: von 20 °C innen bis −10 °C außen",
@@ -37,13 +38,15 @@
       "caption": "**Total Heat Flux** anklicken: überall 7,18 W/m²",
       "media": [
         "step-4.png"
-      ]
+      ],
+      "note": "Stationär und ohne Wärmequellen fließt durch jede Schicht derselbe Wärmestrom. Deshalb ist die Wärmestromdichte überall gleich, auch in der Trennfuge."
     },
     {
       "caption": "Für den Verlauf über die Dicke: `Edge` (Kanten auswählen), eine Kante quer durch den Kalksandstein anklicken und mit gedrückter `Strg` die anschließende Kante durch die Dämmung dazunehmen",
       "media": [
         "step-5.png"
-      ]
+      ],
+      "note": "Das Farbbild zeigt nur Bereiche. Entlang der gewählten Kanten liefert ANSYS den Temperaturverlauf als Graph und Tabelle, so lässt er sich mit der Handrechnung vergleichen."
     },
     {
       "caption": "`Rechtsklick Solution (A6) → Insert → Thermal → Temperature`",
@@ -73,7 +76,8 @@
       "caption": "Der Temperaturverlauf über die Dicke: in jeder Schicht linear, Knick in der Trennfuge bei 18,73 °C",
       "media": [
         "step-10.png"
-      ]
+      ],
+      "note": "Der Wärmestrom ist in beiden Schichten gleich, also fällt die Temperatur dort stark ab, wo die Wärme schlecht geleitet wird: In der Dämmung (λ = 0,035 W/(m·K)) fällt fast die ganze Differenz ab, im Kalksandstein (λ = 0,99 W/(m·K)) kaum etwas."
     }
   ]
 }

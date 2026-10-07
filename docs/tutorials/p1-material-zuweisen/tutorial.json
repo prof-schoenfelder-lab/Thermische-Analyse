@@ -18,7 +18,8 @@
       "caption": "Unten rechts in der Statusleiste die Einheiten öffnen: **Metric (m, kg, N, s, V, A)**, Temperatur **Celsius**",
       "media": [
         "step-1.png"
-      ]
+      ],
+      "note": "Alle Zahlen, die Sie später eingeben, gelten in diesem Einheitensystem: `0,01` für die Elementgröße sind dann 10 mm, `20` für die Temperatur sind 20 °C. Mit mm statt m wäre dieselbe Elementgröße ein Hundertstel Millimeter."
     },
     {
       "caption": "`Strukturbaum Geometry` und **SYS** aufklappen",
@@ -30,7 +31,8 @@
       "caption": "Körper **Kalksandstein** anklicken, im `Detailfenster` unter **Material** bei **Assignment** auf den Pfeil klicken und **Kalksandstein** wählen",
       "media": [
         "step-3.png"
-      ]
+      ],
+      "note": "Das gelbe Feld zeigt: Dem Körper fehlt noch ein Material. Ohne Wärmeleitfähigkeit lässt sich nicht rechnen."
     },
     {
       "caption": "Genauso für den Körper **EPS**: anklicken, bei **Assignment** auf den Pfeil klicken, **EPS** wählen",

@@ -18,7 +18,8 @@
       "caption": "**Steady-State Thermal** mit gedrückter Maustaste auf die Zelle **Model** von A ziehen, Namen **b) Konvektion** eintippen, `Enter`. B nutzt Material, Geometrie und Modell von A mit",
       "media": [
         "step-1.png"
-      ]
+      ],
+      "note": "Ändert man später Geometrie oder Material, gilt das für beide Fälle. Getrennt sind nur Randbedingungen und Ergebnisse."
     },
     {
       "caption": "`Rechtsklick Setup (B) → Edit...`: beide Analysen erscheinen in einem Mechanical",

@@ -30,7 +30,8 @@
       "caption": "Unter **Dokumente** mit `Neuer Ordner` einen Ordner ohne Umlaute anlegen, z. B. **Praktikum01**, hineinwechseln und bei **Dateiname** **P1_Aussenwand** eintragen",
       "media": [
         "step-3.png"
-      ]
+      ],
+      "note": "Umlaute, Leerzeichen und Sonderzeichen im Pfad führen in ANSYS immer wieder zu Fehlern beim Öffnen oder Lösen. Neben der Datei P1_Aussenwand.wbpj legt Workbench den Ordner P1_Aussenwand_files an: Beide gehören zusammen, beim Kopieren immer beide mitnehmen."
     },
     {
       "caption": "`Speichern`",

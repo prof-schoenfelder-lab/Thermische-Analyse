@@ -11,7 +11,8 @@
       "caption": "Oben `Face` anklicken (Flächen auswählen), dann die **Innenfläche** anklicken: die freie Fläche des Kalksandsteins",
       "media": [
         "step-0.png"
-      ]
+      ],
+      "note": "Randbedingungen sitzen auf Flächen. Mit `Face` wählt ein Klick genau eine Fläche und nicht versehentlich einen Körper oder eine Kante."
     },
     {
       "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
@@ -23,7 +24,8 @@
       "caption": "Im `Detailfenster` bei **Magnitude** `20` °C eingeben, `Enter`",
       "media": [
         "step-2.png"
-      ]
+      ],
+      "note": "Eine Temperatur-Randbedingung legt die Oberfläche fest: Sie hat genau 20 °C. In Wirklichkeit ist die Wandoberfläche etwas kälter als die Raumluft, das berücksichtigt erst die Konvektion in Fall b)."
     },
     {
       "caption": "Mit gedrückter `mittlerer Maustaste` die Ansicht drehen",

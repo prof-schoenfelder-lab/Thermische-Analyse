@@ -18,7 +18,8 @@
       "caption": "Im `Detailfenster` bei **Element Size** `0,01` m eingeben, `Enter`",
       "media": [
         "step-1.png"
-      ]
+      ],
+      "note": "10 mm ergeben 10 × 10 Elemente auf der 100 mm großen Fläche. Für die ebene Wand würde auch ein gröberes Netz genügen, weil die Temperatur in jeder Schicht linear verläuft. Bei Ecken und Wärmebrücken (Übungen) entscheidet die Netzgröße über die Genauigkeit."
     },
     {
       "caption": "`Rechtsklick Mesh → Generate Mesh`",
