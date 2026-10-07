@@ -32,5 +32,3 @@ in Praktikum 3 geht es dann genauer um ein geeignetes Netz.
     Weil der Verlauf je Schicht linear ist, wäre das Ergebnis hier sogar mit
     einem Element je Schicht schon exakt. Bei Ecken, Rohren oder
     Wärmebrücken ist das anders (Praktikum 3).
-
-[Weiter zu Schritt 5: Randbedingungen →](05-randbedingungen.md){ .md-button .md-button--primary }

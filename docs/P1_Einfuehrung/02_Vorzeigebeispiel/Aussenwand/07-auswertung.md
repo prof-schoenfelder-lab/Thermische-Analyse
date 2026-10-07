@@ -48,6 +48,3 @@ gebraucht?
     Die Trennfuge liegt bei **18,7 °C**, also fast bei der Innentemperatur.
     Fast der gesamte Temperaturabfall (rund 29 von 30 K) passiert in der
     Dämmung. Warum? Vergleich mit der [analytischen Lösung](analytische-loesung.md).
-
-**Fall a) geschafft.** Jetzt dieselbe Wand mit Konvektion:
-[b) Konvektion →](b-konvektion.md){ .md-button .md-button--primary }

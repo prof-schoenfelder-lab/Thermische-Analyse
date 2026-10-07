@@ -58,5 +58,3 @@ $$U = \frac{\dot q}{T_i - T_e} = \frac{6{,}90\ \mathrm{W/m^2}}{30\ \mathrm{K}} =
 !!! question "Kurz nachdenken"
     Warum ist der Wärmestrom in Fall b) **kleiner** als in Fall a), obwohl innen
     und außen dieselben Temperaturen herrschen?
-
-[Weiter zur analytischen Lösung →](analytische-loesung.md){ .md-button .md-button--primary }

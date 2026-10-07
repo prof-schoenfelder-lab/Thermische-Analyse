@@ -34,5 +34,3 @@ title: 5 · Randbedingungen
     `Strukturbaum Steady-State Thermal` anklicken: Im Grafikfenster sind beide
     Randbedingungen mit **A** und **B** markiert. Liegen sie auf den richtigen
     Flächen?
-
-[Weiter zu Schritt 6: Lösen →](06-loesen.md){ .md-button .md-button--primary }

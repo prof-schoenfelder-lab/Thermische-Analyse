@@ -26,5 +26,3 @@ title: 3 · Zuweisung
     - Unter `Geometry` stehen zwei Körper, beide mit grünem Haken
     - Unter `Connections` gibt es **keine** Kontakte (dank Share Topology). Steht
       dort doch ein Kontakt, wurde in SpaceClaim nicht *Share* ausgeführt.
-
-[Weiter zu Schritt 4: Netz →](04-netz.md){ .md-button .md-button--primary }

@@ -35,5 +35,3 @@ title: 1 · Material
     Für eine **stationäre** Rechnung braucht ANSYS nur die Wärmeleitfähigkeit.
     Dichte und spezifische Wärmekapazität kommen erst bei instationären Rechnungen (in ANSYS: transient)
     (Praktikum 4) dazu.
-
-[Weiter zu Schritt 2: Geometrie →](02-geometrie.md){ .md-button .md-button--primary }

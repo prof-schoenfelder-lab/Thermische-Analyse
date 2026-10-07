@@ -108,5 +108,3 @@ Alle übrigen Flächen sind adiabat (keine Randbedingung nötig).
     </a>
 
 </div>
-
-Los geht es mit [Schritt 1: Material](01-material.md).

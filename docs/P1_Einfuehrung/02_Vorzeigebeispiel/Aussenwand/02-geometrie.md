@@ -48,5 +48,3 @@ Geometrie direkt an (Fläche ziehen, verschieben).
     Kontakte schauen wir uns in diesem Kurs nicht an.
 
 <!-- TODO: Datei P1_Aussenwand.scdoc als Download ablegen (files/) -->
-
-[Weiter zu Schritt 3: Zuweisung →](03-zuweisung.md){ .md-button .md-button--primary }

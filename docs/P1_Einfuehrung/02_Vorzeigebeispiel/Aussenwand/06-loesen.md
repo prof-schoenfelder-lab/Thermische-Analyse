@@ -19,5 +19,3 @@ Für dieses Beispiel sind keine besonderen Lösungseinstellungen nötig.
 !!! warning "Fehlermeldung beim Lösen?"
     Häufigste Ursache: **Umlaute oder Leerzeichen im Dateipfad** des Projekts.
     Projekt unter einem Pfad ohne Umlaute speichern, siehe [Abspeichern](../../abspeichern.md).
-
-[Weiter zu Schritt 7: Auswertung →](07-auswertung.md){ .md-button .md-button--primary }
