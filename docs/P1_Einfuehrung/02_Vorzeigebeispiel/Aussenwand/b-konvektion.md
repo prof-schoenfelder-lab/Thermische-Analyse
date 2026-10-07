@@ -147,3 +147,17 @@ $$U = \frac{\dot q}{T_i - T_e} = \frac{6{,}90\ \mathrm{W/m^2}}{30\ \mathrm{K}} =
 !!! question "Kurz nachdenken"
     Warum ist der Wärmestrom in Fall b) **kleiner** als in Fall a), obwohl innen
     und außen dieselben Temperaturen herrschen?
+
+    ??? success "Auflösung"
+        In Fall a) liegen 20 °C und −10 °C direkt **an den Wandoberflächen**: Die
+        ganzen 30 K fallen in der Wand ab. In Fall b) sind es die
+        **Lufttemperaturen**. Zwischen Luft und Wand liegt auf jeder Seite ein
+        Wärmeübergangswiderstand $R_{si} = 1/\alpha_i = 0{,}13$ und
+        $R_{se} = 1/\alpha_e = 0{,}04\ \mathrm{m^2K/W}$. Dieselben 30 K müssen die
+        Wärme jetzt durch einen größeren Gesamtwiderstand treiben:
+
+        $$\dot q_a = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2K/W}} = 7{,}18\ \mathrm{W/m^2} \qquad \dot q_b = \frac{30\ \mathrm{K}}{4{,}347\ \mathrm{m^2K/W}} = 6{,}90\ \mathrm{W/m^2}$$
+
+        Anders gesagt: Ein Teil der Temperaturdifferenz fällt schon in der Luft
+        ab. Die Oberflächen haben nur noch 19,10 °C und −9,72 °C, über die Wand
+        selbst fallen also nur 28,82 K statt 30 K ab.
