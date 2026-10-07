@@ -1,0 +1,100 @@
+/* Klick-Anleitungen (anleitung.js): "Schritt für Schritt" und "Liste", Farben aus den Kurs-Tokens */
+.md-typeset .kb {
+  margin: 1.2em 0 1.6em; border: 1px solid var(--kurs-line, #e2e8ec); border-radius: var(--kurs-radius-md, .6rem);
+  background: var(--kurs-surface, #fff); overflow: hidden;
+}
+.md-typeset .kb-kopf {
+  display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between;
+  padding: .6rem 1rem; background: var(--kurs-panel, #f2f6f9); border-bottom: 1px solid var(--kurs-line, #e2e8ec);
+}
+.md-typeset .kb-titel { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .6rem; min-width: 0; }
+.md-typeset .kb-kicker { font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kurs-accent-ink, #0070a6); }
+.md-typeset .kb-name { font-weight: 700; color: var(--kurs-head, #022541); }
+
+/* Ansicht umschalten (gilt auf allen Seiten) */
+.md-typeset .kb-ansicht { display: inline-flex; padding: .15rem; border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: 999px; background: var(--kurs-surface, #fff); font-size: .7rem; }
+.md-typeset .kb-ansicht button { font: inherit; font-weight: 600; cursor: pointer; border: 0; border-radius: 999px; padding: .2rem .75rem; background: transparent; color: var(--kurs-text-2, #566166); }
+.md-typeset .kb-ansicht button[aria-pressed="true"] { background: var(--kurs-btn-bg, #009ee3); color: var(--kurs-btn-fg, #fff); }
+
+/* Schritt für Schritt */
+.md-typeset .kb-schritt { display: grid; gap: .65rem; padding: .9rem 1rem 1rem; }
+.md-typeset .kb-fort { display: flex; gap: 3px; }
+.md-typeset .kb-seg {
+  flex: 1; height: 16px; padding: 5px 0; border: 0; cursor: pointer; background: var(--kurs-line, #e2e8ec);
+  background-clip: content-box; border-radius: 6px;
+}
+.md-typeset .kb-seg.fertig { background-color: var(--kurs-accent, #009ee3); opacity: .45; }
+.md-typeset .kb-seg.jetzt { background-color: var(--kurs-accent, #009ee3); }
+.md-typeset .kb-zaehler, .kb-vollbild .kb-zaehler { font-size: .7rem; color: var(--kurs-text-2, #566166); font-variant-numeric: tabular-nums; }
+.md-typeset .kb-zaehler b, .kb-vollbild .kb-zaehler b { color: var(--kurs-head, #022541); }
+.md-typeset .kb-text, .kb-vollbild .kb-text { font-size: .86rem; line-height: 1.55; font-weight: 500; color: var(--kurs-text, #2e3639); min-height: 2.6em; }
+.md-typeset button.kb-bild {
+  display: block; width: 100%; padding: .4rem; border: 0; border-radius: .5rem; cursor: zoom-in;
+  background: var(--kurs-panel, #f2f6f9);
+}
+.md-typeset button.kb-bild img { display: block; margin: 0 auto; max-width: 100%; max-height: min(58vh, 34rem); width: auto; height: auto; border-radius: .3rem; }
+.md-typeset .kb-nav, .kb-vollbild .kb-nav { display: grid; grid-template-columns: 1fr 2fr; gap: .6rem; }
+.md-typeset .kb-nav button, .kb-vollbild .kb-nav button {
+  font: inherit; font-size: .82rem; font-weight: 700; min-height: 2.7rem; cursor: pointer; border-radius: var(--kurs-btn-radius, .5rem);
+  border: 1px solid var(--kurs-line-2, #cdd6dc); background: var(--kurs-surface, #fff); color: var(--kurs-text, #2e3639);
+}
+.md-typeset .kb-nav .kb-weiter, .kb-vollbild .kb-nav .kb-weiter { background: var(--kurs-btn-bg, #009ee3); border-color: var(--kurs-btn-bg, #009ee3); color: var(--kurs-btn-fg, #fff); }
+.md-typeset .kb-nav button:disabled, .kb-vollbild .kb-nav button:disabled { opacity: .35; cursor: default; }
+
+/* Liste: eine Zeile je Schritt, Bild auf Tipp */
+.md-typeset ol.kb-liste { list-style: none; margin: 0 !important; padding: .35rem .6rem .5rem; }
+.md-typeset ol.kb-liste > li {
+  display: grid; grid-template-columns: 1.7rem minmax(0, 1fr) auto; gap: .2rem .6rem; align-items: center;
+  margin: 0; padding: .3rem .4rem; border-radius: .4rem; list-style: none;
+}
+.md-typeset ol.kb-liste > li + li { border-top: 1px solid var(--kurs-line, #e2e8ec); }
+.md-typeset ol.kb-liste > li.jetzt { background: var(--kurs-accent-soft, #e3f4fc); border-top-color: transparent; }
+.md-typeset ol.kb-liste > li.jetzt + li { border-top-color: transparent; }
+.md-typeset .kb-ltext { font-size: .78rem; line-height: 1.45; }
+.md-typeset li.fertig .kb-ltext { color: var(--kurs-text-3, #87939a); }
+.md-typeset .kb-nr {
+  width: 1.55rem; height: 1.55rem; display: grid; place-items: center; padding: 0; cursor: pointer;
+  border-radius: 50%; border: 1px solid var(--kurs-line-2, #cdd6dc); background: var(--kurs-surface, #fff);
+  font: 700 .64rem/1 var(--kurs-sans, inherit); color: var(--kurs-text-2, #566166);
+}
+.md-typeset li.fertig .kb-nr { background: var(--kurs-c-ok, #00964e); border-color: var(--kurs-c-ok, #00964e); color: #fff; }
+.md-typeset li.jetzt .kb-nr { background: var(--kurs-btn-bg, #009ee3); border-color: var(--kurs-btn-bg, #009ee3); color: var(--kurs-btn-fg, #fff); }
+.md-typeset .kb-bildknopf {
+  display: grid; place-items: center; width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: .4rem; cursor: pointer;
+  background: transparent; color: var(--kurs-accent-ink, #0070a6);
+}
+.md-typeset .kb-bildknopf:hover, .md-typeset .kb-bildknopf[aria-expanded="true"] { background: var(--kurs-panel, #f2f6f9); }
+.md-typeset button.kb-limg { grid-column: 2 / -1; display: block; padding: 0; margin: .2rem 0 .3rem; border: 0; background: none; cursor: zoom-in; text-align: left; }
+.md-typeset button.kb-limg img { display: block; max-width: 100%; max-height: 45vh; border-radius: .3rem; border: 1px solid var(--kurs-line, #e2e8ec); }
+
+/* Vollbild (Tablet): Bild so groß wie möglich, Blättern bleibt */
+body.kb-offen { overflow: hidden; }
+.kb-vollbild {
+  position: fixed; inset: 0; z-index: 1000; display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; gap: .6rem;
+  padding: calc(.8rem + env(safe-area-inset-top, 0px)) 1rem calc(.8rem + env(safe-area-inset-bottom, 0px));
+  background: var(--kurs-bg, #fff); font-size: 1.1rem;
+}
+.kb-vollbild .kb-vb-oben { display: flex; justify-content: space-between; align-items: center; }
+.kb-vollbild .kb-vb-zu { font: inherit; font-size: .75rem; font-weight: 700; cursor: pointer; padding: .3rem .8rem; border-radius: 999px; border: 1px solid var(--kurs-line-2, #cdd6dc); background: var(--kurs-surface, #fff); color: var(--kurs-text, #2e3639); }
+.kb-vollbild .kb-vb-bild { min-height: 0; display: flex; align-items: center; justify-content: center; }
+.kb-vollbild .kb-vb-bild img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.kb-vollbild .kb-text { font-size: 1rem; }
+.kb-vollbild .kb-zaehler { font-size: .85rem; }
+.kb-vollbild .kb-nav button { font-size: 1rem; min-height: 3.2rem; }
+
+/* GIF als aufklappbarer Film, Kurzanleitung entfällt neben Klick-Anleitungen */
+.md-typeset details.kb-film { margin: .6rem 0; border: 0; background: none; box-shadow: none; padding: 0; }
+.md-typeset details.kb-film > summary { cursor: pointer; font-size: .76rem; font-weight: 600; color: var(--kurs-accent-ink, #0070a6); padding: .2rem 0; }
+.md-typeset details.kb-film > summary::before, .md-typeset details.kb-film > summary::after { display: none; }
+.md-typeset .kb-doppelt { display: none; }
+
+/* Übersichtsseite der Anleitungen (tutorials.js): Schritte klar trennen */
+html:root body .tut-steps > li:not(:last-child) {
+  margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--kurs-line, #e2e8ec);
+}
+html:root body .tut-steps > li:not(:last-child)::after { bottom: -1.45rem; }
+html:root body .md-typeset img.tut-img { margin: .45rem 0 0; }
+
+@media (max-width: 40em) {
+  .md-typeset .kb-nav { grid-template-columns: 1fr 1fr; }
+}
