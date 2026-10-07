@@ -29,12 +29,26 @@
     var KEY_POS = 'kurs-anleitung-pos:' + slug;
     this.wurzel = wurzel;
 
+    var ui = null;  // Elemente der aktuellen Ansicht, damit Blättern nichts neu aufbaut
     function pos() { var p = parseInt(lies(KEY_POS, '0'), 10); return isNaN(p) ? 0 : Math.max(0, Math.min(p, tut.steps.length - 1)); }
-    function setzePos(p) { schreib(KEY_POS, String(Math.max(0, Math.min(p, tut.steps.length - 1)))); zeichnen(); }
+    function setzePos(p) { schreib(KEY_POS, String(Math.max(0, Math.min(p, tut.steps.length - 1)))); aktualisieren(); }
     this.weiter = function (d) { if (tut) setzePos(pos() + d); };
 
     function bildUrl(st) { return st.media && st.media.length ? BASE + 'tutorials/' + slug + '/' + st.media[0] : ''; }
     function veredeln(el) { if (window.KursUI) window.KursUI.enhance(el); }
+    function textSetzen(el, st) { el.innerHTML = md(st.caption); veredeln(el); }
+
+    // Neues Bild erst zeigen, wenn es geladen ist: das alte bleibt so lange stehen, nichts springt
+    function bildTauschen(img, url) {
+      img.dataset.ziel = url;
+      if (!url) { img.removeAttribute('src'); return; }
+      if (img.getAttribute('src') === url) return;
+      var neu = new Image();
+      neu.src = url;
+      var fertig = function () { if (img.dataset.ziel === url) img.src = url; };
+      if (neu.decode) neu.decode().then(fertig, fertig); else neu.onload = neu.onerror = fertig;
+    }
+    function vorladen(i) { if (bilder[i]) { var v = new Image(); v.src = bilder[i]; } }
 
     function kopf() {
       var k = h('div', 'kb-kopf');
@@ -54,59 +68,51 @@
     }
 
     function schritt() {
-      var i = pos(), st = tut.steps[i], n = tut.steps.length, box = h('div', 'kb-schritt');
+      var n = tut.steps.length, box = h('div', 'kb-schritt'), segs = [];
       var fort = h('div', 'kb-fort');
-      for (var j = 0; j < n; j++) {
-        (function (j) {
-          var seg = h('button', 'kb-seg' + (j < i ? ' fertig' : j === i ? ' jetzt' : ''));
-          seg.type = 'button';
-          seg.setAttribute('aria-label', 'Schritt ' + (j + 1));
-          seg.addEventListener('click', function () { setzePos(j); });
-          fort.appendChild(seg);
-        })(j);
-      }
+      tut.steps.forEach(function (st, j) {
+        var seg = h('button', 'kb-seg');
+        seg.type = 'button';
+        seg.setAttribute('aria-label', 'Schritt ' + (j + 1));
+        seg.addEventListener('click', function () { setzePos(j); });
+        fort.appendChild(seg);
+        segs.push(seg);
+      });
       box.appendChild(fort);
-      box.appendChild(h('div', 'kb-zaehler', 'Schritt <b>' + (i + 1) + '</b> von ' + n));
-      var text = h('div', 'kb-text tut-cap', md(st.caption));
-      box.appendChild(text);
-      var url = bildUrl(st);
-      if (url) {
-        var fig = h('button', 'kb-bild');
-        fig.type = 'button';
-        fig.setAttribute('aria-label', 'Bild im Vollbild zeigen');
-        fig.innerHTML = '<img alt="" src="' + url + '">';
-        fig.addEventListener('click', function () { vollbild(); });
-        wischen(fig);
-        box.appendChild(fig);
-      }
+      var zaehler = h('div', 'kb-zaehler');
+      var text = h('div', 'kb-text tut-cap');
+      var fig = h('button', 'kb-bild', '<img alt="">');
+      fig.type = 'button';
+      fig.setAttribute('aria-label', 'Bild im Vollbild zeigen');
+      fig.addEventListener('click', function () { vollbild(); });
+      wischen(fig);
       var nav = h('div', 'kb-nav');
-      var zur = h('button', 'kb-zurueck', '← Zurück'), vor = h('button', 'kb-weiter', i === n - 1 ? 'Fertig ✓' : 'Weiter →');
+      var zur = h('button', 'kb-zurueck', '← Zurück'), vor = h('button', 'kb-weiter');
       zur.type = vor.type = 'button';
-      zur.disabled = i === 0;
       zur.addEventListener('click', function () { self.weiter(-1); });
       vor.addEventListener('click', function () {
-        if (i < n - 1) { self.weiter(1); return; }
+        if (pos() < n - 1) { self.weiter(1); return; }
         var nach = wurzel.nextElementSibling;  // fertig: zum Inhalt nach der Anleitung
         if (nach) nach.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
       nav.appendChild(zur);
       nav.appendChild(vor);
-      box.appendChild(nav);
-      if (bilder[i + 1]) { var vorab = new Image(); vorab.src = bilder[i + 1]; }
-      veredeln(text);
+      [zaehler, text, fig, nav].forEach(function (e) { box.appendChild(e); });
+      ui = { typ: 'schritt', segs: segs, zaehler: zaehler, text: text, img: fig.querySelector('img'), fig: fig, zur: zur, vor: vor };
       return box;
     }
 
     function liste() {
-      var i = pos(), ol = h('ol', 'kb-liste');
+      var lis = [], ol = h('ol', 'kb-liste');
       tut.steps.forEach(function (st, j) {
-        var li = h('li', j < i ? 'fertig' : j === i ? 'jetzt' : '');
+        var li = h('li');
         var nr = h('button', 'kb-nr', String(j + 1));
         nr.type = 'button';
         nr.title = 'Hier bin ich';
         nr.addEventListener('click', function () { setzePos(j); });
         li.appendChild(nr);
-        var text = h('div', 'kb-ltext tut-cap', md(st.caption));
+        var text = h('div', 'kb-ltext tut-cap');
+        textSetzen(text, st);
         li.appendChild(text);
         var url = bildUrl(st);
         if (url) {
@@ -126,62 +132,80 @@
           li.appendChild(b);
         }
         ol.appendChild(li);
-        veredeln(text);
+        lis.push(li);
       });
+      ui = { typ: 'liste', lis: lis };
       return ol;
     }
 
+    // Nach jedem Blättern nur Inhalte austauschen, nicht neu aufbauen
+    function aktualisieren() {
+      if (!ui) return;
+      var i = pos(), n = tut.steps.length, st = tut.steps[i];
+      if (ui.typ === 'liste') {
+        ui.lis.forEach(function (li, j) { li.className = j < i ? 'fertig' : j === i ? 'jetzt' : ''; });
+      } else {
+        ui.segs.forEach(function (seg, j) { seg.className = 'kb-seg' + (j < i ? ' fertig' : j === i ? ' jetzt' : ''); });
+        ui.zaehler.innerHTML = 'Schritt <b>' + (i + 1) + '</b> von ' + n;
+        textSetzen(ui.text, st);
+        bildTauschen(ui.img, bildUrl(st));
+        ui.fig.style.visibility = bildUrl(st) ? '' : 'hidden';
+        ui.zur.disabled = i === 0;
+        ui.vor.textContent = i === n - 1 ? 'Fertig ✓' : 'Weiter →';
+        vorladen(i + 1);
+      }
+      if (vb) vb();
+    }
+
     // Vollbild: Bild so groß wie möglich, Text und Blättern bleiben
+    var vb = null;  // Aktualisierung des offenen Vollbilds
     function vollbild() {
       var ov = h('div', 'kb-vollbild');
       ov.setAttribute('role', 'dialog');
       ov.setAttribute('aria-modal', 'true');
-      function fuellen() {
+      var oben = h('div', 'kb-vb-oben'), zaehler = h('div', 'kb-zaehler');
+      var zu = h('button', 'kb-vb-zu', 'Schließen ✕'); zu.type = 'button';
+      oben.appendChild(zaehler); oben.appendChild(zu);
+      var t = h('div', 'kb-text tut-cap');
+      var b = h('div', 'kb-vb-bild', '<img alt="">'), img = b.querySelector('img');
+      wischen(b);
+      var nav = h('div', 'kb-nav');
+      var z = h('button', 'kb-zurueck', '← Zurück'), w = h('button', 'kb-weiter', 'Weiter →');
+      z.type = w.type = 'button';
+      z.addEventListener('click', function () { self.weiter(-1); });
+      w.addEventListener('click', function () { self.weiter(1); });
+      nav.appendChild(z); nav.appendChild(w);
+      [oben, t, b, nav].forEach(function (e) { ov.appendChild(e); });
+      vb = function () {
         var i = pos(), st = tut.steps[i];
-        ov.innerHTML = '';
-        var oben = h('div', 'kb-vb-oben');
-        oben.appendChild(h('div', 'kb-zaehler', 'Schritt <b>' + (i + 1) + '</b> von ' + tut.steps.length));
-        var zu = h('button', 'kb-vb-zu', 'Schließen ✕'); zu.type = 'button';
-        zu.addEventListener('click', schliessen);
-        oben.appendChild(zu);
-        ov.appendChild(oben);
-        var t = h('div', 'kb-text tut-cap', md(st.caption));
-        ov.appendChild(t);
-        var b = h('div', 'kb-vb-bild', bildUrl(st) ? '<img alt="" src="' + bildUrl(st) + '">' : '');
-        wischen(b, fuellen);
-        ov.appendChild(b);
-        var nav = h('div', 'kb-nav');
-        var z = h('button', 'kb-zurueck', '← Zurück'), w = h('button', 'kb-weiter', 'Weiter →');
-        z.type = w.type = 'button';
+        zaehler.innerHTML = 'Schritt <b>' + (i + 1) + '</b> von ' + tut.steps.length;
+        textSetzen(t, st);
+        bildTauschen(img, bildUrl(st));
         z.disabled = i === 0;
         w.disabled = i === tut.steps.length - 1;
-        z.addEventListener('click', function () { self.weiter(-1); fuellen(); });
-        w.addEventListener('click', function () { self.weiter(1); fuellen(); });
-        nav.appendChild(z); nav.appendChild(w);
-        ov.appendChild(nav);
-        veredeln(t);
-      }
+      };
       function taste(ev) {
         if (ev.key === 'Escape') schliessen();
-        else if (ev.key === 'ArrowRight') { self.weiter(1); fuellen(); }
-        else if (ev.key === 'ArrowLeft') { self.weiter(-1); fuellen(); }
+        else if (ev.key === 'ArrowRight') self.weiter(1);
+        else if (ev.key === 'ArrowLeft') self.weiter(-1);
         else return;
         ev.preventDefault(); ev.stopPropagation();
       }
-      function schliessen() { document.removeEventListener('keydown', taste, true); ov.remove(); document.body.classList.remove('kb-offen'); }
+      function schliessen() { vb = null; document.removeEventListener('keydown', taste, true); ov.remove(); document.body.classList.remove('kb-offen'); }
+      zu.addEventListener('click', schliessen);
       document.addEventListener('keydown', taste, true);
       document.body.classList.add('kb-offen');
       document.body.appendChild(ov);
-      fuellen();
+      vb();
     }
 
-    function wischen(el, danach) {
+    function wischen(el) {
       var x0 = null;
       el.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
       el.addEventListener('touchend', function (e) {
         if (x0 === null) return;
         var dx = e.changedTouches[0].clientX - x0; x0 = null;
-        if (Math.abs(dx) > 50) { self.weiter(dx < 0 ? 1 : -1); if (danach) danach(); }
+        if (Math.abs(dx) > 50) self.weiter(dx < 0 ? 1 : -1);
       });
     }
 
@@ -192,6 +216,7 @@
       wurzel.innerHTML = '';
       wurzel.appendChild(kopf());
       wurzel.appendChild(a === 'schritt' ? schritt() : liste());
+      aktualisieren();
     }
     this.zeichnen = zeichnen;
 

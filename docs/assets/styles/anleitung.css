@@ -27,12 +27,14 @@
 .md-typeset .kb-seg.jetzt { background-color: var(--kurs-accent, #009ee3); }
 .md-typeset .kb-zaehler, .kb-vollbild .kb-zaehler { font-size: .7rem; color: var(--kurs-text-2, #566166); font-variant-numeric: tabular-nums; }
 .md-typeset .kb-zaehler b, .kb-vollbild .kb-zaehler b { color: var(--kurs-head, #022541); }
-.md-typeset .kb-text, .kb-vollbild .kb-text { font-size: .86rem; line-height: 1.55; font-weight: 500; color: var(--kurs-text, #2e3639); min-height: 2.6em; }
+.md-typeset .kb-text, .kb-vollbild .kb-text { font-size: .86rem; line-height: 1.55; font-weight: 500; color: var(--kurs-text, #2e3639); min-height: 4.65em; }
+/* feste Bildfläche: jedes Bild wird eingepasst, beim Blättern springt nichts */
 .md-typeset button.kb-bild {
-  display: block; width: 100%; padding: .4rem; border: 0; border-radius: .5rem; cursor: zoom-in;
-  background: var(--kurs-panel, #f2f6f9);
+  display: flex; align-items: center; justify-content: center; width: 100%; height: min(58vh, 34rem);
+  padding: .4rem; border: 0; border-radius: .5rem; cursor: zoom-in; background: var(--kurs-panel, #f2f6f9);
 }
-.md-typeset button.kb-bild img { display: block; margin: 0 auto; max-width: 100%; max-height: min(58vh, 34rem); width: auto; height: auto; border-radius: .3rem; }
+.md-typeset button.kb-bild img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: .3rem; }
+.kb-vollbild .kb-text { min-height: 4.65em; }
 .md-typeset .kb-nav, .kb-vollbild .kb-nav { display: grid; grid-template-columns: 1fr 2fr; gap: .6rem; }
 .md-typeset .kb-nav button, .kb-vollbild .kb-nav button {
   font: inherit; font-size: .82rem; font-weight: 700; min-height: 2.7rem; cursor: pointer; border-radius: var(--kurs-btn-radius, .5rem);
