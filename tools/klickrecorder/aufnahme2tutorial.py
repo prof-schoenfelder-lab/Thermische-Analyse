@@ -21,7 +21,7 @@ import json
 import re
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageStat
 
 MENU = {"MenuItemControl"}
 KETTENSTART = {"TabItemControl", "MenuItemControl", "SplitButtonControl"}
@@ -33,6 +33,7 @@ FREMD = ("Taskleiste", "system32\\cmd", "Eingabeaufforderung", "Benachrichtigung
 GRAFIK = ("WBGfxSplitWindow", "graphicsViewHost")  # Grafikfenster Mechanical, SpaceClaim
 ROT = (229, 48, 9)          # HTWK Rot
 GRAU_HG = (238, 240, 241)   # Fläche außerhalb der aktiven Anwendung
+CYAN = (0, 158, 227)        # HTWK Cyan (Lupe)
 PRUEFEN = " [PRÜFEN]"
 
 
@@ -441,6 +442,69 @@ def bild_zusammen(aufnahme, schritte, datei):
     img.crop(begrenzen(ausschnitt(box, *img.size), fenster)).save(datei, optimize=True)
 
 
+def bild_uebersicht(aufnahme, schritte, datei, f=2, vorher=None):
+    """Für Einsteiger: ganzes Fenster statt Ausschnitt, damit man sieht, wo im Programm geklickt wird.
+    Klickt der letzte Schritt auf ein kleines Bedienelement, kommt eine Lupe (f-fach) dazu, die an der
+    ruhigsten Stelle des Fensters liegt. Sind nur kleine Fenster bekannt (z. B. ein aufgeklapptes Menü),
+    kommt das Programmfenster aus dem Schritt davor (vorher) dazu."""
+    img = Image.open(aufnahme / schritte[-1]["frame"]).convert("RGB")
+    fenster = [w for s in schritte for w in sichtbar(s)]
+    flaeche = sum((w[2] - w[0]) * (w[3] - w[1]) for w in fenster)
+    if vorher and flaeche < 0.4 * img.width * img.height:
+        fenster += sichtbar(vorher)
+    img = abdecken(img, fenster)
+    W, H = img.size
+    gx0, gy0, gx1, gy1 = ganz = begrenzen((0, 0, W, H), fenster)
+    roh = img.copy()
+    alle, n, letzte = [], 1, None
+    for s in schritte:
+        r, punkte, ziel, _ = geometrie(s, W, H)
+        R = max(r, round((gx1 - gx0) * 0.016))  # Marker groß genug für das verkleinerte Gesamtbild
+        zeichnen(img, R, punkte, ziel, n)
+        letzte = (s, r, punkte, ziel, n)
+        alle += punkte
+        n += len(punkte)
+    s, r, punkte, ziel, n0 = letzte
+    rect = el(s["glieder"][-1]).get("rechteck") if s["glieder"] else None
+    klein = rect and rect[2] - rect[0] < W * 0.4 and rect[3] - rect[1] < H * 0.08
+    if punkte and klein and not ziel:
+        xs, ys = [p[0] for p in punkte], [p[1] for p in punkte]
+        lw, lh = round(max(300, max(xs) - min(xs) + 160)), round(max(130, max(ys) - min(ys) + 80))
+        cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
+        q0 = max(gx0, min(round(cx - lw / 2), gx1 - lw))
+        q1 = max(gy0, min(round(cy - lh / 2), gy1 - lh))
+        quelle = (q0, q1, q0 + lw, q1 + lh)
+        lupe = roh.crop(quelle)
+        zeichnen(lupe, r, [(x - q0, y - q1) for x, y in punkte], None, n0)
+        f = min(f, max(1.4, 0.4 * (gx1 - gx0) / lw))  # weite Menüketten: Lupe nicht breiter als 40 % des Fensters
+        lupe = lupe.resize((round(lw * f), round(lh * f)), Image.LANCZOS)
+        # ruhigste Stelle: geringste Helligkeitsstreuung, nicht über Markern oder der Quelle
+        frei = alle + [(quelle[0], quelle[1]), (quelle[2], quelle[3]), (quelle[0], quelle[3]), (quelle[2], quelle[1])]
+        best = None
+        for lx in range(gx0 + 20, gx1 - lupe.width - 19, 40):
+            for ly in range(gy0 + 60, gy1 - lupe.height - 19, 40):
+                if any(lx - 40 < x < lx + lupe.width + 40 and ly - 40 < y < ly + lupe.height + 40 for x, y in frei):
+                    continue
+                if lx < quelle[2] and quelle[0] < lx + lupe.width and ly < quelle[3] and quelle[1] < ly + lupe.height:
+                    continue
+                v = sum(ImageStat.Stat(roh.crop((lx, ly, lx + lupe.width, ly + lupe.height)).convert("L")).stddev)
+                if best is None or v < best[0]:
+                    best = (v, lx, ly)
+        if best:
+            _, lx, ly = best
+            d = ImageDraw.Draw(img)
+            d.rectangle(quelle, outline=CYAN, width=3)
+            rechts = lx > quelle[2]
+            d.line([(quelle[2] if rechts else quelle[0], (quelle[1] + quelle[3]) / 2),
+                    (lx if rechts else lx + lupe.width, ly + lupe.height / 2)], fill=CYAN, width=3)
+            schatten = Image.new("L", (lupe.width + 40, lupe.height + 40), 0)
+            ImageDraw.Draw(schatten).rectangle((20, 20, lupe.width + 20, lupe.height + 20), fill=110)
+            img.paste((0, 0, 0), (lx - 14, ly - 14), schatten.filter(ImageFilter.GaussianBlur(9)))
+            img.paste(lupe, (lx, ly))
+            ImageDraw.Draw(img).rectangle((lx - 2, ly - 2, lx + lupe.width + 1, ly + lupe.height + 1), outline=CYAN, width=4)
+    img.crop(ganz).save(datei, optimize=True)
+
+
 def gif_bauen(aufnahme, schritte, datei, breite=1280, ms=1600):
     """Ablauf eines Kapitels als GIF: alle Fotos je Schritt, gleicher Ausschnitt, Zähler „3 / 9".
     Marker werden erst nach dem Verkleinern gezeichnet, damit sie lesbar bleiben."""
@@ -489,6 +553,7 @@ def main():
     ap.add_argument("--kategorie", default="")
     ap.add_argument("--software")
     ap.add_argument("--gif", action="store_true", help="je Kapitel zusätzlich ablauf.gif")
+    ap.add_argument("--uebersicht", action="store_true", help="ganzes Fenster plus Lupe statt Ausschnitt (Einsteiger)")
     a = ap.parse_args()
 
     daten = json.loads((a.aufnahme / "events.json").read_text(encoding="utf-8"))
@@ -512,7 +577,10 @@ def main():
             media = []
             if s["frame"] and (a.aufnahme / s["frame"]).exists():
                 datei = f"step-{nr}.png"
-                bild_rendern(a.aufnahme, s, out / datei)
+                if a.uebersicht:
+                    bild_uebersicht(a.aufnahme, [s], out / datei, vorher=schritte[nr - 1] if nr else None)
+                else:
+                    bild_rendern(a.aufnahme, s, out / datei)
                 media = [datei]
             steps.append({"caption": s["caption"], "media": media})
             entwurf.append(f"{nr + 1}. {s['caption']}" + (f"  ![]({media[0]})" if media else ""))
