@@ -200,7 +200,7 @@
       var oben = h('div', 'kb-vb-oben'), zaehler = h('div', 'kb-zaehler');
       var zu = h('button', 'kb-vb-zu', 'Schließen ✕'); zu.type = 'button';
       oben.appendChild(zaehler); oben.appendChild(zu);
-      var t = h('div', 'kb-text tut-cap');
+      var t = h('div', 'kb-text tut-cap md-typeset');  // md-typeset: Tasten-Chips wie auf der Seite
       var b = h('div', 'kb-vb-bild', '<img alt="">'), img = b.querySelector('img');
       wischen(b);
       var nav = h('div', 'kb-nav');

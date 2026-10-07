@@ -8,6 +8,7 @@
 .wand-rechner .wr-row { display: grid; grid-template-columns: 8.5em minmax(0, 1fr) 9.5em; gap: .8em; align-items: center; }
 .wand-rechner label { font-weight: 600; color: var(--kurs-head, #022541); }
 .wand-rechner input[type="range"] { width: 100%; accent-color: var(--kurs-accent, #009ee3); }
+.wand-rechner .wr-row small { grid-column: 2 / -1; margin-top: -.5em; text-align: right; font-size: .85em; color: var(--kurs-text-2, #566166); }
 .wand-rechner output { font-variant-numeric: tabular-nums; text-align: right; color: var(--kurs-text, #2e3639); }
 .wand-rechner .wr-btns { display: flex; flex-wrap: wrap; gap: .5em; margin-top: .2em; }
 .wand-rechner button {

@@ -38,7 +38,7 @@ $$T_{Fuge} = T_i - \dot q\,R_{KS} = 20\ \mathrm{°C} - 7{,}18 \cdot 0{,}177\ \ma
 ## Fall b) Konvektion
 
 Der Wärmeübergang an der Oberfläche ist ein zusätzlicher Widerstand
-$R_s = 1/h$. Mit $R_{si} = 1/7{,}7 = 0{,}130$ und $R_{se} = 1/25 = 0{,}040$
+$R_s = 1/\alpha$. Mit $R_{si} = 1/7{,}7 = 0{,}130$ und $R_{se} = 1/25 = 0{,}040$
 (das sind genau die Normwerte nach DIN EN ISO 6946):
 
 $$R_T = R_{si} + R_{KS} + R_{EPS} + R_{se} = 0{,}130 + 0{,}177 + 4{,}000 + 0{,}040 = 4{,}347\ \mathrm{m^2K/W}$$

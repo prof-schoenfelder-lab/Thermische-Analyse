@@ -21,7 +21,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 - Netzgröße global **2 mm**
 - Randbedingungen:
     - Rohroberfläche: Temperatur **35 °C** (Rohrwand vernachlässigt)
-    - Oberseite: Raum **20 °C**, $h = 10{,}8\ \mathrm{W/(m^2K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
+    - Oberseite: Raum **20 °C**, $\alpha = 10{,}8\ \mathrm{W/(m^2K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
     - Unterseite (Dämmung) und Seitenflächen: adiabat
 
 !!! info "Warum sind die Seitenflächen adiabat?"

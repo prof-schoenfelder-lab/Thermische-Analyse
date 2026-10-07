@@ -25,7 +25,7 @@
       "media": [
         "step-2.png"
       ],
-      "note": "25 W/(m²·K) ist der Normwert für den Wärmeübergang außen (DIN EN ISO 6946: R_se = 0,04 m²·K/W, 1/0,04 = 25). Ambient Temperature ist die Lufttemperatur weit weg von der Wand, nicht die Oberflächentemperatur."
+      "note": "25 W/(m²·K) ist der Normwert für den Wärmeübergang außen (DIN EN ISO 6946: R_se = 0,04 m²·K/W, 1/0,04 = 25), das entspricht etwa 4 m/s Wind. Ambient Temperature ist die Lufttemperatur weit weg von der Wand, nicht die Oberflächentemperatur."
     },
     {
       "caption": "Ansicht drehen und die **Innenfläche** (Kalksandstein) anklicken",

@@ -23,19 +23,36 @@ Größen. So heißen sie in ANSYS:
 
 | Feld in ANSYS | Bedeutung | innen | außen |
 |---|---|---|---|
-| **Film Coefficient** | Wärmeübergangskoeffizient $h$: wie leicht Wärme zwischen Luft und Wand übergeht, in W/m²·°C (= W/(m²·K)) | 7,7 | 25 |
+| **Film Coefficient** | Wärmeübergangskoeffizient $\alpha$: wie leicht Wärme zwischen Luft und Wand übergeht, in W/m²·°C (= W/(m²·K)) | 7,7 | 25 |
 | **Ambient Temperature** | Lufttemperatur in einigem Abstand von der Wand (nicht die Wandtemperatur) | 20 °C | −10 °C |
 
 Über die Fläche fließt dann so viel Wärme, wie der Temperaturunterschied
 zwischen Luft und Wand erlaubt:
 
-$$\dot q = h\,(T_{Luft} - T_{Wand})$$
+$$\dot q = \alpha\,(T_{Luft} - T_{Wand})$$
 
 Die **Wandtemperatur ist jetzt Ergebnis**. Sie stellt sich so ein, dass der
 Wärmeübergang an der Oberfläche und die Wärmeleitung durch die Wand zueinander
-passen. Innen ist $h$ klein (ruhende Raumluft), außen groß (Wind). Die Werte
+passen. Innen ist $\alpha$ klein (ruhende Raumluft), außen groß (Wind). Die Werte
 entsprechen den Normwerten $R_{si} = 0{,}13$ und $R_{se} = 0{,}04\ \mathrm{m^2K/W}$
 nach DIN EN ISO 6946, in denen die Wärmestrahlung schon enthalten ist.
+
+!!! info "Was bedeutet α anschaulich? Umrechnung in Wind"
+    Der Normwert setzt sich aus Konvektion und Wärmestrahlung zusammen:
+    $\alpha = \alpha_K + \alpha_S$ mit $\alpha_S \approx 5\ \mathrm{W/(m^2K)}$.
+    Für die Konvektion außen nennt DIN EN ISO 6946 die Näherung
+    $\alpha_K = 4 + 4\,v$ mit der Windgeschwindigkeit $v$ in m/s:
+
+    | Wind außen | $v$ in m/s | $\alpha$ in W/(m²·K) |
+    |---|---|---|
+    | windstill | 0 | 9 |
+    | leiser Zug | 1 | 13 |
+    | schwacher Wind (**Normwert außen**) | 4 | 25 |
+    | frischer Wind | 10 | 49 |
+    | stürmischer Wind | 20 | 89 |
+
+    Innen bewegt sich die Raumluft kaum: Konvektion etwa 2,5 plus Strahlung
+    etwa 5,1 ergibt die 7,7 W/(m²·K). Werte gerundet.
 
 ## Umsetzung
 
@@ -72,7 +89,7 @@ nebeneinanderlegen.
 !!! question "Verständnisfrage"
     Auf die **Innenfläche** werden gleichzeitig beide Randbedingungen gesetzt:
     die **Temperatur 20 °C** aus Fall a) und die **Konvektion**
-    $h = 7{,}7\ \mathrm{W/(m^2K)}$ bei 20 °C Luft aus Fall b). Die Außenseite
+    $\alpha = 7{,}7\ \mathrm{W/(m^2K)}$ bei 20 °C Luft aus Fall b). Die Außenseite
     bleibt wie in Fall b). Welche Temperatur hat die Innenfläche?
 
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="2">
@@ -104,11 +121,11 @@ nebeneinanderlegen.
     Innenfläche verhält sich die Wand deshalb wie in Fall a). Merke: Auf eine Fläche gehört entweder
     eine Temperatur **oder** ein Wärmeübergang, nicht beides.
 
-## Ausprobieren: Wie hängt die Wandtemperatur von h ab?
+## Ausprobieren: Wie hängt die Wandtemperatur von α ab?
 
-Die Grafik rechnet dieselbe Wand von Hand. Ziehen Sie $h$ innen oder außen
+Die Grafik rechnet dieselbe Wand von Hand. Ziehen Sie $\alpha$ innen oder außen
 sehr groß: Die Oberfläche nimmt dann die Lufttemperatur an, und es kommt genau
-**Fall a)** heraus. Bei kleinem $h$ fällt ein großer Teil der Temperatur schon
+**Fall a)** heraus. Bei kleinem $\alpha$ fällt ein großer Teil der Temperatur schon
 vor der Wand in der Luftschicht ab.
 
 <div class="wand-rechner"></div>

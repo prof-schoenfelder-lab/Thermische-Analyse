@@ -19,8 +19,8 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 - Beide Schenkel **1000 mm** lang (außen gemessen), Höhe des Ausschnitts **100 mm**
 - Netzgröße global **20 mm**
 - Randbedingungen für den **Mindestwärmeschutz nach DIN 4108-2**:
-    - innen: Luft **20 °C**, $h_i = 4\ \mathrm{W/(m^2K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2K/W}$)
-    - außen: Luft **−5 °C**, $h_e = 25\ \mathrm{W/(m^2K)}$
+    - innen: Luft **20 °C**, $\alpha_i = 4\ \mathrm{W/(m^2K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2K/W}$)
+    - außen: Luft **−5 °C**, $\alpha_e = 25\ \mathrm{W/(m^2K)}$
     - Schnittenden der Schenkel, Ober- und Unterseite: adiabat (keine Randbedingung)
 
 !!! info "Warum andere Randbedingungen als im Vorzeigebeispiel?"
@@ -62,7 +62,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ### Oberflächentemperatur innen in der Ecke $\theta_{si}$ in °C
 
-<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf den Innenflächen. Innen h = 4 und 20 °C, außen h = 25 und −5 °C? Alle vier Körper mit Material und Share Topology?">
+<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf den Innenflächen. Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Alle vier Körper mit Material und Share Topology?">
 </div>
 
 ### Temperaturfaktor $f_{Rsi} = \dfrac{\theta_{si} - \theta_e}{\theta_i - \theta_e}$ in der Ecke

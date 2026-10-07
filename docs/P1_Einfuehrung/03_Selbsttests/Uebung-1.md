@@ -18,7 +18,7 @@ wiederholt, und jedes Ergebnis lässt sich von Hand prüfen.
 ## Gegeben
 
 - **Vollziegel**: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$, Dicke **365 mm**
-- **EPS**: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke $d$ gesucht
+- **EPS**: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Mindestdicke $d$ gesucht, eingebaut werden **140 mm**
 - Wandausschnitt 100 × 100 mm, Netzgröße global 10 mm
 - Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**
 
@@ -32,13 +32,13 @@ wiederholt, und jedes Ergebnis lässt sich von Hand prüfen.
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">b) Dämmdicke abschätzen</p>
+    <p class="step-title" role="heading" aria-level="2">b) Mindestdicke von Hand</p>
     <p>Welcher Gesamtwiderstand $R_T$ gehört zu $U = 0{,}24$? Wie viel davon fehlt noch? Daraus folgt $d$</p>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">b) Mit FEM prüfen</p>
-    <p>Analyse duplizieren, in SpaceClaim die Dämmung mit <code>Pull</code> und <code>No merge</code> anfügen, <code>Share</code>, Material zuweisen, lösen. Trifft die FEM den Zielwert?</p>
+    <p class="step-title" role="heading" aria-level="2">c) Sanierte Wand mit FEM</p>
+    <p>Eingebaut wird die handelsübliche Dicke <strong>140 mm</strong>. Eine zweite Analyse anlegen und die Wand genau wie im Vorzeigebeispiel aus zwei Körpern aufbauen: Vollziegel 365 mm, EPS 140 mm. Die Geometrie aus a) bleibt unverändert</p>
   </div>
 
 </div>
@@ -55,9 +55,9 @@ wiederholt, und jedes Ergebnis lässt sich von Hand prüfen.
 <div class="numeric-question" data-answer="121.1" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="R_T = 1/U = 4,167 m²K/W. Davon Übergänge (0,130 + 0,040) und Vollziegel (0,537) abziehen, Rest mal λ der Dämmung.">
 </div>
 
-### b) Wärmestromdichte der sanierten Wand in W/m²
+### c) Wärmestromdichte der sanierten Wand (140 mm EPS) in W/m²
 
-<div class="numeric-question" data-answer="7.20" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Bei U = 0,24 W/(m²K) und 30 K Temperaturunterschied. Einheitensystem Metric (m)?">
+<div class="numeric-question" data-answer="6.37" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Zwei Körper mit Share Topology? EPS 140 mm dick und Material EPS zugewiesen? Konvektion innen und außen wie im Vorzeigebeispiel?">
 </div>
 
 <div class="solution-images" markdown="1">
@@ -65,7 +65,7 @@ wiederholt, und jedes Ergebnis lässt sich von Hand prüfen.
 ### Lösung
 
 - a) $R_T = 0{,}130 + 0{,}365/0{,}68 + 0{,}040 = 0{,}707\ \mathrm{m^2K/W}$, also $U = 1{,}415\ \mathrm{W/(m^2K)}$ und $\dot q = 42{,}5\ \mathrm{W/m^2}$
-- b) fehlender Widerstand $1/0{,}24 - 0{,}707 = 3{,}460\ \mathrm{m^2K/W}$, also $d = 3{,}460 \cdot 0{,}035 = 0{,}121\ \mathrm{m}$, in der Praxis **12 cm** Dämmung oder mehr
-- $\dot q = 0{,}24 \cdot 30 = 7{,}20\ \mathrm{W/m^2}$, etwa ein **Sechstel** des Altbau-Werts
+- b) fehlender Widerstand $1/0{,}24 - 0{,}707 = 3{,}460\ \mathrm{m^2K/W}$, also $d = 3{,}460 \cdot 0{,}035 = 0{,}121\ \mathrm{m}$. 12 cm reichen knapp nicht ($U = 0{,}242$), deshalb die nächste handelsübliche Dicke **14 cm**
+- c) $R_T = 0{,}707 + 0{,}140/0{,}035 = 4{,}707\ \mathrm{m^2K/W}$, also $U = 0{,}212 \le 0{,}24$ und $\dot q = 30/4{,}707 = 6{,}37\ \mathrm{W/m^2}$: **85 % weniger** Wärmeverlust als vorher
 
 </div>

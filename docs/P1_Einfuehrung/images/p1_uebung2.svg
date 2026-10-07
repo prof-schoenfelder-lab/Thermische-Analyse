@@ -10,9 +10,9 @@
 <line x1="250" y1="100.0" x2="382.29999999999995" y2="100.0" stroke="#2E3639" stroke-width="4"/>
 <text x="684" y="460" text-anchor="start" font-size="18" fill="#2E3639">adiabat</text>
 <text x="316" y="86" text-anchor="middle" font-size="18" fill="#2E3639">adiabat</text>
-<text x="520" y="562" text-anchor="middle" font-size="18" fill="#009EE3" font-weight="700">außen: Luft −5 °C, h = 25 W/(m²·K)</text>
+<text x="520" y="562" text-anchor="middle" font-size="18" fill="#009EE3" font-weight="700">außen: Luft −5 °C, α = 25 W/(m²·K)</text>
 <text x="422" y="318" text-anchor="start" font-size="18" fill="#E53009" font-weight="700">innen (Raum): Luft 20 °C</text>
-<text x="422" y="342" text-anchor="start" font-size="18" fill="#E53009">h = 4 W/(m²·K) (Mindestwärmeschutz)</text>
+<text x="422" y="342" text-anchor="start" font-size="18" fill="#E53009">α = 4 W/(m²·K) (Mindestwärmeschutz)</text>
 <circle cx="382.29999999999995" cy="387.70000000000005" r="7" fill="#E53009" stroke="white" stroke-width="2"/>
 <text x="396" y="378" text-anchor="start" font-size="18" fill="#022541" font-weight="700">θ<tspan baseline-shift="sub" font-size="13">si</tspan> in der Ecke?</text>
 <text x="510" y="497" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">EPS</text>

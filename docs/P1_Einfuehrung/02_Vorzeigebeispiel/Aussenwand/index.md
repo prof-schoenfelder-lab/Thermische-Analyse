@@ -72,8 +72,8 @@ Fall a) Oberflächentemperaturen
 <!-- --8<-- [start:Randbedingungen_b] -->
 Fall b) Konvektion
 
-- Innenseite: Raumluft $T_i = 20\ \mathrm{°C}$, Wärmeübergangskoeffizient $h_i = 7{,}7\ \mathrm{W/(m^2\,K)}$
-- Außenseite: Außenluft $T_e = -10\ \mathrm{°C}$, $h_e = 25\ \mathrm{W/(m^2\,K)}$
+- Innenseite: Raumluft $T_i = 20\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha_i = 7{,}7\ \mathrm{W/(m^2\,K)}$
+- Außenseite: Außenluft $T_e = -10\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
 <!-- --8<-- [end:Randbedingungen_b] -->
 
 Alle übrigen Flächen sind adiabat (keine Randbedingung nötig).

@@ -1,6 +1,6 @@
 // Wand-Rechner: Temperaturverlauf durch die Außenwand (Kalksandstein + EPS) mit Konvektion.
-// Einbinden: <div class="wand-rechner"></div>. Regler für h innen, h außen und λ der Dämmung;
-// großes h zeigt, dass die Oberfläche die Lufttemperatur annimmt (Fall a).
+// Einbinden: <div class="wand-rechner"></div>. Regler für α innen, α außen und λ der Dämmung;
+// großes α zeigt, dass die Oberfläche die Lufttemperatur annimmt (Fall a).
 (function () {
   'use strict';
 
@@ -9,6 +9,13 @@
   var NS = 'http://www.w3.org/2000/svg';
 
   function de(x, n) { return x.toFixed(n).replace('.', ',').replace('-', '−'); }
+
+  // Außen: Konvektion nach DIN EN ISO 6946 Anhang C (4 + 4 v) plus rund 5 W/(m²·K) Strahlung
+  function wind(he) {
+    var v = (he - 9) / 4;
+    if (v < 0.25) return 'windstill';
+    return v <= 40 ? '≈ ' + de(v, v < 10 ? 1 : 0) + ' m/s Wind' : 'stärker als jeder Orkan';
+  }
 
   function rechnen(hi, he, leps) {
     var R = 1 / hi + D_KS / L_KS + D_EPS / leps + 1 / he;
@@ -30,8 +37,8 @@
 
   function aufbauen(box) {
     var regler = [
-      { key: 'hi', label: 'h innen', unit: 'W/(m²·K)', min: 1, max: 1000, dez: 1 },
-      { key: 'he', label: 'h außen', unit: 'W/(m²·K)', min: 1, max: 1000, dez: 1 },
+      { key: 'hi', label: 'α innen', unit: 'W/(m²·K)', min: 1, max: 1000, dez: 1 },
+      { key: 'he', label: 'α außen', unit: 'W/(m²·K)', min: 1, max: 1000, dez: 1 },
       { key: 'leps', label: 'λ Dämmung', unit: 'W/(m·K)', min: 0.02, max: 2, dez: 3 }
     ];
     var wert = { hi: NORM.hi, he: NORM.he, leps: NORM.leps };
@@ -49,6 +56,7 @@
       ctrl.appendChild(z);
       r.input = z.querySelector('input');
       r.out = z.querySelector('output');
+      if (r.key === 'he') r.wind = z.appendChild(document.createElement('small'));
       r.input.addEventListener('input', function () {
         wert[r.key] = ausRegler(+r.input.value, r.min, r.max);
         zeichnen();
@@ -57,8 +65,8 @@
     var knoepfe = document.createElement('div');
     knoepfe.className = 'wr-btns';
     knoepfe.innerHTML = '<button type="button" data-a="norm">Werte der Aufgabe</button>' +
-      '<button type="button" data-a="gross">h sehr groß (wie Fall a)</button>' +
-      '<button type="button" data-a="klein">h innen sehr klein</button>';
+      '<button type="button" data-a="gross">α sehr groß (wie Fall a)</button>' +
+      '<button type="button" data-a="klein">α innen sehr klein</button>';
     knoepfe.addEventListener('click', function (ev) {
       var a = ev.target.getAttribute('data-a');
       if (!a) return;
@@ -106,6 +114,7 @@
       regler.forEach(function (r) {
         r.input.value = inRegler(wert[r.key], r.min, r.max);
         r.out.textContent = de(wert[r.key], wert[r.key] >= 100 ? 0 : r.dez) + ' ' + r.unit;
+        if (r.wind) r.wind.textContent = wind(wert.he);
       });
       var e = rechnen(wert.hi, wert.he, wert.leps);
       var a = rechnen(1e9, 1e9, wert.leps);

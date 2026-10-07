@@ -156,9 +156,9 @@ def ecke(datei):
     el.append(text(ox + L + 14, oy - t / 2 + 6, "adiabat", "start"))
     el.append(text(ox + t / 2, oy - L - 14, "adiabat"))
     # Beschriftung der Seiten
-    el += [text(ox + L / 2 + 60, oy + 42, "außen: Luft −5 °C, h = 25 W/(m²·K)", farbe=CYAN, fett=True),
+    el += [text(ox + L / 2 + 60, oy + 42, "außen: Luft −5 °C, α = 25 W/(m²·K)", farbe=CYAN, fett=True),
            text(ox + t + 40, oy - t - 70, "innen (Raum): Luft 20 °C", "start", ROT, fett=True),
-           text(ox + t + 40, oy - t - 46, "h = 4 W/(m²·K) (Mindestwärmeschutz)", "start", ROT)]
+           text(ox + t + 40, oy - t - 46, "α = 4 W/(m²·K) (Mindestwärmeschutz)", "start", ROT)]
     # Gesuchter Punkt: innere Ecke
     el.append(f'<circle cx="{ox + t}" cy="{oy - t}" r="7" fill="{ROT}" stroke="white" stroke-width="2"/>')
     el.append(text(ox + t + 14, oy - t - 10, 'θ<tspan baseline-shift="sub" font-size="13">si</tspan> in der Ecke?', "start", DUNKEL, fett=True))
@@ -192,7 +192,7 @@ def fussboden(datei):
     el.append(f'<line x1="{bx}" y1="{ob - 3}" x2="{bx + 150 * k}" y2="{ob - 3}" stroke="{ROT}" stroke-width="3" stroke-dasharray="8 6"/>')
     for i in range(3):
         el.append(welle_h(ob - 16 - 12 * i, bx + 4, bx + 150 * k - 4, ROT))
-    el += [text(w / 2, 40, "Raum: Luft 20 °C, h = 10,8 W/(m²·K)", farbe=ROT, fett=True),
+    el += [text(w / 2, 40, "Raum: Luft 20 °C, α = 10,8 W/(m²·K)", farbe=ROT, fett=True),
            text(w / 2, 64, "(Konvektion und Strahlung zusammen, DIN EN 1264)", farbe=ROT)]
     # Seiten: Muster wiederholt sich
     for x in (bx, bx + 150 * k):
@@ -210,7 +210,7 @@ def fussboden(datei):
 
 if __name__ == "__main__":
     KS = ("KS", "175 mm", 175, "0,99")
-    luft = (("Luft 20 °C", "h = 7,7 W/(m²·K)"), ("Luft −10 °C", "h = 25 W/(m²·K)"))
+    luft = (("Luft 20 °C", "α = 7,7 W/(m²·K)"), ("Luft −10 °C", "α = 25 W/(m²·K)"))
     wand("p1_aussenwand_a.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "temp", "T = 20 °C", "T = −10 °C")
     wand("p1_aussenwand_b.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "konv", *luft)
     wand("p1_uebung1.svg", [("VZ", "365 mm", 365, "0,68"), ("EPS", "d = ?", 121, "0,035")], "konv", *luft)
