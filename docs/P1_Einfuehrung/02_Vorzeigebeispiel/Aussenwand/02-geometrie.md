@@ -26,9 +26,9 @@ Geometrie direkt an (Fläche ziehen, verschieben).
 ??? tip "Kurzanleitung: Wand mit zwei Schichten"
     1. `Rechtsklick Geometry → New SpaceClaim Geometry...`
     2. `Rectangle`, auf den Koordinatenursprung klicken, Maus in Richtung des Rechtecks bewegen (positive x und z), **nicht klicken**: mit `Tab` die Seitenlängen **100 mm** und **100 mm** eingeben, `Enter`. Das ist die Innenfläche der Wand
-    3. `Pull` (Taste `P`): die Fläche um **175 mm** ziehen (`Leertaste`, Wert, `Enter`), das ist der Kalksandstein
+    3. `Pull` (Taste `P`): die Fläche anklicken und gedrückt halten, in Zugrichtung ziehen (nicht loslassen), `Leertaste` drücken, **175 mm** eingeben, `Enter`. Das ist der Kalksandstein
     4. Die gegenüberliegende Fläche anklicken (sie wird zur Trennfuge) und mit `Strg + C`, `Strg + V` kopieren: Im Strukturbaum erscheint **Surface**
-    5. **Surface** anklicken, `Pull`, links unter `Options` **No merge** einschalten und die Fläche **140 mm** nach außen ziehen, das ist die Dämmung
+    5. **Surface** anklicken, `Pull`, links unter `Options` **No merge** einschalten. Die Fläche anklicken und gedrückt halten, nach außen ziehen, `Leertaste`, **140 mm**, `Enter`. Das ist die Dämmung
     6. Körper im Strukturbaum umbenennen (`Rechtsklick → Rename`): **Kalksandstein**, **EPS**
     7. `Rechtsklick Design1 → Properties`, unter **Analysis** bei **Share Topology** den Wert **Share** wählen
     8. SpaceClaim schließen

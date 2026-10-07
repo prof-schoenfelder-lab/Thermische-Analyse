@@ -35,7 +35,7 @@
       ]
     },
     {
-      "caption": "Fläche ziehen, dabei `Leertaste` drücken, `175 mm` eingeben, `Enter`: der Kalksandstein",
+      "caption": "Die Fläche **anklicken und gedrückt halten**, die Maus in Zugrichtung ziehen (nicht loslassen) und `Leertaste` drücken: jetzt lässt sich der Wert eingeben. `175 mm` eingeben, mit `Enter` bestätigen. Das ist der Kalksandstein",
       "media": [
         "step-4.png"
       ]
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "caption": "Die Fläche nach außen ziehen, `Leertaste`, `140 mm` eingeben, `Enter`: die Dämmung",
+      "caption": "Die Fläche **anklicken und gedrückt halten**, nach außen ziehen (nicht loslassen), `Leertaste` drücken, `140 mm` eingeben, mit `Enter` bestätigen. Das ist die Dämmung",
       "media": [
         "step-11.png"
       ]
