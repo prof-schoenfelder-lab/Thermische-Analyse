@@ -1,0 +1,125 @@
+{
+  "tutorials": [
+    {
+      "slug": "p1-analyse-anlegen",
+      "title": "Analyse anlegen und speichern",
+      "category": "Setup",
+      "software": "Workbench",
+      "tags": [
+        "Steady-State Thermal",
+        "Projekt"
+      ],
+      "steps": 5,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-konvektion-anlegen",
+      "title": "Zweite Analyse mit gemeinsamem Modell",
+      "category": "Setup",
+      "software": "Workbench",
+      "tags": [
+        "Steady-State Thermal",
+        "Projekt"
+      ],
+      "steps": 3,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-geometrie-wand",
+      "title": "Wand aus zwei Körpern",
+      "category": "Geometrie",
+      "software": "SpaceClaim",
+      "tags": [
+        "SpaceClaim",
+        "Pull",
+        "No merge",
+        "Share Topology"
+      ],
+      "steps": 18,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-material-anlegen",
+      "title": "Materialien anlegen",
+      "category": "Material",
+      "software": "Workbench",
+      "tags": [
+        "Engineering Data",
+        "Isotropic Thermal Conductivity"
+      ],
+      "steps": 10,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-material-zuweisen",
+      "title": "Mechanical öffnen und Material zuweisen",
+      "category": "Material",
+      "software": "Mechanical",
+      "tags": [
+        "Units",
+        "Assignment"
+      ],
+      "steps": 9,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-vernetzung",
+      "title": "Vernetzen",
+      "category": "Vernetzung",
+      "software": "Mechanical",
+      "tags": [
+        "Mesh",
+        "Element Size"
+      ],
+      "steps": 4,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-auswertung",
+      "title": "Temperatur, Wärmestromdichte und Pfad auswerten",
+      "category": "Postprocessing",
+      "software": "Mechanical",
+      "tags": [
+        "Temperature",
+        "Total Heat Flux",
+        "Path"
+      ],
+      "steps": 12,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-konvektion",
+      "title": "Konvektion anbringen und mit Fall a) vergleichen",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Convection",
+        "Path"
+      ],
+      "steps": 15,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-loesen",
+      "title": "Lösen",
+      "category": "Lösen",
+      "software": "Mechanical",
+      "tags": [
+        "Solve"
+      ],
+      "steps": 2,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p1-temperatur-anbringen",
+      "title": "Temperaturen anbringen",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Temperature"
+      ],
+      "steps": 9,
+      "thumb": "step-0.png"
+    }
+  ]
+}

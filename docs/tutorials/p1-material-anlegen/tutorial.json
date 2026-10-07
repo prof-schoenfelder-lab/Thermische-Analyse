@@ -1,0 +1,72 @@
+{
+  "slug": "p1-material-anlegen",
+  "title": "Materialien anlegen",
+  "category": "Material",
+  "software": "Workbench",
+  "tags": [
+    "Engineering Data",
+    "Isotropic Thermal Conductivity"
+  ],
+  "steps": [
+    {
+      "caption": "`Doppelklick Engineering Data`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Das voreingestellte Material wird nicht gebraucht: `Rechtsklick Structural Steel → Delete`",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "In die Zeile *Click here to add a new material* **Kalksandstein** eintippen, `Enter`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "In der `Toolbox` links den Bereich **Thermal** aufklappen",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "Kalksandstein ist markiert: `Doppelklick Isotropic Thermal Conductivity`",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "Unten bei **Isotropic Thermal Conductivity** `0,99` eintragen (Einheit W m⁻¹ C⁻¹ = W/(m·K)), `Enter`",
+      "media": [
+        "step-5.png"
+      ]
+    },
+    {
+      "caption": "In die nächste leere Zeile **EPS** eintippen, `Enter`",
+      "media": [
+        "step-6.png"
+      ]
+    },
+    {
+      "caption": "`Doppelklick Isotropic Thermal Conductivity`",
+      "media": [
+        "step-7.png"
+      ]
+    },
+    {
+      "caption": "`0,035` eintragen, `Enter`",
+      "media": [
+        "step-8.png"
+      ]
+    },
+    {
+      "caption": "Oben `Reiter Project` anklicken: zurück ins Projektmenü",
+      "media": [
+        "step-9.png"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "slug": "p1-konvektion",
+  "title": "Konvektion anbringen und mit Fall a) vergleichen",
+  "category": "Randbedingungen",
+  "software": "Mechanical",
+  "tags": [
+    "Convection",
+    "Path"
+  ],
+  "steps": [
+    {
+      "caption": "Oben `Face` anklicken (Flächen auswählen)",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Die **Außenfläche** (Dämmung) anklicken",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal 2 (B5) → Insert → Convection`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster`: **Film Coefficient** `25` W/m²·°C, **Ambient Temperature** `−10` °C, jeweils `Enter`",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "Ansicht drehen und die **Innenfläche** (Kalksandstein) anklicken",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Steady-State Thermal 2 (B5) → Insert → Convection`",
+      "media": [
+        "step-5.png"
+      ]
+    },
+    {
+      "caption": "**Film Coefficient** `7,7` W/m²·°C, **Ambient Temperature** `20` °C, jeweils `Enter`",
+      "media": [
+        "step-6.png"
+      ]
+    },
+    {
+      "caption": "`Steady-State Thermal 2 (B5)` anklicken: Konvektion außen (A) und innen (B) prüfen",
+      "media": [
+        "step-7.png"
+      ]
+    },
+    {
+      "caption": "Ergebnisse aus Fall a) übernehmen: unter **Solution (A6)** `Temperature` anklicken, mit `Shift` bis `Temperature 2` alle markieren",
+      "media": [
+        "step-8.png"
+      ]
+    },
+    {
+      "caption": "Die markierten Ergebnisse mit gedrückter Maustaste auf **Solution (B6)** ziehen",
+      "media": [
+        "step-9.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Solution (B6) → Solve`",
+      "media": [
+        "step-10.png"
+      ]
+    },
+    {
+      "caption": "**Temperature** in Solution (B6): innen 19,10 °C, außen −9,72 °C",
+      "media": [
+        "step-11.png"
+      ]
+    },
+    {
+      "caption": "**Total Heat Flux**: 6,90 W/m²",
+      "media": [
+        "step-12.png"
+      ]
+    },
+    {
+      "caption": "**Temperature 2** (Pfad) für Fall b)",
+      "media": [
+        "step-13.png"
+      ]
+    },
+    {
+      "caption": "Vergleich: `Temperature 2` unter Solution (A6) anklicken, mit `Strg` `Temperature 2` unter Solution (B6) dazunehmen: der Graph zeigt beide Verläufe",
+      "media": [
+        "step-14.png"
+      ]
+    }
+  ]
+}

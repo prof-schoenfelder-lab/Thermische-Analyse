@@ -17,13 +17,12 @@ title: 5 · Randbedingungen
 ??? tip "Kurzanleitung: Temperatur auf eine Fläche"
     1. Mit dem **Flächenauswahltool** die Innenfläche anklicken: die freie große Fläche des Kalksandsteins (nicht die Trennfuge)
         - Drehen: **mittlere Maustaste** · Verschieben: **mittlere Maustaste + Strg**
-    2. `Strukturbaum Steady-State Thermal` anklicken
-    3. `Reiter Environment → Temperature`
-    4. Im `Detailfenster` bei **Magnitude** **20** °C eintragen
-    5. `Rechtsklick Temperature → Rename` (oder `F2`): **Innenseite 20 °C**
-    6. Genauso die Außenfläche (freie große Fläche der Dämmung) mit **−10 °C**, Name **Außenseite −10 °C**
+    2. `Rechtsklick Strukturbaum Steady-State Thermal → Insert → Temperature` (oder `Reiter Environment → Temperature`)
+    3. Im `Detailfenster` bei **Magnitude** **20** °C eintragen
+    4. Genauso die Außenfläche (freie große Fläche der Dämmung) mit **−10 °C**
+    5. Tipp: Randbedingungen mit `F2` sinnvoll benennen, z. B. **Innenseite 20 °C**
 
-<!-- TUTORIAL: p1-temperatur-anbringen (Aufnahme Kapitel 6) -->
+<tutorial slug="p1-temperatur-anbringen"></tutorial>
 
 !!! abstract "Was bedeutet die Randbedingung Temperatur?"
     Gerechnet werden Temperaturen, und hier geben wir selbst eine Temperatur

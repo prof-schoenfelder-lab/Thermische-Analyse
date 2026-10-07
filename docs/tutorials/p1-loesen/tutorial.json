@@ -1,0 +1,23 @@
+{
+  "slug": "p1-loesen",
+  "title": "Lösen",
+  "category": "Lösen",
+  "software": "Mechanical",
+  "tags": [
+    "Solve"
+  ],
+  "steps": [
+    {
+      "caption": "`Rechtsklick Strukturbaum Solution (A6) → Solve`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Fertig, wenn **Solution** einen grünen Haken hat",
+      "media": [
+        "step-1.png"
+      ]
+    }
+  ]
+}

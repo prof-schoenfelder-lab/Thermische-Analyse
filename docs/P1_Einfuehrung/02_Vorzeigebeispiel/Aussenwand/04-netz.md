@@ -22,7 +22,7 @@ in Praktikum 3 geht es dann genauer um ein geeignetes Netz.
     2. Im `Detailfenster` unter **Defaults** bei **Element Size** **0,01** m eintragen
     3. `Rechtsklick Mesh → Generate Mesh`
 
-<!-- TUTORIAL: p1-vernetzung (Aufnahme Kapitel 5) -->
+<tutorial slug="p1-vernetzung"></tutorial>
 
 !!! info "Warum nur 100 mm breit, aber 10 mm Netz?"
     Die Temperatur ändert sich nur **über die Dicke**, quer dazu nicht. Die

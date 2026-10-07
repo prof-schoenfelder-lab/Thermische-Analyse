@@ -11,10 +11,10 @@ title: 6 · Lösen
 Für dieses Beispiel sind keine besonderen Lösungseinstellungen nötig.
 
 ??? tip "Kurzanleitung: Lösen"
-    1. `Reiter Home → Solve` (oder `Rechtsklick Solution → Solve`)
+    1. `Rechtsklick Solution → Solve` (oder `Reiter Home → Solve`)
     2. Warten, bis neben `Solution` ein grüner Haken erscheint
 
-<!-- TUTORIAL: p1-loesen (Aufnahme Kapitel 7) -->
+<tutorial slug="p1-loesen"></tutorial>
 
 !!! warning "Fehlermeldung beim Lösen?"
     Häufigste Ursache: **Umlaute oder Leerzeichen im Dateipfad** des Projekts.

@@ -1,0 +1,36 @@
+{
+  "slug": "p1-vernetzung",
+  "title": "Vernetzen",
+  "category": "Vernetzung",
+  "software": "Mechanical",
+  "tags": [
+    "Mesh",
+    "Element Size"
+  ],
+  "steps": [
+    {
+      "caption": "`Linksklick Strukturbaum Mesh`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Element Size** `0,01` m eingeben, `Enter`",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Mesh → Generate Mesh`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Netz prüfen: 10 × 10 Elemente in der Fläche, über die Dicke deutlich mehr",
+      "media": [
+        "step-3.png"
+      ]
+    }
+  ]
+}

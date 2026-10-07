@@ -19,17 +19,18 @@ title: 1 · Material
     2. In der Toolbox links `Doppelklick Steady-State Thermal`
     3. Analyse umbenennen in **a) Temperaturen** (Doppelklick auf den Namen unter dem Analysesystem)
 
-<!-- TUTORIAL: p1-analyse-anlegen (Aufnahme Kapitel 1) -->
+<tutorial slug="p1-analyse-anlegen"></tutorial>
 
 ??? tip "Kurzanleitung: Material anlegen"
     1. `Doppelklick Engineering Data`
-    2. In der leeren Zeile unter den Materialien den Namen **Kalksandstein** eintragen
-    3. Aus der Toolbox links `Thermal → Isotropic Thermal Conductivity` auf das neue Material ziehen
-    4. Wert **0,99** W m⁻¹ C⁻¹ eintragen
-    5. Genauso **EPS** mit **0,035** W m⁻¹ C⁻¹ anlegen
-    6. Oben `Project` anklicken, um zurück ins Projektmenü zu kommen
+    2. Structural Steel wird nicht gebraucht: `Rechtsklick Structural Steel → Delete`
+    3. In die leere Zeile **Kalksandstein** eintragen
+    4. In der Toolbox links **Thermal** aufklappen, `Doppelklick Isotropic Thermal Conductivity`
+    5. Wert **0,99** W m⁻¹ C⁻¹ eintragen
+    6. Genauso **EPS** mit **0,035** W m⁻¹ C⁻¹ anlegen
+    7. Oben `Project` anklicken, um zurück ins Projektmenü zu kommen
 
-<!-- TUTORIAL: p1-material-anlegen (Aufnahme Kapitel 2) -->
+<tutorial slug="p1-material-anlegen"></tutorial>
 
 !!! info "Warum nur λ?"
     Für eine **stationäre** Rechnung braucht ANSYS nur die Wärmeleitfähigkeit.

@@ -11,16 +11,16 @@ title: 3 · Zuweisung
 ## Umsetzung
 
 ??? tip "Kurzanleitung: Mechanical öffnen und Einheiten einstellen"
-    1. Im Projektmenü `Doppelklick Model`, Mechanical öffnet sich
-    2. Unten in der Statusleiste das Einheitensystem **Metric (m, kg, N, s, V, A)** wählen, Temperatur in **Celsius**
+    1. Im Projektmenü `Rechtsklick Model → Edit...`, Mechanical öffnet sich
+    2. Unten rechts in der Statusleiste das Einheitensystem **Metric (m, kg, N, s, V, A)** wählen, Temperatur in **Celsius**
 
 ??? tip "Kurzanleitung: Material zuweisen"
-    1. `Strukturbaum Geometry` aufklappen
+    1. `Strukturbaum Geometry` und **SYS** aufklappen
     2. Körper **Kalksandstein** anklicken
-    3. Im `Detailfenster` bei **Assignment** das Material **Kalksandstein** wählen
+    3. Im `Detailfenster` bei **Assignment** auf den Pfeil klicken und **Kalksandstein** wählen
     4. Für den Körper **EPS** genauso das Material **EPS** wählen
 
-<!-- TUTORIAL: p1-material-zuweisen (Aufnahme Kapitel 4) -->
+<tutorial slug="p1-material-zuweisen"></tutorial>
 
 !!! check "Checkpoint"
     - Unter `Geometry` stehen zwei Körper, beide mit grünem Haken

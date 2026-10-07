@@ -1,0 +1,42 @@
+{
+  "slug": "p1-analyse-anlegen",
+  "title": "Analyse anlegen und speichern",
+  "category": "Setup",
+  "software": "Workbench",
+  "tags": [
+    "Steady-State Thermal",
+    "Projekt"
+  ],
+  "steps": [
+    {
+      "caption": "In der `Toolbox` links nach unten scrollen bis **Steady-State Thermal**",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "`Doppelklick Steady-State Thermal`, dann den Namen **a) Temperaturen** eintippen und `Enter`",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`File → Save As...`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Einen Ordner **ohne Umlaute** wählen (hier neu angelegt: **Praktikum01**) und einen Dateinamen eintippen, z. B. **P1_Aussenwand**",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "`Speichern`",
+      "media": [
+        "step-4.png"
+      ]
+    }
+  ]
+}

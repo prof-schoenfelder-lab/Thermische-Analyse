@@ -27,6 +27,9 @@ MENU = {"MenuItemControl"}
 KETTENSTART = {"TabItemControl", "MenuItemControl", "SplitButtonControl"}
 FELD = {"EditControl", "ComboBoxControl", "DataItemControl", "SpinnerControl"}
 ANSYS = ("Workbench", "SpaceClaim", "Mechanical")
+# Fremde Fenster: Taskleiste, Recorder-Konsole, Benachrichtigungen (Outlook), Fensterwechsel, Explorer
+FREMD = ("Taskleiste", "system32\\cmd", "Eingabeaufforderung", "Benachrichtigung", "Aufgabenumschalt",
+         "Fotoanzeige", "Explorer", "klickrecorder")
 GRAFIK = ("WBGfxSplitWindow", "graphicsViewHost")  # Grafikfenster Mechanical, SpaceClaim
 ROT = (229, 48, 9)          # HTWK Rot
 GRAU_HG = (238, 240, 241)   # Fläche außerhalb der aktiven Anwendung
@@ -54,8 +57,9 @@ def texte(ev):
 
 
 def in_ansys(ev):
-    """Klicks außerhalb von ANSYS (Explorer, Bildanzeige) gehören nicht in die Anleitung."""
-    return not el(ev) or any(a in t for t in texte(ev) for a in ANSYS)
+    """Klicks in fremden Fenstern gehören nicht in die Anleitung. Dialoge von ANSYS
+    (Speichern unter, Import Material) bleiben, auch wenn ihr Titel kein ANSYS enthält."""
+    return not el(ev) or not any(f in t for t in texte(ev) for f in FREMD)
 
 
 def im_grafikfenster(ev):

@@ -1,0 +1,30 @@
+{
+  "slug": "p1-konvektion-anlegen",
+  "title": "Zweite Analyse mit gemeinsamem Modell",
+  "category": "Setup",
+  "software": "Workbench",
+  "tags": [
+    "Steady-State Thermal",
+    "Projekt"
+  ],
+  "steps": [
+    {
+      "caption": "In der `Toolbox` zu **Steady-State Thermal** scrollen",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "**Steady-State Thermal** mit gedrückter Maustaste auf die Zelle **Model** von A ziehen, Namen **b) Konvektion** eintippen, `Enter`. B nutzt Material, Geometrie und Modell von A mit",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Setup (B) → Edit...`: beide Analysen erscheinen in einem Mechanical",
+      "media": [
+        "step-2.png"
+      ]
+    }
+  ]
+}

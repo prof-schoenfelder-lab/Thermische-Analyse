@@ -1,0 +1,66 @@
+{
+  "slug": "p1-material-zuweisen",
+  "title": "Mechanical öffnen und Material zuweisen",
+  "category": "Material",
+  "software": "Mechanical",
+  "tags": [
+    "Units",
+    "Assignment"
+  ],
+  "steps": [
+    {
+      "caption": "Im Projektmenü `Rechtsklick Model → Edit...`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Unten rechts in der Statusleiste die Einheiten öffnen: **Metric (m, kg, N, s, V, A)**, Temperatur **Celsius**",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Strukturbaum Geometry` und **SYS** aufklappen",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Körper **Kalksandstein** anklicken",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` unter **Material** bei **Assignment** auf den Pfeil klicken",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "**Kalksandstein** wählen",
+      "media": [
+        "step-5.png"
+      ]
+    },
+    {
+      "caption": "Körper **EPS** anklicken",
+      "media": [
+        "step-6.png"
+      ]
+    },
+    {
+      "caption": "Bei **Assignment** auf den Pfeil klicken",
+      "media": [
+        "step-7.png"
+      ]
+    },
+    {
+      "caption": "**EPS** wählen",
+      "media": [
+        "step-8.png"
+      ]
+    }
+  ]
+}

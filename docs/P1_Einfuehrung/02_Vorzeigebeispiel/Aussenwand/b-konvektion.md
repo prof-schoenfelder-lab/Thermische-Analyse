@@ -39,23 +39,27 @@ nach DIN EN ISO 6946, in denen die Wärmestrahlung schon enthalten ist.
 
 ## Umsetzung
 
-Material, Geometrie und Netz bleiben gleich. Deshalb wird die Analyse aus
-Fall a) **dupliziert** und nur die Randbedingungen werden getauscht.
+Material, Geometrie und Netz bleiben gleich. Deshalb bekommt Fall b) eine
+**zweite Analyse, die das Modell von Fall a) mitnutzt**. Beide Analysen stehen
+dann in **einem** Mechanical, und die Ergebnisse lassen sich direkt
+nebeneinanderlegen.
 
-??? tip "Kurzanleitung: Analyse duplizieren"
-    1. Im Projektmenü `Rechtsklick` auf den Kopf der Analyse **a) Temperaturen** `→ Duplicate`
-    2. Kopie umbenennen in **b) Konvektion**
-    3. `Doppelklick Model` der Kopie, Mechanical öffnet sich
+??? tip "Kurzanleitung: Zweite Analyse mit gemeinsamem Modell"
+    1. In der Toolbox **Steady-State Thermal** mit gedrückter Maustaste auf die Zelle **Model** der Analyse A ziehen
+    2. Die neue Analyse B in **b) Konvektion** umbenennen
+    3. `Rechtsklick Setup (B) → Edit...`: Im Strukturbaum stehen jetzt beide Analysen
 
-??? tip "Kurzanleitung: Konvektion statt Temperatur"
-    1. Beide Temperatur-Randbedingungen löschen (`Rechtsklick → Delete`)
-    2. Innenfläche anklicken, dann `Reiter Environment → Convection`
-    3. Im `Detailfenster`: **Film Coefficient** **7,7** W/m²·°C, **Ambient Temperature** **20** °C
-    4. Umbenennen: **Konvektion innen**
-    5. Genauso die Außenfläche: **25** W/m²·°C und **−10** °C, Name **Konvektion außen**
-    6. `Reiter Home → Solve`, danach `Evaluate All Results`
+<tutorial slug="p1-konvektion-anlegen"></tutorial>
 
-<!-- TUTORIAL: p1-konvektion (Aufnahme Kapitel 9) -->
+??? tip "Kurzanleitung: Konvektion anbringen und vergleichen"
+    1. Außenfläche anklicken, `Rechtsklick Steady-State Thermal 2 (B5) → Insert → Convection`
+    2. Im `Detailfenster`: **Film Coefficient** **25** W/m²·°C, **Ambient Temperature** **−10** °C
+    3. Genauso die Innenfläche: **7,7** W/m²·°C und **20** °C
+    4. Die Ergebnisse aus Fall a) übernehmen: unter **Solution (A6)** alle Ergebnisse markieren (`Shift`) und auf **Solution (B6)** ziehen
+    5. `Rechtsklick Solution (B6) → Solve`
+    6. Vergleich: beide Pfad-Ergebnisse (**Temperature 2** unter A6 und B6) mit `Strg` markieren, der Graph zeigt beide Verläufe
+
+<tutorial slug="p1-konvektion"></tutorial>
 
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | Fall a) | Fall b) |
@@ -64,6 +68,41 @@ Fall a) **dupliziert** und nur die Randbedingungen werden getauscht.
     | Oberflächentemperatur innen | 20,00 °C (vorgegeben) | **19,10 °C** |
     | Temperatur Trennfuge | 18,73 °C | **17,88 °C** |
     | Oberflächentemperatur außen | −10,00 °C (vorgegeben) | **−9,72 °C** |
+
+!!! question "Verständnisfrage"
+    Auf die **Innenfläche** werden gleichzeitig beide Randbedingungen gesetzt:
+    die **Temperatur 20 °C** aus Fall a) und die **Konvektion**
+    $h = 7{,}7\ \mathrm{W/(m^2K)}$ bei 20 °C Luft aus Fall b). Die Außenseite
+    bleibt wie in Fall b). Welche Temperatur hat die Innenfläche?
+
+<div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="2">
+  <div class="mc-options">
+    <div class="mc-option" data-value="A">
+      <input type="checkbox" id="vfa" name="vf">
+      <label for="vfa">20,00 °C</label>
+    </div>
+    <div class="mc-option" data-value="B">
+      <input type="checkbox" id="vfb" name="vf">
+      <label for="vfb">19,10 °C wie in Fall b)</label>
+    </div>
+    <div class="mc-option" data-value="C">
+      <input type="checkbox" id="vfc" name="vf">
+      <label for="vfc">ein Wert zwischen 19,10 °C und 20,00 °C</label>
+    </div>
+    <div class="mc-option" data-value="D">
+      <input type="checkbox" id="vfd" name="vf">
+      <label for="vfd">ANSYS kann das nicht rechnen</label>
+    </div>
+  </div>
+</div>
+
+??? success "Auflösung"
+    **20,00 °C.** Die Temperatur-Randbedingung legt den Wert an den Knoten der
+    Fläche fest, daran kann keine andere Randbedingung mehr etwas ändern. Die
+    Konvektion wirkt zwar weiter, sie verändert aber nur den Wärmestrom, den
+    ANSYS an dieser Fläche zuführen muss, um die 20 °C zu halten. An der
+    Innenfläche verhält sich die Wand deshalb wie in Fall a). Merke: Auf eine Fläche gehört entweder
+    eine Temperatur **oder** ein Wärmeübergang, nicht beides.
 
 ## Ausprobieren: Wie hängt die Wandtemperatur von h ab?
 

@@ -24,22 +24,21 @@ gebraucht?
     3. `Rechtsklick Solution → Evaluate All Results`
     4. Ergebnis anklicken: Farbbild im Grafikfenster, Min und Max in der Legende
 
-??? tip "Kurzanleitung: Temperatur in der Trennfuge"
-    1. Mit dem **Flächenauswahltool** die Trennfuge anklicken (dafür die Dämmung
-       ausblenden: `Rechtsklick EPS → Hide Body`)
-    2. `Rechtsklick Solution → Insert → Thermal → Temperature`, die Fläche ist
-       dann schon als **Scope** eingetragen
-    3. `Rechtsklick Temperature → Rename`: **Temperatur Trennfuge**
-    4. `Evaluate All Results`, Wert im `Detailfenster` unter **Results** ablesen
+??? tip "Kurzanleitung: Temperaturverlauf über die Wanddicke (Pfad)"
+    1. Oben `Edge` anklicken (Kanten auswählen)
+    2. Eine Kante quer durch den Kalksandstein anklicken, mit gedrückter `Strg` die anschließende Kante durch die Dämmung dazunehmen
+    3. `Rechtsklick Solution → Insert → Thermal → Temperature`
+    4. `Rechtsklick Temperature 2 → Convert To Path Result`
+    5. `Rechtsklick Temperature 2 → Retrieve This Result`
+    6. Im Fenster **Graph** erscheint der Verlauf von innen nach außen, daneben die Werte als Tabelle
 
-<!-- TUTORIAL: p1-auswertung (Aufnahme Kapitel 8) -->
-<!-- TODO: Pfad über die Wanddicke ergänzen (Construction Geometry → Path), Verlauf als Diagramm -->
+<tutorial slug="p1-auswertung"></tutorial>
 
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | Wert |
     |---|---|
     | Wärmestromdichte $\dot q$ (überall gleich) | 7,18 W/m² |
-    | Temperatur Trennfuge | 18,73 °C |
+    | Temperatur Trennfuge (Knick im Pfad) | 18,73 °C |
 
     Die Wärmestromdichte ist im ganzen Modell **gleich groß**: Was innen
     hineinfließt, muss außen wieder hinaus (stationär, keine Wärmequellen).

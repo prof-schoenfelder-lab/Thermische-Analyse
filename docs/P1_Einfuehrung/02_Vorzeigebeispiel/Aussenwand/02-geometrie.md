@@ -26,14 +26,24 @@ Geometrie direkt an (Fläche ziehen, verschieben).
 ??? tip "Kurzanleitung: Wand mit zwei Schichten"
     1. `Rechtsklick Geometry → New SpaceClaim Geometry...`
     2. Skizze: Rechteck **100 mm × 100 mm** zeichnen, das ist die Innenfläche der Wand (Werte mit `Tab` wechseln, mit `Enter` bestätigen)
-    3. `Pull` (Taste `P`): die Fläche um **175 mm** ziehen, das ist der Kalksandstein
-    4. Die gegenüberliegende große Fläche anklicken und mit `Pull` um weitere **140 mm** ziehen. Dabei im Optionsfenster **Kein Zusammenführen** (*No merge*) wählen, damit ein **zweiter Körper** entsteht. Die angeklickte Fläche wird zur Trennfuge
-    5. Körper im Strukturbaum sinnvoll benennen: **Kalksandstein**, **EPS**
-    6. `Reiter Workbench → Share`: Die beiden Körper teilen sich jetzt die Fläche in der Trennfuge
-    7. SpaceClaim schließen
+    3. `Pull` (Taste `P`): die Fläche um **175 mm** ziehen (`Leertaste`, Wert, `Enter`), das ist der Kalksandstein
+    4. Die gegenüberliegende Fläche anklicken (sie wird zur Trennfuge) und mit `Strg + C`, `Strg + V` kopieren: Im Strukturbaum erscheint **Surface**
+    5. **Surface** anklicken, `Pull`, links unter `Options` **No merge** einschalten und die Fläche **140 mm** nach außen ziehen, das ist die Dämmung
+    6. Körper im Strukturbaum umbenennen (`Rechtsklick → Rename`): **Kalksandstein**, **EPS**
+    7. `Rechtsklick Design1 → Properties`, unter **Analysis** bei **Share Topology** den Wert **Share** wählen
+    8. SpaceClaim schließen
 
-<!-- TUTORIAL: p1-geometrie-wand (Aufnahme Kapitel 3) -->
-<!-- TODO: Kurzanleitung beim Aufnehmen mit SpaceClaim 2025 R2 abgleichen (Optionsname No merge, Share) -->
+<figure style="text-align:center;">
+  <img src="../../../../tutorials/p1-geometrie-wand/ablauf.gif" alt="Ablauf der Geometrieerstellung" class="no-lightbox">
+  <figcaption>Der ganze Ablauf als Film, die einzelnen Schritte darunter</figcaption>
+</figure>
+
+<tutorial slug="p1-geometrie-wand"></tutorial>
+
+!!! warning "Warum nicht direkt die Fläche des Kalksandsteins ziehen?"
+    Zieht man eine Fläche eines vorhandenen Körpers, wird immer **dieser Körper**
+    länger, auch mit *No merge*. Erst die kopierte Fläche (*Surface*) ist ein
+    eigenes Objekt: Aus ihr entsteht mit *No merge* ein zweiter Körper.
 
 !!! info "Innen, außen, Trennfuge"
     Die Wand hat zwei große Flächen mit Randbedingung: **innen** die freie Fläche

@@ -1,0 +1,65 @@
+{
+  "slug": "p1-temperatur-anbringen",
+  "title": "Temperaturen anbringen",
+  "category": "Randbedingungen",
+  "software": "Mechanical",
+  "tags": [
+    "Temperature"
+  ],
+  "steps": [
+    {
+      "caption": "Oben `Face` anklicken (Flächen auswählen)",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Die **Innenfläche** anklicken: die freie Fläche des Kalksandsteins",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Magnitude** `20` °C eingeben, `Enter`",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "Mit gedrückter `mittlerer Maustaste` die Ansicht drehen",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "Die **Außenfläche** anklicken: die freie Fläche der Dämmung",
+      "media": [
+        "step-5.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
+      "media": [
+        "step-6.png"
+      ]
+    },
+    {
+      "caption": "Bei **Magnitude** `−10` °C eingeben, `Enter`",
+      "media": [
+        "step-7.png"
+      ]
+    },
+    {
+      "caption": "`Steady-State Thermal (A5)` anklicken: beide Temperaturen sind im Bild markiert",
+      "media": [
+        "step-8.png"
+      ]
+    }
+  ]
+}
