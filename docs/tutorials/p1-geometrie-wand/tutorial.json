@@ -14,109 +14,97 @@
       "caption": "`Rechtsklick Geometry → New SpaceClaim Geometry...`",
       "media": [
         "step-0.png"
-      ]
+      ],
+      "note": "SpaceClaim ist das Geometrieprogramm von ANSYS. Was hier entsteht, übernimmt Workbench automatisch in die Analyse."
     },
     {
       "caption": "`Rectangle` anklicken",
       "media": [
         "step-1.png"
-      ]
+      ],
+      "note": "Gezeichnet wird zuerst eine Skizze (2D), aus der später ein Körper wird."
     },
     {
       "caption": "Auf den **Koordinatenursprung** klicken und die Maus in die Richtung bewegen, in der das Rechteck liegen soll (hier positive x- und z-Richtung). Dann **nicht klicken**, sondern mit `Tab` die Seitenlängen durchgehen: `100 mm` `Tab` `100 mm`, mit `Enter` bestätigen. Das ist die Innenfläche der Wand",
       "media": [
         "step-2.png"
-      ]
+      ],
+      "note": "Das Rechteck ist die Innenfläche der Wand, also die Raumseite. Liegt es am Ursprung, lassen sich Koordinaten später leicht ablesen."
     },
     {
-      "caption": "`Pull` anklicken",
+      "caption": "`Pull` anklicken. Dann die Fläche **anklicken und gedrückt halten**, die Maus in Zugrichtung ziehen (nicht loslassen) und `Leertaste` drücken: jetzt lässt sich der Wert eingeben. `175 mm` eingeben, mit `Enter` bestätigen. Das ist der Kalksandstein",
       "media": [
         "step-3.png"
-      ]
-    },
-    {
-      "caption": "Die Fläche **anklicken und gedrückt halten**, die Maus in Zugrichtung ziehen (nicht loslassen) und `Leertaste` drücken: jetzt lässt sich der Wert eingeben. `175 mm` eingeben, mit `Enter` bestätigen. Das ist der Kalksandstein",
-      "media": [
-        "step-4.png"
-      ]
+      ],
+      "note": "Mit `Pull` (Taste `P`) wird aus einer Fläche ein Körper: die Fläche wird um eine Länge herausgezogen (extrudiert). Die gezogene Länge ist die Wanddicke, mit `Leertaste` wechselt SpaceClaim vom freien Ziehen zur Eingabe eines genauen Werts."
     },
     {
       "caption": "Mit gedrückter `mittlerer Maustaste` die Ansicht drehen, bis die gegenüberliegende Fläche zu sehen ist",
       "media": [
-        "step-5.png"
-      ]
+        "step-4.png"
+      ],
+      "note": "Die Fläche gegenüber der Innenfläche wird gleich zur Trennfuge zwischen Kalksandstein und Dämmung."
     },
     {
       "caption": "Diese Fläche anklicken (sie wird zur Trennfuge), dann `Strg + C` und `Strg + V`",
       "media": [
-        "step-6.png"
-      ]
+        "step-5.png"
+      ],
+      "note": "Zieht man eine Fläche des Kalksandsteins, wird immer dieser Körper dicker. Die Kopie ist eine eigenständige Fläche, aus der ein neuer Körper entstehen kann. Sie liegt genau an derselben Stelle."
     },
     {
       "caption": "Im `Strukturbaum` erscheint eine neue Fläche **Surface**: anklicken",
       "media": [
-        "step-7.png"
-      ]
+        "step-6.png"
+      ],
+      "note": "**Surface** ist die kopierte Fläche: ein eigenes Objekt ohne Dicke. Sie ist der Ausgangspunkt für die Dämmung."
     },
     {
-      "caption": "`Pull` anklicken",
+      "caption": "`Pull` anklicken, links den Reiter `Options` öffnen und `No merge` einschalten",
+      "media": [
+        "step-7.png"
+      ],
+      "note": "Ohne `No merge` würde SpaceClaim die neue Schicht mit dem Kalksandstein zu einem Körper verschmelzen. Zwei Körper braucht man aber, weil sie verschiedene Materialien bekommen."
+    },
+    {
+      "caption": "Die Fläche **anklicken und gedrückt halten**, nach außen ziehen (nicht loslassen), `Leertaste` drücken, `140 mm` eingeben, mit `Enter` bestätigen. Das ist die Dämmung",
       "media": [
         "step-8.png"
-      ]
+      ],
+      "note": "Die Dämmung wächst nach außen, also weg vom Kalksandstein. Zieht man in die falsche Richtung, überlappen die Körper."
     },
     {
-      "caption": "Links den Reiter `Options` öffnen",
+      "caption": "`Rechtsklick Strukturbaum Solid → Rename`: den 175 mm dicken Körper **Kalksandstein** nennen",
       "media": [
         "step-9.png"
-      ]
+      ],
+      "note": "Sprechende Namen helfen später in Mechanical: Dort tauchen die Körper unter genau diesen Namen auf und bekommen ihr Material."
     },
     {
-      "caption": "`No merge` einschalten, damit ein eigener Körper entsteht",
+      "caption": "Den zweiten Körper genauso in **EPS** umbenennen",
       "media": [
         "step-10.png"
       ]
     },
     {
-      "caption": "Die Fläche **anklicken und gedrückt halten**, nach außen ziehen (nicht loslassen), `Leertaste` drücken, `140 mm` eingeben, mit `Enter` bestätigen. Das ist die Dämmung",
+      "caption": "`Rechtsklick Strukturbaum Design1 → Properties`",
       "media": [
         "step-11.png"
       ]
     },
     {
-      "caption": "`Rechtsklick Strukturbaum Solid → Rename`: den 175 mm dicken Körper **Kalksandstein** nennen",
+      "caption": "Unter **Analysis** bei **Share Topology** auf den Wert klicken und **Share** wählen",
       "media": [
         "step-12.png"
-      ]
-    },
-    {
-      "caption": "Den zweiten Körper genauso in **EPS** umbenennen",
-      "media": [
-        "step-13.png"
-      ]
-    },
-    {
-      "caption": "`Rechtsklick Strukturbaum Design1 → Properties`",
-      "media": [
-        "step-14.png"
-      ]
-    },
-    {
-      "caption": "Unter **Analysis** bei **Share Topology** auf den Wert klicken",
-      "media": [
-        "step-15.png"
-      ]
-    },
-    {
-      "caption": "**Share** wählen: die beiden Körper teilen sich jetzt die Fläche in der Trennfuge",
-      "media": [
-        "step-16.png"
-      ]
+      ],
+      "note": "Mit **Share** teilen sich beide Körper die Knoten in der Trennfuge. Die Wärme fließt direkt hindurch, ohne Kontakt dazwischen."
     },
     {
       "caption": "SpaceClaim schließen",
       "media": [
-        "step-17.png"
-      ]
+        "step-13.png"
+      ],
+      "note": "Die Geometrie wird beim Schließen übernommen. In Workbench hat **Geometry** danach einen grünen Haken."
     }
   ]
 }

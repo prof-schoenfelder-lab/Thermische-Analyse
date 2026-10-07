@@ -363,14 +363,14 @@ def geometrie(schritt, W, H):
     return r, punkte, ziel, box
 
 
-def zeichnen(img, r, punkte, ziel):
-    """Nummerierte Marker, beim Ziehen mit Pfeil zum Zielpunkt."""
+def zeichnen(img, r, punkte, ziel, start=1):
+    """Nummerierte Marker (ab start), beim Ziehen mit Pfeil zum Zielpunkt."""
     d = ImageDraw.Draw(img)
     if ziel and punkte:
         d.line([punkte[0], ziel], fill=ROT, width=max(3, r // 4))
         d.ellipse([ziel[0] - r // 2, ziel[1] - r // 2, ziel[0] + r // 2, ziel[1] + r // 2], fill=ROT)
     f = schrift(round(r * 1.3))
-    for k, (x, y) in enumerate(punkte, 1):
+    for k, (x, y) in enumerate(punkte, start):
         d.ellipse([x - r, y - r, x + r, y + r], fill=ROT, outline="white", width=max(2, r // 7))
         d.text((x, y), str(k), fill="white", font=f, anchor="mm")
 
@@ -423,11 +423,21 @@ def begrenzen(rahmen, rechtecke):
 
 
 def bild_rendern(aufnahme, schritt, datei):
-    img = Image.open(aufnahme / schritt["frame"]).convert("RGB")
-    fenster = sichtbar(schritt)
+    bild_zusammen(aufnahme, [schritt], datei)
+
+
+def bild_zusammen(aufnahme, schritte, datei):
+    """Mehrere Schritte in einem Bild (z. B. Feld anklicken, dann Wert wählen): Foto des letzten Schritts,
+    Fenster aller Schritte sichtbar, Marker aller Schritte fortlaufend nummeriert."""
+    img = Image.open(aufnahme / schritte[-1]["frame"]).convert("RGB")
+    fenster = [f for s in schritte for f in sichtbar(s)]
     img = abdecken(img, fenster)
-    r, punkte, ziel, box = geometrie(schritt, *img.size)
-    zeichnen(img, r, punkte, ziel)
+    box, n = [], 1
+    for s in schritte:
+        r, punkte, ziel, b = geometrie(s, *img.size)
+        zeichnen(img, r, punkte, ziel, n)
+        n += len(punkte)
+        box += b
     img.crop(begrenzen(ausschnitt(box, *img.size), fenster)).save(datei, optimize=True)
 
 

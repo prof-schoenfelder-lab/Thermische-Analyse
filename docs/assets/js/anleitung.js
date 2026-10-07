@@ -36,7 +36,22 @@
 
     function bildUrl(st) { return st.media && st.media.length ? BASE + 'tutorials/' + slug + '/' + st.media[0] : ''; }
     function veredeln(el) { if (window.KursUI) window.KursUI.enhance(el); }
-    function textSetzen(el, st) { el.innerHTML = md(st.caption); veredeln(el); }
+    // Anweisung und, falls vorhanden, die Erklärung (note) darunter
+    function textSetzen(el, st) {
+      el.innerHTML = md(st.caption) + (st.note ? '<div class="kb-note">' + md(st.note) + '</div>' : '');
+      veredeln(el);
+    }
+    // Textfeld so hoch wie der längste Schritt dieser Anleitung: beim Blättern springt nichts
+    function texthoehe() {
+      if (!ui || ui.typ !== 'schritt' || !ui.text.isConnected) return;
+      var max = 0;
+      ui.text.style.minHeight = '';
+      tut.steps.forEach(function (st) { textSetzen(ui.text, st); max = Math.max(max, ui.text.offsetHeight); });
+      if (max) ui.text.style.minHeight = max + 'px';  // versteckt (z. B. zugeklappt): CSS-Mindesthöhe bleibt
+      textSetzen(ui.text, tut.steps[pos()]);
+    }
+    var resizeTimer = null;
+    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(texthoehe, 150); });
 
     // Neues Bild erst zeigen, wenn es geladen ist: das alte bleibt so lange stehen, nichts springt
     function bildTauschen(img, url) {
@@ -217,6 +232,7 @@
       wurzel.appendChild(kopf());
       wurzel.appendChild(a === 'schritt' ? schritt() : liste());
       aktualisieren();
+      texthoehe();
     }
     this.zeichnen = zeichnen;
 

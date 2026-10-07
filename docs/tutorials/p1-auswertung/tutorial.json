@@ -40,45 +40,39 @@
       ]
     },
     {
-      "caption": "Für den Verlauf über die Dicke: `Edge` (Kanten auswählen) und eine Kante quer durch den Kalksandstein anklicken",
+      "caption": "Für den Verlauf über die Dicke: `Edge` (Kanten auswählen), eine Kante quer durch den Kalksandstein anklicken und mit gedrückter `Strg` die anschließende Kante durch die Dämmung dazunehmen",
       "media": [
         "step-5.png"
       ]
     },
     {
-      "caption": "Mit gedrückter `Strg` die anschließende Kante durch die Dämmung dazunehmen",
+      "caption": "`Rechtsklick Solution (A6) → Insert → Thermal → Temperature`",
       "media": [
         "step-6.png"
       ]
     },
     {
-      "caption": "`Rechtsklick Solution (A6) → Insert → Thermal → Temperature`",
+      "caption": "`Rechtsklick Temperature 2 → Convert To Path Result`",
       "media": [
         "step-7.png"
       ]
     },
     {
-      "caption": "`Rechtsklick Temperature 2 → Convert To Path Result`",
+      "caption": "`Rechtsklick Temperature 2 → Retrieve This Result`",
       "media": [
         "step-8.png"
       ]
     },
     {
-      "caption": "`Rechtsklick Temperature 2 → Retrieve This Result`",
+      "caption": "Das Fenster **Graph** größer ziehen",
       "media": [
         "step-9.png"
       ]
     },
     {
-      "caption": "Das Fenster **Graph** größer ziehen",
-      "media": [
-        "step-10.png"
-      ]
-    },
-    {
       "caption": "Der Temperaturverlauf über die Dicke: in jeder Schicht linear, Knick in der Trennfuge bei 18,73 °C",
       "media": [
-        "step-11.png"
+        "step-10.png"
       ]
     }
   ]

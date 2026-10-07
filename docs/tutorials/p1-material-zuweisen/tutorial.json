@@ -27,39 +27,15 @@
       ]
     },
     {
-      "caption": "Körper **Kalksandstein** anklicken",
+      "caption": "Körper **Kalksandstein** anklicken, im `Detailfenster` unter **Material** bei **Assignment** auf den Pfeil klicken und **Kalksandstein** wählen",
       "media": [
         "step-3.png"
       ]
     },
     {
-      "caption": "Im `Detailfenster` unter **Material** bei **Assignment** auf den Pfeil klicken",
+      "caption": "Genauso für den Körper **EPS**: anklicken, bei **Assignment** auf den Pfeil klicken, **EPS** wählen",
       "media": [
         "step-4.png"
-      ]
-    },
-    {
-      "caption": "**Kalksandstein** wählen",
-      "media": [
-        "step-5.png"
-      ]
-    },
-    {
-      "caption": "Körper **EPS** anklicken",
-      "media": [
-        "step-6.png"
-      ]
-    },
-    {
-      "caption": "Bei **Assignment** auf den Pfeil klicken",
-      "media": [
-        "step-7.png"
-      ]
-    },
-    {
-      "caption": "**EPS** wählen",
-      "media": [
-        "step-8.png"
       ]
     }
   ]

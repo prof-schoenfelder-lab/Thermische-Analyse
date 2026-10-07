@@ -35,7 +35,7 @@
         "No merge",
         "Share Topology"
       ],
-      "steps": 18,
+      "steps": 14,
       "thumb": "step-0.png"
     },
     {
@@ -59,7 +59,7 @@
         "Units",
         "Assignment"
       ],
-      "steps": 9,
+      "steps": 5,
       "thumb": "step-0.png"
     },
     {
@@ -84,7 +84,7 @@
         "Total Heat Flux",
         "Path"
       ],
-      "steps": 12,
+      "steps": 11,
       "thumb": "step-0.png"
     },
     {
@@ -96,7 +96,7 @@
         "Convection",
         "Path"
       ],
-      "steps": 15,
+      "steps": 14,
       "thumb": "step-0.png"
     },
     {
@@ -118,7 +118,7 @@
       "tags": [
         "Temperature"
       ],
-      "steps": 9,
+      "steps": 8,
       "thumb": "step-0.png"
     }
   ]
