@@ -7,14 +7,14 @@ hide:
 
 # Simulationssoftware
 
-Wir verwenden **ANSYS Workbench 2025 R2**. Workbench verbindet mehrere Programme
-zu einem Ablauf:
+Die Software, die wir zur Finite-Elemente-Simulation benutzen, ist **ANSYS
+Workbench 2025 R2**. Sie beinhaltet eine Vielzahl verschiedener Simulationen
+(z. B. Strömung, Festigkeit, Magnetismus). Wir befassen uns in diesem Modul mit
+der **thermischen Simulation** (**Thermal Analysis**).
 
-| Programm | Aufgabe |
-|---|---|
-| **Workbench** (Projektmenü) | Analysen anlegen, Materialien definieren (Engineering Data) |
-| **SpaceClaim** | Geometrie erstellen und vereinfachen |
-| **Mechanical** | Vernetzen, Randbedingungen, Lösen, Auswerten |
+<figure style="text-align:center;">
+    <img src="../images/ANSYS.png" alt="ANSYS" width="300">
+</figure>
 
 Für die Wärmeleitung gibt es zwei Analysesysteme:
 
