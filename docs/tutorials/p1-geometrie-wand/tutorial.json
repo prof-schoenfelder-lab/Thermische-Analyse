@@ -23,7 +23,7 @@
       ]
     },
     {
-      "caption": "Im Grafikfenster die erste Ecke setzen, dann `100 mm` `Tab` `100 mm` `Enter`: das ist die Innenfläche der Wand",
+      "caption": "Auf den **Koordinatenursprung** klicken und die Maus in die Richtung bewegen, in der das Rechteck liegen soll (hier positive x- und z-Richtung). Dann **nicht klicken**, sondern mit `Tab` die Seitenlängen durchgehen: `100 mm` `Tab` `100 mm`, mit `Enter` bestätigen. Das ist die Innenfläche der Wand",
       "media": [
         "step-2.png"
       ]
