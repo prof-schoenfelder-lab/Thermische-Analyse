@@ -124,7 +124,7 @@ extra:
               bild: assets/images/card_p3.png
               link: P3_Randbedingungen_Postprocessing/
             - nr: 4
-              titel: Transiente Temperaturfeldberechnung
+              titel: Instationäre Temperaturfeldberechnung
               text: Zeitabhängige Temperaturfelder berechnen und auswerten.
               bild: assets/images/card_p4.png
               link: P4_Transient/
@@ -183,7 +183,7 @@ nav:
               - "Beispielaufgabe: Heat Transfer in Fins": P3_Randbedingungen_Postprocessing/Beispiel-Fins.md
               - "Strahlung: Cerankochfeld": P3_Randbedingungen_Postprocessing/Beispiel-Cerankochfeld.md
               - Postprocessing: P3_Randbedingungen_Postprocessing/Postprocessing.md
-      - TRANSIENTE BERECHNUNG:
+      - INSTATIONÄRE BERECHNUNG:
               - P4_Transient/index.md
               - Einleitung: P4_Transient/Einleitung.md
               - "Beispielaufgabe: Ebene Wand": P4_Transient/Beispiel-Ebene-Wand.md

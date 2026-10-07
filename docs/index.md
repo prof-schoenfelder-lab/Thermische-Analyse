@@ -14,7 +14,7 @@ hide:
   <div class="kurs-hero-text">
     <p class="kurs-kicker">HTWK Leipzig · Fakultät Ingenieurwissenschaften</p>
     <h1 class="kurs-hero-title">Angewandte FEM in der <span>Thermodynamik</span></h1>
-    <p class="kurs-hero-lead">Temperaturfelder mit der Finite-Elemente-Methode berechnen: von der stationären Wärmeleitung bis zur transienten Analyse und Strahlung, Schritt für Schritt in ANSYS Workbench.</p>
+    <p class="kurs-hero-lead">Temperaturfelder mit der Finite-Elemente-Methode berechnen: von der stationären Wärmeleitung bis zur instationären (transienten) Analyse und Strahlung, Schritt für Schritt in ANSYS Workbench.</p>
     <div class="kurs-hero-actions">
       <a class="kurs-btn kurs-btn--primary" href="P1_Einfuehrung/">Mit Praktikum 1 starten <span aria-hidden="true">→</span></a>
       <a class="kurs-btn" href="Fortschritt/">Mein Fortschritt</a>

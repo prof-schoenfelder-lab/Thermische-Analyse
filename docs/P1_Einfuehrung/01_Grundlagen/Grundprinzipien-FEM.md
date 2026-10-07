@@ -21,7 +21,7 @@ Gleichungssystem für die Temperaturen im ganzen Bauteil.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Material</p>
-    <p>Für eine <strong>stationäre</strong> Wärmeleitung genügt eine Materialgröße: die <strong>Wärmeleitfähigkeit λ</strong> in W/(m·K). Dichte und Wärmekapazität werden erst bei zeitabhängigen (transienten) Rechnungen gebraucht.</p>
+    <p>Für eine <strong>stationäre</strong> Wärmeleitung genügt eine Materialgröße: die <strong>Wärmeleitfähigkeit λ</strong> in W/(m·K). Dichte und Wärmekapazität werden erst bei <strong>instationären</strong> (zeitabhängigen) Rechnungen gebraucht, in ANSYS heißen sie <em>transient</em>.</p>
   </div>
 
   <div class="step">

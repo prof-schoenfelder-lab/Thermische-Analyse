@@ -19,7 +19,7 @@ zu einem Ablauf:
 Für die Wärmeleitung gibt es zwei Analysesysteme:
 
 - **Steady-State Thermal**: stationär, die Temperaturen ändern sich nicht mehr mit der Zeit (Praktikum 1 bis 3)
-- **Transient Thermal**: zeitabhängig, z. B. Aufheizen oder Abkühlen (Praktikum 4 und 5)
+- **Transient Thermal**: instationär, die Temperaturen ändern sich mit der Zeit, z. B. beim Aufheizen oder Abkühlen (Praktikum 4 und 5)
 
 <div class="steps" markdown="1" data-kategorie="Setup">
 

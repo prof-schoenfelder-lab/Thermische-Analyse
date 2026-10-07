@@ -1,6 +1,6 @@
 {
   "slug": "P4_Transient",
-  "nav": "TRANSIENTE BERECHNUNG",
+  "nav": "INSTATIONÄRE BERECHNUNG",
   "kinder": [
     {
       "extern": "P4_Transient/index.md"
