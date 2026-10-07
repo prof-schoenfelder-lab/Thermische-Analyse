@@ -126,7 +126,7 @@
   }
 
   function menuPathChips(root) {
-    var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
+    var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code, .tut-cap > code');
     for (var i = 0; i < codes.length; i++) {
       var c = codes[i];
       var t = c.textContent;
@@ -189,7 +189,7 @@
     return keyLabel(tok) !== null || /^[A-Za-z0-9]$/.test(tok);  // Taste oder Einzelzeichen (nur in Kombi)
   }
   function keyCaps(root) {
-    var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code');
+    var codes = root.querySelectorAll('p > code, li > code, td > code, summary > code, .tut-cap > code');
     for (var i = 0; i < codes.length; i++) {
       var c = codes[i];
       if (c.closest('pre')) continue;

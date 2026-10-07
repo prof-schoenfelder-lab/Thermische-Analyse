@@ -1,0 +1,15 @@
+/* Schalter "Anleitung mit Bildern / ohne Bilder" (anleitung-schalter.js) */
+.md-typeset .anl-schalter {
+  display: inline-flex; align-items: center; gap: .25rem; margin: .4rem 0 .9rem;
+  padding: .2rem; border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: 999px;
+  background: var(--kurs-panel, #f2f6f9); font-size: .78rem;
+}
+.md-typeset .anl-schalter .anl-label { padding: 0 .55rem 0 .6rem; font-weight: 700; color: var(--kurs-head, #022541); }
+.md-typeset .anl-schalter button {
+  font: inherit; font-weight: 600; cursor: pointer; border: 0; border-radius: 999px; padding: .25rem .8rem;
+  background: transparent; color: var(--kurs-text-2, #566166);
+}
+.md-typeset .anl-schalter button[aria-pressed="true"] { background: var(--kurs-btn-bg, #009ee3); color: var(--kurs-btn-fg, #fff); }
+.md-typeset .anl-schalter button:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 2px; }
+body[data-anleitung="bilder"] .md-typeset .anl-text,
+body[data-anleitung="ohne"] .md-typeset .anl-bild { display: none; }

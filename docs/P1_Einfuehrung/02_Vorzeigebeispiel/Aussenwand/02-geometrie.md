@@ -33,9 +33,9 @@ Geometrie direkt an (Fläche ziehen, verschieben).
     7. `Rechtsklick Design1 → Properties`, unter **Analysis** bei **Share Topology** den Wert **Share** wählen
     8. SpaceClaim schließen
 
-<figure style="text-align:center;">
+<figure class="anl-bild" style="text-align:center;">
   <img src="../../../../tutorials/p1-geometrie-wand/ablauf.gif" alt="Ablauf der Geometrieerstellung" class="no-lightbox">
-  <figcaption>Der ganze Ablauf als Film, die einzelnen Schritte darunter</figcaption>
+  <figcaption>Der ganze Ablauf als Film, die einzelnen Schritte in der Klick-Anleitung darunter</figcaption>
 </figure>
 
 <tutorial slug="p1-geometrie-wand"></tutorial>
