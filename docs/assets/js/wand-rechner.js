@@ -1,6 +1,6 @@
 // Wand-Rechner: Temperaturverlauf durch die Außenwand (Kalksandstein + EPS) mit Konvektion.
-// Einbinden: <div class="wand-rechner"></div>. Regler für α innen, α außen und λ der Dämmung;
-// großes α zeigt, dass die Oberfläche die Lufttemperatur annimmt (Fall a).
+// Einbinden: <div class="wand-rechner"></div>. Regler für α innen, α außen (realistische Bereiche) und λ der Dämmung;
+// der Knopf α → ∞ zeigt als Gedankenexperiment, dass die Oberfläche dann die Lufttemperatur annimmt (Fall a).
 (function () {
   'use strict';
 
@@ -14,7 +14,7 @@
   function wind(he) {
     var v = (he - 9) / 4;
     if (v < 0.25) return 'windstill';
-    return v <= 40 ? '≈ ' + de(v, v < 10 ? 1 : 0) + ' m/s Wind' : 'stärker als jeder Orkan';
+    return '≈ ' + de(v, v < 10 ? 1 : 0) + ' m/s Wind';
   }
 
   function rechnen(hi, he, leps) {
@@ -37,8 +37,8 @@
 
   function aufbauen(box) {
     var regler = [
-      { key: 'hi', label: 'α innen', unit: 'W/(m²·K)', min: 1, max: 1000, dez: 1 },
-      { key: 'he', label: 'α außen', unit: 'W/(m²·K)', min: 1, max: 1000, dez: 1 },
+      { key: 'hi', label: 'α innen', unit: 'W/(m²·K)', min: 2, max: 25, dez: 1 },
+      { key: 'he', label: 'α außen', unit: 'W/(m²·K)', min: 5, max: 100, dez: 1 },
       { key: 'leps', label: 'λ Dämmung', unit: 'W/(m·K)', min: 0.02, max: 2, dez: 3 }
     ];
     var wert = { hi: NORM.hi, he: NORM.he, leps: NORM.leps };
@@ -65,14 +65,14 @@
     var knoepfe = document.createElement('div');
     knoepfe.className = 'wr-btns';
     knoepfe.innerHTML = '<button type="button" data-a="norm">Werte der Aufgabe</button>' +
-      '<button type="button" data-a="gross">α sehr groß (wie Fall a)</button>' +
-      '<button type="button" data-a="klein">α innen sehr klein</button>';
+      '<button type="button" data-a="gross">α → ∞ (Gedankenexperiment, wie Fall a)</button>' +
+      '<button type="button" data-a="ecke">Ecke / hinter Möbeln (α innen = 4)</button>';
     knoepfe.addEventListener('click', function (ev) {
       var a = ev.target.getAttribute('data-a');
       if (!a) return;
       if (a === 'norm') { wert.hi = NORM.hi; wert.he = NORM.he; wert.leps = NORM.leps; }
-      if (a === 'gross') { wert.hi = 1000; wert.he = 1000; }
-      if (a === 'klein') { wert.hi = 1; }
+      if (a === 'gross') { wert.hi = Infinity; wert.he = Infinity; }
+      if (a === 'ecke') { wert.hi = 4; }
       zeichnen();
     });
     ctrl.appendChild(knoepfe);
@@ -112,9 +112,10 @@
     var grenz = 26; // Breite der Luftschicht, in der die Temperatur zur Wand hin abfällt
     function zeichnen() {
       regler.forEach(function (r) {
-        r.input.value = inRegler(wert[r.key], r.min, r.max);
-        r.out.textContent = de(wert[r.key], wert[r.key] >= 100 ? 0 : r.dez) + ' ' + r.unit;
-        if (r.wind) r.wind.textContent = wind(wert.he);
+        var v = wert[r.key], unendlich = v === Infinity;
+        r.input.value = unendlich ? 1000 : inRegler(v, r.min, r.max);
+        r.out.textContent = unendlich ? '∞' : de(v, v >= 100 ? 0 : r.dez) + ' ' + r.unit;
+        if (r.wind) r.wind.textContent = wert.he === Infinity ? 'nur gedanklich' : wind(wert.he);
       });
       var e = rechnen(wert.hi, wert.he, wert.leps);
       var a = rechnen(1e9, 1e9, wert.leps);

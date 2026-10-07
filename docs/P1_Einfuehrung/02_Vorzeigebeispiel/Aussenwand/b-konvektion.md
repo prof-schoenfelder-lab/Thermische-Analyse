@@ -123,10 +123,13 @@ nebeneinanderlegen.
 
 ## Ausprobieren: Wie hängt die Wandtemperatur von α ab?
 
-Die Grafik rechnet dieselbe Wand von Hand. Ziehen Sie $\alpha$ innen oder außen
-sehr groß: Die Oberfläche nimmt dann die Lufttemperatur an, und es kommt genau
-**Fall a)** heraus. Bei kleinem $\alpha$ fällt ein großer Teil der Temperatur schon
-vor der Wand in der Luftschicht ab.
+Die Grafik rechnet dieselbe Wand von Hand. Die Regler decken realistische
+Werte ab: innen etwa 2 bis 25, außen 5 bis 100 W/(m²·K) (bis Sturm). Bei
+kleinem $\alpha$, etwa in einer Ecke oder hinter Möbeln, fällt ein größerer Teil
+der Temperatur schon vor der Wand in der Luftschicht ab. Der Knopf
+**α → ∞** ist ein Gedankenexperiment: Bei unendlich gutem Wärmeübergang nimmt
+die Oberfläche genau die Lufttemperatur an, und es kommt **Fall a)** heraus.
+Eine Temperatur-Randbedingung ist also der Grenzfall der Konvektion.
 
 <div class="wand-rechner"></div>
 
