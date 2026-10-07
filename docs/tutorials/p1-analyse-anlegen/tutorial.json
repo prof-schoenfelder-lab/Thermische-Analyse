@@ -27,7 +27,7 @@
       ]
     },
     {
-      "caption": "Einen Ordner **ohne Umlaute** wählen (hier neu angelegt: **Praktikum01**) und einen Dateinamen eintippen, z. B. **P1_Aussenwand**",
+      "caption": "Unter **Dokumente** mit `Neuer Ordner` einen Ordner ohne Umlaute anlegen, z. B. **Praktikum01**, hineinwechseln und bei **Dateiname** **P1_Aussenwand** eintragen",
       "media": [
         "step-3.png"
       ]

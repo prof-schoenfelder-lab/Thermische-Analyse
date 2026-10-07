@@ -11,5 +11,24 @@
 }
 .md-typeset .anl-schalter button[aria-pressed="true"] { background: var(--kurs-btn-bg, #009ee3); color: var(--kurs-btn-fg, #fff); }
 .md-typeset .anl-schalter button:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 2px; }
-body[data-anleitung="bilder"] .md-typeset .anl-text,
-body[data-anleitung="ohne"] .md-typeset .anl-bild { display: none; }
+/* Kurzanleitung entfällt, wo es eine Klick-Anleitung gibt; ohne Bilder: GIF weg, Bilder je Schritt per Knopf */
+body[data-anleitung] .md-typeset .anl-doppelt,
+body[data-anleitung="ohne"] .md-typeset .anl-bild,
+body[data-anleitung="ohne"] .md-typeset .tut-steps > li:not(.bild-offen) img.tut-img { display: none; }
+body[data-anleitung="bilder"] .md-typeset .anl-bildknopf { display: none; }
+.md-typeset .anl-bildknopf {
+  font: inherit; font-size: .68rem; font-weight: 600; cursor: pointer; margin-top: .3rem;
+  padding: .1rem .6rem; border-radius: 999px; border: 1px solid var(--kurs-line-2, #cdd6dc);
+  background: var(--kurs-surface, #fff); color: var(--kurs-accent-ink, #0070a6);
+}
+.md-typeset .anl-bildknopf:hover { border-color: var(--kurs-accent, #009ee3); }
+.md-typeset .anl-bildknopf:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 2px; }
+html:root body[data-anleitung="ohne"] .tut-steps > li:not(:last-child) { margin-bottom: .9rem; padding-bottom: .9rem; }
+
+/* Klick-Anleitungen: Schritte klar trennen, Bild gehört sichtbar zum Text darüber
+   (höhere Spezifität als modern.css, das diese Regeln ursprünglich setzt) */
+html:root body .tut-steps > li:not(:last-child) {
+  margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--kurs-line, #e2e8ec);
+}
+html:root body .tut-steps > li:not(:last-child)::after { bottom: -1.45rem; }
+html:root body .md-typeset img.tut-img { margin: .45rem 0 0; }
