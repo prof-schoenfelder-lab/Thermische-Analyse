@@ -8,7 +8,7 @@ Die Wand aus dem Vorzeigebeispiel bekommt statt 14 cm nun **20 cm** Dämmung.
 Wie stark sinkt der Wärmeverlust?
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung1.svg" alt="Wand mit 20 cm Dämmung" width="560" class="no-lightbox">
+  <img src="../../images/p1_uebung1.svg" alt="Wand mit 20 cm Dämmung" class="no-lightbox">
 </figure>
 
 ## Gegeben

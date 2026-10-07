@@ -1,38 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" font-family="Source Sans Pro, Source Sans 3, Arial, sans-serif">
-<rect width="760" height="330" fill="white"/>
-<rect x="140" y="190" width="480" height="70" fill="#d9dcde" stroke="#2E3639" stroke-width="1.5"/>
-<text x="200.0" y="286" text-anchor="middle" font-size="14" fill="#2E3639">Element 1</text>
-<text x="320.0" y="286" text-anchor="middle" font-size="14" fill="#2E3639">Element 2</text>
-<text x="440.0" y="286" text-anchor="middle" font-size="14" fill="#2E3639">Element 3</text>
-<text x="560.0" y="286" text-anchor="middle" font-size="14" fill="#2E3639">Element 4</text>
-<line x1="140.0" y1="190" x2="140.0" y2="260" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="140.0" cy="225.0" r="7" fill="#009EE3" stroke="white" stroke-width="2"/>
-<text x="149.0" y="207.0" font-size="14" font-weight="600" fill="#022541">T<tspan baseline-shift="sub" font-size="10">1</tspan></text>
-<line x1="140.0" y1="49.19999999999999" x2="140.0" y2="190" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
-<line x1="260.0" y1="190" x2="260.0" y2="260" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="260.0" cy="225.0" r="7" fill="#009EE3" stroke="white" stroke-width="2"/>
-<text x="269.0" y="207.0" font-size="14" font-weight="600" fill="#022541">T<tspan baseline-shift="sub" font-size="10">2</tspan></text>
-<line x1="260.0" y1="74.39999999999999" x2="260.0" y2="190" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
-<line x1="380.0" y1="190" x2="380.0" y2="260" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="380.0" cy="225.0" r="7" fill="#009EE3" stroke="white" stroke-width="2"/>
-<text x="389.0" y="207.0" font-size="14" font-weight="600" fill="#022541">T<tspan baseline-shift="sub" font-size="10">3</tspan></text>
-<line x1="380.0" y1="99.6" x2="380.0" y2="190" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
-<line x1="500.0" y1="190" x2="500.0" y2="260" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="500.0" cy="225.0" r="7" fill="#009EE3" stroke="white" stroke-width="2"/>
-<text x="509.0" y="207.0" font-size="14" font-weight="600" fill="#022541">T<tspan baseline-shift="sub" font-size="10">4</tspan></text>
-<line x1="500.0" y1="124.8" x2="500.0" y2="190" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
-<line x1="620.0" y1="190" x2="620.0" y2="260" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="620.0" cy="225.0" r="7" fill="#009EE3" stroke="white" stroke-width="2"/>
-<text x="629.0" y="207.0" font-size="14" font-weight="600" fill="#022541">T<tspan baseline-shift="sub" font-size="10">5</tspan></text>
-<line x1="620.0" y1="150.0" x2="620.0" y2="190" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
-<polyline points="140.0,49.19999999999999 260.0,74.39999999999999 380.0,99.6 500.0,124.8 620.0,150.0" fill="none" stroke="#E53009" stroke-width="2.5"/>
-<circle cx="140.0" cy="49.19999999999999" r="4.5" fill="#E53009"/>
-<circle cx="260.0" cy="74.39999999999999" r="4.5" fill="#E53009"/>
-<circle cx="380.0" cy="99.6" r="4.5" fill="#E53009"/>
-<circle cx="500.0" cy="124.8" r="4.5" fill="#E53009"/>
-<circle cx="620.0" cy="150.0" r="4.5" fill="#E53009"/>
-<text x="638" y="155.0" font-size="14" fill="#E53009">T(x)</text>
-<text x="124" y="230.0" text-anchor="end" font-size="14" fill="#022541">innen</text>
-<text x="636" y="230.0" font-size="14" fill="#022541">außen</text>
-<text x="380.0" y="316" text-anchor="middle" font-size="13" fill="#2E3639">Unbekannt ist je Knoten nur ein Wert: die Temperatur. Dazwischen wird linear (oder quadratisch) interpoliert.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="900" height="380" fill="white"/>
+<rect x="170" y="210" width="560" height="75" fill="#d9dcde" stroke="#2E3639" stroke-width="1.5"/>
+<text x="240" y="315" text-anchor="middle" font-size="18" fill="#2E3639">Element 1</text>
+<text x="380" y="315" text-anchor="middle" font-size="18" fill="#2E3639">Element 2</text>
+<text x="520" y="315" text-anchor="middle" font-size="18" fill="#2E3639">Element 3</text>
+<text x="660" y="315" text-anchor="middle" font-size="18" fill="#2E3639">Element 4</text>
+<line x1="170.0" y1="210" x2="170.0" y2="285" stroke="#2E3639" stroke-width="1.5"/>
+<line x1="170.0" y1="59.39999999999999" x2="170.0" y2="210" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
+<circle cx="170.0" cy="247.5" r="8" fill="#009EE3" stroke="white" stroke-width="2"/>
+<text x="181" y="236" font-size="18" font-weight="700" fill="#022541">T<tspan baseline-shift="sub" font-size="13">1</tspan></text>
+<line x1="310.0" y1="210" x2="310.0" y2="285" stroke="#2E3639" stroke-width="1.5"/>
+<line x1="310.0" y1="85.8" x2="310.0" y2="210" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
+<circle cx="310.0" cy="247.5" r="8" fill="#009EE3" stroke="white" stroke-width="2"/>
+<text x="321" y="236" font-size="18" font-weight="700" fill="#022541">T<tspan baseline-shift="sub" font-size="13">2</tspan></text>
+<line x1="450.0" y1="210" x2="450.0" y2="285" stroke="#2E3639" stroke-width="1.5"/>
+<line x1="450.0" y1="112.19999999999999" x2="450.0" y2="210" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
+<circle cx="450.0" cy="247.5" r="8" fill="#009EE3" stroke="white" stroke-width="2"/>
+<text x="461" y="236" font-size="18" font-weight="700" fill="#022541">T<tspan baseline-shift="sub" font-size="13">3</tspan></text>
+<line x1="590.0" y1="210" x2="590.0" y2="285" stroke="#2E3639" stroke-width="1.5"/>
+<line x1="590.0" y1="138.6" x2="590.0" y2="210" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
+<circle cx="590.0" cy="247.5" r="8" fill="#009EE3" stroke="white" stroke-width="2"/>
+<text x="601" y="236" font-size="18" font-weight="700" fill="#022541">T<tspan baseline-shift="sub" font-size="13">4</tspan></text>
+<line x1="730.0" y1="210" x2="730.0" y2="285" stroke="#2E3639" stroke-width="1.5"/>
+<line x1="730.0" y1="165.0" x2="730.0" y2="210" stroke="#009EE3" stroke-dasharray="3 4" opacity="0.6"/>
+<circle cx="730.0" cy="247.5" r="8" fill="#009EE3" stroke="white" stroke-width="2"/>
+<text x="741" y="236" font-size="18" font-weight="700" fill="#022541">T<tspan baseline-shift="sub" font-size="13">5</tspan></text>
+<polyline points="170.0,59.39999999999999 310.0,85.8 450.0,112.19999999999999 590.0,138.6 730.0,165.0" fill="none" stroke="#E53009" stroke-width="2.5"/>
+<circle cx="170.0" cy="59.39999999999999" r="5" fill="#E53009"/>
+<circle cx="310.0" cy="85.8" r="5" fill="#E53009"/>
+<circle cx="450.0" cy="112.19999999999999" r="5" fill="#E53009"/>
+<circle cx="590.0" cy="138.6" r="5" fill="#E53009"/>
+<circle cx="730.0" cy="165.0" r="5" fill="#E53009"/>
+<text x="748" y="171" text-anchor="start" font-size="18" fill="#E53009">T(x)</text>
+<text x="152" y="254" text-anchor="end" font-size="18" fill="#022541">innen</text>
+<text x="748" y="254" text-anchor="start" font-size="18" fill="#022541">außen</text>
+<text x="450" y="368" text-anchor="middle" font-size="18" fill="#2E3639">Je Knoten eine Unbekannte: die Temperatur. Dazwischen wird interpoliert.</text>
 </svg>

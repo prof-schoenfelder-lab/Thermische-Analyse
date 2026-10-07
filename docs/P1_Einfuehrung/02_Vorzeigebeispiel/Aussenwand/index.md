@@ -20,19 +20,15 @@ Handrechnung, mit der wir die FEM-Ergebnisse prüfen können.
     - **a)** vorgegebene **Oberflächentemperaturen**
     - **b)** **Konvektion** an Raumluft und Außenluft, daraus der **U-Wert**
 
-<div class="grid" markdown>
-
 <figure style="text-align:center;">
-  <img src="../../images/p1_aussenwand_a.svg" alt="Fall a: Oberflächentemperaturen" style="width:100%">
+  <img src="../../images/p1_aussenwand_a.svg" alt="Fall a: Oberflächentemperaturen" class="no-lightbox">
   <figcaption>Fall a) Oberflächentemperaturen</figcaption>
 </figure>
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_aussenwand_b.svg" alt="Fall b: Konvektion" style="width:100%">
+  <img src="../../images/p1_aussenwand_b.svg" alt="Fall b: Konvektion" class="no-lightbox">
   <figcaption>Fall b) Konvektion</figcaption>
 </figure>
-
-</div>
 
 ## Gegeben
 

@@ -8,7 +8,7 @@ Ein Gründerzeithaus hat eine **36,5 cm** dicke Wand aus Vollziegel und keine
 Dämmung. Wie viel Wärme verliert diese Wand, und wie kalt wird sie innen?
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung2.svg" alt="Vollziegelwand ohne Dämmung" width="560" class="no-lightbox">
+  <img src="../../images/p1_uebung2.svg" alt="Vollziegelwand ohne Dämmung" class="no-lightbox">
 </figure>
 
 ## Gegeben

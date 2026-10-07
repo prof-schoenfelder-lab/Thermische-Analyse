@@ -27,7 +27,7 @@ Gleichungssystem für die Temperaturen im ganzen Bauteil.
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Elemente (Vernetzung)</p>
     <figure style="text-align:center;">
-      <img src="../../images/p1_fem_1d.svg" alt="Wand in vier Elemente zerlegt" width="620" class="no-lightbox">
+      <img src="../../images/p1_fem_1d.svg" alt="Wand in vier Elemente zerlegt" class="no-lightbox">
     </figure>
     <p>Das Bauteil wird mit Elementen vernetzt, die Elemente sind über <strong>Knoten</strong> verbunden. Jeder Knoten hat in der thermischen Analyse genau <strong>einen Freiheitsgrad: die Temperatur T</strong> (in der Strukturmechanik sind es drei Verschiebungen).</p>
   </div>

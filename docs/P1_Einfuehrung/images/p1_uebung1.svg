@@ -1,36 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" font-family="Source Sans Pro, Source Sans 3, Arial, sans-serif">
-<rect width="880" height="420" fill="white"/>
-<defs><marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker><pattern id="eps" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="3" fill="none" stroke="#009EE3" stroke-width="1" opacity="0.5"/></pattern></defs>
-<rect x="252.5" y="70" width="175" height="260" fill="#d9dcde" stroke="#2E3639" stroke-width="1.5"/>
-<text x="340.0" y="190.0" text-anchor="middle" font-size="15" font-weight="600" fill="#022541">Kalksandstein</text>
-<text x="340.0" y="214.0" text-anchor="middle" font-size="14" fill="#2E3639">λ = 0,99</text>
-<text x="340.0" y="232.0" text-anchor="middle" font-size="14" fill="#2E3639">W/(m·K)</text>
-<line x1="252.5" y1="336" x2="252.5" y2="364" stroke="#2E3639"/>
-<line x1="427.5" y1="336" x2="427.5" y2="364" stroke="#2E3639"/>
-<line x1="255.5" y1="358" x2="424.5" y2="358" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
-<text x="340.0" y="380" text-anchor="middle" font-size="14" fill="#2E3639">175 mm</text>
-<rect x="427.5" y="70" width="200" height="260" fill="#e6f5fc" stroke="#2E3639" stroke-width="1.5"/>
-<rect x="427.5" y="70" width="200" height="260" fill="url(#eps)"/>
-<text x="527.5" y="190.0" text-anchor="middle" font-size="15" font-weight="600" fill="#022541">EPS-Dämmung</text>
-<text x="527.5" y="214.0" text-anchor="middle" font-size="14" fill="#2E3639">λ = 0,035</text>
-<text x="527.5" y="232.0" text-anchor="middle" font-size="14" fill="#2E3639">W/(m·K)</text>
-<line x1="427.5" y1="336" x2="427.5" y2="364" stroke="#2E3639"/>
-<line x1="627.5" y1="336" x2="627.5" y2="364" stroke="#2E3639"/>
-<line x1="430.5" y1="358" x2="624.5" y2="358" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
-<text x="527.5" y="380" text-anchor="middle" font-size="14" fill="#2E3639">200 mm</text>
-<text x="132.5" y="40" text-anchor="middle" font-size="16" font-weight="700" fill="#022541">innen</text>
-<text x="747.5" y="40" text-anchor="middle" font-size="16" font-weight="700" fill="#022541">außen</text>
-<text x="234.5" y="90" text-anchor="end" font-size="15" fill="#E53009" font-weight="600">Luft 20 °C</text>
-<text x="234.5" y="112" text-anchor="end" font-size="15" fill="#E53009">h = 7,7 W/(m²·K)</text>
-<path d="M230.5,320 C224.5,280 236.5,240 230.5,200" fill="none" stroke="#E53009" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
-<path d="M216.5,320 C210.5,280 222.5,240 216.5,200" fill="none" stroke="#E53009" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
-<path d="M202.5,320 C196.5,280 208.5,240 202.5,200" fill="none" stroke="#E53009" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
-<text x="645.5" y="90" text-anchor="start" font-size="15" fill="#009EE3" font-weight="600">Luft −10 °C</text>
-<text x="645.5" y="112" text-anchor="start" font-size="15" fill="#009EE3">h = 25 W/(m²·K)</text>
-<path d="M649.5,320 C655.5,280 643.5,240 649.5,200" fill="none" stroke="#009EE3" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
-<path d="M663.5,320 C669.5,280 657.5,240 663.5,200" fill="none" stroke="#009EE3" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
-<path d="M677.5,320 C683.5,280 671.5,240 677.5,200" fill="none" stroke="#009EE3" stroke-width="1.5" opacity="0.6" marker-end="url(#pm)"/>
-<line x1="262.5" y1="275.0" x2="617.5" y2="275.0" stroke="#E53009" stroke-width="2.5" marker-end="url(#pf)"/>
-<text x="440.0" y="297.0" text-anchor="middle" font-size="15" font-style="italic" fill="#E53009">q̇</text>
-<text x="440.0" y="412" text-anchor="middle" font-size="13" fill="#2E3639">Wandausschnitt 100 mm × 100 mm (Schnitt)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="960" height="450" fill="white"/>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker><marker id="plr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="plc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><pattern id="eps" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="3" fill="none" stroke="#009EE3" stroke-width="1" opacity="0.5"/></pattern></defs>
+<rect x="292.5" y="74" width="175" height="260" fill="#d9dcde" stroke="#2E3639" stroke-width="1.5"/>
+<text x="380" y="178" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">Kalksandstein</text>
+<text x="380" y="204" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">λ = 0,99</text>
+<text x="380" y="228" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">W/(m·K)</text>
+<line x1="292.5" y1="340" x2="292.5" y2="372" stroke="#2E3639"/>
+<line x1="467.5" y1="340" x2="467.5" y2="372" stroke="#2E3639"/>
+<line x1="295.5" y1="364" x2="464.5" y2="364" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="380" y="390" text-anchor="middle" font-size="18" fill="#2E3639">175 mm</text>
+<rect x="467.5" y="74" width="200" height="260" fill="#e6f5fc" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="467.5" y="74" width="200" height="260" fill="url(#eps)"/>
+<text x="568" y="178" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">EPS</text>
+<text x="568" y="204" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">λ = 0,035</text>
+<text x="568" y="228" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">W/(m·K)</text>
+<line x1="467.5" y1="340" x2="467.5" y2="372" stroke="#2E3639"/>
+<line x1="667.5" y1="340" x2="667.5" y2="372" stroke="#2E3639"/>
+<line x1="470.5" y1="364" x2="664.5" y2="364" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
+<text x="568" y="390" text-anchor="middle" font-size="18" fill="#2E3639">200 mm</text>
+<text x="198" y="40" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">innen</text>
+<text x="762" y="40" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">außen</text>
+<line x1="289.5" y1="74" x2="289.5" y2="334" stroke="#E53009" stroke-width="3" stroke-dasharray="8 6"/>
+<path d="M274.5,334 C267.5,269 281.5,204 274.5,204.0 S281.5,139 274.5,78" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.7" marker-end="url(#plr)"/>
+<path d="M261.5,334 C254.5,269 268.5,204 261.5,204.0 S268.5,139 261.5,78" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.7" marker-end="url(#plr)"/>
+<path d="M248.5,334 C241.5,269 255.5,204 248.5,204.0 S255.5,139 248.5,78" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.7" marker-end="url(#plr)"/>
+<text x="222" y="198" text-anchor="end" font-size="18" fill="#E53009" font-weight="700">Luft 20 °C</text>
+<text x="222" y="222" text-anchor="end" font-size="18" fill="#E53009">h = 7,7 W/(m²·K)</text>
+<line x1="670.5" y1="74" x2="670.5" y2="334" stroke="#009EE3" stroke-width="3" stroke-dasharray="8 6"/>
+<path d="M685.5,334 C692.5,269 678.5,204 685.5,204.0 S678.5,139 685.5,78" fill="none" stroke="#009EE3" stroke-width="1.6" opacity="0.7" marker-end="url(#plc)"/>
+<path d="M698.5,334 C705.5,269 691.5,204 698.5,204.0 S691.5,139 698.5,78" fill="none" stroke="#009EE3" stroke-width="1.6" opacity="0.7" marker-end="url(#plc)"/>
+<path d="M711.5,334 C718.5,269 704.5,204 711.5,204.0 S704.5,139 711.5,78" fill="none" stroke="#009EE3" stroke-width="1.6" opacity="0.7" marker-end="url(#plc)"/>
+<text x="738" y="198" text-anchor="start" font-size="18" fill="#009EE3" font-weight="700">Luft −10 °C</text>
+<text x="738" y="222" text-anchor="start" font-size="18" fill="#009EE3">h = 25 W/(m²·K)</text>
+<line x1="304.5" y1="300" x2="655.5" y2="300" stroke="#E53009" stroke-width="2.5" marker-end="url(#pf)"/>
+<text x="318" y="290" text-anchor="start" font-size="18" fill="#E53009" font-style="italic">q̇</text>
+<text x="480" y="440" text-anchor="middle" font-size="18" fill="#2E3639">Wandausschnitt 100 mm × 100 mm (Schnitt)</text>
 </svg>

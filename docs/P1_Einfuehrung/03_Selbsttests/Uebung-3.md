@@ -9,7 +9,7 @@ Der Altbau aus Übung 2 soll außen gedämmt werden. Nach dem Gebäudeenergieges
 haben. Wie dick muss die Dämmung mindestens sein?
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung3.svg" alt="Vollziegelwand mit Dämmung der Dicke d" width="560" class="no-lightbox">
+  <img src="../../images/p1_uebung3.svg" alt="Vollziegelwand mit Dämmung der Dicke d" class="no-lightbox">
 </figure>
 
 ## Gegeben
