@@ -213,7 +213,7 @@ if __name__ == "__main__":
     luft = (("Luft 20 °C", "α = 7,7 W/(m²·K)"), ("Luft −10 °C", "α = 25 W/(m²·K)"))
     wand("p1_aussenwand_a.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "temp", "T = 20 °C", "T = −10 °C")
     wand("p1_aussenwand_b.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "konv", *luft)
-    wand("p1_uebung1.svg", [("VZ", "365 mm", 365, "0,68"), ("EPS", "d = ?", 121, "0,035")], "konv", *luft)
+    wand("p1_uebung1.svg", [("VZ", "365 mm", 365, "0,68"), ("EPS", "140 mm", 140, "0,035")], "konv", *luft)
     ecke("p1_uebung2.svg")
     fussboden("p1_uebung3.svg")
     netz_1d("p1_fem_1d.svg")
