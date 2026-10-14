@@ -31,9 +31,9 @@ ganze Temperatur ab.
 
 ## Fall a) Oberflächentemperaturen
 
-$$\dot q = \frac{T_i - T_e}{R_{KS} + R_{EPS}} = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2K/W}} = 7{,}18\ \mathrm{W/m^2}$$
+$$\dot q = \frac{T_{si} - T_{se}}{R_{KS} + R_{EPS}} = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2K/W}} = 7{,}18\ \mathrm{W/m^2}$$
 
-$$T_{Fuge} = T_i - \dot q\,R_{KS} = 20\ \mathrm{°C} - 7{,}18 \cdot 0{,}177\ \mathrm{K} = 18{,}73\ \mathrm{°C}$$
+$$T_{Fuge} = T_{si} - \dot q\,R_{KS} = 20\ \mathrm{°C} - 7{,}18 \cdot 0{,}177\ \mathrm{K} = 18{,}73\ \mathrm{°C}$$
 
 ## Fall b) Konvektion
 

@@ -35,10 +35,11 @@ title: 5 · Randbedingungen
     Temperatur der Luft davor. Dafür gibt es die Konvektion in
     [Fall b)](b-konvektion.md).
 
-!!! info "Und die anderen vier Seitenflächen?"
-    Flächen ohne Randbedingung sind in ANSYS **adiabat**: Über sie fließt keine
-    Wärme. Das passt hier, denn wir schneiden ein Stück aus einer langen Wand
-    heraus, und die Wärme fließt nur von innen nach außen.
+!!! info "Flächen ohne Randbedingung sind adiabat"
+    Alle freien Flächen, auf die keine Randbedingung gesetzt wird, sind in ANSYS
+    automatisch **adiabat**: Über sie fließt keine Wärme. Hier sind das die vier
+    schmalen Seitenflächen. Das passt, denn wir schneiden ein Stück aus einer
+    langen Wand heraus, und die Wärme fließt nur von innen nach außen.
 
 !!! check "Checkpoint"
     `Strukturbaum Steady-State Thermal` anklicken: Im Grafikfenster sind beide

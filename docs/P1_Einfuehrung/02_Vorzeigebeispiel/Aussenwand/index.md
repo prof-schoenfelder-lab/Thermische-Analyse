@@ -65,8 +65,8 @@ Beide Körper teilen sich die Fläche in der Trennfuge (**Share Topology**).
 <!-- --8<-- [start:Randbedingungen_a] -->
 Fall a) Oberflächentemperaturen
 
-- Innenseite (Kalksandstein): $T_i = 20\ \mathrm{°C}$
-- Außenseite (EPS): $T_e = -10\ \mathrm{°C}$
+- Innenseite (Kalksandstein): Oberfläche $T_{si} = 20\ \mathrm{°C}$
+- Außenseite (EPS): Oberfläche $T_{se} = -10\ \mathrm{°C}$
 <!-- --8<-- [end:Randbedingungen_a] -->
 
 <!-- --8<-- [start:Randbedingungen_b] -->

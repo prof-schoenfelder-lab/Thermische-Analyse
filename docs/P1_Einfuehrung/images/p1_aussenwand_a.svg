@@ -21,9 +21,9 @@
 <text x="228" y="40" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">innen</text>
 <text x="732" y="40" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">außen</text>
 <line x1="318.5" y1="74" x2="318.5" y2="334" stroke="#E53009" stroke-width="6"/>
-<text x="304" y="210" text-anchor="end" font-size="18" fill="#E53009" font-weight="700">T = 20 °C</text>
+<text x="304" y="210" text-anchor="end" font-size="18" fill="#E53009" font-weight="700">T<tspan baseline-shift="sub" font-size="13">si</tspan><tspan dx="3">= 20 °C</tspan></text>
 <line x1="641.5" y1="74" x2="641.5" y2="334" stroke="#009EE3" stroke-width="6"/>
-<text x="656" y="210" text-anchor="start" font-size="18" fill="#009EE3" font-weight="700">T = −10 °C</text>
+<text x="656" y="210" text-anchor="start" font-size="18" fill="#009EE3" font-weight="700">T<tspan baseline-shift="sub" font-size="13">se</tspan><tspan dx="3">= −10 °C</tspan></text>
 <line x1="334.5" y1="300" x2="625.5" y2="300" stroke="#E53009" stroke-width="2.5" marker-end="url(#pf)"/>
 <text x="348" y="290" text-anchor="start" font-size="18" fill="#E53009" font-style="italic">q̇</text>
 <text x="480" y="440" text-anchor="middle" font-size="18" fill="#2E3639">Wandausschnitt 100 mm × 100 mm (Schnitt)</text>

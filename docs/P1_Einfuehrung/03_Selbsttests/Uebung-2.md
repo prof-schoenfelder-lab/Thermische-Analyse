@@ -27,6 +27,9 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
         $$f_{Rsi} = \frac{T_{si} - T_e}{T_i - T_e} \ge 0{,}70$$
 
+      $T_i$ und $T_e$ sind die **Lufttemperaturen** innen (Raum) und außen,
+      $T_{si}$ ist die Temperatur der **Wandoberfläche** innen (s für surface).
+
     - Bei 20 °C innen und −5 °C außen heißt das: $T_{si} \ge 12{,}5\ \mathrm{°C}$.
 
     In den Normen heißen Temperaturen in °C $\theta$ statt $T$.
@@ -37,8 +40,8 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 - Beide Schenkel **1000 mm** lang (außen gemessen), Höhe des Ausschnitts **100 mm**
 - Netzgröße global **20 mm**
 - Randbedingungen für den **Mindestwärmeschutz nach DIN 4108-2**:
-    - innen: Luft **20 °C**, $\alpha_i = 4\ \mathrm{W/(m^2K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2K/W}$)
-    - außen: Luft **−5 °C**, $\alpha_e = 25\ \mathrm{W/(m^2K)}$
+    - innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 4\ \mathrm{W/(m^2K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2K/W}$)
+    - außen: Außenluft $T_e = -5\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2K)}$
     - Schnittenden der Schenkel, Ober- und Unterseite: adiabat (keine Randbedingung)
 
 !!! info "Warum andere Randbedingungen als im Vorzeigebeispiel?"

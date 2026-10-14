@@ -28,6 +28,7 @@ Geometrie direkt an (Fläche ziehen, verschieben).
     2. `Rectangle`, auf den Koordinatenursprung klicken, Maus in Richtung des Rechtecks bewegen (positive x und z), **nicht klicken**: mit `Tab` die Seitenlängen **100 mm** und **100 mm** eingeben, `Enter`. Das ist die Innenfläche der Wand
     3. `Pull` (Taste `P`): die Fläche anklicken und gedrückt halten, in Zugrichtung ziehen (nicht loslassen), `Leertaste` drücken, **175 mm** eingeben, `Enter`. Das ist der Kalksandstein
     4. Die gegenüberliegende Fläche anklicken (sie wird zur Trennfuge) und mit `Strg + C`, `Strg + V` kopieren: Im Strukturbaum erscheint **Surface**
+        - Warum kopieren? Zieht man direkt die Fläche des Kalksandsteins, wird immer **dieser Körper** dicker, auch mit *No merge*. Aus der Kopie entsteht ein eigener Körper
     5. **Surface** anklicken, `Pull`, links unter `Options` **No merge** einschalten. Die Fläche anklicken und gedrückt halten, nach außen ziehen, `Leertaste`, **140 mm**, `Enter`. Das ist die Dämmung
     6. Körper im Strukturbaum umbenennen (`Rechtsklick → Rename`): **Kalksandstein**, **EPS**
     7. `Rechtsklick Design1 → Properties`, unter **Analysis** bei **Share Topology** den Wert **Share** wählen
@@ -39,17 +40,6 @@ Geometrie direkt an (Fläche ziehen, verschieben).
 </figure>
 
 <tutorial slug="p1-geometrie-wand"></tutorial>
-
-!!! warning "Warum nicht direkt die Fläche des Kalksandsteins ziehen?"
-    Zieht man eine Fläche eines vorhandenen Körpers, wird immer **dieser Körper**
-    länger, auch mit *No merge*. Erst die kopierte Fläche (*Surface*) ist ein
-    eigenes Objekt: Aus ihr entsteht mit *No merge* ein zweiter Körper.
-
-!!! info "Innen, außen, Trennfuge"
-    Die Wand hat zwei große Flächen mit Randbedingung: **innen** die freie Fläche
-    des Kalksandsteins (Raumseite), **außen** die freie Fläche der Dämmung
-    (Wetterseite). Dazwischen liegt die **Trennfuge**. Die vier schmalen
-    Seitenflächen bleiben ohne Randbedingung.
 
 !!! warning "Warum Share Topology?"
     Ohne *Share* sind es zwei getrennte Körper, und ANSYS verbindet sie über

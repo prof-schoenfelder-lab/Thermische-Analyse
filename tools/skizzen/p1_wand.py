@@ -17,6 +17,11 @@ FUELL = {"KS": ("#d9dcde", "Kalksandstein"), "EPS": ("#e6f5fc", "EPS"), "VZ": ("
 W, H, Y0, Y1 = 960, 450, 74, 334          # Bildgröße, Ober- und Unterkante der Wand
 
 
+def sub(zeichen, index, rest=""):
+    """Formelzeichen mit Index, z. B. T mit i, danach der Rest auf normaler Grundlinie."""
+    return f'{zeichen}<tspan baseline-shift="sub" font-size="13">{index}</tspan><tspan dx="3">{rest}</tspan>'
+
+
 def text(x, y, inhalt, anker="middle", farbe=GRAU, fett=False, kursiv=False, halo=False):
     stil = (' font-weight="700"' if fett else "") + (' font-style="italic"' if kursiv else "")
     if halo:  # weißer Rand: lesbar auf der gepunkteten Dämmung
@@ -90,7 +95,8 @@ def wand(datei, schichten, modus, links, rechts):
             for k in range(3):  # Luftströmung als gleichmäßige Welle über die ganze Höhe
                 el.append(welle(xs + seite * (18 + 13 * k), Y1, Y0 + 4, farbe))
             xt = xs + seite * 70
-            el += [text(xt, ym - 6, txt[0], anker, farbe, fett=True), text(xt, ym + 18, txt[1], anker, farbe)]
+            y0 = ym - 6 - 12 * (len(txt) - 2)  # Zeilen mittig zur Wand, letzte Zeile (α) normal
+            el += [text(xt, y0 + 24 * j, z, anker, farbe, fett=j < len(txt) - 1) for j, z in enumerate(txt)]
     yq = Y1 - 34  # Wärmestrom durch die Wand
     el += [f'<line x1="{xl + 12}" y1="{yq}" x2="{xr - 12}" y2="{yq}" stroke="{ROT}" stroke-width="2.5" marker-end="url(#pf)"/>',
            text(xl + 26, yq - 10, "q̇", "start", ROT, kursiv=True),
@@ -156,8 +162,8 @@ def ecke(datei):
     el.append(text(ox + L + 14, oy - t / 2 + 6, "adiabat", "start"))
     el.append(text(ox + t / 2, oy - L - 14, "adiabat"))
     # Beschriftung der Seiten
-    el += [text(ox + L / 2 + 60, oy + 42, "außen: Luft −5 °C, α = 25 W/(m²·K)", farbe=CYAN, fett=True),
-           text(ox + t + 40, oy - t - 70, "innen (Raum): Luft 20 °C", "start", ROT, fett=True),
+    el += [text(ox + L / 2 + 60, oy + 42, f"außen: Außenluft {sub('T', 'e', '= −5 °C')}, α = 25 W/(m²·K)", farbe=CYAN, fett=True),
+           text(ox + t + 40, oy - t - 70, f"innen: Raumluft {sub('T', 'i', '= 20 °C')}", "start", ROT, fett=True),
            text(ox + t + 40, oy - t - 46, "α = 4 W/(m²·K) (Mindestwärmeschutz)", "start", ROT)]
     # Gesuchter Punkt: innere Ecke
     el.append(f'<circle cx="{ox + t}" cy="{oy - t}" r="7" fill="{ROT}" stroke="white" stroke-width="2"/>')
@@ -210,8 +216,8 @@ def fussboden(datei):
 
 if __name__ == "__main__":
     KS = ("KS", "175 mm", 175, "0,99")
-    luft = (("Luft 20 °C", "α = 7,7 W/(m²·K)"), ("Luft −10 °C", "α = 25 W/(m²·K)"))
-    wand("p1_aussenwand_a.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "temp", "T = 20 °C", "T = −10 °C")
+    luft = (("Raumluft", f"{sub('T', 'i', '= 20 °C')}", "α = 7,7 W/(m²·K)"), ("Außenluft", f"{sub('T', 'e', '= −10 °C')}", "α = 25 W/(m²·K)"))
+    wand("p1_aussenwand_a.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "temp", f"{sub('T', 'si', '= 20 °C')}", f"{sub('T', 'se', '= −10 °C')}")
     wand("p1_aussenwand_b.svg", [KS, ("EPS", "140 mm", 140, "0,035")], "konv", *luft)
     wand("p1_uebung1.svg", [("VZ", "365 mm", 365, "0,68"), ("EPS", "140 mm", 140, "0,035")], "konv", *luft)
     ecke("p1_uebung2.svg")
