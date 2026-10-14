@@ -13,6 +13,24 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
   <img src="../../images/p1_uebung2.svg" alt="Außenecke in der Draufsicht" class="no-lightbox">
 </figure>
 
+!!! info "Schimmelnachweis kurz erklärt"
+    - Raumluft enthält Wasserdampf. Kühlt sie an einer kalten Wand ab, steigt
+      dort die **relative Luftfeuchte**.
+    - Ab etwa **80 %** relativer Feuchte an der Oberfläche kann Schimmel wachsen,
+      auch ohne sichtbares Tauwasser.
+    - Bei normaler Raumluft (20 °C, 50 % Feuchte) ist das bei einer
+      Oberflächentemperatur von etwa **12,6 °C** erreicht. Die kälteste Stelle
+      innen muss also wärmer sein.
+    - DIN 4108-2 prüft das mit dem **Temperaturfaktor**: Er sagt, welcher Anteil
+      des Temperaturunterschieds innen an der Oberfläche noch ankommt
+      (1 = so warm wie die Raumluft, 0 = so kalt wie draußen):
+
+        $$f_{Rsi} = \frac{T_{si} - T_e}{T_i - T_e} \ge 0{,}70$$
+
+    - Bei 20 °C innen und −5 °C außen heißt das: $T_{si} \ge 12{,}5\ \mathrm{°C}$.
+
+    In den Normen heißen Temperaturen in °C $\theta$ statt $T$.
+
 ## Gegeben
 
 - Wandaufbau wie im Vorzeigebeispiel: Kalksandstein 175 mm innen, EPS 140 mm außen
@@ -60,14 +78,14 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ## Gesucht
 
-### Oberflächentemperatur innen in der Ecke $\theta_{si}$ in °C
+### Oberflächentemperatur innen in der Ecke $T_{si}$ in °C
 
 <div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf den Innenflächen. Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Alle vier Körper mit Material und Share Topology?">
 </div>
 
-### Temperaturfaktor $f_{Rsi} = \dfrac{\theta_{si} - \theta_e}{\theta_i - \theta_e}$ in der Ecke
+### Temperaturfaktor $f_{Rsi} = \dfrac{T_{si} - T_e}{T_i - T_e}$ in der Ecke
 
-<div class="numeric-question" data-answer="0.896" data-tolerance="0.005" data-points="5" data-attempts="5" data-hints="θ_i = 20 °C, θ_e = −5 °C, also durch 25 K teilen.">
+<div class="numeric-question" data-answer="0.896" data-tolerance="0.005" data-points="5" data-attempts="5" data-hints="T_i = 20 °C, T_e = −5 °C, also durch 25 K teilen.">
 </div>
 
 ### Erfüllt die Ecke den Mindestwärmeschutz ($f_{Rsi} \ge 0{,}70$)?
@@ -93,8 +111,8 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ### Lösung
 
-- Ebene Wand mit denselben Randbedingungen (Handrechnung): $\theta_{si} = 18{,}60\ \mathrm{°C}$
-- Ecke (FEM): $\theta_{si} = 17{,}39\ \mathrm{°C}$, also **1,2 K kälter** als die ebene Wand
+- Ebene Wand mit denselben Randbedingungen (Handrechnung): $T_{si} = 18{,}60\ \mathrm{°C}$
+- Ecke (FEM): $T_{si} = 17{,}39\ \mathrm{°C}$, also **1,2 K kälter** als die ebene Wand
 - $f_{Rsi} = (17{,}39 + 5)/25 = 0{,}896 \ge 0{,}70$: Mit 14 cm Dämmung ist die Ecke unkritisch. Bei einem ungedämmten Altbau sieht das anders aus (gern ausprobieren)
 - Die Störung durch die Ecke reicht weit: Am Ende der 1 m langen Schenkel liegt die Innenoberfläche noch 0,1 K unter dem Wert der ebenen Wand, weil der Kalksandstein die Wärme gut entlang der Wand leitet
 

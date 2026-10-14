@@ -14,16 +14,16 @@
 <text x="422" y="318" text-anchor="start" font-size="18" fill="#E53009" font-weight="700">innen (Raum): Luft 20 °C</text>
 <text x="422" y="342" text-anchor="start" font-size="18" fill="#E53009">α = 4 W/(m²·K) (Mindestwärmeschutz)</text>
 <circle cx="382.29999999999995" cy="387.70000000000005" r="7" fill="#E53009" stroke="white" stroke-width="2"/>
-<text x="396" y="378" text-anchor="start" font-size="18" fill="#022541" font-weight="700">θ<tspan baseline-shift="sub" font-size="13">si</tspan> in der Ecke?</text>
+<text x="396" y="378" text-anchor="start" font-size="18" fill="#022541" font-weight="700">T<tspan baseline-shift="sub" font-size="13">si</tspan><tspan dx="8">in der Ecke?</tspan></text>
 <text x="510" y="497" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">EPS</text>
 <text x="510" y="430" text-anchor="middle" font-size="18" fill="#022541" font-weight="700" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">Kalksandstein</text>
 <line x1="180" y1="520" x2="180" y2="461.2" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
-<text x="172" y="491" text-anchor="end" font-size="18" fill="#2E3639">140</text>
+<text x="172" y="491" text-anchor="end" font-size="18" fill="#2E3639">140 mm</text>
 <line x1="180" y1="461.2" x2="180" y2="387.70000000000005" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
-<text x="172" y="424" text-anchor="end" font-size="18" fill="#2E3639">175</text>
+<text x="172" y="424" text-anchor="end" font-size="18" fill="#2E3639">175 mm</text>
 <line x1="210" y1="520" x2="210" y2="100.0" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
 <text x="202" y="220" text-anchor="end" font-size="18" fill="#2E3639">1000 mm</text>
 <line x1="250" y1="590" x2="670.0" y2="590" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
 <text x="460" y="614" text-anchor="middle" font-size="18" fill="#2E3639">1000 mm</text>
-<text x="600" y="684" text-anchor="middle" font-size="18" fill="#2E3639">Draufsicht, Höhe des Ausschnitts 100 mm (Maße in mm)</text>
+<text x="600" y="684" text-anchor="middle" font-size="18" fill="#2E3639">Draufsicht, Höhe des Ausschnitts 100 mm</text>
 </svg>

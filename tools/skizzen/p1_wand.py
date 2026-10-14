@@ -161,16 +161,16 @@ def ecke(datei):
            text(ox + t + 40, oy - t - 46, "α = 4 W/(m²·K) (Mindestwärmeschutz)", "start", ROT)]
     # Gesuchter Punkt: innere Ecke
     el.append(f'<circle cx="{ox + t}" cy="{oy - t}" r="7" fill="{ROT}" stroke="white" stroke-width="2"/>')
-    el.append(text(ox + t + 14, oy - t - 10, 'θ<tspan baseline-shift="sub" font-size="13">si</tspan> in der Ecke?', "start", DUNKEL, fett=True))
+    el.append(text(ox + t + 14, oy - t - 10, 'T<tspan baseline-shift="sub" font-size="13">si</tspan><tspan dx="8">in der Ecke?</tspan>', "start", DUNKEL, fett=True))
     # Schichtnamen
     el += [text(ox + L * 0.62, oy - e / 2 + 6, "EPS", farbe=DUNKEL, fett=True, halo=True),
            text(ox + L * 0.62, oy - e - (t - e) / 2 + 6, "Kalksandstein", farbe=DUNKEL, fett=True, halo=True)]
     # Maße
-    el += mass(ox - 70, oy, ox - 70, oy - e, "140", dx=-8, anker="end")
-    el += mass(ox - 70, oy - e, ox - 70, oy - t, "175", dx=-8, anker="end")
+    el += mass(ox - 70, oy, ox - 70, oy - e, "140 mm", dx=-8, anker="end")
+    el += mass(ox - 70, oy - e, ox - 70, oy - t, "175 mm", dx=-8, anker="end")
     el += mass(ox - 40, oy, ox - 40, oy - L, "1000 mm", dx=-8, dy=-90, anker="end")
     el += mass(ox, oy + 70, ox + L, oy + 70, "1000 mm", dy=24)
-    el.append(text(w / 2 + 120, h - 6, "Draufsicht, Höhe des Ausschnitts 100 mm (Maße in mm)"))
+    el.append(text(w / 2 + 120, h - 6, "Draufsicht, Höhe des Ausschnitts 100 mm"))
     svg_datei(datei, w, h, el)
 
 
