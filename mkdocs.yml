@@ -42,6 +42,7 @@ theme:
 
 hooks:
       - scripts/answers_hook.py
+      - scripts/spickzettel_hook.py
 
 plugins:
       - macros
@@ -96,6 +97,7 @@ extra_javascript:
       - "assets/vendor/three-0.147.0.min.js"
       - "assets/js/course-stats.js"
       - "assets/js/progress-hub.js"
+      - "assets/js/spickzettel.js"
       - "assets/js/hero-anim.js"
       - "assets/js/wand-rechner.js"
 
@@ -108,6 +110,7 @@ extra_css:
       - "assets/styles/wand-rechner.css"
       - "assets/styles/anleitung.css"
       - "styles/modern.css"
+      - "assets/styles/spickzettel.css"
 
 # Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums
 extra:
@@ -193,7 +196,9 @@ nav:
               - "Beispielaufgabe: Ebene Wand": P4_Transient/Beispiel-Ebene-Wand.md
               - "Zusatzaufgabe: Abkühlung Teewasser": P4_Transient/Zusatz-Teewasser.md
       # <<< AUTO-NAV
-      - MEIN FORTSCHRITT: Fortschritt.md
+      - MEIN BEREICH:
+              - Fortschritt.md
+              - Spickzettel.md
       - FAQ:
               - 00_FAQ/index.md
               - 00_FAQ/ANSYS_Install.md

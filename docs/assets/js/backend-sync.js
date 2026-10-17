@@ -79,7 +79,7 @@
   // keine fremden Punkte auf den neuen Account hochgeladen werden.
   function wipeLocalState() {
     try {
-      var prefixes = ['answer_', 'page_claimed', 'player_level'];
+      var prefixes = ['answer_', 'page_claimed', 'player_level', 'spickzettel'];
       var doomed = [];
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
@@ -127,6 +127,9 @@
         }
         try { localStorage.setItem('ac_owner', me.pseudonym); } catch (e) { }
         showBadge(me);
+        // Besitzer geprüft: jetzt dürfen andere Teile (Spickzettel) ihren Stand abgleichen
+        window.AC_ANGEMELDET = me.pseudonym;
+        document.dispatchEvent(new CustomEvent('kurs:angemeldet'));
         pullAndMerge();
         setTimeout(push, 800);
       })

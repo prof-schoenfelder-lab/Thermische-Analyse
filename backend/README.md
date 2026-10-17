@@ -32,6 +32,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | `POST /lti/launch` | LTI-1.1-Fallback (OAuth1-signiert) |
 | `POST /api/results` | Punktestand speichern (Bearer-Token; Best-Score wird nie verschlechtert) |
 | `GET /api/me` | eigener Punktestand (pseudonym) |
+| `GET/POST /api/spickzettel` | „Mein Spickzettel“: Auswahl und eigene Notizen je Person (Bearer-Token; der Browser schickt nur einen neueren Stand) |
 | `GET /api/stats` | anonyme Aggregatstatistik pro Frage (für Lehr-Analytik) |
 
 ## Konfiguration (Umgebungsvariablen)

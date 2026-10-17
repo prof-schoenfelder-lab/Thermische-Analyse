@@ -1,0 +1,134 @@
+/* "Mein Spickzettel" (assets/js/spickzettel.js) */
+.sz-laden { color: var(--kurs-text-2); font-size: .75rem; }
+
+/* Leiste: Füllstand, Bearbeiten, Drucken */
+.sz-leiste { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: 1.2rem 0 .8rem; }
+.md-typeset .sz-leiste .md-button { margin: 0; padding: .35em 1.1em; font-size: .72rem; }
+.sz-fuell { flex: 1 1 14rem; display: flex; align-items: center; gap: .6rem; font-size: .68rem; color: var(--kurs-text-2); }
+.sz-fuell-balken { flex: 1; height: .45rem; background: var(--kurs-panel); border-radius: 1rem; overflow: hidden; }
+.sz-fuell-balken div { height: 100%; background: var(--kurs-accent); transition: width .3s; }
+.sz-voll .sz-fuell-balken div { background: var(--kurs-c-warn); }
+.sz-voll span { color: var(--kurs-c-warn); }
+.sz-info-knopf {
+  width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1.5px solid var(--kurs-accent-ink); background: transparent;
+  color: var(--kurs-accent-ink); font: italic 700 .8rem/1 Georgia, serif; cursor: pointer; padding: 0;
+}
+.sz-info-knopf[aria-expanded="true"] { background: var(--kurs-accent-ink); color: #fff; }
+#sz-info { margin: 0 0 .9rem; padding: .7rem 1rem; background: var(--kurs-panel); border-radius: var(--kurs-radius-md); font-size: .74rem; }
+.md-typeset #sz-info p { margin: 0 0 .4rem; }
+.md-typeset #sz-info p:last-child { margin-bottom: 0; }
+
+/* Der Zettel: ganz leicht kariertes Blatt mit Randlinie, zwei Spalten wie im Druck */
+.sz-blatt {
+  position: relative; column-count: 2; column-gap: 1.8rem; padding: 1rem 1.5rem 1rem 2.6rem;
+  background-color: #fff; background-size: 18px 18px;
+  background-image: linear-gradient(rgba(0, 112, 166, .045) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 112, 166, .045) 1px, transparent 1px);
+  border: 1px solid var(--kurs-line); border-radius: 4px; box-shadow: var(--kurs-shadow);
+  font-size: .74rem; line-height: 1.5; color: var(--kurs-text);
+}
+.sz-blatt::before { content: ""; position: absolute; left: 1.9rem; top: 0; bottom: 0; border-left: 2px solid #dff1fa; }
+.sz-kopf { column-span: all; margin: 0 0 .9rem; font-size: .9rem; font-weight: 700; color: var(--kurs-head); }
+.sz-kopf span {
+  display: block; font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--kurs-accent-ink);
+}
+.sz-abschnitt { break-inside: avoid-column; margin-bottom: 1rem; }
+.sz-bearbeiten .sz-abschnitt { break-inside: auto; }
+html:root .md-typeset .sz-abschnitt h2 {
+  display: inline-block; font-size: .78rem; font-weight: 700; margin: 0 0 .4rem; padding: 0 .3rem;
+  color: var(--kurs-head); background: linear-gradient(transparent 55%, #bfe6f8 55%); break-after: avoid;
+}
+.sz-abschnitt h2 span { color: var(--kurs-accent-ink); margin-right: .4rem; }
+.sz-e { margin: 0 0 .35rem; break-inside: avoid; }
+.sz-e-text { white-space: pre-wrap; }
+.sz-e strong { color: var(--kurs-head); margin-right: .15rem; }
+.sz-g-fehler .sz-e-text::before { content: "\2610\00a0"; color: var(--kurs-head); }
+.md-typeset a.sz-mehr { font-size: .62rem; white-space: nowrap; color: var(--kurs-accent-ink); }
+[data-md-color-scheme="slate"] .sz-blatt { background-color: var(--kurs-surface); }
+html:root [data-md-color-scheme="slate"] .md-typeset .sz-abschnitt h2 { background: linear-gradient(transparent 55%, rgba(0, 158, 227, .3) 55%); }
+
+/* Bearbeiten */
+.sz-bearbeiten .sz-e { position: relative; padding: .3rem 2.6rem .3rem .4rem; border: 1px dashed var(--kurs-line-2); border-radius: var(--kurs-radius); }
+.sz-knoepfe { position: absolute; top: .25rem; right: .3rem; }
+.sz-knoepfe button {
+  border: 0; background: transparent; color: var(--kurs-text-2); font-size: .8rem; cursor: pointer; padding: 0 .2rem;
+}
+.sz-knoepfe button:hover { color: var(--kurs-accent); }
+.sz-form { margin: 0 0 .5rem; padding: .5rem; background: var(--kurs-panel); border-radius: var(--kurs-radius); break-inside: avoid; }
+.sz-form input, .sz-form textarea {
+  display: block; width: 100%; box-sizing: border-box; margin: 0 0 .35rem; font: inherit; padding: .35rem .45rem;
+  border: 1px solid var(--kurs-line-2); border-radius: var(--kurs-radius); background: var(--kurs-surface); color: var(--kurs-text);
+}
+.sz-form input { font-weight: 700; }
+.sz-form textarea { resize: vertical; }
+.sz-zitat { margin: 0 0 .35rem; padding: .3rem .45rem; font-style: italic; color: var(--kurs-text-2); border-left: 2px solid #bfe6f8; }
+.sz-form input:focus, .sz-form textarea:focus { outline: 2px solid var(--kurs-accent-soft); border-color: var(--kurs-accent); }
+.sz-form-knoepfe { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.md-typeset .sz-form .md-button { margin: 0; padding: .25em .9em; font-size: .68rem; }
+.sz-link { border: 0; background: none; color: var(--kurs-accent-ink); font: inherit; font-size: .66rem; cursor: pointer; text-decoration: underline; }
+.sz-vorschlaege { margin: .2rem 0 .6rem; break-inside: avoid; }
+.sz-vor-titel { display: block; font-size: .64rem; color: var(--kurs-text-2); margin-bottom: .25rem; }
+.sz-vorschlaege button {
+  display: inline-block; margin: 0 .3rem .3rem 0; padding: .2rem .55rem; font: inherit; font-size: .66rem; text-align: left;
+  color: var(--kurs-chip-act-fg); background: var(--kurs-chip-act-bg); border: 1px solid var(--kurs-chip-act-border);
+  border-radius: var(--kurs-radius); cursor: pointer;
+}
+.sz-vorschlaege button.sz-eigen { color: var(--kurs-chip-fg); background: var(--kurs-chip-bg); border-color: var(--kurs-chip-border); }
+
+.sz-leer { padding: 1.2rem 1.5rem; background: var(--kurs-panel); border-radius: var(--kurs-radius-md); font-size: .78rem; }
+.md-typeset .sz-leer p { margin: 0 0 .4rem; }
+
+@media (max-width: 45rem) {
+  .sz-blatt { column-count: 1; padding: 1rem 1rem 1rem 2.2rem; }
+  .sz-blatt::before { left: 1.5rem; }
+}
+
+/* Kursseiten: „+ Zum Spickzettel“, Knopf an markiertem Text, Rückmeldung */
+.sz-plus {
+  display: inline-block; margin: .35rem 0 .1rem; padding: .15rem .6rem; font: inherit; font-size: .64rem; cursor: pointer;
+  color: var(--kurs-chip-act-fg); background: var(--kurs-chip-act-bg); border: 1px solid var(--kurs-chip-act-border);
+  border-radius: var(--kurs-radius);
+}
+.step > .sz-plus { margin-top: 0; }
+li > .sz-plus { margin: 0 0 0 .5rem; padding: 0 .5rem; vertical-align: baseline; }
+.sz-plus.sz-drauf { color: var(--kurs-c-ok); background: transparent; border-color: transparent; }
+#sz-auswahl {
+  position: absolute; z-index: 50; padding: .3rem .7rem; font: 700 .68rem/1.2 var(--md-text-font-family, sans-serif);
+  color: #fff; background: var(--kurs-accent); border: 0; border-radius: var(--kurs-radius); box-shadow: var(--kurs-shadow);
+  cursor: pointer;
+}
+#sz-auswahl[hidden] { display: none; }
+#sz-toast {
+  position: fixed; left: 50%; bottom: 1.5rem; z-index: 60; transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+  padding: .5rem 1rem; font-size: .72rem; color: #fff; background: var(--kurs-head); border-radius: var(--kurs-radius-md);
+  box-shadow: var(--kurs-shadow); transition: opacity .2s, transform .2s;
+}
+#sz-toast.sz-zeigen { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+#sz-toast a { color: #9cd6f2; margin-left: .6rem; }
+
+/* Merke-Kasten (!!! merke "…"): Erkenntnis aus dem Praktikum, mit „+ Zum Spickzettel“ */
+:root {
+  --md-admonition-icon--merke: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>');
+}
+html:root .md-typeset .admonition.merke { --kurs-type: var(--kurs-accent); }
+html:root .md-typeset .admonition.merke > .admonition-title::before {
+  -webkit-mask-image: var(--md-admonition-icon--merke); mask-image: var(--md-admonition-icon--merke);
+}
+html:root .md-typeset .admonition.merke > .sz-plus { margin: 0 0 .9rem; }
+/* übernommene Markierung: zarte Tönung mit feiner Linie darunter, der Text bleibt gut lesbar */
+mark.sz-markiert {
+  color: inherit; padding: 0; cursor: pointer; background: rgba(0, 158, 227, .09);
+  border-bottom: 1.5px solid rgba(0, 158, 227, .5); -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+mark.sz-markiert:hover { background: rgba(0, 158, 227, .16); }
+[data-md-color-scheme="slate"] mark.sz-markiert { background: rgba(0, 158, 227, .16); }
+#sz-menue {
+  position: absolute; z-index: 55; display: flex; align-items: center; gap: .7rem; padding: .35rem .6rem;
+  font-size: .66rem; color: #fff; background: var(--kurs-head); border-radius: var(--kurs-radius); box-shadow: var(--kurs-shadow);
+}
+#sz-menue[hidden] { display: none; }
+#sz-menue a { color: #9cd6f2; }
+#sz-menue button { border: 0; background: none; color: #ffb3a1; font: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
+.sz-kopf-link svg { fill: currentColor; }
+.sz-umschreiben { display: block; margin: 0 0 .4rem; }
+

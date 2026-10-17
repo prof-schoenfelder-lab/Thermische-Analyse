@@ -108,6 +108,12 @@ def init_db():
             updated_at REAL,
             PRIMARY KEY (pseudonym, qid)
         );
+        -- „Mein Spickzettel“ je Person: Auswahl und eigene Notizen als JSON, der neuere Stand gewinnt
+        CREATE TABLE IF NOT EXISTS spickzettel (
+            pseudonym TEXT PRIMARY KEY,
+            daten TEXT NOT NULL,
+            updated_at REAL
+        );
         CREATE TABLE IF NOT EXISTS help_requests (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             who TEXT NOT NULL,
@@ -656,6 +662,32 @@ def get_results():
     ).fetchall()
     return jsonify({"results": {r["qid"]: {"best": r["best"], "max": r["max"],
                                            "attempts": r["attempts"]} for r in rows}})
+
+
+@app.get("/api/spickzettel")
+def get_spickzettel():
+    pseudonym = current_pseudonym()
+    if not pseudonym:
+        return jsonify({"error": "unauthorized"}), 401
+    row = get_db().execute("SELECT daten FROM spickzettel WHERE pseudonym=?", (pseudonym,)).fetchone()
+    return jsonify({"daten": json.loads(row["daten"]) if row else None})
+
+
+@app.post("/api/spickzettel")
+def post_spickzettel():
+    """Stand von „Mein Spickzettel“ speichern; der Browser schickt ihn nur, wenn er neuer ist als der vom Server."""
+    pseudonym = current_pseudonym()
+    if not pseudonym:
+        return jsonify({"error": "unauthorized"}), 401
+    daten = (request.get_json(silent=True) or {}).get("daten")
+    text = json.dumps(daten, ensure_ascii=False)
+    if not isinstance(daten, dict) or len(text) > 50000:
+        return jsonify({"error": "bad payload"}), 400
+    db = get_db()
+    db.execute("INSERT OR REPLACE INTO spickzettel (pseudonym, daten, updated_at) VALUES (?, ?, ?)",
+               (pseudonym, text, time.time()))
+    db.commit()
+    return jsonify({"ok": True})
 
 
 def course_generation():

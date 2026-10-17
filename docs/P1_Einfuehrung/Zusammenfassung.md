@@ -13,7 +13,7 @@ und einmal mit Konvektion.
 
 Die wichtigsten Kernaussagen:
 
-<div class="steps" markdown="1">
+<div class="steps" markdown="1" data-spickzettel="ja">
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Jede Simulation durchläuft dieselben 7 Schritte</p>
