@@ -58,7 +58,7 @@ Ergebnis lässt sich von Hand prüfen.
 
 ### Erfüllt die sanierte Wand das GEG ($U \le 0{,}24$)?
 
-<div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="2">
+<div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="1">
   <div class="mc-options">
     <div class="mc-option" data-value="A">
       <input type="checkbox" id="u1a" name="u1">
@@ -79,6 +79,6 @@ Ergebnis lässt sich von Hand prüfen.
 - $U = 1/R_T = 0{,}212\ \mathrm{W/(m^2K)} \le 0{,}24$: Das GEG ist erfüllt
 - $\dot q = U \cdot 30\ \mathrm{K} = 6{,}37\ \mathrm{W/m^2}$
 - $T_{si} = 20 - 6{,}37 \cdot 0{,}130 = 19{,}17\ \mathrm{°C}$
-- Zum Vergleich der Altbau ohne Dämmung: $U = 1{,}415\ \mathrm{W/(m^2K)}$, $\dot q = 42{,}4\ \mathrm{W/m^2}$, innen nur 14,5 °C an der Wand. Die Dämmung spart **85 %** des Wärmeverlusts
+- Zum Vergleich der Altbau ohne Dämmung: $U = 1{,}415\ \mathrm{W/(m^2K)}$, $\dot q = 42{,}5\ \mathrm{W/m^2}$, innen nur 14,5 °C an der Wand. Die Dämmung spart **85 %** des Wärmeverlusts
 
 </div>

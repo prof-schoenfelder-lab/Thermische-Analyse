@@ -38,7 +38,7 @@ Handrechnung, mit der wir die FEM-Ergebnisse prüfen können.
 | Schicht | Wärmeleitfähigkeit |
 |---|---|
 | Kalksandstein (innen) | $\lambda_{KS} = 0{,}99\ \mathrm{W/(m\,K)}$ |
-| EPS-Dämmung (außen) | $\lambda_{EPS} = 0{,}035\ \mathrm{W/(m\,K)}$ |
+| EPS-Dämmung (expandiertes Polystyrol, außen) | $\lambda_{EPS} = 0{,}035\ \mathrm{W/(m\,K)}$ |
 
 Beide isotrop (*Isotropic Thermal Conductivity*).
 <!-- --8<-- [end:Material] -->
@@ -84,8 +84,9 @@ Alle übrigen Flächen sind adiabat (keine Randbedingung nötig).
 1. Temperaturverlauf über die Wanddicke
 2. Wärmestromdichte $\dot q$ in W/m² (= Wärmeverlust je m² Wand)
 3. Temperatur in der Trennfuge zwischen Kalksandstein und Dämmung
-4. Fall b) zusätzlich: Oberflächentemperatur innen und U-Wert $U = \dot q / (T_i - T_e)$
 <!-- --8<-- [end:Gesucht] -->
+
+In Fall b) zusätzlich: Oberflächentemperatur innen und U-Wert $U = \dot q / (T_i - T_e)$
 
 ## Lösungswege
 

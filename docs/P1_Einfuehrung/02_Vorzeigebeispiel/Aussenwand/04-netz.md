@@ -27,7 +27,7 @@ in Praktikum 3 geht es dann genauer um ein geeignetes Netz.
 !!! info "Warum nur 100 mm breit, aber 10 mm Netz?"
     Die Temperatur ändert sich nur **über die Dicke**, quer dazu nicht. Die
     Breite des Ausschnitts spielt deshalb keine Rolle, und das Netz gehört
-    dorthin, wo sich etwas ändert: Mit 10 mm liegen 18 Elemente im
+    dorthin, wo sich etwas ändert: Mit 10 mm liegen rund 18 Elemente im
     Kalksandstein und 14 in der Dämmung, die Verläufe werden glatt.
     Weil der Verlauf je Schicht linear ist, wäre das Ergebnis hier sogar mit
     einem Element je Schicht schon exakt. Bei Ecken, Rohren oder

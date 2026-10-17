@@ -27,9 +27,9 @@ Größen. So heißen sie in ANSYS:
 | **Ambient Temperature** | Lufttemperatur in einigem Abstand von der Wand (nicht die Wandtemperatur) | 20 °C | −10 °C |
 
 Über die Fläche fließt dann so viel Wärme, wie der Temperaturunterschied
-zwischen Luft und Wand erlaubt:
+zwischen Luft und Wand erlaubt, immer vom Warmen zum Kalten:
 
-$$\dot q = \alpha\,(T_{Luft} - T_{Wand})$$
+$$\text{innen: } \dot q = \alpha_i\,(T_i - T_{si}) \qquad \text{außen: } \dot q = \alpha_e\,(T_{se} - T_e)$$
 
 Die **Wandtemperatur ist jetzt Ergebnis**. Sie stellt sich so ein, dass der
 Wärmeübergang an der Oberfläche und die Wärmeleitung durch die Wand zueinander
@@ -52,7 +52,7 @@ nach DIN EN ISO 6946, in denen die Wärmestrahlung schon enthalten ist.
     | stürmischer Wind | 20 | 89 |
 
     Innen bewegt sich die Raumluft kaum: Konvektion etwa 2,5 plus Strahlung
-    etwa 5,1 ergibt die 7,7 W/(m²·K). Werte gerundet.
+    etwa 5,1 ergibt rund 7,7 W/(m²·K) (genau 1/0,13). Werte gerundet.
 
 ## Umsetzung
 
@@ -117,14 +117,16 @@ nebeneinanderlegen.
     **20,00 °C.** Die Temperatur-Randbedingung legt den Wert an den Knoten der
     Fläche fest, daran kann keine andere Randbedingung mehr etwas ändern. Die
     Konvektion wirkt zwar weiter, sie verändert aber nur den Wärmestrom, den
-    ANSYS an dieser Fläche zuführen muss, um die 20 °C zu halten. An der
+    ANSYS an dieser Fläche zuführen muss, um die 20 °C zu halten. Hier ist ihr
+    Beitrag sogar null, weil Luft und Oberfläche beide 20 °C haben. An der
     Innenfläche verhält sich die Wand deshalb wie in Fall a). Merke: Auf eine Fläche gehört entweder
     eine Temperatur **oder** ein Wärmeübergang, nicht beides.
 
 ## Ausprobieren: Wie hängt die Wandtemperatur von α ab?
 
-Die Grafik rechnet dieselbe Wand von Hand. Die Regler decken realistische
-Werte ab: innen etwa 2 bis 25, außen 5 bis 100 W/(m²·K) (bis Sturm). Bei
+Die Grafik rechnet dieselbe Wand von Hand. Die Regler für $\alpha$ decken
+realistische Werte ab: innen etwa 2 bis 25, außen 5 bis 100 W/(m²·K) (bis
+Sturm). Mit dem dritten Regler ändern Sie die Wärmeleitfähigkeit der Dämmung. Bei
 kleinem $\alpha$, etwa in einer Ecke oder hinter Möbeln, fällt ein größerer Teil
 der Temperatur schon vor der Wand in der Luftschicht ab. Der Knopf
 **α → ∞** ist ein Gedankenexperiment: Bei unendlich gutem Wärmeübergang nimmt
@@ -160,4 +162,4 @@ $$U = \frac{\dot q}{T_i - T_e} = \frac{6{,}90\ \mathrm{W/m^2}}{30\ \mathrm{K}} =
 
         Anders gesagt: Ein Teil der Temperaturdifferenz fällt schon in der Luft
         ab. Die Oberflächen haben nur noch 19,10 °C und −9,72 °C, über die Wand
-        selbst fallen also nur 28,82 K statt 30 K ab.
+        selbst fallen also nur 28,83 K statt 30 K ab.

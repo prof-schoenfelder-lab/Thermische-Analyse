@@ -15,9 +15,9 @@ title: 1 · Material
 ## Umsetzung
 
 ??? tip "Kurzanleitung: Analyse anlegen"
-    1. ANSYS Workbench öffnen und das Projekt gleich speichern (`File → Save As...`, [ohne Umlaute im Pfad](../../abspeichern.md))
-    2. In der Toolbox links `Doppelklick Steady-State Thermal`
-    3. Analyse umbenennen in **a) Temperaturen** (Doppelklick auf den Namen unter dem Analysesystem)
+    1. In der Toolbox links `Doppelklick Steady-State Thermal`
+    2. Analyse umbenennen in **a) Temperaturen** (Doppelklick auf den Namen unter dem Analysesystem)
+    3. Projekt gleich speichern (`File → Save As...`, [ohne Umlaute, Leerzeichen und Sonderzeichen im Pfad](../../abspeichern.md))
 
 <tutorial slug="p1-analyse-anlegen"></tutorial>
 
@@ -26,7 +26,7 @@ title: 1 · Material
     2. Structural Steel wird nicht gebraucht: `Rechtsklick Structural Steel → Delete`
     3. In die leere Zeile **Kalksandstein** eintragen
     4. In der Toolbox links **Thermal** aufklappen, `Doppelklick Isotropic Thermal Conductivity`
-    5. Wert **0,99** W m⁻¹ C⁻¹ eintragen
+    5. Wert **0,99** W m⁻¹ C⁻¹ (= W/(m·K)) eintragen
     6. Genauso **EPS** mit **0,035** W m⁻¹ C⁻¹ anlegen
     7. Oben `Project` anklicken, um zurück ins Projektmenü zu kommen
 

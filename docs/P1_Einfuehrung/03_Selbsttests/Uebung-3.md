@@ -17,7 +17,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 - **Zementestrich**: $\lambda = 1{,}4\ \mathrm{W/(m\,K)}$, Dicke **65 mm**
 - **Heizrohr**: Ø **16 mm**, Mitte **20 mm** über der Dämmung, Rohrabstand **150 mm**
-- Ausschnitt: ein Rohrabstand breit (150 mm), **20 mm** tief
+- Ausschnitt: ein Rohrabstand breit (150 mm), **20 mm** lang in Rohrrichtung
 - Netzgröße global **2 mm**
 - Randbedingungen:
     - Rohroberfläche: Temperatur **35 °C** (Rohrwand vernachlässigt)
@@ -93,9 +93,9 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Lösung
 
-- Oberfläche über dem Rohr **30,1 °C**, zwischen den Rohren **29,0 °C**: rund 1,1 K Unterschied
-- Wärmestromdichte nach oben rund **102 W/m²**, das ist eine typische Heizleistung für Fußbodenheizungen
+- Oberfläche über dem Rohr **30,10 °C**, zwischen den Rohren **28,97 °C** (knapp unter 29 °C): rund 1,1 K Unterschied
+- Wärmestromdichte nach oben **102,5 W/m²**: Das liegt an der Grenze dessen, was eine Fußbodenheizung im Aufenthaltsbereich bei höchstens 29 °C Oberfläche abgeben kann (etwa 100 W/m²)
 - Der Grenzwert von 29 °C wird über dem Rohr überschritten. Abhilfe: niedrigere Vorlauftemperatur oder ein Bodenbelag, der etwas dämmt
-- Mit dem Modell lässt sich das schnell ausprobieren: andere Rohrabstände, mehr Estrich darüber, niedrigere Rohrtemperatur
+- Mit dem Modell lässt sich das schnell ausprobieren, z. B. mit einer niedrigeren Rohrtemperatur
 
 </div>

@@ -14,8 +14,8 @@ es um Fälle, für die es keine einfache Handrechnung gibt: Genau dort spielt di
 FEM ihre Stärke aus. Alles bereits Behandelte lässt sich im Vorzeigebeispiel
 nachschlagen.
 
-Jede Frage darf bis zu fünfmal beantwortet werden. Danach wird die Lösung
-angezeigt. Richtige Antworten werden sofort bestätigt.
+Zahlenfragen dürfen bis zu fünfmal beantwortet werden, Auswahlfragen weniger
+oft. Danach wird die Lösung angezeigt. Richtige Antworten werden sofort bestätigt.
 
 !!! tip "Plausibel prüfen, auch ohne Handrechnung"
     Übung 1 lässt sich mit der

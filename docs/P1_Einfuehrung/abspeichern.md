@@ -8,40 +8,40 @@ hide:
 # :material-content-save: Abspeichern
 
 
-Zum Abspeichern gibt es zwei Möglichkeiten. Die erste sollte immer zu Beginn gemacht werden um Fortschritt nicht zu verlieren.
-!!! danger "Keine Umlaute im Dateipfad !!"
+Zum Abspeichern gibt es zwei Möglichkeiten. Die erste sollte immer gleich zu Beginn gemacht werden, damit kein Fortschritt verloren geht.
 
-    Keine Umlaute (ä,ö,ü) im Dateipfad verwenden (also nicht in einem Ordner oder Dateinamen). Also nicht Übung sondern Uebung! Ansonsten kann es beim Lösen des Gleichungssystems zu Fehlern kommen.
+!!! danger "Keine Umlaute, Leerzeichen oder Sonderzeichen im Dateipfad"
+    Weder in Ordnernamen noch im Dateinamen: also nicht `Übung 1` sondern `Uebung1`, auch den eigenen Namen ohne Umlaute schreiben (`Mueller`). Sonst kann es beim Lösen zu Fehlern kommen.
 
-# Als Projekt speichern
+## Als Projekt speichern
 
-Empfehlung um den Fortschritt während des Praktikums nicht zu verlieren.
+Empfehlung, um den Fortschritt während des Praktikums nicht zu verlieren.
 
 <div class="steps" markdown="1" data-kategorie="Setup">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Projektdatei (Dateiname.wbpj + Dateinameordner) speichern</p>
+    <p class="step-title" role="heading" aria-level="2">Projektdatei (Dateiname.wbpj und Ordner Dateiname_files) speichern</p>
     <p>Im Workbench Projektmenü im Menü links oben auf <code>File</code> > <code>Save As...</code></p> 
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Dateiname</p>
-    <p>Pfad und Dateinamen immer <code>ohne Umlaute im Dateipfad!</code></p>
-    <p>Im PC-Pool Empfehlung auf <code>D:/Studierende/ihrName/Dateiname.wbpj</code> abspeichern </code></p>
-    <p>Dabei wird eine Datei <code>Dateiname.wbpj</code> und ein Ordner <code>Dateiname</code> erstellt.</p>
+    <p>Pfad und Dateiname ohne Umlaute, Leerzeichen und Sonderzeichen</p>
+    <p>Im PC-Pool Empfehlung auf <code>D:/Studierende/ihrName/Dateiname.wbpj</code> abspeichern</p>
+    <p>Dabei entstehen die Datei <code>Dateiname.wbpj</code> und der Ordner <code>Dateiname_files</code>. Beide gehören zusammen, beim Kopieren immer beide mitnehmen.</p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Ergebnis</p>
     <p>Projektdatei <code>Dateiname.wbpj</code></p>
-    <p>Projektordner <code>Dateiname</code></p>
+    <p>Projektordner <code>Dateiname_files</code></p>
   </div>
 
 </div>
 
-# Als Archiv speichern
+## Als Archiv speichern
 
-Empfehlung zur Mitnahme (erst am Ende!).
+Empfehlung zur Mitnahme, erst am Ende: Das Archiv ist eine einzige Datei, die sich leicht kopieren lässt.
 
 <div class="steps" markdown="1" data-kategorie="Setup">
 
@@ -56,12 +56,12 @@ Empfehlung zur Mitnahme (erst am Ende!).
   
  <div class="step">
     <p class="step-title" role="heading" aria-level="2">Dateiname</p>
-    <p>Dateinamen immer <code>ohne Umlaute im Dateipfad!</code></p>
+    <p>Dateiname ohne Umlaute, Leerzeichen und Sonderzeichen</p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Empfehlung: Ergebnisdateien nicht mit speichern</p>
-    <p>Den Haken bei <code>Result/solution and retained design point files</code> rausnehmen um Speicherplatz zu sparen und auf <code>Archive</code> klicken.
+    <p>Den Haken bei <code>Result/solution and retained design point files</code> rausnehmen, um Speicherplatz zu sparen, und auf <code>Archive</code> klicken.</p>
   </div>
 
   <div class="step">

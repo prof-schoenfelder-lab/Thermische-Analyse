@@ -13,8 +13,8 @@
   var BACKEND = (window.AC_BACKEND_URL || '').replace(/\/$/, '');
   // Abschnitte: Kennung, Marke vor der Überschrift, Überschrift
   var GRUPPEN = [
-    ['P1', 'P1', 'Einführung'], ['P2', 'P2', 'Modellierung und Vernetzung'],
-    ['P3', 'P3', 'Randbedingungen und Strahlung'], ['P4', 'P4', 'Instationäre Berechnung'],
+    ['P1', 'P1', 'Einführung'], ['P2', 'P2', 'Randbedingungen und Strahlung'],
+    ['P3', 'P3', 'Abstraktionen und Vernetzung'], ['P4', 'P4', 'Instationär I'], ['P5', 'P5', 'Instationär II'],
     ['weitere', '✎', 'Weitere Notizen']
   ];
   // Blatt: A4 mit 10 mm Rand, zwei Spalten mit 5 mm Abstand, vorne und hinten

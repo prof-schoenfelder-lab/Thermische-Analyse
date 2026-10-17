@@ -15,11 +15,11 @@ title: 5 · Randbedingungen
 ## Umsetzung
 
 ??? tip "Kurzanleitung: Temperatur auf eine Fläche"
-    1. Mit dem **Flächenauswahltool** die Innenfläche anklicken: die freie große Fläche des Kalksandsteins (nicht die Trennfuge)
+    1. Oben `Face` anklicken (Flächen auswählen), dann die Innenfläche anklicken: die freie quadratische Stirnfläche (100 × 100 mm) des Kalksandsteins, nicht die Trennfuge
         - Drehen: **mittlere Maustaste** · Verschieben: **mittlere Maustaste + Strg**
     2. `Rechtsklick Strukturbaum Steady-State Thermal → Insert → Temperature` (oder `Reiter Environment → Temperature`)
     3. Im `Detailfenster` bei **Magnitude** **20** °C eintragen
-    4. Genauso die Außenfläche (freie große Fläche der Dämmung) mit **−10 °C**
+    4. Genauso die Außenfläche (freie Stirnfläche der Dämmung) mit **−10 °C**
     5. Tipp: Randbedingungen mit `F2` sinnvoll benennen, z. B. **Innenseite 20 °C**
 
 <tutorial slug="p1-temperatur-anbringen"></tutorial>
@@ -37,8 +37,8 @@ title: 5 · Randbedingungen
 
 !!! info "Flächen ohne Randbedingung sind adiabat"
     Alle freien Flächen, auf die keine Randbedingung gesetzt wird, sind in ANSYS
-    automatisch **adiabat**: Über sie fließt keine Wärme. Hier sind das die vier
-    schmalen Seitenflächen. Das passt, denn wir schneiden ein Stück aus einer
+    automatisch **adiabat**: Über sie fließt keine Wärme. Hier sind das die
+    Seitenflächen des Ausschnitts (je Körper vier). Das passt, denn wir schneiden ein Stück aus einer
     langen Wand heraus, und die Wärme fließt nur von innen nach außen.
 
 !!! check "Checkpoint"

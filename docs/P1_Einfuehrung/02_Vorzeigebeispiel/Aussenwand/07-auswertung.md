@@ -30,7 +30,7 @@ gebraucht?
     3. `Rechtsklick Solution → Insert → Thermal → Temperature`
     4. `Rechtsklick Temperature 2 → Convert To Path Result`
     5. `Rechtsklick Temperature 2 → Retrieve This Result`
-    6. Im Fenster **Graph** erscheint der Verlauf von innen nach außen, daneben die Werte als Tabelle
+    6. Im Fenster **Graph** erscheint der Verlauf durch die Wand (je nach Kante von innen nach außen oder umgekehrt), daneben die Werte als Tabelle
 
 <tutorial slug="p1-auswertung"></tutorial>
 

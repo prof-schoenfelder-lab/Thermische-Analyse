@@ -31,7 +31,7 @@ Die wichtigsten Kernaussagen:
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Konvektion ist ein zusätzlicher Widerstand</p>
-    <p>Mit Konvektion statt fester Oberflächentemperatur sinkt der Wärmestrom, aus ihm folgt der U-Wert</p>
+    <p>Bei denselben Temperaturen innen und außen, einmal als Luft- statt als Oberflächentemperatur, sinkt der Wärmestrom: Die Wärmeübergänge sind zusätzliche Widerstände. Daraus folgt der U-Wert</p>
   </div>
 
   <div class="step">

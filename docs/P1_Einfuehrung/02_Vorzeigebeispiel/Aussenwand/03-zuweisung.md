@@ -15,7 +15,7 @@ title: 3 · Zuweisung
     2. Unten rechts in der Statusleiste das Einheitensystem **Metric (m, kg, N, s, V, A)** wählen, Temperatur in **Celsius**
 
 ??? tip "Kurzanleitung: Material zuweisen"
-    1. `Strukturbaum Geometry` und **SYS** aufklappen
+    1. `Strukturbaum Geometry` und **SYS** aufklappen (SYS ist das Bauteil aus SpaceClaim, darunter liegen die beiden Körper)
     2. Körper **Kalksandstein** anklicken
     3. Im `Detailfenster` bei **Assignment** auf den Pfeil klicken und **Kalksandstein** wählen
     4. Für den Körper **EPS** genauso das Material **EPS** wählen
@@ -25,4 +25,4 @@ title: 3 · Zuweisung
 !!! check "Checkpoint"
     - Unter `Geometry` stehen zwei Körper, beide mit grünem Haken
     - Unter `Connections` gibt es **keine** Kontakte (dank Share Topology). Steht
-      dort doch ein Kontakt, wurde in SpaceClaim nicht *Share* ausgeführt.
+      dort doch ein Kontakt, wurde in SpaceClaim Share Topology nicht auf *Share* gestellt.
