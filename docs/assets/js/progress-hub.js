@@ -6,7 +6,7 @@
 
   var PRAKTIKA = [
     { prefix: '/P1_Einfuehrung/', name: 'Praktikum 1 · Einführung', href: 'P1_Einfuehrung/' },
-    { prefix: '/P2_Randbedingungen_Strahlung/', name: 'Praktikum 2 · Randbedingungen & Strahlung', href: 'P2_Randbedingungen_Strahlung/' },
+    { prefix: '/P2_Randbedingungen/', name: 'Praktikum 2 · Randbedingungen', href: 'P2_Randbedingungen/' },
     { prefix: '/P3_Abstraktionen_Vernetzung/', name: 'Praktikum 3 · Abstraktionen & Vernetzung', href: 'P3_Abstraktionen_Vernetzung/' },
     { prefix: '/P4_Instationaer/', name: 'Praktikum 4 · Instationäre Berechnung', href: 'P4_Instationaer/' }
   ];

@@ -121,9 +121,9 @@ extra:
               bild: assets/images/card_p1.png
               link: P1_Einfuehrung/
             - nr: 2
-              titel: "Randbedingungen & Strahlung"
-              text: "Alle Randbedingungen, neu mit Wärmestrahlung, am Beispiel der Solarthermie."
-              link: P2_Randbedingungen_Strahlung/
+              titel: "Randbedingungen"
+              text: "Alle Randbedingungen, neu darunter die Wärmestrahlung, am Beispiel der Solarthermie."
+              link: P2_Randbedingungen/
             - nr: 3
               titel: "Abstraktionen & Vernetzung"
               text: "2D, Symmetrie und Rotationssymmetrie, sinnvoll vernetzt, aus Fernwärme und Erdwärme."
@@ -161,8 +161,8 @@ nav:
               - ZUSAMMENFASSUNG:
                       - Abspeichern: P1_Einfuehrung/abspeichern.md
                       - Zusammenfassung: P1_Einfuehrung/Zusammenfassung.md
-      - RANDBEDINGUNGEN & STRAHLUNG:
-              - P2_Randbedingungen_Strahlung/index.md
+      - RANDBEDINGUNGEN:
+              - P2_Randbedingungen/index.md
       - ABSTRAKTIONEN & VERNETZUNG:
               - P3_Abstraktionen_Vernetzung/index.md
       - INSTATIONÄRE BERECHNUNG:

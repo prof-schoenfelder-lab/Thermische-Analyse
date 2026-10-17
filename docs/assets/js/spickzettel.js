@@ -13,7 +13,7 @@
   var BACKEND = (window.AC_BACKEND_URL || '').replace(/\/$/, '');
   // Abschnitte: Kennung, Marke vor der Überschrift, Überschrift
   var GRUPPEN = [
-    ['P1', 'P1', 'Einführung'], ['P2', 'P2', 'Randbedingungen und Strahlung'],
+    ['P1', 'P1', 'Einführung'], ['P2', 'P2', 'Randbedingungen'],
     ['P3', 'P3', 'Abstraktionen und Vernetzung'], ['P4', 'P4', 'Instationär I'], ['P5', 'P5', 'Instationär II'],
     ['weitere', '✎', 'Weitere Notizen']
   ];
