@@ -40,7 +40,7 @@
           {%- endif %}
         </div>
       </div>
-      {%- if np %}
+      {%- if np and np.bild %}
       <a class="kurs-finish-media" href="{{ np.link | url }}" tabindex="-1" aria-hidden="true"><img class="no-lightbox" src="{{ np.bild | url }}" alt=""></a>
       {%- endif %}
     </section>

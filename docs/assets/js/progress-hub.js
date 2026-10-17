@@ -6,9 +6,9 @@
 
   var PRAKTIKA = [
     { prefix: '/P1_Einfuehrung/', name: 'Praktikum 1 · Einführung', href: 'P1_Einfuehrung/' },
-    { prefix: '/P2_Modellierung_Vernetzung/', name: 'Praktikum 2 · Modellierung & Vernetzung', href: 'P2_Modellierung_Vernetzung/' },
-    { prefix: '/P3_Randbedingungen_Postprocessing/', name: 'Praktikum 3 · Randbedingungen & Postprocessing', href: 'P3_Randbedingungen_Postprocessing/' },
-    { prefix: '/P4_Transient/', name: 'Praktikum 4 · Transiente Berechnung', href: 'P4_Transient/' }
+    { prefix: '/P2_Modellierung_Vernetzung/', name: 'Praktikum 2 · Randbedingungen & Strahlung', href: 'P2_Modellierung_Vernetzung/' },
+    { prefix: '/P3_Randbedingungen_Postprocessing/', name: 'Praktikum 3 · Abstraktionen & Vernetzung', href: 'P3_Randbedingungen_Postprocessing/' },
+    { prefix: '/P4_Transient/', name: 'Praktikum 4 · Instationäre Berechnung', href: 'P4_Transient/' }
   ];
 
   function localBest(qid) {

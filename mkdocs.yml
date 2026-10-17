@@ -121,19 +121,16 @@ extra:
               bild: assets/images/card_p1.png
               link: P1_Einfuehrung/
             - nr: 2
-              titel: "Modellierung & Vernetzung"
-              text: "Abstraktionen (Vollmodell, Symmetrie, 2D) und saubere Netze."
-              bild: assets/images/card_p2.png
+              titel: "Randbedingungen & Strahlung"
+              text: "Alle Randbedingungen, neu mit Wärmestrahlung, am Beispiel der Solarthermie."
               link: P2_Modellierung_Vernetzung/
             - nr: 3
-              titel: "Randbedingungen, Strahlung & Postprocessing"
-              text: "Konvektion, Strahlung & Co. richtig anbringen und Ergebnissen trauen lernen."
-              bild: assets/images/card_p3.png
+              titel: "Abstraktionen & Vernetzung"
+              text: "2D, Symmetrie und Rotationssymmetrie, sinnvoll vernetzt, aus Fernwärme und Erdwärme."
               link: P3_Randbedingungen_Postprocessing/
             - nr: 4
               titel: Instationäre Temperaturfeldberechnung
-              text: Zeitabhängige Temperaturfelder berechnen und auswerten.
-              bild: assets/images/card_p4.png
+              text: Temperaturfelder im Zeitverlauf berechnen und auswerten.
               link: P4_Transient/
 
 nav:
@@ -164,37 +161,12 @@ nav:
               - ZUSAMMENFASSUNG:
                       - Abspeichern: P1_Einfuehrung/abspeichern.md
                       - Zusammenfassung: P1_Einfuehrung/Zusammenfassung.md
-      - MODELLIERUNG & VERNETZUNG:
+      - RANDBEDINGUNGEN & STRAHLUNG:
               - P2_Modellierung_Vernetzung/index.md
-              - ABSTRAKTIONEN:
-                      - Grundlagen: P2_Modellierung_Vernetzung/Abstraktionen.md
-                      - "Vorzeigeaufgabe: Rohr":
-                              - Aufgabenstellung: P2_Modellierung_Vernetzung/Rohr/index.md
-                              - a) Vollmodell 3D:
-                                      - 1 · Material: P2_Modellierung_Vernetzung/Rohr/01-material.md
-                                      - 2 · Geometrie: P2_Modellierung_Vernetzung/Rohr/02-geometrie.md
-                                      - 3 · Zuweisung: P2_Modellierung_Vernetzung/Rohr/03-zuweisung.md
-                                      - 4 · Netz: P2_Modellierung_Vernetzung/Rohr/04-netz.md
-                                      - 5 · Randbedingungen: P2_Modellierung_Vernetzung/Rohr/05-randbedingungen.md
-                                      - 6 · Lösen: P2_Modellierung_Vernetzung/Rohr/06-loesen.md
-                                      - 7 · Auswertung: P2_Modellierung_Vernetzung/Rohr/07-auswertung.md
-                              - b) Viertelmodell 3D: P2_Modellierung_Vernetzung/Rohr/b-viertelmodell.md
-                              - c) Rotationssymmetrie 2D: P2_Modellierung_Vernetzung/Rohr/c-rotationssymmetrie.md
-                              - Vergleich: P2_Modellierung_Vernetzung/Rohr/vergleich.md
-                              - Test: P2_Modellierung_Vernetzung/test.md
-              - VERNETZUNG:
-                      - Grundlagen: P2_Modellierung_Vernetzung/Vernetzung.md
-      - RANDBEDINGUNGEN & POSTPROCESSING:
+      - ABSTRAKTIONEN & VERNETZUNG:
               - P3_Randbedingungen_Postprocessing/index.md
-              - Übersicht Randbedingungen: P3_Randbedingungen_Postprocessing/Randbedingungen.md
-              - "Beispielaufgabe: Heat Transfer in Fins": P3_Randbedingungen_Postprocessing/Beispiel-Fins.md
-              - "Strahlung: Cerankochfeld": P3_Randbedingungen_Postprocessing/Beispiel-Cerankochfeld.md
-              - Postprocessing: P3_Randbedingungen_Postprocessing/Postprocessing.md
       - INSTATIONÄRE BERECHNUNG:
               - P4_Transient/index.md
-              - Einleitung: P4_Transient/Einleitung.md
-              - "Beispielaufgabe: Ebene Wand": P4_Transient/Beispiel-Ebene-Wand.md
-              - "Zusatzaufgabe: Abkühlung Teewasser": P4_Transient/Zusatz-Teewasser.md
       # <<< AUTO-NAV
       - MEIN BEREICH:
               - Fortschritt.md

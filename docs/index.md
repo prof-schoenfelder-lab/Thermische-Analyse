@@ -20,7 +20,7 @@ hide:
       <a class="kurs-btn" href="Fortschritt/">Mein Fortschritt</a>
     </div>
   </div>
-  <div class="kurs-hero-media"><div class="kurs-anim" role="img" aria-label="Animation: die Vorzeigeaufgabe Rohr aus Praktikum 2 durch alle sieben Schritte des Simulations-Workflows"></div></div>
+  <div class="kurs-hero-media"><div class="kurs-anim" role="img" aria-label="Animation: ein Rohr durch alle sieben Schritte des Simulations-Workflows"></div></div>
 </section>
 
 ## Die Praktika

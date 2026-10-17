@@ -27,7 +27,7 @@ Empfehlung, um den Fortschritt während des Praktikums nicht zu verlieren.
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Dateiname</p>
     <p>Pfad und Dateiname ohne Umlaute, Leerzeichen und Sonderzeichen</p>
-    <p>Im PC-Pool Empfehlung auf <code>D:/Studierende/ihrName/Dateiname.wbpj</code> abspeichern</p>
+    <p>Im PC-Pool unter <code>Dokumente</code> speichern (der Benutzerordner liegt dort auf Laufwerk D:), am besten in einem eigenen Ordner, z. B. <code>Dokumente/Praktikum01/Dateiname.wbpj</code></p>
     <p>Dabei entstehen die Datei <code>Dateiname.wbpj</code> und der Ordner <code>Dateiname_files</code>. Beide gehören zusammen, beim Kopieren immer beide mitnehmen.</p>
   </div>
 

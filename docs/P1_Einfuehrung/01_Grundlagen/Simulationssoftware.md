@@ -36,4 +36,9 @@ Für die Wärmeleitung gibt es zwei Analysesysteme:
     der Statusleiste). Sonst erscheint die Wärmestromdichte in W/mm², also um den
     Faktor 10⁶ kleiner.
 
+!!! info "Komma oder Punkt?"
+    Ob ANSYS Dezimalzahlen mit Komma (`0,99`) oder Punkt (`0.99`) erwartet,
+    hängt von der Windows-Einstellung des Rechners ab. Die Anleitungen zeigen
+    das Komma. Nimmt ANSYS den Wert nicht an, den Punkt verwenden.
+
 Der weitere Ablauf folgt im Vorzeigebeispiel.
