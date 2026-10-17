@@ -290,9 +290,9 @@
   // --- Abzeichen: zentral ausgewertet, gefeiert im Moment des Verdienens ----
   var BADGE_PRAKTIKA = [
     ['/P1_Einfuehrung/', 'Einführungs-Profi', '📥', 'Praktikum 1 komplett gelöst'],
-    ['/P2_Modellierung_Vernetzung/', 'Randbedingungs-Profi', '☀️', 'Praktikum 2 komplett gelöst'],
-    ['/P3_Randbedingungen_Postprocessing/', 'Netz-Meister', '🕸️', 'Praktikum 3 komplett gelöst'],
-    ['/P4_Transient/', 'Zeitschritt-Taktgeber', '⏱️', 'Praktikum 4 komplett gelöst']
+    ['/P2_Randbedingungen_Strahlung/', 'Randbedingungs-Profi', '☀️', 'Praktikum 2 komplett gelöst'],
+    ['/P3_Abstraktionen_Vernetzung/', 'Netz-Meister', '🕸️', 'Praktikum 3 komplett gelöst'],
+    ['/P4_Instationaer/', 'Zeitschritt-Taktgeber', '⏱️', 'Praktikum 4 komplett gelöst']
   ];
   function evaluateBadges(celebrate, catOverride) {
     var cat = catOverride || cachedCatalog();

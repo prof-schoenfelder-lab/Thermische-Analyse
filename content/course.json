@@ -1,8 +1,8 @@
 {
   "praktika": [
     "P1_Einfuehrung",
-    "P2_Modellierung_Vernetzung",
-    "P3_Randbedingungen_Postprocessing",
-    "P4_Transient"
+    "P2_Randbedingungen_Strahlung",
+    "P3_Abstraktionen_Vernetzung",
+    "P4_Instationaer"
   ]
 }

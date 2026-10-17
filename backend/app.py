@@ -829,8 +829,8 @@ def dashboard():
     db = get_db()
     answers = load_answers()
     total_q = len(answers) or 1
-    praktika = [("P1_Einfuehrung", "Praktikum 1"), ("P2_Modellierung_Vernetzung", "Praktikum 2"),
-                ("P3_Randbedingungen_Postprocessing", "Praktikum 3"), ("P4_Transient", "Praktikum 4")]
+    praktika = [("P1_Einfuehrung", "Praktikum 1"), ("P2_Randbedingungen_Strahlung", "Praktikum 2"),
+                ("P3_Abstraktionen_Vernetzung", "Praktikum 3"), ("P4_Instationaer", "Praktikum 4")]
     q_per_p = {key: sum(1 for qid in answers if "/" + key + "/" in qid) or 1 for key, _ in praktika}
 
     rows = db.execute("SELECT pseudonym, qid, best, attempts FROM results").fetchall()

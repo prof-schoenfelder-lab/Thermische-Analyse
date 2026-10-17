@@ -1,0 +1,9 @@
+{
+  "slug": "P4_Instationaer",
+  "nav": "INSTATIONÄRE BERECHNUNG",
+  "kinder": [
+    {
+      "extern": "P4_Instationaer/index.md"
+    }
+  ]
+}

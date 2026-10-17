@@ -1,0 +1,9 @@
+{
+  "slug": "P2_Randbedingungen_Strahlung",
+  "nav": "RANDBEDINGUNGEN & STRAHLUNG",
+  "kinder": [
+    {
+      "extern": "P2_Randbedingungen_Strahlung/index.md"
+    }
+  ]
+}

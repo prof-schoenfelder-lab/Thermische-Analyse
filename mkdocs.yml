@@ -123,15 +123,15 @@ extra:
             - nr: 2
               titel: "Randbedingungen & Strahlung"
               text: "Alle Randbedingungen, neu mit Wärmestrahlung, am Beispiel der Solarthermie."
-              link: P2_Modellierung_Vernetzung/
+              link: P2_Randbedingungen_Strahlung/
             - nr: 3
               titel: "Abstraktionen & Vernetzung"
               text: "2D, Symmetrie und Rotationssymmetrie, sinnvoll vernetzt, aus Fernwärme und Erdwärme."
-              link: P3_Randbedingungen_Postprocessing/
+              link: P3_Abstraktionen_Vernetzung/
             - nr: 4
               titel: Instationäre Temperaturfeldberechnung
               text: Temperaturfelder im Zeitverlauf berechnen und auswerten.
-              link: P4_Transient/
+              link: P4_Instationaer/
 
 nav:
       - Home: index.md
@@ -162,11 +162,11 @@ nav:
                       - Abspeichern: P1_Einfuehrung/abspeichern.md
                       - Zusammenfassung: P1_Einfuehrung/Zusammenfassung.md
       - RANDBEDINGUNGEN & STRAHLUNG:
-              - P2_Modellierung_Vernetzung/index.md
+              - P2_Randbedingungen_Strahlung/index.md
       - ABSTRAKTIONEN & VERNETZUNG:
-              - P3_Randbedingungen_Postprocessing/index.md
+              - P3_Abstraktionen_Vernetzung/index.md
       - INSTATIONÄRE BERECHNUNG:
-              - P4_Transient/index.md
+              - P4_Instationaer/index.md
       # <<< AUTO-NAV
       - MEIN BEREICH:
               - Fortschritt.md
