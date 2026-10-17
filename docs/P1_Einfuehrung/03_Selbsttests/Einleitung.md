@@ -1,5 +1,5 @@
 ---
-title: Einleitung in die Selbsttests
+title: Einleitung zu den Selbsttests
 icon: material/information-variant-box
 hide:
   - toc

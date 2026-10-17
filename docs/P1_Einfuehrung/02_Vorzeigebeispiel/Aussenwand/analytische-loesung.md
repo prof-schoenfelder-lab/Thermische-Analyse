@@ -31,7 +31,7 @@ ganze Temperatur ab.
 
 ## Fall a) Oberflächentemperaturen
 
-$$\dot q = \frac{T_{si} - T_{se}}{R_{KS} + R_{EPS}} = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2K/W}} = 7{,}18\ \mathrm{W/m^2}$$
+$$\dot q = \frac{T_{si} - T_{se}}{R_{KS} + R_{EPS}} = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2\,K/W}} = 7{,}18\ \mathrm{W/m^2}$$
 
 $$T_{Fuge} = T_{si} - \dot q\,R_{KS} = 20\ \mathrm{°C} - 7{,}18 \cdot 0{,}177\ \mathrm{K} = 18{,}73\ \mathrm{°C}$$
 
@@ -41,9 +41,9 @@ Der Wärmeübergang an der Oberfläche ist ein zusätzlicher Widerstand
 $R_s = 1/\alpha$. Mit $R_{si} = 1/7{,}7 = 0{,}130$ und $R_{se} = 1/25 = 0{,}040$
 (das sind genau die Normwerte nach DIN EN ISO 6946):
 
-$$R_T = R_{si} + R_{KS} + R_{EPS} + R_{se} = 0{,}130 + 0{,}177 + 4{,}000 + 0{,}040 = 4{,}347\ \mathrm{m^2K/W}$$
+$$R_T = R_{si} + R_{KS} + R_{EPS} + R_{se} = 0{,}130 + 0{,}177 + 4{,}000 + 0{,}040 = 4{,}347\ \mathrm{m^2\,K/W}$$
 
-$$U = \frac{1}{R_T} = 0{,}230\ \mathrm{\frac{W}{m^2K}} \qquad \dot q = U\,(T_i - T_e) = 6{,}90\ \mathrm{W/m^2}$$
+$$U = \frac{1}{R_T} = 0{,}230\ \mathrm{\frac{W}{m^2\,K}} \qquad \dot q = U\,(T_i - T_e) = 6{,}90\ \mathrm{W/m^2}$$
 
 $$T_{si} = T_i - \dot q\,R_{si} = 20 - 6{,}90 \cdot 0{,}130 = 19{,}10\ \mathrm{°C}$$
 

@@ -2,7 +2,7 @@
 title: 3 · Zuweisung
 ---
 
-# 3 · Materialzuweisung <small>(Mechanical)</small>
+# 3 · Zuweisung <small>(Mechanical)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Temperaturen=../01-material/|b) Konvektion=../b-konvektion/|Analytische Lösung=../analytische-loesung/" markdown>
 🎯 **Jetzt:** Mechanical öffnen, Einheiten auf **m und °C**, Materialien den Körpern zuweisen

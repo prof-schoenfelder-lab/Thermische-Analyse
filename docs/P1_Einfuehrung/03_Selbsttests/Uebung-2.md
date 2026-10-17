@@ -41,8 +41,8 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 - Beide Schenkel **1000 mm** lang (außen gemessen), Höhe des Ausschnitts **100 mm**
 - Netzgröße global **20 mm** (die Schenkel sind 1 m lang, dafür reicht ein gröberes Netz als in der ebenen Wand)
 - Randbedingungen für den **Mindestwärmeschutz nach DIN 4108-2**:
-    - innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 4\ \mathrm{W/(m^2K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2K/W}$)
-    - außen: Außenluft $T_e = -5\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2K)}$
+    - innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 4\ \mathrm{W/(m^2\,K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2\,K/W}$)
+    - außen: Außenluft $T_e = -5\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
     - Schnittenden der Schenkel, Ober- und Unterseite: adiabat (keine Randbedingung)
 
 !!! info "Warum andere Randbedingungen als im Vorzeigebeispiel?"

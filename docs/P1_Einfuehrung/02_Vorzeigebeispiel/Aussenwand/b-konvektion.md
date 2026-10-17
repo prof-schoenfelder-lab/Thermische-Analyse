@@ -34,12 +34,12 @@ $$\text{innen: } \dot q = \alpha_i\,(T_i - T_{si}) \qquad \text{außen: } \dot q
 Die **Wandtemperatur ist jetzt Ergebnis**. Sie stellt sich so ein, dass der
 Wärmeübergang an der Oberfläche und die Wärmeleitung durch die Wand zueinander
 passen. Innen ist $\alpha$ klein (ruhende Raumluft), außen groß (Wind). Die Werte
-entsprechen den Normwerten $R_{si} = 0{,}13$ und $R_{se} = 0{,}04\ \mathrm{m^2K/W}$
+entsprechen den Normwerten $R_{si} = 0{,}13$ und $R_{se} = 0{,}04\ \mathrm{m^2\,K/W}$
 nach DIN EN ISO 6946, in denen die Wärmestrahlung schon enthalten ist.
 
 !!! info "Was bedeutet α anschaulich? Umrechnung in Wind"
     Der Normwert setzt sich aus Konvektion und Wärmestrahlung zusammen:
-    $\alpha = \alpha_K + \alpha_S$ mit $\alpha_S \approx 5\ \mathrm{W/(m^2K)}$.
+    $\alpha = \alpha_K + \alpha_S$ mit $\alpha_S \approx 5\ \mathrm{W/(m^2\,K)}$.
     Für die Konvektion außen nennt DIN EN ISO 6946 die Näherung
     $\alpha_K = 4 + 4\,v$ mit der Windgeschwindigkeit $v$ in m/s:
 
@@ -89,7 +89,7 @@ nebeneinanderlegen.
 !!! question "Verständnisfrage"
     Auf die **Innenfläche** werden gleichzeitig beide Randbedingungen gesetzt:
     die **Temperatur 20 °C** aus Fall a) und die **Konvektion**
-    $\alpha = 7{,}7\ \mathrm{W/(m^2K)}$ bei 20 °C Luft aus Fall b). Die Außenseite
+    $\alpha = 7{,}7\ \mathrm{W/(m^2\,K)}$ bei 20 °C Luft aus Fall b). Die Außenseite
     bleibt wie in Fall b). Welche Temperatur hat die Innenfläche?
 
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="2">
@@ -155,10 +155,10 @@ $$U = \frac{\dot q}{T_i - T_e} = \frac{6{,}90\ \mathrm{W/m^2}}{30\ \mathrm{K}} =
         ganzen 30 K fallen in der Wand ab. In Fall b) sind es die
         **Lufttemperaturen**. Zwischen Luft und Wand liegt auf jeder Seite ein
         Wärmeübergangswiderstand $R_{si} = 1/\alpha_i = 0{,}13$ und
-        $R_{se} = 1/\alpha_e = 0{,}04\ \mathrm{m^2K/W}$. Dieselben 30 K müssen die
+        $R_{se} = 1/\alpha_e = 0{,}04\ \mathrm{m^2\,K/W}$. Dieselben 30 K müssen die
         Wärme jetzt durch einen größeren Gesamtwiderstand treiben:
 
-        $$\dot q_a = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2K/W}} = 7{,}18\ \mathrm{W/m^2} \qquad \dot q_b = \frac{30\ \mathrm{K}}{4{,}347\ \mathrm{m^2K/W}} = 6{,}90\ \mathrm{W/m^2}$$
+        $$\dot q_a = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2\,K/W}} = 7{,}18\ \mathrm{W/m^2} \qquad \dot q_b = \frac{30\ \mathrm{K}}{4{,}347\ \mathrm{m^2\,K/W}} = 6{,}90\ \mathrm{W/m^2}$$
 
         Anders gesagt: Ein Teil der Temperaturdifferenz fällt schon in der Luft
         ab. Die Oberflächen haben nur noch 19,10 °C und −9,72 °C, über die Wand

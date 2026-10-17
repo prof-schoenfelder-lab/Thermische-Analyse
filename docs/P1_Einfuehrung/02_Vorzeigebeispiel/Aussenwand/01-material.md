@@ -2,7 +2,7 @@
 title: 1 · Material
 ---
 
-# 1 · Analyse und Material <small>(Workbench)</small>
+# 1 · Material <small>(Workbench)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Temperaturen=../01-material/|b) Konvektion=../b-konvektion/|Analytische Lösung=../analytische-loesung/" markdown>
 🎯 **Jetzt:** Steady-State-Thermal-Analyse anlegen und **Kalksandstein** und **EPS** definieren

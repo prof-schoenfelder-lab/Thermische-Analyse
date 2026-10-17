@@ -6,7 +6,7 @@ title: "Übung 1: Altbau sanieren"
 
 Ein Gründerzeithaus hat eine **36,5 cm** dicke Wand aus Vollziegel. Sie wird
 außen mit **14 cm** EPS gedämmt. Nach dem Gebäudeenergiegesetz (GEG) darf die
-sanierte Außenwand höchstens $U = 0{,}24\ \mathrm{W/(m^2K)}$ haben. Reicht das?
+sanierte Außenwand höchstens $U = 0{,}24\ \mathrm{W/(m^2\,K)}$ haben. Reicht das?
 
 Diese Übung wiederholt den Ablauf aus dem Vorzeigebeispiel **Schritt für
 Schritt**, nur mit anderen Zahlen: zwei Körper, Konvektion innen und außen. Jedes
@@ -21,7 +21,7 @@ Ergebnis lässt sich von Hand prüfen.
 - **Vollziegel** innen: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$, Dicke **365 mm**
 - **EPS** außen: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke **140 mm**
 - Wandausschnitt 100 × 100 mm, Netzgröße global 10 mm
-- Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**: innen Luft 20 °C mit $\alpha_i = 7{,}7\ \mathrm{W/(m^2K)}$, außen Luft −10 °C mit $\alpha_e = 25\ \mathrm{W/(m^2K)}$
+- Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**: innen Luft 20 °C mit $\alpha_i = 7{,}7\ \mathrm{W/(m^2\,K)}$, außen Luft −10 °C mit $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
 
 ## Hinweise
 
@@ -75,10 +75,10 @@ Ergebnis lässt sich von Hand prüfen.
 
 ### Lösung
 
-- $R_T = 0{,}130 + 0{,}365/0{,}68 + 0{,}140/0{,}035 + 0{,}040 = 4{,}707\ \mathrm{m^2K/W}$
-- $U = 1/R_T = 0{,}212\ \mathrm{W/(m^2K)} \le 0{,}24$: Das GEG ist erfüllt
+- $R_T = 0{,}130 + 0{,}365/0{,}68 + 0{,}140/0{,}035 + 0{,}040 = 4{,}707\ \mathrm{m^2\,K/W}$
+- $U = 1/R_T = 0{,}212\ \mathrm{W/(m^2\,K)} \le 0{,}24$: Das GEG ist erfüllt
 - $\dot q = U \cdot 30\ \mathrm{K} = 6{,}37\ \mathrm{W/m^2}$
 - $T_{si} = 20 - 6{,}37 \cdot 0{,}130 = 19{,}17\ \mathrm{°C}$
-- Zum Vergleich der Altbau ohne Dämmung: $U = 1{,}415\ \mathrm{W/(m^2K)}$, $\dot q = 42{,}5\ \mathrm{W/m^2}$, innen nur 14,5 °C an der Wand. Die Dämmung spart **85 %** des Wärmeverlusts
+- Zum Vergleich der Altbau ohne Dämmung: $U = 1{,}415\ \mathrm{W/(m^2\,K)}$, $\dot q = 42{,}5\ \mathrm{W/m^2}$, innen nur 14,5 °C an der Wand. Die Dämmung spart **85 %** des Wärmeverlusts
 
 </div>

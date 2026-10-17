@@ -2,7 +2,7 @@
 title: 4 · Netz
 ---
 
-# 4 · Vernetzung <small>(Mechanical)</small>
+# 4 · Netz <small>(Mechanical)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Temperaturen=../01-material/|b) Konvektion=../b-konvektion/|Analytische Lösung=../analytische-loesung/" markdown>
 🎯 **Jetzt:** Netzgröße global **10 mm** einstellen und vernetzen
