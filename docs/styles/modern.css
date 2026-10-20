@@ -619,34 +619,38 @@ html:root .md-typeset a.kurs-btn:hover { text-decoration: none; background: var(
 html:root .md-typeset a.kurs-btn--primary { background: var(--kurs-btn-bg); border-color: var(--kurs-btn-bg); color: var(--kurs-btn-fg); }
 html:root .md-typeset a.kurs-btn--primary:hover { background: var(--kurs-btn-bg); color: var(--kurs-btn-fg); filter: brightness(1.07); }
 
-/* OPAL-Login im Kopfbereich der Startseite: zwei Zustände (abgemeldet / angemeldet) */
-html:root .kurs-opal { margin-top: 1.5rem; max-width: 31rem; }
-html:root .kurs-opal-out, html:root .kurs-opal-in {
-  display: flex; gap: .8rem; align-items: flex-start;
-  padding: .85rem 1rem .95rem; background: var(--kurs-surface);
-  border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
+/* OPAL-Anmeldung auf der Startseite: html.opal-in (Skript ganz oben in index.md)
+   schaltet den zweiten Knopf im Kopfbereich und das Band unter den Praktika um */
+html:root .md-typeset a.kurs-btn--in, html:root.opal-in .md-typeset a.kurs-btn--out { display: none; }
+html:root.opal-in .md-typeset a.kurs-btn--in { display: inline-flex; }
+html:root .kurs-opal-in, html:root.opal-in .kurs-opal-out { display: none; }
+html:root.opal-in .kurs-opal-in { display: block; }
+
+/* OPAL-Knopf im Kopfbereich: eigener Stil mit Login-Symbol, gut sichtbar neben dem Start-Knopf */
+html:root .md-typeset a.kurs-btn--opal {
+  border-color: color-mix(in srgb, var(--kurs-accent) 55%, var(--kurs-line)); color: var(--kurs-accent-ink);
 }
-html:root .kurs-opal-in, html:root .kurs-opal.is-in .kurs-opal-out { display: none; }
-html:root .kurs-opal.is-in .kurs-opal-in { display: flex; }
-html:root .kurs-opal-icon {
-  flex: none; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center;
-  background: var(--kurs-accent-soft); color: var(--kurs-accent-ink);
+html:root .md-typeset a.kurs-btn--opal:hover { background: var(--kurs-accent-soft); color: var(--kurs-accent-ink); }
+html:root .md-typeset a.kurs-btn--opal svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+/* Kompakte Karte unter den Knöpfen: was die Anmeldung bringt, VPN-Hinweis */
+html:root .kurs-opal {
+  margin-top: 1rem; max-width: 30rem; padding: .6rem .8rem .55rem;
+  background: var(--kurs-surface); border: 1px solid var(--kurs-line); border-radius: var(--kurs-radius-md);
 }
-html:root .kurs-opal-icon svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
-html:root .kurs-opal-icon--ok { background: color-mix(in srgb, var(--kurs-c-ok) 14%, var(--kurs-surface)); color: var(--kurs-c-ok); }
-html:root .md-typeset .kurs-opal p { margin: 0; font-size: .7rem; line-height: 1.5; color: var(--kurs-text-2); }
-html:root .md-typeset .kurs-opal p.kurs-opal-title { margin-bottom: .2rem; font-size: .78rem; font-weight: 700; color: var(--kurs-head); }
-html:root .md-typeset .kurs-opal p.kurs-opal-perk {
-  display: flex; gap: .5rem; align-items: flex-start;
-  margin: .5rem 0 0; padding: .5rem .65rem;
-  border-radius: var(--kurs-radius); background: var(--kurs-accent-soft); color: var(--kurs-text);
+html:root .md-typeset .kurs-opal p { margin: 0; font-size: .66rem; line-height: 1.45; color: var(--kurs-text-2); }
+html:root .md-typeset .kurs-opal p.kurs-opal-title { margin-bottom: .25rem; font-size: .68rem; font-weight: 700; color: var(--kurs-head); }
+html:root .md-typeset .kurs-opal ul.kurs-opal-list { margin: 0; padding: 0; list-style: none; }
+html:root .md-typeset .kurs-opal ul.kurs-opal-list li {
+  display: flex; gap: .45rem; align-items: flex-start; margin: 0 0 .2rem; padding: 0;
+  font-size: .66rem; line-height: 1.4; color: var(--kurs-text);
 }
-html:root .kurs-opal-perk svg { flex: none; width: 1.05rem; height: 1.05rem; margin-top: .08rem; fill: var(--kurs-accent-ink); }
-html:root .kurs-opal-perk b { color: var(--kurs-head); }
-html:root .md-typeset .kurs-opal p.kurs-opal-note { margin-top: .5rem; font-size: .64rem; color: var(--kurs-text-3); }
-html:root .md-typeset .kurs-opal p.kurs-opal-note a { color: var(--kurs-accent-ink); font-weight: 600; }
-html:root .md-typeset a.kurs-opal-link { display: inline-block; margin-top: .45rem; font-size: .72rem; font-weight: 700; color: var(--kurs-accent-ink); text-decoration: none; }
-html:root .md-typeset a.kurs-opal-link:hover { text-decoration: underline; }
+html:root .kurs-opal-list svg, html:root .kurs-opal-ok svg { flex: none; width: .9rem; height: .9rem; margin-top: .05rem; fill: var(--kurs-accent-ink); }
+html:root .md-typeset .kurs-opal p.kurs-opal-ok { display: flex; gap: .45rem; align-items: flex-start; color: var(--kurs-text); }
+html:root .kurs-opal-ok svg { fill: var(--kurs-c-ok); }
+html:root .kurs-opal-ok b { color: var(--kurs-head); }
+html:root .md-typeset .kurs-opal p.kurs-opal-foot { margin-top: .3rem; font-size: .6rem; color: var(--kurs-text-3); }
+html:root .md-typeset .kurs-opal p.kurs-opal-foot a { color: var(--kurs-accent-ink); font-weight: 600; }
 
 /* Praktika-Liste der Startseite: Grundgerüst */
 html:root .md-typeset .prakt-list { margin: 1rem 0 2rem; }
@@ -761,7 +765,7 @@ html:root .kurs-anim-track span {
 html:root .kurs-anim-track .done span { color: var(--kurs-text-2); }
 html:root .kurs-anim-track .on span { color: var(--kurs-head); }
 html:root .kurs-anim-track button:hover span { color: var(--kurs-accent-ink); }
-html:root .kurs-anim-cap { margin-top: .55rem; min-height: 2.8em; font-size: .76rem; line-height: 1.4; color: var(--kurs-text-2); }
+html:root .kurs-anim-cap { margin-top: .45rem; min-height: 1.4em; font-size: .76rem; line-height: 1.4; color: var(--kurs-text-2); }
 html:root .kurs-anim-cap b { color: var(--kurs-head); margin-right: .45rem; }
 /* Startseite: Bearbeiten-Stift weg, er schiebt sonst den Kopfbereich zur Seite */
 html:root .md-content:has(.page--home) .md-content__button { display: none; }
@@ -931,7 +935,7 @@ html:root :is(.numeric-question, .multiple-choice-question) { --kurs-q-bg: var(-
 }
 html:root .kurs-hero {
   display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.15fr); gap: 1.8rem; align-items: center;
-  margin: .8rem 0 2.6rem; padding: 2.4rem 2.4rem 2.2rem;
+  margin: .4rem 0 1.4rem; padding: 1.5rem 2.2rem 1.3rem;
   border-radius: var(--kurs-radius-lg);
   background:
     radial-gradient(90% 120% at 100% 0%, var(--kurs-accent-soft) 0%, transparent 60%),
@@ -941,7 +945,9 @@ html:root .md-typeset .kurs-kicker { font-size: .6rem; font-weight: 700; letter-
 html:root .md-typeset .kurs-hero-title { font-size: clamp(1.55rem, 2.6vw, 2.35rem); line-height: 1.08; font-weight: 700; letter-spacing: -.02em; color: var(--kurs-head); overflow-wrap: normal; word-break: normal; hyphens: manual; }
 html:root .kurs-hero-title span { color: var(--kurs-accent); }
 html:root .md-typeset .kurs-hero-lead { font-size: .9rem; line-height: 1.55; color: var(--kurs-text-2); margin: 1rem 0 1.5rem; max-width: 30rem; }
-@media (max-width: 60em) { html:root .kurs-hero { grid-template-columns: 1fr; padding: 1.6rem 1.3rem; } }
+@media (max-width: 60em) { html:root .kurs-hero { grid-template-columns: 1fr; padding: 1.6rem 1.3rem; } html:root .kurs-anim-cap { min-height: 2.8em; } }
+/* Erste Überschrift direkt unter dem Kopfbereich ohne großen Abstand */
+html:root .md-typeset .kurs-hero + h2 { margin-top: .2em; }
 
 html:root .md-typeset .prakt-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
 @media (max-width: 70em) { html:root .md-typeset .prakt-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
