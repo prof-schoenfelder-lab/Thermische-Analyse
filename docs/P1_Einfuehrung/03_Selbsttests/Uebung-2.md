@@ -58,14 +58,14 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 <div class="steps" markdown="1" data-anleitung="nein">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Vier Rechtecke in der Draufsicht</p>
-    <p>Anders als im Vorzeigebeispiel ist die Skizze hier der <strong>Grundriss</strong>, <code>Pull</code> gibt danach die Höhe. Ursprung = äußere Ecke, Maße mit <code>Tab</code> (x × y in mm, jeweils ab dem genannten Startpunkt):</p>
+    <p class="step-title" role="heading" aria-level="2">Rechtecke in der Draufsicht</p>
+    <p>Anders als im Vorzeigebeispiel ist die Skizze hier der <strong>Grundriss</strong>, <code>Pull</code> gibt danach die Höhe. Mehrere Rechtecke übereinander zeichnen (Ursprung = äußere Ecke, Maße mit <code>Tab</code>): SpaceClaim teilt die Skizze an den Linien in Teilflächen für Kalksandstein und EPS. Zum Beispiel (x × y in mm, jeweils ab dem genannten Startpunkt):</p>
     <p>EPS 1000 × 140 ab (0, 0) · EPS 140 × 860 ab (0, 140) · Kalksandstein 860 × 175 ab (140, 140) · Kalksandstein 175 × 685 ab (140, 315)</p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Körper erzeugen</p>
-    <p>Jede der vier Flächen einzeln mit <code>Pull</code> 100 mm hochziehen, ab der zweiten mit <code>No merge</code>: So entstehen vier Körper. Dann wie im Vorzeigebeispiel <code>Rechtsklick Design1 → Properties</code>, bei <strong>Share Topology</strong> den Wert <strong>Share</strong> wählen</p>
+    <p>Alle Kalksandstein-Flächen mit <code>Strg</code> markieren und gemeinsam mit <code>Pull</code> 100 mm hochziehen. Dann alle übrigen Flächen (EPS) mit <code>Strg</code> markieren und mit <code>Pull</code> und <code>No merge</code> ebenfalls 100 mm ziehen: So entstehen zwei Körper. Share Topology nicht vergessen: wie im Vorzeigebeispiel <code>Rechtsklick Design1 → Properties</code>, bei <strong>Share Topology</strong> den Wert <strong>Share</strong> wählen</p>
   </div>
 
   <div class="step">
@@ -80,13 +80,13 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 </div>
 
-<!-- TODO: Datei P1_Aussenecke.scdoc als Download ablegen; Hinweise zu den Fangpunkten mit SpaceClaim 2025 R2 prüfen -->
+<!-- TODO: Datei P1_Aussenecke.scdoc als Download ablegen -->
 
 ## Gesucht
 
 ### Oberflächentemperatur innen in der Ecke $T_{si}$ in °C
 
-<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf den Innenflächen. Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Alle vier Körper mit Material und Share Topology?">
+<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf den Innenflächen. Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Beide Körper mit Material und Share Topology?">
 </div>
 
 ### Temperaturfaktor $f_{Rsi} = \dfrac{T_{si} - T_e}{T_i - T_e}$ in der Ecke
