@@ -13,6 +13,7 @@ mkdocs build >/dev/null
 
 echo "==> Dateien kopieren"
 scp -q backend/app.py backend/requirements.txt answers.json "$HOST:~/$DEST/"
+scp -q -r backend/hilfe "$HOST:~/$DEST/"   # Hilfe-App (Seite, Service Worker, Icons)
 
 echo "==> Abhängigkeiten aktualisieren (falls nötig)"
 ssh "$HOST" "cd ~/$DEST && .venv/bin/pip install -q -r requirements.txt"

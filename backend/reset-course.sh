@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Kurs-Reset zum Semesterende: sichert die Datenbank und leert danach alle
-# Ergebnisse und Nutzer. Die neue Kohorte startet bei null; beim nächsten
+# Ergebnisse, Eingaben und Nutzer. Die neue Kohorte startet bei null; beim nächsten
 # OPAL-Login werden neue Pseudonyme angelegt.
 # Aufruf auf dem Server:  ~/thermo-backend/reset-course.sh
 set -eu
@@ -21,8 +21,11 @@ import sqlite3
 db = sqlite3.connect('data/results.db')
 import secrets
 db.execute('DELETE FROM results')
+db.execute('CREATE TABLE IF NOT EXISTS eingaben (pseudonym TEXT NOT NULL, qid TEXT NOT NULL, versuch INTEGER NOT NULL, value REAL NOT NULL, created_at REAL NOT NULL)')
+db.execute('DELETE FROM eingaben')
 db.execute('CREATE TABLE IF NOT EXISTS spickzettel (pseudonym TEXT PRIMARY KEY, daten TEXT NOT NULL, updated_at REAL)')
 db.execute('DELETE FROM spickzettel')
+db.execute("DELETE FROM meta WHERE key LIKE 'reset:%'")
 db.execute('DELETE FROM users')
 db.execute("INSERT OR REPLACE INTO meta (key, value) VALUES ('generation', ?)", (secrets.token_urlsafe(8),))
 db.commit()

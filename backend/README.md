@@ -34,6 +34,15 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | `GET /api/me` | eigener Punktestand (pseudonym) |
 | `GET/POST /api/spickzettel` | „Mein Spickzettel“: Auswahl und eigene Notizen je Person (Bearer-Token; der Browser schickt nur einen neueren Stand) |
 | `GET /api/stats` | anonyme Aggregatstatistik pro Frage (für Lehr-Analytik) |
+| `POST /api/reset` | „Fortschritt zurücksetzen“ auf „Mein Fortschritt“: eigene Ergebnisse und Eingaben löschen (Bearer-Token) |
+| `GET/POST /api/help` | „Hand heben“ auf der Kursseite: Meldung mit kurzer Beschreibung (freiwillig), Platz in der Warteschlange |
+| `GET /hilfe/` | Hilfe-App fürs Handy (zum Home-Bildschirm hinzufügen), Zugang mit dem Dashboard-Schlüssel |
+| `GET /api/hilfe` | Hilfe-App: offene Anfragen mit Raum, Platz und Einschätzung, „Hilfe empfohlen“ (Header `X-Key`) |
+| `POST /api/hilfe/erledigt`, `/api/hilfe/schalter`, `/api/hilfe/abo` | Hilfe-App: Anfrage erledigt, Hilfe-Knopf an/aus, Web-Push-Abo des Geräts speichern |
+| `GET /dashboard?key=…` | Lehrenden-Dashboard (siehe unten) |
+| `GET /dashboard-sollwerte?key=…` | Sollwerte der Zahlenfragen, Korrektur mit Vorschau der Nachwertung |
+| `POST /dashboard-sollwert?key=…` | Sollwert-Korrektur speichern und gespeicherte Eingaben nachwerten |
+| `POST /dashboard-sollwert-zurueck?key=…` | Korrektur zurücknehmen (Wert aus dem Kurstext gilt wieder) |
 
 ## Konfiguration (Umgebungsvariablen)
 
@@ -52,6 +61,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | `ALLOWED_ORIGINS` | CORS-Origins, kommagetrennt |
 | `DB_PATH` | SQLite-Datei (Default: `backend/results.db`) |
 | `LTI_CONSUMER_KEY` / `LTI_CONSUMER_SECRET` | nur für den LTI-1.1-Fallback |
+| `DASHBOARD_TOKEN` | Schlüssel für Dashboard und Hilfe-App |
+| `VAPID_PATH` | Schlüssel für Web-Push der Hilfe-App (Default: `vapid_private.pem` neben der Datenbank, wird beim ersten Aufruf angelegt) |
+| `VAPID_SUB` | Kontakt im Web-Push (Default: `mailto:felix.kaule@htwk-leipzig.de`) |
 
 ## OPAL-Einrichtung (Kursbaustein „LTI-Seite", Tab „Konfiguration")
 
@@ -98,6 +110,43 @@ serverseitig geführt, Gäste bekommen nur richtig/falsch-Feedback.
 (Die Antworten stehen weiterhin in den Markdown-Quellen im öffentlichen Repo —
 bewusste Entscheidung, es sind Übungen.)
 
+**Fehlwerte:** Jede falsche Zahl wird **anonym** (Frage, Wert, Zeit; ohne
+Pseudonym) in `wrong_values` gespeichert. Das Dashboard zeigt daraus „Häufige
+Fehlwerte“ (heute und gesamt) mit erkannter Ursache (Vorzeichen, Faktor 1000
+für Einheiten); `/api/check` liefert sie zusätzlich als `diagnosis`.
+
+**Sollwert-Korrektur und Nachwertung:** Mit Login speichert `/api/check` jede
+gezählte Zahleneingabe mit Pseudonym und Versuchsnummer (Tabelle `eingaben`).
+Im Dashboard unter „Sollwerte korrigieren“ (`/dashboard-sollwerte`) lässt sich
+ein Sollwert samt Toleranz ändern. Die Korrektur liegt in der Tabelle
+`korrekturen` über `answers.json` und gilt sofort; ein späteres Deploy
+überschreibt sie nicht. Steht derselbe Wert im Kurstext, verschwindet sie beim
+nächsten Öffnen der Seite. Nach jeder Änderung werden die gespeicherten
+Eingaben nachgewertet: Der erste passende Versuch zählt, als wäre er damals
+richtig gewesen (volle Punkte, Bonus im 1. Versuch), die Note geht neu an
+OPAL. Punkte steigen nur, sie sinken nie. Passende Einträge im Fehlwert-Log
+werden entfernt. Vorher zeigt eine Vorschau, wer nachträglich Punkte bekommt.
+„Fortschritt zurücksetzen“ löscht auch die eigenen Eingaben. Score-Pushes an
+OPAL laufen nacheinander, damit die zuletzt gesendete Meldung immer den
+aktuellen Stand trägt.
+
+## Hilfe im Praktikum
+
+Auf der Kursseite gibt es den Knopf „Hand heben“ (`docs/assets/js/help-button.js`),
+solange er im Dashboard eingeschaltet ist. Nach dem Melden kann man das Problem
+kurz beschreiben; das Backend schätzt daraus die Art (Technik, Ergebnis passt
+nicht, Bedienung, Verständnis) und ob es meist schnell geht.
+
+Die **Hilfe-App** unter `https://<backend-host>/thermo/hilfe/` zeigt auf dem Handy
+die nächste Anfrage mit Raum und Platz, eine Raumkarte, „Hilfe empfohlen“
+(wer hängt oder aufgegeben hat) und „Erledigt, nächster“. Einmal den
+Dashboard-Schlüssel eingeben, dann in Safari „Zum Home-Bildschirm“; aus der App
+vom Home-Bildschirm lassen sich Benachrichtigungen einschalten (Web-Push, iPhone
+ab iOS 16.4, die Uhr spiegelt sie). Den VAPID-Schlüssel legt das Backend selbst
+an (`VAPID_PATH`), dafür braucht der Dienst Schreibrecht im Ordner der Datenbank.
+Push braucht `pywebpush` (steht in `requirements.txt`); fehlt es, läuft alles
+andere ohne Push weiter.
+
 ## Noten-Rückkanal zu OPAL (AGS)
 
 Bei jeder Punkteverbesserung meldet das Backend die Gesamtpunktzahl als
@@ -128,8 +177,11 @@ entschlüsselt. Ohne `SECRET_KEY` ist keine Re-Identifikation möglich. Mit
 ## Lehrenden-Dashboard
 
 `https://<backend-host>/thermo/dashboard?key=<DASHBOARD_TOKEN>` zeigt aggregiert
-(pseudonym, keine Namen): Verteilung „wie viele sind wie weit", Fortschritt pro
-Praktikum (begonnen/komplett) und Lösungsquote je Aufgabe. Der Token steht in
+(pseudonym, keine Namen): Hilfe-Warteschlange, Schalter für den Hilfe-Button,
+Tagesüberblick (wer ist heute wie weit, Raumkarte, Brennpunkt, häufige
+Fehlwerte), Verteilung „wie viele sind wie weit", Fortschritt pro
+Praktikum (begonnen/komplett) und Lösungsquote je Aufgabe, dazu den Link
+„Sollwerte korrigieren“ (siehe oben). Der Token steht in
 der `.env` auf dem Server. Namentliche Einzelstände gibt es stattdessen direkt
 in OPAL: im Kursbaustein die **Bewertung aktivieren**, dann erscheinen die per
 AGS gemeldeten Punktestände pro Kursmitglied im OPAL-Bewertungswerkzeug.
@@ -137,14 +189,14 @@ AGS gemeldeten Punktestände pro Kursmitglied im OPAL-Bewertungswerkzeug.
 ## Kurs-Reset (Semesterende)
 
 `~/thermo-backend/reset-course.sh` auf dem Server ausführen: legt ein Backup an
-und leert danach Ergebnisse und Nutzer — die neue Kohorte startet bei null.
+und leert danach Ergebnisse, Eingaben und Nutzer, die neue Kohorte startet bei null.
 
-**Achtung, eigene Test-Browser:** Geräte, auf denen vorher getestet wurde,
-laden ihren localStorage-Stand beim nächsten Besuch automatisch wieder hoch
-(gewolltes Verhalten für offline gesammelte Punkte). Deshalb auf solchen
-Geräten VOR dem Reset einmal auf der Seite `localStorage.clear()` in der
-Browser-Konsole ausführen — sonst tauchen die alten Testdaten direkt wieder
-in der Datenbank auf.
+**Alte Stände in anderen Browsern:** Die Seite schickt beim Abgleich ihre Generation mit
+(`/api/me` liefert sie). `POST /api/results` lehnt Stände aus der Zeit vor dem
+Semester-Reset oder vor „Fortschritt zurücksetzen“ mit 409 ab, der Browser leert sich
+dann selbst. „Fortschritt zurücksetzen“ setzt dafür eine Marke je Person (Tabelle `meta`,
+Schlüssel `reset:<pseudonym>`), die in die Generation eingeht. Ohne Generation (älteres
+Skript im Browser-Cache) wird nur abgelehnt, wenn die Person schon einmal zurückgesetzt hat.
 
 ## Bewusste Prototyp-Grenzen / nächste Schritte
 - SQLite reicht für einen Kurs locker; bei Bedarf `DB_PATH` auf ein Volume legen

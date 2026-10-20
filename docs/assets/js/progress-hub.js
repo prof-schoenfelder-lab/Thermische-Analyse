@@ -79,7 +79,35 @@
       '</div>' +
       '<div class="ph-grid">' + cards.join('') + '</div>' +
       '<h2>Abzeichen <small>(' + earned + '/' + badges.length + ')</small></h2>' +
-      '<div class="ph-medals">' + badgeHtml + '</div>';
+      '<div class="ph-medals">' + badgeHtml + '</div>' +
+      '<p class="ph-reset"><button type="button" class="md-button" id="ph-reset">Fortschritt zurücksetzen</button> ' +
+      'Löscht Punkte und Abzeichen' + (token ? ', auch auf dem Server (dort samt Ihren Eingaben).' : ' in diesem Browser.') + '</p>';
+    document.getElementById('ph-reset').onclick = zuruecksetzen;
+  }
+
+  // Fortschritt zurücksetzen: mit OPAL-Anmeldung erst auf dem Server (sonst holt der nächste Abgleich den
+  // alten Stand zurück), dann im Browser wie beim Wechsel der Person (backend-sync.js), danach neu laden
+  function zuruecksetzen() {
+    if (!confirm('Ihren gesamten Fortschritt löschen? Punkte und Abzeichen gehen verloren. ' +
+      'Das lässt sich nicht rückgängig machen.')) return;
+    var token = null, BACKEND = (window.AC_BACKEND_URL || '').replace(/\/$/, '');
+    try { token = localStorage.getItem('ac_backend_token'); } catch (e) { }
+    var leeren = function () {
+      try {
+        Object.keys(localStorage).filter(function (k) { return /^(answer_|page_claimed|player_level)/.test(k); })
+          .forEach(function (k) { localStorage.removeItem(k); });
+      } catch (e) { }
+      location.reload();
+    };
+    if (!token || !BACKEND) return leeren();
+    fetch(BACKEND + '/api/reset', { method: 'POST', headers: { 'Authorization': 'Bearer ' + token } })
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function (d) {
+        // neue Generation gleich merken; andere Browser mit altem Stand leeren sich beim nächsten Abgleich selbst
+        try { if (d && d.generation) localStorage.setItem('ac_generation', d.generation); } catch (e) { }
+        leeren();
+      })
+      .catch(function () { alert('Zurücksetzen gerade nicht möglich: Dafür ist das HTWK-Netz oder VPN nötig.'); });
   }
 
   function init() {

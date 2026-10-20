@@ -1,0 +1,14 @@
+{
+  "name": "Hilfe FEM-TD",
+  "short_name": "Hilfe FEM-TD",
+  "description": "Hilfe-Anfragen im PC-Pool, Angewandte FEM in der Thermodynamik: wohin als Nächstes",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#022541",
+  "theme_color": "#022541",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

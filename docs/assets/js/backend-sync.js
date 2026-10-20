@@ -139,16 +139,25 @@
   function push() {
     var results = collectResults();
     if (Object.keys(results).length === 0) return;
+    var gen = null;
+    try { gen = localStorage.getItem('ac_generation'); } catch (e) { }
     fetch(BACKEND + '/api/results', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-      body: JSON.stringify({ results: results })
+      body: JSON.stringify({ results: results, generation: gen })
     }).then(function (r) {
       if (r.status === 401) {
         // token expired/invalid — drop it, site falls back to local-only mode
         try { localStorage.removeItem(TOKEN_KEY); } catch (e) { }
         var el = document.getElementById('ac-sync-badge');
         if (el && el.parentNode) el.parentNode.removeChild(el);
+      } else if (r.status === 409) {
+        // Stand veraltet (in einem anderen Browser zurückgesetzt oder Semester-Reset): leeren statt hochladen
+        r.json().then(function (d) {
+          wipeLocalState();
+          try { if (d && d.generation) localStorage.setItem('ac_generation', d.generation); } catch (e) { }
+          location.reload();
+        }).catch(function () { });
       } else if (r.ok) {
         refreshBadge();
       }

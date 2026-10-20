@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hilfe FEM-TD</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hilfe FEM-TD">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#022541">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #022541; --card: #0b3557; --ink: #ffffff; --ink2: #b9c8d6; --cyan: #009EE3; --rule: #1d4a70;
+  --ok: #00964E; --off: #BEC3C6; --warn: #E53009; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.4 "Source Sans 3", -apple-system, system-ui, sans-serif; }
+body { padding: calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 24px); max-width: 640px; margin: 0 auto; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+h1 { font-size: 22px; margin: 0; font-weight: 800; letter-spacing: 0.02em; }
+h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink2); margin: 22px 0 8px; font-weight: 700; }
+button { font: inherit; cursor: pointer; border-radius: 10px; border: 0; }
+.pill { background: transparent; color: var(--ink); border: 2px solid var(--off); padding: 4px 12px; font-weight: 700; font-size: 14px; }
+.pill.an { border-color: var(--ok); color: #fff; background: var(--ok); }
+.next { background: var(--card); border: 2px solid var(--cyan); border-radius: 16px; padding: 18px; }
+.next .lbl { font-size: 14px; color: var(--ink2); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+.next .wo { font-size: 44px; line-height: 1.05; font-weight: 800; margin: 6px 0 4px; }
+.next .was { color: var(--ink2); font-size: 18px; }
+.next.leer { border-color: var(--rule); }
+.next .art, ol.queue .art { display: inline-block; font-size: 14px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: var(--rule); margin-top: 8px; }
+.next .art.schnell, ol.queue .art.schnell { background: var(--cyan); color: #fff; }
+.next .text { font-size: 20px; margin-top: 8px; }
+ol.queue .t q { display: block; color: var(--ink); }
+.next.leer .wo { font-size: 28px; color: var(--ink2); }
+.big { display: block; width: 100%; margin-top: 16px; padding: 18px; background: var(--cyan); color: #fff; font-size: 20px; font-weight: 800; }
+.big:active { filter: brightness(0.9); }
+ol.queue { list-style: none; margin: 0; padding: 0; }
+ol.queue li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+ol.queue .nr { width: 30px; height: 30px; border-radius: 50%; background: var(--rule); display: grid; place-items: center; font-weight: 800; flex: none; }
+ol.queue .t { flex: 1; min-width: 0; }
+ol.queue .t b { display: block; font-size: 19px; }
+ol.queue .t small { color: var(--ink2); }
+ol.queue button { background: transparent; color: var(--ink); border: 2px solid var(--rule); padding: 6px 10px; font-size: 15px; font-weight: 600; }
+.rooms { display: grid; gap: 14px; }
+.room { background: var(--card); border-radius: 14px; padding: 12px; }
+.room h3 { margin: 0 0 8px; font-size: 17px; }
+.map { display: grid; grid-template-columns: repeat(2, 1fr) 14px repeat(2, 1fr); gap: 6px; }
+.map i { display: block; }
+.seat { border: 1.5px solid var(--rule); border-radius: 8px; min-height: 38px; display: grid; place-items: center; color: var(--ink2); font-size: 14px; position: relative; }
+.seat.w { background: #E5007D; border-color: #E5007D; color: #fff; font-weight: 800; }
+.seat.n { background: var(--cyan); border-color: var(--cyan); color: #fff; font-weight: 800; box-shadow: 0 0 0 3px #fff inset; }
+.seat sup { position: absolute; top: 2px; right: 5px; font-size: 11px; }
+.front { text-align: center; color: var(--ink2); font-size: 13px; margin: 8px 0 0; }
+.hint, .msg { color: var(--ink2); font-size: 15px; }
+.box { background: var(--card); border-radius: 14px; padding: 14px; margin-top: 12px; }
+.box button { background: var(--cyan); color: #fff; padding: 12px 16px; font-weight: 700; }
+input { font: inherit; width: 100%; padding: 12px; border-radius: 10px; border: 2px solid var(--rule); background: var(--bg); color: var(--ink); margin: 8px 0; }
+.stand { color: var(--ink2); font-size: 13px; margin-top: 18px; text-align: center; }
+.fehler { color: #ffb3a6; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--card); padding: 4px; border-radius: 12px; margin-bottom: 14px; }
+.tabs button { background: transparent; color: var(--ink2); padding: 10px 6px; font-weight: 700; font-size: 16px; }
+.tabs button[aria-pressed="true"] { background: var(--cyan); color: #fff; }
+.tabs .z { display: inline-block; min-width: 22px; padding: 0 6px; margin-left: 4px; border-radius: 11px; background: var(--rule); color: #fff; font-size: 13px; }
+.tabs .z.rot { background: #E53009; }
+.chip { display: inline-block; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 6px; margin-bottom: 2px; }
+.chip.auf { background: #E53009; color: #fff; }
+.chip.haengt { background: #E5007D; color: #fff; }
+.raumwahl { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.raumwahl button { background: transparent; color: var(--ink2); border: 1.5px solid var(--rule); padding: 4px 10px; font-size: 13px; font-weight: 700; }
+.raumwahl button[aria-pressed="true"] { border-color: var(--cyan); color: #fff; }
+.seat.auf { background: #E53009; border-color: #E53009; color: #fff; font-weight: 800; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Hilfe FEM-TD</h1>
+  <button class="pill" id="schalter" hidden>Hilfe-Knopf</button>
+</header>
+<nav class="tabs" id="tabs" hidden>
+  <button id="t-anfragen" aria-pressed="true">Anfragen <span class="z" id="z-anfragen">0</span></button>
+  <button id="t-empfohlen" aria-pressed="false">Hilfe empfohlen <span class="z" id="z-empfohlen">0</span></button>
+</nav>
+<main id="app"></main>
+<div class="stand" id="stand"></div>
+
+<script>
+'use strict';
+const API = '../api/hilfe';
+const $ = id => document.getElementById(id);
+let key = '', daten = null, timer = null, ansicht = 'anfragen', raumWahl = '';   // raumWahl '' = automatisch
+try {
+  key = localStorage.getItem('hilfe_td_key') || '';
+  ansicht = localStorage.getItem('hilfe_td_ansicht') || 'anfragen';
+  raumWahl = localStorage.getItem('hilfe_td_raum') || '';
+} catch (e) { }
+
+const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+const dauer = s => s < 60 ? 'gerade eben' : 'seit ' + Math.round(s / 60) + ' min';
+
+async function api(pfad, body) {
+  const r = await fetch(API + pfad, body
+    ? { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Key': key }, body: JSON.stringify(body) }
+    : { headers: { 'X-Key': key }, cache: 'no-store' });
+  if (r.status === 403) { key = ''; try { localStorage.removeItem('hilfe_td_key'); } catch (e) { } throw new Error('schluessel'); }
+  if (!r.ok) throw new Error('http ' + r.status);
+  return r.json();
+}
+
+function anmelden(fehler) {
+  $('schalter').hidden = true;
+  $('tabs').hidden = true;
+  $('app').innerHTML = `<div class="box"><p>Einmal den Schlüssel des Dashboards eingeben (der Wert hinter <code>key=</code>). Die App merkt ihn sich.</p>
+    <input id="k" type="password" autocomplete="off" placeholder="Schlüssel">
+    <button id="ok">Anmelden</button>${fehler ? '<p class="fehler">Schlüssel falsch.</p>' : ''}</div>`;
+  $('ok').onclick = () => { key = $('k').value.trim(); try { localStorage.setItem('hilfe_td_key', key); } catch (e) { } laden(); };
+}
+
+// Nur der Raum, in dem gerade Praktikum ist (automatisch vom Backend oder fest gewählt).
+// plaetze: [{ raum, platz, cls, marke }] in Anzeige-Reihenfolge
+function raumkarte(raeume, plaetze) {
+  if (!plaetze.length) return '';
+  const belegt = {};
+  plaetze.forEach(e => { if (e.raum) belegt[e.raum + ':' + e.platz] = e; });
+  const raum = raumWahl || daten.raum_aktiv || (plaetze.find(e => e.raum) || {}).raum;
+  if (!raum || !raeume[raum]) return '';
+  const wahl = [''].concat(Object.keys(raeume).sort()).map(x =>
+    `<button data-raum="${x}" aria-pressed="${x === raumWahl}">${x || 'automatisch'}</button>`).join('');
+  return [raum].map(r => {
+    const n = raeume[r], reihen = Math.ceil(n / 4);
+    let zellen = '';
+    for (let reihe = reihen; reihe >= 1; reihe--) {           // hinterste Reihe oben, wie im Dashboard
+      for (const o of [4, 3, 0, 2, 1]) {                       // links 4, 3, Gang, rechts 2, 1
+        const p = (reihe - 1) * 4 + o;
+        if (o === 0 || p > n) { zellen += '<i></i>'; continue; }
+        const b = belegt[r + ':' + p];
+        zellen += b ? `<span class="seat ${b.cls}">${p}<sup>${esc(b.marke)}</sup></span>` : `<span class="seat">${p}</span>`;
+      }
+    }
+    const anderswo = plaetze.filter(e => e.raum && e.raum !== r).length;
+    return `<div class="room"><h3>Raum ${r}</h3><div class="map">${zellen}</div><p class="front">vorne, Tafel</p>` +
+      (anderswo ? `<p class="hint">${anderswo} weitere in anderen Räumen, siehe Liste.</p>` : '') +
+      `<div class="raumwahl">${wahl}</div></div>`;
+  }).join('');
+}
+
+// Einschätzung des Backends: Art, ob meist schnell, Stand bei der Aufgabe; vorgezogen = vor früher Gemeldeten
+function einschaetzung(x) {
+  if (!x.art) return '';
+  return `<div><span class="art${x.schnell ? ' schnell' : ''}">${esc(x.art)}${x.schnell ? ', meist schnell' : ''}</span>` +
+    (x.vorgezogen ? ' <small>vorgezogen</small>' : '') + (x.kontext ? `<br><small>${esc(x.kontext)}</small>` : '') + '</div>';
+}
+
+function zeigen() {
+  const d = daten, e = d.eintraege, emp = d.empfohlen || [];
+  const s = $('schalter');
+  s.hidden = false;
+  s.className = 'pill' + (d.an ? ' an' : '');
+  s.textContent = 'Hilfe-Knopf ' + (d.an ? 'an' : 'aus');
+  $('tabs').hidden = false;
+  $('t-anfragen').setAttribute('aria-pressed', String(ansicht === 'anfragen'));
+  $('t-empfohlen').setAttribute('aria-pressed', String(ansicht === 'empfohlen'));
+  $('z-anfragen').textContent = e.length;
+  const offenEmp = emp.filter(x => besucht.indexOf(besuchtKey(x)) === -1);
+  $('z-empfohlen').textContent = offenEmp.length;
+  $('z-empfohlen').className = 'z' + (offenEmp.some(x => x.aufgegeben) ? ' rot' : '');
+  if (ansicht === 'empfohlen') return zeigenEmpfohlen(emp);
+  let h;
+  if (!d.an) h = '<div class="next leer"><div class="lbl">Hilfe-Knopf ist aus</div><div class="wo">Niemand kann sich melden</div>' +
+    '<div class="was">Oben einschalten, wenn das Praktikum beginnt.</div></div>';
+  else if (!e.length) h = '<div class="next leer"><div class="lbl">Als Nächstes</div><div class="wo">Niemand wartet</div></div>';
+  else h = `<div class="next"><div class="lbl">Als Nächstes${e.length > 1 ? ' · ' + e.length + ' warten' : ''}</div>
+    <div class="wo">${esc(e[0].label)}</div><div class="was">${esc(e[0].seite || 'ohne Seite')} · ${dauer(e[0].wartet)}</div>
+    ${einschaetzung(e[0])}${e[0].text ? `<div class="text">„${esc(e[0].text)}“</div>` : ''}
+    <button class="big" data-id="${e[0].id}">Erledigt, nächster</button></div>`;
+  if (e.length > 1) h += '<h2>Danach</h2><ol class="queue">' + e.slice(1).map((x, i) =>
+    `<li><span class="nr">${i + 2}</span><span class="t"><b>${esc(x.label)}</b><small>${esc(x.seite || 'ohne Seite')} · ${dauer(x.wartet)}</small>` +
+    `${einschaetzung(x)}${x.text ? `<q>${esc(x.text)}</q>` : ''}</span>` +
+    `<button data-id="${x.id}">erledigt</button></li>`).join('') + '</ol>';
+  const karte = raumkarte(d.raeume, e.map((x, i) => ({ raum: x.raum, platz: x.platz, cls: i ? 'w' : 'n', marke: (i + 1) + '.' })));
+  if (karte) h += '<h2>Raumkarte</h2><div class="rooms">' + karte + '</div>';
+  h += pushBox();
+  fertig(h);
+}
+
+// Wer heute hängt (ab dem 3. Fehlversuch) oder aufgegeben hat (alle Versuche verbraucht), ohne sich gemeldet zu haben.
+// „War da, nächster“ blendet die Person auf diesem Gerät aus, bis sie einen weiteren Versuch macht.
+const besuchtKey = x => x.label + '|' + x.frage + '|' + x.versuche;
+let besucht = [];
+try { besucht = JSON.parse(localStorage.getItem('hilfe_td_besucht') || '[]'); } catch (e) { }
+function zeigenEmpfohlen(alle) {
+  const emp = alle.filter(x => besucht.indexOf(besuchtKey(x)) === -1);
+  $('z-empfohlen').textContent = emp.length;
+  $('z-empfohlen').className = 'z' + (emp.some(x => x.aufgegeben) ? ' rot' : '');
+  let h = '';
+  if (emp.length) {
+    const x = emp[0];
+    h += `<div class="next"><div class="lbl">Als Nächstes${emp.length > 1 ? ' · ' + emp.length + ' empfohlen' : ''}</div>
+      <div class="wo">${esc(x.label)}</div><div class="was"><span class="chip ${x.aufgegeben ? 'auf' : 'haengt'}">${x.aufgegeben ? 'aufgegeben' : 'hängt'}</span> ` +
+      `${esc(x.name ? x.name + ' · ' : '')}${esc(x.frage)} · ${x.versuche}. Versuch</div>
+      <button class="big" id="besucht">War da, nächster</button></div>`;
+    if (emp.length > 1) h += '<h2>Danach</h2>';
+  }
+  const rest = emp.slice(1);
+  h += rest.length ? '<ol class="queue">' + rest.map(x =>
+    `<li><span class="t"><span class="chip ${x.aufgegeben ? 'auf' : 'haengt'}">${x.aufgegeben ? 'aufgegeben' : 'hängt'}</span>` +
+    `<b>${esc(x.label)}${x.name ? ' · ' + esc(x.name) : ''}</b><small>${esc(x.frage)} · ${x.versuche}. Versuch · zuletzt ${dauer(x.seit).replace('seit ', 'vor ')}</small></span></li>`).join('') + '</ol>'
+    : emp.length ? '' : '<div class="next leer"><div class="lbl">Hilfe empfohlen</div><div class="wo">Niemand hängt gerade</div>' +
+      '<div class="was">Gezählt werden heute eingeloggte Studierende: ab dem 3. Fehlversuch „hängt“, alle Versuche verbraucht „aufgegeben“.</div></div>';
+  const karte = raumkarte(daten.raeume, emp.map((x, i) => ({ raum: x.raum, platz: x.platz, cls: i ? (x.aufgegeben ? 'auf' : 'w') : 'n', marke: (i + 1) + '.' })));
+  if (karte) h += '<h2>Raumkarte</h2><div class="rooms">' + karte + '</div>';
+  fertig(h);
+  const b = $('besucht');
+  if (b) b.onclick = () => {
+    besucht = besucht.concat(besuchtKey(emp[0])).slice(-200);
+    try { localStorage.setItem('hilfe_td_besucht', JSON.stringify(besucht)); } catch (e) { }
+    zeigen();
+  };
+}
+
+function fertig(h) {
+  $('app').innerHTML = h;
+  for (const b of document.querySelectorAll('[data-id]')) b.onclick = () => erledigt(+b.dataset.id, b);
+  const pb = $('push'); if (pb) pb.onclick = pushAn;
+  for (const b of document.querySelectorAll('[data-raum]')) b.onclick = () => {
+    raumWahl = b.dataset.raum;
+    try { localStorage.setItem('hilfe_td_raum', raumWahl); } catch (e) { }
+    zeigen();
+  };
+  $('stand').textContent = 'Stand ' + new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+// Push: auf dem iPhone nur in der App vom Home-Bildschirm
+let pushStatus = '';
+function pushBox() {
+  const kannPush = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (kannPush && Notification.permission === 'granted' && pushStatus === 'ok')
+    return '<p class="hint">Benachrichtigungen sind an. Die Uhr zeigt sie, wenn das iPhone gesperrt ist.</p>';
+  if (!kannPush && !standalone)
+    return '<div class="box"><p class="hint">Für Benachrichtigungen: in Safari unten auf Teilen, dann „Zum Home-Bildschirm“. ' +
+      'Danach die App vom Home-Bildschirm öffnen und hier einschalten.</p></div>';
+  if (!kannPush) return '<p class="hint">Dieses Gerät kann keine Benachrichtigungen empfangen.</p>';
+  return `<div class="box"><button id="push">Benachrichtigungen einschalten</button>
+    <p class="hint">Bei jeder neuen Anfrage kommt eine Nachricht, auch auf die Uhr. ${esc(pushStatus)}</p></div>`;
+}
+const b64 = s => { const p = '='.repeat((4 - s.length % 4) % 4), r = atob((s + p).replace(/-/g, '+').replace(/_/g, '/'));
+  return Uint8Array.from(r, c => c.charCodeAt(0)); };
+async function pushAn() {
+  try {
+    if (await Notification.requestPermission() !== 'granted') { pushStatus = 'Nicht erlaubt (Einstellungen > Mitteilungen).'; return zeigen(); }
+    const reg = await navigator.serviceWorker.register('sw.js');
+    await navigator.serviceWorker.ready;
+    const abo = await reg.pushManager.getSubscription() ||
+      await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64(daten.vapid) });
+    await api('/abo', { abo: abo.toJSON() });
+    pushStatus = 'ok';
+  } catch (e) { pushStatus = 'Fehler: ' + e.message; }
+  zeigen();
+}
+async function pushPruefen() {
+  try {
+    if (!('serviceWorker' in navigator) || Notification.permission !== 'granted') return;
+    const reg = await navigator.serviceWorker.getRegistration();
+    const abo = reg && await reg.pushManager.getSubscription();
+    if (abo) { await api('/abo', { abo: abo.toJSON() }); pushStatus = 'ok'; }
+  } catch (e) { }
+}
+
+async function erledigt(id, b) {
+  b.disabled = true;
+  try { daten = await api('/erledigt', { id }); zeigen(); } catch (e) { fehler(e); }
+}
+for (const [id, a] of [['t-anfragen', 'anfragen'], ['t-empfohlen', 'empfohlen']])
+  $(id).onclick = () => { ansicht = a; try { localStorage.setItem('hilfe_td_ansicht', a); } catch (e) { } if (daten) zeigen(); };
+$('schalter').onclick = async () => {
+  if (!daten) return;
+  const an = !daten.an;
+  if (!an && !confirm('Hilfe-Knopf ausschalten? Offene Anfragen werden dabei geschlossen.')) return;
+  try { daten = await api('/schalter', { an }); zeigen(); } catch (e) { fehler(e); }
+};
+
+function fehler(e) {
+  if (e.message === 'schluessel') return anmelden(true);
+  $('stand').textContent = 'Keine Verbindung (HTWK-Netz oder VPN nötig), neuer Versuch …';
+}
+async function laden() {
+  if (!key) return anmelden(false);
+  try { daten = await api(''); zeigen(); } catch (e) { fehler(e); }
+}
+function takt() {
+  clearInterval(timer);
+  if (document.visibilityState === 'visible') { laden(); timer = setInterval(laden, 4000); }
+}
+document.addEventListener('visibilitychange', takt);
+laden();
+pushPruefen().then(takt);
+</script>
+</body>
+</html>

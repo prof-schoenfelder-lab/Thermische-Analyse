@@ -217,3 +217,6 @@
 .ph-medal-icon { grid-area: icon; font-size: 1.6rem; }
 .ph-medal-name { grid-area: name; font-size: .78rem; font-weight: 700; }
 .ph-medal-desc { grid-area: desc; font-size: .68rem; color: var(--md-default-fg-color--light); }
+/* „Fortschritt zurücksetzen“ unter den Abzeichen: klein und unauffällig */
+html:root .md-typeset .ph-reset { margin-top: 2.4rem; font-size: .68rem; color: var(--kurs-text-3, var(--md-default-fg-color--light)); }
+html:root .md-typeset .ph-reset .md-button { font-size: .68rem; padding: .3em .9em; margin-right: .5rem; }
