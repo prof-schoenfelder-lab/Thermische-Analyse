@@ -73,8 +73,27 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Auswerten</p>
-    <p>Temperatur auf der Oberseite (Maximum und Minimum). Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion der Oberseite auswählen, und durch die Fläche teilen</p>
+    <p class="step-title" role="heading" aria-level="2">Pfad durch das Rohr anlegen</p>
+    <p>Für die Temperatur genau über dem Rohr: <code>Rechtsklick Strukturbaum Model → Insert → Construction Geometry → Path</code></p>
+    <img src="../../images/p1_uebung3_pfad_einfuegen.png" alt="Model, Insert, Construction Geometry, Path">
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Start- und Endpunkt des Pfads</p>
+    <p>Im <code>Detailfenster</code> senkrecht durch die Rohrmitte von der Unterseite bis zur Oberseite, hier Start (0, 0, 0) und Ende (0, 0,065, 0) in m. Die Werte hängen davon ab, wo das Koordinatensystem liegt: anzeigen mit <code>Reiter Display → Show → All Coordinate Systems</code></p>
+    <img src="../../images/p1_uebung3_pfad_punkte.png" alt="Pfad mit Start- und Endpunkt im Detailfenster">
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Temperatur entlang des Pfads</p>
+    <p><code>Rechtsklick Solution → Insert → Thermal → Temperature</code>, im <code>Detailfenster</code> bei <strong>Scoping Method</strong> <code>Path</code> wählen und darunter bei <strong>Path</strong> den eben angelegten Pfad (er heißt ebenfalls „Path“). Der Wert am Pfadende ist die Oberfläche über dem Rohr</p>
+    <img src="../../images/p1_uebung3_pfad_scoping.png" alt="Scoping Method auf Path">
+    <img src="../../images/p1_uebung3_pfad_auswahl.png" alt="Pfad auswählen">
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Zwischen den Rohren und Wärmestrom</p>
+    <p>Temperatur auf der Oberseite: Das Minimum liegt zwischen den Rohren. Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion der Oberseite auswählen, und durch die Fläche teilen</p>
   </div>
 
 </div>
@@ -85,7 +104,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Oberflächentemperatur über dem Rohr in °C
 
-<div class="numeric-question" data-answer="29.87" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Maximum der Temperatur auf der Oberseite. Im Rohr Convection 1000 bei 35 °C, oben Convection 10,8 bei 20 °C?">
+<div class="numeric-question" data-answer="29.87" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Temperatur am Ende des Pfads durch die Rohrmitte (Oberseite). Im Rohr Convection 1000 bei 35 °C, oben Convection 10,8 bei 20 °C?">
 </div>
 
 ### Oberflächentemperatur zwischen den Rohren in °C
