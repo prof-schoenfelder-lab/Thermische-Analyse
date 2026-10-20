@@ -93,12 +93,12 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Zwischen den Rohren und Wärmestrom</p>
-    <p>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, also genau in der Mitte zwischen diesem und dem nächsten Rohr. Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion der Oberseite auswählen. Der Wärmestrom in W geteilt durch die Oberseite (0,15 m × 0,02 m = 0,003 m²) ist die mittlere Wärmestromdichte</p>
+    <p>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, also genau in der Mitte zwischen diesem und dem nächsten Rohr. Wärmestrom: Die Konvektion der Oberseite im Strukturbaum mit gedrückter Maustaste auf <code>Solution</code> ziehen. ANSYS legt dafür die Reaction Probe an (alternativ <code>Rechtsklick Solution → Insert → Probe → Reaction</code> und dort die Konvektion wählen). Der Wert ist negativ, weil die Wärme das Modell verlässt. Den Betrag in W geteilt durch die Oberseite (0,15 m × 0,02 m = 0,003 m²) ergibt die mittlere Wärmestromdichte</p>
   </div>
 
 </div>
 
-<!-- TODO: Reaction Probe mit ANSYS 2025 R2 prüfen (Vorzeichen); Datei P1_Fussbodenheizung.scdoc ablegen -->
+<!-- TODO: Datei P1_Fussbodenheizung.scdoc ablegen -->
 
 ## Gesucht
 
@@ -114,7 +114,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Mittlere Wärmestromdichte an der Estrichoberfläche (Wärmeabgabe je m² Fußboden) in W/m²
 
-<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Nicht entlang eines Pfads mitteln: Die Wärme tritt über dem Rohr stärker aus. Reaction Probe der Konvektion an der Oberseite liefert den Wärmestrom in W (Vorzeichen egal), durch die Oberfläche 0,15 m × 0,02 m = 0,003 m² teilen.">
+<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Nicht entlang eines Pfads mitteln: Die Wärme tritt über dem Rohr stärker aus. Konvektion der Oberseite auf Solution ziehen: Die Reaction Probe liefert den Wärmestrom in W (negativ, den Betrag nehmen), durch die Oberfläche 0,15 m × 0,02 m = 0,003 m² teilen.">
 </div>
 
 ### Wird der Grenzwert von 29 °C an der Oberfläche eingehalten?
