@@ -47,4 +47,3 @@ Geometrie direkt an (Fläche ziehen, verschieben).
     beiden Körpern: Die Wärme geht ohne Umweg über einen Kontakt hindurch.
     Kontakte schauen wir uns in diesem Kurs nicht an.
 
-<!-- TODO: Datei P1_Aussenwand.scdoc als Download ablegen (files/) -->

@@ -37,7 +37,7 @@ Alle zehn Dateien zusammen sind 91,3 GB groß.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Grundinstallation: alle 8 ISO-Dateien herunterladen</p>
-    <p>ANSYS Downloadlink im OPAL: <a href="https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/18448121873/CourseNode/102618893872254" target="_blank">HTWK OPAL LINK</a>. Für die Grundinstallation werden alle acht ISO-Dateien (DISK1 bis DISK8) gebraucht, SpaceClaim und Service Pack laden Sie erst später herunter.</p>
+    <p>ANSYS Downloadlink im OPAL: <a href="https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/18416861197/CourseNode/101590362247496" target="_blank">HTWK OPAL LINK</a>. Für die Grundinstallation werden alle acht ISO-Dateien (DISK1 bis DISK8) gebraucht, SpaceClaim und Service Pack laden Sie erst später herunter.</p>
   </div>
 
   <div class="step">

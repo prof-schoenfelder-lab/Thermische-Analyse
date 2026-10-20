@@ -114,3 +114,11 @@ html:root .tut-art { font-size: .56rem; font-weight: 700; letter-spacing: .06em;
 html:root .tut-card-desc { display: block; font-size: .68rem; line-height: 1.45; color: var(--kurs-text-2); margin-top: .25rem; }
 html:root .md-typeset a.tut-card:not(:has(.tut-thumb)) { background: var(--kurs-panel); }
 html:root .md-typeset .tut-quelle { font-size: .72rem; color: var(--kurs-text-2); margin-top: 1.2rem; }
+
+/* Übungshinweise: Bilder als kleine Vorschau in einer Reihe, Klick vergrößert (Lightbox) */
+html:root .md-typeset .steps .hinweis-bilder { display: flex; flex-wrap: wrap; gap: .5rem; margin: .45rem 0 .1rem; }
+html:root .md-typeset .steps .hinweis-bilder a { display: block; line-height: 0; }
+html:root .md-typeset .steps .hinweis-bilder img {
+  height: 6.5rem; width: auto; max-width: 100%; margin: 0; object-fit: contain; cursor: zoom-in;
+  border: 1px solid var(--kurs-line, #e2e8ec); border-radius: .3rem; background: #fff;
+}

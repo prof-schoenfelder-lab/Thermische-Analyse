@@ -86,12 +86,11 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Auswerten</p>
     <p>Die kälteste Stelle innen liegt an der Innenkante der Ecke. Oben <code>Vertex</code> anklicken (Punkte auswählen) und einen Eckpunkt dieser Kante anklicken (oben oder unten, über die Höhe ist die Temperatur gleich). Dann <code>Rechtsklick Strukturbaum Solution → Insert → Thermal → Temperature</code>: Das Ergebnis gilt nur für diesen Punkt</p>
-    <img src="../../images/p1_uebung2_vertex.png" alt="Eckpunkt an der Innenkante gewählt, Insert, Thermal, Temperature">
+    <p class="hinweis-bilder"><img src="../../images/p1_uebung2_vertex.png" alt="Eckpunkt an der Innenkante gewählt, Insert, Thermal, Temperature"></p>
   </div>
 
 </div>
 
-<!-- TODO: Datei P1_Aussenecke.scdoc als Download ablegen -->
 
 ## Gesucht
 

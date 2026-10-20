@@ -45,60 +45,29 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 <div class="steps" markdown="1" data-anleitung="nein">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Zwei Rechtecke für den Estrich</p>
-    <p>Ursprung = Mitte der Unterkante. Links und rechts davon je ein Rechteck 75 × 65 mm, zusammen 150 × 65 mm</p>
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Mittelpunkt des Rohrs</p>
-    <p>Mit <code>Line</code> vom Ursprung aus 20 mm senkrecht nach oben: Der Endpunkt der Linie ist der Mittelpunkt des Rohrs</p>
-    <img src="../../images/p1_uebung3_linie.png" alt="Linie 20 mm vom Ursprung nach oben">
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Kreis für das Rohr</p>
-    <p>Mit <code>Circle</code> auf den Endpunkt der Linie klicken und Ø 16 mm eingeben</p>
-    <img src="../../images/p1_uebung3_kreis.png" alt="Kreis Ø 16 mm am Ende der Linie">
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Kreis entfernen und ziehen</p>
-    <p>Skizze beenden, die beiden Kreisflächen markieren und mit <code>Rechtsklick → Delete</code> löschen. Dann die übrigen Estrichflächen mit <code>Strg</code> markieren und mit <code>Pull</code> 20 mm ziehen: Es entsteht der Estrich mit einem Loch für das Rohr</p>
-    <img src="../../images/p1_uebung3_kreis_loeschen.png" alt="Kreisflächen markiert, Rechtsklick, Delete">
+    <p class="step-title" role="heading" aria-level="2">Geometrie</p>
+    <p>Ursprung = Mitte der Unterkante, links und rechts je ein Rechteck 75 × 65 mm. Mit <code>Line</code> vom Ursprung 20 mm nach oben (Endpunkt = Rohrmitte), dort mit <code>Circle</code> Ø 16 mm. Skizze beenden, die Kreisflächen mit <code>Rechtsklick → Delete</code> löschen, die übrigen Flächen mit <code>Strg</code> markieren und 20 mm ziehen</p>
+    <p class="hinweis-bilder"><img src="../../images/p1_uebung3_linie.png" alt="Linie 20 mm nach oben"><img src="../../images/p1_uebung3_kreis.png" alt="Kreis Ø 16 mm"><img src="../../images/p1_uebung3_kreis_loeschen.png" alt="Kreisflächen löschen"></p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Randbedingungen</p>
-    <p>Innenfläche des Lochs: <code>Convection</code> mit 1000 W/m²·°C und 35 °C (Wasser). Oberseite: <code>Convection</code> mit 10,8 W/m²·°C und 20 °C. Alle anderen Flächen bleiben frei</p>
+    <p>Lochfläche: <code>Convection</code> 1000 W/m²·°C, 35 °C. Oberseite: <code>Convection</code> 10,8 W/m²·°C, 20 °C. Alle anderen Flächen bleiben frei</p>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Pfad durch das Rohr anlegen</p>
-    <p>Für die Temperatur genau über dem Rohr: <code>Rechtsklick Strukturbaum Model → Insert → Construction Geometry → Path</code></p>
-    <img src="../../images/p1_uebung3_pfad_einfuegen.png" alt="Model, Insert, Construction Geometry, Path">
+    <p class="step-title" role="heading" aria-level="2">Temperatur über dem Rohr (Pfad)</p>
+    <p><code>Rechtsklick Model → Insert → Construction Geometry → Path</code>, Start (0, 0, 0) und Ende (0, 0,065, 0) m, senkrecht durch die Rohrmitte (Lage des Koordinatensystems: <code>Display → Show → All Coordinate Systems</code>). Dann <code>Insert → Thermal → Temperature</code>, <strong>Scoping Method</strong> <code>Path</code>, den Pfad wählen. Der Wert am Pfadende ist die Oberfläche über dem Rohr</p>
+    <p class="hinweis-bilder"><img src="../../images/p1_uebung3_pfad_einfuegen.png" alt="Path einfügen"><img src="../../images/p1_uebung3_pfad_punkte.png" alt="Start- und Endpunkt"><img src="../../images/p1_uebung3_pfad_scoping.png" alt="Scoping Method Path"><img src="../../images/p1_uebung3_pfad_auswahl.png" alt="Pfad wählen"></p>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Start- und Endpunkt des Pfads</p>
-    <p>Im <code>Detailfenster</code> senkrecht durch die Rohrmitte von der Unterseite bis zur Oberseite, hier Start (0, 0, 0) und Ende (0, 0,065, 0) in m. Die Werte hängen davon ab, wo das Koordinatensystem liegt: anzeigen mit <code>Reiter Display → Show → All Coordinate Systems</code></p>
-    <img src="../../images/p1_uebung3_pfad_punkte.png" alt="Pfad mit Start- und Endpunkt im Detailfenster">
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Temperatur entlang des Pfads</p>
-    <p><code>Rechtsklick Solution → Insert → Thermal → Temperature</code>, im <code>Detailfenster</code> bei <strong>Scoping Method</strong> <code>Path</code> wählen und darunter bei <strong>Path</strong> den eben angelegten Pfad (er heißt ebenfalls „Path“). Der Wert am Pfadende ist die Oberfläche über dem Rohr</p>
-    <img src="../../images/p1_uebung3_pfad_scoping.png" alt="Scoping Method auf Path">
-    <img src="../../images/p1_uebung3_pfad_auswahl.png" alt="Pfad auswählen">
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Zwischen den Rohren und Wärmestrom</p>
-    <p>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, also genau in der Mitte zwischen diesem und dem nächsten Rohr. Wärmestrom: Die Konvektion der Oberseite im Strukturbaum mit gedrückter Maustaste auf <code>Solution</code> ziehen. ANSYS legt dafür die Reaction Probe an (alternativ <code>Rechtsklick Solution → Insert → Probe → Reaction</code> und dort die Konvektion wählen). Der Wert ist negativ, weil die Wärme das Modell verlässt. Den Betrag in W geteilt durch die Oberseite (0,15 m × 0,02 m = 0,003 m²) ergibt die mittlere Wärmestromdichte</p>
+    <p class="step-title" role="heading" aria-level="2">Zwischen den Rohren und Wärmestromdichte</p>
+    <p>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, genau in der Mitte zwischen zwei Rohren. Wärmestromdichte: <code>Insert → Thermal → Directional Heat Flux</code> auf der Oberseite, Richtung senkrecht zur Oberfläche (hier <code>Y Axis</code>), abzulesen ist der Mittelwert (<strong>Average</strong>)</p>
   </div>
 
 </div>
 
-<!-- TODO: Datei P1_Fussbodenheizung.scdoc ablegen -->
 
 ## Gesucht
 
@@ -114,7 +83,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Mittlere Wärmestromdichte an der Estrichoberfläche (Wärmeabgabe je m² Fußboden) in W/m²
 
-<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Nicht entlang eines Pfads mitteln: Die Wärme tritt über dem Rohr stärker aus. Konvektion der Oberseite auf Solution ziehen: Die Reaction Probe liefert den Wärmestrom in W (negativ, den Betrag nehmen), durch die Oberfläche 0,15 m × 0,02 m = 0,003 m² teilen.">
+<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Directional Heat Flux auf der Oberseite, Richtung senkrecht zur Oberfläche, Mittelwert (Average). Nicht entlang eines Pfads mitteln: Über dem Rohr tritt mehr Wärme aus.">
 </div>
 
 ### Wird der Grenzwert von 29 °C an der Oberfläche eingehalten?
