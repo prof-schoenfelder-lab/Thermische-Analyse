@@ -45,13 +45,26 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 <div class="steps" markdown="1" data-anleitung="nein">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Skizze mit Loch</p>
-    <p>Rechteck 150 × 65 mm, dazu mit <code>Circle</code> einen Kreis Ø 16 mm, Mittelpunkt 20 mm über der Mitte der Unterkante</p>
+    <p class="step-title" role="heading" aria-level="2">Zwei Rechtecke für den Estrich</p>
+    <p>Ursprung = Mitte der Unterkante. Links und rechts davon je ein Rechteck 75 × 65 mm, zusammen 150 × 65 mm</p>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Nur den Estrich ziehen</p>
-    <p>Mit <code>Pull</code> nur die Fläche <strong>um</strong> den Kreis 20 mm ziehen. Der Kreis bleibt frei: Es entsteht ein Körper mit Loch</p>
+    <p class="step-title" role="heading" aria-level="2">Mittelpunkt des Rohrs</p>
+    <p>Mit <code>Line</code> vom Ursprung aus 20 mm senkrecht nach oben: Der Endpunkt der Linie ist der Mittelpunkt des Rohrs</p>
+    <img src="../../images/p1_uebung3_linie.png" alt="Linie 20 mm vom Ursprung nach oben">
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Kreis für das Rohr</p>
+    <p>Mit <code>Circle</code> auf den Endpunkt der Linie klicken und Ø 16 mm eingeben</p>
+    <img src="../../images/p1_uebung3_kreis.png" alt="Kreis Ø 16 mm am Ende der Linie">
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Kreis entfernen und ziehen</p>
+    <p>Skizze beenden, die beiden Kreisflächen markieren und mit <code>Rechtsklick → Delete</code> löschen. Dann die übrigen Estrichflächen mit <code>Strg</code> markieren und mit <code>Pull</code> 20 mm ziehen: Es entsteht der Estrich mit einem Loch für das Rohr</p>
+    <img src="../../images/p1_uebung3_kreis_loeschen.png" alt="Kreisflächen markiert, Rechtsklick, Delete">
   </div>
 
   <div class="step">
@@ -66,7 +79,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 </div>
 
-<!-- TODO: Hinweise zu Circle und Reaction Probe mit ANSYS 2025 R2 prüfen; Datei P1_Fussbodenheizung.scdoc ablegen -->
+<!-- TODO: Reaction Probe mit ANSYS 2025 R2 prüfen (Vorzeichen); Datei P1_Fussbodenheizung.scdoc ablegen -->
 
 ## Gesucht
 
