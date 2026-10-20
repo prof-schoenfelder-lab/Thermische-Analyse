@@ -19,7 +19,7 @@
       "media": [
         "step-1.png"
       ],
-      "note": "Alle Zahlen, die Sie später eingeben, gelten in diesem Einheitensystem: `0,01` für die Elementgröße sind dann 10 mm, `20` für die Temperatur sind 20 °C. Mit mm statt m wäre dieselbe Elementgröße ein Hundertstel Millimeter."
+      "note": "Alle späteren Eingaben gelten in diesem Einheitensystem: `0,01` bei der Netzgröße sind dann 10 mm."
     },
     {
       "caption": "`Strukturbaum Geometry` und **SYS** aufklappen",
@@ -32,7 +32,7 @@
       "media": [
         "step-3.png"
       ],
-      "note": "Das gelbe Feld zeigt: Dem Körper fehlt noch ein Material. Ohne Wärmeleitfähigkeit lässt sich nicht rechnen."
+      "note": "Gelb heißt: Hier fehlt noch eine Eingabe."
     },
     {
       "caption": "Genauso für den Körper **EPS**: anklicken, bei **Assignment** auf den Pfeil klicken, **EPS** wählen",
