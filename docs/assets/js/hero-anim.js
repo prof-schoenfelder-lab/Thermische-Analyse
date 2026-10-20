@@ -3,7 +3,9 @@
    Wärmeleitung (innen 100 °C, außen 20 °C), durch die sieben Schritte des
    Simulations-Workflows aus dem Kurs bis zum Temperaturfeld. Läuft von
    selbst in Schleife, pausiert außerhalb des Sichtbereichs; bei reduzierter
-   Bewegung steht das Endbild. Die Schritt-Leiste darunter ist anklickbar. */
+   Bewegung steht das Endbild. Die Schritt-Leiste darunter ist anklickbar.
+   Mit data-scroll am Container (Seite Grundprinzip) läuft nichts von selbst:
+   Elemente mit data-anim-t steuern beim Scrollen den Abschnitt, der abgespielt wird. */
 (function () {
   'use strict';
 
@@ -448,16 +450,30 @@
 
     // ---------- Ablauf ----------
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var curT = reduced ? STILL : 0, running = false, last = 0, visible = true;
+    var scroll = host.hasAttribute('data-scroll');
+    var curT = reduced ? STILL : scroll ? STEPS[0].t1 - 0.1 : 0, running = false, last = 0, visible = true, ziel = null;
     function tick(now) {
       if (!running) return;
       var dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
       last = now;
-      curT = (curT + dt) % LOOP;
+      curT += dt;
+      if (ziel !== null && curT >= ziel) { curT = ziel; ziel = null; running = false; draw(curT); return; }
+      curT %= LOOP;
       draw(curT);
       requestAnimationFrame(tick);
     }
-    function start() { if (running || reduced || !visible) return; running = true; last = 0; requestAnimationFrame(tick); }
+    function start() {
+      if (running || !visible || (scroll ? ziel === null : reduced)) return;
+      running = true; last = 0; requestAnimationFrame(tick);
+    }
+    // Abschnitt bis t abspielen: innerhalb des Schritts weiter, sonst ab Beginn des Schritts
+    function gehe(t) {
+      var s = 0;
+      for (var i = 0; i < STEPS.length; i++) if (t > STEPS[i].t0) s = i;
+      if (reduced) { curT = t; draw(t); return; }
+      if (!(curT >= STEPS[s].t0 && curT < t)) curT = STEPS[s].t0;
+      ziel = t; draw(curT); start();
+    }
     function stop() { running = false; }
 
     track.addEventListener('click', function (ev) {
@@ -479,8 +495,16 @@
     // Für Tests: Zeitpunkt setzen und anhalten (window.__heroAnim.seek(12.5))
     window.__heroAnim = {
       seek: function (t) { stop(); reduced = true; curT = t; draw(t); },
-      play: function () { reduced = false; start(); }
+      play: function () { reduced = false; start(); },
+      gehe: gehe
     };
+    if (scroll && window.IntersectionObserver) {
+      var marken = document.querySelectorAll('[data-anim-t]');
+      var io = new IntersectionObserver(function (en) {
+        en.forEach(function (e) { if (e.isIntersecting) gehe(+e.target.getAttribute('data-anim-t')); });
+      }, { rootMargin: '-35% 0px -60% 0px' });
+      for (var mi = 0; mi < marken.length; mi++) io.observe(marken[mi]);
+    }
 
     draw(curT);
     start();

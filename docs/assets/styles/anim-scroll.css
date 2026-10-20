@@ -1,0 +1,17 @@
+/* Grundprinzip der FEM: Schritte links, Rohr-Animation rechts bleibt stehen und spielt beim Scrollen
+   den passenden Schritt ab (hero-anim.js, data-scroll / data-anim-t). Schmal oder ohne WebGL: Standbilder. */
+.md-typeset .anim-scroll { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.md-typeset .anim-buehne { position: sticky; top: 4.5rem; }
+.md-typeset .anim-scroll .step[data-anim-t] { min-height: 38vh; }
+.md-typeset .anim-scroll .step[data-anim-t]:last-child { min-height: 55vh; }
+.md-typeset img.anim-standbild { display: none; width: 100%; max-width: 28rem; margin: .3rem auto .4rem; }
+.md-typeset .anim-scroll:not(:has(.kurs-anim[data-ready])) { grid-template-columns: minmax(0, 1fr); }
+.md-typeset .anim-scroll:not(:has(.kurs-anim[data-ready])) .anim-buehne { display: none; }
+.md-typeset .anim-scroll:not(:has(.kurs-anim[data-ready])) img.anim-standbild { display: block; }
+.md-typeset .anim-scroll:not(:has(.kurs-anim[data-ready])) .step[data-anim-t] { min-height: 0; }
+@media screen and (max-width: 60em) {
+  .md-typeset .anim-scroll { grid-template-columns: minmax(0, 1fr); }
+  .md-typeset .anim-buehne { display: none; }
+  .md-typeset img.anim-standbild { display: block; }
+  .md-typeset .anim-scroll .step[data-anim-t] { min-height: 0; }
+}
