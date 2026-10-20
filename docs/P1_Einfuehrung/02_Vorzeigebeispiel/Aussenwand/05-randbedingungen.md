@@ -12,6 +12,10 @@ title: 5 · Randbedingungen
 
 --8<-- "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/index.md:Randbedingungen_a"
 
+<figure style="text-align:center;">
+  <img src="../../../images/p1_aussenwand_a.svg" alt="Fall a: Oberflächentemperaturen" class="no-lightbox">
+</figure>
+
 ## Umsetzung
 
 ??? tip "Kurzanleitung: Temperatur auf eine Fläche"

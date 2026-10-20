@@ -48,9 +48,10 @@ In ANSYS Workbench arbeiten Sie dafür immer dieselben **7 Schritte** ab:
     <p class="step-title" role="heading" aria-level="2">Lösen</p>
     <p>Für jedes Element gilt das <strong>Fouriersche Gesetz</strong>: Wärme fließt vom Warmen zum Kalten, und zwar umso mehr, je steiler das Temperaturgefälle ist, \(\dot q = -\lambda\,\mathrm{d}T/\mathrm{d}x\). Zusammengesetzt entsteht das Gleichungssystem</p>
     <p>$$\mathbf{K}\,\mathbf{T} = \dot{\mathbf{Q}}$$</p>
-    <p>mit der Wärmeleitmatrix <strong>K</strong>, den unbekannten Knotentemperaturen <strong>T</strong> und den Knotenwärmeströmen \(\dot{\mathbf{Q}}\). Für ein Element der Länge L und Fläche A sieht das so aus:</p>
+    <p>mit der Wärmeleitmatrix <strong>K</strong>, den unbekannten Knotentemperaturen <strong>T</strong> und den Knotenwärmeströmen \(\dot{\mathbf{Q}}\). Für das einfachste Element, einen Stab der Länge L mit der Querschnittsfläche A (1D), sieht das so aus:</p>
     <p>$$\frac{\lambda A}{L}\begin{bmatrix}1 & -1\\ -1 & 1\end{bmatrix}\begin{Bmatrix}T_1\\ T_2\end{Bmatrix}=\begin{Bmatrix}\dot Q_1\\ \dot Q_2\end{Bmatrix}$$</p>
     <p>Das ist das <strong>Ohmsche Gesetz für Wärme</strong>: Der <strong>Wärmeleitwert λA/L</strong> (Kehrwert des Wärmewiderstands) entspricht dem elektrischen Leitwert, die Temperaturdifferenz der Spannung, der Wärmestrom dem Strom. In der Strukturmechanik hat eine Feder dieselbe Form (Steifigkeit, Verschiebung, Kraft).</p>
+    <p>In 2D und 3D (Dreiecke, Tetraeder, Hexaeder) gibt es kein so einfaches λA/L mehr: Die Elementmatrix entsteht aus einem Integral über das Element und hängt von seiner Form und Größe ab. Das Prinzip bleibt gleich: Leitwerte zwischen den Knoten, zusammengesetzt zu \(\mathbf{K}\,\mathbf{T} = \dot{\mathbf{Q}}\).</p>
   </div>
 
   <div class="step">

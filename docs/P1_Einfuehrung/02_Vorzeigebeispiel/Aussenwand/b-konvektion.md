@@ -16,6 +16,10 @@ gibt es einen **Wärmeübergang** (Konvektion), der selbst einen Widerstand dars
 
 --8<-- "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/index.md:Randbedingungen_b"
 
+<figure style="text-align:center;">
+  <img src="../../../images/p1_aussenwand_b.svg" alt="Fall b: Konvektion" class="no-lightbox">
+</figure>
+
 ## Was gibt man bei der Konvektion ein?
 
 Bei der Konvektion gibt man **keine Wandtemperatur** vor, sondern zwei andere

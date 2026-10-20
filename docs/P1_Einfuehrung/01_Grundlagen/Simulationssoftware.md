@@ -25,20 +25,9 @@ Für die Wärmeleitung gibt es zwei Analysesysteme:
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Start von ANSYS Workbench</p>
-    <p>Im Windows-Startmenü unter Lehre auf <code>ANSYS Workbench 2025 R2</code> klicken</p>
+    <p>Im Windows-Startmenü nach <code>Workbench 2025 R2</code> suchen und starten</p>
   </div>
 
 </div>
-
-!!! warning "Einheiten in Mechanical"
-    Die Werte in diesem Kurs sind in **m** und **°C** angegeben. In Mechanical
-    deshalb das Einheitensystem **Metric (m, kg, N, s, V, A)** wählen (unten in
-    der Statusleiste). Sonst erscheint die Wärmestromdichte in W/mm², also um den
-    Faktor 10⁶ kleiner.
-
-!!! info "Komma oder Punkt?"
-    Ob ANSYS Dezimalzahlen mit Komma (`0,99`) oder Punkt (`0.99`) erwartet,
-    hängt von der Windows-Einstellung des Rechners ab. Die Anleitungen zeigen
-    das Komma. Nimmt ANSYS den Wert nicht an, den Punkt verwenden.
 
 Der weitere Ablauf folgt im Vorzeigebeispiel.
