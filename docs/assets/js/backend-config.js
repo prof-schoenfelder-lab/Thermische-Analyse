@@ -7,4 +7,4 @@
 window.AC_BACKEND_URL = 'https://fing-spool.htwk-leipzig.de/thermo';
 // Direktlink zum LTI-Baustein im OPAL-Kurs (Login-Einstieg für Punkte-Sync)
 // TODO: eintragen, sobald der OPAL-Kurs für diesen Kurs angelegt ist.
-window.AC_OPAL_URL = '';
+window.AC_OPAL_URL = 'https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/18416861197/CourseNode/1792463951835633004';

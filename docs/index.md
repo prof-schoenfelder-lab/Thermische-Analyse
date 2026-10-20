@@ -22,7 +22,7 @@ hide:
     <p class="kurs-hero-lead">Temperaturfelder mit der Finite-Elemente-Methode berechnen: von der stationären Wärmeleitung bis zur instationären (transienten) Analyse und Strahlung, Schritt für Schritt in ANSYS Workbench.</p>
     <div class="kurs-hero-actions">
       <a class="kurs-btn kurs-btn--primary" href="P1_Einfuehrung/">Mit Praktikum 1 starten <span aria-hidden="true">→</span></a>
-      <a class="kurs-btn kurs-btn--opal kurs-btn--out" href="https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/18416861197"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5v3H3v4h7v3zm9 2h-6v2h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-6v2h6v14z"/></svg> Über OPAL anmelden</a>
+      <a class="kurs-btn kurs-btn--opal kurs-btn--out" href="https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/18416861197/CourseNode/1792463951835633004"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5v3H3v4h7v3zm9 2h-6v2h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-6v2h6v14z"/></svg> Über OPAL anmelden</a>
       <a class="kurs-btn kurs-btn--in" href="Fortschritt/">Mein Fortschritt</a>
     </div>
     <div class="kurs-opal">
