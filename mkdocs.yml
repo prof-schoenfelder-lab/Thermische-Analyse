@@ -43,6 +43,7 @@ theme:
 hooks:
       - scripts/answers_hook.py
       - scripts/spickzettel_hook.py
+      - scripts/anleitungen_hook.py
 
 plugins:
       - macros
@@ -169,10 +170,12 @@ nav:
       - INSTATIONÄRE BERECHNUNG:
               - P4_Instationaer/index.md
       # <<< AUTO-NAV
+      - HILFE:
+              - Anleitungen: tutorials.md
+              - FAQ:
+                      - 00_FAQ/index.md
+                      - 00_FAQ/ANSYS_Install.md
+                      - 00_FAQ/Fenster_weg.md
       - MEIN BEREICH:
               - Fortschritt.md
               - Spickzettel.md
-      - FAQ:
-              - 00_FAQ/index.md
-              - 00_FAQ/ANSYS_Install.md
-              - 00_FAQ/Fenster_weg.md

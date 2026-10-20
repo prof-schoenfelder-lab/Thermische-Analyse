@@ -8,7 +8,7 @@ hide:
 # Fenster weg in SpaceClaim
 
 
-<div class="steps" markdown="1">
+<div class="steps" markdown="1" data-kategorie="Bedienung">
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Fenster wiederherstellen</p>
@@ -21,7 +21,7 @@ hide:
 # Fenster weg im Engineering Data (Materialtab im Projektmenü)
 
 
-<div class="steps" markdown="1">
+<div class="steps" markdown="1" data-kategorie="Bedienung">
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Fenster wiederherstellen</p>
@@ -33,7 +33,7 @@ hide:
 
 # Fenster weg in Mechanical
 
-<div class="steps" markdown="1">
+<div class="steps" markdown="1" data-kategorie="Bedienung">
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Fenster wiederherstellen</p>

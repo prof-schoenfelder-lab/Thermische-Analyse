@@ -114,17 +114,27 @@
 
   // --- 2) Übersichtsseite ---------------------------------------------------
   function renderOverview(host) {
-    fetchJSON(BASE + 'tutorials/index.json').then(function (db) {
-      var all = db.tutorials || [];
+    Promise.all([
+      fetchJSON(BASE + 'tutorials/index.json'),
+      // Listen-Anleitungen: Schrittkästen der Kursseiten, beim Build gesammelt (scripts/anleitungen_hook.py)
+      fetchJSON(BASE + 'assets/anleitungen.json').catch(function () { return {}; })
+    ]).then(function (daten) {
+      var listen = (daten[1].anleitungen || []).map(function (a) {
+        return { slug: 'liste-' + a.id, title: a.titel, category: a.kategorien[0], kategorien: a.kategorien,
+                 steps: a.schritte.length, liste: a };
+      });
+      var all = (daten[0].tutorials || []).concat(listen);
       var cats = [];
-      all.forEach(function (t) { if (cats.indexOf(t.category) === -1) cats.push(t.category); });
+      all.forEach(function (t) {
+        (t.kategorien || [t.category]).forEach(function (c) { if (cats.indexOf(c) === -1) cats.push(c); });
+      });
 
       var bar = document.createElement('div');
       bar.className = 'tut-bar';
       var search = document.createElement('input');
       search.type = 'search';
       search.className = 'tut-search';
-      search.placeholder = 'Anleitung suchen … (z.B. Festlager, Netz, Material)';
+      search.placeholder = 'Anleitung suchen … (z. B. Konvektion, Netz, Material)';
       bar.appendChild(search);
       var chips = document.createElement('div');
       chips.className = 'tut-cats';
@@ -155,27 +165,65 @@
       detail.hidden = true;
       host.appendChild(detail);
 
-      function openDetail(slug) {
-        fetchJSON(BASE + 'tutorials/' + slug + '/tutorial.json').then(function (tut) {
-          detail.innerHTML = '';
-          var back = document.createElement('button');
-          back.type = 'button';
-          back.className = 'tut-back';
-          back.textContent = '← Alle Anleitungen';
-          back.addEventListener('click', function () {
-            detail.hidden = true; bar.hidden = false; grid.hidden = false;
-            history.replaceState(null, '', location.pathname + location.search);
-          });
-          var h = document.createElement('h2');
-          h.className = 'tut-detail-title';
-          h.textContent = tut.title;
-          detail.appendChild(back);
-          detail.appendChild(h);
-          detail.appendChild(metaLine(tut));
-          detail.appendChild(buildSteps(tut));
-          bar.hidden = true; grid.hidden = true; detail.hidden = false;
-          window.scrollTo(0, 0);
+      function detailKopf(titel, meta) {
+        detail.innerHTML = '';
+        var back = document.createElement('button');
+        back.type = 'button';
+        back.className = 'tut-back';
+        back.textContent = '← Alle Anleitungen';
+        back.addEventListener('click', function () {
+          detail.hidden = true; bar.hidden = false; grid.hidden = false;
+          history.replaceState(null, '', location.pathname + location.search);
         });
+        var h = document.createElement('h2');
+        h.className = 'tut-detail-title';
+        h.textContent = titel;
+        detail.appendChild(back);
+        detail.appendChild(h);
+        detail.appendChild(meta);
+      }
+      function zeigen() {
+        bar.hidden = true; grid.hidden = true; detail.hidden = false;
+        window.scrollTo(0, 0);
+      }
+
+      function openDetail(slug) {
+        var eintrag = null;
+        all.forEach(function (t) { if (t.slug === slug) eintrag = t; });
+        if (eintrag && eintrag.liste) return openListe(eintrag.liste);
+        fetchJSON(BASE + 'tutorials/' + slug + '/tutorial.json').then(function (tut) {
+          detailKopf(tut.title, metaLine(tut));
+          detail.appendChild(buildSteps(tut));
+          zeigen();
+        });
+      }
+
+      // Listen-Anleitung: der Schrittkasten wie in der Kursseite, Pfade relativ zur Site-Wurzel
+      function openListe(a) {
+        var meta = document.createElement('div');
+        meta.className = 'tut-meta';
+        meta.innerHTML = '<span class="tut-cat">' + esc(a.kategorien.join(' · ')) + '</span>' +
+          '<span class="tut-art">Listen-Anleitung</span>' +
+          '<span class="tut-count">' + a.schritte.length + ' Schritte</span>';
+        detailKopf(a.titel, meta);
+        var wrap = document.createElement('div');
+        wrap.className = 'tut-liste';
+        wrap.innerHTML = a.html;
+        Array.prototype.forEach.call(wrap.querySelectorAll('[src], [href]'), function (el) {
+          ['src', 'href'].forEach(function (attr) {
+            var v = el.getAttribute(attr);
+            if (v && !/^(?:[a-z]+:|\/\/|\/|#)/i.test(v)) el.setAttribute(attr, BASE + v);
+          });
+        });
+        detail.appendChild(wrap);
+        var quelle = document.createElement('p');
+        quelle.className = 'tut-quelle';
+        quelle.innerHTML = (a.fundstellen.length > 1 ? 'Steht in den Kursseiten ' : 'Steht in der Kursseite ') +
+          a.fundstellen.map(function (f) { return '<a href="' + BASE + f.url + '">' + esc(f.titel) + '</a>'; }).join(', ');
+        detail.appendChild(quelle);
+        if (window.KursUI) window.KursUI.enhance(wrap);
+        if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise([wrap]).catch(function () { });
+        zeigen();
       }
 
       function draw() {
@@ -183,15 +231,16 @@
         grid.innerHTML = '';
         var shown = 0;
         all.forEach(function (t) {
-          if (active && t.category !== active) return;
-          var hay = (t.title + ' ' + t.category + ' ' + (t.tags || []).join(' ')).toLowerCase();
+          if (active && (t.kategorien || [t.category]).indexOf(active) === -1) return;
+          var hay = (t.title + ' ' + t.category + ' ' + (t.tags || []).join(' ') +
+            (t.liste ? ' ' + t.kategorien.join(' ') + ' ' + t.liste.seite + ' ' + t.liste.schritte.join(' ') : '')).toLowerCase();
           if (q && hay.indexOf(q) === -1) return;
           shown++;
           var card = document.createElement('a');
           card.className = 'tut-card';
           card.href = '#' + t.slug;
           card.addEventListener('click', function (e) { e.preventDefault(); openDetail(t.slug); });
-          if (t.thumb) {
+          if (t.thumb) {  // Listen-Anleitungen ohne Bild: ihre Schrittkästen haben oft nur schmale Menüstreifen
             var img = document.createElement('img');
             img.className = 'tut-thumb no-lightbox';
             img.loading = 'lazy'; img.alt = '';
@@ -201,7 +250,10 @@
           var b = document.createElement('span');
           b.className = 'tut-card-body';
           b.innerHTML = '<span class="tut-card-title">' + esc(t.title) + '</span>' +
-            '<span class="tut-card-meta"><span class="tut-cat">' + esc(t.category) + '</span>' +
+            (t.liste ? '<span class="tut-card-desc">' + esc(t.liste.schritte.slice(0, 3).join(' · ') +
+              (t.liste.schritte.length > 3 ? ' · …' : '')) + '</span>' : '') +
+            '<span class="tut-card-meta"><span class="tut-cat">' + esc((t.kategorien || [t.category]).join(' · ')) + '</span>' +
+            '<span class="tut-art">' + (t.liste ? 'Liste' : 'Klick') + '</span>' +
             '<span class="tut-count">' + t.steps + ' Schritte</span></span>';
           card.appendChild(b);
           grid.appendChild(card);

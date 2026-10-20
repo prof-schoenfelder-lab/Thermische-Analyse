@@ -37,6 +37,11 @@ Ergebnis lässt sich von Hand prüfen.
     <p>Innen und außen je eine <code>Convection</code> wie in Fall b), lösen, Temperatur und Wärmestromdichte auswerten</p>
   </div>
 
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">U-Wert ausrechnen</p>
+    <p>Der U-Wert (Wärmedurchgangskoeffizient) ist die Wärmestromdichte je Kelvin Temperaturunterschied zwischen <strong>Raumluft und Außenluft</strong>: \(U = \dot q / (T_i - T_e)\). Hier also die Wärmestromdichte aus ANSYS durch 30 K teilen. Je kleiner U, desto besser dämmt die Wand (<a href="../../02_Vorzeigebeispiel/Aussenwand/b-konvektion/#u-wert">U-Wert im Vorzeigebeispiel</a>)</p>
+  </div>
+
 </div>
 
 ## Gesucht
@@ -56,7 +61,7 @@ Ergebnis lässt sich von Hand prüfen.
 <div class="numeric-question" data-answer="19.17" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Temperatur auf der Innenfläche des Vollziegels auswerten, nicht die Raumluft.">
 </div>
 
-### Erfüllt die sanierte Wand das GEG ($U \le 0{,}24$)?
+### Erfüllt die sanierte Wand das GEG ($U \le 0{,}24\ \mathrm{W/(m^2\,K)}$)?
 
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="1">
   <div class="mc-options">
