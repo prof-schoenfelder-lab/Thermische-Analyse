@@ -85,7 +85,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Auswerten</p>
-    <p>Die beiden Innenflächen mit <code>Strg</code> auswählen, dann <code>Rechtsklick Solution → Insert → Thermal → Temperature</code>: Das Ergebnis gilt nur für diese Flächen. Das Minimum liegt an der Innenkante der Ecke</p>
+    <p>Die kälteste Stelle innen liegt an der Innenkante der Ecke. Oben <code>Vertex</code> anklicken (Punkte auswählen) und einen Eckpunkt dieser Kante anklicken (oben oder unten, über die Höhe ist die Temperatur gleich). Dann <code>Rechtsklick Strukturbaum Solution → Insert → Thermal → Temperature</code>: Das Ergebnis gilt nur für diesen Punkt</p>
   </div>
 
 </div>
@@ -96,7 +96,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ### Oberflächentemperatur innen in der Ecke $T_{si}$ in °C
 
-<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf den Innenflächen. Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Beide Körper mit Material und Share Topology?">
+<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Temperatur im Eckpunkt an der Innenkante der Ecke (Vertex auswählen). Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Beide Körper mit Material und Share Topology?">
 </div>
 
 ### Temperaturfaktor $f_{Rsi} = \dfrac{T_{si} - T_e}{T_i - T_e}$ in der Ecke
