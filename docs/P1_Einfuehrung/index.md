@@ -25,7 +25,7 @@ hide:
     </span>
   </a>
   <a class="prakt-card" href="01_Grundlagen/Simulationssoftware/">
-    <img class="prakt-cimg no-lightbox" src="images/p1_aussenwand_a.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="01_Grundlagen/images/ANSYS.png" alt="ANSYS">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Simulationssoftware</span>
       <span class="prakt-cdesc">ANSYS Workbench, Steady-State Thermal</span>

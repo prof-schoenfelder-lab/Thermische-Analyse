@@ -12,9 +12,7 @@ Teile (Elemente). Für jedes Element lässt sich die Wärmeleitung mit wenigen
 Gleichungen beschreiben. Zusammengesetzt ergibt sich ein großes, aber lösbares
 Gleichungssystem für die Temperaturen im ganzen Bauteil.
 
-In ANSYS Workbench arbeiten Sie dafür immer dieselben **7 Schritte** ab: Material,
-Geometrie, Zuweisung, Netz, Randbedingungen, Lösen, Auswertung. Was hinter den
-wichtigsten Schritten steckt:
+In ANSYS Workbench arbeiten Sie dafür immer dieselben **7 Schritte** ab:
 
 <div class="steps">
 
@@ -29,7 +27,12 @@ wichtigsten Schritten steckt:
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Elemente (Vernetzung)</p>
+    <p class="step-title" role="heading" aria-level="2">Zuweisung</p>
+    <p>Jedem Körper wird sein <strong>Material</strong> zugewiesen. Besteht ein Bauteil aus mehreren Schichten, bekommt jede ihr eigenes Material.</p>
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">Netz (Elemente)</p>
     <figure style="text-align:center;">
       <img src="../../images/p1_fem_1d.svg" alt="Wand in vier Elemente zerlegt" class="no-lightbox">
     </figure>
@@ -42,7 +45,7 @@ wichtigsten Schritten steckt:
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Gleichungssystem lösen</p>
+    <p class="step-title" role="heading" aria-level="2">Lösen</p>
     <p>Für jedes Element gilt das <strong>Fouriersche Gesetz</strong>: Wärme fließt vom Warmen zum Kalten, und zwar umso mehr, je steiler das Temperaturgefälle ist, \(\dot q = -\lambda\,\mathrm{d}T/\mathrm{d}x\). Zusammengesetzt entsteht das Gleichungssystem</p>
     <p>$$\mathbf{K}\,\mathbf{T} = \dot{\mathbf{Q}}$$</p>
     <p>mit der Wärmeleitmatrix <strong>K</strong>, den unbekannten Knotentemperaturen <strong>T</strong> und den Knotenwärmeströmen \(\dot{\mathbf{Q}}\). Für ein Element der Länge L und Fläche A sieht das so aus:</p>

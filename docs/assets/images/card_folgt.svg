@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 111" width="168" height="111">
+  <rect width="168" height="111" fill="#F2F6F9"/>
+  <g transform="translate(84 44)" fill="none" stroke="#009EE3" stroke-width="3" stroke-linecap="round">
+    <circle r="16"/>
+    <path d="M0 -9 V0 L7 5"/>
+  </g>
+  <text x="84" y="88" text-anchor="middle" font-family="'Source Sans 3','Source Sans Pro',Arial,sans-serif" font-size="15" font-weight="600" fill="#566166">in Vorbereitung</text>
+</svg>

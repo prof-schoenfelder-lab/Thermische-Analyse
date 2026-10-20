@@ -34,7 +34,7 @@ hide:
       <span class="prakt-title">{{ p.titel }}</span>
       <span class="prakt-desc">{{ p.text }}</span>
     </span>
-    <img class="prakt-thumb no-lightbox" src="{{ p.bild }}" alt="">
+    <img class="prakt-thumb no-lightbox" src="{{ p.bild or 'assets/images/card_folgt.svg' }}" alt="">
   </a>
 {%- endfor %}
 </div>
