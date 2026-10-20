@@ -37,7 +37,9 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ## Gegeben
 
-- Wandaufbau wie im Vorzeigebeispiel: Kalksandstein 175 mm innen, EPS 140 mm außen
+- Wandaufbau wie im Vorzeigebeispiel:
+    - **Kalksandstein** innen: $\lambda = 0{,}99\ \mathrm{W/(m\,K)}$, Dicke **175 mm**
+    - **EPS** außen: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke **140 mm**
 - Beide Schenkel **1000 mm** lang (außen gemessen), Höhe des Ausschnitts **100 mm**
 - Netzgröße global **20 mm** (die Schenkel sind 1 m lang, dafür reicht ein gröberes Netz als in der ebenen Wand)
 - Randbedingungen für den **Mindestwärmeschutz nach DIN 4108-2**:
