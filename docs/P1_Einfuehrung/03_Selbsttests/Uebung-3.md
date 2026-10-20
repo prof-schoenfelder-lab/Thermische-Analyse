@@ -31,7 +31,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 **Randbedingungen**
 
-- Rohroberfläche: Temperatur **35 °C** (Rohrwand vernachlässigt)
+- Rohr innen: Konvektion, Wasser $T = 35\ \mathrm{°C}$, $\alpha = 1000\ \mathrm{W/(m^2\,K)}$ (strömendes Wasser, Rohrwand vernachlässigt)
 - Oberseite: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha = 10{,}8\ \mathrm{W/(m^2\,K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
 - Unterseite (Dämmung) und Seitenflächen: adiabat
 
@@ -69,12 +69,12 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Randbedingungen</p>
-    <p>Innenfläche des Lochs: <code>Temperature</code> 35 °C. Oberseite: <code>Convection</code>. Alle anderen Flächen bleiben frei</p>
+    <p>Innenfläche des Lochs: <code>Convection</code> mit 1000 W/m²·°C und 35 °C (Wasser). Oberseite: <code>Convection</code> mit 10,8 W/m²·°C und 20 °C. Alle anderen Flächen bleiben frei</p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Auswerten</p>
-    <p>Temperatur auf der Oberseite (Maximum und Minimum). Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion auswählen, und durch die Fläche teilen</p>
+    <p>Temperatur auf der Oberseite (Maximum und Minimum). Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion der Oberseite auswählen, und durch die Fläche teilen</p>
   </div>
 
 </div>
@@ -85,17 +85,17 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Oberflächentemperatur über dem Rohr in °C
 
-<div class="numeric-question" data-answer="30.10" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Maximum der Temperatur auf der Oberseite. Rohr 35 °C als Temperature auf der Lochfläche, oben Convection 10,8 bei 20 °C?">
+<div class="numeric-question" data-answer="29.87" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Maximum der Temperatur auf der Oberseite. Im Rohr Convection 1000 bei 35 °C, oben Convection 10,8 bei 20 °C?">
 </div>
 
 ### Oberflächentemperatur zwischen den Rohren in °C
 
-<div class="numeric-question" data-answer="28.97" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf der Oberseite, also an den Seitenkanten.">
+<div class="numeric-question" data-answer="28.78" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf der Oberseite, also an den Seitenkanten.">
 </div>
 
 ### Wärmestromdichte nach oben in W/m²
 
-<div class="numeric-question" data-answer="102.5" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Reaction Probe der Konvektion liefert den Wärmestrom in W. Durch die Oberfläche 0,15 m × 0,02 m teilen.">
+<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Reaction Probe der Konvektion an der Oberseite liefert den Wärmestrom in W. Durch die Oberfläche 0,15 m × 0,02 m teilen.">
 </div>
 
 ### Wird der Grenzwert von 29 °C an der Oberfläche eingehalten?
@@ -117,9 +117,10 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Lösung
 
-- Oberfläche über dem Rohr **30,10 °C**, zwischen den Rohren **28,97 °C** (knapp unter 29 °C): rund 1,1 K Unterschied
-- Wärmestromdichte nach oben **102,5 W/m²**: Das liegt an der Grenze dessen, was eine Fußbodenheizung im Aufenthaltsbereich bei höchstens 29 °C Oberfläche abgeben kann (etwa 100 W/m²)
+- Oberfläche über dem Rohr **29,87 °C**, zwischen den Rohren **28,78 °C**: rund 1,1 K Unterschied
+- Wärmestromdichte nach oben **100,2 W/m²**: Das liegt an der Grenze dessen, was eine Fußbodenheizung im Aufenthaltsbereich bei höchstens 29 °C Oberfläche abgeben kann (etwa 100 W/m²)
 - Der Grenzwert von 29 °C wird über dem Rohr überschritten. Abhilfe: niedrigere Vorlauftemperatur oder ein Bodenbelag, der etwas dämmt
-- Mit dem Modell lässt sich das schnell ausprobieren, z. B. mit einer niedrigeren Rohrtemperatur
+- Die Rohrwand aus Kunststoff ist hier vernachlässigt. Sie leitet schlecht und würde die Oberfläche noch um gut 1 K kühler machen: Ob der Grenzwert eingehalten wird, hängt also auch an dieser Vereinfachung
+- Mit dem Modell lässt sich das schnell ausprobieren, z. B. mit einer niedrigeren Wassertemperatur
 
 </div>

@@ -104,11 +104,12 @@ def fussbodenheizung():
     oben = m.facets_satisfying(lambda x: np.abs(x[1] - 0.065) < tol)
     rohr = m.facets_satisfying(lambda x: np.hypot(x[0] - 0.075, x[1] - 0.020) < 0.008 + 1e-5)
     # Oberseite: Gesamtwärmeübergang (Konvektion + Strahlung) 10,8 W/(m²K) nach DIN EN 1264, Raum 20 °C
-    basis, u = loesen(m, lambda x: np.full(x.shape[1], 1.4), [(oben, 10.8, 20.0)], dirichlet=(rohr, 35.0))
+    # Rohr innen: strömendes Wasser 35 °C, α = 1000 W/(m²K), Rohrwand vernachlässigt
+    basis, u = loesen(m, lambda x: np.full(x.shape[1], 1.4), [(oben, 10.8, 20.0), (rohr, 1000.0, 35.0)])
     tmax = (basis.probes(np.array([[0.075], [0.065]])) @ u)[0]
     tmin = (basis.probes(np.array([[0.0], [0.065]])) @ u)[0]
     tm = mittel(basis, u, oben)
-    print("Übung 3 Fußbodenheizung (λ = 1,4, Rohr 35 °C, oben h = 10,8 bei 20 °C, Rest adiabat)")
+    print("Übung 3 Fußbodenheizung (λ = 1,4, Wasser 35 °C mit α = 1000, oben α = 10,8 bei 20 °C, Rest adiabat)")
     print(f"  Oberfläche über dem Rohr   {tmax:7.3f} °C")
     print(f"  Oberfläche zwischen Rohren {tmin:7.3f} °C")
     print(f"  Oberfläche Mittelwert      {tm:7.3f} °C")

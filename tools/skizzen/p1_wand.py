@@ -192,7 +192,8 @@ def fussboden(datei):
     el.append(text(bx + 75 * k, ub + 24, "Dämmung: adiabat", halo=True))
     cx, cy, r = bx + 75 * k, ub - 20 * k, 8 * k
     el.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="white" stroke="{ROT}" stroke-width="5"/>')
-    el.append(text(cx + r + 12, cy + 6, "Rohr: 35 °C", "start", ROT, fett=True, halo=True))
+    el += [text(cx - r - 12, cy - 4, "Wasser 35 °C", "end", ROT, fett=True, halo=True),
+           text(cx - r - 12, cy + 20, "α = 1000 W/(m²·K)", "end", ROT, halo=True)]
     el.append(text(bx + 20, ob + 40, "Zementestrich λ = 1,4 W/(m·K)", "start", DUNKEL, fett=True, halo=True))
     # Oberseite: Raum, Gesamtwärmeübergang
     el.append(f'<line x1="{bx}" y1="{ob - 3}" x2="{bx + 150 * k}" y2="{ob - 3}" stroke="{ROT}" stroke-width="3" stroke-dasharray="8 6"/>')
