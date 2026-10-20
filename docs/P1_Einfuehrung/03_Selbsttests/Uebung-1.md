@@ -61,11 +61,11 @@ Ergebnis lässt sich von Hand prüfen.
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="1">
   <div class="mc-options">
     <div class="mc-option" data-value="A">
-      <input type="checkbox" id="u1a" name="u1">
+      <input type="radio" id="u1a" name="u1">
       <label for="u1a">Ja</label>
     </div>
     <div class="mc-option" data-value="B">
-      <input type="checkbox" id="u1b" name="u1">
+      <input type="radio" id="u1b" name="u1">
       <label for="u1b">Nein</label>
     </div>
   </div>

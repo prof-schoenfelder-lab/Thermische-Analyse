@@ -1156,7 +1156,7 @@
     function disableControls() {
       if (btn) btn.disabled = true;
       options.forEach(function (opt) {
-        var checkbox = opt.querySelector('input[type="checkbox"]');
+        var checkbox = opt.querySelector('input[type="checkbox"], input[type="radio"]');
         if (checkbox) checkbox.disabled = true;
       });
     }
@@ -1164,7 +1164,7 @@
     function enableControls() {
       if (btn) btn.disabled = false;
       options.forEach(function (opt) {
-        var checkbox = opt.querySelector('input[type="checkbox"]');
+        var checkbox = opt.querySelector('input[type="checkbox"], input[type="radio"]');
         if (checkbox) checkbox.disabled = false;
       });
     }
@@ -1198,7 +1198,7 @@
         // Highlight the selected answers
         var savedSelection = safeJSONParse(localStorage.getItem('answer_selection_' + qid)) || [];
         options.forEach(function (opt) {
-          var checkbox = opt.querySelector('input[type="checkbox"]');
+          var checkbox = opt.querySelector('input[type="checkbox"], input[type="radio"]');
           var value = opt.dataset.value || '';
           if (checkbox && savedSelection.indexOf(value) !== -1) {
             checkbox.checked = true;
@@ -1218,7 +1218,7 @@
       // Get selected options
       var selected = [];
       options.forEach(function (opt) {
-        var checkbox = opt.querySelector('input[type="checkbox"]');
+        var checkbox = opt.querySelector('input[type="checkbox"], input[type="radio"]');
         if (checkbox && checkbox.checked) {
           selected.push(opt.dataset.value || '');
         }

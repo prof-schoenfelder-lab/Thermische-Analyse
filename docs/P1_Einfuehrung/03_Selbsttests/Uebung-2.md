@@ -97,15 +97,15 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="2">
   <div class="mc-options">
     <div class="mc-option" data-value="A">
-      <input type="checkbox" id="u2a" name="u2">
+      <input type="radio" id="u2a" name="u2">
       <label for="u2a">Ja, deutlich</label>
     </div>
     <div class="mc-option" data-value="B">
-      <input type="checkbox" id="u2b" name="u2">
+      <input type="radio" id="u2b" name="u2">
       <label for="u2b">Nur knapp</label>
     </div>
     <div class="mc-option" data-value="C">
-      <input type="checkbox" id="u2c" name="u2">
+      <input type="radio" id="u2c" name="u2">
       <label for="u2c">Nein</label>
     </div>
   </div>

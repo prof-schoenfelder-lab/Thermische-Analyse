@@ -99,19 +99,19 @@ nebeneinanderlegen.
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="2">
   <div class="mc-options">
     <div class="mc-option" data-value="A">
-      <input type="checkbox" id="vfa" name="vf">
+      <input type="radio" id="vfa" name="vf">
       <label for="vfa">20,00 °C</label>
     </div>
     <div class="mc-option" data-value="B">
-      <input type="checkbox" id="vfb" name="vf">
+      <input type="radio" id="vfb" name="vf">
       <label for="vfb">19,10 °C wie in Fall b)</label>
     </div>
     <div class="mc-option" data-value="C">
-      <input type="checkbox" id="vfc" name="vf">
+      <input type="radio" id="vfc" name="vf">
       <label for="vfc">ein Wert zwischen 19,10 °C und 20,00 °C</label>
     </div>
     <div class="mc-option" data-value="D">
-      <input type="checkbox" id="vfd" name="vf">
+      <input type="radio" id="vfd" name="vf">
       <label for="vfd">ANSYS kann das nicht rechnen</label>
     </div>
   </div>

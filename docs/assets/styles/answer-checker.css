@@ -460,7 +460,8 @@ html:not([data-md-color-scheme="slate"]) .page-stars .star:not(.filled),
 	border-color: var(--md-color-primary, #6f42c1);
 }
 
-.mc-option input[type="checkbox"] {
+.mc-option input[type="checkbox"],
+.mc-option input[type="radio"] {
 	margin-right: 0.75rem;
 	cursor: pointer;
 	width: 18px;

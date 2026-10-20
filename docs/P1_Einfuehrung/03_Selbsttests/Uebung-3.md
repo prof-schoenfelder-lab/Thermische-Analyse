@@ -79,11 +79,11 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 <div class="multiple-choice-question" data-correct="B" data-points="5" data-attempts="2">
   <div class="mc-options">
     <div class="mc-option" data-value="A">
-      <input type="checkbox" id="u3a" name="u3">
+      <input type="radio" id="u3a" name="u3">
       <label for="u3a">Ja, überall</label>
     </div>
     <div class="mc-option" data-value="B">
-      <input type="checkbox" id="u3b" name="u3">
+      <input type="radio" id="u3b" name="u3">
       <label for="u3b">Nein, über dem Rohr liegt die Oberfläche darüber</label>
     </div>
   </div>
