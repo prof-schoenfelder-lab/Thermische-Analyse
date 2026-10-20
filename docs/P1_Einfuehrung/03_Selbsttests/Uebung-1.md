@@ -18,10 +18,24 @@ Ergebnis lässt sich von Hand prüfen.
 
 ## Gegeben
 
-- **Vollziegel** innen: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$, Dicke **365 mm**
-- **EPS** außen: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke **140 mm**
-- Wandausschnitt 100 × 100 mm, Netzgröße global 10 mm
-- Randbedingungen wie im Vorzeigebeispiel **Fall b) Konvektion**: innen Luft 20 °C mit $\alpha_i = 7{,}7\ \mathrm{W/(m^2\,K)}$, außen Luft −10 °C mit $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
+**Material**
+
+- Vollziegel: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$
+- EPS: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
+
+**Geometrie**
+
+- Wandausschnitt 100 mm × 100 mm
+- Vollziegel innen **365 mm**, EPS außen **140 mm**
+
+**Netz**
+
+- Netzgröße global **10 mm**
+
+**Randbedingungen** (wie im Vorzeigebeispiel **Fall b) Konvektion**)
+
+- innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 7{,}7\ \mathrm{W/(m^2\,K)}$
+- außen: Außenluft $T_e = -10\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
 
 ## Hinweise
 

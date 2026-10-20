@@ -25,5 +25,5 @@
 <text x="202" y="220" text-anchor="end" font-size="18" fill="#2E3639">1000 mm</text>
 <line x1="250" y1="590" x2="670.0" y2="590" stroke="#2E3639" marker-start="url(#pm)" marker-end="url(#pm)"/>
 <text x="460" y="614" text-anchor="middle" font-size="18" fill="#2E3639">1000 mm</text>
-<text x="600" y="684" text-anchor="middle" font-size="18" fill="#2E3639">Draufsicht, Höhe des Ausschnitts 100 mm</text>
+<text x="600" y="684" text-anchor="middle" font-size="18" fill="#2E3639">Draufsicht, Höhe des Ausschnitts 1000 mm</text>
 </svg>

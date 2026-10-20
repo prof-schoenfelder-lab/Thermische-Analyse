@@ -176,7 +176,7 @@ def ecke(datei):
     el += mass(ox - 70, oy - e, ox - 70, oy - t, "175 mm", dx=-8, anker="end")
     el += mass(ox - 40, oy, ox - 40, oy - L, "1000 mm", dx=-8, dy=-90, anker="end")
     el += mass(ox, oy + 70, ox + L, oy + 70, "1000 mm", dy=24)
-    el.append(text(w / 2 + 120, h - 6, "Draufsicht, Höhe des Ausschnitts 100 mm"))
+    el.append(text(w / 2 + 120, h - 6, "Draufsicht, Höhe des Ausschnitts 1000 mm"))
     svg_datei(datei, w, h, el)
 
 

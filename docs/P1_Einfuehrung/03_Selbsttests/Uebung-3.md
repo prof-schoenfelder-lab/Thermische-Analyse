@@ -15,14 +15,25 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ## Gegeben
 
-- **Zementestrich**: $\lambda = 1{,}4\ \mathrm{W/(m\,K)}$, Dicke **65 mm**
-- **Heizrohr**: Ø **16 mm**, Mitte **20 mm** über der Dämmung, Rohrabstand **150 mm**
+**Material**
+
+- Zementestrich: $\lambda = 1{,}4\ \mathrm{W/(m\,K)}$
+
+**Geometrie**
+
+- Estrich **65 mm** dick
+- Heizrohr: Ø **16 mm**, Mitte **20 mm** über der Dämmung, Rohrabstand **150 mm**
 - Ausschnitt: ein Rohrabstand breit (150 mm), **20 mm** lang in Rohrrichtung
+
+**Netz**
+
 - Netzgröße global **2 mm**
-- Randbedingungen:
-    - Rohroberfläche: Temperatur **35 °C** (Rohrwand vernachlässigt)
-    - Oberseite: Raum **20 °C**, $\alpha = 10{,}8\ \mathrm{W/(m^2\,K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
-    - Unterseite (Dämmung) und Seitenflächen: adiabat
+
+**Randbedingungen**
+
+- Rohroberfläche: Temperatur **35 °C** (Rohrwand vernachlässigt)
+- Oberseite: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha = 10{,}8\ \mathrm{W/(m^2\,K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
+- Unterseite (Dämmung) und Seitenflächen: adiabat
 
 !!! info "Warum sind die Seitenflächen adiabat?"
     Links und rechts folgen weitere Rohre mit gleichem Abstand. Genau in der

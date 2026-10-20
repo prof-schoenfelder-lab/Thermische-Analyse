@@ -37,15 +37,25 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ## Gegeben
 
-- Wandaufbau wie im Vorzeigebeispiel:
-    - **Kalksandstein** innen: $\lambda = 0{,}99\ \mathrm{W/(m\,K)}$, Dicke **175 mm**
-    - **EPS** außen: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$, Dicke **140 mm**
-- Beide Schenkel **1000 mm** lang (außen gemessen), Höhe des Ausschnitts **100 mm**
+**Material** (wie im Vorzeigebeispiel)
+
+- Kalksandstein: $\lambda = 0{,}99\ \mathrm{W/(m\,K)}$
+- EPS: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
+
+**Geometrie**
+
+- Gebäudeecke: Kalksandstein innen **175 mm**, EPS außen **140 mm**
+- Beide Schenkel **1000 mm** lang (außen gemessen), Höhe des Ausschnitts **1000 mm**
+
+**Netz**
+
 - Netzgröße global **20 mm** (die Schenkel sind 1 m lang, dafür reicht ein gröberes Netz als in der ebenen Wand)
-- Randbedingungen für den **Mindestwärmeschutz nach DIN 4108-2**:
-    - innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 4\ \mathrm{W/(m^2\,K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2\,K/W}$)
-    - außen: Außenluft $T_e = -5\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
-    - Schnittenden der Schenkel, Ober- und Unterseite: adiabat (keine Randbedingung)
+
+**Randbedingungen** (Mindestwärmeschutz nach DIN 4108-2)
+
+- innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 4\ \mathrm{W/(m^2\,K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2\,K/W}$)
+- außen: Außenluft $T_e = -5\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
+- Schnittenden der Schenkel, Ober- und Unterseite: adiabat (keine Randbedingung)
 
 !!! info "Warum andere Randbedingungen als im Vorzeigebeispiel?"
     Für den Nachweis gegen Schimmel rechnet man innen mit einem kleineren
@@ -65,7 +75,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Körper erzeugen</p>
-    <p>Alle Kalksandstein-Flächen mit <code>Strg</code> markieren und gemeinsam mit <code>Pull</code> 100 mm hochziehen. Dann alle übrigen Flächen (EPS) mit <code>Strg</code> markieren und mit <code>Pull</code> und <code>No merge</code> ebenfalls 100 mm ziehen: So entstehen zwei Körper. Share Topology nicht vergessen: wie im Vorzeigebeispiel <code>Rechtsklick Design1 → Properties</code>, bei <strong>Share Topology</strong> den Wert <strong>Share</strong> wählen</p>
+    <p>Alle Kalksandstein-Flächen mit <code>Strg</code> markieren und gemeinsam mit <code>Pull</code> 1000 mm hochziehen. Dann alle übrigen Flächen (EPS) mit <code>Strg</code> markieren und mit <code>Pull</code> und <code>No merge</code> ebenfalls 1000 mm ziehen: So entstehen zwei Körper. Share Topology nicht vergessen: wie im Vorzeigebeispiel <code>Rechtsklick Design1 → Properties</code>, bei <strong>Share Topology</strong> den Wert <strong>Share</strong> wählen</p>
   </div>
 
   <div class="step">
