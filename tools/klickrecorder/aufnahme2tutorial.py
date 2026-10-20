@@ -334,29 +334,227 @@ def schrift(px):
         return ImageFont.load_default()
 
 
-def marker_punkt(g, W, H, r):
-    """Marker an den linken Rand kleiner Elemente (Menüeintrag, Baumeintrag), sonst an den Klickpunkt."""
+def klein(rect, W, H):
+    """Kleines Bedienelement (Menü-, Baum-, Listeneintrag, Feld, Knopf), kein Fenster."""
+    return rect and rect[2] - rect[0] < W * 0.4 and rect[3] - rect[1] < H * 0.08
+
+
+def schrift_laeufe(img, box):
+    """Waagerechte Läufe von Schrift und Symbolen in box (Bildkoordinaten): Spalten, die sich vom Hintergrund
+    (Median der Zeile) abheben; Lücken zwischen Buchstaben und Wörtern werden überbrückt."""
+    x0, y0 = max(0, round(box[0])), max(0, round(box[1]) + 2)   # oben und unten 2 px weg: Fokusrahmen
+    x1, y1 = min(img.width, round(box[2])), min(img.height, round(box[3]) - 2)
+    if x1 - x0 < 6 or y1 - y0 < 4:
+        return []
+    zeile = img.crop((x0, y0, x1, y1)).convert("L")
+    w, h = zeile.size
+    px, hg = zeile.load(), ImageStat.Stat(zeile).median[0]
+    laeufe, luecke = [], max(5, h // 3)
+    for i in range(w):
+        if any(abs(px[i, j] - hg) > 60 for j in range(h)):
+            if laeufe and i - laeufe[-1][1] <= luecke:
+                laeufe[-1][1] = i
+            else:
+                laeufe.append([i, i])
+    return [(x0 + a, x0 + b) for a, b in laeufe if b - a >= 2 or 0 < a and b < w - 1]   # Rahmenlinien weg
+
+
+def schrift_unter(img, x, y, r):
+    """Schrift unter einem Marker (Kreis um x, y mit Radius r und 2 px Rand, Bildkoordinaten): Punkte im Kreis und
+    Anteil im Quadrat darum; None, wenn der Marker über den Bildrand ragt. Linien (Rahmen, Trennstriche: Zeilen
+    oder Spalten, die zu mehr als 60 % durchgehen) zählen nicht."""
+    k = r + 2
+    if x - k < 0 or y - k < 0 or x + k > img.width or y + k > img.height:
+        return None
+    x0, y0 = round(x - k), round(y - k)
+    flaeche = img.crop((x0, y0, round(x + k), round(y + k))).convert("L")
+    w, h = flaeche.size
+    px, hg = flaeche.load(), ImageStat.Stat(flaeche).median[0]
+    tinte = [[abs(px[i, j] - hg) > 60 for j in range(h)] for i in range(w)]
+    spalten = {i for i in range(w) if sum(tinte[i]) > 0.6 * h}
+    zeilen = {j for j in range(h) if sum(tinte[i][j] for i in range(w)) > 0.6 * w}
+    rest = [(i, j) for i in range(w) if i not in spalten for j in range(h) if j not in zeilen and tinte[i][j]]
+    im_kreis = sum((x0 + i + 0.5 - x) ** 2 + (y0 + j + 0.5 - y) ** 2 <= k * k for i, j in rest)
+    return im_kreis, len(rest) / (w * h)
+
+
+def frei(img, x, y, r, streng=True):
+    """Kein Stück Schrift unter dem Marker. Nicht streng: höchstens 2 % Schrift im Quadrat um den Kreis (große
+    Marker im Gesamtbild sind höher als eine Zeile)."""
+    s = schrift_unter(img, x, y, r)
+    return s is not None and (s[0] <= 3 if streng else s[1] < 0.02)
+
+
+def beschriftung(img, x, y, rect, bis):
+    """Rechteck um die Schrift am Klickpunkt x, y bei Elementen, die keine eigene Zeile melden (Liste in einer
+    Webseite, Tabelle, Werkzeugkasten); None, wenn dort keine waagerechte Schrift steht. rect: das Element,
+    bis: Rand eines Menüs rechts vom Klick. Alles in Bildkoordinaten."""
+    x0, x1 = round(max(rect[0], x - 300)), round(min(rect[2], x + 300, bis))
+    y0, y1 = round(max(rect[1], y - 14)), round(min(rect[3], y + 15))
+    if x1 - x0 < 10 or y1 - y0 < 12:
+        return None
+    feld = img.crop((x0, y0, x1, y1)).convert("L")
+    w, h = feld.size
+    px, hg = feld.load(), ImageStat.Stat(feld).median[0]
+    tinte = [[abs(px[i, j] - hg) > 60 for j in range(h)] for i in range(w)]
+    # Schriftzeile am Klick: Zeilen mit Schrift nahe am Klickpunkt, ohne waagerechte Linien (Rahmen, Kopfzeilen)
+    cx, cy = round(x) - x0, round(y) - y0
+    nah = range(max(0, cx - 20), min(w, cx + 21))
+    gruppen = []
+    for j in range(h):
+        n = sum(tinte[i][j] for i in nah)
+        if 0 < n <= 0.6 * len(nah):
+            if gruppen and j - gruppen[-1][1] <= 2:
+                gruppen[-1][1] = j
+            else:
+                gruppen.append([j, j])
+    if not gruppen:
+        return None
+    t, u = min(gruppen, key=lambda q: max(q[0] - cy, cy - q[1], 0))
+    if t == 0 or u == h - 1 or u - t > 24:   # reicht über den Ausschnitt hinaus: senkrechte Schrift, Bild
+        return None
+    # Läufe in dieser Zeile; senkrechte Linien (Zellränder, Feldrahmen) reichen über die Zeile hinaus
+    linie = lambda i: all(tinte[i][j] for j in range(max(0, t - 2), min(h, u + 3)))
+    laeufe, luecke = [], max(4, (u - t + 1) // 2)   # Lücken zwischen Wörtern überbrücken
+    for i in range(w):
+        if any(tinte[i][j] for j in range(t, u + 1)) and not linie(i):
+            if laeufe and i - laeufe[-1][1] <= luecke:
+                laeufe[-1][1] = i
+            else:
+                laeufe.append([i, i])
+    k = next((k for k, l in enumerate(laeufe) if l[0] - 3 <= cx <= l[1] + 3), None)
+    if k is None:
+        return None
+    a, b = laeufe[k]
+    if b - a <= 20 and k + 1 < len(laeufe) and laeufe[k + 1][0] - b <= 12:   # Symbol oder Aufklapper: Name daneben
+        b = laeufe[k + 1][1]
+    if b - a > 0.8 * w:   # ganze Zeile hebt sich ab: keine Schrift erkennbar
+        return None
+    return x0 + a - 2, y0 + t - 3, x0 + b + 2, y0 + u + 3
+
+
+# Baumeinträge (SpaceClaim meldet sie als Kästchen, dort steht der Name rechts außerhalb): Beschriftung in der
+# ganzen Zeile suchen, rechts daneben ist es leer
+OFFEN = {"TreeItemControl", "TextControl", "CheckBoxControl"}
+KNOPF = {"ButtonControl", "SplitButtonControl", "TabItemControl", "CheckBoxControl", "RadioButtonControl"}
+
+
+def ueberlappt(a, b):
+    return a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
+
+
+def anker(g, W, H, img=None, off=(0, 0), menues=()):
+    """Rechteck, neben das der Marker kommt: das Element, bei großen Elementen (Tabelle, Liste in einer Webseite)
+    die Schrift am Klickpunkt im Foto img; None beim Ziehen, im Grafikfenster und ohne Schrift (dann zählt der
+    Klickpunkt). off: Lage des Fotos, menues: aufgeklappte Menüs."""
     rect = el(g).get("rechteck")
-    if not g.get("x2") and rect and rect[2] - rect[0] < W * 0.4 and rect[3] - rect[1] < H * 0.08:
-        if el(g).get("typ") in FELD:  # links neben das Feld, damit der Wert lesbar bleibt
-            return rect[0] - r - 2, (rect[1] + rect[3]) / 2
-        return rect[0] + r, (rect[1] + rect[3]) / 2
-    return g["x"], g["y"]
+    if g.get("x2") or not rect:
+        return None
+    if klein(rect, W, H):
+        return rect
+    if img is None or im_grafikfenster(g):
+        return None
+    ox, oy = off
+    bis = min([m[0] for m in menues if m[0] > g["x"] - 4 and m[1] < g["y"] + 8 and g["y"] - 8 < m[3]] + [rect[2]])
+    b = beschriftung(img, g["x"] - ox, g["y"] - oy, (rect[0] - ox, rect[1] - oy, rect[2] - ox, rect[3] - oy), bis - ox)
+    return b and [b[0] + ox, b[1] + oy, b[2] + ox, b[3] + oy]
 
 
-def geometrie(schritt, W, H):
-    """Markergröße, Markerpunkte, Zielpunkt beim Ziehen und Punkte für den Ausschnitt (Bildkoordinaten)."""
+def marker_punkt(g, W, H, r, img=None, off=(0, 0), menues=()):
+    """Marker bei kleinen Elementen direkt neben die Beschriftung, nicht darauf. Reihenfolge: rechts neben der
+    Beschriftung (in der eigenen Zeile, bei Schrift in den Nachbarzeilen weiter rechts), links daneben, direkt
+    rechts oder links neben dem Element, darüber, darunter; nie bei einem anderen Element und nie auf einem
+    fremden Menü (menues: aufgeklappte Menüs des Schritts). Ist nirgends Platz: Knöpfe in ihre obere rechte Ecke
+    (dicht gedrängte Knopfleisten), sonst links neben das Element (Rechtsklick in den Baum, das Menü liegt darüber).
+    Große Elemente (Tabelle, Liste in einer Webseite): die Schrift am Klickpunkt gilt als Element, ist nirgends
+    Platz, kommt der Marker an die Stelle mit der wenigsten Schrift. Ziehen, Klicks im Grafikfenster und ohne
+    Schrift: am Klickpunkt."""
+    rect = anker(g, W, H, img, off, menues)
+    if rect is None:
+        return g["x"], g["y"]
+    ox, oy = off
+    erkannt, ganz = None, el(g)["rechteck"]   # erkannt: Beschriftung, die bei großen Elementen im Foto gefunden wurde
+    if not klein(ganz, W, H):
+        # Marker nicht außerhalb des Elements (dort liegen andere Fenster): wie ein fremdes Menü behandeln
+        menues = [*menues, (ganz[0] - W, ganz[1], ganz[0], ganz[3]), (ganz[2], ganz[1], ganz[2] + W, ganz[3])]
+        g, erkannt = {**g, "element": {**el(g), "typ": "TextControl", "rechteck": rect}}, (rect[0] + 2, rect[2] - 2)
+    y, typ = (rect[1] + rect[3]) / 2, el(g).get("typ")
+    feld_links = rect[0] - r - 2
+    if img is None:
+        return (feld_links if typ in FELD else rect[0] + r), y
+    eigen = lambda m: m[0] - 2 <= rect[0] and rect[2] <= m[2] + 2 and m[1] - 2 <= rect[1] and rect[3] <= m[3] + 2
+    fremd = [m for m in menues if not eigen(m)]   # Menüs, in denen das Element nicht selbst steht
+    sicht = list(rect)   # sichtbarer Teil: bis zum Rand eines Menüs, das darüber liegt
+    for m in fremd:
+        if ueberlappt(m, rect) and m[0] > rect[0]:
+            sicht[2] = min(sicht[2], m[0])
+    rand = sicht[2]
+    if typ in OFFEN and sicht[2] == rect[2]:
+        zeile = (rect[0], rect[1], W + ox, rect[3])
+        rand = min([m[0] for m in fremd if ueberlappt(m, zeile) and m[0] > rect[0]] + [rect[2] + 400, W + ox])
+    laeufe = [(a + ox, b + ox) for a, b in schrift_laeufe(img, (sicht[0] - ox, rect[1] - oy, rand - ox, rect[3] - oy))]
+    text = erkannt or next((l for l in laeufe if l[0] - 3 <= g["x"] <= l[1] + 3),
+                           max(laeufe, key=lambda l: l[1] - l[0], default=None))
+    wahl = []   # (x, y, wie weit nach außen ausweichen, Richtung)
+    if text:
+        rechts = min((l[0] for l in laeufe if l[0] > text[1]), default=None)
+        grenze = rechts - 4 if rechts is not None else rand if typ in OFFEN else sicht[2]
+        x = text[1] + 5 + r
+        if x + r <= grenze:   # nur wenn der Marker in die eigene Zeile passt
+            wahl.append((x, y, grenze - r - x, 1))
+        links = max((l[1] for l in laeufe if l[1] < text[0]), default=None)
+        x, ende = text[0] - 5 - r, links + 4 if links is not None else rect[0]
+        if x - r >= ende:
+            wahl.append((x, y, x - r - ende, -1))
+    wahl += [(rect[2] + 4 + r, y, 0, 1), (feld_links, y, 0, -1)]
+    mx = (text[1] if text else rect[2]) - r
+    if typ not in OFFEN:   # Baumeinträge: über und unter ihnen stehen andere Einträge, dann lieber links aufs Symbol
+        wahl += [(mx, rect[1] - 3 - r, 0, 1), (mx, rect[3] + 3 + r, 0, 1)]
+    stellen = [(x + richtung * k * r / 2, yy) for x, yy, weite, richtung in wahl for k in range(int(weite // (r / 2)) + 1)]
+    stellen = [(x, yy) for x, yy in stellen if not any(ueberlappt(m, (x - r, yy - r, x + r, yy + r)) for m in fremd)]
+    for streng in (True, False):   # erste Stelle ohne Schrift (sonst mit wenig) und außerhalb fremder Menüs
+        for x, yy in stellen:
+            if frei(img, x - ox, yy - oy, r, streng):
+                return x, yy
+    if erkannt:   # lieber etwas Schrift daneben verdecken als die angeklickte
+        rest = [(s[0], i) for i, (x, yy) in enumerate(stellen) if (s := schrift_unter(img, x - ox, yy - oy, r))]
+        return stellen[min(rest)[1]] if rest else (g["x"], g["y"])
+    if typ in KNOPF and typ not in OFFEN:   # auf dem eigenen Knopf, nicht auf dem Nachbarn
+        return rect[2] - 0.7 * r, rect[1] + 0.7 * r
+    return feld_links, y   # links daneben verdeckt höchstens ein Symbol, keine Beschriftung
+
+
+def geometrie(schritt, W, H, img=None, rad=None):
+    """Markergröße, Markerpunkte, Zielpunkt beim Ziehen und Punkte für den Ausschnitt (Bildkoordinaten).
+    Mit dem Foto img stehen die Marker neben der Beschriftung, passend zum Radius rad (sonst r)."""
     mon = schritt["monitor"] or {"left": 0, "top": 0}
     ox, oy = mon["left"], mon["top"]
     # Markergröße an der Zeilenhöhe der Oberfläche ausrichten (Menü, Baum), sonst 22 px
     hoehen = [r[3] - r[1] for g in schritt["glieder"] if (r := el(g).get("rechteck")) and 0 < r[3] - r[1] < 60]
     r = max(10, round(0.6 * (min(hoehen) if hoehen else 22)))
-    punkte = [(x - ox, y - oy) for x, y in (marker_punkt(g, W, H, r) for g in schritt["glieder"])]
+    menues = [(w[0] + ox, w[1] + oy, w[2] + ox, w[3] + oy) for w in sichtbar(schritt) if (w[2] - w[0]) * (w[3] - w[1]) < 0.4 * W * H]
+    # Kontextmenüs fehlen manchmal unter den Fenstern: Sie gehen am Klickpunkt eines Rechtsklicks auf
+    menue_folgt = any(el(h).get("typ") in MENU for h in schritt["glieder"])
+    kontext = lambda g: [(g["x"], g["y"] - 4, W + ox, H + oy)] if g["art"] == "rechtsklick" and menue_folgt else []
+    punkte = [(x - ox, y - oy) for x, y in (marker_punkt(g, W, H, rad or r, img, (ox, oy), menues + kontext(g))
+                                            for g in schritt["glieder"])]
     box = list(punkte)
     for g in schritt["glieder"]:
         rect = el(g).get("rechteck")
+        if img is not None and rect and not klein(rect, W, H):   # großes Element: die Beschriftung am Klickpunkt
+            rect = anker(g, W, H, img, (ox, oy), menues + kontext(g))
+        elif img is not None and rect and typ(g) in MENU:   # Menüzeilen sind breit und hinter der Beschriftung leer
+            ende = rect[0] - ox
+            for a, b in schrift_laeufe(img, (rect[0] - ox, rect[1] - oy, rect[2] - ox, rect[3] - oy)):
+                if ende > rect[0] - ox and a - ende > 24:   # Symbol und Wörter, ohne Tastenkürzel und Pfeil
+                    break
+                ende = b
+            rect = [rect[0], rect[1], min(rect[2], ende + ox + 10), rect[3]]
         if rect and rect[2] - rect[0] < W * 0.4 and rect[3] - rect[1] < H * 0.1:  # Menüzeilen mit ins Bild, keine Fenster
             box += [(rect[0] - ox, rect[1] - oy), (rect[2] - ox, rect[3] - oy)]
+            if img is not None and typ(g) in FELD:   # Eingabefeld: mit dem Namen der Eigenschaft links davor
+                ym = (rect[1] + rect[3]) / 2 - oy
+                box.append((links_daneben(img, rect[0] - ox, ym, 0, 200), ym))
     ziel = None
     if schritt.get("ziehen"):
         ziel = (schritt["ziehen"]["x2"] - ox, schritt["ziehen"]["y2"] - oy)
@@ -433,13 +631,25 @@ def bild_zusammen(aufnahme, schritte, datei):
     img = Image.open(aufnahme / schritte[-1]["frame"]).convert("RGB")
     fenster = [f for s in schritte for f in sichtbar(s)]
     img = abdecken(img, fenster)
+    roh = img.copy()   # Schrift im Foto ohne Marker suchen
     box, n = [], 1
     for s in schritte:
-        r, punkte, ziel, b = geometrie(s, *img.size)
+        r, punkte, ziel, b = geometrie(s, *img.size, roh)
         zeichnen(img, r, punkte, ziel, n)
         n += len(punkte)
         box += b
     img.crop(begrenzen(ausschnitt(box, *img.size), fenster)).save(datei, optimize=True)
+
+
+def links_daneben(img, x, y, r, abstand=30):
+    """Anfang der Beschriftung, die links an einen Marker (Mitte x, y, Radius r, Bildkoordinaten) grenzt, höchstens
+    abstand entfernt; ohne Beschriftung der linke Rand des Markers."""
+    a = x - r
+    for l0, l1 in reversed(schrift_laeufe(img, (x - r - 250, y - 7, x - r, y + 7))):
+        if a - l1 > (abstand if a == x - r else 8):   # Abstand zum Marker, dann Lücken zwischen Wörtern
+            break
+        a = l0
+    return a
 
 
 def bild_uebersicht(aufnahme, schritte, datei, f=2, vorher=None):
@@ -458,18 +668,21 @@ def bild_uebersicht(aufnahme, schritte, datei, f=2, vorher=None):
     roh = img.copy()
     alle, n, letzte = [], 1, None
     for s in schritte:
-        r, punkte, ziel, _ = geometrie(s, W, H)
+        r, punkte, ziel, box = geometrie(s, W, H, roh)
         R = max(r, round((gx1 - gx0) * 0.016))  # Marker groß genug für das verkleinerte Gesamtbild
-        zeichnen(img, R, punkte, ziel, n)
-        letzte = (s, r, punkte, ziel, n)
-        alle += punkte
+        gross = geometrie(s, W, H, roh, R)[1]   # neben der Beschriftung, passend zum großen Marker
+        zeichnen(img, R, gross, ziel, n)
+        letzte = (s, r, punkte, ziel, n, box)
+        alle += gross
         n += len(punkte)
-    s, r, punkte, ziel, n0 = letzte
+    s, r, punkte, ziel, n0, box = letzte
     rect = el(s["glieder"][-1]).get("rechteck") if s["glieder"] else None
-    klein = rect and rect[2] - rect[0] < W * 0.4 and rect[3] - rect[1] < H * 0.08
-    if punkte and klein and not ziel:
-        xs, ys = [p[0] for p in punkte], [p[1] for p in punkte]
-        lw, lh = round(max(300, max(xs) - min(xs) + 160)), round(max(130, max(ys) - min(ys) + 80))
+    if punkte and klein(rect, W, H) and not ziel:
+        # Lupe über Marker und angeklickte Einträge, damit die Beschriftung neben dem Marker ganz drin ist
+        ecken = [(x + d, y) for x, y in punkte for d in (-r, r)] + box
+        ecken += [(links_daneben(roh, x, y, r), y) for x, y in punkte]
+        xs, ys = [p[0] for p in ecken], [p[1] for p in ecken]
+        lw, lh = round(max(300, max(xs) - min(xs) + 80)), round(max(130, max(ys) - min(ys) + 60))
         cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
         q0 = max(gx0, min(round(cx - lw / 2), gx1 - lw))
         q1 = max(gy0, min(round(cy - lh / 2), gy1 - lh))
@@ -477,6 +690,7 @@ def bild_uebersicht(aufnahme, schritte, datei, f=2, vorher=None):
         lupe = roh.crop(quelle)
         zeichnen(lupe, r, [(x - q0, y - q1) for x, y in punkte], None, n0)
         f = min(f, max(1.4, 0.4 * (gx1 - gx0) / lw))  # weite Menüketten: Lupe nicht breiter als 40 % des Fensters
+        f = min(f, (gy1 - gy0 - 90) / lh)   # lange Menüs: Lupe nicht höher als das Fenster
         lupe = lupe.resize((round(lw * f), round(lh * f)), Image.LANCZOS)
         # ruhigste Stelle: geringste Helligkeitsstreuung, nicht über Markern oder der Quelle
         frei = alle + [(quelle[0], quelle[1]), (quelle[2], quelle[3]), (quelle[0], quelle[3]), (quelle[2], quelle[1])]
@@ -512,7 +726,7 @@ def gif_bauen(aufnahme, schritte, datei, breite=1280, ms=1600):
     if not mit_bild:
         return
     W, H = Image.open(aufnahme / mit_bild[0]["film"][0]).size
-    geo = [geometrie(st, W, H) for st in mit_bild]
+    geo = [geometrie(st, W, H, Image.open(aufnahme / st["film"][0]).convert("RGB")) for st in mit_bild]
     alle_fenster = [r for st in mit_bild for r in sichtbar(st)]
     x0, y0, x1, y1 = begrenzen(ausschnitt([p for g in geo for p in g[3]], W, H), alle_fenster)
     k = min(1.0, breite / (x1 - x0))
