@@ -1,6 +1,6 @@
 site_name: Angewandte FEM in der Thermodynamik
 site_url: https://prof-schoenfelder-lab.github.io/Thermische-Analyse
-copyright: Copyright &copy; 2026 Felix Kaule & Stephan Schönfelder<br>Diese Webseite wurde mit Unterstützung von KI erstellt.
+copyright: "Copyright &copy; 2026 Felix Kaule & Stephan Schönfelder<br>Hinweis zur KI-Nutzung: Bei der didaktischen Gestaltung dieser Lehrinhalte wurden Methoden der generativen künstlichen Intelligenz eingesetzt. Der Lehrende hat die Inhalte anschließend geprüft, angepasst und trägt die Verantwortung für sie."
 repo_name: prof-schoenfelder-lab/Thermische-Analyse
 repo_url: https://github.com/prof-schoenfelder-lab/Thermische-Analyse
 edit_uri: edit/main/docs/
