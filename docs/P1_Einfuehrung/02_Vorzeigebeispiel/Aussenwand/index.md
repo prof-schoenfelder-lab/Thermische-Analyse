@@ -12,6 +12,11 @@ die Wand innen? Das Beispiel ist bewusst einfach: Die Temperatur ändert sich
 nur über die Wanddicke (eindimensional). Dafür gibt es eine exakte
 Handrechnung, mit der wir die FEM-Ergebnisse prüfen können.
 
+Gerechnet wird trotzdem mit einem **3D-Modell**: einem Wandausschnitt von
+100 mm × 100 mm mit Volumenelementen, so wie später jedes andere Bauteil auch.
+Weil alle Seitenflächen adiabat sind, fließt die Wärme darin nur von innen nach
+außen, und das 3D-Modell muss genau die Handrechnung treffen.
+
 !!! question "Die Aufgabe"
     Eine **Steady-State-Thermal**-Analyse in ANSYS Workbench anlegen und für die
     gegebene Wand den **Temperaturverlauf** und die **Wärmestromdichte** von innen
