@@ -93,7 +93,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Zwischen den Rohren und Wärmestrom</p>
-    <p>Temperatur auf der Oberseite: Das Minimum liegt zwischen den Rohren. Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion der Oberseite auswählen, und durch die Fläche teilen</p>
+    <p>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, also genau in der Mitte zwischen diesem und dem nächsten Rohr. Wärmestrom: <code>Rechtsklick Solution → Insert → Probe → Reaction</code>, dort die Konvektion der Oberseite auswählen, und durch die Fläche teilen</p>
   </div>
 
 </div>
@@ -107,9 +107,9 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 <div class="numeric-question" data-answer="29.87" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Temperatur am Ende des Pfads durch die Rohrmitte (Oberseite). Im Rohr Convection 1000 bei 35 °C, oben Convection 10,8 bei 20 °C?">
 </div>
 
-### Oberflächentemperatur zwischen den Rohren in °C
+### Oberflächentemperatur genau in der Mitte zwischen zwei Rohren in °C
 
-<div class="numeric-question" data-answer="28.78" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Minimum der Temperatur auf der Oberseite, also an den Seitenkanten.">
+<div class="numeric-question" data-answer="28.78" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Die kälteste Stelle der Oberseite liegt an ihren Seitenkanten (75 mm neben der Rohrmitte, dort beginnt der Bereich des nächsten Rohrs): Minimum der Temperatur auf der Oberseite.">
 </div>
 
 ### Wärmestromdichte nach oben in W/m²
