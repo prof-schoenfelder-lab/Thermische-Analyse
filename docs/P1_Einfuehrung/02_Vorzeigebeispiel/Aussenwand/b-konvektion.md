@@ -78,7 +78,7 @@ nebeneinanderlegen.
     3. Genauso die Innenfläche: **7,7** W/m²·°C und **20** °C
     4. Die Ergebnisse aus Fall a) übernehmen: unter **Solution (A6)** alle Ergebnisse markieren (`Shift`) und auf **Solution (B6)** ziehen
     5. `Rechtsklick Solution (B6) → Solve`
-    6. Vergleich: beide Pfad-Ergebnisse (**Temperature 2** unter A6 und B6) mit `Strg` markieren, der Graph zeigt beide Verläufe
+    6. Vergleich: beide Pfad-Ergebnisse (**Temperature 2** unter A6 und B6) mit `Strg` markieren, dann oben im Reiter `Home` auf `Chart` klicken: Das neue Objekt **Chart** zeigt beide Verläufe in einem Graph
 
 <tutorial slug="p1-konvektion"></tutorial>
 
