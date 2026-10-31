@@ -101,6 +101,9 @@ extra_javascript:
       - "assets/js/spickzettel.js"
       - "assets/js/hero-anim.js"
       - "assets/js/wand-rechner.js"
+      - "assets/js/wandschnitt-loeser.js"
+      - "assets/js/wandschnitt-daten.js"
+      - "assets/js/wandschnitt.js"
 
 extra_css:
       - "assets/tutorials/player.css"
@@ -113,6 +116,7 @@ extra_css:
       - "styles/modern.css"
       - "assets/styles/spickzettel.css"
       - "assets/styles/anim-scroll.css"
+      - "assets/styles/wandschnitt.css"
 
 # Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums
 extra:
@@ -170,6 +174,8 @@ nav:
       - INSTATIONÄRE BERECHNUNG:
               - P4_Instationaer/index.md
       # <<< AUTO-NAV
+      - WERKZEUGE:
+              - Wandschnitt 2D: werkzeuge/wandschnitt.md
       - HILFE:
               - Anleitungen: tutorials.md
               - FAQ:
