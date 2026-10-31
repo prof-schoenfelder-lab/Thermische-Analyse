@@ -463,26 +463,33 @@
       }
       g.lineWidth = 0.5; g.strokeStyle = 'rgba(0, 0, 0, .35)'; g.stroke();
     }
-    function marke(g, x, y, text, farbe, rechts) {
+    // Punkt mit Beschriftung; die Beschriftung nimmt die erste freie Lage (rechts oben, links oben, rechts unten, links unten)
+    function marke(g, x, y, text, farbe, belegt) {
       const px = X(x), py = Y(y);
       g.beginPath(); g.arc(px, py, 4.5, 0, 2 * Math.PI);
       g.fillStyle = farbe; g.fill(); g.lineWidth = 2; g.strokeStyle = '#ffffff'; g.stroke();
       g.font = '600 12px "Source Sans Pro", Arial, sans-serif';
-      g.textBaseline = 'middle';
-      const tw = g.measureText(text).width, links = rechts === false || px + 10 + tw > ansicht.w - 4;
-      g.textAlign = links ? 'right' : 'left';
-      const tx = links ? px - 9 : px + 9, ty = py - 11;
+      g.textBaseline = 'middle'; g.textAlign = 'left';
+      const tw = g.measureText(text).width;
+      const lagen = [[9, -11], [-9 - tw, -11], [9, 11], [-9 - tw, 11]].map(([dx, dy]) => [px + dx, py + dy]);
+      const frei = ([tx, ty]) => tx >= 2 && tx + tw <= ansicht.w - 2 && !belegt.some(([bx, by, bw]) => tx < bx + bw + 4 && tx + tw + 4 > bx && Math.abs(ty - by) < 15);
+      const [tx, ty] = lagen.find(frei) || lagen[0];
+      belegt.push([tx, ty, tw]);
       g.lineWidth = 3.5; g.strokeStyle = 'rgba(255, 255, 255, .92)'; g.strokeText(text, tx, ty);
       g.fillStyle = '#1b2327'; g.fillText(text, tx, ty);
     }
     function markenZeichnen(g) {
-      for (const z of erg.auswertung) {
-        if (z.rolle === 'innen' && z.ortMin) marke(g, z.ortMin[0], z.ortMin[1], `${z.name} min ${de(z.tMin, 2)} °C`, '#0b4f9c');
-      }
+      const belegt = [];
       modell.sonden.forEach(s => {
         const p = L.sonde(erg, s.x, s.y);
-        marke(g, s.x, s.y, p ? `${s.name}: ${de(p.T, 2)} °C` : `${s.name}: kein Material`, '#1b2327');
+        marke(g, s.x, s.y, p ? `${s.name}: ${de(p.T, 2)} °C` : `${s.name}: kein Material`, '#1b2327', belegt);
       });
+      // Kleinste Oberflächentemperatur je Innenbereich, außer eine Sonde sitzt schon dort
+      for (const z of erg.auswertung) {
+        if (z.rolle !== 'innen' || !z.ortMin) continue;
+        if (modell.sonden.some(s => Math.abs(s.x - z.ortMin[0]) < 1 && Math.abs(s.y - z.ortMin[1]) < 1)) continue;
+        marke(g, z.ortMin[0], z.ortMin[1], `${z.name} min ${de(z.tMin, 2)} °C`, '#0b4f9c', belegt);
+      }
     }
     function bereichsnamen(g, farbe) {
       const groesste = new Map();
