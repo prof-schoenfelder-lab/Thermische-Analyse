@@ -4,6 +4,38 @@
   "kinder": [
     {
       "extern": "P2_Randbedingungen/index.md"
+    },
+    {
+      "gruppe": "GRUNDLAGEN",
+      "kinder": [
+        { "titel": "Randbedingungen im Überblick", "extern": "P2_Randbedingungen/01_Grundlagen/Randbedingungen.md" },
+        { "titel": "Wärmestrahlung", "extern": "P2_Randbedingungen/01_Grundlagen/Strahlung.md" }
+      ]
+    },
+    {
+      "gruppe": "VORZEIGEBEISPIEL: VAKUUMRÖHRE",
+      "kinder": [
+        { "titel": "Aufgabenstellung", "extern": "P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/index.md" },
+        {
+          "gruppe": "a) Selektiv",
+          "kinder": [
+            { "titel": "1 · Modell", "extern": "P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/01-modell.md" },
+            { "titel": "2 · Randbedingungen", "extern": "P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/02-randbedingungen.md" },
+            { "titel": "3 · Lösen und Auswerten", "extern": "P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/03-auswertung.md" }
+          ]
+        },
+        { "titel": "b) Schwarz", "extern": "P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/b-schwarz.md" },
+        { "titel": "c) Stillstand", "extern": "P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/c-stillstand.md" }
+      ]
+    },
+    {
+      "gruppe": "SELBSTTESTS",
+      "kinder": [
+        { "titel": "Einleitung", "extern": "P2_Randbedingungen/03_Selbsttests/Einleitung.md" },
+        { "titel": "Übung 1", "extern": "P2_Randbedingungen/03_Selbsttests/Uebung-1.md" },
+        { "titel": "Übung 2", "extern": "P2_Randbedingungen/03_Selbsttests/Uebung-2.md" },
+        { "titel": "Übung 3", "extern": "P2_Randbedingungen/03_Selbsttests/Uebung-3.md" }
+      ]
     }
   ]
 }

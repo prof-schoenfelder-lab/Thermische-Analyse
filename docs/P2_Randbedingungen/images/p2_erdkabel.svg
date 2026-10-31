@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="960" height="500" fill="white"/>
+<defs><marker id="pr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><marker id="pg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker></defs>
+<rect x="70" y="80" width="400.0" height="300.0" fill="#eadfcc" stroke="#2E3639" stroke-width="1.5"/>
+<line x1="70" y1="380.0" x2="470.0" y2="380.0" stroke="#009EE3" stroke-width="5"/>
+<line x1="70" y1="80" x2="70" y2="380.0" stroke="#2E3639" stroke-width="5"/>
+<line x1="470.0" y1="80" x2="470.0" y2="380.0" stroke="#2E3639" stroke-width="5"/>
+<circle cx="270.0" cy="180.0" r="12" fill="#f3f3f3" stroke="#2E3639" stroke-width="1.2"/>
+<circle cx="270.0" cy="180.0" r="6" fill="#e8b48f" stroke="#2E3639" stroke-width="1"/>
+<line x1="190.0" y1="76.0" x2="190.0" y2="40.0" stroke="#009EE3" stroke-width="1.8" marker-end="url(#pc)"/>
+<line x1="350.0" y1="76.0" x2="350.0" y2="40.0" stroke="#009EE3" stroke-width="1.8" marker-end="url(#pc)"/>
+<text x="270" y="30" text-anchor="middle" font-size="18" fill="#009EE3">Luft 20 °C, α = 10 W/(m²·K)</text>
+<text x="270" y="410" text-anchor="middle" font-size="18" fill="#009EE3">in 3 m Tiefe: T = 10 °C</text>
+<line x1="70.0" y1="446.0" x2="470.0" y2="446.0" stroke="#2E3639" stroke-width="1" marker-start="url(#pg)" marker-end="url(#pg)"/><text x="270" y="468" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">4 m</text>
+<line x1="310.0" y1="80.0" x2="310.0" y2="180.0" stroke="#2E3639" stroke-width="1" marker-start="url(#pg)" marker-end="url(#pg)"/><text x="320" y="136" text-anchor="start" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">1 m</text>
+<text x="84" y="290" text-anchor="start" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">Boden λ: a) 1,0  b) 0,4 W/(m·K)</text>
+<text x="60" y="230" text-anchor="end" font-size="18" fill="#2E3639">isoliert</text>
+<text x="480" y="290" text-anchor="start" font-size="18" fill="#2E3639">isoliert</text>
+<line x1="284.0" y1="180.0" x2="664.0" y2="220" stroke="#2E3639" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="720" cy="220" r="44.0" fill="#f3f3f3" stroke="#2E3639" stroke-width="1.5"/>
+<circle cx="720" cy="220" r="19.25" fill="#e8b48f" stroke="#2E3639" stroke-width="1.2"/>
+<text x="720" y="126" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">Kabel 1 × 240 mm² Aluminium</text>
+<text x="720" y="150" text-anchor="middle" font-size="18" fill="#E53009">Strom I = 550 A</text>
+<text x="720" y="294" text-anchor="middle" font-size="18" fill="#2E3639">Leiter Ø 17,5 mm, λ = 230 W/(m·K)</text>
+<text x="720" y="318" text-anchor="middle" font-size="18" fill="#2E3639">Isolierung Ø 40 mm, λ = 0,3 W/(m·K)</text>
+</svg>

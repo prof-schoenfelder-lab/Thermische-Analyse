@@ -165,6 +165,22 @@ nav:
                       - Zusammenfassung: P1_Einfuehrung/Zusammenfassung.md
       - RANDBEDINGUNGEN:
               - P2_Randbedingungen/index.md
+              - GRUNDLAGEN:
+                      - Randbedingungen im Überblick: P2_Randbedingungen/01_Grundlagen/Randbedingungen.md
+                      - Wärmestrahlung: P2_Randbedingungen/01_Grundlagen/Strahlung.md
+              - "VORZEIGEBEISPIEL: VAKUUMRÖHRE":
+                      - Aufgabenstellung: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/index.md
+                      - a) Selektiv:
+                              - 1 · Modell: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/01-modell.md
+                              - 2 · Randbedingungen: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/02-randbedingungen.md
+                              - 3 · Lösen und Auswerten: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/03-auswertung.md
+                      - b) Schwarz: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/b-schwarz.md
+                      - c) Stillstand: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/c-stillstand.md
+              - SELBSTTESTS:
+                      - Einleitung: P2_Randbedingungen/03_Selbsttests/Einleitung.md
+                      - Übung 1: P2_Randbedingungen/03_Selbsttests/Uebung-1.md
+                      - Übung 2: P2_Randbedingungen/03_Selbsttests/Uebung-2.md
+                      - Übung 3: P2_Randbedingungen/03_Selbsttests/Uebung-3.md
       - ABSTRAKTIONEN & VERNETZUNG:
               - P3_Abstraktionen_Vernetzung/index.md
       - INSTATIONÄRE BERECHNUNG:

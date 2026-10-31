@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="960" height="470" fill="white"/>
+<defs><marker id="pr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><marker id="pg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker></defs>
+<rect x="80" y="301.2" width="360.0" height="28.8" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="80.0" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="130.4" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="180.8" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="231.2" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="281.6" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="332.0" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="382.4" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="432.8" y="157.2" width="7.2" height="144.0" fill="#e3e6e8" stroke="#2E3639" stroke-width="1.5"/>
+<rect x="170.0" y="332" width="180.0" height="22" fill="#fbe0d9" stroke="#E53009" stroke-width="1.5"/>
+<text x="260" y="349" text-anchor="middle" font-size="18" fill="#E53009">Modul 50 × 50 mm</text>
+<line x1="200.0" y1="400.0" x2="200.0" y2="358.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="320.0" y1="400.0" x2="320.0" y2="358.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<text x="260" y="426" text-anchor="middle" font-size="18" fill="#E53009" font-weight="700">Wärmestrom 40 W</text>
+<line x1="80.0" y1="131.2" x2="440.0" y2="131.2" stroke="#2E3639" stroke-width="1" marker-start="url(#pg)" marker-end="url(#pg)"/><text x="260" y="121" text-anchor="middle" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">100 mm</text>
+<line x1="58.0" y1="157.2" x2="58.0" y2="301.2" stroke="#2E3639" stroke-width="1" marker-start="url(#pg)" marker-end="url(#pg)"/><text x="50" y="235" text-anchor="end" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">40</text>
+<line x1="58.0" y1="301.2" x2="58.0" y2="330.0" stroke="#2E3639" stroke-width="1" marker-start="url(#pg)" marker-end="url(#pg)"/><text x="50" y="322" text-anchor="end" font-size="18" fill="#2E3639" stroke="white" stroke-width="5" stroke-linejoin="round" paint-order="stroke">8</text>
+<line x1="260.0" y1="261.2" x2="260.0" y2="151.2" stroke="#009EE3" stroke-width="1.8" marker-end="url(#pc)"/>
+<path d="M448.0,229.2 L448.5,229.9 L448.9,230.5 L449.4,231.2 L449.9,231.7 L450.3,232.2 L450.8,232.6 L451.3,232.9 L451.7,233.1 L452.2,233.2 L452.7,233.2 L453.1,233.0 L453.6,232.8 L454.1,232.4 L454.5,232.0 L455.0,231.4 L455.5,230.8 L455.9,230.2 L456.4,229.5 L456.9,228.8 L457.3,228.2 L457.8,227.5 L458.3,226.9 L458.7,226.4 L459.2,226.0 L459.7,225.6 L460.1,225.4 L460.6,225.2 L461.1,225.2 L461.5,225.3 L462.0,225.5 L462.5,225.8 L462.9,226.2 L463.4,226.7 L463.9,227.3 L464.3,227.9 L464.8,228.6 L465.3,229.3 L465.7,229.9 L466.2,230.6 L466.7,231.2 L467.1,231.8 L467.6,232.2 L468.1,232.6 L468.5,232.9 L469.0,233.1 L469.5,233.2 L469.9,233.2 L470.4,233.0 L470.9,232.7 L471.3,232.4 L471.8,231.9 L472.3,231.4 L472.7,230.8 L473.2,230.1 L473.7,229.5 L474.1,228.8 L474.6,228.1 L475.1,227.5 L475.5,226.9 L476.0,226.4 L476.5,225.9 L476.9,225.6 L477.4,225.4 L477.9,225.2 L478.3,225.2 L478.8,225.3 L479.3,225.5 L479.7,225.8 L480.2,226.3 L480.7,226.8 L481.1,227.3 L481.6,228.0 L482.1,228.6 L482.5,229.3 L483.0,230.0 L483.5,230.6 L483.9,231.2 L484.4,231.8 L484.9,232.3 L485.3,232.7 L485.8,233.0 L486.3,233.1 L486.7,233.2 L487.2,233.2 L487.7,233.0 L488.1,232.7 L488.6,232.3 L489.1,231.9 L489.5,231.3 L490.0,230.7 L490.5,230.1 L490.9,229.4 L491.4,228.7 L491.9,228.1 L492.3,227.4 L492.8,226.8 L493.3,226.3 L493.7,225.9 L494.2,225.6 L494.7,225.3 L495.1,225.2 L495.6,225.2 L496.1,225.3 L496.5,225.5 L497.0,225.9 L497.5,226.3 L497.9,226.8 L498.4,227.4 L498.9,228.0 L499.3,228.7 L499.8,229.4 L500.3,230.0 L500.7,230.7 L501.2,231.3 L501.7,231.8 L502.1,232.3 L502.6,232.7 L503.1,233.0 L503.5,233.1 L504.0,233.2" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.8" stroke-linejoin="round" marker-end="url(#pr)"/>
+<text x="560" y="70" text-anchor="start" font-size="18" fill="#022541" font-weight="700">Aluminium, λ = 200 W/(m·K)</text>
+<text x="560" y="96" text-anchor="start" font-size="18" fill="#2E3639">8 Rippen, je 2 mm dick, 40 mm hoch</text>
+<text x="560" y="120" text-anchor="start" font-size="18" fill="#2E3639">Länge der Rippen 100 mm</text>
+<text x="560" y="176" text-anchor="start" font-size="18" fill="#009EE3">Luft 40 °C, α = 6 W/(m²·K)</text>
+<text x="560" y="202" text-anchor="start" font-size="18" fill="#E53009">Umgebung 40 °C (Strahlung)</text>
+<text x="560" y="228" text-anchor="start" font-size="18" fill="#2E3639">a) schwarz eloxiert ε = 0,85</text>
+<text x="560" y="252" text-anchor="start" font-size="18" fill="#2E3639">b) blank ε = 0,05</text>
+<text x="560" y="310" text-anchor="start" font-size="18" fill="#2E3639">Rückseite neben dem Modul:</text>
+<text x="560" y="334" text-anchor="start" font-size="18" fill="#2E3639">liegt am Gehäuse, isoliert</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="960" height="560" fill="white"/>
+<defs><marker id="pr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><marker id="pg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker></defs>
+<path d="M90.0,300 a210.0,210.0 0 1,0 420.0,0 a210.0,210.0 0 1,0 -420.0,0 Z M105.0,300 a195.0,195.0 0 1,1 390.0,0 a195.0,195.0 0 1,1 -390.0,0 Z" fill="#e6f5fc" fill-rule="evenodd" stroke="#2E3639" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="30.0" fill="#cfe8f7"/>
+<rect x="120.0" y="298.0" width="360.0" height="4.0" fill="#022541"/>
+<path d="M264.0,300 a36.0,36.0 0 1,0 72.0,0 a36.0,36.0 0 1,0 -72.0,0 Z M270.0,300 a30.0,30.0 0 1,1 60.0,0 a30.0,30.0 0 1,1 -60.0,0 Z" fill="#022541" fill-rule="evenodd" stroke="#022541" stroke-width="1.5"/>
+<line x1="150.0" y1="36.0" x2="150.0" y2="294.5" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="210.0" y1="36.0" x2="210.0" y2="294.5" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="390.0" y1="36.0" x2="390.0" y2="294.5" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="450.0" y1="36.0" x2="450.0" y2="294.5" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<text x="150" y="26" text-anchor="start" font-size="18" fill="#E53009">Sonne: 700 W/m² auf die Oberseite der Bleche</text>
+<path d="M84.0,360.0 L83.5,359.3 L82.9,358.7 L82.4,358.0 L81.9,357.5 L81.3,357.0 L80.8,356.6 L80.3,356.3 L79.7,356.1 L79.2,356.0 L78.7,356.0 L78.1,356.2 L77.6,356.4 L77.1,356.8 L76.5,357.2 L76.0,357.8 L75.5,358.4 L74.9,359.0 L74.4,359.7 L73.9,360.4 L73.3,361.0 L72.8,361.7 L72.3,362.3 L71.7,362.8 L71.2,363.2 L70.7,363.6 L70.1,363.8 L69.6,364.0 L69.1,364.0 L68.5,363.9 L68.0,363.7 L67.5,363.4 L66.9,363.0 L66.4,362.5 L65.9,361.9 L65.3,361.3 L64.8,360.6 L64.3,359.9 L63.7,359.3 L63.2,358.6 L62.7,358.0 L62.1,357.4 L61.6,357.0 L61.1,356.6 L60.5,356.3 L60.0,356.1 L59.5,356.0 L58.9,356.0 L58.4,356.2 L57.9,356.5 L57.3,356.8 L56.8,357.3 L56.3,357.8 L55.7,358.4 L55.2,359.1 L54.7,359.7 L54.1,360.4 L53.6,361.1 L53.1,361.7 L52.5,362.3 L52.0,362.8 L51.5,363.3 L50.9,363.6 L50.4,363.8 L49.9,364.0 L49.3,364.0 L48.8,363.9 L48.3,363.7 L47.7,363.4 L47.2,362.9 L46.7,362.4 L46.1,361.9 L45.6,361.2 L45.1,360.6 L44.5,359.9 L44.0,359.2 L43.5,358.6 L42.9,358.0 L42.4,357.4 L41.9,356.9 L41.3,356.5 L40.8,356.2 L40.3,356.1 L39.7,356.0 L39.2,356.0 L38.7,356.2 L38.1,356.5 L37.6,356.9 L37.1,357.3 L36.5,357.9 L36.0,358.5 L35.5,359.1 L34.9,359.8 L34.4,360.5 L33.9,361.1 L33.3,361.8 L32.8,362.4 L32.3,362.9 L31.7,363.3 L31.2,363.6 L30.7,363.9 L30.1,364.0 L29.6,364.0 L29.1,363.9 L28.5,363.7 L28.0,363.3 L27.5,362.9 L26.9,362.4 L26.4,361.8 L25.9,361.2 L25.3,360.5 L24.8,359.8 L24.3,359.2 L23.7,358.5 L23.2,357.9 L22.7,357.4 L22.1,356.9 L21.6,356.5 L21.1,356.2 L20.5,356.1 L20.0,356.0" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.8" stroke-linejoin="round" marker-end="url(#pr)"/>
+<line x1="516.0" y1="360.0" x2="566.0" y2="360.0" stroke="#009EE3" stroke-width="1.8" marker-end="url(#pc)"/>
+<text x="300" y="392" text-anchor="middle" font-size="18" fill="#2E3639">Vakuum</text>
+<circle cx="484.3" cy="199.3" r="3" fill="#2E3639"/><line x1="484.3" y1="199.3" x2="592.0" y2="140.0" stroke="#2E3639" stroke-width="1"/>
+<text x="600" y="136" text-anchor="start" font-size="18" fill="#022541" font-weight="700">Glasrohr Ø 70 × 2,5 mm</text>
+<text x="600" y="160" text-anchor="start" font-size="18" fill="#2E3639">λ = 1,1 W/(m·K), ε = 0,9</text>
+<circle cx="476.0" cy="300.0" r="3" fill="#2E3639"/><line x1="476.0" y1="300.0" x2="592.0" y2="240.0" stroke="#2E3639" stroke-width="1"/>
+<text x="600" y="236" text-anchor="start" font-size="18" fill="#022541" font-weight="700">Absorberblech 60 × 0,5 mm</text>
+<text x="600" y="260" text-anchor="start" font-size="18" fill="#2E3639">Kupfer, a) ε = 0,05  b) ε = 0,9</text>
+<circle cx="325.2" cy="325.2" r="3" fill="#2E3639"/><line x1="325.2" y1="325.2" x2="592.0" y2="340.0" stroke="#2E3639" stroke-width="1"/>
+<text x="600" y="336" text-anchor="start" font-size="18" fill="#022541" font-weight="700">Kupferrohr Ø 12 × 1 mm</text>
+<text x="600" y="360" text-anchor="start" font-size="18" fill="#2E3639">Wasser 50 °C, α = 1000 W/(m²·K)</text>
+<text x="600" y="440" text-anchor="start" font-size="18" fill="#009EE3">außen: Luft 20 °C, α = 10 W/(m²·K)</text>
+<text x="600" y="464" text-anchor="start" font-size="18" fill="#E53009">Himmel 5 °C (Strahlung)</text>
+<text x="300" y="538" text-anchor="middle" font-size="18" fill="#2E3639">Querschnitt, Länge des Stücks 20 mm</text>
+</svg>
