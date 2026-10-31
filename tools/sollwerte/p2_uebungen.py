@@ -395,7 +395,7 @@ def kuehlkoerper(eps, h=0.002, P=KUEHL):
 # ---------------------------------------------------------------------------------------------
 # Übung 3: Erdkabel (Wärmeerzeugung im Leiter, feste Temperatur in der Tiefe, Seiten isoliert)
 # ---------------------------------------------------------------------------------------------
-KABEL = dict(breite=4.0, tiefe=3.0, lage=1.0, A_leiter=240e-6, r_iso=0.020, rho=2.82e-8, I=500.0,
+KABEL = dict(breite=4.0, tiefe=3.0, lage=1.0, A_leiter=240e-6, r_iso=0.020, rho=2.82e-8, I=550.0,
              lam_leiter=230.0, lam_iso=0.3, alpha=10.0, T_l=20.0, T_tief=10.0)
 
 
