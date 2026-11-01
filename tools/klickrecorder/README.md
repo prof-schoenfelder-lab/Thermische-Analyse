@@ -26,6 +26,9 @@ Tipps
 - Per Remote Desktop vom Mac: den Recorder **im Windows-Rechner** starten (nur dort gibt es
   Elementnamen). Kürzel mit `ctrl + option` drücken. RDP-Fenster nicht minimieren, sonst
   werden die Fotos schwarz
+- Ferngesteuerte Klicks (Fernsteuerung, Automatisierung) dauern unter 10 ms und werden über
+  das Merkbit von `GetAsyncKeyState` trotzdem erkannt; das Foto zeigt dann den Zustand
+  nach dem Klick
 - Ruhig klicken: über Menüeinträgen mit Untermenü kurz verweilen (wird als Zwischenschritt erkannt)
 - Ein Kapitel pro Arbeitsschritt (7 Schritte des Workflows) ergibt kurze Anleitungen
 

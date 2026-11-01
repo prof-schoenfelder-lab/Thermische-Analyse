@@ -272,7 +272,16 @@ class Recorder:
             self.on_move(pt.x, pt.y)
             self.mods = {name for vk, name in MODTASTEN.items() if unten(vk)}
             for vk in gedrueckt:
-                jetzt = unten(vk)
+                zustand = user32.GetAsyncKeyState(vk)
+                jetzt = bool(zustand & 0x8000)
+                if not jetzt and not gedrueckt[vk] and zustand & 1:
+                    # zwischen zwei Abfragen gedrückt und losgelassen (ferngesteuerte Klicks dauern unter 10 ms)
+                    if vk in TASTEN:
+                        self.on_click(pt.x, pt.y, TASTEN[vk], True)
+                        self.on_click(pt.x, pt.y, TASTEN[vk], False)
+                    elif self.tasten:
+                        self.on_taste(STEUERTASTEN[vk])
+                    continue
                 if jetzt == gedrueckt[vk]:
                     continue
                 gedrueckt[vk] = jetzt
