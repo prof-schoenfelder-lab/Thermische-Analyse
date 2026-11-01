@@ -4,20 +4,44 @@ title: Randbedingungen im Überblick
 
 # Randbedingungen im Überblick
 
-Eine thermische Rechnung braucht neben Geometrie und Material immer die
-Antwort auf die Frage: **Wo kommt die Wärme her, und wo geht sie hin?** Genau
-das beschreiben die Randbedingungen. ANSYS bietet in der stationären Analyse
-(Steady-State Thermal) sieben Arten an:
+Randbedingungen beantworten die Frage: **Wo kommt die Wärme her, und wo geht
+sie hin?** Nach dem Ort, an dem sie wirken, gibt es drei Gruppen. Die Bilder
+stammen aus dem Vorzeigebeispiel und aus Übung 3.
 
-| Randbedingung | ANSYS | Einheit | wirkt auf | Beispiel in diesem Praktikum |
-|---|---|---|---|---|
-| Temperatur | `Temperature` | °C | Fläche, Kante, Punkt, Körper | Erdreich in 3 m Tiefe (Übung 3) |
-| Konvektion | `Convection` | W/(m²·K) und °C | Fläche | Wasser im Rohr, Luft außen (alle) |
-| Strahlung | `Radiation` | ε und °C | Fläche | Glas zum Himmel, Absorber zum Glas (Vorzeigebeispiel) |
-| Wärmestrom | `Heat Flow` | W | Fläche, Kante, Punkt | Verlustleistung eines Halbleiters (Übung 2) |
-| Wärmestromdichte | `Heat Flux` | W/m² | Fläche | Sonne auf dem Absorber (Vorzeigebeispiel) |
-| Isoliert | `Perfectly Insulated` | | Fläche | Seiten des Erdreichs (Übung 3) |
-| Wärmeerzeugung | `Internal Heat Generation` | W/m³ | Körper | Stromwärme im Kabelleiter (Übung 3) |
+<figure style="text-align:center;">
+  <img src="../../images/p2_rb_gruppen.svg" alt="Drei Gruppen von Randbedingungen: an der Systemgrenze, im ganzen Körper, überall" class="no-lightbox">
+</figure>
+
+## An der Systemgrenze
+
+Wärme geht über die Oberfläche in das Modell hinein oder aus ihm heraus. Dazu
+gehören die meisten Randbedingungen:
+
+| Randbedingung | ANSYS | Eingabe | Beispiel in diesem Praktikum |
+|---|---|---|---|
+| Konvektion | `Convection` | W/(m²·K) und °C | Wasser im Rohr, Luft außen (alle) |
+| Strahlung | `Radiation` | ε und °C | Glas zum Himmel, Absorber zum Glas (Vorzeigebeispiel) |
+| Wärmestromdichte | `Heat Flux` | W/m² | Sonne auf dem Absorber (Vorzeigebeispiel) |
+| Wärmestrom | `Heat Flow` | W | Verlustleistung eines Halbleiters (Übung 2) |
+| Isoliert | `Perfectly Insulated` | | Seiten des Erdreichs (Übung 3) |
+
+`Heat Flux` passt, wenn die Leistung **je Fläche** bekannt ist, wie bei der
+Sonne. `Heat Flow` passt, wenn die **Gesamtleistung** bekannt ist, etwa aus
+einem Datenblatt.
+
+## Im ganzen Körper
+
+Die Wärme entsteht im Material selbst, zum Beispiel durch elektrischen Strom.
+`Internal Heat Generation` gibt die Leistung je Volumen in W/m³ vor und wird
+auf einen ganzen Körper gesetzt, etwa auf den Leiter des Erdkabels (Übung 3).
+
+## Überall: feste Temperatur
+
+`Temperature` hält die Temperatur in °C fest, auf einer Fläche, einer Kante,
+einem Punkt oder einem ganzen Körper. Das passt nur, wenn der Ort seine
+Temperatur wirklich behält, egal wie viel Wärme fließt: tiefes Erdreich
+(Übung 3), siedendes oder kondensierendes Wasser. An einer Oberfläche zur Luft
+ist eine feste Temperatur meist falsch (siehe Praktikum 1, Fall a).
 
 ## Was vorgegeben wird, was herauskommt
 
@@ -26,18 +50,6 @@ Jede Randbedingung legt **eine** Größe am Rand fest, die andere rechnet ANSYS 
 - **Temperatur:** Die Temperatur steht fest, der Wärmestrom über die Fläche ist Ergebnis.
 - **Wärmestrom, Wärmestromdichte, Isoliert:** Der Wärmestrom steht fest, die Temperatur der Fläche ist Ergebnis.
 - **Konvektion und Strahlung:** Weder Temperatur noch Wärmestrom stehen fest. Vorgegeben ist ein **Gesetz**, das beide verknüpft. Je wärmer die Fläche, desto mehr Wärme gibt sie ab.
-
-!!! abstract "Wann welche Randbedingung?"
-    - Eine feste **Temperatur** passt nur, wenn der Rand seine Temperatur
-      wirklich behält, egal wie viel Wärme fließt: tiefes Erdreich, siedendes
-      oder kondensierendes Wasser. An einer Oberfläche zur Luft ist sie meist
-      falsch (siehe Praktikum 1, Fall a).
-    - **Wärmestrom** (W), wenn die **Gesamtleistung** bekannt ist, z. B. die
-      Verlustleistung aus einem Datenblatt.
-    - **Wärmestromdichte** (W/m²), wenn die Leistung **je Fläche** bekannt
-      ist, z. B. die Sonneneinstrahlung.
-    - **Wärmeerzeugung** (W/m³), wenn die Wärme **im Körper** entsteht, z. B.
-      durch elektrischen Strom.
 
 ## Zwei Randbedingungen auf derselben Fläche
 

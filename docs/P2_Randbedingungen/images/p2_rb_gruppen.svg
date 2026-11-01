@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 452" width="960" height="452" font-family="'Source Sans Pro', 'Source Sans 3', Arial, sans-serif">
+<rect width="960" height="452" fill="white"/>
+<defs><marker id="pr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><marker id="pg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker></defs>
+<g transform="translate(12.0,0)">
+<rect x="1" y="1" width="302" height="450" rx="8" fill="white" stroke="#E2E8EC" stroke-width="1.5"/>
+<text x="152" y="36" text-anchor="middle" font-size="21" fill="#022541" font-weight="700">An der Systemgrenze</text>
+<text x="152" y="60" text-anchor="middle" font-size="17" fill="#2E3639">Wärme geht über die Oberfläche</text>
+<path d="M82.0,205 a70,70 0 1,0 140,0 a70,70 0 1,0 -140,0 Z M87.0,205 a65,65 0 1,1 130,0 a65,65 0 1,1 -130,0 Z" fill="#e6f5fc" fill-rule="evenodd" stroke="#2E3639" stroke-width="1.5"/>
+<circle cx="152.0" cy="205" r="10" fill="#cfe8f7"/>
+<rect x="92.0" y="203.5" width="120" height="3" fill="#022541"/>
+<path d="M140.0,205 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0 Z M142.0,205 a10,10 0 1,1 20,0 a10,10 0 1,1 -20,0 Z" fill="#022541" fill-rule="evenodd" stroke="#022541" stroke-width="1.5"/>
+<line x1="104.0" y1="104.0" x2="104.0" y2="199.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="126.0" y1="104.0" x2="126.0" y2="199.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="178.0" y1="104.0" x2="178.0" y2="199.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<line x1="200.0" y1="104.0" x2="200.0" y2="199.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
+<text x="152" y="96" text-anchor="middle" font-size="18" fill="#E53009" font-weight="700">Heat Flux</text>
+<path d="M78.0,235.0 L77.6,234.3 L77.2,233.7 L76.8,233.0 L76.4,232.5 L76.0,232.0 L75.6,231.6 L75.2,231.3 L74.8,231.1 L74.4,231.0 L74.0,231.0 L73.6,231.2 L73.2,231.4 L72.8,231.8 L72.4,232.2 L72.0,232.8 L71.6,233.4 L71.2,234.0 L70.8,234.7 L70.4,235.4 L70.0,236.0 L69.6,236.7 L69.2,237.3 L68.8,237.8 L68.4,238.2 L68.0,238.6 L67.6,238.8 L67.2,239.0 L66.8,239.0 L66.4,238.9 L66.0,238.7 L65.6,238.4 L65.2,238.0 L64.8,237.5 L64.4,236.9 L64.0,236.3 L63.6,235.6 L63.2,234.9 L62.8,234.3 L62.4,233.6 L62.0,233.0 L61.6,232.4 L61.2,232.0 L60.8,231.6 L60.4,231.3 L60.0,231.1 L59.6,231.0 L59.2,231.0 L58.8,231.2 L58.4,231.5 L58.0,231.8 L57.6,232.3 L57.2,232.8 L56.8,233.4 L56.4,234.1 L56.0,234.7 L55.6,235.4 L55.2,236.1 L54.8,236.7 L54.4,237.3 L54.0,237.8 L53.6,238.3 L53.2,238.6 L52.8,238.8 L52.4,239.0 L52.0,239.0 L51.6,238.9 L51.2,238.7 L50.8,238.4 L50.4,237.9 L50.0,237.4 L49.6,236.9 L49.2,236.2 L48.8,235.6 L48.4,234.9 L48.0,234.2 L47.6,233.6 L47.2,233.0 L46.8,232.4 L46.4,231.9 L46.0,231.5 L45.6,231.2 L45.2,231.1 L44.8,231.0 L44.4,231.0 L44.0,231.2 L43.6,231.5 L43.2,231.9 L42.8,232.3 L42.4,232.9 L42.0,233.5 L41.6,234.1 L41.2,234.8 L40.8,235.5 L40.4,236.1 L40.0,236.8 L39.6,237.4 L39.2,237.9 L38.8,238.3 L38.4,238.6 L38.0,238.9 L37.6,239.0 L37.2,239.0 L36.8,238.9 L36.4,238.7 L36.0,238.3 L35.6,237.9 L35.2,237.4 L34.8,236.8 L34.4,236.2 L34.0,235.5 L33.6,234.8 L33.2,234.2 L32.8,233.5 L32.4,232.9 L32.0,232.4 L31.6,231.9 L31.2,231.5 L30.8,231.2 L30.4,231.1 L30.0,231.0" fill="none" stroke="#E53009" stroke-width="1.6" opacity="0.8" stroke-linejoin="round" marker-end="url(#pr)"/>
+<text x="8" y="268" text-anchor="start" font-size="18" fill="#E53009" font-weight="700">Radiation</text>
+<text x="8" y="287" text-anchor="start" font-size="16" fill="#2E3639">Himmel</text>
+<line x1="226.0" y1="235.0" x2="270.0" y2="235.0" stroke="#009EE3" stroke-width="1.8" marker-end="url(#pc)"/>
+<text x="296" y="268" text-anchor="end" font-size="18" fill="#009EE3" font-weight="700">Convection</text>
+<text x="296" y="287" text-anchor="end" font-size="16" fill="#2E3639">Luft</text>
+<line x1="152.0" y1="213" x2="152.0" y2="289" stroke="#2E3639" stroke-width="1"/>
+<circle cx="152.0" cy="205" r="2.5" fill="#2E3639"/>
+<text x="152" y="308" text-anchor="middle" font-size="18" fill="#009EE3" font-weight="700">Convection</text>
+<text x="152" y="327" text-anchor="middle" font-size="16" fill="#2E3639">Wasser im Rohr</text>
+<line x1="16" y1="342" x2="288" y2="342" stroke="#E2E8EC" stroke-width="1.2"/>
+<text x="152" y="366" text-anchor="middle" font-size="16" fill="#2E3639">wirkt auf</text>
+<polygon points="132.0,388.0 160.0,388.0 160.0,416.0 132.0,416.0" fill="#009EE3" fill-opacity="0.45" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="132.0,388.0 160.0,388.0 172.0,376.0 144.0,376.0" fill="#F2F6F9" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="160.0,388.0 172.0,376.0 172.0,404.0 160.0,416.0" fill="#E2E8EC" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="152" y="436" text-anchor="middle" font-size="16" fill="#2E3639">Fläche</text>
+</g>
+<g transform="translate(328.0,0)">
+<rect x="1" y="1" width="302" height="450" rx="8" fill="white" stroke="#E2E8EC" stroke-width="1.5"/>
+<text x="152" y="36" text-anchor="middle" font-size="21" fill="#022541" font-weight="700">Im ganzen Körper</text>
+<text x="152" y="60" text-anchor="middle" font-size="17" fill="#2E3639">Wärme entsteht im Material</text>
+<defs><radialGradient id="glut"><stop offset="0" stop-color="#f08a6c"/><stop offset="1" stop-color="#e8b48f"/></radialGradient></defs>
+<circle cx="152.0" cy="195" r="72" fill="#f3f3f3" stroke="#2E3639" stroke-width="1.5"/>
+<circle cx="152.0" cy="195" r="31.5" fill="url(#glut)" stroke="#2E3639" stroke-width="1.2"/>
+<circle cx="129.5" cy="187.2" r="1.8" fill="#E53009"/>
+<circle cx="129.5" cy="202.8" r="1.8" fill="#E53009"/>
+<circle cx="134.0" cy="179.4" r="1.8" fill="#E53009"/>
+<circle cx="138.5" cy="187.2" r="1.8" fill="#E53009"/>
+<circle cx="134.0" cy="195.0" r="1.8" fill="#E53009"/>
+<circle cx="138.5" cy="202.8" r="1.8" fill="#E53009"/>
+<circle cx="134.0" cy="210.6" r="1.8" fill="#E53009"/>
+<circle cx="147.5" cy="171.6" r="1.8" fill="#E53009"/>
+<circle cx="143.0" cy="179.4" r="1.8" fill="#E53009"/>
+<circle cx="147.5" cy="187.2" r="1.8" fill="#E53009"/>
+<circle cx="143.0" cy="195.0" r="1.8" fill="#E53009"/>
+<circle cx="147.5" cy="202.8" r="1.8" fill="#E53009"/>
+<circle cx="143.0" cy="210.6" r="1.8" fill="#E53009"/>
+<circle cx="147.5" cy="218.4" r="1.8" fill="#E53009"/>
+<circle cx="156.5" cy="171.6" r="1.8" fill="#E53009"/>
+<circle cx="152.0" cy="179.4" r="1.8" fill="#E53009"/>
+<circle cx="156.5" cy="187.2" r="1.8" fill="#E53009"/>
+<circle cx="152.0" cy="195.0" r="1.8" fill="#E53009"/>
+<circle cx="156.5" cy="202.8" r="1.8" fill="#E53009"/>
+<circle cx="152.0" cy="210.6" r="1.8" fill="#E53009"/>
+<circle cx="156.5" cy="218.4" r="1.8" fill="#E53009"/>
+<circle cx="161.0" cy="179.4" r="1.8" fill="#E53009"/>
+<circle cx="165.5" cy="187.2" r="1.8" fill="#E53009"/>
+<circle cx="161.0" cy="195.0" r="1.8" fill="#E53009"/>
+<circle cx="165.5" cy="202.8" r="1.8" fill="#E53009"/>
+<circle cx="161.0" cy="210.6" r="1.8" fill="#E53009"/>
+<circle cx="170.0" cy="179.4" r="1.8" fill="#E53009"/>
+<circle cx="174.5" cy="187.2" r="1.8" fill="#E53009"/>
+<circle cx="170.0" cy="195.0" r="1.8" fill="#E53009"/>
+<circle cx="174.5" cy="202.8" r="1.8" fill="#E53009"/>
+<circle cx="170.0" cy="210.6" r="1.8" fill="#E53009"/>
+<text x="152" y="109" text-anchor="middle" font-size="16" fill="#2E3639">Isolierung</text>
+<line x1="152.0" y1="228.5" x2="152.0" y2="283" stroke="#2E3639" stroke-width="1"/>
+<text x="152" y="308" text-anchor="middle" font-size="18" fill="#E53009" font-weight="700">Internal Heat Generation</text>
+<text x="152" y="327" text-anchor="middle" font-size="16" fill="#2E3639">Stromwärme im Leiter</text>
+<line x1="16" y1="342" x2="288" y2="342" stroke="#E2E8EC" stroke-width="1.2"/>
+<text x="152" y="366" text-anchor="middle" font-size="16" fill="#2E3639">wirkt auf</text>
+<polygon points="132.0,388.0 160.0,388.0 160.0,416.0 132.0,416.0" fill="#009EE3" fill-opacity="0.45" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="132.0,388.0 160.0,388.0 172.0,376.0 144.0,376.0" fill="#009EE3" fill-opacity="0.7" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="160.0,388.0 172.0,376.0 172.0,404.0 160.0,416.0" fill="#009EE3" fill-opacity="0.6" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="152" y="436" text-anchor="middle" font-size="16" fill="#2E3639">Körper</text>
+</g>
+<g transform="translate(644.0,0)">
+<rect x="1" y="1" width="302" height="450" rx="8" fill="white" stroke="#E2E8EC" stroke-width="1.5"/>
+<text x="152" y="36" text-anchor="middle" font-size="21" fill="#022541" font-weight="700">Überall</text>
+<text x="152" y="60" text-anchor="middle" font-size="17" fill="#2E3639">Temperatur steht fest</text>
+<rect x="32" y="100" width="240" height="150" fill="#eadfcc" stroke="#2E3639" stroke-width="1.5"/>
+<circle cx="152.0" cy="150.0" r="9" fill="#f3f3f3" stroke="#2E3639" stroke-width="1.2"/>
+<circle cx="152.0" cy="150.0" r="4.5" fill="#e8b48f"/>
+<text x="152" y="220" text-anchor="middle" font-size="16" fill="#2E3639">Erdreich</text>
+<line x1="32" y1="250" x2="272" y2="250" stroke="#022541" stroke-width="6"/>
+<text x="152" y="284" text-anchor="middle" font-size="18" fill="#022541" font-weight="700">Temperature</text>
+<text x="152" y="303" text-anchor="middle" font-size="16" fill="#2E3639">10 °C in 3 m Tiefe</text>
+<line x1="16" y1="342" x2="288" y2="342" stroke="#E2E8EC" stroke-width="1.2"/>
+<text x="152" y="366" text-anchor="middle" font-size="16" fill="#2E3639">wirkt auf</text>
+<polygon points="33.0,388.0 61.0,388.0 61.0,416.0 33.0,416.0" fill="#009EE3" fill-opacity="0.45" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="33.0,388.0 61.0,388.0 73.0,376.0 45.0,376.0" fill="#F2F6F9" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="61.0,388.0 73.0,376.0 73.0,404.0 61.0,416.0" fill="#E2E8EC" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="53" y="436" text-anchor="middle" font-size="16" fill="#2E3639">Fläche</text>
+<polygon points="99.0,388.0 127.0,388.0 127.0,416.0 99.0,416.0" fill="white" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="99.0,388.0 127.0,388.0 139.0,376.0 111.0,376.0" fill="#F2F6F9" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="127.0,388.0 139.0,376.0 139.0,404.0 127.0,416.0" fill="#E2E8EC" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<line x1="127.0" y1="388" x2="127.0" y2="416" stroke="#009EE3" stroke-width="5" stroke-linecap="round"/>
+<text x="119" y="436" text-anchor="middle" font-size="16" fill="#2E3639">Kante</text>
+<polygon points="165.0,388.0 193.0,388.0 193.0,416.0 165.0,416.0" fill="white" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="165.0,388.0 193.0,388.0 205.0,376.0 177.0,376.0" fill="#F2F6F9" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="193.0,388.0 205.0,376.0 205.0,404.0 193.0,416.0" fill="#E2E8EC" fill-opacity="1" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<circle cx="193.0" cy="388" r="5" fill="#009EE3"/>
+<text x="185" y="436" text-anchor="middle" font-size="16" fill="#2E3639">Punkt</text>
+<polygon points="231.0,388.0 259.0,388.0 259.0,416.0 231.0,416.0" fill="#009EE3" fill-opacity="0.45" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="231.0,388.0 259.0,388.0 271.0,376.0 243.0,376.0" fill="#009EE3" fill-opacity="0.7" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<polygon points="259.0,388.0 271.0,376.0 271.0,404.0 259.0,416.0" fill="#009EE3" fill-opacity="0.6" stroke="#2E3639" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="251" y="436" text-anchor="middle" font-size="16" fill="#2E3639">Körper</text>
+</g>
+</svg>

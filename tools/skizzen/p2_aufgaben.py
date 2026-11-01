@@ -164,14 +164,14 @@ def erdkabel(datei):
     x0, y0, bw, bt = 70, 80, 4 * s, 3 * s
     cx, cy = x0 + bw / 2, y0 + 1 * s
     el = [f'<rect x="{x0}" y="{y0}" width="{bw}" height="{bt}" fill="{BODEN}" stroke="{GRAU}" stroke-width="1.5"/>',
-          f'<line x1="{x0}" y1="{y0 + bt}" x2="{x0 + bw}" y2="{y0 + bt}" stroke="{CYAN}" stroke-width="5"/>',
+          f'<line x1="{x0}" y1="{y0 + bt}" x2="{x0 + bw}" y2="{y0 + bt}" stroke="{DUNKEL}" stroke-width="5"/>',
           f'<line x1="{x0}" y1="{y0}" x2="{x0}" y2="{y0 + bt}" stroke="{GRAU}" stroke-width="5"/>',
           f'<line x1="{x0 + bw}" y1="{y0}" x2="{x0 + bw}" y2="{y0 + bt}" stroke="{GRAU}" stroke-width="5"/>',
           f'<circle cx="{cx}" cy="{cy}" r="12" fill="#f3f3f3" stroke="{GRAU}" stroke-width="1.2"/>',
           f'<circle cx="{cx}" cy="{cy}" r="6" fill="{CU}" stroke="{GRAU}" stroke-width="1"/>',
           pfeil(x0 + 120, y0 - 4, x0 + 120, y0 - 40, CYAN), pfeil(x0 + 280, y0 - 4, x0 + 280, y0 - 40, CYAN),
           text(x0 + bw / 2, y0 - 50, "Luft 20 °C, α = 10 W/(m²·K)", anker="middle", farbe=CYAN),
-          text(x0 + bw / 2, y0 + bt + 30, "in 3 m Tiefe: T = 10 °C", anker="middle", farbe=CYAN),
+          text(x0 + bw / 2, y0 + bt + 30, "in 3 m Tiefe: T = 10 °C", anker="middle", farbe=DUNKEL),
           mass(x0, y0 + bt + 66, x0 + bw, y0 + bt + 66, "4 m", versatz=(0, 22)),
           mass(cx + 40, y0, cx + 40, cy, "1 m", versatz=(10, 6), anker="start"),
           text(x0 + 14, y0 + bt / 2 + 60, "Boden λ: a) 1,0  b) 0,4 W/(m·K)", halo=True),
