@@ -39,21 +39,38 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
     | Größe | Wert |
     |---|---|
     | Temperatur Absorber | 51,0 bis 52,1 °C |
-    | Temperatur Glas | 15,7 bis 15,8 °C |
-    | Reaktion Sonne | +0,671 W |
-    | Reaktion Wasser (Nutzwärme) | −0,640 W |
-    | Reaktion Luft | +0,188 W |
-    | Reaktion Himmel | −0,219 W |
+    | Temperatur Glas | 15,8 bis 15,9 °C |
+    | Reaktion Sonne | +0,672 W |
+    | Reaktion Wasser (Nutzwärme) | −0,639 W |
+    | Reaktion Luft | +0,182 W |
+    | Reaktion Himmel | −0,223 W |
 
-    Die Summe aller Reaktionen ist (fast) null: Was die Sonne hineinbringt,
-    geht über Wasser und Glas wieder hinaus.
+    Die Summe aller Reaktionen ist fast null: Was die Sonne hineinbringt,
+    geht über Wasser und Glas wieder hinaus. Es bleiben rund −0,008 W übrig,
+    das ist gewollt (siehe unten).
+
+!!! info "Warum geht die Bilanz nicht genau auf?"
+    Absorber und Glas tauschen Strahlung über **Sichtfaktoren** aus. Unser
+    20 mm langes Stück ist vorn und hinten offen: Ein Teil der Strahlung
+    würde dort hinausgehen. **Perfect** schließt den Raum, indem ANSYS die
+    Sichtfaktoren **jeder Fläche einzeln** hochrechnet, bis sie zusammen 1
+    ergeben. Glas und Absorber verlieren aber unterschiedlich viel an die
+    Enden und werden deshalb unterschiedlich stark hochgerechnet. Dann gilt
+    die Reziprozität $A_1 F_{12} = A_2 F_{21}$ nicht mehr genau: Der Absorber
+    gibt 0,033 W ab, beim Glas kommen 0,041 W an.
+
+    Ein feineres Netz ändert daran nichts. Ein längeres Stück schon: Bei
+    200 mm sinkt die Lücke auf ein Drittel, und Luft und Himmel liegen nur
+    noch 1 bis 2 % neben den Werten der unendlich langen Röhre
+    (+0,188 W und −0,219 W). Dafür rechnet ANSYS viel länger. Für den
+    Vergleich von a), b) und c) reichen die 20 mm.
 
 ## Was die Zahlen zeigen
 
-- **Nutzwärme je Meter Röhre:** 0,640 W je 20 mm, also **32,0 W/m**.
+- **Nutzwärme je Meter Röhre:** 0,639 W je 20 mm, also **32,0 W/m**.
 - **95 %** der aufgenommenen Sonne kommen im Wasser an
-  (0,640 W von 0,671 W). Nur 0,031 W strahlt der Absorber zum Glas ab.
-- **Das Glas ist kälter als die Luft** (15,7 °C bei 20 °C Luft): Es strahlt zum
+  (0,639 W von 0,672 W). Nur rund 0,03 W strahlt der Absorber zum Glas ab.
+- **Das Glas ist kälter als die Luft** (15,8 °C bei 20 °C Luft): Es strahlt zum
   kalten Himmel und bekommt vom Absorber kaum Wärme. Die Luft wärmt das Glas
   sogar (Reaktion Luft positiv). Deshalb taut auf Vakuumröhren im Winter kein
   Schnee.

@@ -224,7 +224,9 @@ kleine Aufnahme im Glas vernachlässigen wir.
 
     **5. Nutzwärme:** $\dot Q_{Wasser} = \dot Q_{Sonne} - \dot Q_{12} = 0{,}672 - 0{,}031 = 0{,}641\ \mathrm{W}$
 
-    Die Handrechnung trifft ANSYS hier fast genau. Bei Fall b) mit
+    Die Handrechnung gilt für die unendlich lange Röhre. ANSYS liegt mit dem
+    20 mm langen Stück knapp daneben: Glas 15,8 bis 15,9 °C, Nutzwärme
+    0,639 W. Warum, steht in der Auswertung. Bei Fall b) mit
     $\varepsilon_1 = 0{,}9$ schrumpft der Nenner von 20 auf 1,2. Der Verlust
     wird so groß, dass sich alle Temperaturen deutlich verschieben. Dann
     müssen die Schritte 2 bis 4 mehrfach durchlaufen werden, genau das macht

@@ -27,8 +27,8 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
     | Größe | a) selektiv | b) schwarz |
     |---|---|---|
     | Temperatur Absorber | 51,0 bis 52,1 °C | **50,4 bis 51,0 °C** |
-    | Temperatur Glas | 15,7 bis 15,8 °C | **20,8 bis 22,1 °C** |
-    | Reaktion Wasser (Nutzwärme) | −0,640 W | **−0,260 W** |
+    | Temperatur Glas | 15,8 bis 15,9 °C | **20,8 bis 22,1 °C** |
+    | Reaktion Wasser (Nutzwärme) | −0,639 W | **−0,260 W** |
     | Nutzwärme je Meter | 32,0 W/m | **13,0 W/m** |
     | Anteil der Sonne im Wasser | 95 % | **39 %** |
 
