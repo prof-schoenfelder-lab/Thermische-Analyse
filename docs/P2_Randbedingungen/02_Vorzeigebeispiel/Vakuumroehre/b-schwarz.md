@@ -34,6 +34,12 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
     | Nutzwärme je Meter | 32,0 W/m | **14,5 W/m** |
     | Anteil der Sonne im Wasser | 95 % | **43 %** |
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_roehre_b_absorber.webp" alt="Fall b: Temperatur Absorber, 50,4 bis 51,1 °C" style="width:49%">
+  <img src="../../../images/p2_roehre_b_glas.webp" alt="Fall b: Temperatur Glas, 21,7 bis 22,2 °C" style="width:49%">
+  <figcaption>Fall b): Absorber fast so warm wie bei a), das Glas aber 6 K wärmer</figcaption>
+</figure>
+
 ## Was die Zahlen zeigen
 
 - Die **Temperatur** des Absorbers ändert sich kaum: Das Wasser hält ihn bei

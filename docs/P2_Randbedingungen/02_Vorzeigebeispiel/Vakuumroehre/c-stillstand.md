@@ -24,6 +24,12 @@ nur noch durch Strahlung loswerden.
     | Temperatur Absorber | **287 °C** | **68 °C** |
     | Temperatur Glas | 26,5 bis 27,6 °C | 24,3 bis 26,3 °C |
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_roehre_c_absorber.webp" alt="Fall c selektiv: Temperatur Absorber, 287 °C" style="width:49%">
+  <img src="../../../images/p2_roehre_c_glas.webp" alt="Fall c selektiv: Temperatur Glas, 26,5 bis 27,6 °C" style="width:49%">
+  <figcaption>Fall c) selektiv: Ohne Wasser wird der Absorber fast 300 °C heiß</figcaption>
+</figure>
+
 ## Was die Zahlen zeigen
 
 - Die selektive Beschichtung, die im Betrieb so gut ist, wird im Stillstand

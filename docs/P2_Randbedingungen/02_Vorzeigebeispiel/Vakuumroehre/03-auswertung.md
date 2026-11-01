@@ -49,6 +49,11 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
     geht über Wasser und Glas wieder hinaus. Es bleiben rund −0,008 W übrig,
     das ist gewollt (siehe unten).
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_roehre_a_absorber.webp" alt="Fall a: Temperatur Absorber, 51,0 bis 52,1 °C" style="width:49%">
+  <figcaption>Fall a): Die Blechkanten sind am wärmsten, das Rohr am kühlsten</figcaption>
+</figure>
+
 !!! info "Warum geht die Bilanz nicht genau auf?"
     Absorber und Glas tauschen Strahlung über **Sichtfaktoren** aus. Unser
     20 mm langes Stück ist vorn und hinten offen: Ein Teil der Strahlung
