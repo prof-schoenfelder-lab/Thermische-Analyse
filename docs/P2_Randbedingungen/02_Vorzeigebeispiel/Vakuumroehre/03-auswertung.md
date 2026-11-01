@@ -62,8 +62,13 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
     Ein feineres Netz ändert daran nichts. Ein längeres Stück schon: Bei
     200 mm sinkt die Lücke auf ein Drittel, und Luft und Himmel liegen nur
     noch 1 bis 2 % neben den Werten der unendlich langen Röhre
-    (+0,188 W und −0,219 W). Dafür rechnet ANSYS viel länger. Für den
-    Vergleich von a), b) und c) reichen die 20 mm.
+    (+0,188 W und −0,219 W). Dafür rechnet ANSYS viel länger.
+
+    Je stärker Absorber und Glas Strahlung tauschen, desto größer die Lücke:
+    Bei b) sind es −0,060 W, bei c) −0,115 W. Das Glas gibt jeweils
+    rund 15 bis 25 % mehr ab, als der Absorber zu ihm strahlt. Für den
+    Vergleich von a), b) und c) reichen die 20 mm trotzdem: Die Unterschiede
+    zwischen den Fällen sind viel größer.
 
 ## Was die Zahlen zeigen
 

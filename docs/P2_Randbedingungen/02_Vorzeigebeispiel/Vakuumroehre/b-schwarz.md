@@ -28,9 +28,11 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
     |---|---|---|
     | Temperatur Absorber | 51,0 bis 52,1 °C | **50,4 bis 51,0 °C** |
     | Temperatur Glas | 15,8 bis 15,9 °C | **20,8 bis 22,1 °C** |
-    | Reaktion Wasser (Nutzwärme) | −0,639 W | **−0,260 W** |
-    | Nutzwärme je Meter | 32,0 W/m | **13,0 W/m** |
-    | Anteil der Sonne im Wasser | 95 % | **39 %** |
+    | Reaktion Wasser (Nutzwärme) | −0,639 W | **−0,290 W** |
+    | Reaktion Luft | +0,182 W | **−0,084 W** |
+    | Reaktion Himmel | −0,223 W | **−0,358 W** |
+    | Nutzwärme je Meter | 32,0 W/m | **14,5 W/m** |
+    | Anteil der Sonne im Wasser | 95 % | **43 %** |
 
 ## Was die Zahlen zeigen
 
@@ -38,7 +40,8 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
   rund 50 °C fest.
 - Der Unterschied steckt im **Wärmestrom**: Der schwarze Absorber strahlt
   rund 60 % der aufgenommenen Sonne zum Glas ab, statt sie ans Wasser zu geben.
-  Das Glas wird dabei wärmer als die Luft.
+  Das Glas wird dabei wärmer als die Luft: Die Reaktion **Luft** ist jetzt
+  negativ, die Luft kühlt das Glas.
 - Im Vakuum gibt es keine Konvektion. Der Emissionsgrad entscheidet hier
   allein über den Verlust: Deshalb sind Vakuumröhren immer selektiv
   beschichtet.

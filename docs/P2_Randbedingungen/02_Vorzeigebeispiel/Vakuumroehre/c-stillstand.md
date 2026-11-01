@@ -31,5 +31,9 @@ nur noch durch Strahlung loswerden.
   abstrahlt, wie er von der Sonne aufnimmt.
 - Das Glas ist in beiden Fällen gleich warm: Es muss genau die aufgenommene
   Sonne an Luft und Himmel abgeben, egal wie heiß der Absorber dafür wird.
+  Die Reaktionen **Luft** und **Himmel** zusammen sollten also −0,672 W
+  ergeben. ANSYS kommt auf rund −0,79 W (Luft −0,309 W, Himmel −0,479 W):
+  Das ist die Bilanzlücke des 20 mm langen Stücks, siehe Infobox
+  „Warum geht die Bilanz nicht genau auf?“ in der [Auswertung](03-auswertung.md).
 - In der Praxis verdampft dabei das Wasser in der Röhre. Solaranlagen brauchen
   deshalb ein Ausdehnungsgefäß und hitzefeste Bauteile.
