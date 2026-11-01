@@ -1,0 +1,30 @@
+{
+  "slug": "p2-stillstand",
+  "title": "Stillstand: Wasser abschalten",
+  "category": "Setup",
+  "software": "Mechanical",
+  "tags": [
+    "Suppress"
+  ],
+  "steps": [
+    {
+      "caption": "Wie bei b): eine dritte **Steady-State Thermal** auf die Zelle **Model** ziehen, in **c) Stillstand** umbenennen",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Randbedingungen und Ergebnisse wie bei b) mit `Copy` und `Paste` übernehmen",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "Unter **Steady-State Thermal 3 (C5)** `Rechtsklick Wasser → Suppress`",
+      "media": [
+        "step-2.png"
+      ],
+      "note": "Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert."
+    }
+  ]
+}

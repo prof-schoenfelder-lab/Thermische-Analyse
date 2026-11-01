@@ -18,10 +18,13 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
     3. `Rechtsklick Setup (B) → Edit...`: Im Strukturbaum stehen beide Analysen
 
 ??? tip "Kurzanleitung: Randbedingungen und Ergebnisse übernehmen"
-    1. Unter **Steady-State Thermal (A5)** alle sechs Randbedingungen markieren (`Shift`) und auf **Steady-State Thermal 2 (B5)** ziehen
-    2. Unter **Solution (A6)** alle Ergebnisse markieren und auf **Solution (B6)** ziehen
+    1. Unter **Steady-State Thermal (A5)** alle sechs Randbedingungen markieren (`Shift`), `Rechtsklick → Copy`, `Rechtsklick Steady-State Thermal 2 (B5) → Paste`
+    2. Genauso die Ergebnisse von **Solution (A6)** nach **Solution (B6)**
     3. In B5 die Randbedingung **Absorber zum Glas** anklicken, **Emissivity** auf **0,9** setzen
-    4. `Rechtsklick Solution (B6) → Solve`
+
+<tutorial slug="p2-schwarz"></tutorial>
+
+Dann `Rechtsklick Solution (B6) → Solve`.
 
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | a) selektiv | b) schwarz |

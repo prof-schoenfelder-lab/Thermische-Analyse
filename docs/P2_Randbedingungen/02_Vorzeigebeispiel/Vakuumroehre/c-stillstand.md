@@ -15,8 +15,12 @@ nur noch durch Strahlung loswerden.
 ??? tip "Kurzanleitung: Wasser abschalten"
     1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen und Randbedingungen und Ergebnisse aus Fall a) übernehmen
     2. Unter **Steady-State Thermal 3 (C5)**: `Rechtsklick Wasser → Suppress`. Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert
-    3. `Rechtsklick Solution (C6) → Solve`
-    4. Den Vergleich mit schwarzem Absorber (**Emissivity** 0,9 bei **Absorber zum Glas**) nicht selbst rechnen: Die Werte stehen im Checkpoint, warum, steht in der Warnung darunter
+
+<tutorial slug="p2-stillstand"></tutorial>
+
+Dann `Rechtsklick Solution (C6) → Solve`. Den Vergleich mit schwarzem Absorber
+(**Emissivity** 0,9 bei **Absorber zum Glas**) nicht selbst rechnen: Die Werte
+stehen im Checkpoint, warum, steht in der Warnung darunter.
 
 !!! warning "Abbruch oder Temperaturen von Tausenden Grad?"
     Beim schwarzen Absorber bricht ANSYS ab („Temperatur zu hoch“) oder

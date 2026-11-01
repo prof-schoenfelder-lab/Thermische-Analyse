@@ -1,0 +1,49 @@
+{
+  "slug": "p2-schwarz",
+  "title": "Zweite Analyse auf demselben Modell",
+  "category": "Setup",
+  "software": "Workbench",
+  "tags": [
+    "Analyse",
+    "Copy",
+    "Paste"
+  ],
+  "steps": [
+    {
+      "caption": "Im Projektmenü **Steady-State Thermal** aus der Toolbox mit gedrückter Maustaste auf die Zelle **Model** der Analyse A ziehen, die neue Analyse in **b) Schwarz** umbenennen, dann `Rechtsklick Setup → Edit...`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Unter **Steady-State Thermal (A5)** **Sonne** anklicken, mit `Shift` **Glas zum Absorber** dazunehmen, `Rechtsklick → Copy`",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Steady-State Thermal 2 (B5) → Paste`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Genauso die Ergebnisse unter **Solution (A6)** markieren, `Rechtsklick → Copy`",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Solution (B6) → Paste`",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "Unter **B5** **Absorber zum Glas** anklicken, **Emissivity** `0,9`, `Enter`",
+      "media": [
+        "step-5.png"
+      ]
+    }
+  ]
+}

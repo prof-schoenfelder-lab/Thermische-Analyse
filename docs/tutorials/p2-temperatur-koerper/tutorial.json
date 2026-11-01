@@ -1,0 +1,42 @@
+{
+  "slug": "p2-temperatur-koerper",
+  "title": "Temperatur je Körper",
+  "category": "Postprocessing",
+  "software": "Mechanical",
+  "tags": [
+    "Temperature",
+    "Named Selection"
+  ],
+  "steps": [
+    {
+      "caption": "Zwei weitere Named Selections für die Körper: **Entity Type** `Body`, **Criterion** `Material`, **Value** `Kupfer`, `Generate`, umbenennen in **Koerper Absorber**. Genauso mit `Glas`: **Koerper Glas**",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Strukturbaum Solution (A6) → Insert → Thermal → Temperature`",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Scoping Method** `Named Selection` wählen",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Bei **Named Selection** `Koerper Absorber` wählen",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "Mit `F2` umbenennen in **Temperatur Absorber**. Genauso **Temperatur Glas** mit **Koerper Glas**",
+      "media": [
+        "step-4.png"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "p2-reaction-probe",
+  "title": "Reaction Probe: Wärmestrom einer Randbedingung",
+  "category": "Postprocessing",
+  "software": "Mechanical",
+  "tags": [
+    "Reaction Probe"
+  ],
+  "steps": [
+    {
+      "caption": "`Rechtsklick Solution (A6) → Insert → Probe → Reaction`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Boundary Condition** die Randbedingung wählen, hier **Luft**",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "Mit `F2` umbenennen in **Reaktion Luft**. Genauso **Reaktion Wasser** und **Reaktion Himmel**",
+      "media": [
+        "step-2.png"
+      ],
+      "note": "Für die Sonne gibt es keine Reaction Probe: Ihr Wärmestrom ist vorgegeben."
+    }
+  ]
+}

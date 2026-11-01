@@ -14,7 +14,7 @@ title: 3 · Lösen und Auswerten
 
 ## Lösen
 
-??? tip "Kurzanleitung: Lösen"
+??? tip "Lösen"
     1. `Rechtsklick Solution → Solve`
     2. Mit Strahlung dauert das etwas länger: ANSYS berechnet zuerst die Sichtfaktoren und braucht dann mehrere Iterationen
     3. Wer zusehen will: `Solution Information` anklicken, unter **Solution Output** **Temperature Convergence** wählen
@@ -22,16 +22,21 @@ title: 3 · Lösen und Auswerten
 ## Temperaturen
 
 ??? tip "Kurzanleitung: Temperatur je Körper"
-    1. Oben `Body` anklicken, den **Absorber** anklicken, `Rechtsklick Solution → Insert → Thermal → Temperature`, umbenennen in **Temperatur Absorber**
-    2. Genauso für das **Glas**
-    3. `Rechtsklick Solution → Evaluate All Results`, Min und Max stehen in der Legende und im Detailfenster
+    1. Zwei Named Selections für die Körper: **Entity Type** `Body`, **Criterion** `Material`, **Value** `Kupfer`, umbenennen in **Koerper Absorber**; genauso mit `Glas`: **Koerper Glas**
+    2. `Rechtsklick Solution → Insert → Thermal → Temperature`, **Scoping Method** `Named Selection`, **Named Selection** `Koerper Absorber`, umbenennen in **Temperatur Absorber**
+    3. Genauso **Temperatur Glas**
+    4. `Rechtsklick Solution → Evaluate All Results`, Min und Max stehen in der Legende und im Detailfenster
+
+<tutorial slug="p2-temperatur-koerper"></tutorial>
 
 ## Wärmeströme der Randbedingungen
 
-??? tip "Kurzanleitung: Reaction Probe per Drag & Drop"
-    1. Die Randbedingung **Wasser** im Strukturbaum mit gedrückter Maustaste auf **Solution** ziehen: Es entsteht eine **Reaction Probe**
+??? tip "Kurzanleitung: Reaction Probe"
+    1. `Rechtsklick Solution → Insert → Probe → Reaction`, bei **Boundary Condition** **Wasser** wählen, umbenennen in **Reaktion Wasser**. Schneller: die Randbedingung mit gedrückter Maustaste auf **Solution** ziehen
     2. Genauso **Luft** und **Himmel**. Für die **Sonne** gibt es keine Reaction Probe: Ihr Wärmestrom ist vorgegeben, 700 W/m² · 9,6·10⁻⁴ m² = 0,672 W
     3. `Rechtsklick Solution → Evaluate All Results`, den Wärmestrom (**Heat**) im Detailfenster der jeweiligen Probe ablesen
+
+<tutorial slug="p2-reaction-probe"></tutorial>
 
 Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingung.
 

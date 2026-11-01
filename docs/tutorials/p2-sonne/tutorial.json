@@ -1,0 +1,36 @@
+{
+  "slug": "p2-sonne",
+  "title": "Sonne: Heat Flux auf eine Named Selection",
+  "category": "Randbedingungen",
+  "software": "Mechanical",
+  "tags": [
+    "Heat Flux",
+    "Named Selection"
+  ],
+  "steps": [
+    {
+      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Heat Flux`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Scoping Method** `Named Selection` wählen",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "Bei **Named Selection** `Oberseiten Blech` wählen, bei **Magnitude** `700` (W/m²) eingeben, `Enter`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Im Strukturbaum mit `F2` umbenennen in **Sonne**",
+      "media": [
+        "step-3.png"
+      ]
+    }
+  ]
+}

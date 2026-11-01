@@ -617,8 +617,9 @@ def begrenzen(rahmen, rechtecke):
     if not rechtecke:
         return rahmen
     x0, y0, x1, y1 = rahmen
-    return (max(x0, min(r[0] for r in rechtecke)), max(y0, min(r[1] for r in rechtecke)),
-            min(x1, max(r[2] for r in rechtecke)), min(y1, max(r[3] for r in rechtecke)))
+    neu = (max(x0, min(r[0] for r in rechtecke)), max(y0, min(r[1] for r in rechtecke)),
+           min(x1, max(r[2] for r in rechtecke)), min(y1, max(r[3] for r in rechtecke)))
+    return neu if neu[2] > neu[0] and neu[3] > neu[1] else rahmen   # Klick außerhalb aller Fenster
 
 
 def bild_rendern(aufnahme, schritt, datei):
