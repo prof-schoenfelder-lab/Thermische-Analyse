@@ -16,21 +16,24 @@ nur noch durch Strahlung loswerden.
     1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen und Randbedingungen und Ergebnisse aus Fall a) übernehmen
     2. Unter **Steady-State Thermal 3 (C5)**: `Rechtsklick Wasser → Suppress`. Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert
     3. `Rechtsklick Solution (C6) → Solve`
-    4. Zum Vergleich: In Analyse C bei **Absorber zum Glas** die **Emissivity** auf **0,9** setzen
-    5. Für diesen Lauf braucht ANSYS Hilfe beim Lösen: Unter **Initial Temperature** **50** °C eintragen. Unter `Analysis Settings → Step Controls` **Auto Time Stepping** auf **On**, **Define By** **Substeps**, **Initial Substeps** und **Minimum Substeps** **100**, **Maximum Substeps** **1000**
-    6. Noch einmal lösen
+    4. Den Vergleich mit schwarzem Absorber (**Emissivity** 0,9 bei **Absorber zum Glas**) nicht selbst rechnen: Die Werte stehen im Checkpoint, warum, steht in der Warnung darunter
 
 !!! warning "Abbruch oder Temperaturen von Tausenden Grad?"
-    Ohne Schritt 5 bricht ANSYS beim schwarzen Absorber ab („Temperatur zu
-    hoch“) oder liefert Unsinn, z. B. 800 000 °C am Glas. Grund ist die
+    Beim schwarzen Absorber bricht ANSYS ab („Temperatur zu hoch“) oder
+    liefert Unsinn, z. B. 800 000 °C am Glas. Grund ist die
     Bilanzlücke des 20 mm langen Stücks (siehe Infobox „Warum geht die
     Bilanz nicht genau auf?“ in der [Auswertung](03-auswertung.md)): Der
     Strahlungsraum erzeugt etwas Energie, und zwar umso mehr, je heißer es
     ist ($\sim T^4$). Dadurch gibt es neben der echten Lösung eine zweite bei
     absurd hohen Temperaturen. Ohne Wasser hält nichts den Absorber fest, und
     mit $\varepsilon = 0{,}9$ ist die Kopplung so stark, dass der Löser dorthin
-    springen kann. Mit vielen kleinen Schritten bringt ANSYS die Sonne
-    stufenweise auf und bleibt bei der echten Lösung.
+    springen kann.
+
+    Die Werte im Checkpoint haben wir mit vielen kleinen Schritten erzwungen:
+    **Initial Temperature** 50 °C und unter `Analysis Settings → Step Controls`
+    100 bis 1000 **Substeps**. Dann bringt ANSYS die Sonne stufenweise auf und
+    bleibt bei der echten Lösung, rechnet aber sehr lange. Nachrechnen lohnt
+    sich nicht, zum Vergleich reicht der Checkpoint.
 
     Merke: Ein Ergebnis immer an der Physik prüfen. Glas mit Tausenden Grad
     unter 700 W/m² Sonne kann nicht stimmen, egal wie bunt das Bild ist.
