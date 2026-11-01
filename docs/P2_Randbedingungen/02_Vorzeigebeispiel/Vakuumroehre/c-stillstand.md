@@ -21,8 +21,8 @@ nur noch durch Strahlung loswerden.
 !!! warning "Abbruch oder Temperaturen von Tausenden Grad?"
     Beim schwarzen Absorber bricht ANSYS ab („Temperatur zu hoch“) oder
     liefert Unsinn, z. B. 800 000 °C am Glas. Grund ist die
-    Bilanzlücke des 20 mm langen Stücks (siehe Infobox „Warum geht die
-    Bilanz nicht genau auf?“ in der [Auswertung](03-auswertung.md)): Der
+    Bilanzlücke des 20 mm langen Stücks (siehe
+    [Wärmestrahlung: Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect)): Der
     Strahlungsraum erzeugt etwas Energie, und zwar umso mehr, je heißer es
     ist ($\sim T^4$). Dadurch gibt es neben der echten Lösung eine zweite bei
     absurd hohen Temperaturen. Ohne Wasser hält nichts den Absorber fest, und

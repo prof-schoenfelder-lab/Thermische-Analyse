@@ -56,14 +56,13 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
 </figure>
 
 !!! info "Warum geht die Bilanz nicht genau auf?"
-    Absorber und Glas tauschen Strahlung über **Sichtfaktoren** aus. Unser
-    20 mm langes Stück ist vorn und hinten offen: Ein Teil der Strahlung
-    würde dort hinausgehen. **Perfect** schließt den Raum, indem ANSYS die
-    Sichtfaktoren **jeder Fläche einzeln** hochrechnet, bis sie zusammen 1
-    ergeben. Glas und Absorber verlieren aber unterschiedlich viel an die
-    Enden und werden deshalb unterschiedlich stark hochgerechnet. Dann gilt
-    die Reziprozität $A_1 F_{12} = A_2 F_{21}$ nicht mehr genau: Der Absorber
-    gibt 0,033 W ab, beim Glas kommen 0,041 W an.
+    Unser 20 mm langes Stück ist vorn und hinten offen. Vom Glas gehen dort
+    rund 61 % der Strahlung hinaus, vom Absorber 54 %. **Perfect** rechnet
+    die Sichtfaktoren **jeder Fläche einzeln** wieder auf 100 % hoch, das Glas
+    dabei stärker als den Absorber. Dadurch nimmt das Glas rund 20 % mehr
+    Strahlung auf, als der Absorber abgibt: Der Absorber gibt 0,033 W ab,
+    beim Glas kommen 0,041 W an. Ausführlich mit Bild steht das unter
+    [Wärmestrahlung: Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect).
 
     Ein feineres Netz ändert daran nichts. Ein längeres Stück schon: Bei
     200 mm sinkt die Lücke auf ein Drittel, und Luft und Himmel liegen nur

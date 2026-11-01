@@ -60,10 +60,14 @@ z. B. **Sonne**, **Wasser**: Das hilft später bei der Auswertung.
       anderen sieht (Sichtfaktor).
     - Unser 20 mm langes Stück ist vorn und hinten offen. In der echten,
       langen Röhre geht dort aber keine Strahlung verloren: Was hinausgeht,
-      kommt aus dem Nachbarstück wieder herein. **Perfect** bildet genau das
-      ab: Der Raum zwischen Absorber und Glas gilt als geschlossen.
+      trifft das Nachbarstück, und genauso viel kommt von dort zurück.
+      **Perfect** bildet das nach: Der Raum zwischen Absorber und Glas gilt
+      als geschlossen.
     - Eine Umgebungstemperatur gibt es hier nicht: Die Temperatur der
       Gegenseite rechnet ANSYS selbst aus.
+    - Ganz genau ist Perfect bei einem so kurzen Stück nicht, die Bilanz geht
+      später um einige Prozent nicht auf. Warum, steht unter
+      [Wärmestrahlung: Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect).
 
 ## Was bleibt frei?
 
