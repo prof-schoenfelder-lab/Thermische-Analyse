@@ -6,8 +6,8 @@
 <text x="152" y="36" text-anchor="middle" font-size="21" fill="#022541" font-weight="700">An der Systemgrenze</text>
 <text x="152" y="60" text-anchor="middle" font-size="17" fill="#2E3639">Wärme geht über die Oberfläche</text>
 <path d="M82.0,205 a70,70 0 1,0 140,0 a70,70 0 1,0 -140,0 Z M87.0,205 a65,65 0 1,1 130,0 a65,65 0 1,1 -130,0 Z" fill="#e6f5fc" fill-rule="evenodd" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="152.0" cy="205" r="10" fill="#cfe8f7"/>
 <rect x="92.0" y="203.5" width="120" height="3" fill="#022541"/>
+<circle cx="152.0" cy="205" r="10" fill="#cfe8f7"/>
 <path d="M140.0,205 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0 Z M142.0,205 a10,10 0 1,1 20,0 a10,10 0 1,1 -20,0 Z" fill="#022541" fill-rule="evenodd" stroke="#022541" stroke-width="1.5"/>
 <line x1="104.0" y1="104.0" x2="104.0" y2="199.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
 <line x1="126.0" y1="104.0" x2="126.0" y2="199.0" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>

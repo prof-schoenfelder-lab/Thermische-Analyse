@@ -2,8 +2,8 @@
 <rect width="960" height="560" fill="white"/>
 <defs><marker id="pr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E53009"/></marker><marker id="pc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009EE3"/></marker><marker id="pg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E3639"/></marker></defs>
 <path d="M90.0,300 a210.0,210.0 0 1,0 420.0,0 a210.0,210.0 0 1,0 -420.0,0 Z M105.0,300 a195.0,195.0 0 1,1 390.0,0 a195.0,195.0 0 1,1 -390.0,0 Z" fill="#e6f5fc" fill-rule="evenodd" stroke="#2E3639" stroke-width="1.5"/>
-<circle cx="300" cy="300" r="30.0" fill="#cfe8f7"/>
 <rect x="120.0" y="298.0" width="360.0" height="4.0" fill="#022541"/>
+<circle cx="300" cy="300" r="30.0" fill="#cfe8f7"/>
 <path d="M264.0,300 a36.0,36.0 0 1,0 72.0,0 a36.0,36.0 0 1,0 -72.0,0 Z M270.0,300 a30.0,30.0 0 1,1 60.0,0 a30.0,30.0 0 1,1 -60.0,0 Z" fill="#022541" fill-rule="evenodd" stroke="#022541" stroke-width="1.5"/>
 <line x1="150.0" y1="36.0" x2="150.0" y2="294.5" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>
 <line x1="210.0" y1="36.0" x2="210.0" y2="294.5" stroke="#E53009" stroke-width="2" marker-end="url(#pr)"/>

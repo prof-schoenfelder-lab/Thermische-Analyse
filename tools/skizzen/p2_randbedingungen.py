@@ -59,8 +59,8 @@ def feld(x0, titel, unter, bild, arten):
 def roehre():
     cx, cy, ra, ri = PB / 2, 205, 70, 65
     el = [ring(cx, cy, ra, ri, GLAS),
-          f'<circle cx="{cx}" cy="{cy}" r="10" fill="{WASSER}"/>',
           f'<rect x="{cx - 60}" y="{cy - 1.5}" width="120" height="3" fill="{DUNKEL}"/>',
+          f'<circle cx="{cx}" cy="{cy}" r="10" fill="{WASSER}"/>',              # Blech endet am Rohr
           ring(cx, cy, 12, 10, DUNKEL, rand=DUNKEL)]
     el += [pfeil(x, 104, x, cy - 6, ROT, 2) for x in (cx - 48, cx - 26, cx + 26, cx + 48)]
     el += [t(cx, 96, "Heat Flux", farbe=ROT, fett=True),

@@ -83,8 +83,8 @@ def roehre(datei):
     W, H, cx, cy, s = 960, 560, 300, 300, 6.0          # 6 px je mm
     rg_a, rg_i, rr_a, rr_i, b, t = 35 * s, 32.5 * s, 6 * s, 5 * s, 30 * s, 0.5 * s
     el = [ring(cx, cy, rg_a, rg_i, GLAS),
-          f'<circle cx="{cx}" cy="{cy}" r="{rr_i}" fill="{WASSER}"/>',
           f'<rect x="{cx - b}" y="{cy - t / 2 - 0.5}" width="{2 * b}" height="{t + 1}" fill="{DUNKEL}"/>',
+          f'<circle cx="{cx}" cy="{cy}" r="{rr_i}" fill="{WASSER}"/>',      # Blech endet am Rohr, innen nur Wasser
           ring(cx, cy, rr_a, rr_i, DUNKEL, rand=DUNKEL)]
     for x in (cx - 150, cx - 90, cx + 90, cx + 150):                     # Sonne auf die Blechflügel
         el.append(pfeil(x, 36, x, cy - t / 2 - 4, ROT, 2))
