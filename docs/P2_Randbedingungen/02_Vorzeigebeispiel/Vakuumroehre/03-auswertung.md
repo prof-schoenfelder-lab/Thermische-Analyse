@@ -51,7 +51,8 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
 
 <figure style="text-align:center;">
   <img src="../../../images/p2_roehre_a_absorber.webp" alt="Fall a: Temperatur Absorber, 51,0 bis 52,1 °C" style="width:49%">
-  <figcaption>Fall a): Die Blechkanten sind am wärmsten, das Rohr am kühlsten</figcaption>
+  <img src="../../../images/p2_roehre_a_glas.webp" alt="Fall a: Temperatur Glas, 15,8 bis 15,9 °C" style="width:49%">
+  <figcaption>Fall a): Die Blechkanten sind am wärmsten, das Rohr am kühlsten. Das Glas ist kälter als die Luft</figcaption>
 </figure>
 
 !!! info "Warum geht die Bilanz nicht genau auf?"
