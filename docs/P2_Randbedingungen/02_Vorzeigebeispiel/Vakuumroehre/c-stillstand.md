@@ -16,13 +16,30 @@ nur noch durch Strahlung loswerden.
     1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen und Randbedingungen und Ergebnisse aus Fall a) übernehmen
     2. Unter **Steady-State Thermal 3 (C5)**: `Rechtsklick Wasser → Suppress`. Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert
     3. `Rechtsklick Solution (C6) → Solve`
-    4. Zum Vergleich: In Analyse C bei **Absorber zum Glas** die **Emissivity** auf **0,9** setzen und noch einmal lösen
+    4. Zum Vergleich: In Analyse C bei **Absorber zum Glas** die **Emissivity** auf **0,9** setzen
+    5. Für diesen Lauf braucht ANSYS Hilfe beim Lösen: Unter **Initial Temperature** **50** °C eintragen. Unter `Analysis Settings → Step Controls` **Auto Time Stepping** auf **On**, **Define By** **Substeps**, **Initial Substeps** und **Minimum Substeps** **100**, **Maximum Substeps** **1000**
+    6. Noch einmal lösen
+
+!!! warning "Abbruch oder Temperaturen von Tausenden Grad?"
+    Ohne Schritt 5 bricht ANSYS beim schwarzen Absorber ab („Temperatur zu
+    hoch“) oder liefert Unsinn, z. B. 800 000 °C am Glas. Grund ist die
+    Bilanzlücke des 20 mm langen Stücks (siehe Infobox „Warum geht die
+    Bilanz nicht genau auf?“ in der [Auswertung](03-auswertung.md)): Der
+    Strahlungsraum erzeugt etwas Energie, und zwar umso mehr, je heißer es
+    ist ($\sim T^4$). Dadurch gibt es neben der echten Lösung eine zweite bei
+    absurd hohen Temperaturen. Ohne Wasser hält nichts den Absorber fest, und
+    mit $\varepsilon = 0{,}9$ ist die Kopplung so stark, dass der Löser dorthin
+    springen kann. Mit vielen kleinen Schritten bringt ANSYS die Sonne
+    stufenweise auf und bleibt bei der echten Lösung.
+
+    Merke: Ein Ergebnis immer an der Physik prüfen. Glas mit Tausenden Grad
+    unter 700 W/m² Sonne kann nicht stimmen, egal wie bunt das Bild ist.
 
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | selektiv, ε = 0,05 | schwarz, ε = 0,9 |
     |---|---|---|
-    | Temperatur Absorber | **287 °C** | **68 °C** |
-    | Temperatur Glas | 26,5 bis 27,6 °C | 24,3 bis 26,3 °C |
+    | Temperatur Absorber | **287 °C** | **72 °C** |
+    | Temperatur Glas | 26,5 bis 27,6 °C | 26,5 bis 27,4 °C |
 
 <figure style="text-align:center;">
   <img src="../../../images/p2_roehre_c_absorber.webp" alt="Fall c selektiv: Temperatur Absorber, 287 °C" style="width:49%">
@@ -30,15 +47,23 @@ nur noch durch Strahlung loswerden.
   <figcaption>Fall c) selektiv: Ohne Wasser wird der Absorber fast 300 °C heiß</figcaption>
 </figure>
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_roehre_c_schwarz_absorber.webp" alt="Fall c schwarz: Temperatur Absorber, 72 °C" style="width:49%">
+  <img src="../../../images/p2_roehre_c_schwarz_glas.webp" alt="Fall c schwarz: Temperatur Glas, 26,5 bis 27,4 °C" style="width:49%">
+  <figcaption>Fall c) schwarz: Der Absorber bleibt bei 72 °C, das Glas ist so warm wie beim selektiven Absorber</figcaption>
+</figure>
+
 ## Was die Zahlen zeigen
 
 - Die selektive Beschichtung, die im Betrieb so gut ist, wird im Stillstand
   zum Problem: Der Absorber wird **fast 300 °C** heiß, bevor er so viel
-  abstrahlt, wie er von der Sonne aufnimmt.
+  abstrahlt, wie er von der Sonne aufnimmt. Der schwarze Absorber strahlt so
+  gut ab, dass ihm schon **72 °C** reichen.
 - Das Glas ist in beiden Fällen gleich warm: Es muss genau die aufgenommene
   Sonne an Luft und Himmel abgeben, egal wie heiß der Absorber dafür wird.
   Die Reaktionen **Luft** und **Himmel** zusammen sollten also −0,672 W
-  ergeben. ANSYS kommt auf rund −0,79 W (Luft −0,309 W, Himmel −0,479 W):
+  ergeben. ANSYS kommt auf rund −0,78 bis −0,79 W (selektiv: Luft −0,309 W,
+  Himmel −0,479 W; schwarz: Luft −0,304 W, Himmel −0,476 W):
   Das ist die Bilanzlücke des 20 mm langen Stücks, siehe Infobox
   „Warum geht die Bilanz nicht genau auf?“ in der [Auswertung](03-auswertung.md).
 - In der Praxis verdampft dabei das Wasser in der Röhre. Solaranlagen brauchen
