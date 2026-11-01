@@ -83,47 +83,33 @@ In ANSYS gibt es nur **eine** Randbedingung `Radiation`. Im Detailfenster legt
 ## Surface to Surface: Sichtfaktor und Enclosure {: #sichtfaktor }
 
 Bei `Surface to Surface` rechnet ANSYS selbst aus, wie viel Strahlung von
-jeder Fläche auf jede andere trifft. Dafür braucht es zwei Begriffe: den
-Sichtfaktor und das Enclosure. Das Beispiel ist die Vakuumröhre aus dem
+jeder Fläche auf jede andere trifft. Das Beispiel ist die Vakuumröhre aus dem
 Vorzeigebeispiel.
 
 ### Sichtfaktor
 
 Der **Sichtfaktor** $F_{12}$ gibt an, welcher Anteil der Strahlung, die
-Fläche 1 abgibt, direkt auf Fläche 2 trifft. Anschaulich: Wie viel ihres
-Blickfelds nimmt Fläche 2 ein, wenn man von Fläche 1 aus schaut?
+Fläche 1 abgibt, direkt auf Fläche 2 trifft. In der langen Vakuumröhre sieht
+der Absorber fast nur Glas, das Glas zu 60 % den Absorber und zu 40 % die
+gegenüberliegende Glaswand (Bild unten, obere Balken).
 
-In der langen Vakuumröhre:
+??? info "Zwei Regeln für Sichtfaktoren"
+    1. **Alles kommt irgendwo an.** In einem geschlossenen Raum ergeben die
+       Sichtfaktoren einer Fläche zusammen 100 %.
+    2. **Reziprozität:** $A_1\,F_{12} = A_2\,F_{21}$. Die große Glasfläche
+       sieht den kleinen Absorber zu einem kleineren Anteil als umgekehrt, genau
+       im Verhältnis der Flächen. Je 20 mm Röhre:
+       $4080\ \mathrm{mm^2} \cdot 0{,}60 \approx 2670\ \mathrm{mm^2} \cdot 0{,}92 \approx 2450\ \mathrm{mm^2}$.
 
-| Strahlung vom … | trifft den Absorber | trifft das Glas |
-|---|---|---|
-| Absorber | 8 % | 92 % |
-| Glas (innen) | 60 % | 40 % |
+    Die zweite Regel sorgt dafür, dass die Energie stimmt. Zwischen zwei
+    schwarzen Flächen fließt netto
 
-- Der Absorber sieht fast nur Glas. Den kleinen Rest sieht er von sich
-  selbst, in den Ecken zwischen Blech und Rohr.
-- Das Glas sieht zu 60 % den Absorber und zu 40 % die gegenüberliegende
-  Glaswand.
+    $$
+    \dot Q_{12} = \sigma\,A_1\,F_{12}\,\left(T_1^4 - T_2^4\right)
+    $$
 
-Zwei Regeln gelten immer:
-
-1. **Alles kommt irgendwo an.** In einem geschlossenen Raum ergeben die
-   Sichtfaktoren einer Fläche zusammen 100 % (jede Zeile der Tabelle).
-2. **Reziprozität:** $A_1\,F_{12} = A_2\,F_{21}$. Die große Glasfläche sieht
-   den kleinen Absorber zu einem kleineren Anteil als umgekehrt, und zwar
-   genau im Verhältnis der Flächen. Je 20 mm Röhre:
-   $4080\ \mathrm{mm^2} \cdot 0{,}60 \approx 2670\ \mathrm{mm^2} \cdot 0{,}92 \approx 2450\ \mathrm{mm^2}$.
-
-Die zweite Regel sorgt dafür, dass die Energie stimmt. Zwischen zwei
-schwarzen Flächen fließt netto
-
-$$
-\dot Q_{12} = \sigma\,A_1\,F_{12}\,\left(T_1^4 - T_2^4\right)
-$$
-
-Nur weil $A_1 F_{12} = A_2 F_{21}$ ist, rechnen beide Flächen mit demselben
-Wärmestrom: Was der Absorber abgibt, kommt beim Glas an. Bei grauen Flächen
-kommen Reflexionen dazu, an den beiden Regeln ändert das nichts.
+    Nur weil $A_1 F_{12} = A_2 F_{21}$ ist, rechnen beide Flächen mit demselben
+    Wärmestrom: Was der Absorber abgibt, kommt beim Glas an.
 
 ### Enclosure
 
@@ -136,23 +122,19 @@ Enclosures sehen sich nicht, auch wenn sie sich gegenüberliegen.
 
 ### Open oder Perfect: Was passiert mit dem Rest?
 
-Das Modell der Röhre ist nur **20 mm** lang. Vorn und hinten ist es offen,
-dort ist keine Fläche. Ein großer Teil der Strahlung trifft deshalb gar
-nichts im Modell:
+Das Modell der Röhre ist nur **20 mm** lang und vorn und hinten offen: Gut die
+Hälfte der Strahlung trifft gar nichts im Modell (mittlere Balken).
 
 <figure style="text-align:center;">
   <img src="../../images/p2_sichtfaktor.excalidraw.png" alt="Längsschnitt: 20-mm-Stück mit offenen Enden und lange Röhre mit Nachbarstücken" class="no-lightbox">
 </figure>
 
-| Strahlung vom … | trifft den Absorber | trifft das Glas | geht vorn und hinten hinaus |
-|---|---|---|---|
-| Absorber | 6 % | 40 % | **54 %** |
-| Glas (innen) | 26 % | 13 % | **61 %** |
+<figure style="text-align:center;">
+  <img src="../../images/p2_sichtfaktor_balken.excalidraw.png" alt="Sichtfaktoren von Absorber und Glas: lange Röhre, 20-mm-Stück, mit Perfect" class="no-lightbox">
+  <figcaption>Sichtfaktoren der Röhre, eigene Abschätzung mit Strahlverfolgung</figcaption>
+</figure>
 
-<!-- Quelle der Prozentwerte: tools/sollwerte/p2_sichtfaktoren.py -->
-
-Die Zahlen sind eine eigene Abschätzung mit Strahlverfolgung. Was mit dem
-Rest passiert, legt `Enclosure Type` fest:
+Was mit dem Rest passiert, legt `Enclosure Type` fest:
 
 - **Open:** Der Rest geht an eine Umgebung mit der eingetragenen
   **Ambient Temperature**. Das passt, wenn die Öffnung wirklich ins Freie
@@ -160,29 +142,22 @@ Rest passiert, legt `Enclosure Type` fest:
 - **Perfect:** Es gibt keinen Rest. ANSYS rechnet die Sichtfaktoren jeder
   Fläche so hoch, dass sie zusammen wieder 100 % ergeben.
 
-Für die Röhre ist **Perfect** richtig. In der langen Röhre trifft, was vorn
-hinausgeht, das Nachbarstück. Das ist genauso warm, und genauso viel Strahlung
-kommt von dort zurück (Bild rechts). Mit Open sähe das Glas durch die Enden
-eine Umgebung von z. B. 22 °C, die es im Vakuum nicht gibt.
+Für die Röhre ist **Perfect** richtig: In der langen Röhre trifft, was vorn
+hinausgeht, das Nachbarstück, und genauso viel Strahlung kommt von dort zurück.
+Mit Open sähe das Glas durch die Enden eine Umgebung von z. B. 22 °C, die es
+im Vakuum nicht gibt.
 
 ### Der Haken an Perfect {: #haken-perfect }
 
-Perfect rechnet jede Fläche **für sich** hoch. Das Glas behält nur 39 % und
-wird mit dem Faktor 2,5 hochgerechnet, der Absorber behält 46 % und bekommt
-den Faktor 2,2:
-
-| nach dem Hochrechnen | trifft den Absorber | trifft das Glas |
-|---|---|---|
-| Absorber | 14 % (lange Röhre: 8 %) | 86 % (lange Röhre: 92 %) |
-| Glas (innen) | 67 % (lange Röhre: 60 %) | 33 % (lange Röhre: 40 %) |
-
-Damit gilt die Reziprozität nicht mehr: Das Glas rechnet mit
-$4080\ \mathrm{mm^2} \cdot 0{,}67 \approx 2730\ \mathrm{mm^2}$, der Absorber
-mit $2670\ \mathrm{mm^2} \cdot 0{,}86 \approx 2300\ \mathrm{mm^2}$. Das Glas
-nimmt also rund 20 % mehr Strahlung auf, als der Absorber abgibt. Im Modell
-entsteht Energie, und die Bilanz der Reaktionen geht nicht mehr auf. Genau
-das zeigt die Vakuumröhre: Das Glas gibt in allen drei Fällen 16 bis 24 %
-mehr an Luft und Himmel ab, als der Absorber zu ihm strahlt.
+Perfect rechnet jede Fläche **für sich** hoch (untere Balken): Das Glas sieht
+danach mehr Absorber als in der langen Röhre (67 % statt 60 %), der Absorber
+weniger Glas (86 % statt 92 %). Damit gilt die Reziprozität nicht mehr
+(Glas $4080\ \mathrm{mm^2} \cdot 0{,}67 \approx 2730\ \mathrm{mm^2}$, Absorber
+$2670\ \mathrm{mm^2} \cdot 0{,}86 \approx 2300\ \mathrm{mm^2}$): Das Glas nimmt
+rund 20 % mehr Strahlung auf, als der Absorber abgibt. Im Modell entsteht
+Energie, und die Bilanz der Reaktionen geht nicht mehr auf. Genau das zeigt
+die Vakuumröhre: Das Glas gibt in allen drei Fällen 16 bis 24 % mehr an Luft
+und Himmel ab, als der Absorber zu ihm strahlt.
 
 Was man daraus mitnimmt:
 

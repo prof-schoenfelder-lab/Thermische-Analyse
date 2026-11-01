@@ -22,7 +22,7 @@ Dann `Rechtsklick Solution (C6) → Solve`. Den Vergleich mit schwarzem Absorber
 (**Emissivity** 0,9 bei **Absorber zum Glas**) nicht selbst rechnen: Die Werte
 stehen im Checkpoint, warum, steht in der Warnung darunter.
 
-!!! warning "Abbruch oder Temperaturen von Tausenden Grad?"
+??? warning "Abbruch oder Temperaturen von Tausenden Grad?"
     Beim schwarzen Absorber bricht ANSYS ab („Temperatur zu hoch“) oder
     liefert Unsinn, z. B. 800 000 °C am Glas. Grund ist die
     Bilanzlücke des 20 mm langen Stücks (siehe
@@ -66,12 +66,11 @@ stehen im Checkpoint, warum, steht in der Warnung darunter.
   zum Problem: Der Absorber wird **fast 300 °C** heiß, bevor er so viel
   abstrahlt, wie er von der Sonne aufnimmt. Der schwarze Absorber strahlt so
   gut ab, dass ihm schon **72 °C** reichen.
-- Das Glas ist in beiden Fällen gleich warm: Es muss genau die aufgenommene
-  Sonne an Luft und Himmel abgeben, egal wie heiß der Absorber dafür wird.
-  Die Reaktionen **Luft** und **Himmel** zusammen sollten also −0,672 W
-  ergeben. ANSYS kommt auf rund −0,78 bis −0,79 W (selektiv: Luft −0,309 W,
-  Himmel −0,479 W; schwarz: Luft −0,304 W, Himmel −0,476 W):
-  Das ist die Bilanzlücke des 20 mm langen Stücks, siehe Infobox
-  „Warum geht die Bilanz nicht genau auf?“ in der [Auswertung](03-auswertung.md).
+- Das Glas ist in beiden Fällen gleich warm: Es muss die ganze Sonne an Luft
+  und Himmel abgeben, egal wie heiß der Absorber dafür wird. Dass Luft und
+  Himmel zusammen etwa −0,79 W statt −0,672 W zeigen, ist die Bilanzlücke des
+  kurzen Stücks (siehe [Auswertung](03-auswertung.md)).
+- Die Grafik auf der Seite [b) Schwarz](b-schwarz.md) zeigt alle drei Fälle:
+  Im Stillstand geht die ganze Sonne als Strahlung zum Glas.
 - In der Praxis verdampft dabei das Wasser in der Röhre. Solaranlagen brauchen
   deshalb ein Ausdehnungsgefäß und hitzefeste Bauteile.

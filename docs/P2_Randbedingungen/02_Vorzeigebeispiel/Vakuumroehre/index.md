@@ -32,7 +32,7 @@ In diesem Beispiel kommen fast alle Randbedingungen vor:
   <img src="../../images/p2_roehre.excalidraw.png" alt="Querschnitt der Vakuumröhre" class="no-lightbox">
 </figure>
 
-!!! info "Wozu das Absorberblech?"
+??? info "Wozu das Absorberblech?"
     Das Rohr allein fängt nur einen 12 mm breiten Streifen Sonne ein, mit dem
     Blech sind es 60 mm: fünfmal so viel Leistung für dieselbe Menge Wasser.
     Ein dünnes Blech ist dafür viel billiger und leichter als ein breites Rohr.
@@ -101,38 +101,23 @@ Die beiden Stirnflächen (Schnitt durch die lange Röhre) bleiben frei, also iso
 Die Sonne trifft in diesem Modell nur die Blechflügel. Das Rohr selbst und die
 kleine Aufnahme im Glas vernachlässigen wir.
 
-!!! info "Selektive Schicht: viel aufnehmen, wenig abstrahlen"
-    Sonne und Absorber strahlen in ganz verschiedenen Wellenlängen. Die
-    Wellenlänge mit der stärksten Strahlung folgt aus dem Wienschen
-    Verschiebungsgesetz $\lambda_{max} = 2898\ \mathrm{µm\,K} / T$:
+??? info "Selektive Schicht: viel aufnehmen, wenig abstrahlen"
+    Sonne und Absorber strahlen in ganz verschiedenen Wellenlängen. Nach dem
+    **Kirchhoffschen Gesetz** nimmt eine Fläche bei jeder Wellenlänge genau so
+    viel auf, wie sie abstrahlt: $\alpha(\lambda) = \varepsilon(\lambda)$. Die
+    selektive Schicht ist im Sonnenlicht schwarz und bei Wärmestrahlung blank.
+    Schwarzer Lack ist überall schwarz (Fall b).
 
-    | Strahler | Temperatur | $\lambda_{max}$ | Bereich |
-    |---|---|---|---|
-    | Sonne | 5800 K | 0,5 µm | sichtbares Licht (kurzwellig) |
-    | Absorber | 50 °C = 323 K | 9 µm | Infrarot (langwellig) |
+    <figure style="text-align:center;">
+      <img src="../../images/p2_selektiv.excalidraw.png" alt="Spektren von Sonne und Absorber, Absorptionsgrad von selektiver Schicht und schwarzem Lack" class="no-lightbox">
+      <figcaption>Spektren auf gleiche Höhe gebracht, Maximum nach dem Wienschen Verschiebungsgesetz</figcaption>
+    </figure>
 
-    Nach dem **Kirchhoffschen Gesetz** nimmt eine Fläche bei jeder Wellenlänge
-    genau so viel auf, wie sie abstrahlt: $\alpha(\lambda) = \varepsilon(\lambda)$.
-    Die selektive Schicht nutzt aus, dass das je Wellenlänge verschieden sein
-    darf:
-
-    - bei 0,5 µm (Sonnenlicht) **schwarz**: $\alpha_S \approx 0{,}95$
-    - bei 9 µm (Wärmestrahlung) **wie blankes Metall**: $\varepsilon \approx 0{,}05$
-
-    Schwarzer Lack ist dagegen bei allen Wellenlängen schwarz: Er nimmt die
-    Sonne genauso gut auf, strahlt aber auch mit $\varepsilon \approx 0{,}9$ ab
-    (Fall b).
-
-!!! info "Warum ist die Sonne keine Radiation-Randbedingung?"
-    Die Radiation-Randbedingung kennt nur **einen** Emissionsgrad für alle
-    Wellenlängen (grauer Strahler). Damit gilt dort immer $\alpha = \varepsilon$.
-    Mit $\varepsilon = 0{,}05$ würde der Absorber auch nur 5 % der Sonne
-    aufnehmen. Dazu kommt das Glas: Sonnenlicht lässt es zu 92 % durch, für
-    Wärmestrahlung ist es undurchlässig. In der Randbedingung ist jede Fläche
-    undurchlässig.
-
-    Darum rechnet man den kurzwelligen Weg der Sonne von Hand und gibt das
-    Ergebnis als Wärmestromdichte vor:
+??? info "Warum ist die Sonne keine Radiation-Randbedingung?"
+    `Radiation` kennt nur **einen** Emissionsgrad für alle Wellenlängen. Mit
+    $\varepsilon = 0{,}05$ würde der Absorber auch nur 5 % der Sonne
+    aufnehmen, und das Glas wäre für Sonnenlicht undurchlässig. Deshalb rechnet
+    man den Weg der Sonne von Hand und gibt ihn als Wärmestromdichte vor:
 
     $$
     \dot q_{Sonne} = G \cdot \tau \cdot \alpha_S
@@ -140,13 +125,10 @@ kleine Aufnahme im Glas vernachlässigen wir.
     \approx 700\ \mathrm{\tfrac{W}{m^2}}
     $$
 
-    mit Einstrahlung $G$, Durchlässigkeit des Glases $\tau$ und
-    Absorptionsgrad der Schicht für Sonnenlicht $\alpha_S$. Den langwelligen
-    Austausch zwischen Absorber, Glas und Himmel rechnet ANSYS mit `Radiation`.
-    Dort passt $\alpha = \varepsilon$, weil alle Flächen im Infrarot strahlen.
-    Mehr dazu unter [Wärmestrahlung](../../01_Grundlagen/Strahlung.md).
+    mit Einstrahlung $G$, Durchlässigkeit des Glases $\tau$ und Absorptionsgrad
+    $\alpha_S$. Mehr dazu unter [Wärmestrahlung](../../01_Grundlagen/Strahlung.md).
 
-!!! info "Warum ist die Wassertemperatur vorgegeben?"
+??? info "Warum ist die Wassertemperatur vorgegeben?"
     Die 50 °C sind der **Betriebspunkt**: An einer bestimmten Stelle im
     Kollektor fließt Wasser mit 50 °C, wie viel Wärme nimmt es dort auf?
     Wie stark sich das Wasser entlang der Röhre erwärmt, ist eine eigene

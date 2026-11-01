@@ -45,15 +45,17 @@ Dann `Rechtsklick Solution (B6) → Solve`.
 
 ## Was die Zahlen zeigen
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_energiefluss.excalidraw.png" alt="Aufteilung der Sonne auf Wasser und Strahlung zum Glas für a), b) und c)" class="no-lightbox">
+</figure>
+
 - Die **Temperatur** des Absorbers ändert sich kaum: Das Wasser hält ihn bei
   rund 50 °C fest.
 - Der Unterschied steckt im **Wärmestrom**: Der schwarze Absorber strahlt
-  rund 60 % der aufgenommenen Sonne zum Glas ab, statt sie ans Wasser zu geben.
-  Das Glas wird dabei wärmer als die Luft: Die Reaktion **Luft** ist jetzt
-  negativ, die Luft kühlt das Glas.
-- Im Vakuum gibt es keine Konvektion. Der Emissionsgrad entscheidet hier
-  allein über den Verlust: Deshalb sind Vakuumröhren immer selektiv
-  beschichtet.
+  57 % der Sonne zum Glas ab. Das Glas wird wärmer als die Luft, die Reaktion
+  **Luft** ist jetzt negativ.
+- Im Vakuum entscheidet allein der Emissionsgrad über den Verlust: Deshalb
+  sind Vakuumröhren immer selektiv beschichtet.
 
 !!! info "Die Temperatur allein sagt wenig"
     Hätten wir nur die Temperaturen angesehen, wären beide Absorber fast

@@ -45,6 +45,10 @@ Geometrie aus Kreisen und einem Rechteck.
 
 </div>
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_geometrie_flaechen.excalidraw.png" alt="Flächen nach dem Beenden der Skizze: Wasser löschen, sechs Absorberflächen und Glasring ziehen" class="no-lightbox">
+</figure>
+
 !!! check "Checkpoint"
     Im Strukturbaum von SpaceClaim stehen genau **zwei** Körper. Besteht der
     Absorber aus mehreren Körpern, diese mit dem Werkzeug `Combine`

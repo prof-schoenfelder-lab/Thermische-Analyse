@@ -60,25 +60,16 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
   <figcaption>Fall a): Die Blechkanten sind am wärmsten, das Rohr am kühlsten. Das Glas ist kälter als die Luft</figcaption>
 </figure>
 
-!!! info "Warum geht die Bilanz nicht genau auf?"
-    Unser 20 mm langes Stück ist vorn und hinten offen. Vom Glas gehen dort
-    rund 61 % der Strahlung hinaus, vom Absorber 54 %. **Perfect** rechnet
-    die Sichtfaktoren **jeder Fläche einzeln** wieder auf 100 % hoch, das Glas
-    dabei stärker als den Absorber. Dadurch nimmt das Glas rund 20 % mehr
-    Strahlung auf, als der Absorber abgibt: Der Absorber gibt 0,033 W ab,
-    beim Glas kommen 0,041 W an. Ausführlich mit Bild steht das unter
+??? info "Warum geht die Bilanz nicht genau auf?"
+    Unser 20 mm langes Stück ist vorn und hinten offen. **Perfect** rechnet die
+    Sichtfaktoren **jeder Fläche einzeln** wieder auf 100 % hoch, das Glas
+    stärker als den Absorber. Dadurch nimmt das Glas rund 20 % mehr Strahlung
+    auf, als der Absorber abgibt (0,041 W statt 0,033 W). Bild und Zahlen:
     [Wärmestrahlung: Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect).
 
-    Ein feineres Netz ändert daran nichts. Ein längeres Stück schon: Bei
-    200 mm sinkt die Lücke auf ein Drittel, und Luft und Himmel liegen nur
-    noch 1 bis 2 % neben den Werten der unendlich langen Röhre
-    (+0,188 W und −0,219 W). Dafür rechnet ANSYS viel länger.
-
-    Je stärker Absorber und Glas Strahlung tauschen, desto größer die Lücke:
-    Bei b) sind es −0,060 W, bei c) −0,115 W. Das Glas gibt jeweils
-    rund 15 bis 25 % mehr ab, als der Absorber zu ihm strahlt. Für den
-    Vergleich von a), b) und c) reichen die 20 mm trotzdem: Die Unterschiede
-    zwischen den Fällen sind viel größer.
+    Ein feineres Netz ändert daran nichts, ein längeres Stück schon: Bei 200 mm
+    sinkt die Lücke auf ein Drittel. Für den Vergleich von a), b) und c)
+    reichen die 20 mm, die Unterschiede zwischen den Fällen sind viel größer.
 
 ## Was die Zahlen zeigen
 

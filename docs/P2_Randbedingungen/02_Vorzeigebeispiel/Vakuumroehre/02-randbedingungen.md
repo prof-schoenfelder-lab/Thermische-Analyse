@@ -90,20 +90,16 @@ probieren.
 
 <tutorial slug="p2-strahlung-s2s"></tutorial>
 
-!!! abstract "Warum Enclosure 1 und Perfect?"
+??? abstract "Warum Enclosure 1 und Perfect?"
     - Gleiche **Enclosure**-Nummer heißt: Diese Flächen strahlen sich
-      gegenseitig an. ANSYS berechnet selbst, wie viel jede Fläche von jeder
-      anderen sieht (Sichtfaktor).
-    - Unser 20 mm langes Stück ist vorn und hinten offen. In der echten,
-      langen Röhre geht dort aber keine Strahlung verloren: Was hinausgeht,
-      trifft das Nachbarstück, und genauso viel kommt von dort zurück.
-      **Perfect** bildet das nach: Der Raum zwischen Absorber und Glas gilt
-      als geschlossen.
-    - Eine Umgebungstemperatur gibt es hier nicht: Die Temperatur der
-      Gegenseite rechnet ANSYS selbst aus.
-    - Ganz genau ist Perfect bei einem so kurzen Stück nicht, die Bilanz geht
-      später um einige Prozent nicht auf. Warum, steht unter
-      [Wärmestrahlung: Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect).
+      gegenseitig an. Wie viel jede Fläche von jeder anderen sieht
+      (Sichtfaktor), rechnet ANSYS selbst aus.
+    - Unser Stück ist vorn und hinten offen. In der langen Röhre trifft, was
+      dort hinausgeht, das Nachbarstück, und genauso viel kommt zurück.
+      **Perfect** bildet das nach: Der Raum gilt als geschlossen, eine
+      Umgebungstemperatur gibt es nicht.
+    - Ganz genau ist das bei 20 mm nicht, die Bilanz geht später um einige
+      Prozent nicht auf: [Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect).
 
 ## Was bleibt frei?
 
