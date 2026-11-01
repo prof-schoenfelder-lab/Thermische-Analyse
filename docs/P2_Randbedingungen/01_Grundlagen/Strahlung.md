@@ -80,7 +80,7 @@ In ANSYS gibt es nur **eine** Randbedingung `Radiation`. Im Detailfenster legt
   strahlen sich gegenseitig an. Was dahintersteckt, steht im nächsten
   Abschnitt.
 
-## Surface to Surface: Sichtfaktor und Enclosure {#sichtfaktor}
+## Surface to Surface: Sichtfaktor und Enclosure {: #sichtfaktor }
 
 Bei `Surface to Surface` rechnet ANSYS selbst aus, wie viel Strahlung von
 jeder Fläche auf jede andere trifft. Dafür braucht es zwei Begriffe: den
@@ -165,7 +165,7 @@ hinausgeht, das Nachbarstück. Das ist genauso warm, und genauso viel Strahlung
 kommt von dort zurück (Bild rechts). Mit Open sähe das Glas durch die Enden
 eine Umgebung von z. B. 22 °C, die es im Vakuum nicht gibt.
 
-### Der Haken an Perfect {#haken-perfect}
+### Der Haken an Perfect {: #haken-perfect }
 
 Perfect rechnet jede Fläche **für sich** hoch. Das Glas behält nur 39 % und
 wird mit dem Faktor 2,5 hochgerechnet, der Absorber behält 46 % und bekommt
