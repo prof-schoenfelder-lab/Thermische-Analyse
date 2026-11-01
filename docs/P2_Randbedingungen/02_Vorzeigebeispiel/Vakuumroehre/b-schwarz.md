@@ -26,8 +26,8 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | a) selektiv | b) schwarz |
     |---|---|---|
-    | Temperatur Absorber | 51,0 bis 52,1 °C | **50,4 bis 51,0 °C** |
-    | Temperatur Glas | 15,8 bis 15,9 °C | **20,8 bis 22,1 °C** |
+    | Temperatur Absorber | 51,0 bis 52,1 °C | **50,4 bis 51,1 °C** |
+    | Temperatur Glas | 15,8 bis 15,9 °C | **21,7 bis 22,2 °C** |
     | Reaktion Wasser (Nutzwärme) | −0,639 W | **−0,290 W** |
     | Reaktion Luft | +0,182 W | **−0,084 W** |
     | Reaktion Himmel | −0,223 W | **−0,358 W** |

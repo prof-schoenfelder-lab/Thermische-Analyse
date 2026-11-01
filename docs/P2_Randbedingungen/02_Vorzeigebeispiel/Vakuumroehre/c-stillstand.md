@@ -21,8 +21,8 @@ nur noch durch Strahlung loswerden.
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | selektiv, ε = 0,05 | schwarz, ε = 0,9 |
     |---|---|---|
-    | Temperatur Absorber | **285 °C** | **68 °C** |
-    | Temperatur Glas | 24,3 bis 26,3 °C | 24,3 bis 26,3 °C |
+    | Temperatur Absorber | **287 °C** | **68 °C** |
+    | Temperatur Glas | 26,5 bis 27,6 °C | 24,3 bis 26,3 °C |
 
 ## Was die Zahlen zeigen
 
