@@ -42,7 +42,7 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Zwei Kreise um den Ursprung, Ø <strong>26,9</strong> und <strong>21,7</strong> mm. Skizze beenden, die innere Kreisfläche löschen, den Ring <strong>1000 mm</strong> ziehen</p>
+    <p>Zwei Kreise um den Ursprung, Ø <strong>26,9</strong> und <strong>21,7</strong> mm. Skizze beenden. Entsteht dabei auch eine innere Kreisfläche, diese löschen. Den Ring <strong>1000 mm</strong> ziehen</p>
   </div>
 
   <div class="step">
@@ -53,6 +53,11 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wärmeströme ablesen</p>
     <p>Kellerluft und Kellerwände je mit gedrückter Maustaste auf <strong>Solution</strong> ziehen (Reaction Probe), lösen. Der Wärmeverlust ist die Summe beider Beträge. Für Fall a) die Strahlung mit <code>Rechtsklick → Suppress</code> abschalten und neu lösen</p>
+  </div>
+
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">d) Dämmung als zweiter Körper</p>
+    <p>Im Projektmenü <code>Rechtsklick Steady-State Thermal → Duplicate</code>. In der Kopie SpaceClaim öffnen, auf einer Stirnfläche des Rohrs einen Kreis Ø <strong>66,9</strong> mm um den Ursprung skizzieren, Skizze beenden und die innere Scheibe (Wasserraum) löschen. Den neuen Ring mit <code>Pull</code> und <strong>No merge</strong> über die ganze Rohrlänge ziehen (Richtung prüfen, ggf. <strong>−1000</strong> mm). Share Topology: <strong>Share</strong>. Konvektion und Strahlung jetzt auf die Außenfläche der Dämmung</p>
   </div>
 
 </div>

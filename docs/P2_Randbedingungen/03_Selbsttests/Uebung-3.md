@@ -46,7 +46,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Kabel in den Ursprung: zwei Kreise Ø <strong>40</strong> und <strong>17,5</strong> mm. Mit <code>Line</code> vom Ursprung <strong>500 mm</strong> nach unten, am Endpunkt <code>Rectangle</code> mit <strong>Define rectangle from center</strong>, <strong>4000 × 3000</strong> mm. Dann liegt das Kabel 1 m unter der Oberkante. Zuerst das Erdreich <strong>100 mm</strong> ziehen, dann Isolierung und Leiter je mit <strong>No merge</strong>. Share Topology: <strong>Share</strong></p>
+    <p>Kabel in den Ursprung: zwei Kreise Ø <strong>40</strong> und <strong>17,5</strong> mm. Mit <code>Line</code> vom Ursprung <strong>500 mm</strong> nach unten, am Endpunkt <code>Rectangle</code> mit <strong>Define rectangle from center</strong>, <strong>4000 × 3000</strong> mm. Dann liegt das Kabel 1 m unter der Oberkante. Die Hilfslinie vor dem Beenden der Skizze löschen, sonst teilt sie die Kreisflächen. Zuerst das Erdreich <strong>100 mm</strong> ziehen, dann Isolierung und Leiter je mit <strong>No merge</strong>. Share Topology: <strong>Share</strong></p>
   </div>
 
   <div class="step">

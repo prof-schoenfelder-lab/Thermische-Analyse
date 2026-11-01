@@ -43,7 +43,7 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Querschnitt skizzieren: Rechteck <strong>100 × 8</strong> mm ab dem Ursprung, darauf am linken Rand ein Rechteck <strong>2 × 40</strong> mm (erste Rippe). Alles <strong>100 mm</strong> ziehen. Die Rippe mit <code>Move</code> und der Option <strong>Create Patterns</strong> in 14 mm Abstand auf insgesamt 8 Rippen vervielfachen, sodass ein einziger Körper entsteht</p>
+    <p>Querschnitt skizzieren: Rechteck <strong>100 × 8</strong> mm ab dem Ursprung, darauf am linken Rand ein Rechteck <strong>2 × 40</strong> mm (erste Rippe). Alles <strong>100 mm</strong> ziehen. Die Rippe mit <code>Move</code> und der Option <strong>Create Patterns</strong> in 14 mm Abstand auf insgesamt 8 Rippen vervielfachen, sodass ein einziger Körper entsteht. Alternativ alle 8 Rippen gleich in der Skizze zeichnen (Rechtecke 2 × 40 mm bei x = 0, 14, 28 … 98 mm) und zusammen mit der Platte ziehen</p>
   </div>
 
   <div class="step">

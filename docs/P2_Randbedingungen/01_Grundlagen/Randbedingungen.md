@@ -72,12 +72,16 @@ die Annahme aber im Strukturbaum sichtbar. Isoliert ist richtig, wenn
 
 ## Wie viel Wärme geht über eine Randbedingung?
 
-Jede Randbedingung kann man nach der Rechnung fragen, wie viel Wärme über sie
-geflossen ist: Die Randbedingung mit gedrückter Maustaste auf **Solution**
-ziehen. ANSYS legt eine **Reaction Probe** an, nach `Evaluate All Results`
-steht der Wärmestrom in W im Detailfenster.
+Bei `Temperature`, `Convection` und `Radiation` zur Umgebung rechnet ANSYS
+aus, wie viel Wärme über die Randbedingung geflossen ist: Die Randbedingung
+mit gedrückter Maustaste auf **Solution** ziehen. ANSYS legt eine
+**Reaction Probe** an, nach `Evaluate All Results` steht der Wärmestrom in W
+im Detailfenster. Bei `Heat Flux`, `Heat Flow` und `Internal Heat Generation`
+ist der Wärmestrom vorgegeben: Wert mal Fläche oder Volumen. Eine Reaction
+Probe braucht es dafür nicht, für `Heat Flux` bietet ANSYS auch keine an.
 
 - **Vorzeichen:** positiv heißt, Wärme geht über diese Randbedingung **in** das
   Modell, negativ heißt, sie verlässt das Modell.
-- **Energiebilanz:** Im stationären Zustand ist die Summe aller Reaktionen null.
+- **Energiebilanz:** Im stationären Zustand ergeben die vorgegebenen
+  Wärmeströme und alle Reaktionen zusammen null.
   Das ist die schnellste Kontrolle, ob alle Randbedingungen richtig sitzen.

@@ -35,12 +35,12 @@ Geometrie aus Kreisen und einem Rechteck.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Vakuum und Wasser entfernen</p>
-    <p>Skizze beenden (<code>Pull</code>, Taste <code>P</code>). Die Flächen, die kein Körper werden, anklicken und mit <code>Entf</code> löschen: das <strong>Vakuum</strong> zwischen Rohr und Glas (eine Fläche oberhalb, eine unterhalb des Blechs) und alles <strong>innerhalb Ø 10 mm</strong> (Wasser, drei Flächen)</p>
+    <p>Skizze beenden (<code>Pull</code>, Taste <code>P</code>). Die Flächen, die kein Körper werden, anklicken und mit <code>Entf</code> löschen: alles <strong>innerhalb Ø 10 mm</strong> (Wasser, drei Flächen). Liegt zwischen Rohr und Glas eine Fläche (Vakuum), diese ebenfalls löschen</p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Zwei Körper ziehen</p>
-    <p>Mit <code>Pull</code> den Glasring <strong>20 mm</strong> ziehen. Danach alle Flächen von Blech und Kupferrohr mit <code>Strg</code> markieren und ebenfalls <strong>20 mm</strong> ziehen. Im Strukturbaum die beiden Körper umbenennen: <strong>Glas</strong> und <strong>Absorber</strong>. Share Topology ist nicht nötig, die Körper berühren sich nicht</p>
+    <p>Mit <code>Pull</code> den Glasring <strong>20 mm</strong> ziehen. Danach alle Flächen von Blech und Kupferrohr mit <code>Strg</code> markieren (sechs Flächen: zwei Blechflügel, zwei Rohrhälften, zwei kleine Blechstücke in der Rohrwand) und ebenfalls <strong>20 mm</strong> ziehen. Das Blech ist nur 0,5 mm dick: stark heranzoomen, sonst trifft der Klick eine Kante statt der Fläche. Im Strukturbaum die beiden Körper umbenennen: <strong>Glas</strong> und <strong>Absorber</strong>. Share Topology ist nicht nötig, die Körper berühren sich nicht</p>
   </div>
 
 </div>

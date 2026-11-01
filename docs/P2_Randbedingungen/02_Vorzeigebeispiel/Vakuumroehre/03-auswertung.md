@@ -30,7 +30,7 @@ title: 3 · Lösen und Auswerten
 
 ??? tip "Kurzanleitung: Reaction Probe per Drag & Drop"
     1. Die Randbedingung **Wasser** im Strukturbaum mit gedrückter Maustaste auf **Solution** ziehen: Es entsteht eine **Reaction Probe**
-    2. Genauso **Sonne**, **Luft** und **Himmel**
+    2. Genauso **Luft** und **Himmel**. Für die **Sonne** gibt es keine Reaction Probe: Ihr Wärmestrom ist vorgegeben, 700 W/m² · 9,6·10⁻⁴ m² = 0,672 W
     3. `Rechtsklick Solution → Evaluate All Results`, den Wärmestrom (**Heat**) im Detailfenster der jeweiligen Probe ablesen
 
 Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingung.
@@ -40,14 +40,14 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
     |---|---|
     | Temperatur Absorber | 51,0 bis 52,1 °C |
     | Temperatur Glas | 15,8 bis 15,9 °C |
-    | Reaktion Sonne | +0,672 W |
+    | Sonne (vorgegeben) | +0,672 W |
     | Reaktion Wasser (Nutzwärme) | −0,639 W |
     | Reaktion Luft | +0,182 W |
     | Reaktion Himmel | −0,223 W |
 
-    Die Summe aller Reaktionen ist fast null: Was die Sonne hineinbringt,
+    Sonne und Reaktionen ergeben zusammen fast null: Was die Sonne hineinbringt,
     geht über Wasser und Glas wieder hinaus. Es bleiben rund −0,008 W übrig,
-    das ist gewollt (siehe unten).
+    das liegt am kurzen Stück (siehe unten).
 
 <figure style="text-align:center;">
   <img src="../../../images/p2_roehre_a_absorber.webp" alt="Fall a: Temperatur Absorber, 51,0 bis 52,1 °C" style="width:49%">
