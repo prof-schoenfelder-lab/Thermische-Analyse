@@ -62,7 +62,7 @@ In ANSYS gibt es nur **eine** Randbedingung `Radiation`. Im Detailfenster legt
 **Correlation** fest, wohin die Fläche strahlt:
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_strahlung_arten.svg" alt="To Ambient und Surface to Surface" class="no-lightbox">
+  <img src="../../images/p2_strahlung_arten.excalidraw.png" alt="To Ambient und Surface to Surface" class="no-lightbox">
 </figure>
 
 | | To Ambient | Surface to Surface |
@@ -141,7 +141,7 @@ dort ist keine Fläche. Ein großer Teil der Strahlung trifft deshalb gar
 nichts im Modell:
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_sichtfaktor.svg" alt="Längsschnitt: 20-mm-Stück mit offenen Enden und lange Röhre mit Nachbarstücken" class="no-lightbox">
+  <img src="../../images/p2_sichtfaktor.excalidraw.png" alt="Längsschnitt: 20-mm-Stück mit offenen Enden und lange Röhre mit Nachbarstücken" class="no-lightbox">
 </figure>
 
 | Strahlung vom … | trifft den Absorber | trifft das Glas | geht vorn und hinten hinaus |

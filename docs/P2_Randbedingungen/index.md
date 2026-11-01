@@ -20,42 +20,42 @@ Termin: **Mi 04.11.2026**
 
 <div class="prakt-cards">
   <a class="prakt-card" href="01_Grundlagen/Randbedingungen/">
-    <img class="prakt-cimg no-lightbox" src="images/p2_kuehlkoerper.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p2_rb_gruppen.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Randbedingungen im Überblick</span>
-      <span class="prakt-cdesc">Sieben Arten, was sie bedeuten, wann welche passt</span>
+      <span class="prakt-cdesc">Wo sie wirken, was sie bedeuten, wann welche passt</span>
     </span>
   </a>
   <a class="prakt-card" href="01_Grundlagen/Strahlung/">
-    <img class="prakt-cimg no-lightbox" src="images/p2_strahlung_arten.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p2_strahlung_arten.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Wärmestrahlung</span>
       <span class="prakt-cdesc">Emissionsgrad, To Ambient und Surface to Surface</span>
     </span>
   </a>
   <a class="prakt-card" href="02_Vorzeigebeispiel/Vakuumroehre/">
-    <img class="prakt-cimg no-lightbox" src="images/p2_roehre.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p2_roehre.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Vorzeigebeispiel</span>
       <span class="prakt-cdesc">Vakuumröhre eines Solarkollektors</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-1/">
-    <img class="prakt-cimg no-lightbox" src="images/p2_heizungsrohr.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p2_heizungsrohr.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 1</span>
       <span class="prakt-cdesc">Heizungsrohr im Keller</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-2/">
-    <img class="prakt-cimg no-lightbox" src="images/p2_kuehlkoerper.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p2_kuehlkoerper.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 2</span>
       <span class="prakt-cdesc">Kühlkörper eines Wechselrichters</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-3/">
-    <img class="prakt-cimg no-lightbox" src="images/p2_erdkabel.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p2_erdkabel.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 3</span>
       <span class="prakt-cdesc">Erdkabel im Windpark</span>

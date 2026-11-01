@@ -29,7 +29,7 @@ In diesem Beispiel kommen fast alle Randbedingungen vor:
     - **c)** **Stillstand**: Das Wasser steht, die Pumpe ist aus (optional)
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_roehre.svg" alt="Querschnitt der Vakuumröhre" class="no-lightbox">
+  <img src="../../images/p2_roehre.excalidraw.png" alt="Querschnitt der Vakuumröhre" class="no-lightbox">
 </figure>
 
 !!! info "Wozu das Absorberblech?"

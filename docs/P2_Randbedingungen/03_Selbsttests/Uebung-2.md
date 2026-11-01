@@ -11,7 +11,7 @@ Gehäuse ab. Unter dem Modul darf der Kühlkörper höchstens **100 °C** warm
 werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_kuehlkoerper.svg" alt="Kühlkörper mit Rippen" class="no-lightbox">
+  <img src="../../images/p2_kuehlkoerper.excalidraw.png" alt="Kühlkörper mit Rippen" class="no-lightbox">
 </figure>
 
 ## Gegeben

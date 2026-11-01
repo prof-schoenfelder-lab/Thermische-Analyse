@@ -9,7 +9,7 @@ verliert es, und welchen Anteil daran hat die Strahlung? Viele schätzen die
 Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_heizungsrohr.svg" alt="Heizungsrohr im Keller" class="no-lightbox">
+  <img src="../../images/p2_heizungsrohr.excalidraw.png" alt="Heizungsrohr im Keller" class="no-lightbox">
 </figure>
 
 ## Gegeben
@@ -17,13 +17,13 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 **Material**
 
 - Stahl: $\lambda = 50\ \mathrm{W/(m\,K)}$
-- nur für c) Dämmung: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
+- nur für d) Dämmung: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
 
 **Geometrie**
 
 - Stahlrohr DN 20: außen Ø 26,9 mm, Wanddicke 2,6 mm
 - Länge **1000 mm**, damit alle Wärmeströme direkt je Meter Rohr gelten
-- nur für c): Dämmung 20 mm dick um das Rohr (außen Ø 66,9 mm), zweiter Körper mit Share Topology
+- nur für d): Dämmung 20 mm dick um das Rohr (außen Ø 66,9 mm), zweiter Körper mit Share Topology
 
 **Netz**
 

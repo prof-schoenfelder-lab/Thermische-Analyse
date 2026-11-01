@@ -10,7 +10,7 @@ erzeugt Wärme. Die Isolierung aus vernetztem Polyethylen (VPE) verträgt
 dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden ab.
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_erdkabel.svg" alt="Erdkabel im Boden" class="no-lightbox">
+  <img src="../../images/p2_erdkabel.excalidraw.png" alt="Erdkabel im Boden" class="no-lightbox">
 </figure>
 
 ## Gegeben

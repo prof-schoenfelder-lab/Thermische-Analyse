@@ -9,7 +9,7 @@ sie hin?** Nach dem Ort, an dem sie wirken, gibt es drei Gruppen. Die Bilder
 stammen aus dem Vorzeigebeispiel und aus Übung 3.
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_rb_gruppen.svg" alt="Drei Gruppen von Randbedingungen: an der Systemgrenze, im ganzen Körper, überall" class="no-lightbox">
+  <img src="../../images/p2_rb_gruppen.excalidraw.png" alt="Drei Gruppen von Randbedingungen: an der Systemgrenze, im ganzen Körper, überall" class="no-lightbox">
 </figure>
 
 ## An der Systemgrenze
