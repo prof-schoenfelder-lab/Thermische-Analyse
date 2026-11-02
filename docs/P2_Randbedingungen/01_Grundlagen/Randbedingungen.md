@@ -63,13 +63,17 @@ und wird auf einen ganzen Körper gesetzt.
 Jede Randbedingung legt **eine** Größe am Rand fest, die andere rechnet ANSYS aus:
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_rb_kennlinien.excalidraw.png" alt="Wärmestrom über Temperatur der Fläche: feste Temperatur senkrecht, fester Wärmestrom waagerecht, Konvektion und Strahlung als Kennlinien" class="no-lightbox">
-  <figcaption>Beispiel: Luft und Umgebung 20&nbsp;°C, α&nbsp;=&nbsp;10&nbsp;W/(m²·K), ε&nbsp;=&nbsp;0,9</figcaption>
+  <img src="../../images/p2_rb_kennlinien.excalidraw.png" alt="Links: An einer Stelle der Fläche ist Temperatur oder Wärmestrom vorgegeben, die andere Größe ist Ergebnis. Rechts: Wärmestrom über Temperatur der Fläche für Konvektion und Strahlung" class="no-lightbox">
+  <figcaption>Rechts als Beispiel: Luft und Umgebung 20&nbsp;°C, α&nbsp;=&nbsp;10&nbsp;W/(m²·K), ε&nbsp;=&nbsp;0,9</figcaption>
 </figure>
 
 - **Temperatur:** Die Temperatur steht fest, der Wärmestrom über die Fläche ist Ergebnis.
 - **Wärmestrom, Wärmestromdichte:** Der Wärmestrom steht fest, die Temperatur der Fläche ist Ergebnis.
 - **Konvektion und Strahlung:** Weder Temperatur noch Wärmestrom stehen fest. Vorgegeben ist ein **Gesetz**, das beide verknüpft. Je wärmer die Fläche, desto mehr Wärme gibt sie ab.
+
+Die vorgegebene Größe darf sich über die Fläche ändern, in ANSYS als Tabelle
+oder Funktion des Orts. An jeder Stelle bleibt es dabei: Eine Größe ist
+vorgegeben, die andere ist Ergebnis.
 
 ## Zwei Randbedingungen auf derselben Fläche
 
