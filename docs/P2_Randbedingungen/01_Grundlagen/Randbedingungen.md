@@ -29,7 +29,6 @@ gehören die meisten Randbedingungen:
 | Strahlung | Flächen sehen andere Flächen oder die Umgebung, durch Luft oder Vakuum | Glas zum Himmel, Absorber zum Glas (Vorzeigebeispiel) | `Radiation`<br>ε und °C |
 | Wärmestromdichte | Leistung je Fläche ist bekannt und hängt nicht von der Temperatur der Fläche ab | Sonne auf dem Absorber (Vorzeigebeispiel) | `Heat Flux`<br>W/m² |
 | Wärmestrom | Gesamtleistung über eine Fläche ist bekannt, z. B. aus einem Datenblatt | Verlustleistung eines Halbleiters (Übung 2) | `Heat Flow`<br>W |
-| Isoliert (adiabat) | Über die Fläche fließt keine Wärme (siehe unten) | Seiten des Erdreichs (Übung 3) | `Perfectly Insulated` |
 
 ## Im ganzen Körper: Wärmeerzeugung
 
@@ -65,7 +64,7 @@ Jede Randbedingung legt **eine** Größe am Rand fest, die andere rechnet ANSYS 
 </figure>
 
 - **Temperatur:** Die Temperatur steht fest, der Wärmestrom über die Fläche ist Ergebnis.
-- **Wärmestrom, Wärmestromdichte, Isoliert:** Der Wärmestrom steht fest, die Temperatur der Fläche ist Ergebnis.
+- **Wärmestrom, Wärmestromdichte:** Der Wärmestrom steht fest, die Temperatur der Fläche ist Ergebnis.
 - **Konvektion und Strahlung:** Weder Temperatur noch Wärmestrom stehen fest. Vorgegeben ist ein **Gesetz**, das beide verknüpft. Je wärmer die Fläche, desto mehr Wärme gibt sie ab.
 
 ## Zwei Randbedingungen auf derselben Fläche
@@ -79,13 +78,17 @@ der Fläche: Mit fester Temperatur sind Konvektion oder Strahlung dort wirkungsl
 ## Flächen ohne Randbedingung
 
 Freie Flächen sind in ANSYS automatisch **isoliert** (adiabat): Über sie
-fließt keine Wärme. `Perfectly Insulated` muss man also nicht setzen, es macht
-die Annahme aber im Strukturbaum sichtbar. Isoliert ist richtig, wenn
+fließt keine Wärme. Das ist richtig, wenn
 
 - die Fläche wirklich gedämmt ist, oder
 - der Modellrand **weit genug** von der Wärmequelle entfernt ist, oder
 - es eine Schnittfläche in einem langen Bauteil ist, über die nichts fließt
   (wie die Stirnflächen eines Rohrstücks, Bild oben bei der festen Temperatur).
+
+!!! info "Hinweis: Isoliert muss man nicht setzen"
+    - Jede Fläche ohne Randbedingung ist schon isoliert
+    - In ANSYS gibt es dafür zwar `Perfectly Insulated`, das braucht man aber nur in einem Fall: Eine Last sitzt auf einem ganzen Körper, und einzelne Flächen sollen davon ausgenommen werden
+    - Beispiel: Konvektion auf dem ganzen Körper, nur die Standfläche liegt auf und gibt keine Wärme ab
 
 ## Wie viel Wärme geht über eine Randbedingung?
 
