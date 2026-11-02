@@ -97,10 +97,13 @@ Flächen ringsum gehören zur Strahlung:
     - Das Rohr sieht Wände, Decke und Boden: Deren Temperatur ist die Ambient Temperature
     - Im Keller sind Wände und Luft etwa gleich warm, beide 15 °C
 - **b) Draußen** ([Vorzeigebeispiel](../02_Vorzeigebeispiel/Vakuumroehre/index.md), Vakuumröhre)
-    - Die Röhre sieht vor allem den Himmel
-    - Bei klarem Wetter ist er etwa 15 K kälter als die Luft: im Beispiel 5 °C bei 20 °C Luft
-    - Bei bedecktem Himmel liegt er nur wenige Kelvin unter der Lufttemperatur
-    - Eine senkrechte Fläche sieht zur Hälfte den Boden, dann liegt der Wert zwischen Himmel- und Bodentemperatur
+    - Die obere Hälfte der Röhre sieht vor allem den Himmel, die untere vor allem den Boden: insgesamt je zur Hälfte
+    - Der Himmel ist bei klarem Wetter etwa 15 K kälter als die Luft (im Beispiel 5 °C bei 20 °C Luft), bei bedecktem Himmel nur wenige Kelvin
+    - Der Boden ist etwa so warm wie die Luft
+    - Genauer: zwei Strahlungsrandbedingungen, die obere Hälfte zum Himmel, die untere zum Boden
+    - Oder den Boden mitmodellieren und `Surface to Surface` mit `Open` verwenden: Was nicht auf den Boden trifft, geht an die `Ambient Temperature` des Himmels
+    - Das Vorzeigebeispiel vereinfacht: Die ganze Röhre strahlt zum Himmel. Die Nutzwärme ändert das kaum, das Glas wäre etwa 2 K wärmer
+    - Für eine senkrechte Wand gilt dasselbe: halb Himmel, halb Boden
 
 ## Surface to Surface: Sichtfaktor und Enclosure {: #sichtfaktor }
 
