@@ -19,6 +19,10 @@ aus Übung 3.
 Wärme geht über die Oberfläche in das Modell hinein oder aus ihm heraus. Dazu
 gehören die meisten Randbedingungen:
 
+<figure style="text-align:center;">
+  <img src="../../images/p2_rb_anwendung.excalidraw.png" alt="Wann welche Randbedingung an der Systemgrenze passt: Konvektion, Strahlung, Wärmestromdichte, Wärmestrom" class="no-lightbox">
+</figure>
+
 | Randbedingung | Anwendung | Beispiel in diesem Praktikum | in ANSYS (Eingabe) |
 |---|---|---|---|
 | Konvektion | Fluide bewegen sich entlang einer Grenzfläche | Wasser im Rohr, Luft außen (alle) | `Convection`<br>W/(m²·K) und °C |
@@ -43,12 +47,22 @@ wenn die Temperatur dort fest bleibt, egal wie viel Wärme fließt. An einer
 Oberfläche zur Luft ist eine feste Temperatur meist falsch (siehe Praktikum 1,
 Fall a).
 
+<figure style="text-align:center;">
+  <img src="../../images/p2_rb_schnitt.excalidraw.png" alt="Schnitt durch Erdreich und Rohr: feste Temperatur, wo sie bekannt ist, sonst frei lassen" class="no-lightbox">
+  <figcaption>Wo das Modell einen Festkörper schneidet: feste Temperatur oder frei lassen</figcaption>
+</figure>
+
 In ANSYS hält `Temperature` die Temperatur in °C fest, auf einer Fläche,
 einer Kante, einem Punkt oder einem ganzen Körper.
 
 ## Was vorgegeben wird, was herauskommt
 
 Jede Randbedingung legt **eine** Größe am Rand fest, die andere rechnet ANSYS aus:
+
+<figure style="text-align:center;">
+  <img src="../../images/p2_rb_kennlinien.excalidraw.png" alt="Wärmestrom über Temperatur der Fläche: feste Temperatur senkrecht, fester Wärmestrom waagerecht, Konvektion und Strahlung als Kennlinien" class="no-lightbox">
+  <figcaption>Beispiel: Luft und Umgebung 20&nbsp;°C, α&nbsp;=&nbsp;10&nbsp;W/(m²·K), ε&nbsp;=&nbsp;0,9</figcaption>
+</figure>
 
 - **Temperatur:** Die Temperatur steht fest, der Wärmestrom über die Fläche ist Ergebnis.
 - **Wärmestrom, Wärmestromdichte, Isoliert:** Der Wärmestrom steht fest, die Temperatur der Fläche ist Ergebnis.
@@ -58,7 +72,7 @@ Jede Randbedingung legt **eine** Größe am Rand fest, die andere rechnet ANSYS 
 
 Konvektion und Strahlung wirken an einer Oberfläche immer gleichzeitig. In
 ANSYS setzt man dafür einfach **beide** auf dieselbe Fläche: Ihre
-Wärmeströme addieren sich. Das gilt für alle Randbedingungen, die einen
+Wärmeströme addieren sich (im Bild oben die Linie „beide zusammen“). Das gilt für alle Randbedingungen, die einen
 Wärmestrom beschreiben. Eine **Temperatur** dagegen schlägt alles andere auf
 der Fläche: Mit fester Temperatur sind Konvektion oder Strahlung dort wirkungslos.
 
@@ -71,7 +85,7 @@ die Annahme aber im Strukturbaum sichtbar. Isoliert ist richtig, wenn
 - die Fläche wirklich gedämmt ist, oder
 - der Modellrand **weit genug** von der Wärmequelle entfernt ist, oder
 - es eine Schnittfläche in einem langen Bauteil ist, über die nichts fließt
-  (wie die Stirnflächen eines Rohrstücks).
+  (wie die Stirnflächen eines Rohrstücks, Bild oben bei der festen Temperatur).
 
 ## Wie viel Wärme geht über eine Randbedingung?
 
