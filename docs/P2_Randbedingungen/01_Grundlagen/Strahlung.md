@@ -79,13 +79,28 @@ In ANSYS gibt es nur **eine** Randbedingung `Radiation`. Im Detailfenster legt
 | Einsatz | Rohr im Raum, Bauteil im Freien | Spalte, Hohlräume, Flächen, die sich sehen |
 | Zusätzliche Eingaben | | `Enclosure` (Nummer), `Enclosure Type` |
 
-- **Ambient Temperature** bei `To Ambient` ist die Temperatur der Flächen, die
-  die Strahlung empfangen, **nicht** die Lufttemperatur. Im Keller sind Wände
-  und Luft etwa gleich warm. Unter freiem Himmel ist der Himmel deutlich
-  kälter als die Luft, bei klarem Wetter etwa 15 K.
-- **Surface to Surface:** Alle Flächen mit derselben `Enclosure`-Nummer
-  strahlen sich gegenseitig an. Was dahintersteckt, steht im nächsten
-  Abschnitt.
+Bei **Surface to Surface** strahlen sich alle Flächen mit derselben
+`Enclosure`-Nummer gegenseitig an. Was dahintersteckt, steht weiter unten.
+
+### Welche Temperatur ist die Ambient Temperature?
+
+Bei `To Ambient` ist die `Ambient Temperature` die Temperatur der Flächen, die
+die Strahlung empfangen, **nicht** die Lufttemperatur. Die Luft lässt
+Wärmestrahlung fast ungehindert durch. Die Luft gehört zur Konvektion, die
+Flächen ringsum gehören zur Strahlung:
+
+<figure style="text-align:center;">
+  <img src="../../images/p2_ambient.excalidraw.png" alt="Ambient Temperature im Keller (Wände 15 °C) und draußen (Himmel 5 °C bei 20 °C Luft)" class="no-lightbox">
+</figure>
+
+- **a) Im Raum** ([Übung 1](../03_Selbsttests/Uebung-1.md), Heizungsrohr im Keller)
+    - Das Rohr sieht Wände, Decke und Boden: Deren Temperatur ist die Ambient Temperature
+    - Im Keller sind Wände und Luft etwa gleich warm, beide 15 °C
+- **b) Draußen** ([Vorzeigebeispiel](../02_Vorzeigebeispiel/Vakuumroehre/index.md), Vakuumröhre)
+    - Die Röhre sieht vor allem den Himmel
+    - Bei klarem Wetter ist er etwa 15 K kälter als die Luft: im Beispiel 5 °C bei 20 °C Luft
+    - Bei bedecktem Himmel liegt er nur wenige Kelvin unter der Lufttemperatur
+    - Eine senkrechte Fläche sieht zur Hälfte den Boden, dann liegt der Wert zwischen Himmel- und Bodentemperatur
 
 ## Surface to Surface: Sichtfaktor und Enclosure {: #sichtfaktor }
 
