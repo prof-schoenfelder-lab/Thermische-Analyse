@@ -36,6 +36,12 @@
         { "titel": "Übung 2", "extern": "P2_Randbedingungen/03_Selbsttests/Uebung-2.md" },
         { "titel": "Übung 3", "extern": "P2_Randbedingungen/03_Selbsttests/Uebung-3.md" }
       ]
+    },
+    {
+      "gruppe": "ZUSAMMENFASSUNG",
+      "kinder": [
+        { "titel": "Zusammenfassung", "extern": "P2_Randbedingungen/Zusammenfassung.md" }
+      ]
     }
   ]
 }
