@@ -98,7 +98,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Temperatur der Estrichoberfläche über dem Rohr in °C
 
-<div class="numeric-question" data-answer="29.87" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Temperatur am Ende des Pfads durch die Rohrmitte (Oberseite). Im Rohr Convection 1000 bei 35 °C, oben Convection 10,8 bei 20 °C?">
+<div class="numeric-question" data-answer="29.87" data-tolerance="0.15" data-points="5" data-attempts="5" data-hints="Temperatur am Ende des Pfads durch die Rohrmitte (Oberseite); Im Rohr Konvektion 1000 bei 35 °C?; Oben Konvektion 10,8 bei 20 °C?">
 </div>
 
 ### Temperatur der Estrichoberfläche genau in der Mitte zwischen zwei Rohren in °C
@@ -108,7 +108,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 ### Mittlere Wärmestromdichte an der Estrichoberfläche (Wärmeabgabe je m² Fußboden) in W/m²
 
-<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Directional Heat Flux auf der Oberseite, Richtung senkrecht zur Oberfläche, Mittelwert (Average). Nicht entlang eines Pfads mitteln: Über dem Rohr tritt mehr Wärme aus.">
+<div class="numeric-question" data-answer="100.2" data-tolerance="3" data-points="5" data-attempts="5" data-hints="Directional Heat Flux auf der Oberseite; Richtung senkrecht zur Oberfläche; Mittelwert (Average) ablesen; Nicht entlang eines Pfads mitteln: Über dem Rohr tritt mehr Wärme aus">
 </div>
 
 ### Wird der Grenzwert von 29 °C an der Oberfläche eingehalten?

@@ -23,6 +23,14 @@
   function markDone(qid) { try { localStorage.setItem('answer_done_' + qid, '1'); } catch (e) { } }
   function cacheSolution(qid, sol) { try { localStorage.setItem('answer_solution_' + qid, JSON.stringify(sol)); } catch (e) { } }
   function cachedSolution(qid) { return safeJSONParse(localStorage.getItem('answer_solution_' + qid)); }
+  // Hinweis nach einem Fehlversuch: mit "|" getrennte Hinweise kommen nacheinander, der letzte bleibt stehen;
+  // mehrere Punkte in einem Hinweis (mit ";" getrennt) erscheinen als Liste
+  function hinweisHtml(hints, attempts, cls) {
+    var h = hints[Math.min(attempts, hints.length) - 1];
+    if (!h) return '';
+    var punkte = h.split(';').map(function (p) { return p.trim(); }).filter(Boolean);
+    return '<div class="' + cls + '">Hinweis:' + (punkte.length > 1 ? '<ul><li>' + punkte.join('</li><li>') + '</li></ul>' : ' ' + h) + '</div>';
+  }
   var CHECK_OFFLINE_MSG = 'Antwortprüfung nicht erreichbar — dafür ist das HTWK-Netz oder VPN nötig.';
   function opalLoginLink() {
     var url = window.AC_OPAL_URL;
@@ -1029,7 +1037,7 @@
           } else {
             var aa = res.attemptsAllowed || attemptsAllowed;
             var s2 = '<span class="numeric-wrong">Noch nicht richtig (' + attempts + '/' + aa + ').</span>';
-            if (hints[attempts - 1]) s2 += '<div class="numeric-hint">Hinweis: ' + hints[attempts - 1] + '</div>';
+            s2 += hinweisHtml(hints, attempts, 'numeric-hint');
             fb.innerHTML = s2;
             if (attempts >= aa) {
               if (res.authed) scoreEl.textContent = 'Punkte: 0/' + points;
@@ -1076,7 +1084,7 @@
         try { showSolutionImages(); } catch (e) { }
       } else {
         var s = '<span class="numeric-wrong">Noch nicht richtig (' + attempts + '/' + attemptsAllowed + ').</span>';
-        if (hints[attempts - 1]) s += '<div class="numeric-hint">Hinweis: ' + hints[attempts - 1] + '</div>';
+        s += hinweisHtml(hints, attempts, 'numeric-hint');
         fb.innerHTML = s;
         if (attempts >= attemptsAllowed) {
           scoreEl.textContent = 'Punkte: 0/' + points;
@@ -1259,7 +1267,7 @@
           } else {
             var aa = res.attemptsAllowed || attemptsAllowed;
             var s2 = '<span class="mc-wrong">Noch nicht richtig (' + attempts + '/' + aa + ').</span>';
-            if (hints[attempts - 1]) s2 += '<div class="mc-hint">Hinweis: ' + hints[attempts - 1] + '</div>';
+            s2 += hinweisHtml(hints, attempts, 'mc-hint');
             fb.innerHTML = s2;
             if (attempts >= aa) {
               if (res.authed) scoreEl.textContent = 'Punkte: 0/' + points;
@@ -1321,7 +1329,7 @@
         try { showSolutionImages(); } catch (e) { }
       } else {
         var s = '<span class="mc-wrong">Noch nicht richtig (' + attempts + '/' + attemptsAllowed + ').</span>';
-        if (hints[attempts - 1]) s += '<div class="mc-hint">Hinweis: ' + hints[attempts - 1] + '</div>';
+        s += hinweisHtml(hints, attempts, 'mc-hint');
         fb.innerHTML = s;
         if (attempts >= attemptsAllowed) {
           scoreEl.textContent = 'Punkte: 0/' + points;

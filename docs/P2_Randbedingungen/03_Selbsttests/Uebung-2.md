@@ -84,12 +84,12 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 
 ### a) Höchste Temperatur, schwarz eloxiert, in °C
 
-<div class="numeric-question" data-answer="82.53" data-tolerance="1" data-points="5" data-attempts="5" data-hints="Heat Flow 40 W nur auf der Fläche unter dem Modul? Konvektion 6 bei 40 °C und Strahlung 0,85 bei 40 °C auf allen Flächen außer der Rückseite?">
+<div class="numeric-question" data-answer="82.53" data-tolerance="1" data-points="5" data-attempts="5" data-hints="Wärmestrom (Heat Flow) 40 W nur auf der Fläche unter dem Modul?; Konvektion 6 bei 40 °C und Strahlung 0,85 bei 40 °C auf allen Flächen außer der Rückseite?">
 </div>
 
 ### b) Höchste Temperatur, blank, in °C
 
-<div class="numeric-question" data-answer="122.08" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="Nur die Emissivity ändert sich auf 0,05. Die Konvektion bleibt.">
+<div class="numeric-question" data-answer="122.08" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="Nur die Emissivity ändert sich auf 0,05; Die Konvektion bleibt">
 </div>
 
 ### Welche Ausführung hält die Grenze von 100 °C ein?

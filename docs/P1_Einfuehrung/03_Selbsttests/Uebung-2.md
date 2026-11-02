@@ -114,12 +114,12 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 ### Oberflächentemperatur innen in der Ecke $T_{si}$ in °C
 
-<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Temperatur im Eckpunkt an der Innenkante der Ecke (Vertex auswählen). Innen α = 4 und 20 °C, außen α = 25 und −5 °C? Beide Körper mit Material und Share Topology?">
+<div class="numeric-question" data-answer="17.39" data-tolerance="0.1" data-points="5" data-attempts="5" data-hints="Temperatur im Eckpunkt an der Innenkante der Ecke (Vertex auswählen); Innen α = 4 und 20 °C, außen α = 25 und −5 °C?; Beide Körper mit Material und Share Topology?">
 </div>
 
 ### Temperaturfaktor $f_{Rsi} = \dfrac{T_{si} - T_e}{T_i - T_e}$ in der Ecke
 
-<div class="numeric-question" data-answer="0.896" data-tolerance="0.005" data-points="5" data-attempts="5" data-hints="Zähler: T_si − (−5 °C) = T_si + 5 K. Nenner: 20 °C − (−5 °C) = 25 K.">
+<div class="numeric-question" data-answer="0.896" data-tolerance="0.005" data-points="5" data-attempts="5" data-hints="Zähler: T_si − (−5 °C) = T_si + 5 K; Nenner: 20 °C − (−5 °C) = 25 K">
 </div>
 
 ### Erfüllt die Ecke den Mindestwärmeschutz ($f_{Rsi} \ge 0{,}70$)?

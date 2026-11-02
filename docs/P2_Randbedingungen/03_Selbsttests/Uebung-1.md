@@ -88,12 +88,12 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 ### a) Wärmeverlust je Meter Rohr nur mit Konvektion (ohne Strahlung) in W
 
-<div class="numeric-question" data-answer="26.38" data-tolerance="0.4" data-points="5" data-attempts="5" data-hints="Strahlung unterdrückt (Suppress)? Reaction Probe der Konvektion außen ablesen, Betrag nehmen. Rohr 1000 mm lang? Konvektion innen 1000 bei 60 °C, außen 7 bei 15 °C.">
+<div class="numeric-question" data-answer="26.38" data-tolerance="0.4" data-points="5" data-attempts="5" data-hints="Strahlung unterdrückt (Suppress)?; Reaction Probe der Konvektion außen ablesen und den Betrag nehmen; Rohr 1000 mm lang?; Konvektion innen 1000 bei 60 °C, außen 7 bei 15 °C?">
 </div>
 
 ### b) Wärmeverlust je Meter Rohr mit Konvektion und Strahlung in W
 
-<div class="numeric-question" data-answer="49.09" data-tolerance="0.7" data-points="5" data-attempts="5" data-hints="Beide Reaktionen der Außenfläche addieren: Konvektion und Strahlung. Strahlung To Ambient mit Emissivity 0,9 und Ambient Temperature 15 °C?">
+<div class="numeric-question" data-answer="49.09" data-tolerance="0.7" data-points="5" data-attempts="5" data-hints="Beide Reaktionen der Außenfläche addieren: Konvektion und Strahlung; Strahlung To Ambient mit Emissivity 0,9 und Ambient Temperature 15 °C?">
 </div>
 
 ### c) Anteil der Strahlung am Wärmeverlust aus b) in %
@@ -103,7 +103,7 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 ### d) Optional: Wärmeverlust je Meter mit 20 mm Dämmung in W
 
-<div class="numeric-question" data-answer="9.8" data-tolerance="0.3" data-points="5" data-attempts="5" data-hints="Dämmung als zweiter Körper (Ø 66,9 mm außen, No merge, Share Topology), Material Dämmung 0,035. Konvektion und Strahlung jetzt auf der Außenfläche der Dämmung.">
+<div class="numeric-question" data-answer="9.8" data-tolerance="0.3" data-points="5" data-attempts="5" data-hints="Dämmung als zweiter Körper (Ø 66,9 mm außen, No merge, Share Topology); Material Dämmung 0,035; Konvektion und Strahlung jetzt auf der Außenfläche der Dämmung">
 </div>
 
 <div class="solution-images" markdown="1">

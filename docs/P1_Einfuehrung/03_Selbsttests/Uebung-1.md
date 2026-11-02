@@ -76,7 +76,7 @@ Ergebnis lässt sich von Hand prüfen.
 
 ### Wärmestromdichte durch die sanierte Wand in W/m²
 
-<div class="numeric-question" data-answer="6.37" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Zwei Körper mit Share Topology? Vollziegel 365 mm und EPS 140 mm, Materialien richtig zugewiesen? Konvektion innen 7,7 bei 20 °C, außen 25 bei −10 °C? Einheitensystem Metric (m)?">
+<div class="numeric-question" data-answer="6.37" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Zwei Körper mit Share Topology?; Vollziegel 365 mm und EPS 140 mm?; Materialien richtig zugewiesen?; Konvektion innen 7,7 bei 20 °C, außen 25 bei −10 °C?; Einheitensystem Metric (m)?">
 </div>
 
 ### U-Wert der sanierten Wand in W/(m²·K)

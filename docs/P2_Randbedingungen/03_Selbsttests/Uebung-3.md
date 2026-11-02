@@ -94,17 +94,17 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 ### Wärmeerzeugung im Leiter in W/m³
 
-<div class="numeric-question" data-answer="148099" data-tolerance="1500" data-points="5" data-attempts="5" data-hints="ρ = 0,0282 Ω·mm²/m = 2,82·10⁻⁸ Ω·m, A = 240 mm² = 2,4·10⁻⁴ m². Formel I²·ρ/A².">
+<div class="numeric-question" data-answer="148099" data-tolerance="1500" data-points="5" data-attempts="5" data-hints="ρ = 0,0282 Ω·mm²/m = 2,82·10⁻⁸ Ω·m; A = 240 mm² = 2,4·10⁻⁴ m²; Formel I²·ρ/A²">
 </div>
 
 ### a) Höchste Leitertemperatur im feuchten Boden in °C
 
-<div class="numeric-question" data-answer="57.72" data-tolerance="0.8" data-points="5" data-attempts="5" data-hints="Wärmeerzeugung auf dem Körper Leiter (nicht auf einer Fläche)? Netzgröße 2 mm an Leiter und Isolierung? Unterseite 10 °C, Oberseite Konvektion 10 bei 20 °C, Boden λ = 1,0.">
+<div class="numeric-question" data-answer="57.72" data-tolerance="0.8" data-points="5" data-attempts="5" data-hints="Wärmeerzeugung auf dem Körper Leiter (nicht auf einer Fläche)?; Netzgröße 2 mm an Leiter und Isolierung?; Unterseite 10 °C?; Oberseite Konvektion 10 bei 20 °C?; Boden λ = 1,0?">
 </div>
 
 ### b) Höchste Leitertemperatur im trockenen Sand in °C
 
-<div class="numeric-question" data-answer="95.67" data-tolerance="1.2" data-points="5" data-attempts="5" data-hints="Nur das Material des Erdreichs ändert sich: λ = 0,4. Alles andere wie in a).">
+<div class="numeric-question" data-answer="95.67" data-tolerance="1.2" data-points="5" data-attempts="5" data-hints="Nur das Material des Erdreichs ändert sich: λ = 0,4; Alles andere wie in a)">
 </div>
 
 ### Hält das Kabel die Grenze von 90 °C ein?
