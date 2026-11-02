@@ -5,19 +5,21 @@ title: Randbedingungen im Überblick
 # Randbedingungen im Überblick
 
 Randbedingungen beantworten die Frage: **Wo kommt die Wärme her, und wo geht
-sie hin?** Nach dem Ort, an dem sie wirken, gibt es drei Gruppen. Die Bilder
+sie hin?** Nach dem Ort, an dem sie wirken, gibt es zwei Gruppen: an der
+Systemgrenze und im ganzen Körper. Die Bilder
 zeigen die [Vakuumröhre eines Solarkollektors](../02_Vorzeigebeispiel/Vakuumroehre/index.md)
 aus dem Vorzeigebeispiel und das [Erdkabel im Windpark](../03_Selbsttests/Uebung-3.md)
 aus Übung 3.
 
 <figure style="text-align:center;">
-  <img src="../../images/p2_rb_gruppen.excalidraw.png" alt="Drei Gruppen von Randbedingungen: an der Systemgrenze, im ganzen Körper, überall" class="no-lightbox">
+  <img src="../../images/p2_rb_gruppen.excalidraw.png" alt="Randbedingungen an der Systemgrenze und im ganzen Körper" class="no-lightbox">
 </figure>
 
 ## An der Systemgrenze
 
-Wärme geht über die Oberfläche in das Modell hinein oder aus ihm heraus. Dazu
-gehören die meisten Randbedingungen:
+Wärme geht über die Oberfläche in das Modell hinein oder aus ihm heraus, oder
+die Temperatur der Oberfläche steht fest. Dazu gehören alle Randbedingungen
+außer der Wärmeerzeugung:
 
 <figure style="text-align:center;">
   <img src="../../images/p2_rb_anwendung.excalidraw.png" alt="Wann welche Randbedingung an der Systemgrenze passt: Konvektion, Strahlung, Wärmestromdichte, Wärmestrom" class="no-lightbox">
@@ -29,16 +31,9 @@ gehören die meisten Randbedingungen:
 | Strahlung | Flächen sehen andere Flächen oder die Umgebung, durch Luft oder Vakuum | Glas zum Himmel, Absorber zum Glas (Vorzeigebeispiel) | `Radiation`<br>ε und °C |
 | Wärmestromdichte | Leistung je Fläche ist bekannt und hängt nicht von der Temperatur der Fläche ab | Sonne auf dem Absorber (Vorzeigebeispiel) | `Heat Flux`<br>W/m² |
 | Wärmestrom | Gesamtleistung über eine Fläche ist bekannt, z. B. aus einem Datenblatt | Verlustleistung eines Halbleiters (Übung 2) | `Heat Flow`<br>W |
+| Feste Temperatur | Festkörper werden geschnitten, und an der Schnittfläche ist die Temperatur bekannt | Erdreich in 3 m Tiefe (Übung 3) | `Temperature`<br>°C |
 
-## Im ganzen Körper: Wärmeerzeugung
-
-**Anwendung:** Wärme entsteht im Material selbst, z. B. durch elektrischen
-Strom im Leiter des Erdkabels (Übung 3).
-
-In ANSYS gibt `Internal Heat Generation` die Leistung je Volumen in W/m³ vor
-und wird auf einen ganzen Körper gesetzt.
-
-## Überall: feste Temperatur
+### Feste Temperatur
 
 **Anwendung:** Festkörper werden geschnitten, und an der Schnittfläche ist die
 Temperatur bekannt, z. B. das Erdreich in 3 m Tiefe (Übung 3). Das passt nur,
@@ -51,8 +46,17 @@ Fall a).
   <figcaption>Wo das Modell einen Festkörper schneidet: feste Temperatur oder frei lassen</figcaption>
 </figure>
 
-In ANSYS hält `Temperature` die Temperatur in °C fest, auf einer Fläche,
-einer Kante, einem Punkt oder einem ganzen Körper.
+In ANSYS hält `Temperature` die Temperatur in °C fest. Setzen lässt sie sich
+auch auf Kanten, Punkte oder ganze Körper, gebraucht wird sie aber an Flächen
+der Systemgrenze. In 2D-Modellen (Praktikum 3) sind das Kanten.
+
+## Im ganzen Körper: Wärmeerzeugung
+
+**Anwendung:** Wärme entsteht im Material selbst, z. B. durch elektrischen
+Strom im Leiter des Erdkabels (Übung 3).
+
+In ANSYS gibt `Internal Heat Generation` die Leistung je Volumen in W/m³ vor
+und wird auf einen ganzen Körper gesetzt.
 
 ## Was vorgegeben wird, was herauskommt
 

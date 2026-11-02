@@ -12,7 +12,7 @@ Vorzeigebeispiel der Vakuumröhre eines Solarkollektors: Sonne, Wasser, Luft
 und Wärmestrahlung zum Himmel und zwischen Absorber und Glas.
 
 <figure style="text-align:center;">
-  <img src="../images/p2_rb_gruppen.excalidraw.png" alt="Drei Gruppen von Randbedingungen: an der Systemgrenze, im ganzen Körper, überall" class="no-lightbox">
+  <img src="../images/p2_rb_gruppen.excalidraw.png" alt="Randbedingungen an der Systemgrenze und im ganzen Körper" class="no-lightbox">
 </figure>
 
 Die wichtigsten Kernaussagen:
@@ -20,11 +20,10 @@ Die wichtigsten Kernaussagen:
 <div class="steps" markdown="1" data-spickzettel="ja">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Randbedingungen wirken an der Systemgrenze, im ganzen Körper oder überall</p>
+    <p class="step-title" role="heading" aria-level="2">Randbedingungen wirken an der Systemgrenze oder im ganzen Körper</p>
     <ul>
-      <li>An der Systemgrenze: Konvektion, Strahlung, Wärmestromdichte, Wärmestrom</li>
+      <li>An der Systemgrenze: Konvektion, Strahlung, Wärmestromdichte, Wärmestrom, feste Temperatur</li>
       <li>Im ganzen Körper: Wärmeerzeugung</li>
-      <li>Überall: feste Temperatur auf Fläche, Kante, Punkt oder Körper</li>
     </ul>
   </div>
 
