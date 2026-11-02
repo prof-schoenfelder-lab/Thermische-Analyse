@@ -81,7 +81,7 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 ### d) Optional: Wärmeverlust je Meter mit 20 mm Dämmung in W
 
-<div class="numeric-question" data-answer="9.88" data-tolerance="0.2" data-points="5" data-attempts="5" data-hints="Dämmung als zweiter Körper (Ø 66,9 mm außen, No merge, Share Topology), Material Dämmung 0,035. Konvektion und Strahlung jetzt auf der Außenfläche der Dämmung.">
+<div class="numeric-question" data-answer="9.8" data-tolerance="0.3" data-points="5" data-attempts="5" data-hints="Dämmung als zweiter Körper (Ø 66,9 mm außen, No merge, Share Topology), Material Dämmung 0,035. Konvektion und Strahlung jetzt auf der Außenfläche der Dämmung.">
 </div>
 
 <div class="solution-images" markdown="1">
@@ -91,7 +91,7 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 - a) nur Konvektion: **26,4 W/m**, Rohroberfläche 59,6 °C
 - b) mit Strahlung: **49,1 W/m**, davon Konvektion 26,2 W/m und Strahlung 22,9 W/m
 - c) Strahlung **47 %**: fast die Hälfte. Bei 60 °C ist die Strahlung so groß wie die freie Konvektion
-- d) mit Dämmung: **9,9 W/m**, ein Fünftel. Deshalb verlangt das Gebäudeenergiegesetz Dämmung an Heizungsrohren in unbeheizten Räumen
+- d) mit Dämmung: **rund 9,8 W/m**, ein Fünftel. Deshalb verlangt das Gebäudeenergiegesetz Dämmung an Heizungsrohren in unbeheizten Räumen
 - Die Rohrwand selbst spielt kaum eine Rolle: Stahl leitet gut, die Oberfläche ist weniger als 1 K kälter als das Wasser
 
 </div>
