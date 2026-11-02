@@ -30,17 +30,32 @@ Geometrie aus Kreisen und einem Rechteck.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Vier Kreise und ein Rechteck</p>
-    <p><code>Rechtsklick Geometry → New SpaceClaim Geometry...</code>. Mit <code>Circle</code> vier Kreise um den Ursprung zeichnen: Ø <strong>70</strong>, <strong>65</strong>, <strong>12</strong> und <strong>10</strong> mm (auf den Ursprung klicken, Durchmesser eintippen, <code>Enter</code>). Dann <code>Rectangle</code>, links unter <code>Options</code> <strong>Define rectangle from center</strong> einschalten, auf den Ursprung klicken, <strong>60</strong> mm × <strong>0,5</strong> mm</p>
+    <ul>
+      <li><code>Rechtsklick Geometry → New SpaceClaim Geometry...</code></li>
+      <li>Mit <code>Circle</code> vier Kreise um den Ursprung zeichnen: Ø <strong>70</strong>, <strong>65</strong>, <strong>12</strong> und <strong>10</strong> mm (auf den Ursprung klicken, Durchmesser eintippen, <code>Enter</code>)</li>
+      <li>Dann <code>Rectangle</code>: links unter <code>Options</code> <strong>Define rectangle from center</strong> einschalten</li>
+      <li>Auf den Ursprung klicken und <strong>60</strong> mm × <strong>0,5</strong> mm eingeben</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Vakuum und Wasser entfernen</p>
-    <p>Skizze beenden (<code>Pull</code>, Taste <code>P</code>). Die Flächen, die kein Körper werden, anklicken und mit <code>Entf</code> löschen: alles <strong>innerhalb Ø 10 mm</strong> (Wasser, drei Flächen). Liegt zwischen Rohr und Glas eine Fläche (Vakuum), diese ebenfalls löschen</p>
+    <ul>
+      <li>Skizze beenden (<code>Pull</code>, Taste <code>P</code>)</li>
+      <li>Die Flächen, die kein Körper werden, anklicken und mit <code>Entf</code> löschen: alles <strong>innerhalb Ø 10 mm</strong> (Wasser, drei Flächen)</li>
+      <li>Liegt zwischen Rohr und Glas eine Fläche (Vakuum), diese ebenfalls löschen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Zwei Körper ziehen</p>
-    <p>Mit <code>Pull</code> den Glasring <strong>20 mm</strong> ziehen. Danach alle Flächen von Blech und Kupferrohr mit <code>Strg</code> markieren (sechs Flächen: zwei Blechflügel, zwei Rohrhälften, zwei kleine Blechstücke in der Rohrwand) und ebenfalls <strong>20 mm</strong> ziehen. Das Blech ist nur 0,5 mm dick: stark heranzoomen, sonst trifft der Klick eine Kante statt der Fläche. Im Strukturbaum die beiden Körper umbenennen: <strong>Glas</strong> und <strong>Absorber</strong>. Share Topology ist nicht nötig, die Körper berühren sich nicht</p>
+    <ul>
+      <li>Mit <code>Pull</code> den Glasring <strong>20 mm</strong> ziehen</li>
+      <li>Danach alle Flächen von Blech und Kupferrohr mit <code>Strg</code> markieren (sechs Flächen: zwei Blechflügel, zwei Rohrhälften, zwei kleine Blechstücke in der Rohrwand) und ebenfalls <strong>20 mm</strong> ziehen</li>
+      <li>Das Blech ist nur 0,5 mm dick: stark heranzoomen, sonst trifft der Klick eine Kante statt der Fläche</li>
+      <li>Im Strukturbaum die beiden Körper umbenennen: <strong>Glas</strong> und <strong>Absorber</strong></li>
+      <li>Share Topology ist nicht nötig, die Körper berühren sich nicht</li>
+    </ul>
   </div>
 
 </div>
@@ -62,7 +77,7 @@ Geometrie aus Kreisen und einem Rechteck.
 ??? tip "Kurzanleitung: Zuweisung und Netz"
     1. Im Projektmenü `Rechtsklick Model → Edit...`, unten rechts das Einheitensystem **Metric (m, kg, N, s, V, A)** mit Temperatur in **Celsius** prüfen
     2. `Strukturbaum Geometry` aufklappen, Körper **Glas** anklicken, im `Detailfenster` bei **Assignment** **Glas** wählen, Körper **Absorber** mit **Kupfer**
-    3. `Strukturbaum Mesh` anklicken, im `Detailfenster` bei **Element Size** **0,002** m eintragen
+    3. `Strukturbaum Mesh` anklicken, im `Detailfenster` bei **Element Size** **0,002** m eintragen (= 2 mm)
     4. `Rechtsklick Mesh → Generate Mesh`
 
 Weiter mit den [Randbedingungen](02-randbedingungen.md).

@@ -43,22 +43,39 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Querschnitt skizzieren: Rechteck <strong>100 × 8</strong> mm ab dem Ursprung, darauf am linken Rand ein Rechteck <strong>2 × 40</strong> mm (erste Rippe). Alles <strong>100 mm</strong> ziehen. Die Rippe mit <code>Move</code> und der Option <strong>Create Patterns</strong> in 14 mm Abstand auf insgesamt 8 Rippen vervielfachen, sodass ein einziger Körper entsteht. Alternativ alle 8 Rippen gleich in der Skizze zeichnen (Rechtecke 2 × 40 mm bei x = 0, 14, 28 … 98 mm) und zusammen mit der Platte ziehen</p>
+    <ul>
+      <li>Querschnitt skizzieren: Rechteck <strong>100 × 8</strong> mm ab dem Ursprung</li>
+      <li>Darauf am linken Rand ein Rechteck <strong>2 × 40</strong> mm (erste Rippe)</li>
+      <li>Alles <strong>100 mm</strong> ziehen</li>
+      <li>Die Rippe mit <code>Move</code> und der Option <strong>Create Patterns</strong> in 14 mm Abstand auf insgesamt 8 Rippen vervielfachen, sodass ein einziger Körper entsteht</li>
+      <li>Alternativ alle 8 Rippen gleich in der Skizze zeichnen (Rechtecke 2 × 40 mm bei x = 0, 14, 28 … 98 mm) und zusammen mit der Platte ziehen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Fläche für das Modul</p>
-    <p>Auf der Rückseite skizzieren: <code>Rectangle</code> mit <strong>Define rectangle from center</strong> im Mittelpunkt der Fläche, <strong>50 × 50</strong> mm. Skizze beenden: Die Rückseite ist jetzt in zwei Flächen geteilt</p>
+    <ul>
+      <li>Auf der Rückseite skizzieren: <code>Rectangle</code> mit <strong>Define rectangle from center</strong> im Mittelpunkt der Fläche, <strong>50 × 50</strong> mm</li>
+      <li>Skizze beenden: Die Rückseite ist jetzt in zwei Flächen geteilt</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wärmestrom und viele Flächen auf einmal</p>
-    <p>Fläche unter dem Modul: <code>Heat Flow</code> 40 W. Für Luft und Strahlung: oben <code>Face</code>, mit <code>Strg + A</code> alle Flächen auswählen und mit <code>Strg</code>-Klick die beiden Flächen der Rückseite wieder abwählen. Darauf <code>Convection</code> und <code>Radiation</code> (To Ambient)</p>
+    <ul>
+      <li>Fläche unter dem Modul: <code>Heat Flow</code> 40 W</li>
+      <li>Für Luft und Strahlung: oben <code>Face</code> wählen und mit <code>Strg + A</code> alle Flächen auswählen</li>
+      <li>Mit <code>Strg</code>-Klick die beiden Flächen der Rückseite wieder abwählen</li>
+      <li>Darauf <code>Convection</code> und <code>Radiation</code> (To Ambient)</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Auswerten</p>
-    <p><code>Temperature</code> im ganzen Modell, Maximum ablesen. Für b) nur die <strong>Emissivity</strong> der Strahlung auf 0,05 ändern und neu lösen</p>
+    <ul>
+      <li><code>Temperature</code> im ganzen Modell einfügen und das Maximum ablesen</li>
+      <li>Für b) nur die <strong>Emissivity</strong> der Strahlung auf 0,05 ändern und neu lösen</li>
+    </ul>
   </div>
 
 </div>

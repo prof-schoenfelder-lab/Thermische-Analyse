@@ -31,11 +31,11 @@ Diese fünf Named Selections braucht die Röhre:
 
 | Name | Entity Type | Criterion | Value | für |
 |---|---|---|---|---|
-| Oberseiten Blech | Face | Location X | 0,00025 m | Sonne |
-| Rohr innen | Face | Radius | 0,005 m | Wasser |
-| Glas aussen | Face | Radius | 0,035 m | Luft und Himmel |
-| Glas innen | Face | Radius | 0,0325 m | Glas zum Absorber |
-| Absorber aussen | Face | Location X, Location X, Radius (drei Zeilen) | 0,00025 m, −0,00025 m, 0,006 m | Absorber zum Glas |
+| Oberseiten Blech | Face | Location X | 0,00025 m (0,25 mm) | Sonne |
+| Rohr innen | Face | Radius | 0,005 m (5 mm) | Wasser |
+| Glas aussen | Face | Radius | 0,035 m (35 mm) | Luft und Himmel |
+| Glas innen | Face | Radius | 0,0325 m (32,5 mm) | Glas zum Absorber |
+| Absorber aussen | Face | Location X, Location X, Radius (drei Zeilen) | 0,00025 m, −0,00025 m, 0,006 m (0,25 mm, −0,25 mm, 6 mm) | Absorber zum Glas |
 
 **Location X** ist die Achse, in der das Blech 0,5 mm dick ist. Findet
 `Generate` nicht die erwartete Zahl an Flächen, `Location Y` oder `Location Z`

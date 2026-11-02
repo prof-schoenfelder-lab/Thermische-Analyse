@@ -69,23 +69,41 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Rechtecke in der Draufsicht</p>
-    <p>Anders als im Vorzeigebeispiel ist die Skizze hier der <strong>Grundriss</strong>, <code>Pull</code> gibt danach die Höhe. Mehrere Rechtecke übereinander zeichnen (Ursprung = äußere Ecke, Maße mit <code>Tab</code>): SpaceClaim teilt die Skizze an den Linien in Teilflächen für Kalksandstein und EPS. Zum Beispiel (x × y in mm, jeweils ab dem genannten Startpunkt):</p>
-    <p>EPS 1000 × 140 ab (0, 0) · EPS 140 × 860 ab (0, 140) · Kalksandstein 860 × 175 ab (140, 140) · Kalksandstein 175 × 685 ab (140, 315)</p>
+    <ul>
+      <li>Anders als im Vorzeigebeispiel ist die Skizze hier der <strong>Grundriss</strong>: <code>Pull</code> gibt danach die Höhe</li>
+      <li>Mehrere Rechtecke übereinander zeichnen (Ursprung = äußere Ecke, Maße mit <code>Tab</code>)</li>
+      <li>SpaceClaim teilt die Skizze an den Linien in Teilflächen für Kalksandstein und EPS</li>
+      <li>Zum Beispiel (x × y in mm, jeweils ab dem genannten Startpunkt):<ul><li>EPS 1000 × 140 ab (0, 0)</li><li>EPS 140 × 860 ab (0, 140)</li><li>Kalksandstein 860 × 175 ab (140, 140)</li><li>Kalksandstein 175 × 685 ab (140, 315)</li></ul></li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Körper erzeugen</p>
-    <p>Alle Kalksandstein-Flächen mit <code>Strg</code> markieren und gemeinsam mit <code>Pull</code> 1000 mm hochziehen. Dann alle übrigen Flächen (EPS) mit <code>Strg</code> markieren und mit <code>Pull</code> und <code>No merge</code> ebenfalls 1000 mm ziehen: So entstehen zwei Körper. Share Topology nicht vergessen: wie im Vorzeigebeispiel <code>Rechtsklick Design1 → Properties</code>, bei <strong>Share Topology</strong> den Wert <strong>Share</strong> wählen</p>
+    <ul>
+      <li>Alle Kalksandstein-Flächen mit <code>Strg</code> markieren und gemeinsam mit <code>Pull</code> 1000 mm hochziehen</li>
+      <li>Dann alle übrigen Flächen (EPS) mit <code>Strg</code> markieren und mit <code>Pull</code> und <code>No merge</code> ebenfalls 1000 mm ziehen: So entstehen zwei Körper</li>
+      <li>Share Topology nicht vergessen: wie im Vorzeigebeispiel <code>Rechtsklick Design1 → Properties</code></li>
+      <li>Bei <strong>Share Topology</strong> den Wert <strong>Share</strong> wählen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Material und Randbedingungen</p>
-    <p>Jedem Körper das richtige Material zuweisen. Die beiden Außenflächen und die beiden Innenflächen jeweils gemeinsam auswählen (<code>Strg</code> gedrückt halten) und je eine <code>Convection</code> anbringen</p>
+    <ul>
+      <li>Jedem Körper das richtige Material zuweisen</li>
+      <li>Die beiden Außenflächen gemeinsam auswählen (<code>Strg</code> gedrückt halten) und eine <code>Convection</code> anbringen</li>
+      <li>Ebenso die beiden Innenflächen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Auswerten</p>
-    <p>Die kälteste Stelle innen liegt an der Innenkante der Ecke. Oben <code>Vertex</code> anklicken (Punkte auswählen) und einen Eckpunkt dieser Kante anklicken (oben oder unten, über die Höhe ist die Temperatur gleich). Dann <code>Rechtsklick Strukturbaum Solution → Insert → Thermal → Temperature</code>: Das Ergebnis gilt nur für diesen Punkt</p>
+    <ul>
+      <li>Die kälteste Stelle innen liegt an der Innenkante der Ecke</li>
+      <li>Oben <code>Vertex</code> anklicken (Punkte auswählen)</li>
+      <li>Einen Eckpunkt dieser Kante anklicken (oben oder unten, über die Höhe ist die Temperatur gleich)</li>
+      <li>Dann <code>Rechtsklick Strukturbaum Solution → Insert → Thermal → Temperature</code>: Das Ergebnis gilt nur für diesen Punkt</li>
+    </ul>
     <p class="hinweis-bilder"><img src="../../images/p1_uebung2_vertex.png" alt="Eckpunkt an der Innenkante gewählt, Insert, Thermal, Temperature"></p>
   </div>
 

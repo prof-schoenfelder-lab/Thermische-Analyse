@@ -46,22 +46,46 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Kabel in den Ursprung: zwei Kreise Ø <strong>40</strong> und <strong>17,5</strong> mm. Mit <code>Line</code> vom Ursprung <strong>500 mm</strong> nach unten, am Endpunkt <code>Rectangle</code> mit <strong>Define rectangle from center</strong>, <strong>4000 × 3000</strong> mm. Dann liegt das Kabel 1 m unter der Oberkante. Die Hilfslinie vor dem Beenden der Skizze löschen, sonst teilt sie die Kreisflächen. Zuerst das Erdreich <strong>100 mm</strong> ziehen, dann Isolierung und Leiter je mit <strong>No merge</strong>. Share Topology: <strong>Share</strong></p>
+    <ul>
+      <li>Kabel in den Ursprung: zwei Kreise Ø <strong>40</strong> und <strong>17,5</strong> mm</li>
+      <li>Mit <code>Line</code> vom Ursprung <strong>500 mm</strong> nach unten</li>
+      <li>Am Endpunkt <code>Rectangle</code> mit <strong>Define rectangle from center</strong>: <strong>4000 × 3000</strong> mm. Dann liegt das Kabel 1000 mm unter der Oberkante</li>
+      <li>Die Hilfslinie vor dem Beenden der Skizze löschen, sonst teilt sie die Kreisflächen</li>
+      <li>Zuerst das Erdreich <strong>100 mm</strong> ziehen</li>
+      <li>Dann Isolierung und Leiter je mit <strong>No merge</strong> ziehen</li>
+      <li>Share Topology: <strong>Share</strong></li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Netz mit zwei Größen</p>
-    <p>Global <strong>0,1</strong> m. Oben <code>Body</code>, Leiter und Isolierung markieren, <code>Rechtsklick Mesh → Insert → Sizing</code>, <strong>Element Size 0,002</strong> m. Warum das nötig ist, behandelt Praktikum 3</p>
+    <ul>
+      <li>Global <strong>100 mm</strong> (in Mechanical <strong>0,1</strong> m eintragen)</li>
+      <li>Oben <code>Body</code> wählen und Leiter und Isolierung markieren</li>
+      <li><code>Rechtsklick Mesh → Insert → Sizing</code></li>
+      <li><strong>Element Size 2 mm</strong> (in Mechanical <strong>0,002</strong> m eintragen)</li>
+      <li>Warum das nötig ist, behandelt Praktikum 3</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wärmeerzeugung</p>
-    <p>Die Stromwärme je Volumen ist \(\dot q''' = I^2 \rho / A^2\) mit \(\rho\) in Ω·m und \(A\) in m². Körper Leiter anklicken, <code>Insert → Internal Heat Generation</code>, Wert in W/m³</p>
+    <ul>
+      <li>Die Stromwärme je Volumen ist \(\dot q''' = I^2 \rho / A^2\) mit \(\rho\) in Ω·m und \(A\) in m²</li>
+      <li>Körper Leiter anklicken</li>
+      <li><code>Insert → Internal Heat Generation</code> und den Wert in W/m³ eintragen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Temperatur und Konvektion</p>
-    <p>Unterseite: <code>Temperature</code> 10 °C. Oberseite: <code>Convection</code> 10 W/m²·°C, 20 °C. Alle übrigen Flächen bleiben frei. Auswerten: <code>Temperature</code> auf den Körper Leiter, Maximum ablesen. Für b) im Strukturbaum dem Erdreich das Material trockener Sand zuweisen und neu lösen</p>
+    <ul>
+      <li>Unterseite: <code>Temperature</code> 10 °C</li>
+      <li>Oberseite: <code>Convection</code> mit 10 W/m²·°C und 20 °C</li>
+      <li>Alle übrigen Flächen bleiben frei</li>
+      <li>Auswerten: <code>Temperature</code> auf den Körper Leiter setzen und das Maximum ablesen</li>
+      <li>Für b) im Strukturbaum dem Erdreich das Material trockener Sand zuweisen und neu lösen</li>
+    </ul>
   </div>
 
 </div>

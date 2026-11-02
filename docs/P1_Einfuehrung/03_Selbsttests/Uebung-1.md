@@ -43,17 +43,31 @@ Ergebnis lässt sich von Hand prüfen.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wie im Vorzeigebeispiel</p>
-    <p>Neues Projekt, Material <strong>Vollziegel</strong> statt Kalksandstein anlegen, Wand aus zwei Körpern (365 mm und 140 mm, <code>No merge</code>, <code>Share</code>), Material zuweisen, vernetzen</p>
+    <ul>
+      <li>Neues Projekt</li>
+      <li>Material <strong>Vollziegel</strong> statt Kalksandstein anlegen</li>
+      <li>Wand aus zwei Körpern (365 mm und 140 mm) mit <code>No merge</code> und <code>Share</code></li>
+      <li>Material zuweisen</li>
+      <li>Vernetzen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Konvektion und auswerten</p>
-    <p>Innen und außen je eine <code>Convection</code> wie in Fall b), lösen, Temperatur und Wärmestromdichte auswerten</p>
+    <ul>
+      <li>Innen und außen je eine <code>Convection</code> wie in Fall b)</li>
+      <li>Lösen</li>
+      <li>Temperatur und Wärmestromdichte auswerten</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">U-Wert ausrechnen</p>
-    <p>Der U-Wert (Wärmedurchgangskoeffizient) ist die Wärmestromdichte je Kelvin Temperaturunterschied zwischen <strong>Raumluft und Außenluft</strong>: \(U = \dot q / (T_i - T_e)\). Hier also die Wärmestromdichte aus ANSYS durch 30 K teilen. Je kleiner U, desto besser dämmt die Wand (<a href="../../02_Vorzeigebeispiel/Aussenwand/b-konvektion/#u-wert">U-Wert im Vorzeigebeispiel</a>)</p>
+    <ul>
+      <li>Der U-Wert (Wärmedurchgangskoeffizient) ist die Wärmestromdichte je Kelvin Temperaturunterschied zwischen <strong>Raumluft und Außenluft</strong>: \(U = \dot q / (T_i - T_e)\)</li>
+      <li>Hier also die Wärmestromdichte aus ANSYS durch 30 K teilen</li>
+      <li>Je kleiner U, desto besser dämmt die Wand (<a href="../../02_Vorzeigebeispiel/Aussenwand/b-konvektion/#u-wert">U-Wert im Vorzeigebeispiel</a>)</li>
+    </ul>
   </div>
 
 </div>

@@ -46,24 +46,49 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Ursprung = Mitte der Unterkante, links und rechts je ein Rechteck 75 × 65 mm. Mit <code>Line</code> vom Ursprung 20 mm nach oben (Endpunkt = Rohrmitte), dort mit <code>Circle</code> Ø 16 mm. Skizze beenden, die Kreisflächen mit <code>Rechtsklick → Delete</code> löschen, die übrigen Flächen mit <code>Strg</code> markieren und 20 mm ziehen</p>
+    <ul>
+      <li>Ursprung = Mitte der Unterkante</li>
+      <li>Links und rechts je ein Rechteck 75 × 65 mm</li>
+      <li>Mit <code>Line</code> vom Ursprung 20 mm nach oben (Endpunkt = Rohrmitte)</li>
+      <li>Dort mit <code>Circle</code> Ø 16 mm</li>
+      <li>Skizze beenden</li>
+      <li>Die Kreisflächen mit <code>Rechtsklick → Delete</code> löschen</li>
+      <li>Die übrigen Flächen mit <code>Strg</code> markieren und 20 mm ziehen</li>
+    </ul>
     <p class="hinweis-bilder"><img src="../../images/p1_uebung3_linie.png" alt="Linie 20 mm nach oben"><img src="../../images/p1_uebung3_kreis.png" alt="Kreis Ø 16 mm"><img src="../../images/p1_uebung3_kreis_loeschen.png" alt="Kreisflächen löschen"></p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Randbedingungen</p>
-    <p>Lochfläche: <code>Convection</code> 1000 W/m²·°C, 35 °C. Oberseite: <code>Convection</code> 10,8 W/m²·°C, 20 °C. Alle anderen Flächen bleiben frei</p>
+    <ul>
+      <li>Lochfläche: <code>Convection</code> mit 1000 W/m²·°C und 35 °C</li>
+      <li>Oberseite: <code>Convection</code> mit 10,8 W/m²·°C und 20 °C</li>
+      <li>Alle anderen Flächen bleiben frei</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Temperatur über dem Rohr (Pfad)</p>
-    <p><code>Rechtsklick Model → Insert → Construction Geometry → Path</code>, Start (0, 0, 0) und Ende (0, 0,065, 0) m, senkrecht durch die Rohrmitte (Lage des Koordinatensystems: <code>Display → Show → All Coordinate Systems</code>). Dann <code>Insert → Thermal → Temperature</code>, <strong>Scoping Method</strong> <code>Path</code>, den Pfad wählen. Der Wert am Pfadende ist die Oberfläche über dem Rohr</p>
+    <ul>
+      <li><code>Rechtsklick Model → Insert → Construction Geometry → Path</code></li>
+      <li>Start im Ursprung, Ende 65 mm darüber: senkrecht durch die Rohrmitte</li>
+      <li>In Mechanical in m eintragen: Start (0; 0; 0), Ende (0; <strong>0,065</strong>; 0)</li>
+      <li>Lage des Koordinatensystems: <code>Display → Show → All Coordinate Systems</code></li>
+      <li>Dann <code>Insert → Thermal → Temperature</code></li>
+      <li><strong>Scoping Method</strong> <code>Path</code> und den Pfad wählen</li>
+      <li>Der Wert am Pfadende ist die Oberfläche über dem Rohr</li>
+    </ul>
     <p class="hinweis-bilder"><img src="../../images/p1_uebung3_pfad_einfuegen.png" alt="Path einfügen"><img src="../../images/p1_uebung3_pfad_punkte.png" alt="Start- und Endpunkt"><img src="../../images/p1_uebung3_pfad_scoping.png" alt="Scoping Method Path"><img src="../../images/p1_uebung3_pfad_auswahl.png" alt="Pfad wählen"></p>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Zwischen den Rohren und Wärmestromdichte</p>
-    <p>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, genau in der Mitte zwischen zwei Rohren. Wärmestromdichte: <code>Insert → Thermal → Directional Heat Flux</code> auf der Oberseite, Richtung senkrecht zur Oberfläche (hier <code>Y Axis</code>), abzulesen ist der Mittelwert (<strong>Average</strong>)</p>
+    <ul>
+      <li>Temperatur auf der Oberseite: Das Minimum liegt an den Seitenkanten, genau in der Mitte zwischen zwei Rohren</li>
+      <li>Wärmestromdichte: <code>Insert → Thermal → Directional Heat Flux</code> auf der Oberseite</li>
+      <li>Richtung senkrecht zur Oberfläche (hier <code>Y Axis</code>)</li>
+      <li>Abzulesen ist der Mittelwert (<strong>Average</strong>)</li>
+    </ul>
   </div>
 
 </div>

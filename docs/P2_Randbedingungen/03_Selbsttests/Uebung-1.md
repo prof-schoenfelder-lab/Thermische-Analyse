@@ -42,22 +42,44 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <p>Zwei Kreise um den Ursprung, Ø <strong>26,9</strong> und <strong>21,7</strong> mm. Skizze beenden. Entsteht dabei auch eine innere Kreisfläche, diese löschen. Den Ring <strong>1000 mm</strong> ziehen</p>
+    <ul>
+      <li>Zwei Kreise um den Ursprung, Ø <strong>26,9</strong> und <strong>21,7</strong> mm</li>
+      <li>Skizze beenden</li>
+      <li>Entsteht dabei auch eine innere Kreisfläche, diese löschen</li>
+      <li>Den Ring <strong>1000 mm</strong> ziehen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Zwei Randbedingungen auf der Außenfläche</p>
-    <p>Innenfläche: <code>Convection</code> (Wasser). Außenfläche: <code>Convection</code> (Kellerluft) <strong>und</strong> <code>Radiation</code> (Kellerwände, Correlation <code>To Ambient</code>). Beide gelten gleichzeitig</p>
+    <ul>
+      <li>Innenfläche: <code>Convection</code> (Wasser)</li>
+      <li>Außenfläche: <code>Convection</code> (Kellerluft) <strong>und</strong> <code>Radiation</code> (Kellerwände, Correlation <code>To Ambient</code>)</li>
+      <li>Beide gelten gleichzeitig</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wärmeströme ablesen</p>
-    <p>Kellerluft und Kellerwände je mit gedrückter Maustaste auf <strong>Solution</strong> ziehen (Reaction Probe), lösen. Der Wärmeverlust ist die Summe beider Beträge. Für Fall a) die Strahlung mit <code>Rechtsklick → Suppress</code> abschalten und neu lösen</p>
+    <ul>
+      <li>Kellerluft und Kellerwände je mit gedrückter Maustaste auf <strong>Solution</strong> ziehen (Reaction Probe)</li>
+      <li>Lösen</li>
+      <li>Der Wärmeverlust ist die Summe beider Beträge</li>
+      <li>Für Fall a) die Strahlung mit <code>Rechtsklick → Suppress</code> abschalten und neu lösen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">d) Dämmung als zweiter Körper</p>
-    <p>Im Projektmenü <code>Rechtsklick Steady-State Thermal → Duplicate</code>. In der Kopie SpaceClaim öffnen, auf einer Stirnfläche des Rohrs einen Kreis Ø <strong>66,9</strong> mm um den Ursprung skizzieren, Skizze beenden und die innere Scheibe (Wasserraum) löschen. Den neuen Ring mit <code>Pull</code> und <strong>No merge</strong> über die ganze Rohrlänge ziehen (Richtung prüfen, ggf. <strong>−1000</strong> mm). Share Topology: <strong>Share</strong>. Konvektion und Strahlung jetzt auf die Außenfläche der Dämmung</p>
+    <ul>
+      <li>Im Projektmenü <code>Rechtsklick Steady-State Thermal → Duplicate</code></li>
+      <li>In der Kopie SpaceClaim öffnen</li>
+      <li>Auf einer Stirnfläche des Rohrs einen Kreis Ø <strong>66,9</strong> mm um den Ursprung skizzieren</li>
+      <li>Skizze beenden und die innere Scheibe (Wasserraum) löschen</li>
+      <li>Den neuen Ring mit <code>Pull</code> und <strong>No merge</strong> über die ganze Rohrlänge ziehen (Richtung prüfen, ggf. <strong>−1000</strong> mm)</li>
+      <li>Share Topology: <strong>Share</strong></li>
+      <li>Konvektion und Strahlung jetzt auf die Außenfläche der Dämmung</li>
+    </ul>
   </div>
 
 </div>

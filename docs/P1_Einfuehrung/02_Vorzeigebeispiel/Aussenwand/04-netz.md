@@ -19,7 +19,7 @@ in Praktikum 3 geht es dann genauer um ein geeignetes Netz.
 
 ??? tip "Kurzanleitung: Globale Netzgröße"
     1. `Strukturbaum Mesh` anklicken
-    2. Im `Detailfenster` unter **Defaults** bei **Element Size** **0,01** m eintragen
+    2. Im `Detailfenster` unter **Defaults** bei **Element Size** **0,01** m eintragen (= 10 mm)
     3. `Rechtsklick Mesh → Generate Mesh`
 
 <tutorial slug="p1-vernetzung"></tutorial>
