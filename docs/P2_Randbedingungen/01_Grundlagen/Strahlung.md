@@ -114,7 +114,7 @@ gegenüberliegende Glaswand (Bild unten, obere Balken).
 ### Enclosure
 
 Ein **Enclosure** (Hohlraum) ist eine Gruppe von Flächen, die sich
-gegenseitig anstrahlen. Dazu gehören alle Radiation-Randbedingungen mit
+gegenseitig anstrahlen. Dazu gehören alle Strahlungsrandbedingungen mit
 derselben `Enclosure`-Nummer. ANSYS berechnet vor dem Lösen die Sichtfaktoren
 zwischen allen Flächenelementen dieser Gruppe, samt Verschattung: Das Rohr
 verdeckt zum Beispiel einen Teil des Blechs. Flächen in verschiedenen

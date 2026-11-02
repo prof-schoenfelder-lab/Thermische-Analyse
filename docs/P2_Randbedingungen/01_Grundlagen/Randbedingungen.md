@@ -17,31 +17,32 @@ stammen aus dem Vorzeigebeispiel und aus Übung 3.
 Wärme geht über die Oberfläche in das Modell hinein oder aus ihm heraus. Dazu
 gehören die meisten Randbedingungen:
 
-| Randbedingung | ANSYS | Eingabe | Beispiel in diesem Praktikum |
+| Randbedingung | Anwendung | Beispiel in diesem Praktikum | in ANSYS (Eingabe) |
 |---|---|---|---|
-| Konvektion | `Convection` | W/(m²·K) und °C | Wasser im Rohr, Luft außen (alle) |
-| Strahlung | `Radiation` | ε und °C | Glas zum Himmel, Absorber zum Glas (Vorzeigebeispiel) |
-| Wärmestromdichte | `Heat Flux` | W/m² | Sonne auf dem Absorber (Vorzeigebeispiel) |
-| Wärmestrom | `Heat Flow` | W | Verlustleistung eines Halbleiters (Übung 2) |
-| Isoliert | `Perfectly Insulated` | | Seiten des Erdreichs (Übung 3) |
+| Konvektion | Fluide bewegen sich entlang einer Grenzfläche | Wasser im Rohr, Luft außen (alle) | `Convection`<br>W/(m²·K) und °C |
+| Strahlung | Flächen sehen andere Flächen oder die Umgebung, durch Luft oder Vakuum | Glas zum Himmel, Absorber zum Glas (Vorzeigebeispiel) | `Radiation`<br>ε und °C |
+| Wärmestromdichte | Leistung je Fläche ist bekannt und hängt nicht von der Temperatur der Fläche ab | Sonne auf dem Absorber (Vorzeigebeispiel) | `Heat Flux`<br>W/m² |
+| Wärmestrom | Gesamtleistung über eine Fläche ist bekannt, z. B. aus einem Datenblatt | Verlustleistung eines Halbleiters (Übung 2) | `Heat Flow`<br>W |
+| Isoliert (adiabat) | Über die Fläche fließt keine Wärme (siehe unten) | Seiten des Erdreichs (Übung 3) | `Perfectly Insulated` |
 
-`Heat Flux` passt, wenn die Leistung **je Fläche** bekannt ist, wie bei der
-Sonne. `Heat Flow` passt, wenn die **Gesamtleistung** bekannt ist, etwa aus
-einem Datenblatt.
+## Im ganzen Körper: Wärmeerzeugung
 
-## Im ganzen Körper
+**Anwendung:** Wärme entsteht im Material selbst, z. B. durch elektrischen
+Strom im Leiter des Erdkabels (Übung 3).
 
-Die Wärme entsteht im Material selbst, zum Beispiel durch elektrischen Strom.
-`Internal Heat Generation` gibt die Leistung je Volumen in W/m³ vor und wird
-auf einen ganzen Körper gesetzt, etwa auf den Leiter des Erdkabels (Übung 3).
+In ANSYS gibt `Internal Heat Generation` die Leistung je Volumen in W/m³ vor
+und wird auf einen ganzen Körper gesetzt.
 
 ## Überall: feste Temperatur
 
-`Temperature` hält die Temperatur in °C fest, auf einer Fläche, einer Kante,
-einem Punkt oder einem ganzen Körper. Das passt nur, wenn der Ort seine
-Temperatur wirklich behält, egal wie viel Wärme fließt: tiefes Erdreich
-(Übung 3), siedendes oder kondensierendes Wasser. An einer Oberfläche zur Luft
-ist eine feste Temperatur meist falsch (siehe Praktikum 1, Fall a).
+**Anwendung:** Festkörper werden geschnitten, und an der Schnittfläche ist die
+Temperatur bekannt, z. B. das Erdreich in 3 m Tiefe (Übung 3). Das passt nur,
+wenn die Temperatur dort fest bleibt, egal wie viel Wärme fließt. An einer
+Oberfläche zur Luft ist eine feste Temperatur meist falsch (siehe Praktikum 1,
+Fall a).
+
+In ANSYS hält `Temperature` die Temperatur in °C fest, auf einer Fläche,
+einer Kante, einem Punkt oder einem ganzen Körper.
 
 ## Was vorgegeben wird, was herauskommt
 
@@ -72,13 +73,13 @@ die Annahme aber im Strukturbaum sichtbar. Isoliert ist richtig, wenn
 
 ## Wie viel Wärme geht über eine Randbedingung?
 
-Bei `Temperature`, `Convection` und `Radiation` zur Umgebung rechnet ANSYS
-aus, wie viel Wärme über die Randbedingung geflossen ist: Die Randbedingung
-mit gedrückter Maustaste auf **Solution** ziehen. ANSYS legt eine
+Bei Temperatur, Konvektion und Strahlung zur Umgebung rechnet ANSYS aus, wie
+viel Wärme über die Randbedingung geflossen ist: Die Randbedingung mit
+gedrückter Maustaste auf **Solution** ziehen. ANSYS legt eine
 **Reaction Probe** an, nach `Evaluate All Results` steht der Wärmestrom in W
-im Detailfenster. Bei `Heat Flux`, `Heat Flow` und `Internal Heat Generation`
-ist der Wärmestrom vorgegeben: Wert mal Fläche oder Volumen. Eine Reaction
-Probe braucht es dafür nicht, für `Heat Flux` bietet ANSYS auch keine an.
+im Detailfenster. Bei Wärmestromdichte, Wärmestrom und Wärmeerzeugung ist der
+Wärmestrom vorgegeben: Wert mal Fläche oder Volumen. Eine Reaction Probe
+braucht es dafür nicht, für `Heat Flux` bietet ANSYS auch keine an.
 
 - **Vorzeichen:** positiv heißt, Wärme geht über diese Randbedingung **in** das
   Modell, negativ heißt, sie verlässt das Modell.

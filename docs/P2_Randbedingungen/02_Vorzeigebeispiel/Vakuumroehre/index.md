@@ -113,7 +113,7 @@ kleine Aufnahme im Glas vernachlässigen wir.
       <figcaption>Spektren auf gleiche Höhe gebracht, Maximum nach dem Wienschen Verschiebungsgesetz</figcaption>
     </figure>
 
-??? info "Warum ist die Sonne keine Radiation-Randbedingung?"
+??? info "Warum ist die Sonne keine Strahlungsrandbedingung?"
     `Radiation` kennt nur **einen** Emissionsgrad für alle Wellenlängen. Mit
     $\varepsilon = 0{,}05$ würde der Absorber auch nur 5 % der Sonne
     aufnehmen, und das Glas wäre für Sonnenlicht undurchlässig. Deshalb rechnet

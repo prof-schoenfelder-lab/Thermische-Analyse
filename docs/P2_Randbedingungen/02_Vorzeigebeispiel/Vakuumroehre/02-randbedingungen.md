@@ -55,7 +55,7 @@ probieren.
 
 <tutorial slug="p2-sonne"></tutorial>
 
-!!! info "Warum Heat Flux?"
+!!! info "Warum eine Wärmestromdichte?"
     Die Sonne liefert eine bekannte Leistung **je Fläche**, unabhängig davon,
     wie warm der Absorber ist. Positiv heißt: Wärme geht in das Bauteil hinein.
 
