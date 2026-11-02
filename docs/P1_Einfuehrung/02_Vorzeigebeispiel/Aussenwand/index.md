@@ -53,7 +53,7 @@ Beide isotrop (*Isotropic Thermal Conductivity*).
 <!-- --8<-- [start:Geometrie] -->
 Wandausschnitt **100 mm × 100 mm**, zwei Schichten:
 
-- Kalksandstein $d_{KS} = 175\ \mathrm{mm}$
+- Kalksandstein: Dicke $d_{KS} = 175\ \mathrm{mm}$
 - EPS-Dämmung $d_{EPS} = 140\ \mathrm{mm}$
 
 Beide Körper teilen sich die Fläche in der Trennfuge (**Share Topology**).

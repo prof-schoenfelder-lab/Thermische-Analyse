@@ -17,13 +17,17 @@ $$
 \qquad \text{mit} \qquad \sigma = 5{,}67 \cdot 10^{-8}\ \mathrm{W/(m^2\,K^4)}
 $$
 
-ab. Zwei Dinge sind dabei wichtig:
+ab, mit
 
-- $T$ ist die **absolute Temperatur** in Kelvin. ANSYS rechnet das selbst um,
+- $\dot q$: abgestrahlte Wärmestromdichte in W/m²
+- $\varepsilon$: Emissionsgrad der Fläche, 0 bis 1 (Abschnitt Emissionsgrad)
+- $\sigma$: Stefan-Boltzmann-Konstante
+- $T$: **absolute Temperatur** der Fläche in Kelvin. ANSYS rechnet das selbst um,
   Eingaben bleiben in °C.
-- Die vierte Potenz macht die Rechnung **nichtlinear**: ANSYS braucht mehrere
-  Durchläufe (Iterationen), bis die Lösung steht. Das sieht man in
-  `Solution Information`.
+
+Die vierte Potenz macht die Rechnung **nichtlinear**: ANSYS braucht mehrere
+Durchläufe (Iterationen), bis die Lösung steht. Das sieht man in
+`Solution Information`.
 
 Was eine Fläche abstrahlt, bekommt sie zum Teil von ihrer Umgebung zurück.
 Netto zählt der Unterschied:
@@ -31,6 +35,8 @@ Netto zählt der Unterschied:
 $$
 \dot q = \varepsilon\,\sigma\,\left(T^4 - T_\infty^4\right)
 $$
+
+mit der absoluten Temperatur $T_\infty$ der Umgebung, die die Strahlung empfängt.
 
 ## Emissionsgrad
 
@@ -50,8 +56,9 @@ blankes Kupferrohr kaum.
 
 !!! info "Wie groß ist Strahlung im Vergleich zur Konvektion?"
     Bei Raumtemperatur und kleinem Temperaturunterschied lässt sich die
-    Strahlung wie ein Wärmeübergangskoeffizient schreiben:
-    $\alpha_{Str} \approx 4\,\varepsilon\,\sigma\,T^3$. Bei 20 °C und
+    Strahlung wie ein Wärmeübergangskoeffizient $\alpha_{Str}$ schreiben:
+    $\alpha_{Str} \approx 4\,\varepsilon\,\sigma\,T^3$ mit der mittleren absoluten
+    Temperatur $T$ von Fläche und Umgebung. Bei 20 °C und
     $\varepsilon = 0{,}9$ sind das rund **5 W/(m²·K)**. Das ist so viel wie
     freie Konvektion an ruhiger Luft. Strahlung darf man also auch bei
     niedrigen Temperaturen nicht weglassen.
@@ -96,7 +103,8 @@ gegenüberliegende Glaswand (Bild unten, obere Balken).
 ??? info "Zwei Regeln für Sichtfaktoren"
     1. **Alles kommt irgendwo an.** In einem geschlossenen Raum ergeben die
        Sichtfaktoren einer Fläche zusammen 100 %.
-    2. **Reziprozität:** $A_1\,F_{12} = A_2\,F_{21}$. Die große Glasfläche
+    2. **Reziprozität:** $A_1\,F_{12} = A_2\,F_{21}$ mit den Flächen $A_1$, $A_2$ und den
+       Sichtfaktoren $F_{12}$ (von 1 nach 2) und $F_{21}$ (von 2 nach 1). Die große Glasfläche
        sieht den kleinen Absorber zu einem kleineren Anteil als umgekehrt, genau
        im Verhältnis der Flächen. Je 20 mm Röhre:
        $4080\ \mathrm{mm^2} \cdot 0{,}60 \approx 2670\ \mathrm{mm^2} \cdot 0{,}92 \approx 2450\ \mathrm{mm^2}$.
@@ -107,6 +115,9 @@ gegenüberliegende Glaswand (Bild unten, obere Balken).
     $$
     \dot Q_{12} = \sigma\,A_1\,F_{12}\,\left(T_1^4 - T_2^4\right)
     $$
+
+    mit dem Wärmestrom $\dot Q_{12}$ von Fläche 1 zu Fläche 2 und den absoluten
+    Temperaturen $T_1$, $T_2$ der beiden Flächen.
 
     Nur weil $A_1 F_{12} = A_2 F_{21}$ ist, rechnen beide Flächen mit demselben
     Wärmestrom: Was der Absorber abgibt, kommt beim Glas an.

@@ -28,9 +28,9 @@ stehen im Checkpoint, warum, steht in der Warnung darunter.
     Bilanzlücke des 20 mm langen Stücks (siehe
     [Wärmestrahlung: Der Haken an Perfect](../../01_Grundlagen/Strahlung.md#haken-perfect)): Der
     Strahlungsraum erzeugt etwas Energie, und zwar umso mehr, je heißer es
-    ist ($\sim T^4$). Dadurch gibt es neben der echten Lösung eine zweite bei
+    ist ($\sim T^4$ mit der absoluten Temperatur $T$). Dadurch gibt es neben der echten Lösung eine zweite bei
     absurd hohen Temperaturen. Ohne Wasser hält nichts den Absorber fest, und
-    mit $\varepsilon = 0{,}9$ ist die Kopplung so stark, dass der Löser dorthin
+    mit dem Emissionsgrad $\varepsilon = 0{,}9$ ist die Kopplung so stark, dass der Löser dorthin
     springen kann.
 
     Die Werte im Checkpoint haben wir mit vielen kleinen Schritten erzwungen:

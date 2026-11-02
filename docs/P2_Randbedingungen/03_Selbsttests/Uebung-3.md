@@ -17,7 +17,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 **Material**
 
-- Leiter Aluminium: $\lambda = 230\ \mathrm{W/(m\,K)}$, spezifischer Widerstand $\rho = 0{,}0282\ \Omega\,\mathrm{mm^2/m}$
+- Leiter Aluminium: Wärmeleitfähigkeit $\lambda = 230\ \mathrm{W/(m\,K)}$, spezifischer Widerstand $\rho = 0{,}0282\ \Omega\,\mathrm{mm^2/m}$
 - Isolierung VPE: $\lambda = 0{,}3\ \mathrm{W/(m\,K)}$
 - Boden a) feucht: $\lambda = 1{,}0\ \mathrm{W/(m\,K)}$, b) trockener Sand: $\lambda = 0{,}4\ \mathrm{W/(m\,K)}$
 
@@ -36,7 +36,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 **Randbedingungen**
 
 - Leiter: Strom $I = 550\ \mathrm{A}$, als Wärmeerzeugung
-- Erdoberfläche: Luft $T = 20\ \mathrm{°C}$, $\alpha = 10\ \mathrm{W/(m^2\,K)}$
+- Erdoberfläche: Luft $T = 20\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 10\ \mathrm{W/(m^2\,K)}$
 - Unterseite in 3 m Tiefe: feste Temperatur $T = 10\ \mathrm{°C}$
 - Seiten, Vorder- und Rückseite: isoliert
 
@@ -71,7 +71,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wärmeerzeugung</p>
     <ul>
-      <li>Die Stromwärme je Volumen ist \(\dot q''' = I^2 \rho / A^2\) mit \(\rho\) in Ω·m und \(A\) in m²</li>
+      <li>Die Stromwärme je Volumen ist \(\dot q''' = I^2 \rho / A^2\) mit dem Strom \(I\) in A, dem spezifischen Widerstand \(\rho\) in Ω·m und dem Leiterquerschnitt \(A\) in m²</li>
       <li>Körper Leiter anklicken</li>
       <li><code>Insert → Internal Heat Generation</code> und den Wert in W/m³ eintragen</li>
     </ul>

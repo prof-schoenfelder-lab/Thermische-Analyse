@@ -17,7 +17,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 **Material**
 
-- Zementestrich: $\lambda = 1{,}4\ \mathrm{W/(m\,K)}$
+- Zementestrich: Wärmeleitfähigkeit $\lambda = 1{,}4\ \mathrm{W/(m\,K)}$
 
 **Geometrie**
 
@@ -31,7 +31,7 @@ Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 **Randbedingungen**
 
-- Rohr innen: Konvektion, Wasser $T = 35\ \mathrm{°C}$, $\alpha = 1000\ \mathrm{W/(m^2\,K)}$ (strömendes Wasser, Rohrwand vernachlässigt)
+- Rohr innen: Konvektion, Wasser $T = 35\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 1000\ \mathrm{W/(m^2\,K)}$ (strömendes Wasser, Rohrwand vernachlässigt)
 - Oberseite: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha = 10{,}8\ \mathrm{W/(m^2\,K)}$ (Konvektion und Strahlung zusammen nach DIN EN 1264)
 - Unterseite (Dämmung) und Seitenflächen: adiabat
 

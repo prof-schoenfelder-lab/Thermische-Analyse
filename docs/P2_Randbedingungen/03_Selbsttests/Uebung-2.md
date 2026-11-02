@@ -18,7 +18,7 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 
 **Material**
 
-- Aluminium: $\lambda = 200\ \mathrm{W/(m\,K)}$
+- Aluminium: Wärmeleitfähigkeit $\lambda = 200\ \mathrm{W/(m\,K)}$
 
 **Geometrie**
 
@@ -33,8 +33,8 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 **Randbedingungen**
 
 - Fläche unter dem Modul: Wärmestrom $\dot Q = 40\ \mathrm{W}$
-- alle Flächen außer der Rückseite: Luft $T = 40\ \mathrm{°C}$, $\alpha = 6\ \mathrm{W/(m^2\,K)}$, und Strahlung zur Umgebung (40 °C)
-- a) schwarz eloxiert $\varepsilon = 0{,}85$, b) blank $\varepsilon = 0{,}05$
+- alle Flächen außer der Rückseite: Luft $T = 40\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 6\ \mathrm{W/(m^2\,K)}$, und Strahlung zur Umgebung (40 °C)
+- Emissionsgrad: a) schwarz eloxiert $\varepsilon = 0{,}85$, b) blank $\varepsilon = 0{,}05$
 - Rückseite neben dem Modul: liegt am Gehäuse, isoliert
 
 ## Hinweise

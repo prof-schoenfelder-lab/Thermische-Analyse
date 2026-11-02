@@ -40,7 +40,8 @@ In diesem Beispiel kommen fast alle Randbedingungen vor:
     Das Blech arbeitet wie eine **Rippe**, nur umgekehrt: Die Sonne erwärmt
     jede Stelle des Blechs, die Wärme fließt seitlich zum Rohr. Dafür braucht
     es ein Temperaturgefälle, die Blechkante ist am wärmsten. Bei gleichmäßiger
-    Einstrahlung $\dot q$ auf einen Flügel der Länge $L$ und Dicke $t$ ist die
+    Einstrahlung $\dot q$ auf einen Flügel der Länge $L$, der Dicke $t$ und der
+    Wärmeleitfähigkeit $\lambda$ ist die
     Kante um
 
     $$
@@ -95,6 +96,13 @@ Absorberblech und Rohr sind **ein** Körper. Glas und Absorber berühren sich ni
 | Außenseite Glas | Strahlung To Ambient (Himmel) | $\varepsilon = 0{,}9$, $T = 5\ \mathrm{°C}$ |
 | Absorber außen und Glas innen | Strahlung Surface to Surface | Absorber $\varepsilon = 0{,}05$, Glas $\varepsilon = 0{,}9$ |
 
+Formelzeichen:
+
+- $\dot q$: Wärmestromdichte (die Sonne ist unten erklärt)
+- $\alpha$: Wärmeübergangskoeffizient
+- $T$: Temperatur von Wasser, Luft oder Himmel
+- $\varepsilon$: Emissionsgrad
+
 Die beiden Stirnflächen (Schnitt durch die lange Röhre) bleiben frei, also isoliert.
 <!-- --8<-- [end:Randbedingungen] -->
 
@@ -104,7 +112,8 @@ kleine Aufnahme im Glas vernachlässigen wir.
 ??? info "Selektive Schicht: viel aufnehmen, wenig abstrahlen"
     Sonne und Absorber strahlen in ganz verschiedenen Wellenlängen. Nach dem
     **Kirchhoffschen Gesetz** nimmt eine Fläche bei jeder Wellenlänge genau so
-    viel auf, wie sie abstrahlt: $\alpha(\lambda) = \varepsilon(\lambda)$. Die
+    viel auf, wie sie abstrahlt: $\alpha(\lambda) = \varepsilon(\lambda)$, Absorptionsgrad
+    $\alpha$ gleich Emissionsgrad $\varepsilon$ bei jeder Wellenlänge $\lambda$. Die
     selektive Schicht ist im Sonnenlicht schwarz und bei Wärmestrahlung blank.
     Schwarzer Lack ist überall schwarz (Fall b).
 
@@ -138,14 +147,16 @@ kleine Aufnahme im Glas vernachlässigen wir.
     \Delta T = \frac{\dot Q'\,\ell}{\dot m\,c_p}
     $$
 
-    mit der Nutzwärme je Meter $\dot Q'$, der Länge $\ell$ und dem Massenstrom
-    $\dot m$. Selbst bei $\dot Q' = 50\ \mathrm{W/m}$ und
+    mit der Erwärmung $\Delta T$ des Wassers, der Nutzwärme je Meter $\dot Q'$, der
+    Länge $\ell$, dem Massenstrom $\dot m$ und der spezifischen Wärmekapazität
+    $c_p \approx 4180\ \mathrm{J/(kg\,K)}$ des Wassers. Selbst bei $\dot Q' = 50\ \mathrm{W/m}$ und
     $\dot m = 0{,}005\ \mathrm{kg/s}$ sind das 2,4 K je Meter, auf unseren
     20 mm nur 0,05 K. In der Scheibe ist die Wassertemperatur also konstant.
 
     So werden Kollektoren auch geprüft (EN ISO 9806): Man gibt die mittlere
     Fluidtemperatur vor, misst die Leistung und trägt den Wirkungsgrad über
-    $(T_m - T_a)/G$ auf. Mit dem Modell geht das genauso: Wassertemperatur
+    $(T_m - T_a)/G$ auf, mit der mittleren Fluidtemperatur $T_m$, der
+    Umgebungstemperatur $T_a$ und der Einstrahlung $G$. Mit dem Modell geht das genauso: Wassertemperatur
     variieren, jedes Mal Nutzwärme durch Sonnenleistung teilen. Bei Fall c)
     ist es umgekehrt: Ohne Wasserstrom ist die Absorbertemperatur das Ergebnis.
 
@@ -168,16 +179,24 @@ kleine Aufnahme im Glas vernachlässigen wir.
     | Glas innen | $\pi \cdot 65 \cdot 20\ \mathrm{mm^2}$ | $4{,}08 \cdot 10^{-3}\ \mathrm{m^2}$ |
     | Glas außen | $\pi \cdot 70 \cdot 20\ \mathrm{mm^2}$ | $4{,}40 \cdot 10^{-3}\ \mathrm{m^2}$ |
 
-    **1. Sonne:** $\dot Q_{Sonne} = 700 \cdot 9{,}6 \cdot 10^{-4} = 0{,}672\ \mathrm{W}$
+    **1. Sonne:** Wärmestrom $\dot Q_{Sonne}$ = Wärmestromdichte mal Fläche,
+    $\dot Q_{Sonne} = 700 \cdot 9{,}6 \cdot 10^{-4} = 0{,}672\ \mathrm{W}$
 
     **2. Absorbertemperatur:** Fast die ganze Sonne geht ins Wasser. Der
     Wärmeübergang ans Wasser braucht
 
     $$
-    \Delta T = \frac{\dot Q}{\alpha\,A} = \frac{0{,}64}{1000 \cdot 6{,}3 \cdot 10^{-4}}\ \mathrm{K} \approx 1\ \mathrm{K},
+    \Delta T = \frac{\dot Q}{\alpha\,A} = \frac{0{,}64}{1000 \cdot 6{,}3 \cdot 10^{-4}}\ \mathrm{K} \approx 1\ \mathrm{K}
     $$
 
-    dazu kommt rund 1 K im Blech (siehe „Wozu das Absorberblech?“). Der
+    mit
+
+    - $\Delta T$: Temperaturunterschied zwischen Rohrwand und Wasser
+    - $\dot Q$: Wärmestrom ins Wasser, rund 0,64 W
+    - $\alpha$: Wärmeübergangskoeffizient des Wassers
+    - $A$: Innenfläche des Rohrs (Tabelle)
+
+    Dazu kommt rund 1 K im Blech (siehe „Wozu das Absorberblech?“). Der
     Absorber liegt also bei 51 bis 52 °C.
 
     **3. Strahlung Absorber zum Glas:** Für einen Körper (1), den ein Rohr (2)
@@ -187,6 +206,14 @@ kleine Aufnahme im Glas vernachlässigen wir.
     \dot Q_{12} = \frac{\sigma\,A_1\,\left(T_1^4 - T_2^4\right)}
     {\dfrac{1}{\varepsilon_1} + \dfrac{A_1}{A_2}\left(\dfrac{1}{\varepsilon_2} - 1\right)}
     $$
+
+    mit
+
+    - $\dot Q_{12}$: Wärmestrom vom Absorber (1) zum Glas (2)
+    - $\sigma$: Stefan-Boltzmann-Konstante, $5{,}67 \cdot 10^{-8}\ \mathrm{W/(m^2\,K^4)}$
+    - $A_1$, $A_2$: Fläche Absorber außen und Glas innen (Tabelle)
+    - $T_1$, $T_2$: absolute Temperatur von Absorber und Glas
+    - $\varepsilon_1$, $\varepsilon_2$: Emissionsgrad von Absorber und Glas
 
     Mit $T_1 = 324{,}7\ \mathrm{K}$ (51,5 °C) und geschätzt
     $T_2 = 289\ \mathrm{K}$ (16 °C) ergibt das
@@ -200,9 +227,17 @@ kleine Aufnahme im Glas vernachlässigen wir.
     \dot Q_{12} + \alpha_L\,A_a\,(T_L - T_G) = \varepsilon_G\,\sigma\,A_a\,\left(T_G^4 - T_H^4\right)
     $$
 
+    mit
+
+    - $\alpha_L$: Wärmeübergangskoeffizient der Luft
+    - $A_a$: Fläche Glas außen (Tabelle)
+    - $T_L$, $T_G$, $T_H$: Temperatur von Luft, Glas und Himmel (bei der Strahlung absolut in K)
+    - $\varepsilon_G$: Emissionsgrad des Glases
+
     Durch Probieren folgt $T_G \approx 15{,}7\ \mathrm{°C}$. Die Glaswand selbst
     braucht kaum Temperaturunterschied
-    ($\dot q\,t/\lambda \approx 7 \cdot 0{,}0025/1{,}1 \approx 0{,}02\ \mathrm{K}$).
+    ($\dot q\,t/\lambda \approx 7 \cdot 0{,}0025/1{,}1 \approx 0{,}02\ \mathrm{K}$ mit der
+    Wärmestromdichte $\dot q$ durch die Glaswand, ihrer Dicke $t$ und der Wärmeleitfähigkeit $\lambda$ von Glas).
 
     **5. Nutzwärme:** $\dot Q_{Wasser} = \dot Q_{Sonne} - \dot Q_{12} = 0{,}672 - 0{,}031 = 0{,}641\ \mathrm{W}$
 

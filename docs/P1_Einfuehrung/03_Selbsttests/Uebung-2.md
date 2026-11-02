@@ -39,7 +39,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 **Material** (wie im Vorzeigebeispiel)
 
-- Kalksandstein: $\lambda = 0{,}99\ \mathrm{W/(m\,K)}$
+- Kalksandstein: Wärmeleitfähigkeit $\lambda = 0{,}99\ \mathrm{W/(m\,K)}$
 - EPS: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
 
 **Geometrie**
@@ -53,7 +53,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 
 **Randbedingungen** (Mindestwärmeschutz nach DIN 4108-2)
 
-- innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 4\ \mathrm{W/(m^2\,K)}$ (entspricht $R_{si} = 0{,}25\ \mathrm{m^2\,K/W}$)
+- innen: Raumluft $T_i = 20\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha_i = 4\ \mathrm{W/(m^2\,K)}$ (entspricht dem Wärmeübergangswiderstand $R_{si} = 0{,}25\ \mathrm{m^2\,K/W}$)
 - außen: Außenluft $T_e = -5\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
 - Schnittenden der Schenkel, Ober- und Unterseite: adiabat (keine Randbedingung)
 

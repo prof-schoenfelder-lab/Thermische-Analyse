@@ -16,7 +16,7 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 **Material**
 
-- Stahl: $\lambda = 50\ \mathrm{W/(m\,K)}$
+- Stahl: Wärmeleitfähigkeit $\lambda = 50\ \mathrm{W/(m\,K)}$
 - nur für d) Dämmung: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
 
 **Geometrie**
@@ -31,9 +31,9 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 **Randbedingungen**
 
-- innen: Wasser $T = 60\ \mathrm{°C}$, $\alpha = 1000\ \mathrm{W/(m^2\,K)}$
+- innen: Wasser $T = 60\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 1000\ \mathrm{W/(m^2\,K)}$
 - außen Konvektion: Kellerluft $T = 15\ \mathrm{°C}$, $\alpha = 7\ \mathrm{W/(m^2\,K)}$
-- außen Strahlung: Kellerwände $T = 15\ \mathrm{°C}$, lackierte Oberfläche $\varepsilon = 0{,}9$
+- außen Strahlung: Kellerwände $T = 15\ \mathrm{°C}$, lackierte Oberfläche, Emissionsgrad $\varepsilon = 0{,}9$
 - Stirnflächen frei (isoliert)
 
 ## Hinweise
