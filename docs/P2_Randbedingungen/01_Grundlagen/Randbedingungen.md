@@ -6,8 +6,8 @@ title: Randbedingungen im Überblick
 
 Randbedingungen beantworten die Frage: **Wo kommt die Wärme her, und wo geht
 sie hin?** Nach dem Ort, an dem sie wirken, gibt es drei Gruppen. Die Bilder
-zeigen die [Vakuumröhre](../02_Vorzeigebeispiel/Vakuumroehre/index.md) aus dem
-Vorzeigebeispiel und das [Erdkabel im Windpark](../03_Selbsttests/Uebung-3.md)
+zeigen die [Vakuumröhre eines Solarkollektors](../02_Vorzeigebeispiel/Vakuumroehre/index.md)
+aus dem Vorzeigebeispiel und das [Erdkabel im Windpark](../03_Selbsttests/Uebung-3.md)
 aus Übung 3.
 
 <figure style="text-align:center;">
