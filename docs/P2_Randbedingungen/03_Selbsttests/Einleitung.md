@@ -21,9 +21,9 @@ Zahlenfragen dürfen bis zu fünfmal beantwortet werden, Auswahlfragen weniger
 oft. Danach wird die Lösung angezeigt.
 
 !!! tip "Plausibel prüfen mit der Energiebilanz"
-    Ziehen Sie Temperatur, Konvektion und Strahlung auf **Solution**
-    (Reaction Probe) und zählen Sie die vorgegebenen Wärmeströme dazu. Im
-    stationären Zustand ist die Summe null. Passt sie nicht, sitzt eine
-    Randbedingung auf der falschen Fläche.
+    - Temperatur, Konvektion und Strahlung auf **Solution** ziehen (Reaction Probe)
+    - Die vorgegebenen Wärmeströme dazuzählen
+    - Im stationären Zustand ist die Summe null
+    - Passt sie nicht, sitzt eine Randbedingung auf der falschen Fläche
 
 Viel Erfolg!

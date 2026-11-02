@@ -18,10 +18,8 @@ Zahlenfragen dürfen bis zu fünfmal beantwortet werden, Auswahlfragen weniger
 oft. Danach wird die Lösung angezeigt. Richtige Antworten werden sofort bestätigt.
 
 !!! tip "Plausibel prüfen, auch ohne Handrechnung"
-    Übung 1 lässt sich mit der
-    [analytischen Lösung](../02_Vorzeigebeispiel/Aussenwand/analytische-loesung.md)
-    nachrechnen. Für Ecke und Fußbodenheizung hilft eine Abschätzung: Die Ecke
-    muss kälter sein als die ebene Wand, die Bodenoberfläche liegt zwischen
-    Raum- und Rohrtemperatur.
+    - Übung 1 lässt sich mit der [analytischen Lösung](../02_Vorzeigebeispiel/Aussenwand/analytische-loesung.md) nachrechnen
+    - Ecke: Sie muss kälter sein als die ebene Wand
+    - Fußbodenheizung: Die Bodenoberfläche liegt zwischen Raum- und Rohrtemperatur
 
 Viel Erfolg!

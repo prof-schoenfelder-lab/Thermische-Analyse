@@ -135,10 +135,9 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 </div>
 
 !!! tip "Zusatz für Schnelle: Surface to Surface"
-    Ersetzen Sie in Fall a) die Strahlung durch `Surface To Surface` mit
-    `Enclosure Type` **Open** und `Ambient Temperature` 40 °C. Dann rechnet
-    ANSYS aus, welchen Teil der Strahlung die Nachbarrippen auffangen. Wie stark
-    ändert sich die höchste Temperatur?
+    - In Fall a) die Strahlung durch `Surface To Surface` ersetzen: `Enclosure Type` **Open** und `Ambient Temperature` 40 °C
+    - Dann rechnet ANSYS aus, welchen Teil der Strahlung die Nachbarrippen auffangen
+    - Wie stark ändert sich die höchste Temperatur?
 
 <div class="solution-images" markdown="1">
 
