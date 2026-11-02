@@ -13,7 +13,7 @@ Schritt**, nur mit anderen Zahlen: zwei Körper, Konvektion innen und außen. Je
 Ergebnis lässt sich von Hand prüfen.
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung1.svg" alt="Vollziegelwand mit 140 mm Dämmung" class="no-lightbox">
+  <img src="../../images/p1_uebung1.excalidraw.png" alt="Vollziegelwand mit 140 mm Dämmung" class="no-lightbox">
 </figure>
 
 ## Gegeben

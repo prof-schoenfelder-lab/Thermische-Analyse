@@ -10,7 +10,7 @@ wenig warme Fläche einer großen kalten Außenfläche gegenüber. Die Ecke ist 
 **geometrische Wärmebrücke**. Wie kalt wird sie, und droht dort Schimmel?
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung2.svg" alt="Außenecke in der Draufsicht" class="no-lightbox">
+  <img src="../../images/p1_uebung2.excalidraw.png" alt="Außenecke in der Draufsicht" class="no-lightbox">
 </figure>
 
 !!! info "Schimmelnachweis kurz erklärt"

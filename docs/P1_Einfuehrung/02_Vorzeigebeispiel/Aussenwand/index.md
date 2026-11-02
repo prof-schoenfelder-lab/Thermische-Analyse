@@ -26,12 +26,12 @@ außen, und das 3D-Modell muss genau die Handrechnung treffen.
     - **b)** **Konvektion** an Raumluft und Außenluft, daraus der **U-Wert**
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_aussenwand_a.svg" alt="Fall a: Oberflächentemperaturen" class="no-lightbox">
+  <img src="../../images/p1_aussenwand_a.excalidraw.png" alt="Fall a: Oberflächentemperaturen" class="no-lightbox">
   <figcaption>Fall a) Oberflächentemperaturen</figcaption>
 </figure>
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_aussenwand_b.svg" alt="Fall b: Konvektion" class="no-lightbox">
+  <img src="../../images/p1_aussenwand_b.excalidraw.png" alt="Fall b: Konvektion" class="no-lightbox">
   <figcaption>Fall b) Konvektion</figcaption>
 </figure>
 

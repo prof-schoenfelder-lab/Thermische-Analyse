@@ -40,7 +40,7 @@ zeigt das Rohr von der Startseite, was in jedem Schritt passiert:
     <p class="step-title" role="heading" aria-level="2">Netz (Elemente)</p>
     <img class="anim-standbild no-lightbox" src="../images/schritt_4_netz.png" alt="Rohr vernetzt">
     <figure style="text-align:center;">
-      <img src="../../images/p1_fem_1d.svg" alt="Wand in vier Elemente zerlegt" class="no-lightbox">
+      <img src="../../images/p1_fem_1d.excalidraw.png" alt="Wand in vier Elemente zerlegt" class="no-lightbox">
     </figure>
     <p>Das Bauteil wird mit Elementen vernetzt, die Elemente sind über <strong>Knoten</strong> verbunden. Jeder Knoten hat in der thermischen Analyse genau <strong>einen Freiheitsgrad: die Temperatur T</strong> (in der Strukturmechanik sind es drei Verschiebungen).</p>
   </div>

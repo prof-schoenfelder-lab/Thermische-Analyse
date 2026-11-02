@@ -10,7 +10,7 @@ und bleibt die Oberfläche unter dem Grenzwert von **29 °C**, ab dem es an den
 Füßen unangenehm wird? Eine Handrechnung gibt es dafür nicht.
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung3.svg" alt="Schnitt durch die Fußbodenheizung" class="no-lightbox">
+  <img src="../../images/p1_uebung3.excalidraw.png" alt="Schnitt durch die Fußbodenheizung" class="no-lightbox">
 </figure>
 
 ## Gegeben
