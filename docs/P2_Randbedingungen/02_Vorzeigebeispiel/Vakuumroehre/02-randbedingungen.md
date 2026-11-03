@@ -31,7 +31,7 @@ wählt man danach nur noch den Namen aus einer Liste.
     - Rechtsklick im Strukturbaum auf eine fertige Named Selection → `Duplicate`
     - In der Kopie im Worksheet nur **Criterion** und **Value** ändern, `Generate`, mit `F2` umbenennen
     - Beispiel: „Glas aussen“ duplizieren und den Value auf 0,0325 m (32,5 mm) setzen, das ergibt „Glas innen“
-    - Beispiel: „Oberseiten Blech“ duplizieren und zwei Zeilen ergänzen, das ergibt „Absorber aussen“
+    - Beispiel: „Oberseiten Blech“ duplizieren und im Worksheet mit `Rechtsklick → Add Row` die Zeilen 2 und 3 aus der Tabelle unten ergänzen, das ergibt „Absorber aussen“
 
 Diese fünf Named Selections braucht die Röhre. Die Zeilen mit **Location**
 hängen davon ab, welche Achse in Ihrem Modell **senkrecht zum Blech** steht
@@ -47,7 +47,9 @@ Tabelle passt sich an (die Klickanleitung zeigt X):
 | Rohr innen | Face | Radius | 0,005 m (5 mm) | Wasser |
 | Glas aussen | Face | Radius | 0,035 m (35 mm) | Luft und Himmel |
 | Glas innen | Face | Radius | 0,0325 m (32,5 mm) | Glas zum Absorber |
-| Absorber aussen | Face | Location <span class="aw-achse">X</span>, Location <span class="aw-achse">X</span>, Radius (drei Zeilen) | 0,00025 m, −0,00025 m, 0,006 m (0,25 mm, −0,25 mm, 6 mm) | Absorber zum Glas |
+| Absorber aussen, Zeile 1 | Face | Location <span class="aw-achse">X</span> | 0,00025 m (0,25 mm) | Absorber zum Glas |
+| Absorber aussen, Zeile 2 | Face | Location <span class="aw-achse">X</span> | −0,00025 m (−0,25 mm) | Absorber zum Glas |
+| Absorber aussen, Zeile 3 | Face | Radius | 0,006 m (6 mm) | Absorber zum Glas |
 
 <figure style="text-align:center;">
   <img src="../../../images/p2_named_selections.excalidraw.png" alt="Die fünf Named Selections im Querschnitt, die Flächen jeweils rot: Oberseiten Blech, Rohr innen, Glas aussen, Glas innen, Absorber aussen" class="no-lightbox">
