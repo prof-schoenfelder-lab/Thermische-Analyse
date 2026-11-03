@@ -27,6 +27,12 @@ wählt man danach nur noch den Namen aus einer Liste.
 
 <tutorial slug="p2-named-selection"></tutorial>
 
+!!! tip "Tipp: ab der zweiten Named Selection duplizieren"
+    - Rechtsklick im Strukturbaum auf eine fertige Named Selection → `Duplicate`
+    - In der Kopie im Worksheet nur **Criterion** und **Value** ändern, `Generate`, mit `F2` umbenennen
+    - Beispiel: „Glas aussen“ duplizieren und den Value auf 0,0325 m (32,5 mm) setzen, das ergibt „Glas innen“
+    - Beispiel: „Oberseiten Blech“ duplizieren und zwei Zeilen ergänzen, das ergibt „Absorber aussen“
+
 Diese fünf Named Selections braucht die Röhre. Die Zeilen mit **Location**
 hängen davon ab, welche Achse in Ihrem Modell **senkrecht zum Blech** steht
 (im Bild unten senkrecht), je nachdem, wie das Rechteck in der Skizze liegt.
@@ -49,12 +55,6 @@ Tabelle passt sich an (die Klickanleitung zeigt X):
 </figure>
 
 Die Zeilen mit **Radius** gelten unabhängig von der Achse.
-
-!!! tip "Tipp: Named Selection duplizieren"
-    - Rechtsklick im Strukturbaum auf eine fertige Named Selection → `Duplicate`
-    - In der Kopie im Worksheet nur **Criterion** und **Value** ändern, `Generate`, mit `F2` umbenennen
-    - Beispiel: „Glas aussen“ duplizieren und den Value auf 0,0325 m (32,5 mm) setzen, das ergibt „Glas innen“
-    - Beispiel: „Oberseiten Blech“ duplizieren und zwei Zeilen ergänzen, das ergibt „Absorber aussen“
 
 !!! check "Checkpoint"
     Nach `Generate` steht im `Detailfenster` unter **Total Selection**:
