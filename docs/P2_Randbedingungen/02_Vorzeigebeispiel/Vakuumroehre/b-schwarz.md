@@ -49,8 +49,8 @@ Dann `Rechtsklick Solution (B6) → Solve`.
   <img src="../../../images/p2_energiefluss_ab.excalidraw.png" alt="Aufteilung der Sonne auf Wasser und Strahlung zum Glas für a) und b)" class="no-lightbox">
 </figure>
 
-- Die **Temperatur** des Absorbers ändert sich kaum: Das Wasser hält ihn bei
-  rund 50 °C fest.
+- Die **Temperatur** des Absorbers ändert sich kaum: Das Wasser (50 °C) hält
+  ihn in beiden Fällen bei rund 51 °C fest.
 - Der Unterschied steckt im **Wärmestrom**: Der schwarze Absorber strahlt
   57 % der Sonne zum Glas ab. Das Glas wird wärmer als die Luft, die Reaktion
   **Luft** ist jetzt negativ.
