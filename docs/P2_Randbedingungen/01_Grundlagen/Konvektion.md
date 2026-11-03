@@ -28,9 +28,7 @@ Die Formel sieht einfach aus, weil die ganze Physik in α steckt.
 
 ## Woher α kommt: die Grenzschicht
 
-<figure style="text-align:center;">
-  <img src="../../images/p2_grenzschicht.excalidraw.png" alt="Grenzschicht an einer warmen Oberfläche: Die Geschwindigkeit steigt von null an der Wand auf die Strömung, die Temperatur fällt in derselben dünnen Schicht von der Oberfläche auf das Fluid" class="no-lightbox">
-</figure>
+<div class="grenzschicht"></div>
 
 - Direkt an der Oberfläche haftet das Fluid, seine Geschwindigkeit ist dort null. Durch diese Schicht kommt die Wärme nur durch Leitung
 - Die Temperatur ändert sich nur in einer dünnen Schicht nahe der Oberfläche, der **Grenzschicht**. Sie ist oft nur wenige Millimeter dick

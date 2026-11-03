@@ -103,6 +103,7 @@ extra_javascript:
       - "assets/js/wand-rechner.js"
       - "assets/js/strahlenzaehler.js"
       - "assets/js/achsenwahl.js"
+      - "assets/js/grenzschicht.js"
 
 extra_css:
       - "assets/tutorials/player.css"
@@ -117,6 +118,7 @@ extra_css:
       - "assets/styles/anim-scroll.css"
       - "assets/styles/strahlenzaehler.css"
       - "assets/styles/achsenwahl.css"
+      - "assets/styles/grenzschicht.css"
 
 # Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums
 extra:
