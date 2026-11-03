@@ -15,7 +15,7 @@
       ]
     },
     {
-      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal 2 (B5) → Insert → Convection`",
+      "caption": "Konvektion zur Außenluft anbringen: `Rechtsklick Strukturbaum Steady-State Thermal 2 (B5) → Insert → Convection`",
       "media": [
         "step-1.png"
       ]
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "caption": "`Rechtsklick Steady-State Thermal 2 (B5) → Insert → Convection`",
+      "caption": "Konvektion zur Raumluft innen anbringen: `Rechtsklick Steady-State Thermal 2 (B5) → Insert → Convection`",
       "media": [
         "step-4.png"
       ]

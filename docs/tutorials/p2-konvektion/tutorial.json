@@ -9,7 +9,7 @@
   ],
   "steps": [
     {
-      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Convection`",
+      "caption": "Konvektion zum Wasser im Rohr anlegen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Convection`",
       "media": [
         "step-0.png"
       ]
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "caption": "Zweite Konvektion: wieder `Rechtsklick Steady-State Thermal (A5) → Insert → Convection`",
+      "caption": "Zweite Konvektion, jetzt zur Luft außen am Glas: wieder `Rechtsklick Steady-State Thermal (A5) → Insert → Convection`",
       "media": [
         "step-4.png"
       ]

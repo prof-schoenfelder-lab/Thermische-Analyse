@@ -9,7 +9,7 @@
   ],
   "steps": [
     {
-      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Heat Flux`",
+      "caption": "Sonne als Wärmestromdichte anlegen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Heat Flux`",
       "media": [
         "step-0.png"
       ]

@@ -15,7 +15,7 @@
       "note": "Mit `Face` wählt ein Klick genau eine Fläche, nicht versehentlich einen Körper oder eine Kante."
     },
     {
-      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
+      "caption": "Innenfläche auf feste Temperatur setzen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
       "media": [
         "step-1.png"
       ]
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
+      "caption": "Außenfläche auf feste Temperatur setzen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Temperature`",
       "media": [
         "step-5.png"
       ]

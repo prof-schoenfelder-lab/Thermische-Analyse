@@ -16,7 +16,7 @@
       ]
     },
     {
-      "caption": "`Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Radiation`",
+      "caption": "Strahlung vom Absorber zum Glas anlegen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Radiation`",
       "media": [
         "step-1.png"
       ]
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "caption": "Zweite Strahlung: wieder `Rechtsklick Steady-State Thermal (A5) → Insert → Radiation`",
+      "caption": "Zweite Strahlung, jetzt vom Glas zum Absorber: wieder `Rechtsklick Steady-State Thermal (A5) → Insert → Radiation`",
       "media": [
         "step-5.png"
       ]

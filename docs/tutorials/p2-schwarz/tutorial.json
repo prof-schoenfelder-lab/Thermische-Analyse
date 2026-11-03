@@ -10,13 +10,13 @@
   ],
   "steps": [
     {
-      "caption": "Im Projektmenü **Steady-State Thermal** aus der Toolbox mit gedrückter Maustaste auf die Zelle **Model** der Analyse A ziehen, die neue Analyse in **b) Schwarz** umbenennen, dann `Rechtsklick Setup → Edit...`",
+      "caption": "Zweite Analyse anlegen, die dasselbe Modell nutzt (Geometrie, Material, Netz): im Projektmenü **Steady-State Thermal** aus der Toolbox mit gedrückter Maustaste auf die Zelle **Model** der Analyse A ziehen, die neue Analyse in **b) Schwarz** umbenennen, dann `Rechtsklick Setup → Edit...`",
       "media": [
         "step-0.png"
       ]
     },
     {
-      "caption": "Unter **Steady-State Thermal (A5)** alle Randbedingungen auswählen: **Sonne** anklicken, dann mit gedrückter `Shift`-Taste **Glas zum Absorber** anklicken, das markiert alle dazwischen. `Rechtsklick → Copy`",
+      "caption": "Randbedingungen aus a) übernehmen: unter **Steady-State Thermal (A5)** **Sonne** anklicken, dann mit gedrückter `Shift`-Taste **Glas zum Absorber** anklicken, das markiert alle dazwischen. `Rechtsklick → Copy`",
       "media": [
         "step-1.png"
       ]
@@ -41,7 +41,7 @@
       "note": "Kopierte Reaction Probes übernehmen ihre Randbedingung nicht: Das Feld muss in b) neu gesetzt werden."
     },
     {
-      "caption": "Unter **B5** **Absorber zum Glas** anklicken, **Emissivity** `0,9`, `Enter`",
+      "caption": "Absorber schwarz machen: unter **B5** **Absorber zum Glas** anklicken, **Emissivity** `0,9`, `Enter`",
       "media": [
         "step-5.png"
       ]

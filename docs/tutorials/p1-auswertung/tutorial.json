@@ -10,13 +10,13 @@
   ],
   "steps": [
     {
-      "caption": "`Rechtsklick Strukturbaum Solution (A6) → Insert → Thermal → Temperature`",
+      "caption": "Temperaturfeld anzeigen: `Rechtsklick Strukturbaum Solution (A6) → Insert → Thermal → Temperature`",
       "media": [
         "step-0.png"
       ]
     },
     {
-      "caption": "`Rechtsklick Solution (A6) → Insert → Thermal → Total Heat Flux`",
+      "caption": "Wärmestromdichte anzeigen: `Rechtsklick Solution (A6) → Insert → Thermal → Total Heat Flux`",
       "media": [
         "step-1.png"
       ]
@@ -47,13 +47,13 @@
       ]
     },
     {
-      "caption": "`Rechtsklick Solution (A6) → Insert → Thermal → Temperature`",
+      "caption": "Temperatur auf den gewählten Kanten: `Rechtsklick Solution (A6) → Insert → Thermal → Temperature`",
       "media": [
         "step-6.png"
       ]
     },
     {
-      "caption": "`Rechtsklick Temperature 2 → Convert To Path Result`",
+      "caption": "Als Verlauf über die Dicke darstellen: `Rechtsklick Temperature 2 → Convert To Path Result`",
       "media": [
         "step-7.png"
       ]
