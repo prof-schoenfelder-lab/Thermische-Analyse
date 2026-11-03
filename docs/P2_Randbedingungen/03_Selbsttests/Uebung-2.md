@@ -7,8 +7,10 @@ title: "Übung 2: Kühlkörper eines Wechselrichters"
 Der Wechselrichter einer Photovoltaikanlage wandelt Gleichstrom in Wechselstrom.
 Seine Leistungshalbleiter sitzen in einem Modul, das laut Datenblatt **40 W**
 Verlustleistung abgibt. Ein Aluminium-Kühlkörper führt die Wärme an die Luft im
-Gehäuse ab. Unter dem Modul darf der Kühlkörper höchstens **100 °C** warm
-werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
+Gehäuse ab. Gerechnet wird ein heißer Sommertag: Die Luft im Gehäuse hat dann
+40 °C, die Gehäusewände ebenso. Unter dem Modul darf der Kühlkörper höchstens
+**100 °C** warm werden. Reicht dafür blankes Aluminium, oder muss er schwarz
+eloxiert sein?
 
 <figure style="text-align:center;">
   <img src="../../images/p2_kuehlkoerper.excalidraw.png" alt="Kühlkörper mit Rippen" class="no-lightbox">
@@ -33,7 +35,9 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 **Randbedingungen**
 
 - Fläche unter dem Modul: Wärmestrom $\dot Q = 40\ \mathrm{W}$
-- alle Flächen außer der Rückseite, auch die Stirnflächen vorn und hinten (im Bild cyan): Luft $T = 40\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 6\ \mathrm{W/(m^2\,K)}$, und Strahlung zur Umgebung (40 °C)
+- alle Flächen außer der Rückseite, auch die Stirnflächen vorn und hinten (im Bild cyan):
+    - Konvektion: Luft im Gehäuse $T = 40\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 6\ \mathrm{W/(m^2\,K)}$
+    - Strahlung zu den Gehäusewänden mit $T = 40\ \mathrm{°C}$ (in ANSYS die `Ambient Temperature`)
 - Emissionsgrad: a) schwarz eloxiert $\varepsilon = 0{,}85$, b) blank $\varepsilon = 0{,}05$
 - Rückseite neben dem Modul: liegt am Gehäuse, isoliert
 
@@ -92,7 +96,7 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 <div class="numeric-question" data-answer="122.08" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="Nur die Emissivity ändert sich auf 0,05; Die Konvektion bleibt">
 </div>
 
-### Welche Ausführung hält die Grenze von 100 °C ein?
+### Welche Ausführung hält nach Ihrer Rechnung die Grenze von 100 °C ein?
 
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="1">
   <div class="mc-options">
@@ -115,38 +119,44 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
   </div>
 </div>
 
-### Ist das Ergebnis mit Strahlung To Ambient auf allen Rippenflächen eher zu günstig oder zu ungünstig?
+### Wird der echte Kühlkörper wärmer oder kälter als berechnet?
+
+Mit `To Ambient` rechnet ANSYS so, als käme die ganze Strahlung jeder Fläche an
+den Gehäusewänden an. Zwischen den Rippen sieht eine Fläche aber vor allem die
+Nachbarrippe.
 
 <div class="multiple-choice-question" data-correct="A" data-points="5" data-attempts="1">
   <div class="mc-options">
     <div class="mc-option" data-value="A">
       <input type="radio" id="u2e" name="u2b">
-      <label for="u2e">Zu günstig: Die Rippen sehen sich gegenseitig, ein großer Teil ihrer Strahlung landet auf der Nachbarrippe statt in der Umgebung</label>
+      <label for="u2e">Wärmer: Ein großer Teil der Strahlung einer Rippe trifft die Nachbarrippe statt die Gehäusewände und bleibt im Kühlkörper</label>
     </div>
     <div class="mc-option" data-value="B">
       <input type="radio" id="u2f" name="u2b">
-      <label for="u2f">Zu ungünstig: Die Rippen strahlen sich gegenseitig zusätzlich Wärme ab</label>
+      <label for="u2f">Kälter: Die Nachbarrippen nehmen zusätzlich Wärme auf</label>
     </div>
     <div class="mc-option" data-value="C">
       <input type="radio" id="u2g" name="u2b">
-      <label for="u2g">Passt genau, Strahlung hängt nur von der eigenen Temperatur ab</label>
+      <label for="u2g">Genauso warm: Jede Fläche strahlt nach ihrer eigenen Temperatur ab, egal was sie sieht</label>
     </div>
   </div>
 </div>
 
 !!! tip "Zusatz für Schnelle: Surface to Surface"
-    - In Fall a) die Strahlung durch `Surface To Surface` ersetzen: `Enclosure Type` **Open** und `Ambient Temperature` 40 °C
+    - In a) und b) die Strahlung durch `Surface To Surface` ersetzen: `Enclosure Type` **Open** und `Ambient Temperature` 40 °C
     - Dann rechnet ANSYS aus, welchen Teil der Strahlung die Nachbarrippen auffangen
-    - Wie stark ändert sich die höchste Temperatur?
+    - Wie stark ändert sich die höchste Temperatur? Hält die schwarze Ausführung die 100 °C dann noch ein?
 
 <div class="solution-images" markdown="1">
 
 ### Lösung
 
-- a) schwarz eloxiert: **82,5 °C**, Grenze eingehalten. Von den 40 W gehen 18,3 W über Konvektion und 21,7 W über Strahlung
+- a) schwarz eloxiert: **82,5 °C**, Grenze nach dieser Rechnung eingehalten. Von den 40 W gehen 18,3 W über Konvektion und 21,7 W über Strahlung
 - b) blank: **122,1 °C**, zu heiß. Ohne Strahlung muss die Konvektion fast alles allein schaffen (36,9 W)
 - Unter dem Modul ist es nur rund 5 K wärmer als an den Rippenspitzen: Aluminium verteilt die Wärme gut
 - Wärmestrom statt Wärmestromdichte: Bekannt ist die Gesamtleistung von 40 W. Als Wärmestromdichte müsste man erst durch die Fläche teilen: 40 W / 0,0025 m² = 16 000 W/m²
-- To Ambient auf allen Flächen ist zu günstig: Zwischen den Rippen strahlen gleich warme Flächen gegeneinander, dabei wird kaum Wärme abgegeben. Mit Surface to Surface wird das Ergebnis ungünstiger, und der Vorteil des Eloxierens kleiner
+- Der echte Kühlkörper wird wärmer als berechnet: Zwischen den Rippen strahlen gleich warme Flächen gegeneinander, dabei wird kaum Wärme abgegeben. Aus den Rinnen zwischen den Rippen kommt nur heraus, was durch ihre offene Oberseite und die offenen Enden passt. Wirksam strahlt etwa nur die Hüllfläche, eine gedachte Haut über den Rippen: rund 0,03 m² statt 0,078 m²
+- Mit `Surface to Surface` (Zusatz): schwarz eloxiert **101,5 °C** statt 82,5 °C, blank **123,0 °C** statt 122,1 °C. Damit hält auch die schwarze Ausführung die 100 °C knapp nicht ein: Mit `To Ambient` allein hätte man falsch entschieden
+- Blankes Aluminium strahlt ohnehin wenig, deshalb ändert sich dort kaum etwas
 
 </div>
