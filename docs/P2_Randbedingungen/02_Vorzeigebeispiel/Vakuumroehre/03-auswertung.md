@@ -46,6 +46,19 @@ title: 3 · Lösen und Auswerten
 
 Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingung.
 
+!!! info "Sonne: keine Reaction Probe, sondern Wert mal Fläche"
+    Für eine Wärmestromdichte (`Heat Flux`) bietet ANSYS keine Reaction Probe
+    an. Ihr Wärmestrom steht aber schon fest, er ist die Eingabe mal die Fläche:
+
+    $$
+    \dot Q_\mathrm{Sonne} = \dot q \cdot A = 700\ \mathrm{W/m^2} \cdot 9{,}6 \cdot 10^{-4}\ \mathrm{m^2} = 0{,}672\ \mathrm{W}
+    $$
+
+    - $\dot Q_\mathrm{Sonne}$: Wärmestrom, den die Sonne in den Absorber bringt
+    - $\dot q$: Wärmestromdichte der Sonne, 700 W/m² (Eingabe bei `Heat Flux`)
+    - $A$: Fläche der beiden Blechoberseiten: zwei Flügel, je 24 mm breit (von 6 bis 30 mm) und 20 mm lang, also 2 · 24 mm · 20 mm = 960 mm² = 9,6·10⁻⁴ m²
+    - Die Fläche zeigt auch ANSYS: Im Detailfenster der Named Selection **Oberseiten Blech** steht sie als **Surface Area**
+
 !!! check "Checkpoint: Diese Werte sollten herauskommen"
     | Größe | Wert |
     |---|---|
