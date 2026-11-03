@@ -16,7 +16,7 @@
       ]
     },
     {
-      "caption": "Unter **Steady-State Thermal (A5)** **Sonne** anklicken, mit `Shift` **Glas zum Absorber** dazunehmen, `Rechtsklick → Copy`",
+      "caption": "Unter **Steady-State Thermal (A5)** alle Randbedingungen auswählen: **Sonne** anklicken, dann mit gedrückter `Shift`-Taste **Glas zum Absorber** anklicken, das markiert alle dazwischen. `Rechtsklick → Copy`",
       "media": [
         "step-1.png"
       ]
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "caption": "Genauso die Ergebnisse unter **Solution (A6)** markieren, `Rechtsklick → Copy`",
+      "caption": "Genauso alle Ergebnisse unter **Solution (A6)** auswählen: das erste Ergebnis anklicken, mit `Shift` das letzte. `Rechtsklick → Copy`",
       "media": [
         "step-3.png"
       ]
