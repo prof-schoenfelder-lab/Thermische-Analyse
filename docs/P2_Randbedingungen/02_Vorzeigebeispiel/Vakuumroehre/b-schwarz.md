@@ -35,7 +35,7 @@ Dann `Rechtsklick Solution (B6) → Solve`.
     | Reaktion Luft | +0,182 W | **−0,084 W** |
     | Reaktion Himmel | −0,223 W | **−0,358 W** |
     | Nutzwärme je Meter | 32,0 W/m | **14,5 W/m** |
-    | Anteil der Sonne im Wasser | 95 % | **43 %** |
+    | Anteil der Sonnenstrahlung im Wasser | 95 % | **43 %** |
 
 <figure style="text-align:center;">
   <img src="../../../images/p2_roehre_b_absorber.webp" alt="Fall b: Temperatur Absorber, 50,4 bis 51,1 °C" style="width:49%">
@@ -46,13 +46,13 @@ Dann `Rechtsklick Solution (B6) → Solve`.
 ## Was die Zahlen zeigen
 
 <figure style="text-align:center;">
-  <img src="../../../images/p2_energiefluss_ab.excalidraw.png" alt="Aufteilung der Sonne auf Wasser und Strahlung zum Glas für a) und b)" class="no-lightbox">
+  <img src="../../../images/p2_energiefluss_ab.excalidraw.png" alt="Aufteilung der Sonnenstrahlung auf Wasser und Strahlung zum Glas für a) und b)" class="no-lightbox">
 </figure>
 
 - Die **Temperatur** des Absorbers ändert sich kaum: Das Wasser (50 °C) hält
   ihn in beiden Fällen bei rund 51 °C fest.
 - Der Unterschied steckt im **Wärmestrom**: Der schwarze Absorber strahlt
-  57 % der Sonne zum Glas ab. Das Glas wird wärmer als die Luft, die Reaktion
+  57 % der Sonnenstrahlung zum Glas ab. Das Glas wird wärmer als die Luft, die Reaktion
   **Luft** ist jetzt negativ.
 - Im Vakuum entscheidet allein der Emissionsgrad über den Verlust: Deshalb
   sind Vakuumröhren immer selektiv beschichtet.

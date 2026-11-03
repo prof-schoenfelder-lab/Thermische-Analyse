@@ -93,7 +93,7 @@ Negative Werte heißen: Die Wärme verlässt das Modell über diese Randbedingun
 ## Was die Zahlen zeigen
 
 - **Nutzwärme je Meter Röhre:** 0,639 W je 20 mm, also **32,0 W/m**.
-- **95 %** der aufgenommenen Sonne kommen im Wasser an
+- **95 %** der aufgenommenen Sonnenstrahlung kommen im Wasser an
   (0,639 W von 0,672 W). Nur rund 0,03 W strahlt der Absorber zum Glas ab.
 - **Das Glas ist kälter als die Luft** (15,8 °C bei 20 °C Luft): Es strahlt zum
   kalten Himmel und bekommt vom Absorber kaum Wärme. Die Luft wärmt das Glas

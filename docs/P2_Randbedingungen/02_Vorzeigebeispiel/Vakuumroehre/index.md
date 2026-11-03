@@ -169,7 +169,7 @@ kleine Aufnahme im Glas vernachlässigen wir.
 <!-- --8<-- [start:Gesucht] -->
 1. Temperatur von Absorber und Glas
 2. Nutzwärme an das Wasser je 20 mm Röhre und je Meter Röhre
-3. Anteil der aufgenommenen Sonne, der im Wasser ankommt
+3. Anteil der aufgenommenen Sonnenstrahlung, der im Wasser ankommt
 <!-- --8<-- [end:Gesucht] -->
 
 ??? info "Zum Nachrechnen: Fall a) von Hand abschätzen"
@@ -186,7 +186,7 @@ kleine Aufnahme im Glas vernachlässigen wir.
     **1. Sonne:** Wärmestrom $\dot Q_{Sonne}$ = Wärmestromdichte mal Fläche,
     $\dot Q_{Sonne} = 700 \cdot 9{,}6 \cdot 10^{-4} = 0{,}672\ \mathrm{W}$
 
-    **2. Absorbertemperatur:** Fast die ganze Sonne geht ins Wasser. Der
+    **2. Absorbertemperatur:** Fast die ganze Sonnenstrahlung geht ins Wasser. Der
     Wärmeübergang ans Wasser braucht
 
     $$
