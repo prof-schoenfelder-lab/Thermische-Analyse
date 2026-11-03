@@ -21,9 +21,9 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 
 **Geometrie**
 
-- Stahlrohr DN 20: außen Ø 26,9 mm, Wanddicke 2,6 mm
+- Stahlrohr DN 20: außen Ø 26,9 mm, innen Ø 21,7 mm (Wanddicke 2,6 mm)
 - Länge **1000 mm**, damit alle Wärmeströme direkt je Meter Rohr gelten
-- nur für d): Dämmung 20 mm dick um das Rohr (außen Ø 66,9 mm), zweiter Körper mit Share Topology
+- nur für d): Dämmung 20 mm dick um das Rohr, außen Ø 66,9 mm, zweiter Körper mit Share Topology
 
 **Netz**
 
@@ -39,35 +39,6 @@ Strahlung bei 60 °C als unwichtig ein. Stimmt das?
 ## Hinweise
 
 <div class="steps" markdown="1" data-anleitung="nein">
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Geometrie</p>
-    <ul>
-      <li>Zwei Kreise um den Ursprung, Ø <strong>26,9</strong> und <strong>21,7</strong> mm</li>
-      <li>Skizze beenden</li>
-      <li>Entsteht dabei auch eine innere Kreisfläche, diese löschen</li>
-      <li>Den Ring <strong>1000 mm</strong> ziehen</li>
-    </ul>
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Zwei Randbedingungen auf der Außenfläche</p>
-    <ul>
-      <li>Innenfläche: <code>Convection</code> (Wasser)</li>
-      <li>Außenfläche: <code>Convection</code> (Kellerluft) <strong>und</strong> <code>Radiation</code> (Kellerwände, Correlation <code>To Ambient</code>)</li>
-      <li>Beide gelten gleichzeitig</li>
-    </ul>
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Wärmeströme ablesen</p>
-    <ul>
-      <li>Kellerluft und Kellerwände je mit gedrückter Maustaste auf <strong>Solution</strong> ziehen (Reaction Probe)</li>
-      <li>Lösen</li>
-      <li>Der Wärmeverlust ist die Summe beider Beträge</li>
-      <li>Für Fall a) die Strahlung mit <code>Rechtsklick → Suppress</code> abschalten und neu lösen</li>
-    </ul>
-  </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">d) Dämmung als zweiter Körper</p>
