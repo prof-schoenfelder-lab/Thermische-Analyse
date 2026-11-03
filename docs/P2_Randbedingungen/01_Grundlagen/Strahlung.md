@@ -166,24 +166,24 @@ vielen Strahlen nähern sich die Anteile den Sichtfaktoren.
         - Absorber: $2670\ \mathrm{mm^2} \cdot 0{,}92 \approx 2450\ \mathrm{mm^2}$
         - Glas: $4080\ \mathrm{mm^2} \cdot 0{,}60 \approx 2450\ \mathrm{mm^2}$
         - Das große Glas schickt nur 60 % zum Absorber, der kleine Absorber 92 % zum Glas. Weil das Glas größer ist, ist beides gleich viel (Bild)
-        - Warum das so sein muss: Sind beide Flächen gleich warm, geht genauso viel Strahlung hin wie zurück. Sonst flösse Wärme von allein zwischen gleich warmen Flächen
 
     <figure style="text-align:center;">
       <img src="../../images/p2_reziprozitaet.excalidraw.png" alt="Balken so lang wie die Fläche: Absorber 2670 mm², davon 92 % zum Glas; Glas 4080 mm², davon 60 % zum Absorber; beide Teile gleich lang" class="no-lightbox">
     </figure>
 
-    Die zweite Regel sorgt dafür, dass die Energie stimmt. Zwischen zwei
-    schwarzen Flächen fließt netto
+    **Warum das so sein muss:** Zwischen zwei schwarzen Flächen geht Strahlung
+    hin und zurück. Netto fließt
 
     $$
-    \dot Q_{12} = \sigma\,A_1\,F_{12}\,\left(T_1^4 - T_2^4\right)
+    \dot Q_{12} = \sigma\,A_1\,F_{12}\,T_1^4 - \sigma\,A_2\,F_{21}\,T_2^4
     $$
 
-    mit dem Wärmestrom $\dot Q_{12}$ von Fläche 1 zu Fläche 2 und den absoluten
-    Temperaturen $T_1$, $T_2$ der beiden Flächen.
+    mit dem Wärmestrom $\dot Q_{12}$ von Fläche 1 zu Fläche 2, der
+    Stefan-Boltzmann-Konstante $\sigma$ und den absoluten Temperaturen $T_1$,
+    $T_2$ der beiden Flächen.
 
-    Nur weil $A_1 F_{12} = A_2 F_{21}$ ist, rechnen beide Flächen mit demselben
-    Wärmestrom: Was der Absorber abgibt, kommt beim Glas an.
+    - Sind beide gleich warm, muss $\dot Q_{12}$ null sein, sonst flösse Wärme von allein zwischen gleich warmen Flächen. Das geht nur mit $A_1\,F_{12} = A_2\,F_{21}$
+    - Dann gilt $\dot Q_{12} = \sigma\,A_1\,F_{12}\,\left(T_1^4 - T_2^4\right)$, und was der Absorber abgibt, kommt beim Glas an
 
 ### Enclosure
 
