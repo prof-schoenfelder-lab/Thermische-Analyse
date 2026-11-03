@@ -36,11 +36,12 @@ stehen im Checkpoint, warum, steht in der Warnung darunter.
     mit dem Emissionsgrad $\varepsilon = 0{,}9$ ist die Kopplung so stark, dass der Löser dorthin
     springen kann.
 
-    Die Werte im Checkpoint haben wir mit vielen kleinen Schritten erzwungen:
-    **Initial Temperature** 50 °C und unter `Analysis Settings → Step Controls`
-    100 bis 1000 **Substeps**. Dann bringt ANSYS die Sonne stufenweise auf und
-    bleibt bei der echten Lösung, rechnet aber sehr lange. Nachrechnen lohnt
-    sich nicht, zum Vergleich reicht der Checkpoint.
+    Die Werte im Checkpoint lassen sich nur mit vielen kleinen Schritten
+    erzwingen: **Initial Temperature** 50 °C und unter
+    `Analysis Settings → Step Controls` 100 bis 1000 **Substeps**. Dann bringt
+    ANSYS die Sonnenleistung stufenweise auf und bleibt bei der echten Lösung,
+    rechnet aber sehr lange. Nachrechnen lohnt sich nicht, zum Vergleich reicht
+    der Checkpoint.
 
     Merke: Ein Ergebnis immer an der Physik prüfen. Glas mit Tausenden Grad
     unter 700 W/m² Sonne kann nicht stimmen, egal wie bunt das Bild ist.
