@@ -8,13 +8,22 @@ Der Wechselrichter einer Photovoltaikanlage wandelt Gleichstrom in Wechselstrom.
 Seine Leistungshalbleiter sitzen in einem Modul, das laut Datenblatt **40 W**
 Verlustleistung abgibt. Ein Aluminium-Kühlkörper führt die Wärme an die Luft im
 Gehäuse ab. Gerechnet wird ein heißer Sommertag: Die Luft im Gehäuse hat dann
-40 °C, die Gehäusewände ebenso. Unter dem Modul darf der Kühlkörper höchstens
-**100 °C** warm werden. Reicht dafür blankes Aluminium, oder muss er schwarz
-eloxiert sein?
+40 °C, für die Gehäusewände gilt vereinfacht dasselbe. Unter dem Modul darf der
+Kühlkörper höchstens **100 °C** warm werden. Reicht dafür blankes Aluminium,
+oder muss er schwarz eloxiert sein?
 
 <figure style="text-align:center;">
   <img src="../../images/p2_kuehlkoerper.excalidraw.png" alt="Kühlkörper mit Rippen" class="no-lightbox">
 </figure>
+
+!!! info "Woher kommen die 40 °C?"
+    <img src="../../images/p2_gehaeuse.excalidraw.png" alt="Kühlkörper im dichten Gehäuse des Wechselrichters: draußen 30 °C, Luft im Gehäuse 40 °C, Gehäusewände innen vereinfacht 40 °C. Der Kühlkörper gibt Wärme über Konvektion an die Luft und über Strahlung an die Wände ab, durch die Wände geht sie nach draußen" class="no-lightbox" style="display:block;margin:0 auto;width:100%;max-width:640px">
+
+    - Heißer Sommertag, der Wechselrichter hängt zum Beispiel in einer Garage: draußen etwa 30 °C (Annahme)
+    - Das Gehäuse ist dicht gegen Staub und Feuchte. Die Verlustwärme heizt die Luft darin auf und kommt nur durch die Gehäusewände nach draußen. Innen ist es deshalb wärmer, hier angenommen 10 K: **Luft im Gehäuse 40 °C**
+    - Die Gehäusewände liegen zwischen der warmen Luft innen und der kühleren Luft draußen. Sie sind also etwas kühler als 40 °C. Die Aufgabe setzt sie vereinfacht auch auf **40 °C**
+    - Das liegt auf der sicheren Seite: Zu kühleren Wänden strahlt der Kühlkörper mehr ab, er würde etwas kühler
+    - Das Gehäuse selbst gehört nicht zum Modell: Luft und Wände stecken nur als feste 40 °C in den Randbedingungen
 
 ## Gegeben
 
@@ -82,6 +91,15 @@ eloxiert sein?
     </ul>
   </div>
 
+  <div class="step">
+    <p class="step-title" role="heading" aria-level="2">c) Rippen sehen sich gegenseitig</p>
+    <ul>
+      <li>Damit sich die Rippen gegenseitig sehen: bei der Strahlung <code>Correlation</code> von <code>To Ambient</code> auf <code>Surface To Surface</code> umstellen</li>
+      <li><code>Enclosure Type</code> <strong>Open</strong> und <code>Ambient Temperature</code> 40 °C: Was keine andere Fläche des Kühlkörpers trifft, geht an die Gehäusewände</li>
+      <li><strong>Emissivity</strong> wieder 0,85 wie in a), dann neu lösen</li>
+    </ul>
+  </div>
+
 </div>
 
 ## Gesucht
@@ -142,10 +160,33 @@ Nachbarrippe.
   </div>
 </div>
 
-!!! tip "Zusatz für Schnelle: Surface to Surface"
-    - In a) und b) die Strahlung durch `Surface To Surface` ersetzen: `Enclosure Type` **Open** und `Ambient Temperature` 40 °C
-    - Dann rechnet ANSYS aus, welchen Teil der Strahlung die Nachbarrippen auffangen
-    - Wie stark ändert sich die höchste Temperatur? Hält die schwarze Ausführung die 100 °C dann noch ein?
+### c) Höchste Temperatur, schwarz eloxiert, mit Surface to Surface, in °C
+
+<div class="numeric-question" data-answer="101.5" data-tolerance="1.5" data-points="5" data-attempts="5" data-hints="Correlation Surface To Surface statt To Ambient?; Enclosure Type Open und Ambient Temperature 40 °C?; Emissivity wieder 0,85 wie in a)?">
+</div>
+
+### Welche Ausführung hält die Grenze von 100 °C ein, wenn sich die Rippen gegenseitig sehen?
+
+<div class="multiple-choice-question" data-correct="D" data-points="5" data-attempts="1">
+  <div class="mc-options">
+    <div class="mc-option" data-value="A">
+      <input type="radio" id="u2h" name="u2c">
+      <label for="u2h">Nur schwarz eloxiert</label>
+    </div>
+    <div class="mc-option" data-value="B">
+      <input type="radio" id="u2i" name="u2c">
+      <label for="u2i">Nur blank</label>
+    </div>
+    <div class="mc-option" data-value="C">
+      <input type="radio" id="u2j" name="u2c">
+      <label for="u2j">Beide</label>
+    </div>
+    <div class="mc-option" data-value="D">
+      <input type="radio" id="u2k" name="u2c">
+      <label for="u2k">Keine</label>
+    </div>
+  </div>
+</div>
 
 <div class="solution-images" markdown="1">
 
@@ -153,10 +194,11 @@ Nachbarrippe.
 
 - a) schwarz eloxiert: **82,5 °C**, Grenze nach dieser Rechnung eingehalten. Von den 40 W gehen 18,3 W über Konvektion und 21,7 W über Strahlung
 - b) blank: **122,1 °C**, zu heiß. Ohne Strahlung muss die Konvektion fast alles allein schaffen (36,9 W)
+- c) schwarz eloxiert mit `Surface to Surface`: **101,5 °C** statt 82,5 °C, die Grenze ist knapp überschritten. Blank wären es 123,0 °C statt 122,1 °C
+- Damit hält **keine** Ausführung die 100 °C ein: Mit `To Ambient` allein hätte man falsch entschieden
 - Unter dem Modul ist es nur rund 5 K wärmer als an den Rippenspitzen: Aluminium verteilt die Wärme gut
 - Wärmestrom statt Wärmestromdichte: Bekannt ist die Gesamtleistung von 40 W. Als Wärmestromdichte müsste man erst durch die Fläche teilen: 40 W / 0,0025 m² = 16 000 W/m²
-- Der echte Kühlkörper wird wärmer als berechnet: Zwischen den Rippen strahlen gleich warme Flächen gegeneinander, dabei wird kaum Wärme abgegeben. Aus den Rinnen zwischen den Rippen kommt nur heraus, was durch ihre offene Oberseite und die offenen Enden passt. Wirksam strahlt etwa nur die Hüllfläche, eine gedachte Haut über den Rippen: rund 0,03 m² statt 0,078 m²
-- Mit `Surface to Surface` (Zusatz): schwarz eloxiert **101,5 °C** statt 82,5 °C, blank **123,0 °C** statt 122,1 °C. Damit hält auch die schwarze Ausführung die 100 °C knapp nicht ein: Mit `To Ambient` allein hätte man falsch entschieden
+- Der echte Kühlkörper wird wärmer als mit `To Ambient` berechnet: Zwischen den Rippen strahlen gleich warme Flächen gegeneinander, dabei wird kaum Wärme abgegeben. Aus den Rinnen zwischen den Rippen kommt nur heraus, was durch ihre offene Oberseite und die offenen Enden passt. Wirksam strahlt etwa nur die Hüllfläche, eine gedachte Haut über den Rippen: rund 0,03 m² statt 0,078 m²
 - Blankes Aluminium strahlt ohnehin wenig, deshalb ändert sich dort kaum etwas
 
 </div>
