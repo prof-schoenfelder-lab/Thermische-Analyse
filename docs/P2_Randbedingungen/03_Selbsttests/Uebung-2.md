@@ -33,7 +33,7 @@ werden. Reicht dafür blankes Aluminium, oder muss er schwarz eloxiert sein?
 **Randbedingungen**
 
 - Fläche unter dem Modul: Wärmestrom $\dot Q = 40\ \mathrm{W}$
-- alle Flächen außer der Rückseite: Luft $T = 40\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 6\ \mathrm{W/(m^2\,K)}$, und Strahlung zur Umgebung (40 °C)
+- alle Flächen außer der Rückseite, auch die Stirnflächen vorn und hinten (im Bild cyan): Luft $T = 40\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 6\ \mathrm{W/(m^2\,K)}$, und Strahlung zur Umgebung (40 °C)
 - Emissionsgrad: a) schwarz eloxiert $\varepsilon = 0{,}85$, b) blank $\varepsilon = 0{,}05$
 - Rückseite neben dem Modul: liegt am Gehäuse, isoliert
 
