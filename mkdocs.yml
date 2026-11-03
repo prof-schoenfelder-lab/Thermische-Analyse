@@ -101,6 +101,7 @@ extra_javascript:
       - "assets/js/spickzettel.js"
       - "assets/js/hero-anim.js"
       - "assets/js/wand-rechner.js"
+      - "assets/js/strahlenzaehler.js"
 
 extra_css:
       - "assets/tutorials/player.css"
@@ -113,6 +114,7 @@ extra_css:
       - "styles/modern.css"
       - "assets/styles/spickzettel.css"
       - "assets/styles/anim-scroll.css"
+      - "assets/styles/strahlenzaehler.css"
 
 # Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums
 extra:

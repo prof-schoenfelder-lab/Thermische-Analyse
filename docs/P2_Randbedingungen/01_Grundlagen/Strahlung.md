@@ -144,6 +144,13 @@ Stelle: Die Blechflügel strahlen seitlich auf das Rohr in der Mitte, das Rohr
 strahlt auf die Flügel. Ein ebenes Blech allein sieht sich nicht selbst, eine
 gewölbte Fläche wie die Innenseite des Glases schon.
 
+Probieren Sie es aus: Wählen Sie, ob der Absorber oder das Glas strahlt. Die
+Strahlen starten an zufälligen Stellen in zufällige Richtungen, senkrecht zur
+Fläche häufiger als flach. Gezählt wird, was jeder Strahl zuerst trifft. Mit
+vielen Strahlen nähern sich die Anteile den Sichtfaktoren.
+
+<div class="strahlenzaehler"></div>
+
 ??? info "Zwei Regeln für Sichtfaktoren"
     1. **Alles kommt irgendwo an.** In einem geschlossenen Raum ergeben die
        Sichtfaktoren einer Fläche zusammen 100 %.
@@ -184,6 +191,14 @@ Hälfte der Strahlung trifft gar nichts im Modell (mittlere Balken).
   <img src="../../images/p2_sichtfaktor.excalidraw.png" alt="Längsschnitt: 20-mm-Stück mit offenen Enden und lange Röhre mit Nachbarstücken" class="no-lightbox">
 </figure>
 
+In der Seitenansicht unten liegt oben und unten das Glas, in der Mitte der
+Absorber, links und rechts sind die offenen Enden. Wählen Sie, was strahlt: Was
+vorn oder hinten hinausgeht, wird grau. Treffer auf der vorderen oder hinteren
+Glaswand liegen im Bild zwischen den beiden Glasstreifen. Vergleichen Sie
+20 mm mit 200 mm Länge.
+
+<div class="strahlenzaehler" data-ansicht="laengs"></div>
+
 <figure style="text-align:center;">
   <img src="../../images/p2_sichtfaktor_balken.excalidraw.png" alt="Sichtfaktoren von Absorber und Glas: lange Röhre, 20-mm-Stück, mit Perfect" class="no-lightbox">
   <figcaption>Sichtfaktoren der Röhre, eigene Abschätzung mit Strahlverfolgung</figcaption>
@@ -204,7 +219,8 @@ im Vakuum nicht gibt.
 
 ### Der Haken an Perfect {: #haken-perfect }
 
-Perfect rechnet jede Fläche **für sich** hoch (untere Balken): Das Glas sieht
+Perfect rechnet jede Fläche **für sich** hoch (untere Balken, rot umrandet,
+was zu viel ist): Das Glas sieht
 danach mehr Absorber als in der langen Röhre (67 % statt 60 %), der Absorber
 weniger Glas (86 % statt 92 %). Damit gilt die Reziprozität nicht mehr
 (Glas $4080\ \mathrm{mm^2} \cdot 0{,}67 \approx 2730\ \mathrm{mm^2}$, Absorber

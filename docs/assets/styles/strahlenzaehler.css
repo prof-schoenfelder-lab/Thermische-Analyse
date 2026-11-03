@@ -1,0 +1,44 @@
+/* Strahlenzähler (P2 Wärmestrahlung, Sichtfaktor): Farben aus den Kurs-Tokens, funktioniert hell und dunkel.
+   Die --sz-Farben liest das Skript für das Bild. */
+.strahlenzaehler {
+  --sz-glas: #e6f5fc; --sz-kante: var(--kurs-text-3, #87939a); --sz-kupfer: #e8b48f; --sz-wasser: #cfe8f7;
+  --sz-strahl: var(--kurs-c-warn, #e53009); --sz-glas-treffer: var(--kurs-accent, #009ee3); --sz-abs-treffer: #a85f2a;
+  --sz-grund: var(--kurs-surface, #fff); --sz-hinaus: var(--kurs-line-2, #cdd6dc);
+  display: grid; gap: .8rem; margin: 1.2em 0 1.6em; padding: 1rem 1.1rem;
+  background: var(--kurs-panel, #f2f6f9); border: 1px solid var(--kurs-line, #e2e8ec);
+  border-radius: var(--kurs-radius-md, .6rem);
+}
+body[data-md-color-scheme="slate"] .strahlenzaehler {
+  --sz-glas: rgba(0, 158, 227, .18); --sz-wasser: rgba(0, 158, 227, .32); --sz-abs-treffer: #f0a36b;
+}
+.strahlenzaehler .sz-knoepfe { display: flex; flex-wrap: wrap; gap: .5em; }
+.strahlenzaehler button {
+  font: inherit; font-size: .9em; font-weight: 600; cursor: pointer; padding: .25em .8em;
+  color: var(--kurs-accent-ink, #0070a6); background: var(--kurs-surface, #fff);
+  border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: var(--kurs-btn-radius, .5rem);
+}
+.strahlenzaehler button:hover { border-color: var(--kurs-accent, #009ee3); }
+.strahlenzaehler button:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 2px; }
+.strahlenzaehler .sz-quelle[aria-pressed="true"] {
+  color: var(--sz-strahl); border-color: var(--sz-strahl); background: rgba(229, 48, 9, .08);
+}
+.strahlenzaehler .sz-inhalt { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
+.strahlenzaehler canvas { width: 100%; max-width: 340px; height: auto; background: var(--sz-grund); border-radius: .4rem; }
+.strahlenzaehler[data-ansicht="laengs"] canvas { max-width: 640px; }
+.strahlenzaehler[data-ansicht="laengs"] .sz-inhalt { flex-direction: column; align-items: stretch; }
+.strahlenzaehler[data-ansicht="laengs"] .sz-zahlen { width: 100%; max-width: 640px; }
+.strahlenzaehler .sz-zahlen { flex: 1; min-width: 14em; }
+.strahlenzaehler .sz-zeilen { display: grid; gap: .9rem; }
+.strahlenzaehler .sz-hinweis { margin: 0; color: var(--kurs-text-2, #566166); }
+.strahlenzaehler .sz-text { display: flex; justify-content: space-between; gap: .5em; margin-bottom: .3em; font-size: .9em; color: var(--kurs-text-2, #566166); }
+.strahlenzaehler .sz-text b { font-variant-numeric: tabular-nums; color: var(--kurs-head, #022541); }
+.strahlenzaehler .sz-balken {
+  position: relative; height: 1.1em; background: var(--kurs-surface, #fff);
+  border: 1px solid var(--kurs-line, #e2e8ec); border-radius: .3rem;
+}
+.strahlenzaehler .sz-fuell { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: .3rem; }
+.strahlenzaehler .sz-fuell.sz-G { background: var(--sz-glas-treffer); }
+.strahlenzaehler .sz-fuell.sz-A { background: var(--sz-kupfer); }
+.strahlenzaehler .sz-fuell.sz-E { background: var(--sz-hinaus); }
+.strahlenzaehler .sz-soll { position: absolute; top: -.35em; bottom: -.35em; width: 2px; margin-left: -1px; background: var(--kurs-head, #022541); }
+.strahlenzaehler .sz-fuss { margin: 0; font-size: .85em; color: var(--kurs-text-2, #566166); }
