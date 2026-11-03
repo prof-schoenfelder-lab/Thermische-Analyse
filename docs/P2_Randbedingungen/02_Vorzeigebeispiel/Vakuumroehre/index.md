@@ -26,7 +26,7 @@ In diesem Beispiel kommen fast alle Randbedingungen vor:
 
     - **a)** Absorber **selektiv** beschichtet, ε = 0,05
     - **b)** Absorber **schwarz** lackiert, ε = 0,9
-    - **c)** **Stillstand**: Das Wasser steht, die Pumpe ist aus (optional)
+    - **c)** **Stillstand**: Das Wasser steht, die Pumpe ist aus, Absorber selektiv wie in a) (optional)
 
 <figure style="text-align:center;">
   <img src="../../images/p2_roehre.excalidraw.png" alt="Querschnitt der Vakuumröhre" class="no-lightbox">

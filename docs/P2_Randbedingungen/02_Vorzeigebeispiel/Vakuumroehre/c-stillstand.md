@@ -5,15 +5,18 @@ title: c) Stillstand
 # c) Stillstand: Die Pumpe ist aus <small>(optional)</small>
 
 <div class="task-banner" data-tabs="Aufgabe=../|a) Selektiv=../01-modell/|b) Schwarz=../b-schwarz/|c) Stillstand=../c-stillstand/" markdown>
-🎯 **Jetzt:** ohne Wasserstrom rechnen: Wie heiß wird der Absorber?
+🎯 **Jetzt:** den selektiven Absorber aus a) ohne Wasserstrom rechnen: Wie heiß wird er?
 </div>
 
 Im Sommer ist der Speicher oft schon voll, die Solarpumpe schaltet ab. Die
 Sonne scheint trotzdem weiter. Ohne Wasserstrom kann der Absorber seine Wärme
 nur noch durch Strahlung loswerden.
 
+Gerechnet wird mit dem **selektiven Absorber aus a)**: Randbedingungen und
+Ergebnisse werden aus a) kopiert, nicht aus b).
+
 ??? tip "Kurzanleitung: Wasser abschalten"
-    1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen, die Randbedingungen und die beiden Temperaturen aus Fall a) übernehmen (Reaction Probes braucht c) nicht)
+    1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen, die Randbedingungen und die beiden Temperaturen aus Fall a) übernehmen, nicht aus b) (Reaction Probes braucht c) nicht)
     2. Unter **Steady-State Thermal 3 (C5)**: `Rechtsklick Wasser → Suppress`. Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert
 
 <tutorial slug="p2-stillstand"></tutorial>
