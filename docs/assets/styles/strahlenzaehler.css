@@ -25,7 +25,8 @@ body[data-md-color-scheme="slate"] .strahlenzaehler {
 .strahlenzaehler .stz-inhalt { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
 .strahlenzaehler canvas { width: 100%; max-width: 340px; height: auto; background: var(--stz-grund); border-radius: .4rem; }
 .strahlenzaehler[data-ansicht="laengs"] canvas { max-width: 640px; }
-.strahlenzaehler[data-ansicht="laengs"] .stz-inhalt { flex-direction: column; align-items: stretch; }
+.strahlenzaehler[data-ansicht="laengs"] .stz-knoepfe { width: 100%; max-width: 640px; justify-self: center; }
+.strahlenzaehler[data-ansicht="laengs"] .stz-inhalt { flex-direction: column; align-items: center; }
 .strahlenzaehler[data-ansicht="laengs"] .stz-zahlen { width: 100%; max-width: 640px; }
 .strahlenzaehler .stz-zahlen { flex: 1; min-width: 14em; }
 .strahlenzaehler .stz-zeilen { display: grid; gap: .9rem; }
