@@ -70,14 +70,14 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 ## Gesucht
 
-### a) Höchste Leitertemperatur im feuchten Boden in °C
+### a) Feuchter Boden: höchste Temperatur im Leiter in °C
 
-<div class="numeric-question" data-answer="57.72" data-tolerance="0.8" data-points="5" data-attempts="5" data-hints="Wärmeerzeugung 148 100 W/m³ auf dem Körper Leiter (nicht auf einer Fläche)?; Share Topology für die drei Körper?; Netzgröße 2 mm an Leiter und Isolierung?; Unterseite 10 °C?; Oberseite Konvektion 10 bei 20 °C?; Boden λ = 1,0?">
+<div class="numeric-question" data-answer="57.72" data-tolerance="0.8" data-points="5" data-attempts="5" data-hints="Temperatur im Leiter abgelesen, nicht im Erdreich? Die Isolierung allein macht rund 16 K aus; Wärmeerzeugung 148 100 W/m³ auf dem Körper Leiter, nicht auf einer Fläche?; Share Topology und Netzgröße 2 mm an Leiter und Isolierung?; Unterseite 10 °C, Oberseite Konvektion 10 bei 20 °C?; Boden λ = 1,0?">
 </div>
 
-### b) Höchste Leitertemperatur im trockenen Sand in °C
+### b) Trockener Sand: höchste Temperatur im Leiter in °C
 
-<div class="numeric-question" data-answer="95.67" data-tolerance="1.2" data-points="5" data-attempts="5" data-hints="Nur das Material des Erdreichs ändert sich: λ = 0,4; Alles andere wie in a)">
+<div class="numeric-question" data-answer="95.67" data-tolerance="1.2" data-points="5" data-attempts="5" data-hints="Temperatur im Leiter abgelesen, nicht im Erdreich?; Nur das Material des Erdreichs ändert sich: λ = 0,4; Alles andere wie in a)">
 </div>
 
 ### Hält das Kabel die Grenze von 90 °C ein?
@@ -111,7 +111,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 - a) feuchter Boden: Leiter **57,7 °C**, deutlich unter 90 °C
 - b) trockener Sand: Leiter **95,7 °C**, über der Grenze. Der Boden leitet die Wärme schlechter ab, das Kabel staut die Wärme
 - Deshalb werden Erdkabel in speziellem Sand mit bekannter Wärmeleitfähigkeit verlegt, und die zulässige Stromstärke hängt vom Boden ab
-- Die Isolierung allein verursacht rund 16 K: Kunststoff leitet schlecht, aber ohne sie geht es nicht
+- Die Isolierung allein verursacht rund 16 K: Kunststoff leitet schlecht, aber ohne sie geht es nicht. Im trockenen Sand hat das Erdreich direkt am Kabel rund 80 °C, der Leiter 95,7 °C
 - Die feste Temperatur in 3 m Tiefe ist hier berechtigt: Dort ändert sich die Bodentemperatur über das Jahr kaum
 
 </div>
