@@ -26,6 +26,13 @@ Termin: **Mi 04.11.2026**
       <span class="prakt-cdesc">Wo sie wirken, was sie bedeuten, wann welche passt</span>
     </span>
   </a>
+  <a class="prakt-card" href="01_Grundlagen/Konvektion/">
+    <img class="prakt-cimg no-lightbox" src="images/p2_grenzschicht.excalidraw.png" alt="">
+    <span class="prakt-cbody">
+      <span class="prakt-ctitle">Konvektion</span>
+      <span class="prakt-cdesc">Woher α kommt und wie man es abschätzt</span>
+    </span>
+  </a>
   <a class="prakt-card" href="01_Grundlagen/Strahlung/">
     <img class="prakt-cimg no-lightbox" src="images/p2_strahlung_arten.excalidraw.png" alt="">
     <span class="prakt-cbody">
