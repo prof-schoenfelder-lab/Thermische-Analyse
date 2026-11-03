@@ -34,10 +34,11 @@
       ]
     },
     {
-      "caption": "`Rechtsklick Solution (B6) → Paste`",
+      "caption": "`Rechtsklick Solution (B6) → Paste`, danach bei **Reaktion Wasser**, **Reaktion Luft** und **Reaktion Himmel** im Detailfenster unter **Boundary Condition** die Randbedingung neu wählen",
       "media": [
         "step-4.png"
-      ]
+      ],
+      "note": "Kopierte Reaction Probes übernehmen ihre Randbedingung nicht: Das Feld muss in b) neu gesetzt werden."
     },
     {
       "caption": "Unter **B5** **Absorber zum Glas** anklicken, **Emissivity** `0,9`, `Enter`",

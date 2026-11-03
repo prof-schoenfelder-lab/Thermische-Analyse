@@ -13,7 +13,7 @@ Sonne scheint trotzdem weiter. Ohne Wasserstrom kann der Absorber seine Wärme
 nur noch durch Strahlung loswerden.
 
 ??? tip "Kurzanleitung: Wasser abschalten"
-    1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen und Randbedingungen und Ergebnisse aus Fall a) übernehmen
+    1. Wie in Fall b) eine dritte Analyse **c) Stillstand** an die Zelle **Model** hängen, die Randbedingungen und die beiden Temperaturen aus Fall a) übernehmen (Reaction Probes braucht c) nicht)
     2. Unter **Steady-State Thermal 3 (C5)**: `Rechtsklick Wasser → Suppress`. Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert
 
 <tutorial slug="p2-stillstand"></tutorial>

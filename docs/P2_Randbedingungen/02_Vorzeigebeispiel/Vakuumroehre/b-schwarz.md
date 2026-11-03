@@ -19,7 +19,7 @@ gut auf, strahlt aber auch Wärme fast wie ein schwarzer Körper ab: ε = 0,9.
 
 ??? tip "Kurzanleitung: Randbedingungen und Ergebnisse übernehmen"
     1. Unter **Steady-State Thermal (A5)** alle sechs Randbedingungen auswählen: **Sonne** anklicken, mit `Shift` **Glas zum Absorber** anklicken. `Rechtsklick → Copy`, `Rechtsklick Steady-State Thermal 2 (B5) → Paste`
-    2. Genauso die Ergebnisse von **Solution (A6)** nach **Solution (B6)**
+    2. Genauso die Ergebnisse von **Solution (A6)** nach **Solution (B6)**, danach bei den drei Reaction Probes unter **Boundary Condition** die Randbedingung neu wählen
     3. In B5 die Randbedingung **Absorber zum Glas** anklicken, **Emissivity** auf **0,9** setzen
 
 <tutorial slug="p2-schwarz"></tutorial>

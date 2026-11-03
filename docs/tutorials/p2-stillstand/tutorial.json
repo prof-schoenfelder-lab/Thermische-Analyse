@@ -14,7 +14,7 @@
       ]
     },
     {
-      "caption": "Randbedingungen und Ergebnisse wie bei b) mit `Copy` und `Paste` übernehmen",
+      "caption": "Randbedingungen wie bei b) mit `Copy` und `Paste` übernehmen, von den Ergebnissen nur die beiden Temperaturen (Reaction Probes braucht c) nicht)",
       "media": [
         "step-1.png"
       ]
