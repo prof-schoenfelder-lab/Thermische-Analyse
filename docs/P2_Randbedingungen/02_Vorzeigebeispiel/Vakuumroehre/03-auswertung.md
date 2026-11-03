@@ -29,6 +29,12 @@ title: 3 · Lösen und Auswerten
 
 <tutorial slug="p2-temperatur-koerper"></tutorial>
 
+!!! tip "Tipp: Körper direkt wählen, ohne Named Selection"
+    - Nach `Insert → Thermal → Temperature` den Auswahlfilter in der Symbolleiste über dem Grafikfenster von Face auf `Body` umstellen
+    - Den Körper anklicken, im Detailfenster bei **Geometry** `Apply`
+    - Das Glas verdeckt den Absorber: Glas vorher ausblenden (`Rechtsklick Glas im Strukturbaum → Hide Body`), danach `Show All Bodies`
+    - Die beiden Named Selections für die Körper braucht man dann nicht
+
 ## Wärmeströme der Randbedingungen
 
 ??? tip "Kurzanleitung: Reaction Probe"
