@@ -103,11 +103,9 @@ Formelzeichen:
 - $T$: Temperatur von Wasser, Luft oder Himmel
 - $\varepsilon$: Emissionsgrad
 
-Vereinfachung: Die ganze Außenfläche des Glases strahlt zum Himmel. Genau genommen
-sieht die untere Hälfte den Boden
-([Wärmestrahlung](../../01_Grundlagen/Strahlung.md#welche-temperatur-ist-die-ambient-temperature)).
-
-Die beiden Stirnflächen (Schnitt durch die lange Röhre) bleiben frei, also isoliert.
+!!! warning "Annahmen im Modell"
+    - **Das Glas strahlt nur zum Himmel:** Die ganze Außenfläche des Glases strahlt zum Himmel mit 5 °C. Genau genommen sieht die untere Hälfte der Röhre den Boden ([Wärmestrahlung](../../01_Grundlagen/Strahlung.md#welche-temperatur-ist-die-ambient-temperature))
+    - **Die Stirnflächen sind isoliert:** Sie sind Schnitte durch die lange Röhre und bleiben frei
 <!-- --8<-- [end:Randbedingungen] -->
 
 Die Sonne trifft in diesem Modell nur die Blechflügel. Das Rohr selbst und die

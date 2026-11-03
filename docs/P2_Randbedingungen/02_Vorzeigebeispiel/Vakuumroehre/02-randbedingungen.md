@@ -99,6 +99,18 @@ Die Zeilen mit **Radius** gelten unabhängig von der Achse.
     **Ambient Temperature** ist bei der Strahlung die Temperatur des
     Himmels, nicht der Luft.
 
+!!! question "Kurz nachdenken: Sieht das Glas nur den Himmel?"
+    Hier strahlt die ganze Außenfläche des Glases zum Himmel mit 5 °C. Die
+    untere Hälfte der Röhre sieht aber den Boden, und der ist etwa so warm wie
+    die Luft (20 °C). Wird das Glas dadurch wärmer oder kälter? Und was
+    passiert mit der Nutzwärme?
+
+    ??? success "Auflösung"
+        - Das Glas wird **wärmer**: Die untere Hälfte strahlt zu einem wärmeren Gegenüber und verliert weniger. Nach Handrechnung etwa 18,1 statt 15,7 °C
+        - Die **Nutzwärme** ändert sich kaum (+0,3 %): Der selektive Absorber strahlt ohnehin nur wenig zum Glas, wie warm das Glas ist, spielt für ihn kaum eine Rolle
+        - Genauer wären zwei Strahlungsrandbedingungen: obere Hälfte zum Himmel, untere zum Boden ([Wärmestrahlung](../../01_Grundlagen/Strahlung.md#welche-temperatur-ist-die-ambient-temperature))
+        - Für dieses Beispiel reicht die Vereinfachung
+
 ## Absorber zum Glas: Strahlung Surface to Surface
 
 ??? tip "Kurzanleitung: Radiation Surface to Surface"
