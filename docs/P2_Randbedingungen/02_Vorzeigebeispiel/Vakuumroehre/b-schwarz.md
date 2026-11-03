@@ -46,7 +46,7 @@ Dann `Rechtsklick Solution (B6) → Solve`.
 ## Was die Zahlen zeigen
 
 <figure style="text-align:center;">
-  <img src="../../../images/p2_energiefluss.excalidraw.png" alt="Aufteilung der Sonne auf Wasser und Strahlung zum Glas für a), b) und c)" class="no-lightbox">
+  <img src="../../../images/p2_energiefluss_ab.excalidraw.png" alt="Aufteilung der Sonne auf Wasser und Strahlung zum Glas für a) und b)" class="no-lightbox">
 </figure>
 
 - Die **Temperatur** des Absorbers ändert sich kaum: Das Wasser hält ihn bei

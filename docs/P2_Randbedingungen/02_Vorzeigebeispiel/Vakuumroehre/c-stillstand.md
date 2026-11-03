@@ -62,6 +62,10 @@ stehen im Checkpoint, warum, steht in der Warnung darunter.
 
 ## Was die Zahlen zeigen
 
+<figure style="text-align:center;">
+  <img src="../../../images/p2_energiefluss.excalidraw.png" alt="Aufteilung der Sonne auf Wasser und Strahlung zum Glas für a), b) und c)" class="no-lightbox">
+</figure>
+
 - Die selektive Beschichtung, die im Betrieb so gut ist, wird im Stillstand
   zum Problem: Der Absorber wird **fast 300 °C** heiß, bevor er so viel
   abstrahlt, wie er von der Sonne aufnimmt. Der schwarze Absorber strahlt so
@@ -70,7 +74,7 @@ stehen im Checkpoint, warum, steht in der Warnung darunter.
   und Himmel abgeben, egal wie heiß der Absorber dafür wird. Dass Luft und
   Himmel zusammen etwa −0,79 W statt −0,672 W zeigen, ist die Bilanzlücke des
   kurzen Stücks (siehe [Auswertung](03-auswertung.md)).
-- Die Grafik auf der Seite [b) Schwarz](b-schwarz.md) zeigt alle drei Fälle:
-  Im Stillstand geht die ganze Sonne als Strahlung zum Glas.
+- Die Grafik oben zeigt alle drei Fälle: Im Stillstand geht die ganze Sonne
+  als Strahlung zum Glas.
 - In der Praxis verdampft dabei das Wasser in der Röhre. Solaranlagen brauchen
   deshalb ein Ausdehnungsgefäß und hitzefeste Bauteile.
