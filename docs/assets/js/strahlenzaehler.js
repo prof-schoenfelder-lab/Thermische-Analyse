@@ -66,25 +66,25 @@
   }
 
   function zeile(i) {
-    return '<div><div class="sz-text"><span class="sz-l' + i + '"></span><b class="sz-p' + i + '"></b></div>' +
-      '<div class="sz-balken"><span class="sz-fuell sz-f' + i + '"></span><span class="sz-soll sz-t' + i + '"></span></div></div>';
+    return '<div><div class="stz-text"><span class="stz-l' + i + '"></span><b class="stz-p' + i + '"></b></div>' +
+      '<div class="stz-balken"><span class="stz-fuell stz-f' + i + '"></span><span class="stz-soll stz-t' + i + '"></span></div></div>';
   }
 
   function aufbauen(box) {
     var laengs = box.getAttribute('data-ansicht') === 'laengs';
     var W = laengs ? 640 : 340, H = laengs ? 280 : 340;
     box.innerHTML =
-      '<div class="sz-knoepfe">' +
-      '<button type="button" class="sz-quelle" data-q="A" aria-pressed="false">Absorber strahlt</button>' +
-      '<button type="button" class="sz-quelle" data-q="G" aria-pressed="false">Glas strahlt</button>' +
-      (laengs ? '<button type="button" class="sz-laenge">Länge: 20 mm</button>' : '') +
-      '<button type="button" class="sz-pause"></button>' +
-      '<button type="button" class="sz-tempo">Tempo: mittel</button></div>' +
-      '<div class="sz-inhalt"><canvas role="img" aria-label="' +
+      '<div class="stz-knoepfe">' +
+      '<button type="button" class="stz-quelle" data-q="A" aria-pressed="false">Absorber strahlt</button>' +
+      '<button type="button" class="stz-quelle" data-q="G" aria-pressed="false">Glas strahlt</button>' +
+      (laengs ? '<button type="button" class="stz-laenge">Länge: 20 mm</button>' : '') +
+      '<button type="button" class="stz-pause"></button>' +
+      '<button type="button" class="stz-tempo">Tempo: mittel</button></div>' +
+      '<div class="stz-inhalt"><canvas role="img" aria-label="' +
       (laengs ? 'Seitenansicht eines Röhrenstücks mit offenen Enden' : 'Querschnitt der Vakuumröhre') + ' und Strahlen"></canvas>' +
-      '<div class="sz-zahlen"><p class="sz-hinweis">Wählen Sie oben, was strahlt.</p>' +
-      '<div class="sz-zeilen">' + zeile(1) + zeile(2) + (laengs ? zeile(3) : '') +
-      '<p class="sz-fuss">Strahlen: <span class="sz-n">0</span><br>' +
+      '<div class="stz-zahlen"><p class="stz-hinweis">Wählen Sie oben, was strahlt.</p>' +
+      '<div class="stz-zeilen">' + zeile(1) + zeile(2) + (laengs ? zeile(3) : '') +
+      '<p class="stz-fuss">Strahlen: <span class="stz-n">0</span><br>' +
       (laengs ? 'Strich: Ergebnis der Strahlverfolgung für diese Länge' : 'Strich: Sichtfaktor der langen Röhre (Balkengrafik unten)') +
       '</p></div></div></div>';
 
@@ -111,15 +111,15 @@
       function Y(y) { return M - y * S; }
       g.globalAlpha = abs ? 0.55 : 1;
       g.beginPath(); g.arc(M, M, RA * S, 0, 2 * Math.PI); g.arc(M, M, RG * S, 0, 2 * Math.PI, true);
-      g.fillStyle = f('--sz-glas'); g.fill('evenodd');
-      g.strokeStyle = f('--sz-kante'); g.lineWidth = 1;
+      g.fillStyle = f('--stz-glas'); g.fill('evenodd');
+      g.strokeStyle = f('--stz-kante'); g.lineWidth = 1;
       g.beginPath(); g.arc(M, M, RA * S, 0, 2 * Math.PI); g.stroke();
       g.beginPath(); g.arc(M, M, RG * S, 0, 2 * Math.PI); g.stroke();
       g.globalAlpha = glas ? 0.55 : 1;
-      g.fillStyle = f('--sz-kupfer');
+      g.fillStyle = f('--stz-kupfer');
       g.fillRect(X(-B), Y(0.35), (B - XA) * S, 0.7 * S); g.fillRect(X(XA), Y(0.35), (B - XA) * S, 0.7 * S);
       g.beginPath(); g.arc(M, M, RT * S, 0, 2 * Math.PI); g.fill();
-      g.fillStyle = f('--sz-wasser'); g.beginPath(); g.arc(M, M, (RT - 1) * S, 0, 2 * Math.PI); g.fill();
+      g.fillStyle = f('--stz-wasser'); g.beginPath(); g.arc(M, M, (RT - 1) * S, 0, 2 * Math.PI); g.fill();
       g.globalAlpha = 1; g.strokeStyle = rot; g.lineWidth = 2;   // was strahlt, ist rot umrandet
       if (glas) { g.beginPath(); g.arc(M, M, RG * S, 0, 2 * Math.PI); g.stroke(); }
       if (abs) {
@@ -132,22 +132,22 @@
       var s = 3, M = H / 2, z0 = (W - L * s) / 2, lang = L * s, wand = (RA - RG) * s;
       function Z(zz) { return z0 + zz * s; }
       function Y(y) { return M - y * s; }
-      g.strokeStyle = f('--sz-kante'); g.lineWidth = 1; g.globalAlpha = 0.5; g.setLineDash([4, 4]);   // Nachbarstücke
+      g.strokeStyle = f('--stz-kante'); g.lineWidth = 1; g.globalAlpha = 0.5; g.setLineDash([4, 4]);   // Nachbarstücke
       [RA, RG, RT, -RT, -RG, -RA].forEach(function (y) {
         g.beginPath(); g.moveTo(0, Y(y)); g.lineTo(Z(0), Y(y)); g.moveTo(Z(L), Y(y)); g.lineTo(W, Y(y)); g.stroke();
       });
       g.setLineDash([]);
-      g.globalAlpha = abs ? 0.55 : 1; g.fillStyle = f('--sz-glas');
+      g.globalAlpha = abs ? 0.55 : 1; g.fillStyle = f('--stz-glas');
       g.fillRect(Z(0), Y(RA), lang, wand); g.fillRect(Z(0), Y(-RG), lang, wand);
       g.globalAlpha = abs ? 0.25 : 0.45; g.fillRect(Z(0), Y(RG), lang, 2 * RG * s);   // vordere und hintere Glaswand
-      g.globalAlpha = abs ? 0.55 : 1; g.strokeStyle = f('--sz-kante');
+      g.globalAlpha = abs ? 0.55 : 1; g.strokeStyle = f('--stz-kante');
       g.strokeRect(Z(0), Y(RA), lang, wand); g.strokeRect(Z(0), Y(-RG), lang, wand);
-      g.globalAlpha = glas ? 0.55 : 1; g.fillStyle = f('--sz-kupfer');
+      g.globalAlpha = glas ? 0.55 : 1; g.fillStyle = f('--stz-kupfer');
       g.fillRect(Z(0), Y(RT), lang, 2 * RT * s);
       g.globalAlpha = 1; g.strokeStyle = rot; g.lineWidth = 2;
       if (glas) { g.strokeRect(Z(0), Y(RA), lang, wand); g.strokeRect(Z(0), Y(-RG), lang, wand); }
       if (abs) g.strokeRect(Z(0), Y(RT), lang, 2 * RT * s);
-      g.strokeStyle = f('--sz-kante'); g.fillStyle = f('--sz-kante'); g.lineWidth = 1.5; g.setLineDash([6, 4]);
+      g.strokeStyle = f('--stz-kante'); g.fillStyle = f('--stz-kante'); g.lineWidth = 1.5; g.setLineDash([6, 4]);
       g.font = '600 13px ' + cs.fontFamily; g.textAlign = 'center';
       [0, L].forEach(function (zz) {                                   // offene Enden
         g.beginPath(); g.moveTo(Z(zz), Y(RA) - 4); g.lineTo(Z(zz), Y(-RA) + 4); g.stroke();
@@ -162,13 +162,13 @@
       if (laengs) y = H / 2 + (quelle === 'G' ? RA : RT) * 3 + 22;
       else y = H / 2 + (quelle === 'G' ? 28 : 12) * 4.3;
       g.font = '700 15px ' + cs.fontFamily; g.textAlign = 'center';
-      g.lineJoin = 'round'; g.lineWidth = 5; g.strokeStyle = f('--sz-grund'); g.strokeText(text, W / 2, y);
-      g.fillStyle = f('--sz-strahl'); g.fillText(text, W / 2, y);
+      g.lineJoin = 'round'; g.lineWidth = 5; g.strokeStyle = f('--stz-grund'); g.strokeText(text, W / 2, y);
+      g.fillStyle = f('--stz-strahl'); g.fillText(text, W / 2, y);
     }
 
     function bild() {
-      var rot = f('--sz-strahl'), grau = f('--sz-kante');
-      var farbe = { G: f('--sz-glas-treffer'), A: f('--sz-abs-treffer'), E: grau };
+      var rot = f('--stz-strahl'), grau = f('--stz-kante');
+      var farbe = { G: f('--stz-glas-treffer'), A: f('--stz-abs-treffer'), E: grau };
       g.clearRect(0, 0, W, H);
       (laengs ? seite : querschnitt)(quelle === 'G', quelle === 'A', rot);
       marken.forEach(function (m) {
@@ -194,21 +194,21 @@
     }
 
     function anzeigen() {
-      q('.sz-hinweis').style.display = quelle ? 'none' : '';
-      q('.sz-zeilen').style.display = quelle ? '' : 'none';
-      q('.sz-pause').style.display = quelle ? '' : 'none';
+      q('.stz-hinweis').style.display = quelle ? 'none' : '';
+      q('.stz-zeilen').style.display = quelle ? '' : 'none';
+      q('.stz-pause').style.display = quelle ? '' : 'none';
       if (!quelle) return;
       var soll = (laengs ? SOLL[L] : SOLL.quer)[quelle];
       ZEILEN[quelle].slice(0, laengs ? 3 : 2).forEach(function (zl, i) {
         var a = n ? z[zl[0]] / n : 0, k = i + 1;
-        q('.sz-l' + k).textContent = zl[1];
-        q('.sz-p' + k).textContent = Math.round(a * 100) + ' %';
-        q('.sz-f' + k).className = 'sz-fuell sz-f' + k + ' sz-' + zl[0];
-        q('.sz-f' + k).style.width = (a * 100) + '%';
-        q('.sz-t' + k).style.left = (soll[zl[0]] * 100) + '%';
+        q('.stz-l' + k).textContent = zl[1];
+        q('.stz-p' + k).textContent = Math.round(a * 100) + ' %';
+        q('.stz-f' + k).className = 'stz-fuell stz-f' + k + ' stz-' + zl[0];
+        q('.stz-f' + k).style.width = (a * 100) + '%';
+        q('.stz-t' + k).style.left = (soll[zl[0]] * 100) + '%';
       });
-      q('.sz-n').textContent = n.toLocaleString('de-DE');
-      q('.sz-pause').textContent = pause ? 'Weiter' : 'Pause';
+      q('.stz-n').textContent = n.toLocaleString('de-DE');
+      q('.stz-pause').textContent = pause ? 'Weiter' : 'Pause';
     }
 
     function schritt(jetzt) {
@@ -244,18 +244,18 @@
       anzeigen(); bild(); los();
     }
 
-    box.querySelectorAll('.sz-quelle').forEach(function (k) {
+    box.querySelectorAll('.stz-quelle').forEach(function (k) {
       k.addEventListener('click', function () {
-        box.querySelectorAll('.sz-quelle').forEach(function (x) { x.setAttribute('aria-pressed', x === k ? 'true' : 'false'); });
+        box.querySelectorAll('.stz-quelle').forEach(function (x) { x.setAttribute('aria-pressed', x === k ? 'true' : 'false'); });
         quelle = k.getAttribute('data-q'); neu();
       });
     });
-    if (laengs) q('.sz-laenge').addEventListener('click', function () {
+    if (laengs) q('.stz-laenge').addEventListener('click', function () {
       L = L === 20 ? 200 : 20; this.textContent = 'Länge: ' + L + ' mm';
       if (quelle) neu(); else bild();
     });
-    q('.sz-pause').addEventListener('click', function () { pause = !pause; anzeigen(); los(); });
-    q('.sz-tempo').addEventListener('click', function () {
+    q('.stz-pause').addEventListener('click', function () { pause = !pause; anzeigen(); los(); });
+    q('.stz-tempo').addEventListener('click', function () {
       tempo = (tempo + 1) % TEMPI.length; this.textContent = 'Tempo: ' + TEMPI[tempo].name;
     });
 
