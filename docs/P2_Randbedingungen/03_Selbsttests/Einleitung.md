@@ -22,7 +22,7 @@ umfangreicher:
 -   <a class="card-link" href="../Uebung-2/">
     <img src="../../images/p2_kuehlkoerper.excalidraw.png" alt="Kühlkörper mit Rippen" class="no-lightbox" style="width:100%">
     __Übung 2 · Kühlkörper eines Wechselrichters__<br>
-    Neu: Wärmestrom (W) auf einem Teil einer Fläche
+    Neu: Randbedingungen selbst aus der Situation ableiten, Strahlung zwischen den Rippen
     </a>
 
 -   <a class="card-link" href="../Uebung-3/">
