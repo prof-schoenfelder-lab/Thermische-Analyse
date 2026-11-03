@@ -81,3 +81,26 @@ stehen im Checkpoint, warum, steht in der Warnung darunter.
   Sonnenleistung als Strahlung zum Glas.
 - In der Praxis verdampft dabei das Wasser in der Röhre. Solaranlagen brauchen
   deshalb ein Ausdehnungsgefäß und hitzefeste Bauteile.
+
+!!! question "Kurz nachdenken"
+    In c) wird die Konvektion zum Wasser nur unterdrückt. Man könnte das
+    stehende Wasser im Rohr auch als eigenen Körper mit dem Material Wasser
+    modellieren. Was ändert sich dadurch an der Lösung? Und wann würde es einen
+    Unterschied machen?
+
+    ??? success "Auflösung"
+        **Stationär ändert sich nichts:** Der Absorber hat weiter rund 287 °C.
+        Das stehende Wasser hat keinen anderen Weg für Wärme als über die
+        Rohrwand. Im Gleichgewicht fließt also nichts hinein oder hinaus, das
+        Wasser nimmt nur die Temperatur des Rohrs an.
+
+        **Einen Unterschied macht es instationär**, also beim Aufheizen nach dem
+        Abschalten der Pumpe: Das Wasser speichert Wärme und bremst das
+        Aufheizen. Grob für das 20 mm lange Stück:
+
+        - Wärmekapazität des Wassers: 1,6 g · 4,18 J/(g·K) ≈ 6,6 J/K
+        - Wärmekapazität von Rohr und Blech aus Kupfer: 10,5 g · 0,385 J/(g·K) ≈ 4 J/K
+        - Anfangs heizt der Absorber mit Wasser um etwa 3,8 K pro Minute auf, ohne Wasser um etwa 10 K pro Minute
+
+        Was das Modell nicht kann: Ab etwa 100 bis 140 °C, je nach Druck in der
+        Anlage, verdampft das Wasser. Einen Phasenwechsel kennt das Modell nicht.
