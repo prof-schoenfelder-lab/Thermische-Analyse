@@ -27,19 +27,28 @@ wählt man danach nur noch den Namen aus einer Liste.
 
 <tutorial slug="p2-named-selection"></tutorial>
 
-Diese fünf Named Selections braucht die Röhre:
+Diese fünf Named Selections braucht die Röhre. Die Zeilen mit **Location**
+hängen davon ab, welche Achse in Ihrem Modell **senkrecht zum Blech** steht
+(im Bild unten senkrecht), je nachdem, wie das Rechteck in der Skizze liegt.
+Am Achsenkreuz unten links im Grafikfenster ablesen und hier wählen, die
+Tabelle passt sich an (die Klickanleitung zeigt X):
+
+<div class="achsenwahl"></div>
 
 | Name | Entity Type | Criterion | Value | für |
 |---|---|---|---|---|
-| Oberseiten Blech | Face | Location X | 0,00025 m (0,25 mm) | Sonne |
+| Oberseiten Blech | Face | Location <span class="aw-achse">X</span> | 0,00025 m (0,25 mm) | Sonne |
 | Rohr innen | Face | Radius | 0,005 m (5 mm) | Wasser |
 | Glas aussen | Face | Radius | 0,035 m (35 mm) | Luft und Himmel |
 | Glas innen | Face | Radius | 0,0325 m (32,5 mm) | Glas zum Absorber |
-| Absorber aussen | Face | Location X, Location X, Radius (drei Zeilen) | 0,00025 m, −0,00025 m, 0,006 m (0,25 mm, −0,25 mm, 6 mm) | Absorber zum Glas |
+| Absorber aussen | Face | Location <span class="aw-achse">X</span>, Location <span class="aw-achse">X</span>, Radius (drei Zeilen) | 0,00025 m, −0,00025 m, 0,006 m (0,25 mm, −0,25 mm, 6 mm) | Absorber zum Glas |
 
-**Location X** ist die Achse, in der das Blech 0,5 mm dick ist. Findet
-`Generate` nicht die erwartete Zahl an Flächen, `Location Y` oder `Location Z`
-probieren.
+<figure style="text-align:center;">
+  <img src="../../../images/p2_named_selections.excalidraw.png" alt="Die fünf Named Selections im Querschnitt, die Flächen jeweils rot: Oberseiten Blech, Rohr innen, Glas aussen, Glas innen, Absorber aussen" class="no-lightbox">
+  <figcaption>Querschnitt, nicht maßstäblich (Rohr und Blech vergrößert): rot die Flächen der Named Selection, jede rote Linie ist eine Fläche über die ganze Länge</figcaption>
+</figure>
+
+Die Zeilen mit **Radius** gelten unabhängig von der Achse.
 
 !!! check "Checkpoint"
     Nach `Generate` steht im `Detailfenster` unter **Total Selection**:

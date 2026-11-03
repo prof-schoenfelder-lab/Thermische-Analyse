@@ -99,6 +99,7 @@ Wie ANSYS damit rechnet, hängt von der Art ab:
 - **Surface to Surface:** ANSYS muss wissen, welcher Anteil auf welche Fläche trifft (Sichtfaktor, siehe unten). Dazu setzt es über jedes Flächenelement einen halben Würfel (Hemicube) aus vielen kleinen Feldern und bildet die anderen Flächen darauf ab (Bild rechts)
     - Die Felder, auf die eine Fläche fällt, ergeben den Sichtfaktor zu dieser Fläche
     - Felder über der Mitte zählen mehr als Felder am Rand, weil senkrecht mehr Strahlung abgeht
+    - Der Würfel ist nur gedacht und steckt nicht im Modell. Seine Größe ist egal: Ein größerer Würfel zeigt dasselbe Bild, nur größer (Bild rechts, gestrichelt). Es zählt nur, in welcher Richtung eine Fläche liegt, wie bei einem Foto aus der Mitte des Flächenelements
     - Liegen zwei Flächen hintereinander, zählt nur die vordere: So berücksichtigt ANSYS die Verschattung
     - Wie fein die Felder sind, stellt `Hemicube Resolution` unter `Analysis Settings` > `Radiosity Controls` ein
 
@@ -152,13 +153,23 @@ vielen Strahlen nähern sich die Anteile den Sichtfaktoren.
 <div class="strahlenzaehler"></div>
 
 ??? info "Zwei Regeln für Sichtfaktoren"
-    1. **Alles kommt irgendwo an.** In einem geschlossenen Raum ergeben die
-       Sichtfaktoren einer Fläche zusammen 100 %.
+    1. **Alles kommt irgendwo an.** Gezählt wird je Fläche, die strahlt: Ihre
+       Sichtfaktoren zu allen Flächen ergeben zusammen 100 %, wenn der Raum
+       geschlossen ist. In der langen Röhre:
+        - Absorber: 92 % zum Glas plus 8 % zum Absorber = 100 %
+        - Glas: 60 % zum Absorber plus 40 % zum Glas = 100 %
+        - $F_{12}$ und $F_{21}$ ergeben zusammen **nicht** 100 %, hier sind es 92 % und 60 %
     2. **Reziprozität:** $A_1\,F_{12} = A_2\,F_{21}$ mit den Flächen $A_1$, $A_2$ und den
-       Sichtfaktoren $F_{12}$ (von 1 nach 2) und $F_{21}$ (von 2 nach 1). Die große Glasfläche
-       sieht den kleinen Absorber zu einem kleineren Anteil als umgekehrt, genau
-       im Verhältnis der Flächen. Je 20 mm Röhre:
-       $4080\ \mathrm{mm^2} \cdot 0{,}60 \approx 2670\ \mathrm{mm^2} \cdot 0{,}92 \approx 2450\ \mathrm{mm^2}$.
+       Sichtfaktoren $F_{12}$ (von 1 nach 2) und $F_{21}$ (von 2 nach 1). Gleich
+       sind also nicht die Sichtfaktoren, sondern Fläche mal Sichtfaktor (Flächen je 20 mm Röhre):
+        - Absorber: $2670\ \mathrm{mm^2} \cdot 0{,}92 \approx 2450\ \mathrm{mm^2}$
+        - Glas: $4080\ \mathrm{mm^2} \cdot 0{,}60 \approx 2450\ \mathrm{mm^2}$
+        - Das große Glas schickt nur 60 % zum Absorber, der kleine Absorber 92 % zum Glas. Weil das Glas größer ist, ist beides gleich viel (Bild)
+        - Warum das so sein muss: Sind beide Flächen gleich warm, geht genauso viel Strahlung hin wie zurück. Sonst flösse Wärme von allein zwischen gleich warmen Flächen
+
+    <figure style="text-align:center;">
+      <img src="../../images/p2_reziprozitaet.excalidraw.png" alt="Balken so lang wie die Fläche: Absorber 2670 mm², davon 92 % zum Glas; Glas 4080 mm², davon 60 % zum Absorber; beide Teile gleich lang" class="no-lightbox">
+    </figure>
 
     Die zweite Regel sorgt dafür, dass die Energie stimmt. Zwischen zwei
     schwarzen Flächen fließt netto
@@ -229,6 +240,11 @@ rund 20 % mehr Strahlung auf, als der Absorber abgibt. Im Modell entsteht
 Energie, und die Bilanz der Reaktionen geht nicht mehr auf. Genau das zeigt
 die Vakuumröhre: Das Glas gibt in allen drei Fällen 16 bis 24 % mehr an Luft
 und Himmel ab, als der Absorber zu ihm strahlt.
+
+<figure style="text-align:center;">
+  <img src="../../images/p2_reziprozitaet_perfect.excalidraw.png" alt="Fläche mal Sichtfaktor: in der langen Röhre gleich lang, mit Perfect nimmt das Glas rund 20 % mehr auf, als der Absorber abgibt" class="no-lightbox">
+  <figcaption>Balken so lang wie die Fläche, dick umrandet der Teil, der die andere Fläche trifft</figcaption>
+</figure>
 
 Was man daraus mitnimmt:
 
