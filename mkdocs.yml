@@ -131,7 +131,7 @@ extra:
             - nr: 2
               titel: "Randbedingungen"
               text: "Alle Randbedingungen, neu darunter die Wärmestrahlung, am Beispiel der Solarthermie."
-              bild: assets/images/card_p2_roehre.png
+              bild: P2_Randbedingungen/images/p2_karte.excalidraw.png
               link: P2_Randbedingungen/
             - nr: 3
               titel: "Abstraktionen & Vernetzung"
