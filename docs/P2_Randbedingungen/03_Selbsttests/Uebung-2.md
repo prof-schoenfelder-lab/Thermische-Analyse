@@ -57,46 +57,22 @@ oder muss er schwarz eloxiert sein?
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Geometrie</p>
     <ul>
-      <li>Querschnitt skizzieren: Rechteck <strong>100 × 8</strong> mm ab dem Ursprung</li>
-      <li>Darauf am linken Rand ein Rechteck <strong>2 × 40</strong> mm (erste Rippe)</li>
-      <li>Alles <strong>100 mm</strong> ziehen</li>
-      <li>Die Rippe mit <code>Move</code> und der Option <strong>Create Patterns</strong> in 14 mm Abstand auf insgesamt 8 Rippen vervielfachen, sodass ein einziger Körper entsteht</li>
-      <li>Alternativ alle 8 Rippen gleich in der Skizze zeichnen (Rechtecke 2 × 40 mm bei x = 0, 14, 28 … 98 mm) und zusammen mit der Platte ziehen</li>
+      <li>Rippen als Muster: eine Rippe zeichnen und mit <code>Move</code> und der Option <strong>Create Patterns</strong> in 14 mm Abstand auf 8 Rippen vervielfachen, sodass ein einziger Körper entsteht</li>
+      <li>Fläche für das Modul: auf der Rückseite ein Rechteck <strong>50 × 50</strong> mm aus der Mitte skizzieren (<code>Rectangle</code> mit <strong>Define rectangle from center</strong>), die Skizze teilt die Rückseite in zwei Flächen</li>
     </ul>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Fläche für das Modul</p>
+    <p class="step-title" role="heading" aria-level="2">Viele Flächen auf einmal</p>
     <ul>
-      <li>Auf der Rückseite skizzieren: <code>Rectangle</code> mit <strong>Define rectangle from center</strong> im Mittelpunkt der Fläche, <strong>50 × 50</strong> mm</li>
-      <li>Skizze beenden: Die Rückseite ist jetzt in zwei Flächen geteilt</li>
+      <li>Oben <code>Face</code> wählen, mit <code>Strg + A</code> alle Flächen auswählen und die beiden Flächen der Rückseite mit <code>Strg</code>-Klick wieder abwählen</li>
     </ul>
   </div>
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Wärmestrom und viele Flächen auf einmal</p>
+    <p class="step-title" role="heading" aria-level="2">c) Surface To Surface mit Open</p>
     <ul>
-      <li>Fläche unter dem Modul: <code>Heat Flow</code> 40 W</li>
-      <li>Für Luft und Strahlung: oben <code>Face</code> wählen und mit <code>Strg + A</code> alle Flächen auswählen</li>
-      <li>Mit <code>Strg</code>-Klick die beiden Flächen der Rückseite wieder abwählen</li>
-      <li>Darauf <code>Convection</code> und <code>Radiation</code> (To Ambient)</li>
-    </ul>
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Auswerten</p>
-    <ul>
-      <li><code>Temperature</code> im ganzen Modell einfügen und das Maximum ablesen</li>
-      <li>Für b) nur die <strong>Emissivity</strong> der Strahlung auf 0,05 ändern und neu lösen</li>
-    </ul>
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">c) Rippen sehen sich gegenseitig</p>
-    <ul>
-      <li>Damit sich die Rippen gegenseitig sehen: bei der Strahlung <code>Correlation</code> von <code>To Ambient</code> auf <code>Surface To Surface</code> umstellen</li>
-      <li><code>Enclosure Type</code> <strong>Open</strong> und <code>Ambient Temperature</code> 40 °C: Was keine andere Fläche des Kühlkörpers trifft, geht an die Gehäusewände</li>
-      <li><strong>Emissivity</strong> wieder 0,85 wie in a), dann neu lösen</li>
+      <li><code>Enclosure Type</code> <strong>Open</strong> mit <code>Ambient Temperature</code> 40 °C: Was keine andere Fläche des Kühlkörpers trifft, geht an die Gehäusewände</li>
     </ul>
   </div>
 
