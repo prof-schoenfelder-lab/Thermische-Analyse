@@ -50,6 +50,12 @@ Tabelle passt sich an (die Klickanleitung zeigt X):
 
 Die Zeilen mit **Radius** gelten unabhängig von der Achse.
 
+!!! tip "Tipp: Named Selection duplizieren"
+    - Rechtsklick im Strukturbaum auf eine fertige Named Selection → `Duplicate`
+    - In der Kopie im Worksheet nur **Criterion** und **Value** ändern, `Generate`, mit `F2` umbenennen
+    - Beispiel: „Glas aussen“ duplizieren und den Value auf 0,0325 m (32,5 mm) setzen, das ergibt „Glas innen“
+    - Beispiel: „Oberseiten Blech“ duplizieren und zwei Zeilen ergänzen, das ergibt „Absorber aussen“
+
 !!! check "Checkpoint"
     Nach `Generate` steht im `Detailfenster` unter **Total Selection**:
     Oberseiten Blech **2 Faces**, Absorber aussen **6 Faces**, die übrigen
