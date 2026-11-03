@@ -28,7 +28,7 @@ umfangreicher:
 -   <a class="card-link" href="../Uebung-3/">
     <img src="../../images/p2_erdkabel.excalidraw.png" alt="Erdkabel im Boden" class="no-lightbox" style="width:100%">
     __Übung 3 · Erdkabel im Windpark__<br>
-    Neu: Wärmeerzeugung im Körper, feste Temperatur, drei Körper
+    Neu: Wärmeerzeugung im Körper, Netz mit zwei Größen
     </a>
 
 </div>

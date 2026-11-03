@@ -17,7 +17,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 **Material**
 
-- Leiter Aluminium: Wärmeleitfähigkeit $\lambda = 230\ \mathrm{W/(m\,K)}$, spezifischer Widerstand $\rho = 0{,}0282\ \Omega\,\mathrm{mm^2/m}$
+- Leiter Aluminium: Wärmeleitfähigkeit $\lambda = 230\ \mathrm{W/(m\,K)}$
 - Isolierung VPE: $\lambda = 0{,}3\ \mathrm{W/(m\,K)}$
 - Boden a) feucht: $\lambda = 1{,}0\ \mathrm{W/(m\,K)}$, b) trockener Sand: $\lambda = 0{,}4\ \mathrm{W/(m\,K)}$
 
@@ -35,7 +35,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 **Randbedingungen**
 
-- Leiter: Strom $I = 550\ \mathrm{A}$, als Wärmeerzeugung
+- Leiter: Wärmeerzeugung durch den Strom $\dot q''' = 148\,100\ \mathrm{W/m^3}$ (bei 550 A)
 - Erdoberfläche: Luft $T = 20\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha = 10\ \mathrm{W/(m^2\,K)}$
 - Unterseite in 3 m Tiefe: feste Temperatur $T = 10\ \mathrm{°C}$
 - Seiten, Vorder- und Rückseite: isoliert
@@ -45,46 +45,24 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 <div class="steps" markdown="1" data-anleitung="nein">
 
   <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Geometrie</p>
+    <p class="step-title" role="heading" aria-level="2">Kabel 1000 mm tief</p>
     <ul>
-      <li>Kabel in den Ursprung: zwei Kreise Ø <strong>40</strong> und <strong>17,5</strong> mm</li>
-      <li>Mit <code>Line</code> vom Ursprung <strong>500 mm</strong> nach unten</li>
-      <li>Am Endpunkt <code>Rectangle</code> mit <strong>Define rectangle from center</strong>: <strong>4000 × 3000</strong> mm. Dann liegt das Kabel 1000 mm unter der Oberkante</li>
+      <li>Vom Ursprung mit <code>Line</code> eine Hilfslinie <strong>500 mm</strong> nach unten, an ihrem Ende <code>Rectangle</code> mit <strong>Define rectangle from center</strong>: <strong>4000 × 3000</strong> mm</li>
       <li>Die Hilfslinie vor dem Beenden der Skizze löschen, sonst teilt sie die Kreisflächen</li>
-      <li>Zuerst das Erdreich <strong>100 mm</strong> ziehen</li>
-      <li>Dann Isolierung und Leiter je mit <strong>No merge</strong> ziehen</li>
-      <li>Share Topology: <strong>Share</strong></li>
     </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Netz mit zwei Größen</p>
     <ul>
-      <li>Global <strong>100 mm</strong> (in Mechanical <strong>0,1</strong> m eintragen)</li>
-      <li>Oben <code>Body</code> wählen und Leiter und Isolierung markieren</li>
-      <li><code>Rechtsklick Mesh → Insert → Sizing</code></li>
-      <li><strong>Element Size 2 mm</strong> (in Mechanical <strong>0,002</strong> m eintragen)</li>
-      <li>Warum das nötig ist, behandelt Praktikum 3</li>
+      <li>Leiter und Isolierung feiner vernetzen: oben <code>Body</code> wählen, beide markieren, <code>Rechtsklick Mesh → Insert → Sizing</code>, <strong>Element Size 2 mm</strong> (in Mechanical <strong>0,002</strong> m). Warum das nötig ist, behandelt Praktikum 3</li>
     </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wärmeerzeugung</p>
     <ul>
-      <li>Die Stromwärme je Volumen ist \(\dot q''' = I^2 \rho / A^2\) mit dem Strom \(I\) in A, dem spezifischen Widerstand \(\rho\) in Ω·m und dem Leiterquerschnitt \(A\) in m²</li>
-      <li>Körper Leiter anklicken</li>
-      <li><code>Insert → Internal Heat Generation</code> und den Wert in W/m³ eintragen</li>
-    </ul>
-  </div>
-
-  <div class="step">
-    <p class="step-title" role="heading" aria-level="2">Temperatur und Konvektion</p>
-    <ul>
-      <li>Unterseite: <code>Temperature</code> 10 °C</li>
-      <li>Oberseite: <code>Convection</code> mit 10 W/m²·°C und 20 °C</li>
-      <li>Alle übrigen Flächen bleiben frei</li>
-      <li>Auswerten: <code>Temperature</code> auf den Körper Leiter setzen und das Maximum ablesen</li>
-      <li>Für b) im Strukturbaum dem Erdreich das Material trockener Sand zuweisen und neu lösen</li>
+      <li>Körper Leiter anklicken, <code>Insert → Internal Heat Generation</code> und den Wert in W/m³ eintragen</li>
     </ul>
   </div>
 
@@ -92,14 +70,9 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 ## Gesucht
 
-### Wärmeerzeugung im Leiter in W/m³
-
-<div class="numeric-question" data-answer="148099" data-tolerance="1500" data-points="5" data-attempts="5" data-hints="ρ = 0,0282 Ω·mm²/m = 2,82·10⁻⁸ Ω·m; A = 240 mm² = 2,4·10⁻⁴ m²; Formel I²·ρ/A²">
-</div>
-
 ### a) Höchste Leitertemperatur im feuchten Boden in °C
 
-<div class="numeric-question" data-answer="57.72" data-tolerance="0.8" data-points="5" data-attempts="5" data-hints="Wärmeerzeugung auf dem Körper Leiter (nicht auf einer Fläche)?; Netzgröße 2 mm an Leiter und Isolierung?; Unterseite 10 °C?; Oberseite Konvektion 10 bei 20 °C?; Boden λ = 1,0?">
+<div class="numeric-question" data-answer="57.72" data-tolerance="0.8" data-points="5" data-attempts="5" data-hints="Wärmeerzeugung 148 100 W/m³ auf dem Körper Leiter (nicht auf einer Fläche)?; Share Topology für die drei Körper?; Netzgröße 2 mm an Leiter und Isolierung?; Unterseite 10 °C?; Oberseite Konvektion 10 bei 20 °C?; Boden λ = 1,0?">
 </div>
 
 ### b) Höchste Leitertemperatur im trockenen Sand in °C
@@ -134,7 +107,7 @@ dauerhaft höchstens **90 °C**. Ob das Kabel heiß wird, hängt stark vom Boden
 
 ### Lösung
 
-- Wärmeerzeugung $\dot q''' = 550^2 \cdot 2{,}82\cdot10^{-8} / (2{,}4\cdot10^{-4})^2 \approx 148\,100\ \mathrm{W/m^3}$, das sind 35,5 W je Meter Kabel
+- Die 148 100 W/m³ im Leiter sind 35,5 W je Meter Kabel
 - a) feuchter Boden: Leiter **57,7 °C**, deutlich unter 90 °C
 - b) trockener Sand: Leiter **95,7 °C**, über der Grenze. Der Boden leitet die Wärme schlechter ab, das Kabel staut die Wärme
 - Deshalb werden Erdkabel in speziellem Sand mit bekannter Wärmeleitfähigkeit verlegt, und die zulässige Stromstärke hängt vom Boden ab
