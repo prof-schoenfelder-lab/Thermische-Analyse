@@ -70,6 +70,7 @@ In ANSYS gibt es nur **eine** Randbedingung `Radiation`. Im Detailfenster legt
 
 <figure style="text-align:center;">
   <img src="../../images/p2_strahlung_arten.excalidraw.png" alt="To Ambient und Surface to Surface" class="no-lightbox">
+  <figcaption>Beide Seiten strahlen, die wärmere mehr (kräftige Wellen). Netto fließt Wärme von warm nach kalt.</figcaption>
 </figure>
 
 | | To Ambient | Surface to Surface |
@@ -82,6 +83,25 @@ In ANSYS gibt es nur **eine** Randbedingung `Radiation`. Im Detailfenster legt
 Bei **Surface to Surface** strahlen sich alle Flächen mit derselben
 `Enclosure`-Nummer gegenseitig an. Was dahintersteckt, steht weiter unten.
 
+### In welche Richtung strahlt eine Fläche?
+
+Die Wellen im Bild oben sind vereinfacht. Jede Stelle einer Fläche strahlt in
+**alle Richtungen** des Halbraums über ihr: senkrecht zur Fläche am stärksten,
+flach zur Fläche kaum (Bild links).
+
+<figure style="text-align:center;">
+  <img src="../../images/p2_halbraum.excalidraw.png" alt="Links: Eine Stelle strahlt in den ganzen Halbraum, senkrecht am stärksten. Rechts: ANSYS setzt einen halben Würfel mit Feldern über das Flächenelement, das Glas fällt auf einige Felder" class="no-lightbox">
+</figure>
+
+Wie ANSYS damit rechnet, hängt von der Art ab:
+
+- **To Ambient:** Alles, was die Fläche abstrahlt, kommt bei der Umgebung an, egal in welche Richtung. ANSYS braucht deshalb keine Richtungen und rechnet direkt mit dem Stefan-Boltzmann-Gesetz von oben, mit der `Ambient Temperature` als $T_\infty$. Das passt, solange die Fläche nur die Umgebung sieht
+- **Surface to Surface:** ANSYS muss wissen, welcher Anteil auf welche Fläche trifft (Sichtfaktor, siehe unten). Dazu setzt es über jedes Flächenelement einen halben Würfel (Hemicube) aus vielen kleinen Feldern und bildet die anderen Flächen darauf ab (Bild rechts)
+    - Die Felder, auf die eine Fläche fällt, ergeben den Sichtfaktor zu dieser Fläche
+    - Felder über der Mitte zählen mehr als Felder am Rand, weil senkrecht mehr Strahlung abgeht
+    - Liegen zwei Flächen hintereinander, zählt nur die vordere: So berücksichtigt ANSYS die Verschattung
+    - Wie fein die Felder sind, stellt `Hemicube Resolution` unter `Analysis Settings` > `Radiosity Controls` ein
+
 ### Welche Temperatur ist die Ambient Temperature?
 
 Bei `To Ambient` ist die `Ambient Temperature` die Temperatur der Flächen, die
@@ -91,6 +111,7 @@ Flächen ringsum gehören zur Strahlung:
 
 <figure style="text-align:center;">
   <img src="../../images/p2_ambient.excalidraw.png" alt="Ambient Temperature im Keller (Wände 15 °C) und draußen (Himmel 5 °C bei 20 °C Luft)" class="no-lightbox">
+  <figcaption>Kräftige Wellen: Die wärmere Seite strahlt mehr. Das Glas der Röhre (Fall a: 15,8&nbsp;°C) ist wärmer als der Himmel, aber kälter als der Boden.</figcaption>
 </figure>
 
 - **a) Im Raum** ([Übung 1](../03_Selbsttests/Uebung-1.md), Heizungsrohr im Keller)
@@ -98,7 +119,7 @@ Flächen ringsum gehören zur Strahlung:
     - Im Keller sind Wände und Luft etwa gleich warm, beide 15 °C
 - **b) Draußen** ([Vorzeigebeispiel](../02_Vorzeigebeispiel/Vakuumroehre/index.md), Vakuumröhre)
     - Die obere Hälfte der Röhre sieht vor allem den Himmel, die untere vor allem den Boden: insgesamt je zur Hälfte
-    - Der Himmel ist bei klarem Wetter etwa 15 K kälter als die Luft (im Beispiel 5 °C bei 20 °C Luft), bei bedecktem Himmel nur wenige Kelvin
+    - Der Himmel ist bei klarem Wetter etwa 15 bis 20 K kälter als die Luft (im Beispiel 5 °C bei 20 °C Luft), bei bedecktem Himmel nur wenige Kelvin
     - Der Boden ist etwa so warm wie die Luft
     - Genauer: zwei Strahlungsrandbedingungen, die obere Hälfte zum Himmel, die untere zum Boden
     - Oder den Boden mitmodellieren und `Surface to Surface` mit `Open` verwenden: Was nicht auf den Boden trifft, geht an die `Ambient Temperature` des Himmels
@@ -117,6 +138,11 @@ Der **Sichtfaktor** $F_{12}$ gibt an, welcher Anteil der Strahlung, die
 Fläche 1 abgibt, direkt auf Fläche 2 trifft. In der langen Vakuumröhre sieht
 der Absorber fast nur Glas, das Glas zu 60 % den Absorber und zu 40 % die
 gegenüberliegende Glaswand (Bild unten, obere Balken).
+
+Die übrigen 8 % des Absorbers treffen wieder den Absorber, aber nie dieselbe
+Stelle: Die Blechflügel strahlen seitlich auf das Rohr in der Mitte, das Rohr
+strahlt auf die Flügel. Ein ebenes Blech allein sieht sich nicht selbst, eine
+gewölbte Fläche wie die Innenseite des Glases schon.
 
 ??? info "Zwei Regeln für Sichtfaktoren"
     1. **Alles kommt irgendwo an.** In einem geschlossenen Raum ergeben die
