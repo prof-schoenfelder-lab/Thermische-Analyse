@@ -63,7 +63,7 @@ Die wichtigsten Kernaussagen:
     <ul>
       <li>Der Emissionsgrad ist eine Eigenschaft der Oberfläche, nicht des Materials</li>
       <li>Die selektive Schicht ist im Sonnenlicht schwarz und im Infrarot wie blankes Metall</li>
-      <li>Im Vorzeigebeispiel kommen so 95 % der Sonnenstrahlung im Wasser an, mit schwarzem Lack nur 43 %</li>
+      <li>Im Vorzeigebeispiel kommen so 95 % der Sonnenleistung im Wasser an, mit schwarzem Lack nur 43 %</li>
     </ul>
   </div>
 
