@@ -154,11 +154,12 @@ vielen Strahlen nähern sich die Anteile den Sichtfaktoren.
 
 ??? info "Zwei Regeln für Sichtfaktoren"
     1. **Alles kommt irgendwo an.** Gezählt wird je Fläche, die strahlt: Ihre
-       Sichtfaktoren zu allen Flächen ergeben zusammen 100 %, wenn der Raum
-       geschlossen ist. In der langen Röhre:
-        - Absorber: 92 % zum Glas plus 8 % zum Absorber = 100 %
-        - Glas: 60 % zum Absorber plus 40 % zum Glas = 100 %
-        - $F_{12}$ und $F_{21}$ ergeben zusammen **nicht** 100 %, hier sind es 92 % und 60 %
+       Sichtfaktoren zu allen Flächen, auch zu sich selbst, ergeben zusammen
+       100 %, wenn der Raum geschlossen ist. In der langen Röhre mit dem
+       Absorber als Fläche 1 und dem Glas als Fläche 2:
+        - Absorber: $F_{11} + F_{12}$ = 8 % + 92 % = 100 %
+        - Glas: $F_{21} + F_{22}$ = 60 % + 40 % = 100 %
+        - $F_{11}$ und $F_{22}$: Anteil, der die strahlende Fläche selbst wieder trifft
     2. **Reziprozität:** $A_1\,F_{12} = A_2\,F_{21}$ mit den Flächen $A_1$, $A_2$ und den
        Sichtfaktoren $F_{12}$ (von 1 nach 2) und $F_{21}$ (von 2 nach 1). Gleich
        sind also nicht die Sichtfaktoren, sondern Fläche mal Sichtfaktor (Flächen je 20 mm Röhre):
