@@ -171,6 +171,7 @@ nav:
               - P2_Randbedingungen/index.md
               - GRUNDLAGEN:
                       - Randbedingungen im Überblick: P2_Randbedingungen/01_Grundlagen/Randbedingungen.md
+                      - Konvektion: P2_Randbedingungen/01_Grundlagen/Konvektion.md
                       - Wärmestrahlung: P2_Randbedingungen/01_Grundlagen/Strahlung.md
               - "VORZEIGEBEISPIEL: VAKUUMRÖHRE":
                       - Aufgabenstellung: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/index.md

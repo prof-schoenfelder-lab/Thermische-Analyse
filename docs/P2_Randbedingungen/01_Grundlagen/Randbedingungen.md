@@ -33,6 +33,9 @@ außer der Wärmeerzeugung:
 | Wärmestrom | Gesamtleistung über eine Fläche ist bekannt, z. B. aus einem Datenblatt | Verlustleistung eines Halbleiters (Übung 2) | `Heat Flow`<br>W |
 | Feste Temperatur | Festkörper werden geschnitten, und an der Schnittfläche ist die Temperatur bekannt | Erdreich in 3 m Tiefe (Übung 3) | `Temperature`<br>°C |
 
+Wie man den Wärmeübergangskoeffizienten α für die Konvektion abschätzt, steht
+auf der Seite [Konvektion](Konvektion.md).
+
 ### Feste Temperatur
 
 **Anwendung:** Festkörper werden geschnitten, und an der Schnittfläche ist die

@@ -9,6 +9,7 @@
       "gruppe": "GRUNDLAGEN",
       "kinder": [
         { "titel": "Randbedingungen im Überblick", "extern": "P2_Randbedingungen/01_Grundlagen/Randbedingungen.md" },
+        { "titel": "Konvektion", "extern": "P2_Randbedingungen/01_Grundlagen/Konvektion.md" },
         { "titel": "Wärmestrahlung", "extern": "P2_Randbedingungen/01_Grundlagen/Strahlung.md" }
       ]
     },
