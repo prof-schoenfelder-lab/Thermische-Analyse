@@ -144,8 +144,8 @@
         "Surface to Surface",
         "Enclosure"
       ],
-      "steps": 8,
-      "thumb": "step-0.png"
+      "steps": 7,
+      "thumb": "step-1.png"
     },
     {
       "slug": "p2-strahlung-himmel",
@@ -191,7 +191,7 @@
         "Named Selection",
         "Worksheet"
       ],
-      "steps": 6,
+      "steps": 7,
       "thumb": "step-0.png"
     },
     {

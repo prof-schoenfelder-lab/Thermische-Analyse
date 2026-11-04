@@ -45,6 +45,12 @@
       "media": [
         "step-5.png"
       ]
+    },
+    {
+      "caption": "Die übrigen Named Selections entstehen genauso, die Werte stehen in der Tabelle unter dieser Anleitung. Nur **Absorber aussen** braucht drei Zeilen: `Location X` = `0,00025` und `-0,00025` (Ober- und Unterseiten des Blechs), `Radius` = `0,006` (Rohr außen), dann `Generate`",
+      "media": [
+        "step-6.png"
+      ]
     }
   ]
 }

@@ -115,7 +115,7 @@ Die Zeilen mit **Radius** gelten unabhängig von der Achse.
 
 ??? tip "Kurzanleitung: Radiation Surface to Surface"
     1. `Insert → Radiation`, **Named Selection** `Absorber aussen`, **Correlation** **Surface To Surface**, **Emissivity** **0,05**, **Enclosure** **1**, **Enclosure Type** **Perfect**, umbenennen in **Absorber zum Glas**
-    2. Genauso mit `Glas innen` und **Emissivity** **0,9**: **Glas zum Absorber**
+    2. Genauso mit `Glas innen`, **Emissivity** **0,9** und ebenfalls **Enclosure** **1**: **Glas zum Absorber**
 
 <tutorial slug="p2-strahlung-s2s"></tutorial>
 
