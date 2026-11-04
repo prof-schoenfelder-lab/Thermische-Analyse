@@ -224,7 +224,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 ## In ANSYS
 
 - `Convection`: **Film Coefficient** in W/(m²·°C), das ist dasselbe wie W/(m²·K), und **Ambient Temperature** in °C
-- Meist reicht ein fester Wert für α
+- **In diesem Praktikum ist α ein fester Wert.** Das reicht meist aus, die beiden folgenden Möglichkeiten sind nur zum Nachschlagen
 - Hängt α stark von der Temperatur ab (freie Konvektion), lässt sich der **Film Coefficient** auch als Tabelle über der Temperatur eingeben
 - Unter **Film Coefficient** bietet ANSYS mit `Import Temperature Dependent` fertige Ansätze an. Vorher prüfen, ob der Ansatz passt:
     - „Horizontal Cyl“ ist die Formel für turbulente Strömung und gilt erst für große Rohre. Kleine Rohre sind meist laminar, dort liegt sie um ein Drittel zu niedrig
