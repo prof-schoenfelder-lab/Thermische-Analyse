@@ -92,8 +92,8 @@ DIN EN ISO 6946. Sie enthalten **Konvektion und Strahlung zusammen**:
 Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgegeben. Wer α selbst abschätzen will, findet hier die Formeln.
 
 ??? info "Schnellformeln für ruhende Luft"
-    Für freie Konvektion in Luft bei Normaldruck gibt Çengel einfache Formeln
-    (Tab. 15-1). Sie gelten für **laminare** Strömung:
+    Für freie Konvektion in Luft bei Normaldruck gibt es einfache Formeln. Sie gelten
+    für **laminare** Strömung:
 
     | Form | α in W/(m²·K) | Länge |
     |---|---|---|
@@ -136,31 +136,31 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
     Die Stoffwerte nimmt man bei der **Filmtemperatur** $T_f = (T_O + T_F)/2$,
     bei der Strömung im Rohr bei der mittleren Temperatur des Fluids.
 
-    **Freie Konvektion** (Çengel Tab. 9-1)
+    **Freie Konvektion**
 
-    - Senkrechte Wand, $L$ = Höhe, für alle $Ra$ (Gl. 9-21):
+    - Senkrechte Wand, $L$ = Höhe, für alle $Ra$:
 
         $$
         Nu = \left[0{,}825 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}492/Pr)^{9/16}\right]^{8/27}}\right]^2
         $$
 
-    - Waagerechtes Rohr, $L = D$, für $Ra \le 10^{12}$ (Gl. 9-25):
+    - Waagerechtes Rohr, $L = D$, für $Ra \le 10^{12}$:
 
         $$
         Nu = \left[0{,}6 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}559/Pr)^{9/16}\right]^{8/27}}\right]^2
         $$
 
     - Waagerechte Platte, $L = A/p$ (hier ohne Faktor 4):
-        - warme Seite oben oder kalte Seite unten: $Nu = 0{,}54\,Ra^{1/4}$ für $Ra = 10^4$ bis $10^7$, $Nu = 0{,}15\,Ra^{1/3}$ für $Ra = 10^7$ bis $10^{11}$ (Gl. 9-22, 9-23)
-        - warme Seite unten oder kalte Seite oben: $Nu = 0{,}27\,Ra^{1/4}$ für $Ra = 10^5$ bis $10^{11}$ (Gl. 9-24)
+        - warme Seite oben oder kalte Seite unten: $Nu = 0{,}54\,Ra^{1/4}$ für $Ra = 10^4$ bis $10^7$, $Nu = 0{,}15\,Ra^{1/3}$ für $Ra = 10^7$ bis $10^{11}$
+        - warme Seite unten oder kalte Seite oben: $Nu = 0{,}27\,Ra^{1/4}$ für $Ra = 10^5$ bis $10^{11}$
 
     **Erzwungene Konvektion außen**
 
-    - Platte, längs angeströmt, $L$ = Länge in Strömungsrichtung, $0{,}6 \le Pr \le 60$ (Gl. 7-21, 7-22, 7-24):
+    - Platte, längs angeströmt, $L$ = Länge in Strömungsrichtung, $0{,}6 \le Pr \le 60$:
         - laminar, $Re < 5 \cdot 10^5$: $Nu = 0{,}664\,Re^{0{,}5}\,Pr^{1/3}$
         - turbulent ab der Vorderkante, $5 \cdot 10^5 \le Re \le 10^7$: $Nu = 0{,}037\,Re^{0{,}8}\,Pr^{1/3}$
         - vorn laminar, hinten turbulent: $Nu = (0{,}037\,Re^{0{,}8} - 871)\,Pr^{1/3}$
-    - Rohr, quer angeströmt (zum Beispiel im Wind), $L = D$, für $Re \cdot Pr > 0{,}2$ (Gl. 7-35):
+    - Rohr, quer angeströmt (zum Beispiel im Wind), $L = D$, für $Re \cdot Pr > 0{,}2$:
 
         $$
         Nu = 0{,}3 + \frac{0{,}62\,Re^{1/2}\,Pr^{1/3}}{\left[1 + (0{,}4/Pr)^{2/3}\right]^{1/4}} \left[1 + \left(\frac{Re}{282\,000}\right)^{5/8}\right]^{4/5}
@@ -168,8 +168,8 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 
     **Strömung im Rohr** ($L$ = Innendurchmesser $D$)
 
-    - Laminar, $Re < 2300$, voll ausgebildet: $Nu = 3{,}66$ bei fester Wandtemperatur, $Nu = 4{,}36$ bei festem Wärmestrom (Gl. 8-61, 8-59)
-    - Turbulent nach Gnielinski, $3000 < Re < 5 \cdot 10^6$ und $0{,}5 \le Pr \le 2000$ (Gl. 8-70, Reibungszahl nach Gl. 8-65):
+    - Laminar, $Re < 2300$, voll ausgebildet: $Nu = 3{,}66$ bei fester Wandtemperatur, $Nu = 4{,}36$ bei festem Wärmestrom
+    - Turbulent nach Gnielinski, $3000 < Re < 5 \cdot 10^6$ und $0{,}5 \le Pr \le 2000$:
 
         $$
         Nu = \frac{(f/8)\,(Re - 1000)\,Pr}{1 + 12{,}7\,(f/8)^{0{,}5}\,(Pr^{2/3} - 1)} \qquad f = (0{,}790 \ln Re - 1{,}64)^{-2}
@@ -177,7 +177,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 
         mit der Reibungszahl $f$ des glatten Rohrs
 
-    - Einfacher, aber ungenauer, nach Dittus und Boelter, $Re > 10\,000$, $0{,}7 \le Pr \le 160$: $Nu = 0{,}023\,Re^{0{,}8}\,Pr^n$ mit $n = 0{,}4$, wenn das Fluid erwärmt wird, und $n = 0{,}3$, wenn es abkühlt (Gl. 8-68)
+    - Einfacher, aber ungenauer, nach Dittus und Boelter, $Re > 10\,000$, $0{,}7 \le Pr \le 160$: $Nu = 0{,}023\,Re^{0{,}8}\,Pr^n$ mit $n = 0{,}4$, wenn das Fluid erwärmt wird, und $n = 0{,}3$, wenn es abkühlt
 
     !!! example "Beispiel: Wasser im Heizungsrohr"
         - Innen Ø 21,7 mm, Wasser 60 °C, angenommen 0,5 m/s: $Re \approx 22\,900$, also turbulent
@@ -185,7 +185,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
         - Die Übung rechnet vorsichtig mit 1000 W/(m²·K). Am Ergebnis ändert das kaum etwas: Den Wärmestrom begrenzt die Luft außen, nicht das Wasser innen
 
     !!! info "Wie genau sind solche Formeln?"
-        - Die einfachen Formeln wie Dittus und Boelter können bis zu 25 % danebenliegen, genauere wie Gnielinski unter 10 % (Çengel S. 441)
+        - Die einfachen Formeln wie Dittus und Boelter können bis zu 25 % danebenliegen, genauere wie Gnielinski unter 10 %
         - Ein so bestimmtes α ist also eine gute Abschätzung, kein exakter Wert
         - Hängt viel an α, lohnt eine Rechnung mit kleinerem und größerem α: Ändert sich das Ergebnis kaum, reicht die Abschätzung
 
@@ -209,11 +209,11 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 | Fall | üblicher Weg | im Kurs |
 |---|---|---|
 | Wände, Fenster, Decken im Gebäude | Normwerte nach DIN EN ISO 6946, sie enthalten die Strahlung | P1 Außenwand |
-| Rohre und Bauteile in ruhender Luft | freie Konvektion: Schnellformel oder Tab. 9-1 | Heizungsrohr, Kühlkörper |
+| Rohre und Bauteile in ruhender Luft | freie Konvektion: Schnellformeln oder Kennzahlen unter [Selbst rechnen](#selbst-rechnen) | Heizungsrohr, Kühlkörper |
 | Außenflächen im Wind | erzwungene Konvektion: Platte oder quer angeströmtes Rohr, in der Bauphysik $\alpha_K = 4 + 4\,v$ | Vakuumröhre |
 | Wasser in Rohren | Strömung im Rohr: laminar 3,66, turbulent Gnielinski | Heizungsrohr, Vakuumröhre |
 | Elektronik mit Lüfter | erzwungene Konvektion, oft Angaben des Herstellers | Kühlkörper |
-| Sieden und Kondensieren | eigene Formeln (Çengel Kap. 10), α sehr groß | |
+| Sieden und Kondensieren | eigene Formeln, hier nicht behandelt, α sehr groß | |
 | Wenn es genau sein muss | Strömungssimulation (CFD) oder Messung | |
 
 ## In ANSYS
