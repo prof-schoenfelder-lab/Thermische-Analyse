@@ -32,7 +32,7 @@ Die Formel sieht einfach aus, weil die ganze Physik in α steckt.
 
 - Direkt an der Oberfläche haftet das Fluid, seine Geschwindigkeit ist dort null. Durch diese Schicht kommt die Wärme nur durch Leitung
 - Die Temperatur ändert sich nur in einer dünnen Schicht nahe der Oberfläche, der **Grenzschicht**. Sie ist oft nur wenige Millimeter dick
-- Grob gilt $\alpha \approx \lambda_F / \delta$ mit der Wärmeleitfähigkeit $\lambda_F$ des Fluids in W/(m·K) und der Dicke $\delta$ der Grenzschicht in m
+- Die Wärme muss durch diese Schicht geleitet werden: Je dünner sie ist, desto steiler fällt die Temperatur und desto mehr Wärme fließt. Grob gilt deshalb $\alpha \approx \lambda_F / \delta$ mit der Wärmeleitfähigkeit $\lambda_F$ des Fluids in W/(m·K) und der Dicke $\delta$ der Grenzschicht in m
 - Schnellere Strömung macht die Grenzschicht dünner, α wird größer
 - Wasser leitet Wärme rund 25-mal besser als Luft (0,6 gegen 0,025 W/(m·K)). Bei ähnlicher Strömung ist α für Wasser deshalb viel größer
 - α ist **keine Stoffeigenschaft**: Es hängt vom Fluid, von der Geschwindigkeit, von Form und Lage der Oberfläche und bei freier Konvektion auch vom Temperaturunterschied ab
