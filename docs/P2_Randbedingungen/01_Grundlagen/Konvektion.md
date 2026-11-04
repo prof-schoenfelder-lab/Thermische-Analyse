@@ -39,6 +39,8 @@ Die Formel sieht einfach aus, weil die ganze Physik in α steckt.
 
 ## Freie und erzwungene Konvektion
 
+<div class="konvektionsarten"></div>
+
 - **Erzwungen:** Eine Pumpe, ein Lüfter oder der Wind bewegt das Fluid. α hängt vor allem von der Geschwindigkeit ab
 - **Frei:** Das Fluid an einer warmen Oberfläche wird leichter und steigt auf, an einer kalten sinkt es ab. Die Strömung entsteht erst durch den Temperaturunterschied. Deshalb wächst α mit dem Temperaturunterschied, in ruhender Luft bei kleinen Bauteilen etwa mit $\Delta T^{1/4}$
 - Ist der Temperaturunterschied zu klein, um das Fluid in Bewegung zu bringen, bleibt nur Wärmeleitung im Fluid, zum Beispiel in schmalen Luftspalten
@@ -226,7 +228,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 
 ## Quellen
 
-- Y. A. Çengel: *Heat Transfer. A Practical Approach.* 2. Auflage, McGraw-Hill 2002: Tab. 1-5 (S. 26), Gl. 7-21 bis 7-24 (S. 374), Gl. 7-35 (S. 385), Gl. 8-59 und 8-61 (S. 436), Gl. 8-65, 8-68 und 8-70 (S. 441), Tab. 9-1 (S. 468), Tab. 15-1 (S. 815). Stoffwerte von Luft aus Tab. A-15, wie in den Rechenbeispielen zitiert (S. 377, 387, 388, 470, 482)
+- Y. A. Çengel: *Heat Transfer. A Practical Approach.* 2. Auflage, McGraw-Hill 2002: Abb. 1-32 und Tab. 1-5 (S. 26), Gl. 7-21 bis 7-24 (S. 374), Gl. 7-35 (S. 385), Gl. 8-59 und 8-61 (S. 436), Gl. 8-65, 8-68 und 8-70 (S. 441), Tab. 9-1 (S. 468), Tab. 15-1 (S. 815). Stoffwerte von Luft aus Tab. A-15, wie in den Rechenbeispielen zitiert (S. 377, 387, 388, 470, 482)
 - Stoffwerte von Wasser: NIST Chemistry WebBook, Thermophysical Properties of Fluid Systems, Wasser im Sättigungszustand
 - DIN EN ISO 6946: Bauteile, Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient (Wärmeübergangswiderstände)
 - Ansätze in ANSYS: Bibliothek `Convection_Samples` von ANSYS 2025 R2 (Dialog „Import Convection Data“), ausgewertet mit den Formeln aus J. P. Holman: *Heat Transfer*, 5. Auflage, S. 285; ANSYS Learning Forum, Antwort eines ANSYS-Mitarbeiters zu `Import Temperature Dependent`
