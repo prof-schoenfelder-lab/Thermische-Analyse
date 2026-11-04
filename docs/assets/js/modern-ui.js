@@ -534,9 +534,25 @@
       });
   }
 
+  // Link auf ein Ziel in einem Aufklappkasten: Kasten öffnen und hinscrollen
+  function openLinkTarget() {
+    var el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    var opened = false;
+    for (var d = el.closest('details'); d; d = d.parentElement.closest('details')) {
+      if (!d.open) { d.open = true; opened = true; }
+    }
+    if (opened) el.scrollIntoView();
+  }
+
   function init() {
     var root = document.querySelector('.md-content');
     if (!root) return;
+    try { openLinkTarget(); } catch (e) { }
+    window.addEventListener('hashchange', openLinkTarget);
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('a[href^="#"]')) setTimeout(openLinkTarget, 0);
+    });
     try { menuPathChips(root); } catch (e) { }
     try { keyCaps(root); } catch (e) { }
     try { workflowStepper(root); } catch (e) { }

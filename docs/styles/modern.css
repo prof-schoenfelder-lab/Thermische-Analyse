@@ -965,3 +965,6 @@ html:root .md-typeset img.prakt-thumb {
 html:root .prakt-body { padding: .85rem .95rem 1.05rem; }
 html:root .prakt-label { color: var(--kurs-accent-ink); margin-bottom: .2rem; }
 html:root .prakt-title { font-size: .86rem; }
+
+/* Sprungziele in Aufklappkästen nicht unter der festen Kopfleiste */
+html:root .md-typeset details [id], html:root .md-typeset li[id] { scroll-margin-top: 7rem; }

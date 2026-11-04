@@ -81,6 +81,7 @@ DIN EN ISO 6946. Sie enthalten **Konvektion und Strahlung zusammen**:
 - $R_{si}$, $R_{se}$: Wärmeübergangswiderstand innen und außen, der Kehrwert des Wärmeübergangskoeffizienten
 - Innen an einer Wand stecken in den 7,7 W/(m²·K) nur etwa 2,5 W/(m²·K) Konvektion. Die übrigen gut 5 W/(m²·K) sind Strahlung zu den anderen Wänden (bei ε = 0,9 und 20 °C)
 - Außen setzt die Norm für die Konvektion $\alpha_K = 4 + 4\,v$ an, mit dem konvektiven Anteil $\alpha_K$ in W/(m²·K) und der Windgeschwindigkeit $v$ in m/s. Die 25 W/(m²·K) gelten für 4 m/s Wind plus Strahlung
+  {: #norm-wind }
 
 !!! warning "Strahlung nicht doppelt zählen"
     - P1 rechnet mit diesen Normwerten als Konvektion, die Strahlung steckt darin
@@ -94,6 +95,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 ??? info "Schnellformeln für ruhende Luft"
     Für freie Konvektion in Luft bei Normaldruck gibt es einfache Formeln. Sie gelten
     für **laminare** Strömung:
+    {: #schnellformeln }
 
     | Form | α in W/(m²·K) | Länge |
     |---|---|---|
@@ -137,6 +139,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
     bei der Strömung im Rohr bei der mittleren Temperatur des Fluids.
 
     **Freie Konvektion**
+    {: #kennzahlen-frei }
 
     - Senkrechte Wand, $L$ = Höhe, für alle $Ra$:
 
@@ -155,6 +158,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
         - warme Seite unten oder kalte Seite oben: $Nu = 0{,}27\,Ra^{1/4}$ für $Ra = 10^5$ bis $10^{11}$
 
     **Erzwungene Konvektion außen**
+    {: #kennzahlen-aussen }
 
     - Platte, längs angeströmt, $L$ = Länge in Strömungsrichtung, $0{,}6 \le Pr \le 60$:
         - laminar, $Re < 5 \cdot 10^5$: $Nu = 0{,}664\,Re^{0{,}5}\,Pr^{1/3}$
@@ -167,6 +171,7 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
         $$
 
     **Strömung im Rohr** ($L$ = Innendurchmesser $D$)
+    {: #kennzahlen-rohr }
 
     - Laminar, $Re < 2300$, voll ausgebildet: $Nu = 3{,}66$ bei fester Wandtemperatur, $Nu = 4{,}36$ bei festem Wärmestrom
     - Turbulent nach Gnielinski, $3000 < Re < 5 \cdot 10^6$ und $0{,}5 \le Pr \le 2000$:
@@ -206,13 +211,13 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 
 ## Wie man es in der Praxis macht
 
-| Fall | üblicher Weg | im Kurs |
+| Fall | So kommt man an α | Im Kurs |
 |---|---|---|
-| Wände, Fenster, Decken im Gebäude | Normwerte nach DIN EN ISO 6946, sie enthalten die Strahlung | P1 Außenwand |
-| Rohre und Bauteile in ruhender Luft | freie Konvektion: Schnellformeln oder Kennzahlen unter [Selbst rechnen](#selbst-rechnen) | Heizungsrohr, Kühlkörper |
-| Außenflächen im Wind | erzwungene Konvektion: Platte oder quer angeströmtes Rohr, in der Bauphysik $\alpha_K = 4 + 4\,v$ | Vakuumröhre |
-| Wasser in Rohren | Strömung im Rohr: laminar 3,66, turbulent Gnielinski | Heizungsrohr, Vakuumröhre |
-| Elektronik mit Lüfter | erzwungene Konvektion, oft Angaben des Herstellers | Kühlkörper |
+| Wände, Fenster, Decken im Gebäude | [Normwerte nach DIN EN ISO 6946](#normwerte-der-bauphysik-enthalten-strahlung), sie enthalten die Strahlung | P1 Außenwand |
+| Rohre und Bauteile in ruhender Luft | freie Konvektion: [Schnellformeln](#schnellformeln) oder genauer [Kennzahlen](#kennzahlen-frei) | Heizungsrohr, Kühlkörper |
+| Außenflächen im Wind | erzwungene Konvektion: [Kennzahlen für Platte oder Rohr](#kennzahlen-aussen), an Gebäuden die [Formel der Norm](#norm-wind) | Vakuumröhre, Erdkabel |
+| Wasser in Rohren | Strömung im Rohr: [Kennzahlen](#kennzahlen-rohr) für laminare und turbulente Strömung | Heizungsrohr, Vakuumröhre |
+| Elektronik mit Lüfter | erzwungene Konvektion, oft Angaben des Herstellers | |
 | Sieden und Kondensieren | eigene Formeln, hier nicht behandelt, α sehr groß | |
 | Wenn es genau sein muss | Strömungssimulation (CFD) oder Messung | |
 
