@@ -228,7 +228,8 @@ ROEHRE = dict(
 )
 
 
-def roehre(eps_abs, alpha_w=None, h=0.001, h_blech=0.000125, k=6, P=ROEHRE):
+def roehre(eps_abs, alpha_w=None, h=0.001, h_blech=0.000125, k=6, P=ROEHRE, q_rohr=0.0):
+    """q_rohr: Wärmestromdichte auf der oberen Rohrhälfte, 0 wie im Vorzeigebeispiel (Sonne nur auf den Blechflügeln)."""
     alpha_w = P["alpha_w"] if alpha_w is None else alpha_w
 
     def bauen(occ):
@@ -252,6 +253,8 @@ def roehre(eps_abs, alpha_w=None, h=0.001, h_blech=0.000125, k=6, P=ROEHRE):
     abs_a = np.setdiff1d(rand, np.concatenate([glas_a, glas_i, rohr_i]))
     y = mitte[1, abs_a]
     sonne = abs_a[np.abs(y - P["t_blech"] / 2) < 1e-9]          # nur Oberseite der Bleche, Rohr selbst nicht
+    r_abs = np.hypot(*mitte[:, abs_a])
+    rohr_oben = abs_a[(np.abs(r_abs - P["r_rohr_a"]) < 2e-5) & (y > P["t_blech"] / 2 + 1e-9)]
 
     zentren = mesh.p[:, mesh.t].mean(axis=1)
     lam = np.where(np.hypot(*zentren) > 0.031, P["lam_glas"], P["lam_cu"])
@@ -279,13 +282,13 @@ def roehre(eps_abs, alpha_w=None, h=0.001, h_blech=0.000125, k=6, P=ROEHRE):
     F = F_roh / summe[:, None]                    # Perfect: Zeilen auf 1 skalieren (wie ANSYS VFSM)
     eps = np.where(np.isin(strahl, glas_i), P["eps_glas"], eps_abs)
 
-    R = {k: Randstueck(mesh, v) for k, v in dict(glas_a=glas_a, rohr_i=rohr_i, sonne=sonne, strahl=strahl).items()}
+    R = {k: Randstueck(mesh, v) for k, v in dict(glas_a=glas_a, rohr_i=rohr_i, sonne=sonne, rohr_oben=rohr_oben, strahl=strahl).items()}
     konv = [(R["glas_a"], P["alpha_l"], P["T_l"])]
     if alpha_w > 0:
         konv.append((R["rohr_i"], alpha_w, P["T_w"]))
     basis, u, it, q_s2s = loesen(mesh, lam, konv=konv,
                                  to_ambient=[(R["glas_a"], P["eps_glas"], P["T_himmel"])],
-                                 flux=[(R["sonne"], P["q_sonne"])],
+                                 flux=[(R["sonne"], P["q_sonne"]), (R["rohr_oben"], q_rohr)],
                                  s2s=(R["strahl"], eps, F), T0=40.0, relax=0.7)
 
     knoten = mesh.p
@@ -294,7 +297,7 @@ def roehre(eps_abs, alpha_w=None, h=0.001, h_blech=0.000125, k=6, P=ROEHRE):
     glas = r_kn > 0.031
     Tw = R["rohr_i"].fb.interpolate(u).value
     Q_nutz = R["rohr_i"].integral(alpha_w * (Tw - P["T_w"])) if alpha_w > 0 else 0.0
-    Q_sonne = P["q_sonne"] * R["sonne"].laenge().sum()
+    Q_sonne = P["q_sonne"] * R["sonne"].laenge().sum() + q_rohr * R["rohr_oben"].laenge().sum()
     Tg = R["glas_a"].fb.interpolate(u).value
     Q_luft = R["glas_a"].integral(P["alpha_l"] * (Tg - P["T_l"]))
     Q_himmel = R["glas_a"].integral(P["eps_glas"] * SIGMA * ((Tg + K0) ** 4 - (P["T_himmel"] + K0) ** 4))
@@ -451,6 +454,12 @@ if __name__ == "__main__":
         zeige("b) schwarz, eps 0,9", roehre(0.9, h=h, h_blech=hb))
         zeige("c) Stillstand selektiv", roehre(0.05, alpha_w=0.0, h=h, h_blech=hb))
         zeige("   Stillstand schwarz", roehre(0.9, alpha_w=0.0, h=h, h_blech=hb))
+        q_rohr = ROEHRE["q_sonne"] * 2 / np.pi                   # Sonne des 12 mm breiten Streifens, gleichmäßig auf die obere Rohrhälfte
+        print("\nZum Vergleich: Sonne auch auf dem Rohr (Annahmen im Modell, Aufgabenseite)")
+        zeige("a) selektiv", roehre(0.05, h=h, h_blech=hb, q_rohr=q_rohr))
+        zeige("b) schwarz", roehre(0.9, h=h, h_blech=hb, q_rohr=q_rohr))
+        zeige("c) Stillstand selektiv", roehre(0.05, alpha_w=0.0, h=h, h_blech=hb, q_rohr=q_rohr))
+        zeige("   Stillstand schwarz", roehre(0.9, alpha_w=0.0, h=h, h_blech=hb, q_rohr=q_rohr))
     elif was == "rohr":
         h = 0.00025 if fein else 0.0005
         for name, kw in (("a) nur Konvektion", dict(strahlung=False)), ("b) Konvektion und Strahlung", {}),

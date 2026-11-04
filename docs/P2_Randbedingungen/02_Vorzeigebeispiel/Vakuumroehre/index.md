@@ -104,12 +104,12 @@ Formelzeichen:
 - $\varepsilon$: Emissionsgrad
 
 !!! warning "Annahmen im Modell"
+    - **Die Sonne trifft nur die Blechflügel:** Das sind 48 mm der 60 mm Breite, das 12 mm breite Rohr bleibt ohne Sonne. Mit dem Rohr käme rund ein Viertel mehr Sonne an: Die Nutzwärme stiege in Fall a) von 32 auf etwa 40 W/m, die Temperaturen im Betrieb blieben fast gleich
     - **Das Glas strahlt nur zum Himmel:** Die ganze Außenfläche des Glases strahlt zum Himmel mit 5 °C. Genau genommen sieht die untere Hälfte der Röhre den Boden ([Wärmestrahlung](../../01_Grundlagen/Strahlung.md#welche-temperatur-ist-die-ambient-temperature))
     - **Die Stirnflächen sind isoliert:** Sie sind Schnitte durch die lange Röhre und bleiben frei
 <!-- --8<-- [end:Randbedingungen] -->
 
-Die Sonne trifft in diesem Modell nur die Blechflügel. Das Rohr selbst und die
-kleine Aufnahme im Glas vernachlässigen wir.
+Die kleine Aufnahme der Sonne im Glas vernachlässigen wir.
 
 ??? info "Selektive Schicht: viel aufnehmen, wenig abstrahlen"
     Sonne und Absorber strahlen in ganz verschiedenen Wellenlängen. Nach dem
