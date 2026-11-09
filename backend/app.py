@@ -423,8 +423,12 @@ def lti13_launch():
             audience=LTI13_CLIENT_ID or None,
             options={"verify_aud": bool(LTI13_CLIENT_ID)},
             issuer=LTI13_ISSUER,
+            # Uhrabweichung zu OPAL tolerieren: Am 09.11.2026 ging die Server-Uhr 0,8 s nach,
+            # PyJWT lehnte das id_token dann als "not yet valid (iat)" ab
+            leeway=60,
         )
     except Exception as e:
+        app.logger.warning("id_token-Validierung fehlgeschlagen: %s", e)
         return f"id_token-Validierung fehlgeschlagen: {e}", 401
     if claims.get("nonce") != state_data.get("nonce"):
         return "nonce stimmt nicht überein.", 401

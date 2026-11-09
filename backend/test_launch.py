@@ -164,6 +164,20 @@ def main():
         token13 = dict(urllib.parse.parse_qsl(frag)).get("ac_token")
         check("1.3 token issued", bool(token13))
 
+        # 2b. platform clock slightly ahead (09.11.2026: server clock 0.8 s behind,
+        #     launches failed on iat) -> accepted within the leeway, far future still rejected
+        r = requests.post(BACKEND + "/lti/launch13",
+                          data={"id_token": make_id_token(q["nonce"], override={"iat": int(time.time()) + 2}),
+                                "state": q["state"]},
+                          allow_redirects=False)
+        check("1.3 platform clock 2 s ahead accepted", r.status_code == 302,
+              f"status={r.status_code} {r.text[:200]}")
+        r = requests.post(BACKEND + "/lti/launch13",
+                          data={"id_token": make_id_token(q["nonce"], override={"iat": int(time.time()) + 600}),
+                                "state": q["state"]},
+                          allow_redirects=False)
+        check("1.3 iat 10 min in the future rejected", r.status_code == 401)
+
         # 3. wrong nonce rejected
         r = requests.post(BACKEND + "/lti/launch13",
                           data={"id_token": make_id_token("wrong-nonce"), "state": q["state"]},
