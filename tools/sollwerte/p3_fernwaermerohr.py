@@ -97,6 +97,18 @@ def netz(achsen, modell, breite, tiefe, xmin, h0=0.002, k=0.05, hmax=0.15):
     return MeshTri(p.T, t.T)
 
 
+def rand_auf_kreis(m, xa, r, tol=1e-6):
+    """Randkanten, deren Knoten alle auf dem Kreis mit Radius r um die Achse x = xa liegen.
+
+    Über die Knoten statt über den Kantenmittelpunkt: Bei groben Netzen liegt der Mittelpunkt einer geraden Kante
+    merklich innerhalb des Kreises, und Kanten auf einer Symmetrielinie, die am Kreis beginnen, bleiben draußen.
+    """
+    rand = m.boundary_facets()
+    pkt = m.p[:, m.facets[:, rand]]
+    abstand = np.hypot(pkt[0] - xa, pkt[1] + H)
+    return rand[np.all(np.abs(abstand - r) < tol, axis=0)]
+
+
 def fem(achsen=(0.0,), temperaturen=(T_VORLAUF,), modell=NUR_DAEMMUNG, breite=6.0, tiefe=3.0, xmin=None,
         **netz_kw):
     """Wärmestrom je Rohr in W/m (Reaktion am Innenrand) und Zahl der Elemente."""
@@ -116,8 +128,7 @@ def fem(achsen=(0.0,), temperaturen=(T_VORLAUF,), modell=NUR_DAEMMUNG, breite=6.
     x[oben] = T_OBERFLAECHE
     rand, innen = [oben], []
     for xa, temp in zip(achsen, temperaturen):
-        d = basis.get_dofs(m.facets_satisfying(
-            lambda p, xa=xa: np.abs(np.hypot(p[0] - xa, p[1] + H) - r_innen) < 1e-4, boundaries_only=True)).all()
+        d = basis.get_dofs(rand_auf_kreis(m, xa, r_innen)).all()
         x[d] = temp
         rand.append(d)
         innen.append(d)
