@@ -1,0 +1,69 @@
+/* Wandschnitt 2D (werkzeuge/wandschnitt): Farben aus den Kurs-Tokens, funktioniert hell und dunkel.
+   html:root vor jeder Regel, damit die Typeset-Regeln aus modern.css nicht greifen (wie dort üblich). */
+html:root .md-content:has(#wandschnitt) { max-width: none; }
+html:root .md-main__inner.md-grid:has(#wandschnitt) { max-width: 96rem; }
+
+html:root .ws { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; margin: 1rem 0 2rem; font-size: .76rem; line-height: 1.45; color: var(--kurs-text, #2e3639); }
+html:root .ws > *, html:root .ws-haupt > * { min-width: 0; }
+html:root .ws button, html:root .ws select, html:root .ws input { font: inherit; color: var(--kurs-text, #2e3639); }
+html:root .ws button {
+  cursor: pointer; padding: .28em .8em; font-weight: 600; color: var(--kurs-accent-ink, #0070a6);
+  background: var(--kurs-surface, #fff); border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: var(--kurs-btn-radius, .5rem);
+}
+html:root .ws button:hover { border-color: var(--kurs-accent, #009ee3); }
+html:root .ws button:focus-visible, html:root .ws input:focus-visible, html:root .ws select:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 1px; }
+html:root .ws select, html:root .ws input[type="number"], html:root .ws input[type="text"] {
+  padding: .2em .35em; background: var(--kurs-surface, #fff); border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: .3rem;
+}
+html:root .ws input[type="number"] { width: 6.2em; text-align: right; font-variant-numeric: tabular-nums; }
+html:root .ws input[type="range"] { accent-color: var(--kurs-accent, #009ee3); vertical-align: middle; }
+html:root .ws input:disabled { opacity: .55; }
+
+html:root .ws-leiste { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .7rem; }
+html:root .ws-leiste label { display: inline-flex; align-items: center; gap: .4em; font-weight: 600; color: var(--kurs-head, #022541); }
+html:root .ws-datei input { display: none; }
+html:root .ws .ws-datei { cursor: pointer; padding: .28em .8em; border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: var(--kurs-btn-radius, .5rem); color: var(--kurs-accent-ink, #0070a6); background: var(--kurs-surface, #fff); }
+html:root .ws-meldung { color: var(--kurs-c-ok, #00964e); font-weight: 600; }
+html:root .ws-vorlagetext, html:root .ws-text { color: var(--kurs-text-2, #566166); }
+
+html:root .ws-haupt { display: grid; grid-template-columns: minmax(0, 1fr) 24rem; gap: 1rem; align-items: start; }
+@media (max-width: 70em) { html:root .ws-haupt { grid-template-columns: minmax(0, 1fr); } }
+html:root .ws-bildrahmen { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: .5rem; align-items: start; }
+html:root .ws-bild { display: block; width: 100%; background: var(--kurs-surface, #fff); border: 1px solid var(--kurs-line, #e2e8ec); border-radius: var(--kurs-radius-md, .6rem); touch-action: none; }
+html:root .ws-legende { display: grid; padding-top: .2rem; font-size: .7rem; font-variant-numeric: tabular-nums; color: var(--kurs-text-2, #566166); }
+html:root .ws-legende div { display: grid; grid-template-columns: .9rem 1fr; gap: .3rem; height: 1.55rem; }
+html:root .ws-legende div:last-child { height: 0; }
+html:root .ws-legende span:first-child { height: 100%; }
+html:root .ws-legende span:last-child { align-self: start; transform: translateY(-50%); white-space: nowrap; }
+html:root .ws-legende b { margin-bottom: .55rem; font-weight: 600; color: var(--kurs-head, #022541); }
+html:root .ws-status { min-height: 1.4em; margin-top: .35rem; color: var(--kurs-text-2, #566166); font-variant-numeric: tabular-nums; }
+html:root .ws-anzeige { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; align-items: center; margin-top: .3rem; }
+html:root .ws-anzeige label { display: inline-flex; align-items: center; gap: .35em; }
+html:root .ws-hinweis { margin-top: .4rem; color: var(--kurs-text-3, #87939a); }
+
+html:root .ws-ergebnisse { display: grid; gap: .7rem; }
+html:root .ws-karte { padding: .6rem .75rem; background: var(--kurs-panel, #f2f6f9); border: 1px solid var(--kurs-line, #e2e8ec); border-radius: var(--kurs-radius-md, .6rem); }
+html:root .ws-kartentitel { margin-bottom: .35rem; font-weight: 700; color: var(--kurs-head, #022541); }
+html:root .ws-karte .ws-text { margin-top: .35rem; }
+html:root .ws .ws-t { width: 100%; border-collapse: collapse; font-size: inherit; font-variant-numeric: tabular-nums; }
+html:root .ws-karte .ws-t td, html:root .ws-karte .ws-t th { padding: .15rem .3rem; text-align: right; border-bottom: 1px solid var(--kurs-line, #e2e8ec); }
+html:root .ws-karte .ws-t td:first-child, html:root .ws-karte .ws-t th:first-child { text-align: left; }
+html:root .ws .ws-t th { font-weight: 600; color: var(--kurs-text-2, #566166); }
+html:root .ws-gross { font-size: 1.15rem; font-weight: 700; color: var(--kurs-head, #022541); }
+html:root .ws-ok, html:root .ws-warn { display: inline-block; padding: 0 .4em; border-radius: .3rem; font-weight: 600; }
+html:root .ws-ok { color: var(--kurs-c-ok, #00964e); background: color-mix(in srgb, var(--kurs-c-ok, #00964e) 12%, transparent); }
+html:root .ws-warn { color: var(--kurs-c-warn, #e53009); background: color-mix(in srgb, var(--kurs-c-warn, #e53009) 12%, transparent); }
+html:root .ws-fehler { padding: .6rem .75rem; color: var(--kurs-c-warn, #e53009); border: 1px solid var(--kurs-c-warn, #e53009); border-radius: var(--kurs-radius-md, .6rem); }
+html:root .ws-umschalter { display: inline-flex; gap: .2rem; margin-bottom: .2rem; }
+html:root .ws-umschalter button[aria-pressed="true"] { color: var(--kurs-btn-fg, #fff); background: var(--kurs-btn-bg, #009ee3); border-color: var(--kurs-btn-bg, #009ee3); }
+
+html:root .ws-abschnitt { padding: .55rem .75rem .7rem; border: 1px solid var(--kurs-line, #e2e8ec); border-radius: var(--kurs-radius-md, .6rem); }
+html:root .ws-abschnitt-titel { font-weight: 700; color: var(--kurs-head, #022541); }
+html:root .ws-tabelle { overflow-x: auto; margin-top: .4rem; }
+html:root .ws-tabelle .ws-t th { text-align: left; padding: .2rem .3rem; white-space: nowrap; }
+html:root .ws-tabelle .ws-t td { padding: .15rem .3rem; border-top: 1px solid var(--kurs-line, #e2e8ec); white-space: nowrap; }
+html:root .ws-tabelle tr.ws-markiert td { background: var(--kurs-accent-soft, #e3f4fc); }
+html:root .ws-tabelle .ws-nr { color: var(--kurs-text-3, #87939a); }
+html:root .ws-tabelle small { color: var(--kurs-text-3, #87939a); }
+html:root .ws-knoepfe { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+html:root .ws .ws-klein { padding: .05em .45em; font-weight: 400; }
