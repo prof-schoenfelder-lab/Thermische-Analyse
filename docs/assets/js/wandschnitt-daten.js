@@ -18,7 +18,7 @@
     { id: 'xps035', name: 'XPS, WLS 035', gruppe: 'Dämmstoffe', lambda: 0.035, quelle: 'Produktwert (Wärmeleitfähigkeitsstufe 035)', farbe: '#e3eefb' },
     { id: 'pur025', name: 'PUR/PIR, WLS 025', gruppe: 'Dämmstoffe', lambda: 0.025, quelle: 'Produktwert (Wärmeleitfähigkeitsstufe 025)', farbe: '#f3ecf8' },
     { id: 'holzfaser040', name: 'Holzfaserdämmplatte, WLS 040', gruppe: 'Dämmstoffe', lambda: 0.04, quelle: 'Produktwert (Wärmeleitfähigkeitsstufe 040)', farbe: '#efe6d6' },
-    { id: 'kragplatte80', name: 'Kragplattenanschluss, Dämmkörper 80 mm (λ_eq)', gruppe: 'Dämmstoffe', lambda: 0.15, quelle: 'Vorschlag, Produktwert beim Hersteller nachsehen', farbe: '#d8eedf' },
+    { id: 'kragplatte80', name: 'Kragplattenanschluss, Dämmkörper 80 mm (λ_eq)', gruppe: 'Dämmstoffe', lambda: 0.15, quelle: 'Schöck Isokorb T Typ KL, H 200 mm (Kennwerte Juli 2024): 0,077 bis 0,261 je nach Tragstufe', farbe: '#d8eedf' },
     { id: 'nadelholz', name: 'Nadelholz 500 kg/m³', gruppe: 'Holz', lambda: 0.13, quelle: 'DIN EN ISO 10456, Tab. 3', farbe: '#ead9b5' },
     { id: 'osb', name: 'OSB-Platte 650 kg/m³', gruppe: 'Holz', lambda: 0.13, quelle: 'DIN EN ISO 10456, Tab. 3', farbe: '#e3cfa3' },
     { id: 'stahl', name: 'Baustahl', gruppe: 'Metalle', lambda: 50, quelle: 'DIN EN ISO 10456, Tab. 3', farbe: '#a9b4bd' },
@@ -86,13 +86,13 @@
       }),
     },
     {
-      id: 'balkonplatte', titel: 'Balkonplatte ohne Trennung (P3, Vorschlag)',
-      text: 'Stahlbetondecke 200 mm läuft durch die Außenwand (Kalksandstein 175 mm, EPS 140 mm) und kragt 1,50 m aus. Schnitte 1 m über und unter der Decke und 1 m im Raum. Innen R_si 0,13 bei 20 °C, außen R_se 0,04 bei −5 °C. Maße und Werte sind ein Vorschlag.',
+      id: 'balkonplatte', titel: 'Balkonplatte ohne Trennung (P3)',
+      text: 'Stahlbetondecke 200 mm läuft durch die Außenwand (Kalksandstein 175 mm, EPS 140 mm) und kragt 1,50 m aus. Schnitte 1 m über und unter der Decke und 1 m im Raum. Innen R_si 0,13 bei 20 °C, außen R_se 0,04 bei −5 °C.',
       modell: () => balkon(false),
     },
     {
-      id: 'balkonplatte-trennung', titel: 'Balkonplatte mit thermischer Trennung (P3, Vorschlag)',
-      text: 'Wie die Balkonplatte, aber mit Kragplattenanschluss: Dämmkörper 80 mm in der Dämmebene mit äquivalentem λ (Vorschlag 0,15 W/(m·K), Produktwert beim Hersteller nachsehen).',
+      id: 'balkonplatte-trennung', titel: 'Balkonplatte mit thermischer Trennung (P3)',
+      text: 'Wie die Balkonplatte, aber mit Kragplattenanschluss: Dämmkörper 80 mm in der Dämmebene mit äquivalentem λ_eq 0,15 W/(m·K), einem mittleren Wert für 200 mm Plattendicke (Schöck Isokorb T Typ KL: 0,077 bis 0,261 je nach Tragstufe).',
       modell: () => balkon(true),
     },
   ];
