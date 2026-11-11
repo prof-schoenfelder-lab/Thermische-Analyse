@@ -195,6 +195,25 @@ nav:
                       - Zusammenfassung: P2_Randbedingungen/Zusammenfassung.md
       - ABSTRAKTIONEN & VERNETZUNG:
               - P3_Abstraktionen_Vernetzung/index.md
+              - GRUNDLAGEN:
+                      - Abstraktionen: P3_Abstraktionen_Vernetzung/01_Grundlagen/Abstraktionen.md
+                      - Vernetzung: P3_Abstraktionen_Vernetzung/01_Grundlagen/Vernetzung.md
+                      - Wärmebrücken: P3_Abstraktionen_Vernetzung/01_Grundlagen/Waermebruecken.md
+              - "VORZEIGEBEISPIEL: FERNWÄRMEROHR":
+                      - Aufgabenstellung: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/index.md
+                      - a) Querschnitt:
+                              - 1 · Modell: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/01-modell.md
+                              - 2 · Randbedingungen: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/02-randbedingungen.md
+                              - 3 · Lösen und Auswerten: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/03-auswertung.md
+                      - b) Halbmodell: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/b-halbmodell.md
+                      - c) Netzstudie: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/c-netzstudie.md
+                      - d) Pufferspeicher: P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/d-pufferspeicher.md
+              - SELBSTTESTS:
+                      - Einleitung: P3_Abstraktionen_Vernetzung/03_Selbsttests/Einleitung.md
+                      - Übung 1: P3_Abstraktionen_Vernetzung/03_Selbsttests/Uebung-1.md
+                      - Übung 2: P3_Abstraktionen_Vernetzung/03_Selbsttests/Uebung-2.md
+              - ZUSAMMENFASSUNG:
+                      - Zusammenfassung: P3_Abstraktionen_Vernetzung/Zusammenfassung.md
       - INSTATIONÄRE BERECHNUNG:
               - P4_Instationaer/index.md
       # <<< AUTO-NAV

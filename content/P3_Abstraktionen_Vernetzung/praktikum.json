@@ -4,6 +4,87 @@
   "kinder": [
     {
       "extern": "P3_Abstraktionen_Vernetzung/index.md"
+    },
+    {
+      "gruppe": "GRUNDLAGEN",
+      "kinder": [
+        {
+          "titel": "Abstraktionen",
+          "extern": "P3_Abstraktionen_Vernetzung/01_Grundlagen/Abstraktionen.md"
+        },
+        {
+          "titel": "Vernetzung",
+          "extern": "P3_Abstraktionen_Vernetzung/01_Grundlagen/Vernetzung.md"
+        },
+        {
+          "titel": "Wärmebrücken",
+          "extern": "P3_Abstraktionen_Vernetzung/01_Grundlagen/Waermebruecken.md"
+        }
+      ]
+    },
+    {
+      "gruppe": "VORZEIGEBEISPIEL: FERNWÄRMEROHR",
+      "kinder": [
+        {
+          "titel": "Aufgabenstellung",
+          "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/index.md"
+        },
+        {
+          "gruppe": "a) Querschnitt",
+          "kinder": [
+            {
+              "titel": "1 · Modell",
+              "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/01-modell.md"
+            },
+            {
+              "titel": "2 · Randbedingungen",
+              "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/02-randbedingungen.md"
+            },
+            {
+              "titel": "3 · Lösen und Auswerten",
+              "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/03-auswertung.md"
+            }
+          ]
+        },
+        {
+          "titel": "b) Halbmodell",
+          "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/b-halbmodell.md"
+        },
+        {
+          "titel": "c) Netzstudie",
+          "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/c-netzstudie.md"
+        },
+        {
+          "titel": "d) Pufferspeicher",
+          "extern": "P3_Abstraktionen_Vernetzung/02_Vorzeigebeispiel/Fernwaermerohr/d-pufferspeicher.md"
+        }
+      ]
+    },
+    {
+      "gruppe": "SELBSTTESTS",
+      "kinder": [
+        {
+          "titel": "Einleitung",
+          "extern": "P3_Abstraktionen_Vernetzung/03_Selbsttests/Einleitung.md"
+        },
+        {
+          "titel": "Übung 1",
+          "extern": "P3_Abstraktionen_Vernetzung/03_Selbsttests/Uebung-1.md"
+        },
+        {
+          "titel": "Übung 2",
+          "extern": "P3_Abstraktionen_Vernetzung/03_Selbsttests/Uebung-2.md"
+        }
+      ]
+    },
+    {
+      "gruppe": "ZUSAMMENFASSUNG",
+      "kinder": [
+        {
+          "titel": "Zusammenfassung",
+          "extern": "P3_Abstraktionen_Vernetzung/Zusammenfassung.md"
+        }
+      ]
     }
   ]
 }
