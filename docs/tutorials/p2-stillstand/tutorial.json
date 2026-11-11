@@ -1,0 +1,31 @@
+{
+  "slug": "p2-stillstand",
+  "title": "Stillstand: Wasser abschalten",
+  "category": "Setup",
+  "software": "Mechanical",
+  "tags": [
+    "Suppress"
+  ],
+  "steps": [
+    {
+      "caption": "Wie bei b): eine dritte **Steady-State Thermal** auf die Zelle **Model** ziehen, in **c) Stillstand** umbenennen",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Randbedingungen aus a) übernehmen, also mit dem selektiven Absorber, nicht aus b): unter **Steady-State Thermal (A5)** **Sonne** anklicken, mit `Shift` **Glas zum Absorber**, `Rechtsklick → Copy`, dann `Rechtsklick Steady-State Thermal 3 (C5) → Paste`. Von **Solution (A6)** nur die beiden Temperaturen nach **Solution (C6)** kopieren",
+      "media": [
+        "step-1.png"
+      ],
+      "note": "Der Stillstand wird nur mit dem selektiven Absorber gerechnet, dort zeigt sich das Problem. Den schwarzen Absorber nennt der Checkpoint nur zum Vergleich."
+    },
+    {
+      "caption": "Konvektion zum Wasser abschalten, die Pumpe steht: unter **Steady-State Thermal 3 (C5)** `Rechtsklick Wasser → Suppress`",
+      "media": [
+        "step-2.png"
+      ],
+      "note": "Die Randbedingung bleibt im Baum, wirkt aber nicht mehr: Die Rohrinnenseite ist jetzt isoliert."
+    }
+  ]
+}

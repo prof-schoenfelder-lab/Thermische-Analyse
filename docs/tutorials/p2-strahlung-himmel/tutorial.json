@@ -1,0 +1,37 @@
+{
+  "slug": "p2-strahlung-himmel",
+  "title": "Himmel: Radiation To Ambient",
+  "category": "Randbedingungen",
+  "software": "Mechanical",
+  "tags": [
+    "Radiation",
+    "To Ambient"
+  ],
+  "steps": [
+    {
+      "caption": "Strahlung vom Glas zum Himmel anlegen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Radiation`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Scoping Method** `Named Selection` wählen",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "**Named Selection** `Glas aussen`, **Emissivity** `0,9`, **Ambient Temperature** `5` (°C). **Correlation** bleibt `To Ambient`",
+      "media": [
+        "step-2.png"
+      ],
+      "note": "Dieselbe Fläche wie die Luft: Konvektion und Strahlung gelten gleichzeitig."
+    },
+    {
+      "caption": "Mit `F2` umbenennen in **Himmel**",
+      "media": [
+        "step-3.png"
+      ]
+    }
+  ]
+}

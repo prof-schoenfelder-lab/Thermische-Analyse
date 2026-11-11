@@ -423,8 +423,12 @@ def lti13_launch():
             audience=LTI13_CLIENT_ID or None,
             options={"verify_aud": bool(LTI13_CLIENT_ID)},
             issuer=LTI13_ISSUER,
+            # Uhrabweichung zu OPAL tolerieren: Am 09.11.2026 ging die Server-Uhr 0,8 s nach,
+            # PyJWT lehnte das id_token dann als "not yet valid (iat)" ab
+            leeway=60,
         )
     except Exception as e:
+        app.logger.warning("id_token-Validierung fehlgeschlagen: %s", e)
         return f"id_token-Validierung fehlgeschlagen: {e}", 401
     if claims.get("nonce") != state_data.get("nonce"):
         return "nonce stimmt nicht überein.", 401
@@ -1212,6 +1216,16 @@ def short_qid(qid):
     return escape("%s · %s %d" % (short_page(page), _QTYP.get(m.group(1), m.group(1)), int(m.group(2)) + 1))
 
 
+def kurz_ort(qid):
+    """Wo jemand zuletzt gearbeitet hat, kurz für die Raumkarte: '.../P2_.../Uebung-1:q0' -> 'Ü1'."""
+    seite = qid.rpartition(":")[0]
+    if "Vorzeigebeispiel" in seite:
+        return "VB"
+    name = short_page(seite).partition(" ")[2]
+    m = re.match(r"Übung (\d+)(.*)$", name)
+    return "Ü%s%s" % m.groups() if m else name.split(" ")[0]
+
+
 # Kursdesign „Campus“ wie die Kursseite (docs/styles/modern.css): Source Sans Pro und HTWK-Logo von der
 # Kursseite, weiße Kopfzeile, Cyan als einziger Akzent, Dunkelblau für Überschriften, getönte Flächen;
 # Ampel für den Status ohne Gelb; dunkel nach Systemeinstellung
@@ -1420,7 +1434,7 @@ def pool_status(db):
                         "total": ptotal, "qid": r["qid"], "attempts": r["attempts"],
                         "idle": idle, "status": status, "skey": skey,
                         "name": names.get(pseu, ""),
-                        "pshort": pk.split("_")[0] if pk else ""})
+                        "pshort": pk.split("_")[0] if pk else "", "ort": kurz_ort(r["qid"])})
     entries.sort(key=lambda e: (-e["solved"], e["idle"]))
     return dict(answers=answers, total_q=total_q, praktika=praktika, q_per_p=q_per_p, rows=rows,
                 per_user=per_user, now_ts=now_ts, midnight=midnight, today_raw=today_raw, latest=latest,
@@ -1586,13 +1600,13 @@ def dashboard():
                 marke = "<sup>%d.</sup>" % w if w else ""
                 if e:
                     cells += ('<span class="seat s-%s%s" title="%s%s · zuletzt %s · vor %d min%s">'
-                              '<b>%d</b><u>%s</u>%s%d/%d%s</span>'
+                              '<b>%d</b><u>%s</u>%s<strong>%s</strong> %d/%d%s</span>'
                               % (e["skey"], hilfe,
                                  escape(e["name"]) + " · " if e["name"] else "", e["pname"],
                                  escape(short_qid(e["qid"])), max(0, round(e["idle"] / 60)),
                                  " · wartet auf Hilfe" if w else "",
                                  seat, escape(e["name"]) or "&nbsp;",
-                                 ("%s " % e["pshort"]) if e["pshort"] else "",
+                                 ("%s " % e["pshort"]) if e["pshort"] else "", escape(e["ort"]),
                                  e["solved"], e["total"], marke))
                 elif w:
                     cells += ('<span class="seat%s" title="wartet auf Hilfe"><b>%d</b><u>wartet</u>%s</span>'

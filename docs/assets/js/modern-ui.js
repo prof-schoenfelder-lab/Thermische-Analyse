@@ -442,6 +442,7 @@
     var parentDir = cur.slice(0, cur.lastIndexOf('/'));
     var wrap = document.createElement('div');
     wrap.className = 'task-tabs';
+    var tabs = [];
     tabsStr.split('|').forEach(function (part) {
       var i = part.indexOf('=');
       if (i === -1) return;
@@ -450,15 +451,17 @@
       a.href = part.slice(i + 1);
       a.textContent = part.slice(0, i);
       var target = new URL(a.href, window.location.href).pathname.replace(/\/+$/, '');
-      // aktiv: Ziel = aktuelle Seite, Ziel = Schritt-Ordner der aktuellen
-      // Schrittseite, oder (alte Konvention) beide sind Schritt-Slugs
-      // derselben Gruppe
       var tHit = wfGroupFor(target);
-      var active = target === cur ||
-        (hit && target === parentDir) ||
-        (hit && tHit && tHit.grp === hit.grp);
-      if (active) a.classList.add('active');
+      tabs.push({ a: a, target: target, gruppe: !!(hit && tHit && tHit.grp === hit.grp) });
       wrap.appendChild(a);
+    });
+    // aktiv: Ziel = aktuelle Seite, oder (alte Konvention) beide sind
+    // Schritt-Slugs derselben Gruppe; der Reiter auf den Schritt-Ordner der
+    // aktuellen Schrittseite nur, wenn kein Reiter zur Gruppe gehört (sonst
+    // wären „Aufgabe“ und „a)“ zugleich aktiv)
+    var gruppe = tabs.some(function (t) { return t.gruppe; });
+    tabs.forEach(function (t) {
+      if (t.target === cur || t.gruppe || (hit && !gruppe && t.target === parentDir)) t.a.classList.add('active');
     });
     h1.parentNode.insertBefore(wrap, h1.nextSibling);
   }
@@ -531,9 +534,25 @@
       });
   }
 
+  // Link auf ein Ziel in einem Aufklappkasten: Kasten öffnen und hinscrollen
+  function openLinkTarget() {
+    var el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    var opened = false;
+    for (var d = el.closest('details'); d; d = d.parentElement.closest('details')) {
+      if (!d.open) { d.open = true; opened = true; }
+    }
+    if (opened) el.scrollIntoView();
+  }
+
   function init() {
     var root = document.querySelector('.md-content');
     if (!root) return;
+    try { openLinkTarget(); } catch (e) { }
+    window.addEventListener('hashchange', openLinkTarget);
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('a[href^="#"]')) setTimeout(openLinkTarget, 0);
+    });
     try { menuPathChips(root); } catch (e) { }
     try { keyCaps(root); } catch (e) { }
     try { workflowStepper(root); } catch (e) { }

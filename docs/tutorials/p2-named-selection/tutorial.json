@@ -1,0 +1,56 @@
+{
+  "slug": "p2-named-selection",
+  "title": "Named Selection über das Worksheet",
+  "category": "Randbedingungen",
+  "software": "Mechanical",
+  "tags": [
+    "Named Selection",
+    "Worksheet"
+  ],
+  "steps": [
+    {
+      "caption": "Named Selection für die Oberseiten des Blechs anlegen: `Rechtsklick Strukturbaum Model (A4) → Insert → Named Selection`",
+      "media": [
+        "step-0.png"
+      ],
+      "note": "Gibt es den Ordner **Named Selections** schon, geht es kürzer: `Rechtsklick Named Selections → Insert → Named Selection`."
+    },
+    {
+      "caption": "Die Flächen über eine Regel finden lassen statt anklicken: im `Detailfenster` bei **Scoping Method** `Worksheet` wählen",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "Unten im **Worksheet** `Rechtsklick → Add Row`: Es erscheint eine gelbe Zeile",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "In der Zeile **Entity Type** `Face`, **Criterion** `Location X`, bei **Value** `0,00025` (m) eingeben, `Enter`",
+      "media": [
+        "step-3.png"
+      ],
+      "note": "0,00025 m ist die halbe Blechdicke, also die Oberseite des Blechs. Findet `Generate` keine 2 Flächen, liegt das Blech bei Ihnen in einer anderen Achse: `Location Y` oder `Location Z` probieren."
+    },
+    {
+      "caption": "`Generate`: Die Named Selection enthält jetzt die **2** Oberseiten der Blechflügel",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "Im Strukturbaum die neue **Selection** anklicken, mit `F2` umbenennen in **Oberseiten Blech**",
+      "media": [
+        "step-5.png"
+      ]
+    },
+    {
+      "caption": "Die übrigen Named Selections entstehen genauso, die Werte stehen in der Tabelle unter dieser Anleitung. Nur **Absorber aussen** braucht drei Zeilen: `Location X` = `0,00025` und `-0,00025` (Ober- und Unterseiten des Blechs), `Radius` = `0,006` (Rohr außen), dann `Generate`",
+      "media": [
+        "step-6.png"
+      ]
+    }
+  ]
+}

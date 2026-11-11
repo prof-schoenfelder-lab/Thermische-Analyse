@@ -1,0 +1,12 @@
+/* Achsenwahl (P2 Vakuumröhre, Named Selections): Knöpfe X, Y, Z; die gewählte Achse in der Tabelle hervorgehoben */
+.achsenwahl { display: flex; flex-wrap: wrap; align-items: center; gap: .5em; margin: .8em 0; }
+.achsenwahl span { font-weight: 600; color: var(--kurs-head, #022541); }
+.achsenwahl button {
+  font: inherit; font-weight: 600; cursor: pointer; min-width: 2.4em; padding: .2em .7em;
+  color: var(--kurs-accent-ink, #0070a6); background: var(--kurs-surface, #fff);
+  border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: var(--kurs-btn-radius, .5rem);
+}
+.achsenwahl button:hover { border-color: var(--kurs-accent, #009ee3); }
+.achsenwahl button:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 2px; }
+.achsenwahl button[aria-pressed="true"] { color: #fff; background: var(--kurs-accent, #009ee3); border-color: var(--kurs-accent, #009ee3); }
+.md-typeset .aw-achse { font-weight: 700; color: var(--kurs-accent-ink, #0070a6); }

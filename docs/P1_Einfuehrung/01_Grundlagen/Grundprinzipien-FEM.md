@@ -40,7 +40,7 @@ zeigt das Rohr von der Startseite, was in jedem Schritt passiert:
     <p class="step-title" role="heading" aria-level="2">Netz (Elemente)</p>
     <img class="anim-standbild no-lightbox" src="../images/schritt_4_netz.png" alt="Rohr vernetzt">
     <figure style="text-align:center;">
-      <img src="../../images/p1_fem_1d.svg" alt="Wand in vier Elemente zerlegt" class="no-lightbox">
+      <img src="../../images/p1_fem_1d.excalidraw.png" alt="Wand in vier Elemente zerlegt" class="no-lightbox">
     </figure>
     <p>Das Bauteil wird mit Elementen vernetzt, die Elemente sind über <strong>Knoten</strong> verbunden. Jeder Knoten hat in der thermischen Analyse genau <strong>einen Freiheitsgrad: die Temperatur T</strong> (in der Strukturmechanik sind es drei Verschiebungen).</p>
   </div>
@@ -54,10 +54,17 @@ zeigt das Rohr von der Startseite, was in jedem Schritt passiert:
   <div class="step" data-anim-t="11.9">
     <p class="step-title" role="heading" aria-level="2">Lösen</p>
     <img class="anim-standbild no-lightbox" src="../images/schritt_6_loesen.png" alt="Lösen">
-    <p>Für jedes Element gilt das <strong>Fouriersche Gesetz</strong>: Wärme fließt vom Warmen zum Kalten, und zwar umso mehr, je steiler das Temperaturgefälle ist, \(\dot q = -\lambda\,\mathrm{d}T/\mathrm{d}x\). Zusammengesetzt entsteht das Gleichungssystem</p>
+    <p>Für jedes Element gilt das <strong>Fouriersche Gesetz</strong>: Wärme fließt vom Warmen zum Kalten, und zwar umso mehr, je steiler das Temperaturgefälle ist, \(\dot q = -\lambda\,\mathrm{d}T/\mathrm{d}x\) mit</p>
+    <ul>
+      <li>\(\dot q\): Wärmestromdichte in W/m²</li>
+      <li>\(\lambda\): Wärmeleitfähigkeit des Materials in W/(m·K)</li>
+      <li>\(\mathrm{d}T/\mathrm{d}x\): Temperaturgefälle entlang der Koordinate \(x\) in K/m</li>
+    </ul>
+    <p>Zusammengesetzt entsteht das Gleichungssystem</p>
     <p>$$\mathbf{K}\,\mathbf{T} = \dot{\mathbf{Q}}$$</p>
     <p>mit der Wärmeleitmatrix <strong>K</strong>, den unbekannten Knotentemperaturen <strong>T</strong> und den Knotenwärmeströmen \(\dot{\mathbf{Q}}\). Für das einfachste Element, einen Stab der Länge L mit der Querschnittsfläche A (1D), sieht das so aus:</p>
     <p>$$\frac{\lambda A}{L}\begin{bmatrix}1 & -1\\ -1 & 1\end{bmatrix}\begin{Bmatrix}T_1\\ T_2\end{Bmatrix}=\begin{Bmatrix}\dot Q_1\\ \dot Q_2\end{Bmatrix}$$</p>
+    <p>Dabei sind \(T_1\), \(T_2\) die Temperaturen und \(\dot Q_1\), \(\dot Q_2\) die Wärmeströme an den beiden Knoten des Stabs.</p>
     <p>Das ist das <strong>Ohmsche Gesetz für Wärme</strong>: Der <strong>Wärmeleitwert λA/L</strong> (Kehrwert des Wärmewiderstands) entspricht dem elektrischen Leitwert, die Temperaturdifferenz der Spannung, der Wärmestrom dem Strom. In der Strukturmechanik hat eine Feder dieselbe Form (Steifigkeit, Verschiebung, Kraft).</p>
     <p>In 2D und 3D (Dreiecke, Tetraeder, Hexaeder) gibt es kein so einfaches λA/L mehr: Die Elementmatrix entsteht aus einem Integral über das Element und hängt von seiner Form und Größe ab. Das Prinzip bleibt gleich: Leitwerte zwischen den Knoten, zusammengesetzt zu \(\mathbf{K}\,\mathbf{T} = \dot{\mathbf{Q}}\).</p>
   </div>
@@ -67,6 +74,7 @@ zeigt das Rohr von der Startseite, was in jedem Schritt passiert:
     <img class="anim-standbild no-lightbox" src="../images/schritt_7_auswertung.png" alt="Temperaturfeld im Rohr">
     <p>Aus den Knotentemperaturen werden die weiteren Größen berechnet, vor allem die <strong>Wärmestromdichte</strong></p>
     <p>$$\dot{\vec q} = -\lambda\,\operatorname{grad} T \quad \text{in W/m}^2$$</p>
+    <p>mit dem Temperaturgradienten \(\operatorname{grad} T\), dem Gefälle der Temperatur in allen drei Richtungen in K/m. Der Pfeil über \(\dot q\) zeigt: Die Wärmestromdichte hat eine Richtung.</p>
     <p>Das Ergebnis muss immer auf <strong>Plausibilität</strong> geprüft werden, z. B. mit einer Handrechnung.</p>
   </div>
 

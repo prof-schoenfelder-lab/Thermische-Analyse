@@ -101,6 +101,10 @@ extra_javascript:
       - "assets/js/spickzettel.js"
       - "assets/js/hero-anim.js"
       - "assets/js/wand-rechner.js"
+      - "assets/js/strahlenzaehler.js"
+      - "assets/js/achsenwahl.js"
+      - "assets/js/grenzschicht.js"
+      - "assets/js/konvektionsarten.js"
       - "assets/js/wandschnitt-loeser.js"
       - "assets/js/wandschnitt-daten.js"
       - "assets/js/wandschnitt.js"
@@ -116,6 +120,10 @@ extra_css:
       - "styles/modern.css"
       - "assets/styles/spickzettel.css"
       - "assets/styles/anim-scroll.css"
+      - "assets/styles/strahlenzaehler.css"
+      - "assets/styles/achsenwahl.css"
+      - "assets/styles/grenzschicht.css"
+      - "assets/styles/konvektionsarten.css"
       - "assets/styles/wandschnitt.css"
 
 # Die vier Praktika: Startseite (Liste) und Abschluss-Karte am Ende jedes Praktikums
@@ -129,6 +137,7 @@ extra:
             - nr: 2
               titel: "Randbedingungen"
               text: "Alle Randbedingungen, neu darunter die Wärmestrahlung, am Beispiel der Solarthermie."
+              bild: P2_Randbedingungen/images/p2_karte.excalidraw.png
               link: P2_Randbedingungen/
             - nr: 3
               titel: "Abstraktionen & Vernetzung"
@@ -169,6 +178,25 @@ nav:
                       - Zusammenfassung: P1_Einfuehrung/Zusammenfassung.md
       - RANDBEDINGUNGEN:
               - P2_Randbedingungen/index.md
+              - GRUNDLAGEN:
+                      - Randbedingungen im Überblick: P2_Randbedingungen/01_Grundlagen/Randbedingungen.md
+                      - Konvektion: P2_Randbedingungen/01_Grundlagen/Konvektion.md
+                      - Wärmestrahlung: P2_Randbedingungen/01_Grundlagen/Strahlung.md
+              - "VORZEIGEBEISPIEL: VAKUUMRÖHRE":
+                      - Aufgabenstellung: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/index.md
+                      - a) Selektiv:
+                              - 1 · Modell: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/01-modell.md
+                              - 2 · Randbedingungen: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/02-randbedingungen.md
+                              - 3 · Lösen und Auswerten: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/03-auswertung.md
+                      - b) Schwarz: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/b-schwarz.md
+                      - c) Stillstand: P2_Randbedingungen/02_Vorzeigebeispiel/Vakuumroehre/c-stillstand.md
+              - SELBSTTESTS:
+                      - Einleitung: P2_Randbedingungen/03_Selbsttests/Einleitung.md
+                      - Übung 1: P2_Randbedingungen/03_Selbsttests/Uebung-1.md
+                      - Übung 2: P2_Randbedingungen/03_Selbsttests/Uebung-2.md
+                      - Übung 3: P2_Randbedingungen/03_Selbsttests/Uebung-3.md
+              - ZUSAMMENFASSUNG:
+                      - Zusammenfassung: P2_Randbedingungen/Zusammenfassung.md
       - ABSTRAKTIONEN & VERNETZUNG:
               - P3_Abstraktionen_Vernetzung/index.md
       - INSTATIONÄRE BERECHNUNG:

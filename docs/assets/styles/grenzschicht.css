@@ -1,0 +1,32 @@
+/* Grenzschicht (P2 Grundlagen Konvektion): Farben aus den Kurs-Tokens, funktioniert hell und dunkel.
+   Die --gsa-Farben liest das Skript für das Bild (--gsa-kalt und --gsa-warm als #rrggbb). */
+.grenzschicht {
+  --gsa-grund: var(--kurs-surface, #fff); --gsa-text: var(--kurs-text, #2e3639);
+  --gsa-kalt: #deeefa; --gsa-warm: #e86c40; --gsa-wand: #6e5e57; --gsa-kante: #2c2c2a; --gsa-punkt: #2c2c2a;
+  --gsa-rand: #5f5e5a; --gsa-v: #185fa5; --gsa-q: #a32d2d; --gsa-hinweis: #791f1f;
+  display: grid; gap: .8rem; margin: 1.2em 0 1.6em; padding: 1rem 1.1rem;
+  background: var(--kurs-panel, #f2f6f9); border: 1px solid var(--kurs-line, #e2e8ec);
+  border-radius: var(--kurs-radius-md, .6rem);
+}
+body[data-md-color-scheme="slate"] .grenzschicht {
+  --gsa-kalt: #16344b; --gsa-warm: #e0703f; --gsa-punkt: #d5dee4; --gsa-rand: #a3b1ba;
+  --gsa-v: #6ea6ff; --gsa-q: #ff6a45; --gsa-hinweis: #ffa088;
+}
+.grenzschicht canvas { width: 100%; max-width: 680px; height: auto; justify-self: center; background: var(--gsa-grund); border-radius: .4rem; }
+.grenzschicht .gsa-regler { display: flex; align-items: center; gap: .8em; font-size: .9em; color: var(--kurs-text-2, #566166); }
+.grenzschicht .gsa-regler input { flex: 1; accent-color: var(--kurs-accent, #009ee3); cursor: pointer; }
+.grenzschicht .gsa-zeilen { display: grid; gap: .5rem; }
+.grenzschicht .gsa-zeile {
+  display: grid; grid-template-columns: minmax(8em, 15em) 1fr 3.6em; gap: .8em; align-items: center;
+  font-size: .9em; color: var(--kurs-text-2, #566166);
+}
+.grenzschicht .gsa-balken {
+  position: relative; height: 1.1em; background: var(--kurs-surface, #fff);
+  border: 1px solid var(--kurs-line, #e2e8ec); border-radius: .3rem;
+}
+.grenzschicht .gsa-fuell { position: absolute; left: 0; top: 0; bottom: 0; border-radius: .3rem; }
+.grenzschicht .gsa-fuell.gsa-v { background: var(--gsa-v); }
+.grenzschicht .gsa-fuell.gsa-d { background: var(--gsa-warm); }
+.grenzschicht .gsa-fuell.gsa-a { background: var(--gsa-q); }
+.grenzschicht .gsa-wert { text-align: right; font-variant-numeric: tabular-nums; color: var(--kurs-head, #022541); }
+.grenzschicht .gsa-fuss { margin: 0; font-size: .85em; color: var(--kurs-text-2, #566166); }

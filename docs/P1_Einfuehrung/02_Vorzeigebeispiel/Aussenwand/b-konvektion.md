@@ -17,7 +17,7 @@ gibt es einen **Wärmeübergang** (Konvektion), der selbst einen Widerstand dars
 --8<-- "P1_Einfuehrung/02_Vorzeigebeispiel/Aussenwand/index.md:Randbedingungen_b"
 
 <figure style="text-align:center;">
-  <img src="../../../images/p1_aussenwand_b.svg" alt="Fall b: Konvektion" class="no-lightbox">
+  <img src="../../../images/p1_aussenwand_b.excalidraw.png" alt="Fall b: Konvektion" class="no-lightbox">
 </figure>
 
 ## Was gibt man bei der Konvektion ein?
@@ -35,14 +35,21 @@ zwischen Luft und Wand erlaubt, immer vom Warmen zum Kalten:
 
 $$\text{innen: } \dot q = \alpha_i\,(T_i - T_{si}) \qquad \text{außen: } \dot q = \alpha_e\,(T_{se} - T_e)$$
 
+mit
+
+- $\dot q$: Wärmestromdichte in W/m²
+- $\alpha_i$, $\alpha_e$: Wärmeübergangskoeffizient innen und außen
+- $T_i$, $T_e$: Lufttemperatur innen und außen
+- $T_{si}$, $T_{se}$: Oberflächentemperatur innen und außen (s für surface)
+
 Die **Wandtemperatur ist jetzt Ergebnis**. Sie stellt sich so ein, dass der
 Wärmeübergang an der Oberfläche und die Wärmeleitung durch die Wand zueinander
 passen. Innen ist $\alpha$ klein (ruhende Raumluft), außen groß (Wind). Die Werte
-entsprechen den Normwerten $R_{si} = 0{,}13$ und $R_{se} = 0{,}04\ \mathrm{m^2\,K/W}$
+entsprechen den Normwerten des Wärmeübergangswiderstands $R_{si} = 1/\alpha_i = 0{,}13$ (innen) und $R_{se} = 1/\alpha_e = 0{,}04\ \mathrm{m^2\,K/W}$ (außen)
 nach DIN EN ISO 6946, in denen die Wärmestrahlung schon enthalten ist.
 
 !!! info "Was bedeutet α anschaulich? Umrechnung in Wind"
-    Der Normwert setzt sich aus Konvektion und Wärmestrahlung zusammen:
+    Der Normwert setzt sich aus Konvektion ($\alpha_K$) und Wärmestrahlung ($\alpha_S$) zusammen:
     $\alpha = \alpha_K + \alpha_S$ mit $\alpha_S \approx 5\ \mathrm{W/(m^2\,K)}$.
     Für die Konvektion außen nennt DIN EN ISO 6946 die Näherung
     $\alpha_K = 4 + 4\,v$ mit der Windgeschwindigkeit $v$ in m/s:
@@ -146,6 +153,8 @@ Temperaturunterschied zwischen **Raumluft und Außenluft**:
 
 $$U = \frac{\dot q}{T_i - T_e} = \frac{6{,}90\ \mathrm{W/m^2}}{30\ \mathrm{K}} = 0{,}230\ \mathrm{\frac{W}{m^2\,K}}$$
 
+mit der Wärmestromdichte $\dot q$ aus Fall b) und den Lufttemperaturen $T_i$ (innen) und $T_e$ (außen).
+
 !!! success "Einordnung"
     Das Gebäudeenergiegesetz (GEG) verlangt bei der Erneuerung einer Außenwand
     $U \le 0{,}24\ \mathrm{W/(m^2\,K)}$. Die Wand erfüllt das knapp.
@@ -163,6 +172,8 @@ $$U = \frac{\dot q}{T_i - T_e} = \frac{6{,}90\ \mathrm{W/m^2}}{30\ \mathrm{K}} =
         Wärme jetzt durch einen größeren Gesamtwiderstand treiben:
 
         $$\dot q_a = \frac{30\ \mathrm{K}}{4{,}177\ \mathrm{m^2\,K/W}} = 7{,}18\ \mathrm{W/m^2} \qquad \dot q_b = \frac{30\ \mathrm{K}}{4{,}347\ \mathrm{m^2\,K/W}} = 6{,}90\ \mathrm{W/m^2}$$
+
+        mit der Wärmestromdichte $\dot q_a$ in Fall a) und $\dot q_b$ in Fall b).
 
         Anders gesagt: Ein Teil der Temperaturdifferenz fällt schon in der Luft
         ab. Die Oberflächen haben nur noch 19,10 °C und −9,72 °C, über die Wand

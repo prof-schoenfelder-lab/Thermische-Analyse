@@ -1,0 +1,50 @@
+{
+  "slug": "p2-schwarz",
+  "title": "Zweite Analyse auf demselben Modell",
+  "category": "Setup",
+  "software": "Workbench",
+  "tags": [
+    "Analyse",
+    "Copy",
+    "Paste"
+  ],
+  "steps": [
+    {
+      "caption": "Zweite Analyse anlegen, die dasselbe Modell nutzt (Geometrie, Material, Netz): im Projektmenü **Steady-State Thermal** aus der Toolbox mit gedrückter Maustaste auf die Zelle **Model** der Analyse A ziehen, die neue Analyse in **b) Schwarz** umbenennen, dann `Rechtsklick Setup → Edit...`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Randbedingungen aus a) übernehmen: unter **Steady-State Thermal (A5)** **Sonne** anklicken, dann mit gedrückter `Shift`-Taste **Glas zum Absorber** anklicken, das markiert alle dazwischen. `Rechtsklick → Copy`",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Steady-State Thermal 2 (B5) → Paste`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Genauso alle Ergebnisse unter **Solution (A6)** auswählen: das erste Ergebnis anklicken, mit `Shift` das letzte. `Rechtsklick → Copy`",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "`Rechtsklick Solution (B6) → Paste`, danach bei **Reaktion Wasser**, **Reaktion Luft** und **Reaktion Himmel** im Detailfenster unter **Boundary Condition** die Randbedingung neu wählen",
+      "media": [
+        "step-4.png"
+      ],
+      "note": "Kopierte Reaction Probes übernehmen ihre Randbedingung nicht: Das Feld muss in b) neu gesetzt werden."
+    },
+    {
+      "caption": "Absorber schwarz machen: unter **B5** **Absorber zum Glas** anklicken, **Emissivity** `0,9`, `Enter`",
+      "media": [
+        "step-5.png"
+      ]
+    }
+  ]
+}

@@ -6,21 +6,21 @@ title: "Übung 1: Altbau sanieren"
 
 Ein Gründerzeithaus hat eine **36,5 cm** dicke Wand aus Vollziegel. Sie wird
 außen mit **14 cm** EPS gedämmt. Nach dem Gebäudeenergiegesetz (GEG) darf die
-sanierte Außenwand höchstens $U = 0{,}24\ \mathrm{W/(m^2\,K)}$ haben. Reicht das?
+sanierte Außenwand höchstens einen U-Wert (Wärmedurchgangskoeffizient) von $U = 0{,}24\ \mathrm{W/(m^2\,K)}$ haben. Reicht das?
 
 Diese Übung wiederholt den Ablauf aus dem Vorzeigebeispiel **Schritt für
 Schritt**, nur mit anderen Zahlen: zwei Körper, Konvektion innen und außen. Jedes
 Ergebnis lässt sich von Hand prüfen.
 
 <figure style="text-align:center;">
-  <img src="../../images/p1_uebung1.svg" alt="Vollziegelwand mit 140 mm Dämmung" class="no-lightbox">
+  <img src="../../images/p1_uebung1.excalidraw.png" alt="Vollziegelwand mit 140 mm Dämmung" class="no-lightbox">
 </figure>
 
 ## Gegeben
 
 **Material**
 
-- Vollziegel: $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$
+- Vollziegel: Wärmeleitfähigkeit $\lambda = 0{,}68\ \mathrm{W/(m\,K)}$
 - EPS: $\lambda = 0{,}035\ \mathrm{W/(m\,K)}$
 
 **Geometrie**
@@ -34,7 +34,7 @@ Ergebnis lässt sich von Hand prüfen.
 
 **Randbedingungen** (wie im Vorzeigebeispiel **Fall b) Konvektion**)
 
-- innen: Raumluft $T_i = 20\ \mathrm{°C}$, $\alpha_i = 7{,}7\ \mathrm{W/(m^2\,K)}$
+- innen: Raumluft $T_i = 20\ \mathrm{°C}$, Wärmeübergangskoeffizient $\alpha_i = 7{,}7\ \mathrm{W/(m^2\,K)}$
 - außen: Außenluft $T_e = -10\ \mathrm{°C}$, $\alpha_e = 25\ \mathrm{W/(m^2\,K)}$
 
 ## Hinweise
@@ -43,17 +43,31 @@ Ergebnis lässt sich von Hand prüfen.
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Wie im Vorzeigebeispiel</p>
-    <p>Neues Projekt, Material <strong>Vollziegel</strong> statt Kalksandstein anlegen, Wand aus zwei Körpern (365 mm und 140 mm, <code>No merge</code>, <code>Share</code>), Material zuweisen, vernetzen</p>
+    <ul>
+      <li>Neues Projekt</li>
+      <li>Material <strong>Vollziegel</strong> statt Kalksandstein anlegen</li>
+      <li>Wand aus zwei Körpern (365 mm und 140 mm) mit <code>No merge</code> und <code>Share</code></li>
+      <li>Material zuweisen</li>
+      <li>Vernetzen</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">Konvektion und auswerten</p>
-    <p>Innen und außen je eine <code>Convection</code> wie in Fall b), lösen, Temperatur und Wärmestromdichte auswerten</p>
+    <ul>
+      <li>Innen und außen je eine <code>Convection</code> wie in Fall b)</li>
+      <li>Lösen</li>
+      <li>Temperatur und Wärmestromdichte auswerten</li>
+    </ul>
   </div>
 
   <div class="step">
     <p class="step-title" role="heading" aria-level="2">U-Wert ausrechnen</p>
-    <p>Der U-Wert (Wärmedurchgangskoeffizient) ist die Wärmestromdichte je Kelvin Temperaturunterschied zwischen <strong>Raumluft und Außenluft</strong>: \(U = \dot q / (T_i - T_e)\). Hier also die Wärmestromdichte aus ANSYS durch 30 K teilen. Je kleiner U, desto besser dämmt die Wand (<a href="../../02_Vorzeigebeispiel/Aussenwand/b-konvektion/#u-wert">U-Wert im Vorzeigebeispiel</a>)</p>
+    <ul>
+      <li>Der U-Wert (Wärmedurchgangskoeffizient) ist die Wärmestromdichte je Kelvin Temperaturunterschied zwischen <strong>Raumluft und Außenluft</strong>: \(U = \dot q / (T_i - T_e)\) mit der Wärmestromdichte \(\dot q\) und den Lufttemperaturen \(T_i\) (innen) und \(T_e\) (außen)</li>
+      <li>Hier also die Wärmestromdichte aus ANSYS durch 30 K teilen</li>
+      <li>Je kleiner U, desto besser dämmt die Wand (<a href="../../02_Vorzeigebeispiel/Aussenwand/b-konvektion/#u-wert">U-Wert im Vorzeigebeispiel</a>)</li>
+    </ul>
   </div>
 
 </div>
@@ -62,7 +76,7 @@ Ergebnis lässt sich von Hand prüfen.
 
 ### Wärmestromdichte durch die sanierte Wand in W/m²
 
-<div class="numeric-question" data-answer="6.37" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Zwei Körper mit Share Topology? Vollziegel 365 mm und EPS 140 mm, Materialien richtig zugewiesen? Konvektion innen 7,7 bei 20 °C, außen 25 bei −10 °C? Einheitensystem Metric (m)?">
+<div class="numeric-question" data-answer="6.37" data-tolerance="0.05" data-points="5" data-attempts="5" data-hints="Zwei Körper mit Share Topology?; Vollziegel 365 mm und EPS 140 mm?; Materialien richtig zugewiesen?; Konvektion innen 7,7 bei 20 °C, außen 25 bei −10 °C?; Einheitensystem Metric (m)?">
 </div>
 
 ### U-Wert der sanierten Wand in W/(m²·K)
@@ -94,10 +108,10 @@ Ergebnis lässt sich von Hand prüfen.
 
 ### Lösung
 
-- $R_T = 0{,}130 + 0{,}365/0{,}68 + 0{,}140/0{,}035 + 0{,}040 = 4{,}707\ \mathrm{m^2\,K/W}$
-- $U = 1/R_T = 0{,}212\ \mathrm{W/(m^2\,K)} \le 0{,}24$: Das GEG ist erfüllt
-- $\dot q = U \cdot 30\ \mathrm{K} = 6{,}37\ \mathrm{W/m^2}$
-- $T_{si} = 20 - 6{,}37 \cdot 0{,}130 = 19{,}17\ \mathrm{°C}$
+- Wärmedurchgangswiderstand $R_T = 0{,}130 + 0{,}365/0{,}68 + 0{,}140/0{,}035 + 0{,}040 = 4{,}707\ \mathrm{m^2\,K/W}$
+- U-Wert $U = 1/R_T = 0{,}212\ \mathrm{W/(m^2\,K)} \le 0{,}24$: Das GEG ist erfüllt
+- Wärmestromdichte $\dot q = U \cdot 30\ \mathrm{K} = 6{,}37\ \mathrm{W/m^2}$
+- Oberflächentemperatur innen $T_{si} = 20 - 6{,}37 \cdot 0{,}130 = 19{,}17\ \mathrm{°C}$
 - Zum Vergleich der Altbau ohne Dämmung: $U = 1{,}415\ \mathrm{W/(m^2\,K)}$, $\dot q = 42{,}5\ \mathrm{W/m^2}$, innen nur 14,5 °C an der Wand. Die Dämmung spart **85 %** des Wärmeverlusts
 
 </div>

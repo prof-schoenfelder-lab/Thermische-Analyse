@@ -12,6 +12,12 @@
       "base": "losung-mit-ansys",
       "tabs": "Aufgabe=../../Aufgabenstellung/|Lösung mit ANSYS=../|Analytische Lösung=../../analytische-loesung/",
       "tabsIndex": "Aufgabe=../Aufgabenstellung/|Lösung mit ANSYS=./|Analytische Lösung=../analytische-loesung/"
+    },
+    {
+      "slugs": ["01-modell", "02-randbedingungen", "03-auswertung"],
+      "labels": ["Modell", "Randbedingungen", "Lösen und Auswerten"],
+      "base": "Vakuumroehre",
+      "tabs": null
     }
   ]
 }

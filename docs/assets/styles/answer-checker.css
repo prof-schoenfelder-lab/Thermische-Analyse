@@ -617,3 +617,15 @@ a.player-badge {
   transition: transform .15s;
 }
 a.player-badge:hover { transform: scale(1.12); color: var(--player-badge-fg, #111); }
+
+/* Hinweis mit mehreren Punkten als Liste */
+.md-typeset .numeric-hint ul,
+.md-typeset .mc-hint ul {
+	margin: 0.2rem 0 0 1.1rem;
+	padding: 0;
+}
+
+.md-typeset .numeric-hint li,
+.md-typeset .mc-hint li {
+	margin: 0.1rem 0;
+}

@@ -1,0 +1,17 @@
+/* Freie und erzwungene Konvektion (P2 Grundlagen Konvektion): Farben wie die Grenzschicht, funktioniert hell und dunkel.
+   Die --kva-Farben liest das Skript für das Bild (--kva-kalt und --kva-warm als #rrggbb). */
+.konvektionsarten {
+  --kva-kalt: #deeefa; --kva-warm: #e86c40; --kva-punkt: #2c2c2a; --kva-rohr: #6e5e57; --kva-kante: #2c2c2a;
+  --kva-nabe: #5f5e5a; --kva-blatt: #185fa5;
+  display: grid; gap: .6rem; margin: 1.2em 0 1.6em; padding: 1rem 1.1rem;
+  background: var(--kurs-panel, #f2f6f9); border: 1px solid var(--kurs-line, #e2e8ec);
+  border-radius: var(--kurs-radius-md, .6rem);
+}
+body[data-md-color-scheme="slate"] .konvektionsarten {
+  --kva-kalt: #16344b; --kva-warm: #e0703f; --kva-punkt: #d5dee4; --kva-blatt: #6ea6ff;
+}
+.konvektionsarten .kva-felder { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.konvektionsarten .kva-kopf { margin-bottom: .4em; font-size: .9em; color: var(--kurs-text-2, #566166); }
+.konvektionsarten .kva-kopf strong { display: block; color: var(--kurs-head, #022541); }
+.konvektionsarten canvas { display: block; width: 100%; height: auto; border-radius: .4rem; }
+.konvektionsarten .kva-fuss { margin: 0; font-size: .85em; color: var(--kurs-text-2, #566166); }

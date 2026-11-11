@@ -1,0 +1,54 @@
+{
+  "slug": "p2-konvektion",
+  "title": "Wasser und Luft: Convection",
+  "category": "Randbedingungen",
+  "software": "Mechanical",
+  "tags": [
+    "Convection",
+    "Named Selection"
+  ],
+  "steps": [
+    {
+      "caption": "Konvektion zum Wasser im Rohr anlegen: `Rechtsklick Strukturbaum Steady-State Thermal (A5) → Insert → Convection`",
+      "media": [
+        "step-0.png"
+      ]
+    },
+    {
+      "caption": "Im `Detailfenster` bei **Scoping Method** `Named Selection` wählen",
+      "media": [
+        "step-1.png"
+      ]
+    },
+    {
+      "caption": "**Named Selection** `Rohr innen`, **Film Coefficient** `1000` (W/m²·°C), **Ambient Temperature** `50` (°C), jeweils `Enter`",
+      "media": [
+        "step-2.png"
+      ]
+    },
+    {
+      "caption": "Mit `F2` umbenennen in **Wasser**",
+      "media": [
+        "step-3.png"
+      ]
+    },
+    {
+      "caption": "Zweite Konvektion, jetzt zur Luft außen am Glas: wieder `Rechtsklick Steady-State Thermal (A5) → Insert → Convection`",
+      "media": [
+        "step-4.png"
+      ]
+    },
+    {
+      "caption": "**Scoping Method** `Named Selection`, **Named Selection** `Glas aussen`, **Film Coefficient** `10`, **Ambient Temperature** `20`",
+      "media": [
+        "step-5.png"
+      ]
+    },
+    {
+      "caption": "Mit `F2` umbenennen in **Luft**",
+      "media": [
+        "step-6.png"
+      ]
+    }
+  ]
+}

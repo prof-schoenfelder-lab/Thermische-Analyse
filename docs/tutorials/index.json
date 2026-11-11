@@ -13,6 +13,30 @@
       "thumb": "step-0.png"
     },
     {
+      "slug": "p2-stillstand",
+      "title": "Stillstand: Wasser abschalten",
+      "category": "Setup",
+      "software": "Mechanical",
+      "tags": [
+        "Suppress"
+      ],
+      "steps": 3,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p2-schwarz",
+      "title": "Zweite Analyse auf demselben Modell",
+      "category": "Setup",
+      "software": "Workbench",
+      "tags": [
+        "Analyse",
+        "Copy",
+        "Paste"
+      ],
+      "steps": 6,
+      "thumb": "step-0.png"
+    },
+    {
       "slug": "p1-konvektion-anlegen",
       "title": "Zweite Analyse mit gemeinsamem Modell",
       "category": "Setup",
@@ -75,6 +99,29 @@
       "thumb": "step-0.png"
     },
     {
+      "slug": "p2-reaction-probe",
+      "title": "Reaction Probe: Wärmestrom einer Randbedingung",
+      "category": "Postprocessing",
+      "software": "Mechanical",
+      "tags": [
+        "Reaction Probe"
+      ],
+      "steps": 3,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p2-temperatur-koerper",
+      "title": "Temperatur je Körper",
+      "category": "Postprocessing",
+      "software": "Mechanical",
+      "tags": [
+        "Temperature",
+        "Named Selection"
+      ],
+      "steps": 5,
+      "thumb": "step-0.png"
+    },
+    {
       "slug": "p1-auswertung",
       "title": "Temperatur, Wärmestromdichte und Pfad auswerten",
       "category": "Postprocessing",
@@ -85,6 +132,31 @@
         "Path"
       ],
       "steps": 11,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p2-strahlung-s2s",
+      "title": "Absorber und Glas: Radiation Surface to Surface",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Radiation",
+        "Surface to Surface",
+        "Enclosure"
+      ],
+      "steps": 7,
+      "thumb": "step-1.png"
+    },
+    {
+      "slug": "p2-strahlung-himmel",
+      "title": "Himmel: Radiation To Ambient",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Radiation",
+        "To Ambient"
+      ],
+      "steps": 4,
       "thumb": "step-0.png"
     },
     {
@@ -111,6 +183,30 @@
       "thumb": "step-0.png"
     },
     {
+      "slug": "p2-named-selection",
+      "title": "Named Selection über das Worksheet",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Named Selection",
+        "Worksheet"
+      ],
+      "steps": 7,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p2-sonne",
+      "title": "Sonne: Heat Flux auf eine Named Selection",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Heat Flux",
+        "Named Selection"
+      ],
+      "steps": 4,
+      "thumb": "step-0.png"
+    },
+    {
       "slug": "p1-temperatur-anbringen",
       "title": "Temperaturen anbringen",
       "category": "Randbedingungen",
@@ -119,6 +215,18 @@
         "Temperature"
       ],
       "steps": 8,
+      "thumb": "step-0.png"
+    },
+    {
+      "slug": "p2-konvektion",
+      "title": "Wasser und Luft: Convection",
+      "category": "Randbedingungen",
+      "software": "Mechanical",
+      "tags": [
+        "Convection",
+        "Named Selection"
+      ],
+      "steps": 7,
       "thumb": "step-0.png"
     }
   ]

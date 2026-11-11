@@ -14,7 +14,7 @@ from html import unescape
 _BLOCK = re.compile(r'<div class="steps"[^>]*data-spickzettel="ja"[^>]*>')
 _DIV = re.compile(r'<div\b|</div>')
 _SCHRITT = re.compile(r'<div class="step">\s*<p class="step-title"[^>]*>(.*?)</p>(.*?)</div>', re.S)
-_ABSATZ = re.compile(r'<p>(.*?)</p>', re.S)
+_ABSATZ = re.compile(r'<p>(.*?)</p>|<li>(.*?)</li>', re.S)   # Absätze und Stichpunkte
 _MERKE = re.compile(r'<div class="admonition merke">\s*<p class="admonition-title">(.*?)</p>(.*?)</div>', re.S)
 _PUNKT = re.compile(r'<li class="task-list-item"><input type="checkbox"[^>]*>\s*(.*?)</li>', re.S)
 CHECKLISTE = "00_FAQ/Fehler_checkliste/"
@@ -53,7 +53,7 @@ def on_page_content(html, page, config, files, **kwargs):
     def schritt(s):
         kid = _id("kern-" + praktikum.lower() if praktikum else "kern", s.group(1))
         _kern.append({"id": kid, "praktikum": praktikum, "titel": _text(s.group(1)),
-                      "text": " ".join(_text(a) for a in _ABSATZ.findall(s.group(2))),
+                      "text": "; ".join(_text(p or li) for p, li in _ABSATZ.findall(s.group(2))),
                       "url": page.url + "#" + kid})
         return s.group(0).replace('<div class="step">', '<div class="step" id="%s">' % kid, 1)
     def merke(s):

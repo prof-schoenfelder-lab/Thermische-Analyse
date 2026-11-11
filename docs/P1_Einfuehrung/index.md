@@ -18,7 +18,7 @@ hide:
 
 <div class="prakt-cards">
   <a class="prakt-card" href="01_Grundlagen/Grundprinzipien-FEM/">
-    <img class="prakt-cimg no-lightbox" src="images/p1_fem_1d.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p1_fem_1d.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Grundprinzip der FEM</span>
       <span class="prakt-cdesc">Knoten, Elemente, Temperatur als Unbekannte</span>
@@ -32,28 +32,28 @@ hide:
     </span>
   </a>
   <a class="prakt-card" href="02_Vorzeigebeispiel/Aussenwand/">
-    <img class="prakt-cimg no-lightbox" src="images/p1_aussenwand_b.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p1_aussenwand_b.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Vorzeigebeispiel</span>
       <span class="prakt-cdesc">Außenwand mit Wärmedämmung, U-Wert</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-1/">
-    <img class="prakt-cimg no-lightbox" src="images/p1_uebung1.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p1_uebung1.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 1</span>
       <span class="prakt-cdesc">Altbau sanieren nach GEG</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-2/">
-    <img class="prakt-cimg no-lightbox" src="images/p1_uebung2.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p1_uebung2.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 2</span>
       <span class="prakt-cdesc">Außenecke als Wärmebrücke</span>
     </span>
   </a>
   <a class="prakt-card" href="03_Selbsttests/Uebung-3/">
-    <img class="prakt-cimg no-lightbox" src="images/p1_uebung3.svg" alt="">
+    <img class="prakt-cimg no-lightbox" src="images/p1_uebung3.excalidraw.png" alt="">
     <span class="prakt-cbody">
       <span class="prakt-ctitle">Übung 3</span>
       <span class="prakt-cdesc">Fußbodenheizung</span>
