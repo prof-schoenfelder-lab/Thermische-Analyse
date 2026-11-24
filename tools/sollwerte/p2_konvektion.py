@@ -79,6 +79,11 @@ if __name__ == "__main__":
           f"{churchill_chu_wand(Ra, Pr) * lam / L:.2f} W/(m²K), Schnellformel (laminar, hier nicht gültig) "
           f"{1.42 * (abs(T_O - T_F) / L) ** 0.25:.2f}")
 
+    # Schnellformel Platte im Wind (laminar, Luft): Gl. 7-21 ausgeschrieben, α = 0,664 λ Pr^(1/3) / √ν · √(v/L)
+    k = {T: 0.664 * lam * Pr ** (1 / 3) / nu ** 0.5 for T, (lam, nu, Pr, _) in LUFT.items()}
+    print("Platte im Wind, laminar, Luft: α = k · √(v/L) mit k = " + ", ".join(f"{k[T]:.2f} ({T} °C)" for T in sorted(k))
+          + f"; laminar bis v · L = 5e5 · ν = {5e5 * LUFT[7][1]:.1f} m²/s (7 °C)")
+
     # Bauphysik: konvektiver Anteil innen nach DIN EN ISO 6946
     h_r = 0.9 * 4 * 5.67e-8 * 293.15 ** 3
     print(f"Strahlungsanteil innen bei ε 0,9 und 20 °C: {h_r:.2f} W/(m²K); 1/0,13 = {1 / 0.13:.2f} W/(m²K)")

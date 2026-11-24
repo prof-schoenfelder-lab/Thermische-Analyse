@@ -116,6 +116,7 @@ extra_css:
       - "assets/styles/anleitung.css"
       - "styles/modern.css"
       - "assets/styles/spickzettel.css"
+      - "assets/styles/fallkarten.css"
       - "assets/styles/anim-scroll.css"
       - "assets/styles/strahlenzaehler.css"
       - "assets/styles/achsenwahl.css"

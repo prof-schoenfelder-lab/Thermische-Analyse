@@ -90,44 +90,271 @@ DIN EN ISO 6946. Sie enthalten **Konvektion und Strahlung zusammen**:
 
 ## Selbst rechnen
 
-Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgegeben. Wer α selbst abschätzen will, findet hier die Formeln.
+Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgegeben. Wer α selbst abschätzen will, sucht seinen Fall am Bild:
 
-??? info "Schnellformeln für ruhende Luft"
-    Für freie Konvektion in Luft bei Normaldruck gibt es einfache Formeln. Sie gelten
-    für **laminare** Strömung:
-    {: #schnellformeln }
+- **schnell:** einfache Formel für Luft bei Normaldruck
+- **genau:** zum Aufklappen, mit [Kennzahlen und Stoffwerten](#kennzahlen), für jedes Fluid
 
-    | Form | α in W/(m²·K) | Länge |
-    |---|---|---|
-    | senkrechte Wand oder senkrechter Zylinder | $1{,}42\,(\Delta T / L)^{0{,}25}$ | Höhe $L$ |
-    | waagerechter Zylinder (Rohr) | $1{,}32\,(\Delta T / D)^{0{,}25}$ | Durchmesser $D$ |
-    | waagerechte Platte, warme Seite oben | $1{,}32\,(\Delta T / L)^{0{,}25}$ | $L = 4A/p$ |
-    | waagerechte Platte, warme Seite unten | $0{,}59\,(\Delta T / L)^{0{,}25}$ | $L = 4A/p$ |
-    | Kugel | $1{,}92\,(\Delta T / D)^{0{,}25}$ | Durchmesser $D$ |
+### Ruhende Luft: freie Konvektion {: #ruhende-luft }
 
-    - $\Delta T$: Temperaturunterschied zwischen Oberfläche und Luft in K
-    - $L$, $D$: Länge bzw. Durchmesser in m
-    - $A$, $p$: Fläche in m² und Umfang in m der Platte
-    - Laminar heißt: Rayleigh-Zahl unter $10^9$ (unten). Rohre und kleine Bauteile liegen fast immer darin, eine raumhohe Wand meist nicht
+Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Formeln gelten für laminare Strömung, also für eine Rayleigh-Zahl unter $10^9$: Rohre und kleine Bauteile liegen fast immer darin, eine raumhohe Wand meist nicht.
+
+- $\Delta T$: Temperaturunterschied zwischen Oberfläche und Luft in K
+- $L$, $D$: Länge bzw. Durchmesser in m, je Fall angegeben
+- $A$, $p$: Fläche in m² und Umfang in m der Platte
+- $\lambda_F$, $Ra$, $Pr$: Wärmeleitfähigkeit der Luft, Rayleigh- und Prandtl-Zahl, siehe [Kennzahlen](#kennzahlen)
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Senkrechte warme Wand der Höhe L, an der die Luft aufsteigt](../images/p2_fall_wand.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Senkrechte Wand</span>
+
+- Länge: $L$ = Höhe, gilt auch für senkrechte Zylinder
+- schnell: $\alpha \approx 1{,}42\,(\Delta T / L)^{0{,}25}$
+
+</div>
+
+??? note "Genau, mit Kennzahlen"
+    Für alle $Ra$:
+
+    $$
+    \alpha = \frac{\lambda_F}{L} \left[0{,}825 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}492/Pr)^{9/16}\right]^{8/27}}\right]^2
+    $$
+
+</div>
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Waagerechtes warmes Rohr mit Durchmesser D, über dem die Luft aufsteigt](../images/p2_fall_rohr_frei.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Waagerechtes Rohr</span>
+
+- Länge: $L = D$, Außendurchmesser
+- schnell: $\alpha \approx 1{,}32\,(\Delta T / D)^{0{,}25}$
+- im Kurs: Heizungsrohr, $\alpha = 7\ \mathrm{W/(m^2\,K)}$
+
+</div>
+
+??? note "Genau, mit Kennzahlen"
+    Für $Ra \le 10^{12}$:
+
+    $$
+    \alpha = \frac{\lambda_F}{D} \left[0{,}6 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}559/Pr)^{9/16}\right]^{8/27}}\right]^2
+    $$
 
     !!! example "Beispiel: Heizungsrohr aus Übung 1"
         - Rohr außen Ø 26,9 mm, Oberfläche etwa 59 °C, Kellerluft 15 °C, also $\Delta T \approx 44\ \mathrm{K}$
         - Schnellformel: $\alpha \approx 1{,}32 \cdot (44 / 0{,}0269)^{0{,}25} \approx 8{,}4\ \mathrm{W/(m^2\,K)}$
-        - Genauer mit der Formel für das waagerechte Rohr (unten): $\alpha \approx 7{,}0\ \mathrm{W/(m^2\,K)}$, genau der Wert der Übung
+        - Genau: $\alpha \approx 7{,}0\ \mathrm{W/(m^2\,K)}$, genau der Wert der Übung
         - Die Schnellformel liegt hier 20 % daneben. Für einen ersten Überschlag reicht das
 
-??? info "Genauer: mit Kennzahlen"
-    Die Formeln der Lehrbücher sind in dimensionslosen Kennzahlen geschrieben.
-    Damit gelten sie für jedes Fluid und jede Größe:
+</div>
 
-    - **Nusselt-Zahl** $Nu = \alpha \, L / \lambda_F$: Sie sagt, wie viel besser die Konvektion Wärme überträgt als reine Leitung durch eine ruhende Fluidschicht der Dicke $L$. Aus ihr folgt $\alpha = Nu \cdot \lambda_F / L$
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Waagerechte Platte, warme Seite oben, von der die Luft nach oben steigt](../images/p2_fall_platte_oben.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Waagerechte Platte, warme Seite oben</span>
+
+- gilt auch für: kalte Seite unten
+- schnell: $\alpha \approx 1{,}32\,(\Delta T / L)^{0{,}25}$ mit $L = 4A/p$
+
+</div>
+
+??? note "Genau, mit Kennzahlen"
+    Hier mit $L = A/p$, ohne Faktor 4:
+
+    - $\alpha = 0{,}54\,(\lambda_F/L)\,Ra^{1/4}$ für $Ra = 10^4$ bis $10^7$
+    - $\alpha = 0{,}15\,(\lambda_F/L)\,Ra^{1/3}$ für $Ra = 10^7$ bis $10^{11}$
+
+</div>
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Waagerechte Platte, warme Seite unten: Die Luft strömt unter der Platte nach außen und steigt am Rand auf](../images/p2_fall_platte_unten.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Waagerechte Platte, warme Seite unten</span>
+
+- gilt auch für: kalte Seite oben
+- schnell: $\alpha \approx 0{,}59\,(\Delta T / L)^{0{,}25}$ mit $L = 4A/p$
+
+</div>
+
+??? note "Genau, mit Kennzahlen"
+    Hier mit $L = A/p$, ohne Faktor 4:
+
+    - $\alpha = 0{,}27\,(\lambda_F/L)\,Ra^{1/4}$ für $Ra = 10^5$ bis $10^{11}$
+
+</div>
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Warme Kugel mit Durchmesser D, über der die Luft aufsteigt](../images/p2_fall_kugel.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Kugel</span>
+
+- Länge: $L = D$
+- schnell: $\alpha \approx 1{,}92\,(\Delta T / D)^{0{,}25}$
+
+</div>
+</div>
+
+### Wind: erzwungene Konvektion außen {: #wind }
+
+Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
+
+- $v$: Windgeschwindigkeit in m/s
+- $L$, $D$: Länge bzw. Durchmesser in m, je Fall angegeben
+- $\alpha_K$: Anteil der Konvektion an α in W/(m²·K)
+- $\lambda_F$, $Re$, $Pr$: Wärmeleitfähigkeit der Luft, Reynolds- und Prandtl-Zahl, siehe [Kennzahlen](#kennzahlen)
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Platte der Länge L, längs angeströmt: Der Wind mit der Geschwindigkeit v strömt parallel zur Platte](../images/p2_fall_platte_laengs.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Platte, längs angeströmt</span>
+
+- Länge: $L$ = Länge in Strömungsrichtung
+- schnell: $\alpha \approx 3{,}9\,\sqrt{v/L}$, solange die Strömung laminar bleibt, also $v \cdot L$ unter etwa $7\ \mathrm{m^2/s}$
+- im Kurs: Erdoberfläche über dem Erdkabel, $\alpha = 10\ \mathrm{W/(m^2\,K)}$
+
+</div>
+
+??? note "Genau, mit Kennzahlen"
+    Für $0{,}6 \le Pr \le 60$:
+
+    - laminar, $Re < 5 \cdot 10^5$: $\alpha = 0{,}664\,(\lambda_F/L)\,Re^{0{,}5}\,Pr^{1/3}$
+    - turbulent ab der Vorderkante, $5 \cdot 10^5 \le Re \le 10^7$: $\alpha = 0{,}037\,(\lambda_F/L)\,Re^{0{,}8}\,Pr^{1/3}$
+    - vorn laminar, hinten turbulent: $\alpha = (\lambda_F/L)\,(0{,}037\,Re^{0{,}8} - 871)\,Pr^{1/3}$
+
+    Die schnelle Formel ist die laminare mit den Stoffwerten der Luft aus der Tabelle: Zwischen 7 und 80 °C liegt der Faktor bei 3,83 bis 3,87.
+
+</div>
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Rohr mit Durchmesser D, quer angeströmt: Der Wind mit der Geschwindigkeit v trifft senkrecht auf das Rohr](../images/p2_fall_rohr_quer.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Rohr, quer angeströmt</span>
+
+- Länge: $L = D$, Außendurchmesser
+- schnell: keine einfache Formel, genau aufklappen
+- im Kurs: Vakuumröhre, $\alpha = 10\ \mathrm{W/(m^2\,K)}$
+
+</div>
+
+??? note "Genau, mit Kennzahlen"
+    Für $Re \cdot Pr > 0{,}2$:
+
+    $$
+    \alpha = \frac{\lambda_F}{D} \left[0{,}3 + \frac{0{,}62\,Re^{1/2}\,Pr^{1/3}}{\left[1 + (0{,}4/Pr)^{2/3}\right]^{1/4}} \left[1 + \left(\frac{Re}{282\,000}\right)^{5/8}\right]^{4/5}\right]
+    $$
+
+</div>
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Geheiztes Haus, der Wind mit der Geschwindigkeit v strömt an die Außenwand](../images/p2_fall_gebaeude.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Außenwand eines Gebäudes</span>
+
+- Norm: $\alpha_K = 4 + 4\,v$, nur Konvektion, ohne Strahlung ([Normwerte](#normwerte-der-bauphysik-enthalten-strahlung))
+- im Kurs: P1 Außenwand mit dem Normwert 25 W/(m²·K), Strahlung inbegriffen
+
+</div>
+</div>
+
+### Strömung im Rohr {: #stroemung-im-rohr }
+
+Ein Fluid, meist Wasser, strömt durch das Rohr. Die Stoffwerte nimmt man bei der mittleren Temperatur des Fluids.
+
+- $D$: Innendurchmesser in m
+- $v$: mittlere Strömungsgeschwindigkeit in m/s
+- $\lambda_F$, $Re$, $Pr$: Wärmeleitfähigkeit des Fluids, Reynolds- und Prandtl-Zahl, siehe [Kennzahlen](#kennzahlen)
+
+<div class="fk-karte" markdown>
+<div class="fk-bild" markdown>
+
+![Rohr im Längsschnitt mit Innendurchmesser D, das Wasser strömt mit der Geschwindigkeit v hindurch](../images/p2_fall_rohr_innen.excalidraw.png){ .no-lightbox .off-glb }
+
+</div>
+<div class="fk-kopf" markdown>
+
+<span class="fk-titel">Rohr, innen durchströmt</span>
+
+- Länge: $L = D$, Innendurchmesser
+- laminar, $Re < 2300$, voll ausgebildet: $\alpha = 3{,}66\,\lambda_F/D$ bei fester Wandtemperatur, $\alpha = 4{,}36\,\lambda_F/D$ bei festem Wärmestrom
+- im Kurs: Wasser im Heizungsrohr und in der Vakuumröhre, $\alpha = 1000\ \mathrm{W/(m^2\,K)}$
+
+</div>
+
+??? note "Genau, turbulent"
+    - Nach Gnielinski, $3000 < Re < 5 \cdot 10^6$ und $0{,}5 \le Pr \le 2000$:
+
+        $$
+        \alpha = \frac{\lambda_F}{D} \cdot \frac{(f/8)\,(Re - 1000)\,Pr}{1 + 12{,}7\,(f/8)^{0{,}5}\,(Pr^{2/3} - 1)} \qquad f = (0{,}790 \ln Re - 1{,}64)^{-2}
+        $$
+
+        mit der Reibungszahl $f$ des glatten Rohrs
+
+    - Einfacher, aber ungenauer, nach Dittus und Boelter, $Re > 10\,000$, $0{,}7 \le Pr \le 160$: $\alpha = 0{,}023\,(\lambda_F/D)\,Re^{0{,}8}\,Pr^n$ mit $n = 0{,}4$, wenn das Fluid erwärmt wird, und $n = 0{,}3$, wenn es abkühlt
+
+    !!! example "Beispiel: Wasser im Heizungsrohr"
+        - Innen Ø 21,7 mm, Wasser 60 °C, angenommen 0,5 m/s: $Re \approx 22\,900$, also turbulent
+        - Gnielinski: $\alpha \approx 3500\ \mathrm{W/(m^2\,K)}$, Dittus und Boelter: $\alpha \approx 2900\ \mathrm{W/(m^2\,K)}$
+        - Die Übung rechnet vorsichtig mit 1000 W/(m²·K). Am Ergebnis ändert das kaum etwas: Den Wärmestrom begrenzt die Luft außen, nicht das Wasser innen
+
+</div>
+
+### Kennzahlen und Stoffwerte {: #kennzahlen }
+
+??? info "Kennzahlen und Formelzeichen"
+    Die genauen Formeln stammen aus den Lehrbüchern. Dort stehen sie in dimensionslosen Kennzahlen,
+    damit gelten sie für jedes Fluid und jede Größe:
+
+    - **Nusselt-Zahl** $Nu = \alpha \, L / \lambda_F$: Sie sagt, wie viel besser die Konvektion Wärme überträgt als reine Leitung durch eine ruhende Fluidschicht der Dicke $L$
     - **Reynolds-Zahl** $Re = v\,L / \nu$ für erzwungene Konvektion: klein heißt laminar, groß heißt turbulent
     - **Rayleigh-Zahl** $Ra = g\,\beta\,\Delta T\,L^3 / \nu^2 \cdot Pr$ für freie Konvektion: Sie sagt, wie stark der Auftrieb treibt
     - **Prandtl-Zahl** $Pr$: ein Stoffwert, Luft etwa 0,7, Wasser 2 bis 7
 
     mit
 
-    - $L$: charakteristische Länge in m, je nach Form (in den Tabellen angegeben)
+    - $\alpha$: Wärmeübergangskoeffizient in W/(m²·K)
+    - $L$: charakteristische Länge in m, je nach Fall (oben angegeben)
+    - $D$: Durchmesser in m, bei Rohren ist $L = D$
     - $\lambda_F$: Wärmeleitfähigkeit des Fluids in W/(m·K)
     - $v$: Strömungsgeschwindigkeit in m/s
     - $\nu$: kinematische Viskosität des Fluids in m²/s
@@ -138,56 +365,9 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
     Die Stoffwerte nimmt man bei der **Filmtemperatur** $T_f = (T_O + T_F)/2$,
     bei der Strömung im Rohr bei der mittleren Temperatur des Fluids.
 
-    **Freie Konvektion**
-    {: #kennzahlen-frei }
-
-    - Senkrechte Wand, $L$ = Höhe, für alle $Ra$:
-
-        $$
-        Nu = \left[0{,}825 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}492/Pr)^{9/16}\right]^{8/27}}\right]^2
-        $$
-
-    - Waagerechtes Rohr, $L = D$, für $Ra \le 10^{12}$:
-
-        $$
-        Nu = \left[0{,}6 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}559/Pr)^{9/16}\right]^{8/27}}\right]^2
-        $$
-
-    - Waagerechte Platte, $L = A/p$ (hier ohne Faktor 4):
-        - warme Seite oben oder kalte Seite unten: $Nu = 0{,}54\,Ra^{1/4}$ für $Ra = 10^4$ bis $10^7$, $Nu = 0{,}15\,Ra^{1/3}$ für $Ra = 10^7$ bis $10^{11}$
-        - warme Seite unten oder kalte Seite oben: $Nu = 0{,}27\,Ra^{1/4}$ für $Ra = 10^5$ bis $10^{11}$
-
-    **Erzwungene Konvektion außen**
-    {: #kennzahlen-aussen }
-
-    - Platte, längs angeströmt, $L$ = Länge in Strömungsrichtung, $0{,}6 \le Pr \le 60$:
-        - laminar, $Re < 5 \cdot 10^5$: $Nu = 0{,}664\,Re^{0{,}5}\,Pr^{1/3}$
-        - turbulent ab der Vorderkante, $5 \cdot 10^5 \le Re \le 10^7$: $Nu = 0{,}037\,Re^{0{,}8}\,Pr^{1/3}$
-        - vorn laminar, hinten turbulent: $Nu = (0{,}037\,Re^{0{,}8} - 871)\,Pr^{1/3}$
-    - Rohr, quer angeströmt (zum Beispiel im Wind), $L = D$, für $Re \cdot Pr > 0{,}2$:
-
-        $$
-        Nu = 0{,}3 + \frac{0{,}62\,Re^{1/2}\,Pr^{1/3}}{\left[1 + (0{,}4/Pr)^{2/3}\right]^{1/4}} \left[1 + \left(\frac{Re}{282\,000}\right)^{5/8}\right]^{4/5}
-        $$
-
-    **Strömung im Rohr** ($L$ = Innendurchmesser $D$)
-    {: #kennzahlen-rohr }
-
-    - Laminar, $Re < 2300$, voll ausgebildet: $Nu = 3{,}66$ bei fester Wandtemperatur, $Nu = 4{,}36$ bei festem Wärmestrom
-    - Turbulent nach Gnielinski, $3000 < Re < 5 \cdot 10^6$ und $0{,}5 \le Pr \le 2000$:
-
-        $$
-        Nu = \frac{(f/8)\,(Re - 1000)\,Pr}{1 + 12{,}7\,(f/8)^{0{,}5}\,(Pr^{2/3} - 1)} \qquad f = (0{,}790 \ln Re - 1{,}64)^{-2}
-        $$
-
-        mit der Reibungszahl $f$ des glatten Rohrs
-
-    - Einfacher, aber ungenauer, nach Dittus und Boelter, $Re > 10\,000$, $0{,}7 \le Pr \le 160$: $Nu = 0{,}023\,Re^{0{,}8}\,Pr^n$ mit $n = 0{,}4$, wenn das Fluid erwärmt wird, und $n = 0{,}3$, wenn es abkühlt
-
-    !!! example "Beispiel: Wasser im Heizungsrohr"
-        - Innen Ø 21,7 mm, Wasser 60 °C, angenommen 0,5 m/s: $Re \approx 22\,900$, also turbulent
-        - Gnielinski: $\alpha \approx 3500\ \mathrm{W/(m^2\,K)}$, Dittus und Boelter: $\alpha \approx 2900\ \mathrm{W/(m^2\,K)}$
-        - Die Übung rechnet vorsichtig mit 1000 W/(m²·K). Am Ergebnis ändert das kaum etwas: Den Wärmestrom begrenzt die Luft außen, nicht das Wasser innen
+    Die Lehrbücher geben die Formeln für $Nu$ an. Oben sind sie gleich nach
+    $\alpha = Nu \cdot \lambda_F / L$ aufgelöst: $Re$ oder $Ra$ ausrechnen, damit
+    die passende Formel wählen, $\alpha$ ausrechnen.
 
     !!! info "Wie genau sind solche Formeln?"
         - Die einfachen Formeln wie Dittus und Boelter können bis zu 25 % danebenliegen, genauere wie Gnielinski unter 10 %
@@ -214,9 +394,9 @@ Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgeg
 | Fall | So kommt man an α | Im Kurs |
 |---|---|---|
 | Wände, Fenster, Decken im Gebäude | [Normwerte nach DIN EN ISO 6946](#normwerte-der-bauphysik-enthalten-strahlung), sie enthalten die Strahlung | P1 Außenwand |
-| Rohre und Bauteile in ruhender Luft | freie Konvektion: [Schnellformeln](#schnellformeln) oder genauer [Kennzahlen](#kennzahlen-frei) | Heizungsrohr, Kühlkörper |
-| Außenflächen im Wind | erzwungene Konvektion: [Kennzahlen für Platte oder Rohr](#kennzahlen-aussen), an Gebäuden die [Formel der Norm](#norm-wind) | Vakuumröhre, Erdkabel |
-| Wasser in Rohren | Strömung im Rohr: [Kennzahlen](#kennzahlen-rohr) für laminare und turbulente Strömung | Heizungsrohr, Vakuumröhre |
+| Rohre und Bauteile in ruhender Luft | freie Konvektion: [Fälle in ruhender Luft](#ruhende-luft) | Heizungsrohr, Kühlkörper |
+| Außenflächen im Wind | erzwungene Konvektion: [Fälle im Wind](#wind), an Gebäuden die [Formel der Norm](#norm-wind) | Vakuumröhre, Erdkabel |
+| Wasser in Rohren | [Strömung im Rohr](#stroemung-im-rohr), laminar und turbulent | Heizungsrohr, Vakuumröhre |
 | Elektronik mit Lüfter | erzwungene Konvektion, oft Angaben des Herstellers | |
 | Sieden und Kondensieren | eigene Formeln, hier nicht behandelt, α sehr groß | |
 | Wenn es genau sein muss | Strömungssimulation (CFD) oder Messung | |

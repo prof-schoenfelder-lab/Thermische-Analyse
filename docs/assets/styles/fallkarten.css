@@ -1,0 +1,28 @@
+/* Fallkarten (Seite P2 Konvektion, „Selbst rechnen“): links die Skizze des Falls, rechts Name, Länge und schnelle
+   Formel, darunter die genaue Formel zum Aufklappen. Präfix fk- */
+html:root .md-typeset .fk-karte {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "bild kopf" "bild genau";
+  column-gap: 1.2rem;
+  border: 1px solid var(--kurs-line, #E2E8EC);
+  border-radius: var(--kurs-radius-md, 8px);
+  padding: .4rem .9rem .4rem .5rem;
+  margin: 0 0 .9rem;
+}
+html:root .md-typeset .fk-karte > .fk-bild { grid-area: bild; align-self: center; }
+html:root .md-typeset .fk-karte > .fk-kopf { grid-area: kopf; align-self: end; }
+html:root .md-typeset .fk-karte > .fk-kopf:last-child { grid-row: 1 / span 2; align-self: center; }
+html:root .md-typeset .fk-karte > details { grid-area: genau; margin: 0 0 .5rem; }
+html:root .md-typeset .fk-bild p { margin: 0; }
+html:root .md-typeset .fk-bild img { display: block; width: 100%; height: auto; border: 0; border-radius: 0; }
+html:root .md-typeset .fk-kopf > p { margin: .4rem 0 .2rem; }
+html:root .md-typeset .fk-kopf > ul { margin: .2rem 0 .5rem; }
+html:root .md-typeset .fk-titel { color: #022541; font-weight: 600; font-size: 1.05em; }
+
+@media (max-width: 40em) {
+  html:root .md-typeset .fk-karte { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "bild" "kopf" "genau"; }
+  html:root .md-typeset .fk-karte > .fk-kopf:last-child { grid-row: auto; }
+  html:root .md-typeset .fk-bild img { max-width: 15rem; margin: 0 auto; }
+}
