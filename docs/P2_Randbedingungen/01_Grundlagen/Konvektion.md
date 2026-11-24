@@ -92,17 +92,16 @@ DIN EN ISO 6946. Sie enthalten **Konvektion und Strahlung zusammen**:
 
 Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgegeben. Wer α selbst abschätzen will, sucht seinen Fall am Bild:
 
-- **schnell:** einfache Formel für Luft bei Normaldruck
-- **genau:** zum Aufklappen, mit [Kennzahlen und Stoffwerten](#kennzahlen), für jedes Fluid
+- **Überschlag:** einfache Formel nur für Luft bei Normaldruck, für eine erste Abschätzung
+- **genau:** zum Aufklappen, mit runden Werten für Luft und Wasser; andere Temperaturen und Fluide über [Kennzahlen und Stoffwerte](#kennzahlen)
 
 ### Ruhende Luft: freie Konvektion {: #ruhende-luft }
 
-Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Formeln gelten für laminare Strömung, also für eine Rayleigh-Zahl unter $10^9$: Rohre und kleine Bauteile liegen fast immer darin, eine raumhohe Wand meist nicht.
+Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die Überschlagsformeln gelten nur bei laminarer Strömung, also für eine Rayleigh-Zahl unter $10^9$: Rohre und kleine Bauteile liegen fast immer darin, eine raumhohe Wand meist nicht.
 
 - $\Delta T$: Temperaturunterschied zwischen Oberfläche und Luft in K
 - $L$, $D$: Länge bzw. Durchmesser in m, je Fall angegeben
 - $A$, $p$: Fläche in m² und Umfang in m der Platte
-- $\lambda_F$, $Ra$, $Pr$: Wärmeleitfähigkeit der Luft, Rayleigh- und Prandtl-Zahl, siehe [Kennzahlen](#kennzahlen)
 
 <div class="fk-karte" markdown>
 <div class="fk-bild" markdown>
@@ -115,7 +114,7 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
 <span class="fk-titel">Senkrechte Wand</span>
 
 - Länge: $L$ = Höhe, gilt auch für senkrechte Zylinder
-- schnell: $\alpha \approx 1{,}42\,(\Delta T / L)^{0{,}25}$
+- Überschlag für Luft: $\alpha \approx 1{,}42\,(\Delta T / L)^{0{,}25}$
 
 </div>
 
@@ -125,6 +124,20 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
     $$
     \alpha = \frac{\lambda_F}{L} \left[0{,}825 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}492/Pr)^{9/16}\right]^{8/27}}\right]^2
     $$
+
+    Für Luft um 25 °C:
+
+    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $L$ in m
+    - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
+    - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+
+    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+
+    !!! example "Beispiel: Raumwand"
+        - 2,5 m hoch, 3 K kälter als die Raumluft (die Luft sinkt dann ab, die Formel gilt genauso)
+        - $Ra \approx 1 \cdot 10^8 \cdot 3 \cdot 2{,}5^3 \approx 4{,}7 \cdot 10^9$
+        - $Ra$ liegt über $10^9$, die Strömung ist turbulent: Der Überschlag gilt hier nicht, er gäbe $1{,}5\ \mathrm{W/(m^2\,K)}$
+        - damit $\alpha \approx 2{,}1\ \mathrm{W/(m^2\,K)}$
 
 </div>
 
@@ -139,7 +152,7 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
 <span class="fk-titel">Waagerechtes Rohr</span>
 
 - Länge: $L = D$, Außendurchmesser
-- schnell: $\alpha \approx 1{,}32\,(\Delta T / D)^{0{,}25}$
+- Überschlag für Luft: $\alpha \approx 1{,}32\,(\Delta T / D)^{0{,}25}$
 - im Kurs: Heizungsrohr, $\alpha = 7\ \mathrm{W/(m^2\,K)}$
 
 </div>
@@ -151,11 +164,20 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
     \alpha = \frac{\lambda_F}{D} \left[0{,}6 + \frac{0{,}387\,Ra^{1/6}}{\left[1 + (0{,}559/Pr)^{9/16}\right]^{8/27}}\right]^2
     $$
 
+    Für Luft um 25 °C:
+
+    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot D^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $D$ in m
+    - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
+    - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+
+    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+
     !!! example "Beispiel: Heizungsrohr aus Übung 1"
         - Rohr außen Ø 26,9 mm, Oberfläche etwa 59 °C, Kellerluft 15 °C, also $\Delta T \approx 44\ \mathrm{K}$
-        - Schnellformel: $\alpha \approx 1{,}32 \cdot (44 / 0{,}0269)^{0{,}25} \approx 8{,}4\ \mathrm{W/(m^2\,K)}$
-        - Genau: $\alpha \approx 7{,}0\ \mathrm{W/(m^2\,K)}$, genau der Wert der Übung
-        - Die Schnellformel liegt hier 20 % daneben. Für einen ersten Überschlag reicht das
+        - Überschlag: $\alpha \approx 1{,}32 \cdot (44 / 0{,}0269)^{0{,}25} \approx 8{,}4\ \mathrm{W/(m^2\,K)}$
+        - Genau mit den runden Werten für Luft: $Ra \approx 1 \cdot 10^8 \cdot 44 \cdot 0{,}0269^3 \approx 8{,}6 \cdot 10^4$, damit $\alpha \approx 7{,}3\ \mathrm{W/(m^2\,K)}$
+        - Genau mit den Stoffwerten bei 37 °C Filmtemperatur: $Ra \approx 7 \cdot 10^4$, $\alpha \approx 7{,}0\ \mathrm{W/(m^2\,K)}$, genau der Wert der Übung
+        - Der Überschlag liegt hier 20 % daneben. Für eine erste Abschätzung reicht das
 
 </div>
 
@@ -170,7 +192,7 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
 <span class="fk-titel">Waagerechte Platte, warme Seite oben</span>
 
 - gilt auch für: kalte Seite unten
-- schnell: $\alpha \approx 1{,}32\,(\Delta T / L)^{0{,}25}$ mit $L = 4A/p$
+- Überschlag für Luft: $\alpha \approx 1{,}32\,(\Delta T / L)^{0{,}25}$ mit $L = 4A/p$
 
 </div>
 
@@ -179,6 +201,14 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
 
     - $\alpha = 0{,}54\,(\lambda_F/L)\,Ra^{1/4}$ für $Ra = 10^4$ bis $10^7$
     - $\alpha = 0{,}15\,(\lambda_F/L)\,Ra^{1/3}$ für $Ra = 10^7$ bis $10^{11}$
+
+    Für Luft um 25 °C:
+
+    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $L$ in m, hier $L = A/p$
+    - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
+    - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+
+    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
 
 </div>
 
@@ -193,7 +223,7 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
 <span class="fk-titel">Waagerechte Platte, warme Seite unten</span>
 
 - gilt auch für: kalte Seite oben
-- schnell: $\alpha \approx 0{,}59\,(\Delta T / L)^{0{,}25}$ mit $L = 4A/p$
+- Überschlag für Luft: $\alpha \approx 0{,}59\,(\Delta T / L)^{0{,}25}$ mit $L = 4A/p$
 
 </div>
 
@@ -201,6 +231,14 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
     Hier mit $L = A/p$, ohne Faktor 4:
 
     - $\alpha = 0{,}27\,(\lambda_F/L)\,Ra^{1/4}$ für $Ra = 10^5$ bis $10^{11}$
+
+    Für Luft um 25 °C:
+
+    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $L$ in m, hier $L = A/p$
+    - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
+    - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+
+    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
 
 </div>
 
@@ -215,7 +253,7 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die schnellen Form
 <span class="fk-titel">Kugel</span>
 
 - Länge: $L = D$
-- schnell: $\alpha \approx 1{,}92\,(\Delta T / D)^{0{,}25}$
+- Überschlag für Luft: $\alpha \approx 1{,}92\,(\Delta T / D)^{0{,}25}$
 
 </div>
 </div>
@@ -227,7 +265,6 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
 - $v$: Windgeschwindigkeit in m/s
 - $L$, $D$: Länge bzw. Durchmesser in m, je Fall angegeben
 - $\alpha_K$: Anteil der Konvektion an α in W/(m²·K)
-- $\lambda_F$, $Re$, $Pr$: Wärmeleitfähigkeit der Luft, Reynolds- und Prandtl-Zahl, siehe [Kennzahlen](#kennzahlen)
 
 <div class="fk-karte" markdown>
 <div class="fk-bild" markdown>
@@ -240,7 +277,7 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
 <span class="fk-titel">Platte, längs angeströmt</span>
 
 - Länge: $L$ = Länge in Strömungsrichtung
-- schnell: $\alpha \approx 3{,}9\,\sqrt{v/L}$, solange die Strömung laminar bleibt, also $v \cdot L$ unter etwa $7\ \mathrm{m^2/s}$
+- Überschlag für Luft: $\alpha \approx 3{,}9\,\sqrt{v/L}$, solange die Strömung laminar bleibt, also $v \cdot L$ unter etwa $7\ \mathrm{m^2/s}$
 - im Kurs: Erdoberfläche über dem Erdkabel, $\alpha = 10\ \mathrm{W/(m^2\,K)}$
 
 </div>
@@ -252,7 +289,15 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
     - turbulent ab der Vorderkante, $5 \cdot 10^5 \le Re \le 10^7$: $\alpha = 0{,}037\,(\lambda_F/L)\,Re^{0{,}8}\,Pr^{1/3}$
     - vorn laminar, hinten turbulent: $\alpha = (\lambda_F/L)\,(0{,}037\,Re^{0{,}8} - 871)\,Pr^{1/3}$
 
-    Die schnelle Formel ist die laminare mit den Stoffwerten der Luft aus der Tabelle: Zwischen 7 und 80 °C liegt der Faktor bei 3,83 bis 3,87.
+    Für Luft um 25 °C:
+
+    - $Re \approx 6{,}4 \cdot 10^4 \cdot v \cdot L$: Reynolds-Zahl, dimensionslos, mit $v$ in m/s und $L$ in m
+    - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
+    - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+
+    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+
+    Die Überschlagsformel ist die laminare Formel mit den Stoffwerten der Luft aus der Tabelle: Zwischen 7 und 80 °C liegt der Faktor bei 3,83 bis 3,87.
 
 </div>
 
@@ -267,7 +312,7 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
 <span class="fk-titel">Rohr, quer angeströmt</span>
 
 - Länge: $L = D$, Außendurchmesser
-- schnell: keine einfache Formel, genau aufklappen
+- Überschlag: keine einfache Formel, „Genau“ aufklappen
 - im Kurs: Vakuumröhre, $\alpha = 10\ \mathrm{W/(m^2\,K)}$
 
 </div>
@@ -278,6 +323,19 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
     $$
     \alpha = \frac{\lambda_F}{D} \left[0{,}3 + \frac{0{,}62\,Re^{1/2}\,Pr^{1/3}}{\left[1 + (0{,}4/Pr)^{2/3}\right]^{1/4}} \left[1 + \left(\frac{Re}{282\,000}\right)^{5/8}\right]^{4/5}\right]
     $$
+
+    Für Luft um 25 °C:
+
+    - $Re \approx 6{,}4 \cdot 10^4 \cdot v \cdot D$: Reynolds-Zahl, dimensionslos, mit $v$ in m/s und $D$ in m
+    - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
+    - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+
+    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+
+    !!! example "Beispiel: Vakuumröhre im Wind"
+        - Glasrohr Ø 70 mm, Wind 1 m/s
+        - $Re \approx 6{,}4 \cdot 10^4 \cdot 1 \cdot 0{,}07 \approx 4500$
+        - damit $\alpha \approx 13\ \mathrm{W/(m^2\,K)}$; die Übung nimmt für leichten Wind 10 W/(m²·K) an
 
 </div>
 
@@ -303,7 +361,13 @@ Ein Fluid, meist Wasser, strömt durch das Rohr. Die Stoffwerte nimmt man bei de
 
 - $D$: Innendurchmesser in m
 - $v$: mittlere Strömungsgeschwindigkeit in m/s
-- $\lambda_F$, $Re$, $Pr$: Wärmeleitfähigkeit des Fluids, Reynolds- und Prandtl-Zahl, siehe [Kennzahlen](#kennzahlen)
+
+Für Wasser bei 60 °C:
+
+- $Re \approx 2{,}1 \cdot 10^6 \cdot v \cdot D$: Reynolds-Zahl, dimensionslos, mit $v$ in m/s und $D$ in m
+- $Pr = 3{,}0$: Prandtl-Zahl, dimensionslos
+- $\lambda_F = 0{,}65\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit des Wassers
+- Wasser ändert sich stark mit der Temperatur, $Pr$ fällt von 9,5 bei 10 °C auf 2,2 bei 80 °C: dann die [Stoffwerte](#kennzahlen) nehmen
 
 <div class="fk-karte" markdown>
 <div class="fk-bild" markdown>
@@ -375,13 +439,15 @@ Ein Fluid, meist Wasser, strömt durch das Rohr. Die Stoffwerte nimmt man bei de
         - Hängt viel an α, lohnt eine Rechnung mit kleinerem und größerem α: Ändert sich das Ergebnis kaum, reicht die Abschätzung
 
 ??? info "Stoffwerte von Luft und Wasser"
-    Zwischenwerte linear interpolieren.
+    Zwischenwerte linear interpolieren. Für Luft gibt die letzte Zeile den Faktor der Rayleigh-Zahl:
+    $Ra = (g\,\beta\,Pr/\nu^2) \cdot \Delta T \cdot L^3$.
 
     | Luft (1 bar), T in °C | 7 | 25 | 45 | 60 | 80 |
     |---|---|---|---|---|---|
     | $\lambda_F$ in W/(m·K) | 0,0242 | 0,0255 | 0,0270 | 0,0281 | 0,0295 |
     | $\nu$ in $10^{-5}$ m²/s | 1,399 | 1,562 | 1,749 | 1,896 | 2,097 |
     | $Pr$ | 0,734 | 0,730 | 0,724 | 0,720 | 0,715 |
+    | $g\,\beta\,Pr/\nu^2$ in $10^8$ 1/(K·m³) | 1,31 | 0,98 | 0,73 | 0,59 | 0,45 |
 
     | Wasser, T in °C | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 |
     |---|---|---|---|---|---|---|---|---|
