@@ -483,4 +483,3 @@ Für Wasser bei 60 °C:
 - Stoffwerte von Wasser: NIST Chemistry WebBook, Thermophysical Properties of Fluid Systems, Wasser im Sättigungszustand
 - DIN EN ISO 6946: Bauteile, Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient (Wärmeübergangswiderstände)
 - Ansätze in ANSYS: Bibliothek `Convection_Samples` von ANSYS 2025 R2 (Dialog „Import Convection Data“), ausgewertet mit den Formeln aus J. P. Holman: *Heat Transfer*, 5. Auflage, S. 285; ANSYS Learning Forum, Antwort eines ANSYS-Mitarbeiters zu `Import Temperature Dependent`
-- Nachrechnung der Beispiele: `tools/sollwerte/p2_konvektion.py` im Kurs-Repository
