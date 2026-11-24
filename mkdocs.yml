@@ -105,6 +105,7 @@ extra_javascript:
       - "assets/js/achsenwahl.js"
       - "assets/js/grenzschicht.js"
       - "assets/js/konvektionsarten.js"
+      - "assets/js/alpha-rechner.js"
 
 extra_css:
       - "assets/tutorials/player.css"
@@ -117,6 +118,7 @@ extra_css:
       - "styles/modern.css"
       - "assets/styles/spickzettel.css"
       - "assets/styles/fallkarten.css"
+      - "assets/styles/alpha-rechner.css"
       - "assets/styles/anim-scroll.css"
       - "assets/styles/strahlenzaehler.css"
       - "assets/styles/achsenwahl.css"

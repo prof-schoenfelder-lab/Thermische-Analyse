@@ -93,7 +93,7 @@ DIN EN ISO 6946. Sie enthalten **Konvektion und Strahlung zusammen**:
 Zum Nachschlagen, für das Praktikum nicht nötig: In den Übungen ist α vorgegeben. Wer α selbst abschätzen will, sucht seinen Fall am Bild:
 
 - **Überschlag:** einfache Formel nur für Luft bei Normaldruck, für eine erste Abschätzung
-- **genau:** zum Aufklappen, mit runden Werten für Luft und Wasser; andere Temperaturen und Fluide über [Kennzahlen und Stoffwerte](#kennzahlen)
+- **genau:** zum Aufklappen, mit runden Werten für Luft und Wasser und einem Rechner; andere Fluide über [Kennzahlen und Stoffwerte](#kennzahlen)
 
 ### Ruhende Luft: freie Konvektion {: #ruhende-luft }
 
@@ -127,11 +127,15 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die Überschlagsfo
 
     Für Luft um 25 °C:
 
-    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $L$ in m
     - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
     - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+    - $\nu = 1{,}56 \cdot 10^{-5}\ \mathrm{m^2/s}$: kinematische Viskosität der Luft
+    - $Ra = g\,\beta\,\Delta T\,L^3 \cdot Pr/\nu^2$: Rayleigh-Zahl, dimensionslos, mit $g = 9{,}81\ \mathrm{m/s^2}$ und $\beta = 1/T_f$ ($T_f$ in K); kurz $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$ ($\Delta T$ in K, $L$ in m)
 
-    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+    Mit diesen runden Werten liegt α zwischen 7 und 45 °C Filmtemperatur höchstens 10 % daneben. Genauer rechnet der Rechner, er nimmt die Stoffwerte bei der Filmtemperatur:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="wand" }
 
     !!! example "Beispiel: Raumwand"
         - 2,5 m hoch, 3 K kälter als die Raumluft (die Luft sinkt dann ab, die Formel gilt genauso)
@@ -166,11 +170,15 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die Überschlagsfo
 
     Für Luft um 25 °C:
 
-    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot D^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $D$ in m
     - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
     - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+    - $\nu = 1{,}56 \cdot 10^{-5}\ \mathrm{m^2/s}$: kinematische Viskosität der Luft
+    - $Ra = g\,\beta\,\Delta T\,D^3 \cdot Pr/\nu^2$: Rayleigh-Zahl, dimensionslos, mit $g = 9{,}81\ \mathrm{m/s^2}$ und $\beta = 1/T_f$ ($T_f$ in K); kurz $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot D^3$ ($\Delta T$ in K, $D$ in m)
 
-    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+    Mit diesen runden Werten liegt α zwischen 7 und 45 °C Filmtemperatur höchstens 10 % daneben. Genauer rechnet der Rechner, er nimmt die Stoffwerte bei der Filmtemperatur:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="rohr_frei" }
 
     !!! example "Beispiel: Heizungsrohr aus Übung 1"
         - Rohr außen Ø 26,9 mm, Oberfläche etwa 59 °C, Kellerluft 15 °C, also $\Delta T \approx 44\ \mathrm{K}$
@@ -204,11 +212,15 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die Überschlagsfo
 
     Für Luft um 25 °C:
 
-    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $L$ in m, hier $L = A/p$
     - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
     - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+    - $\nu = 1{,}56 \cdot 10^{-5}\ \mathrm{m^2/s}$: kinematische Viskosität der Luft
+    - $Ra = g\,\beta\,\Delta T\,L^3 \cdot Pr/\nu^2$: Rayleigh-Zahl, dimensionslos, mit $g = 9{,}81\ \mathrm{m/s^2}$ und $\beta = 1/T_f$ ($T_f$ in K), hier $L = A/p$; kurz $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$ ($\Delta T$ in K, $L$ in m)
 
-    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+    Mit diesen runden Werten liegt α zwischen 7 und 45 °C Filmtemperatur höchstens 10 % daneben. Genauer rechnet der Rechner, er nimmt die Stoffwerte bei der Filmtemperatur:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="platte_oben" }
 
 </div>
 
@@ -234,11 +246,15 @@ Die warme Oberfläche erwärmt die Luft, die Luft steigt auf. Die Überschlagsfo
 
     Für Luft um 25 °C:
 
-    - $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$: Rayleigh-Zahl, dimensionslos, mit $\Delta T$ in K und $L$ in m, hier $L = A/p$
     - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
     - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+    - $\nu = 1{,}56 \cdot 10^{-5}\ \mathrm{m^2/s}$: kinematische Viskosität der Luft
+    - $Ra = g\,\beta\,\Delta T\,L^3 \cdot Pr/\nu^2$: Rayleigh-Zahl, dimensionslos, mit $g = 9{,}81\ \mathrm{m/s^2}$ und $\beta = 1/T_f$ ($T_f$ in K), hier $L = A/p$; kurz $Ra \approx 1 \cdot 10^8 \cdot \Delta T \cdot L^3$ ($\Delta T$ in K, $L$ in m)
 
-    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+    Mit diesen runden Werten liegt α zwischen 7 und 45 °C Filmtemperatur höchstens 10 % daneben. Genauer rechnet der Rechner, er nimmt die Stoffwerte bei der Filmtemperatur:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="platte_unten" }
 
 </div>
 
@@ -291,11 +307,15 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
 
     Für Luft um 25 °C:
 
-    - $Re \approx 6{,}4 \cdot 10^4 \cdot v \cdot L$: Reynolds-Zahl, dimensionslos, mit $v$ in m/s und $L$ in m
     - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
     - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+    - $\nu = 1{,}56 \cdot 10^{-5}\ \mathrm{m^2/s}$: kinematische Viskosität der Luft
+    - $Re = v\,L/\nu$: Reynolds-Zahl, dimensionslos; kurz $Re \approx 6{,}4 \cdot 10^4 \cdot v \cdot L$ ($v$ in m/s, $L$ in m)
 
-    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+    Mit diesen runden Werten liegt α zwischen 7 und 45 °C Filmtemperatur höchstens 10 % daneben. Genauer rechnet der Rechner, er nimmt die Stoffwerte bei der Filmtemperatur:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="platte_laengs" }
 
     Die Überschlagsformel ist die laminare Formel mit den Stoffwerten der Luft aus der Tabelle: Zwischen 7 und 80 °C liegt der Faktor bei 3,83 bis 3,87.
 
@@ -326,11 +346,15 @@ Der Wind bewegt die Luft, α hängt vor allem von der Windgeschwindigkeit ab.
 
     Für Luft um 25 °C:
 
-    - $Re \approx 6{,}4 \cdot 10^4 \cdot v \cdot D$: Reynolds-Zahl, dimensionslos, mit $v$ in m/s und $D$ in m
     - $Pr = 0{,}73$: Prandtl-Zahl, dimensionslos
     - $\lambda_F = 0{,}026\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit der Luft
+    - $\nu = 1{,}56 \cdot 10^{-5}\ \mathrm{m^2/s}$: kinematische Viskosität der Luft
+    - $Re = v\,D/\nu$: Reynolds-Zahl, dimensionslos; kurz $Re \approx 6{,}4 \cdot 10^4 \cdot v \cdot D$ ($v$ in m/s, $D$ in m)
 
-    Zwischen 7 und 45 °C Filmtemperatur liegt α damit höchstens 10 % daneben. Genauer: [Stoffwerte](#kennzahlen).
+    Mit diesen runden Werten liegt α zwischen 7 und 45 °C Filmtemperatur höchstens 10 % daneben. Genauer rechnet der Rechner, er nimmt die Stoffwerte bei der Filmtemperatur:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="rohr_quer" }
 
     !!! example "Beispiel: Vakuumröhre im Wind"
         - Glasrohr Ø 70 mm, Wind 1 m/s
@@ -364,10 +388,11 @@ Ein Fluid, meist Wasser, strömt durch das Rohr. Die Stoffwerte nimmt man bei de
 
 Für Wasser bei 60 °C:
 
-- $Re \approx 2{,}1 \cdot 10^6 \cdot v \cdot D$: Reynolds-Zahl, dimensionslos, mit $v$ in m/s und $D$ in m
 - $Pr = 3{,}0$: Prandtl-Zahl, dimensionslos
 - $\lambda_F = 0{,}65\ \mathrm{W/(m\,K)}$: Wärmeleitfähigkeit des Wassers
-- Wasser ändert sich stark mit der Temperatur, $Pr$ fällt von 9,5 bei 10 °C auf 2,2 bei 80 °C: dann die [Stoffwerte](#kennzahlen) nehmen
+- $\nu = 0{,}47 \cdot 10^{-6}\ \mathrm{m^2/s}$: kinematische Viskosität des Wassers
+- $Re = v\,D/\nu$: Reynolds-Zahl, dimensionslos; kurz $Re \approx 2{,}1 \cdot 10^6 \cdot v \cdot D$ ($v$ in m/s, $D$ in m)
+- Wasser ändert sich stark mit der Temperatur, $Pr$ fällt von 9,5 bei 10 °C auf 2,2 bei 80 °C: dann die [Stoffwerte](#kennzahlen) nehmen oder den Rechner in der Karte
 
 <div class="fk-karte" markdown>
 <div class="fk-bild" markdown>
@@ -385,7 +410,9 @@ Für Wasser bei 60 °C:
 
 </div>
 
-??? note "Genau, turbulent"
+??? note "Genau, mit Kennzahlen"
+    Turbulent:
+
     - Nach Gnielinski, $3000 < Re < 5 \cdot 10^6$ und $0{,}5 \le Pr \le 2000$:
 
         $$
@@ -395,6 +422,11 @@ Für Wasser bei 60 °C:
         mit der Reibungszahl $f$ des glatten Rohrs
 
     - Einfacher, aber ungenauer, nach Dittus und Boelter, $Re > 10\,000$, $0{,}7 \le Pr \le 160$: $\alpha = 0{,}023\,(\lambda_F/D)\,Re^{0{,}8}\,Pr^n$ mit $n = 0{,}4$, wenn das Fluid erwärmt wird, und $n = 0{,}3$, wenn es abkühlt
+
+    Der Rechner nimmt die Stoffwerte des Wassers bei der eingegebenen Temperatur, laminar und turbulent:
+
+    Rechner wird geladen …
+    {: .ar-rechner data-fall="rohr_innen" }
 
     !!! example "Beispiel: Wasser im Heizungsrohr"
         - Innen Ø 21,7 mm, Wasser 60 °C, angenommen 0,5 m/s: $Re \approx 22\,900$, also turbulent

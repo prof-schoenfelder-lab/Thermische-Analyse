@@ -1,0 +1,33 @@
+/* α-Rechner in den Fallkarten (P2 Konvektion), Präfix ar-; Farben aus den Kurs-Tokens wie beim Wand-Rechner */
+.ar-rechner {
+  display: grid; gap: .7rem; margin: .8em 0 1.1em; padding: .8rem 1rem;
+  background: var(--kurs-surface, #fff); border: 1px solid var(--kurs-line, #e2e8ec);
+  border-radius: var(--kurs-radius-md, .6rem);
+}
+.ar-rechner .ar-kopf { font-weight: 600; color: var(--kurs-head, #022541); }
+.ar-rechner .ar-ein { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5em, 1fr)); gap: .6em .9em; align-items: end; }
+.ar-rechner .ar-feld { display: grid; gap: .2em; align-content: start; }
+.ar-rechner label { font-size: .85em; color: var(--kurs-text-2, #566166); }
+.ar-rechner .ar-eingabe { display: flex; align-items: center; gap: .4em; }
+.ar-rechner input {
+  width: 100%; min-width: 0; font: inherit; font-variant-numeric: tabular-nums; padding: .3em .5em;
+  color: var(--kurs-text, #2e3639); background: var(--kurs-panel, #f2f6f9);
+  border: 1px solid var(--kurs-line-2, #cdd6dc); border-radius: .4rem;
+}
+.ar-rechner input:focus-visible { outline: 2px solid var(--kurs-accent, #009ee3); outline-offset: 1px; }
+.ar-rechner input[aria-invalid="true"] { border-color: var(--kurs-c-warn, #e53009); }
+.ar-rechner .ar-einheit { font-size: .85em; color: var(--kurs-text-2, #566166); white-space: nowrap; }
+.ar-rechner .ar-fehler { font-size: .8em; color: var(--kurs-c-warn, #e53009); }
+.ar-rechner .ar-fehler:empty { display: none; }
+.ar-rechner .ar-aus { display: grid; gap: .5em; }
+.ar-rechner .ar-kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5em, 1fr)); gap: .5em; }
+.ar-rechner .ar-kachel { display: grid; gap: .1em; padding: .4em .7em; background: var(--kurs-panel, #f2f6f9); border-radius: .4rem; }
+.ar-rechner .ar-kachel span { font-size: .8em; color: var(--kurs-text-2, #566166); }
+.ar-rechner .ar-kachel b { font-variant-numeric: tabular-nums; color: var(--kurs-head, #022541); }
+.ar-rechner .ar-haupt { background: var(--kurs-accent-soft, #e3f4fc); border: 1px solid var(--kurs-accent, #009ee3); }
+.ar-rechner .ar-haupt b { font-size: 1.15em; }
+.ar-rechner .ar-ungueltig b { color: var(--kurs-text-3, #87939a); font-weight: 400; }
+.ar-rechner .ar-hinweis { font-size: .85em; color: var(--kurs-c-warn, #e53009); }
+@media (max-width: 30em) {
+  .ar-rechner .ar-ein, .ar-rechner .ar-kacheln { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
